@@ -41,7 +41,7 @@ export const NavBar = ({ locale, user }: { locale: Locale; user?: User }) => {
                     <Links buttonStyle="rounded-none" locale={locale} user={user} />
                 </div>
                 <div className="lg:hidden">
-                    <MobileNavBar locale={locale} />
+                    <MobileNavBar locale={locale} user={user} />
                 </div>
             </div>
         </>

@@ -7,8 +7,9 @@ import { useState } from "react";
 import { Menu } from "lucide-react";
 import { Links } from "./links";
 import { Locale } from "@/locales/config";
+import { User } from "next-auth";
 
-export const MobileNavBar = ({ locale }: { locale: Locale }) => {
+export const MobileNavBar = ({ locale, user }: { locale: Locale; user?: User }) => {
     const [deployed, setDeployed] = useState(false);
     const close = () => setDeployed(false);
     return (
@@ -23,7 +24,7 @@ export const MobileNavBar = ({ locale }: { locale: Locale }) => {
                     <Menu className="text-primary" />
                 </Button>
             </div>
-            {deployed && <Links className="flex flex-col max-w-[100px] m-auto" locale={locale} />}
+            {deployed && <Links className="flex flex-col max-w-[100px] m-auto" locale={locale} user={user} />}
         </div>
     );
 };
