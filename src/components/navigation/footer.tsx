@@ -68,12 +68,12 @@ export const Footer = () => (
             </div>
             <div className="p-2 flex flex-col items-start space-y-2">
                 <p>&copy;{new Date().getFullYear()} Telecom Etude</p>
-                <Button variant="link" className="text-foreground px-0 py-0 h-fit">
+                <Button variant="link" className="text-foreground px-0 py-0 h-fit" asChild>
                     <Link href="mailto:contact@telecom-etude.fr" className="h-fit text-base font-normal">
                         contact@telecom-etude.fr
                     </Link>
                 </Button>
-                <Button variant="link" className="text-foreground px-0 py-0 text-left h-fit text-wrap">
+                <Button variant="link" className="text-foreground px-0 py-0 text-left h-fit text-wrap" asChild>
                     <Link href="https://maps.app.goo.gl/etZHknTudKMuTjRZ9" className="h-fit text-base font-normal" target="_blank">
                         19, place Marguerite Perey, 91120 Palaiseau
                     </Link>
