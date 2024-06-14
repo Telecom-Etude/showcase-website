@@ -42,6 +42,8 @@ export const OfferGraphic = () => {
         setPreviousX(mousePosition.x);
     }, [mousePosition]);
 
+    const [show, setShow] = useState(false);
+
     return (
         <>
             <div className="flex items-center p-10">
@@ -67,6 +69,7 @@ export const OfferGraphic = () => {
                     border-b-transparent"
                 ></div>
             </div>
+            {JSON.stringify(mousePosition)}
             <h3 className="text-2xl">{STEPS[selectedZone - 1]}</h3>
             <Paragraphs className="max-w-[500px] text-center" paragraphs={TEXTS[selectedZone - 1]} />
         </>

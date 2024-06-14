@@ -38,7 +38,7 @@ export const Links = ({ className, ...itemProps }: LinksProps) => (
             Nos engagements
         </NavItem>
         <NavItem {...itemProps} href="/blog">
-            Actualités
+            Blog
         </NavItem>
         <NavItem {...itemProps} href="/faq">
             FAQ

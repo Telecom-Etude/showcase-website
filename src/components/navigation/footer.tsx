@@ -56,7 +56,7 @@ export const Footer = () => (
                 <section className={section}>
                     <h3 className={h3}>Contact & Informations</h3>
                     <LinkItem name="Formulaire de contact" href="/contact" />
-                    <LinkItem name="Actualités" href="/blog" />
+                    <LinkItem name="Blog" href="/blog" />
                     <LinkItem name="Mentions légales" href="/legal-mentions" />
                 </section>
             </div>
