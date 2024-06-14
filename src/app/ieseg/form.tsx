@@ -19,48 +19,33 @@ interface FieldVocabItem {
 }
 
 const vocab = {
-    title: "Contactez-nous !",
-    before: "Vous avez un projet en tête ? Vous avez besoin de plus d'informations sur notre offre ? N'hésitez pas à nous contacter en utilisant le formulaire ci-dessous ou en nous envoyant un email à ",
-    after: ". Nous reviendrons vers vous dès que possible.",
-    terms: "En soumettant ce formulaire, vous acceptez que vos données soient utilisées pour vous recontacter dans le cadre de votre demande et de la relation commerciale qui peut en découler. ",
-    form: {
-        name: {
-            label: "Nom",
-            placeholder: "Votre nom",
-            error: "Merci de fournir un nom"
-        },
-        email: {
-            label: "Email",
-            placeholder: "Votre email",
-            error: "Merci de fournir une adresse email valide"
-        },
-        tel: {
-            label: "Téléphone",
-            placeholder: "Votre numéro de téléphone",
-            error: "Numéro de téléphone invalide"
-        },
-        societe: {
-            label: "Société",
-            placeholder: "Votre nom de société"
-        },
-        subject: {
-            label: "Objet",
-            placeholder: "Un titre pour votre message"
-        },
-        message: {
-            label: "Message",
-            placeholder: "Votre message à l'équipe",
-            error: "Merci d'écrire un message"
-        },
-        send: "Envoyer"
+    name: {
+        label: "Nom",
+        placeholder: "Votre nom",
+        error: "Merci de fournir un nom"
     },
-    success: {
-        title: "Message envoyé !",
-        message: "Merci pour votre message. Nous vous recontacterons dès que possible."
+    email: {
+        label: "Email",
+        placeholder: "Votre email",
+        error: "Merci de fournir une adresse email valide"
     },
-    error: {
-        title: "Erreur lors de l'envoie",
-        message: "Merci de nous envoyé un mail directement à"
+    tel: {
+        label: "Téléphone",
+        placeholder: "Votre numéro de téléphone",
+        error: "Numéro de téléphone invalide"
+    },
+    societe: {
+        label: "Société",
+        placeholder: "Votre nom de société"
+    },
+    subject: {
+        label: "Objet",
+        placeholder: "Un titre pour votre message"
+    },
+    message: {
+        label: "Message",
+        placeholder: "Votre message à l'équipe",
+        error: "Merci d'écrire un message"
     }
 };
 
@@ -96,23 +81,23 @@ const FormElement = ({ form, name, value, textarea = false }: { form: UseFormRet
 
 const formFields = {
     name: z.string().min(2, {
-        message: vocab.form.name.error
+        message: vocab.name.error
     }),
     email: z.string().email({
-        message: vocab.form.email.error
+        message: vocab.email.error
     }),
     tel: z.string().optional(),
     societe: z.string().optional(),
     subject: z.string().optional(),
     message: z.string().min(5, {
-        message: vocab.form.message.error
+        message: vocab.message.error
     })
 };
 
 const formSchema = z.object(formFields);
 type FormType = z.infer<typeof formSchema>;
 
-const formEntries: [Fields, FieldVocabItem][] = Object.entries(vocab.form)
+const formEntries: [Fields, FieldVocabItem][] = Object.entries(vocab)
     .filter(([key]) => ListFields.includes(key))
     .map(([key, value]) => [key as Fields, value] as [Fields, FieldVocabItem]);
 
@@ -152,11 +137,9 @@ export default function FormElements() {
                     <FormElement name={name} value={value} form={form} key={idx} textarea={name === "message"} />
                 ))}
 
-                <div className="w-full flex justify-center">
-                    <Button variant="call2action" className="hover:bg-primary text-lg min-w-[200px]" onClick={() => onSubmit(form.getValues())}>
-                        {vocab.form.send}
-                    </Button>
-                </div>
+                <Button variant="call2action" className="m-auto hover:bg-primary text-lg min-w-[200px]" onClick={() => onSubmit(form.getValues())}>
+                    Envoyer
+                </Button>
             </form>
         </Form>
     );

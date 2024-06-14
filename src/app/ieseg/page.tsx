@@ -3,11 +3,18 @@ import Image from "next/image";
 import IcpGraph from "@/../public/images/icpgraph.png";
 import MIT from "@/../public/images/mit.jpg";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ArrowUp } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import FormElements from "./form";
 import { cn } from "@/lib/utils";
 import Logo from "@/../public/images/logo.webp";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Offre commune | Telecom Etude & IESEG Conseil Paris",
+    description:
+        "IESEG Conseil Paris (ICP) et Telecom Etude (TE) s’associent pour offrir une gamme complète de services de consulting, combinant leurs expertises en ingénierie et en commerce pour répondre aux besoins variés des entreprises. Leur offre commune se décline en plusieurs volets, notamment la maîtrise des données de marché, l'analyse marketing, l'optimisation de l'expérience client, et l'acquisition digitale. Par exemple, pour l'implantation de nouvelles technologies, ils proposent une approche intégrée pour évaluer la faisabilité technique et la demande du marché, en utilisant à la fois l'analyse sectorielle, le benchmark et le prototypage. En matière d'analyse de l'expérience client, ICP réalise des visites mystères et des interviews de sortie pour évaluer objectivement le service, tandis que TE développe des modèles de prédiction pour anticiper les heures de pointe. En marketing digital, ICP crée des stratégies de communication et de référencement, tandis que TE se concentre sur le développement d'outils digitaux tels que des sites web et des applications. Cette synergie entre ICP, fort de ses nombreuses études et de ses ressources documentaires, et TE, reconnue pour son excellence en ingénierie numérique, permet d'offrir des solutions complètes et adaptées aux besoins spécifiques des entreprises, allant de petites PME aux grands comptes."
+};
 
 const Paragraph = ({ title, children }: { title: string; children: ReactNode }) => (
     <div className="sm:w-2/3 w-full">
@@ -15,7 +22,6 @@ const Paragraph = ({ title, children }: { title: string; children: ReactNode }) 
         <p className="text-lg">{children}</p>
     </div>
 );
-
 const section = "flex flex-col items-center justify-center mb-12 space-x-0 space-y-10";
 
 export default function HomePage() {
@@ -27,7 +33,7 @@ export default function HomePage() {
             </header>
             <section className={section}>
                 <Paragraph title="Présentation IESEG Conseil Paris">
-                    IÉSEG CONSEIL Paris, Junior-Entreprise de l&apos;IÉSEG School of Management, est un cabinet de conseil composé d&apos;étudiants de Master 2
+                    IÉSEG CONSEIL Paris, Junior-Entreprise de l&apos;IÉSEG School of Management, est une Junior-Entreprise dont les membres sont des étudiants
                     spécialisés en Management, Marketing, Finance, Audit et Systèmes d&apos;information. Créée en 2007, IÉSEG CONSEIL Paris met à votre
                     disposition l&apos;expertise et le dynamisme de ses consultants juniors pour vous accompagner dans vos projets de conseil en stratégie,
                     organisation, marketing, finance et systèmes d&apos;information.
