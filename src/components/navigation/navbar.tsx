@@ -5,9 +5,9 @@ import { MobileNavBar } from "./mobile";
 import { Links } from "./links";
 
 export const NavBar = () => (
-    <>
+    <div className="sticky z-10">
         <div className="hidden md:flex justify-between border-b-[1px] border-primary">
-            <Button asChild variant="ghost" className="rounded-none">
+            <Button asChild variant="ghost" className="rounded-none px-0 py-0">
                 <Link href="/" className="flex justify-start px-0 py-0">
                     <FullLogo />
                 </Link>
@@ -17,5 +17,5 @@ export const NavBar = () => (
         <div className="md:hidden">
             <MobileNavBar />
         </div>
-    </>
+    </div>
 );
