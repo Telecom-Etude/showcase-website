@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Home() {
     return (
-        <div className="flex-grow overflow-auto">
+        <div className="overflow-auto">
             <div className="relative h-screen">
                 <Image src={TelecomParis} alt="Photo Telecom Paris" layout="fill" objectFit="cover" />
             </div>
