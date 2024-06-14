@@ -75,3 +75,40 @@
     @apply bg-background text-foreground;
   }
 }
+
+
+p {
+  text-align: justify;
+}
+
+.call2action {
+  background: linear-gradient(0deg, yellow, red);
+  background-size: 200% 200%;
+  animation: call2action-animation 3s ease infinite;
+}
+
+.call2action:hover {
+  background: linear-gradient(0deg, var(--primary), var(--destructive));
+}
+
+@keyframes call2action-animation {
+  0% {
+    background-position: 50% 0%;
+  }
+
+  25% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 50% 0%;
+  }
+
+  75% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 50% 0%;
+  }
+}

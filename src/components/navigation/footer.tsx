@@ -55,7 +55,7 @@ export const Footer = () => (
                 </section>
                 <section className={section}>
                     <h3 className={h3}>Contact & Informations</h3>
-                    <LinkItem name="Formdivaire de contact" href="/contact" />
+                    <LinkItem name="Formulaire de contact" href="/contact" />
                     <LinkItem name="Actualités" href="/blog" />
                     <LinkItem name="Mentions légales" href="/legal-mentions" />
                 </section>
@@ -73,7 +73,7 @@ export const Footer = () => (
                         contact@telecom-etude.fr
                     </Link>
                 </Button>
-                <Button variant="link" className="text-foreground px-0 py-0 h-fit">
+                <Button variant="link" className="text-foreground px-0 py-0 text-left h-fit text-wrap">
                     <Link href="https://maps.app.goo.gl/etZHknTudKMuTjRZ9" className="h-fit text-base font-normal" target="_blank">
                         19, place Marguerite Perey, 91120 Palaiseau
                     </Link>
