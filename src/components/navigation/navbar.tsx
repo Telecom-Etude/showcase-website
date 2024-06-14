@@ -7,8 +7,9 @@ import { MobileNavBar } from "./mobile";
 import { Links } from "./links";
 import { useState, useEffect } from "react";
 import { Locale } from "@/locales/config";
+import { User } from "next-auth";
 
-export const NavBar = ({ locale }: { locale: Locale }) => {
+export const NavBar = ({ locale, user }: { locale: Locale; user?: User }) => {
     const [isScrolled, setIsScrolled] = useState(false);
 
     const handleScroll = () => {
@@ -37,7 +38,7 @@ export const NavBar = ({ locale }: { locale: Locale }) => {
                             <FullLogo />
                         </Link>
                     </Button>
-                    <Links buttonStyle="rounded-none" locale={locale} />
+                    <Links buttonStyle="rounded-none" locale={locale} user={user} />
                 </div>
                 <div className="md:hidden">
                     <MobileNavBar locale={locale} />

@@ -14,7 +14,9 @@ export const frDictionary = {
             contact_information: "Contact & Informations",
             contact_form: "Formulaire de contact",
             blog: "Blog",
-            legal_mentions: "Mentions légales"
+            legal_mentions: "Mentions légales",
+            login: "Connexion",
+            logout: "Déconnexion"
         }
     },
     pages: {}

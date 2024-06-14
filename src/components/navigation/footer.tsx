@@ -1,9 +1,8 @@
-import { FaEnvelope, FaEnvelopeOpenText, FaEnvelopeSquare, FaFacebook, FaInstagram, FaLinkedin, FaMailchimp, FaRegEnvelope } from "react-icons/fa";
+import { FaEnvelope, FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { FullLogo } from "../telecom-etude/logos";
 import Link from "next/link";
 import { IconType } from "react-icons";
 import { Button } from "../ui/button";
-import { FaLetterboxd } from "react-icons/fa6";
 import { getDictionary } from "@/locales/dictionaries";
 import { Locale } from "@/locales/config";
 
@@ -33,40 +32,56 @@ const NetworkLinks = () => (
     </div>
 );
 
+const SiteMapBlock = ({ title, items }: { title: string; items: { name: string; href: string }[] }) => (
+    <section className={section}>
+        <h3 className={h3}>{title}</h3>
+        {items.map((item, k) => (
+            <LinkItem {...item} key={k} />
+        ))}
+    </section>
+);
+
 const SiteMap = ({ locale }: { locale: Locale }) => {
     const t = getDictionary(locale).navigation.sitemap;
     return (
         <>
-            {" "}
             <h2 className="text-xl font-semibold">{t.title}</h2>
             <div className="flex sm:flex-row flex-col space-x-10">
                 <div>
-                    <section className={section}>
-                        <h3 className={h3}>{t.whoarewe}</h3>
-                        <LinkItem name={t.home} href="/" />
-                        <LinkItem name={t.about} href="/about" />
-                        <LinkItem name={t.commitment} href="/commitment" />
-                        <LinkItem name={t.team} href="/team" />
-                    </section>
-                    <section className={section}>
-                        <h3 className={h3}>{t.partners}</h3>
-                        <LinkItem name={t.company_partners} href="/partners" />
-                        <LinkItem name="IESEG Conseil Paris" href="/ieseg" />
-                    </section>
+                    <SiteMapBlock
+                        title={t.whoarewe}
+                        items={[
+                            { name: t.home, href: "/" },
+                            { name: t.about, href: "/about" },
+                            { name: t.commitment, href: "/commitment" },
+                            { name: t.team, href: "/team" }
+                        ]}
+                    />
+                    <SiteMapBlock
+                        title={t.partners}
+                        items={[
+                            { name: t.company_partners, href: "/partners" },
+                            { name: "IESEG Conseil Paris", href: "/ieseg" }
+                        ]}
+                    />
                 </div>
                 <div>
-                    <section className={section}>
-                        <h3 className={h3}>{t.offer}</h3>
-                        <LinkItem name={t.offer} href="/offer" />
-                        <LinkItem name={t.example_offers} href="/blog/missions/" />
-                        <LinkItem name="FAQ" href="/faq" />
-                    </section>
-                    <section className={section}>
-                        <h3 className={h3}>{t.contact_information}</h3>
-                        <LinkItem name={t.contact_form} href="/contact" />
-                        <LinkItem name={t.blog} href="/blog" />
-                        <LinkItem name={t.legal_mentions} href="/legal-mentions" />
-                    </section>
+                    <SiteMapBlock
+                        title={t.offer}
+                        items={[
+                            { name: t.offer, href: "/offer" },
+                            { name: t.example_offers, href: "/blog/missions/" },
+                            { name: "FAQ", href: "/faq" }
+                        ]}
+                    />
+                    <SiteMapBlock
+                        title={t.contact_information}
+                        items={[
+                            { name: t.contact_form, href: "/contact" },
+                            { name: t.blog, href: "/blog" },
+                            { name: t.legal_mentions, href: "/legal-mentions" }
+                        ]}
+                    />
                 </div>
             </div>
         </>

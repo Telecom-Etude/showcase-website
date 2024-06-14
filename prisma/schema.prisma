@@ -11,8 +11,10 @@ datasource db {
 }
 
 model User {
-  email String @id @unique
-  Blog  Blog[]
+  email     String   @id @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Blog      Blog[]
 }
 
 model ContactForm {

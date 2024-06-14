@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ReactNode } from "react";
 import { getDictionary } from "@/locales/dictionaries";
 import { Locale } from "@/locales/config";
+import { User } from "next-auth";
 
 interface NavItemProps {
     onClick?: () => void;
@@ -25,12 +26,14 @@ const NavItem = ({ onClick, children, buttonStyle, linkStyle, href, variant = "g
 interface LinksProps {
     className?: string;
     locale: Locale;
+    user?: User;
     onClick?: () => void;
     buttonStyle?: string;
 }
 
-export const Links = ({ className, locale, ...itemProps }: LinksProps) => {
+export const Links = ({ className, locale, user, ...itemProps }: LinksProps) => {
     const t = getDictionary(locale).navigation.sitemap;
+
     return (
         <nav className={className}>
             <NavItem {...itemProps} href="/about">
@@ -48,6 +51,15 @@ export const Links = ({ className, locale, ...itemProps }: LinksProps) => {
             <NavItem {...itemProps} href="/faq">
                 FAQ
             </NavItem>
+            {user === undefined ? (
+                <NavItem {...itemProps} href="/api/auth/signin">
+                    {t.login}
+                </NavItem>
+            ) : (
+                <NavItem {...itemProps} href="/api/auth/signout">
+                    {t.logout}
+                </NavItem>
+            )}
             <NavItem {...itemProps} href="/contact" linkStyle="flex items-center space-x-2" variant="default">
                 <p>Contact</p>
                 <FaArrowRight />
