@@ -12,19 +12,18 @@ const Network = ({ href, Icon }: { href: string; Icon: IconType }) => (
 );
 
 const LinkItem = ({ href, name }: { href: string; name: string }) => (
-    <li>
-        <Button variant="link" className="text-foreground py-[3px]" asChild>
-            <Link className="h-fit" href={href}>
-                {name}
-            </Link>
-        </Button>
-    </li>
+    <Button variant="link" className="text-foreground py-[3px]" asChild>
+        <Link className="w-fit h-fit pl-0 py-0 text-center" href={href}>
+            {name}
+        </Link>
+    </Button>
 );
 
-const h3 = "text-lg font-semibold p-2";
+const h3 = "text-lg font-semibold pb-2 pt-6 pl-0 w-fit";
+const section = "flex flex-col items-center";
 
 export const Footer = () => (
-    <div className="border-t-[1px] border-primary flex flex-col items-center space-y-2">
+    <div className="border-t-[1px] border-primary flex flex-col items-center space-y-2 py-4">
         <div className="flex space-x-4 p-2">
             <Network href="https://www.linkedin.com/company/telecom-etude/" Icon={FaLinkedin} />
             <Network href="https://www.facebook.com/TelecomEtude" Icon={FaFacebook} />
@@ -33,36 +32,32 @@ export const Footer = () => (
         </div>
         <h2 className="text-xl font-semibold">Plan du site</h2>
         <div className="flex sm:flex-row flex-col space-x-10">
-            <section>
-                <h3 className={h3}>Qui sommes-nous ?</h3>
-                <ul className="space-y-0">
+            <div>
+                <section className={section}>
+                    <h3 className={h3}>Qui sommes-nous ?</h3>
                     <LinkItem name="Page d'accueil" href="/" />
                     <LinkItem name="À propos" href="/about" />
                     <LinkItem name="Nos engagements" href="/commitment" />
                     <LinkItem name="Notre équipe" href="/team" />
-                </ul>
-                <h3 className={h3}>Nos partenaires</h3>
-                <ul>
+                </section>
+                <section className={section}>
+                    <h3 className={h3}>Nos partenaires</h3>
                     <LinkItem name="Entreprises partenaires" href="/partners" />
                     <LinkItem name="IESEG" href="/ieseg" />
-                </ul>
-            </section>
-            <div>
-                <section>
-                    <h3 className={h3}>Nos offres</h3>
-                    <ul>
-                        <LinkItem name="Notre offre" href="/offer" />
-                        <LinkItem name="Exemple d'offres" href="/blog/missions/" />
-                        <LinkItem name="FAQ" href="/faq" />
-                    </ul>
                 </section>
-                <section>
+            </div>
+            <div>
+                <section className={section}>
+                    <h3 className={h3}>Nos offres</h3>
+                    <LinkItem name="Notre offre" href="/offer" />
+                    <LinkItem name="Exemple d'offres" href="/blog/missions/" />
+                    <LinkItem name="FAQ" href="/faq" />
+                </section>
+                <section className={section}>
                     <h3 className={h3}>Contact & Informations</h3>
-                    <ul>
-                        <LinkItem name="Formulaire de contact" href="/contact" />
-                        <LinkItem name="Actualités" href="/blog" />
-                        <LinkItem name="Mentions légales" href="/legal-mentions" />
-                    </ul>
+                    <LinkItem name="Formdivaire de contact" href="/contact" />
+                    <LinkItem name="Actualités" href="/blog" />
+                    <LinkItem name="Mentions légales" href="/legal-mentions" />
                 </section>
             </div>
         </div>
