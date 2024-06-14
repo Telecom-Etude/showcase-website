@@ -32,7 +32,7 @@ export const NavBar = ({ locale, user }: { locale: Locale; user?: User }) => {
         <>
             {/* <div className={`sticky z-30 top-0 ${isScrolled ? "bg-background" : "bg-transparent"}`}> */}
             <div className="sticky z-30 top-0 bg-background">
-                <div className="hidden md:flex justify-between border-b-[1px] border-primary">
+                <div className="hidden lg:flex justify-between border-b-[1px] border-primary">
                     <Button asChild variant="ghost" className="rounded-none px-0 py-0">
                         <Link href="/" className="flex justify-start px-0 py-0">
                             <FullLogo />
@@ -40,7 +40,7 @@ export const NavBar = ({ locale, user }: { locale: Locale; user?: User }) => {
                     </Button>
                     <Links buttonStyle="rounded-none" locale={locale} user={user} />
                 </div>
-                <div className="md:hidden">
+                <div className="lg:hidden">
                     <MobileNavBar locale={locale} />
                 </div>
             </div>

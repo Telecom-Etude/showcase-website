@@ -43,6 +43,7 @@ const SiteMapBlock = ({ title, items }: { title: string; items: { name: string; 
 
 const SiteMap = ({ locale }: { locale: Locale }) => {
     const t = getDictionary(locale).navigation.sitemap;
+
     return (
         <>
             <h2 className="text-xl font-semibold">{t.title}</h2>
