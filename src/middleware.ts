@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { DEFAULT_LOCALE, LOCALES } from "./locales/config";
-import { Session } from "next-auth";
-import { auth } from "./auth";
+import { DEFAULT_LOCALE, LOCALES } from "@/locales/config";
+import NextAuth, { Session } from "next-auth";
+import authConfig from "@/auth.config";
 
 const redirect = (url: string, req: NextAuthRequest) => NextResponse.redirect(new URL(url, req.nextUrl.href));
 const rewrite = (url: string, req: NextAuthRequest) => NextResponse.rewrite(new URL(url, req.nextUrl.href));
@@ -9,6 +9,8 @@ const rewrite = (url: string, req: NextAuthRequest) => NextResponse.rewrite(new 
 export interface NextAuthRequest extends NextRequest {
     auth: Session | null;
 }
+
+const { auth } = NextAuth(authConfig);
 
 export default auth((req: NextAuthRequest) => {
     const { pathname } = req.nextUrl;
@@ -19,12 +21,11 @@ export default auth((req: NextAuthRequest) => {
     console.log(
         `>>>>>>>>>> Middleware [[ auth = ${req.auth} | locale = ${locale} | pathLocale = ${pathLocale} | pathname = ${pathname} | localelessPath = ${localelessPath}]]`
     );
+    console.log(req.auth);
 
-    if (localelessPath === "/admin") return redirect(`/${locale}/not-found`, req);
-    if (localelessPath.startsWith("/admin/") && !req.auth) return redirect(`/${locale}/denied`, req);
-    if (localelessPath.startsWith("/admin/")) return; // if (pathname === "/" + DEFAULT_LOCALE || pathname.startsWith("/" + DEFAULT_LOCALE + "/")) {
-    //     return redirect(pathname.replace("/" + DEFAULT_LOCALE, "/"), req);
-    // }>
+    if (localelessPath === "/admin") return rewrite(`/${locale}/404`, req);
+    if (localelessPath.startsWith("/admin/") && !req.auth) return rewrite(`/${locale}/401`, req);
+    if (localelessPath.startsWith("/admin/")) return;
 
     if (pathLocale === undefined) return redirect(`/${locale}${localelessPath}${req.nextUrl.search}`, req);
 });

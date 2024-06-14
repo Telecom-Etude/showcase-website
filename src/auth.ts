@@ -1,16 +1,29 @@
-import type { NextAuthConfig, User } from "next-auth";
+import type { NextAuthConfig, User as AuthUser } from "next-auth";
 import NextAuth from "next-auth";
-import Google from "next-auth/providers/google";
-import { PrismaClient } from "@prisma/client";
+import authConfig from "@/auth.config";
+import { PrismaAdapter } from "@auth/prisma-adapter";
+import { db } from "./lib/db";
+import { User as PrismaUser } from "@prisma/client";
 
 const config = {
-    providers: [Google],
+    ...authConfig,
     callbacks: {
-        async signIn(params: { user: User }) {
+        async session({ session }) {
+            if (session.user) {
+                const user: PrismaUser | null = await db.user.findUnique({ where: { email: session.user.email } });
+                const newUser = { ...user, ...session.user };
+                session.user = newUser;
+                console.log("new session ", user);
+            }
+            return session;
+        },
+        async jwt({ token, profile }) {
+            return token;
+        },
+        async signIn(params: { user: AuthUser }) {
             const email = params.user.email;
-            const prisma = new PrismaClient();
             if (email) {
-                await prisma.user.upsert({
+                await db.user.upsert({
                     where: { email },
                     update: { email },
                     create: { email }
@@ -20,7 +33,8 @@ const config = {
                 return false;
             }
         }
-    }
+    },
+    session: { strategy: "jwt" }
 } satisfies NextAuthConfig;
 
 export const { handlers, auth, signIn, signOut } = NextAuth(config);

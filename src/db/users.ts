@@ -1,16 +1,14 @@
 "use server";
 
-import { PrismaClient } from "@prisma/client";
+import { db } from "@/lib/db";
 
-const prisma = new PrismaClient();
+////////////// CREAT ///////////////////
 
-////////////// CREATED ///////////////////
-
-//////////////  READ   ///////////////////
+////////////// READ ///////////////////
 
 export const isFormAdmin = async (email: string) => {
     try {
-        const user = await prisma.user.findUnique({
+        const user = await db.user.findUnique({
             where: { email }
         });
         return user?.formAdmin;
@@ -22,7 +20,7 @@ export const isFormAdmin = async (email: string) => {
 
 export const isUserAdmin = async (email: string) => {
     try {
-        const user = await prisma.user.findUnique({
+        const user = await db.user.findUnique({
             where: { email }
         });
         return user?.userAdmin;
@@ -34,7 +32,7 @@ export const isUserAdmin = async (email: string) => {
 
 export const isBlogAdmin = async (email: string) => {
     try {
-        const user = await prisma.user.findUnique({
+        const user = await db.user.findUnique({
             where: { email }
         });
         return user?.blogAdmin;
@@ -46,7 +44,7 @@ export const isBlogAdmin = async (email: string) => {
 
 export const isBlogAuthor = async (email: string) => {
     try {
-        const user = await prisma.user.findUnique({
+        const user = await db.user.findUnique({
             where: { email }
         });
         return user?.blogAuthor;
@@ -60,7 +58,7 @@ export const isBlogAuthor = async (email: string) => {
 
 export const makeBlogAdmin = async (email: string, value: boolean) => {
     try {
-        await prisma.user.update({
+        await db.user.update({
             where: { email },
             data: { blogAdmin: value }
         });
@@ -73,7 +71,7 @@ export const makeBlogAdmin = async (email: string, value: boolean) => {
 
 export const makeUserAdmin = async (email: string, value: boolean) => {
     try {
-        const x = await prisma.user.update({
+        const x = await db.user.update({
             where: { email },
             data: { userAdmin: value }
         });
@@ -86,7 +84,7 @@ export const makeUserAdmin = async (email: string, value: boolean) => {
 
 export const makeFormAdmin = async (email: string, value: boolean) => {
     try {
-        await prisma.user.update({
+        await db.user.update({
             where: { email },
             data: { formAdmin: value }
         });
@@ -99,7 +97,7 @@ export const makeFormAdmin = async (email: string, value: boolean) => {
 
 export const makeBlogAuthor = async (email: string, value: boolean) => {
     try {
-        await prisma.user.update({
+        await db.user.update({
             where: { email },
             data: { blogAuthor: value }
         });
@@ -114,7 +112,7 @@ export const makeBlogAuthor = async (email: string, value: boolean) => {
 
 export const deleteUser = async (email: string) => {
     try {
-        await prisma.user.delete({ where: { email } });
+        await db.user.delete({ where: { email } });
         return true;
     } catch (e) {
         console.error("[deleteUser] Error: ", e);
