@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "../ui/button";
 import { FullLogo } from "../telecom-etude/logos";
 import Link from "next/link";
 import { MobileNavBar } from "./mobile";

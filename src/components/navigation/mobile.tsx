@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { Button } from "../ui/button";
 import { FullLogo } from "../telecom-etude/logos";
 import { useState } from "react";
 import { Menu } from "lucide-react";
