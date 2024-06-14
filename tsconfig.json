@@ -26,7 +26,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    ".test/mobile.tsx"
+    "src/components/navigation/mobile.tsx"
   ],
   "exclude": ["node_modules"]
 }
