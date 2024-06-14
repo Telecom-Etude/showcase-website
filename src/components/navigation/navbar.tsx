@@ -6,8 +6,9 @@ import Link from "next/link";
 import { MobileNavBar } from "./mobile";
 import { Links } from "./links";
 import { useState, useEffect } from "react";
+import { Locale } from "@/locales/config";
 
-export const NavBar = () => {
+export const NavBar = ({ locale }: { locale: Locale }) => {
     const [isScrolled, setIsScrolled] = useState(false);
 
     const handleScroll = () => {
@@ -36,10 +37,10 @@ export const NavBar = () => {
                             <FullLogo />
                         </Link>
                     </Button>
-                    <Links buttonStyle="rounded-none" />
+                    <Links buttonStyle="rounded-none" locale={locale} />
                 </div>
                 <div className="md:hidden">
-                    <MobileNavBar />
+                    <MobileNavBar locale={locale} />
                 </div>
             </div>
         </>

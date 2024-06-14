@@ -6,8 +6,9 @@ import { FullLogo } from "../telecom-etude/logos";
 import { useState } from "react";
 import { Menu } from "lucide-react";
 import { Links } from "./links";
+import { Locale } from "@/locales/config";
 
-export const MobileNavBar = () => {
+export const MobileNavBar = ({ locale }: { locale: Locale }) => {
     const [deployed, setDeployed] = useState(false);
     const close = () => setDeployed(false);
     return (
@@ -22,7 +23,7 @@ export const MobileNavBar = () => {
                     <Menu className="text-primary" />
                 </Button>
             </div>
-            {deployed && <Links className="flex flex-col max-w-[100px] m-auto" />}
+            {deployed && <Links className="flex flex-col max-w-[100px] m-auto" locale={locale} />}
         </>
     );
 };

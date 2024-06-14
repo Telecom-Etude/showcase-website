@@ -33,7 +33,7 @@ const questions = [
         ]
     },
     {
-        question: "Comment se déroule une mission ?",
+        question: "Comment se déroule une mission?",
         answer: [
             "Une mission commence par une discussion avec le client pour comprendre ses besoins, puis nous vous proposons une offre commerciale. Après des réunions pour bien connaitre vos besoins, nous sélectionnons un intervenant compétent qui va réalisé la mission. Le client est tenu informé tout au long du processus."
         ]
@@ -55,7 +55,7 @@ export default function FAQ() {
                     <AccordionItem value={idx.toString()} key={idx} className="shadow-lg m-2">
                         <AccordionTrigger className="border-[1px] border-primary px-4">{item.question}</AccordionTrigger>
                         <AccordionContent className="p-4">
-                            <Paragraphs vocab={{ paragraphs: item.answer }} />
+                            <Paragraphs paragraphs={item.answer} />
                         </AccordionContent>
                     </AccordionItem>
                 ))}

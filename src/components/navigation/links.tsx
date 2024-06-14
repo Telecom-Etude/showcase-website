@@ -2,6 +2,8 @@ import { FaArrowRight } from "react-icons/fa";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { ReactNode } from "react";
+import { getDictionary } from "@/locales/dictionaries";
+import { Locale } from "@/locales/config";
 
 interface NavItemProps {
     onClick?: () => void;
@@ -22,30 +24,34 @@ const NavItem = ({ onClick, children, buttonStyle, linkStyle, href, variant = "g
 
 interface LinksProps {
     className?: string;
+    locale: Locale;
     onClick?: () => void;
     buttonStyle?: string;
 }
 
-export const Links = ({ className, ...itemProps }: LinksProps) => (
-    <nav className={className}>
-        <NavItem {...itemProps} href="/about">
-            À propos
-        </NavItem>
-        <NavItem {...itemProps} href="/offer">
-            Notre offre
-        </NavItem>
-        <NavItem {...itemProps} href="/assos">
-            Nos engagements
-        </NavItem>
-        <NavItem {...itemProps} href="/blog">
-            Blog
-        </NavItem>
-        <NavItem {...itemProps} href="/faq">
-            FAQ
-        </NavItem>
-        <NavItem {...itemProps} href="/contact" linkStyle="flex items-center space-x-2" variant="default">
-            <p>Contact</p>
-            <FaArrowRight />
-        </NavItem>
-    </nav>
-);
+export const Links = ({ className, locale, ...itemProps }: LinksProps) => {
+    const t = getDictionary(locale).navigation.sitemap;
+    return (
+        <nav className={className}>
+            <NavItem {...itemProps} href="/about">
+                {t.about}
+            </NavItem>
+            <NavItem {...itemProps} href="/offer">
+                {t.offer}
+            </NavItem>
+            <NavItem {...itemProps} href="/commitment">
+                {t.commitment}
+            </NavItem>
+            <NavItem {...itemProps} href="/blog">
+                {t.blog}
+            </NavItem>
+            <NavItem {...itemProps} href="/faq">
+                FAQ
+            </NavItem>
+            <NavItem {...itemProps} href="/contact" linkStyle="flex items-center space-x-2" variant="default">
+                <p>Contact</p>
+                <FaArrowRight />
+            </NavItem>
+        </nav>
+    );
+};

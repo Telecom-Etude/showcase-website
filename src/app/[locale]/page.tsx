@@ -2,11 +2,16 @@ import TelecomParis from "@/../public/images/global/tp.jpeg";
 import GroupPhoto from "@/../public/images/global/group_photo.jpg";
 import Image from "next/image";
 import { H1 } from "@/components/styles/titles";
+import { LocaleParams } from "@/locales/config";
 
-export default function Home() {
+export default async function Home({ params }: { params: LocaleParams }) {
+    // const dictionary = await getDictionary(lang);
     return (
         <>
-            <Image src={TelecomParis} alt="Photo Telecom Paris" layout="fill" objectFit="cover" className="absolute h-dvh w-full top-0 z-10" />
+            <H1>Telecom Etude</H1>
+            {/* {dictionary.title} */}
+
+            {/* <Image src={TelecomParis} alt="Photo Telecom Paris" layout="fill" objectFit="cover" className="absolute h-dvh w-full top-0 z-10" />
 
             <div className="overflow-auto z-20">
                 <div className="relative h-screen">
@@ -22,7 +27,7 @@ export default function Home() {
                 <div className="h-[300px] border-2">À propos</div>
                 <div className="h-[300px] border-2">À propos</div>
                 <div className="h-[300px] border-2">À propos</div>
-            </div>
+            </div> */}
         </>
     );
 }

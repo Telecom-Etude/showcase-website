@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import { NavBar } from "@/components/navigation/navbar";
 import { Footer } from "@/components/navigation/footer";
 import { cn } from "@/lib/utils";
+import { LocaleParams, getLang } from "@/locales/config";
+import { ReactNode } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,16 +15,18 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-    children
+    children,
+    params: { locale }
 }: Readonly<{
-    children: React.ReactNode;
+    children: ReactNode;
+    params: LocaleParams;
 }>) {
     return (
-        <html lang="en">
+        <html lang={getLang(locale)}>
             <body className={cn(inter.className, "min-h-dvh flex flex-col")}>
-                <NavBar />
+                <NavBar locale={locale} />
                 <main className="flex flex-col h-full flex-grow">{children}</main>
-                <Footer />
+                <Footer locale={locale} />
             </body>
         </html>
     );
