@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { DEFAULT_LOCALE, LOCALES } from "@/locales/config";
 import NextAuth, { Session } from "next-auth";
 import authConfig from "@/auth/auth.config";
+import { isProtected, notAllowed, notExist } from "./auth/routes";
+import { auth } from "./auth/auth";
 
 const redirect = (url: string, req: NextAuthRequest) => NextResponse.redirect(new URL(url, req.nextUrl.href));
 const rewrite = (url: string, req: NextAuthRequest) => NextResponse.rewrite(new URL(url, req.nextUrl.href));
@@ -10,9 +12,7 @@ export interface NextAuthRequest extends NextRequest {
     auth: Session | null;
 }
 
-const { auth } = NextAuth(authConfig);
-
-export default auth((req: NextAuthRequest) => {
+export default auth(async (req: NextAuthRequest) => {
     const { pathname } = req.nextUrl;
     const pathLocale = LOCALES.find(locale => pathname.startsWith(`/${locale}/`) || pathname === "/" + locale);
     const locale = pathLocale || DEFAULT_LOCALE;
@@ -20,9 +20,11 @@ export default auth((req: NextAuthRequest) => {
 
     console.log(`📲 Middleware                                !! a = ${req.auth !== null} | l = ${locale} | path = ${pathLocale} !!`);
 
-    if (localelessPath === "/admin") return rewrite(`/${locale}/404`, req);
-    if (localelessPath.startsWith("/admin/") && !req.auth) return rewrite(`/${locale}/401`, req);
-    if (localelessPath.startsWith("/admin/")) return;
+    console.log(" ========== MIDDLEWARE RIGHTS ============ ", req.auth?.user.rights);
+
+    if (notExist(localelessPath)) return rewrite(`/${locale}/404`, req);
+    if (isProtected(localelessPath) && !req.auth?.user) return rewrite(`/${locale}/401`, req);
+    if (isProtected(localelessPath) && notAllowed(localelessPath, req.auth)) return rewrite(`/${locale}/403`, req);
 
     if (pathLocale === undefined) return redirect(`/${locale}${localelessPath}${req.nextUrl.search}`, req);
 });

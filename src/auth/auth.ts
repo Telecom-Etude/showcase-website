@@ -1,22 +1,34 @@
-import type { NextAuthConfig, User as AuthUser } from "next-auth";
-import NextAuth from "next-auth";
+import NextAuth, { type NextAuthConfig, type User as AuthUser, type Session } from "next-auth";
+import type { JWT } from "next-auth/jwt";
 import authConfig from "@/auth/auth.config";
-import { PrismaAdapter } from "@auth/prisma-adapter";
-import { db } from "../lib/db";
-import { User as PrismaUser } from "@prisma/client";
+import { db } from "@/lib/db";
+import { getRights } from "@/db/users";
+
+export interface Rights {
+    formAdmin: boolean;
+    blogAdmin: boolean;
+    userAdmin: boolean;
+    blogAuthor: boolean;
+}
 
 const config = {
-    ...authConfig,
+    trustHost: true,
     callbacks: {
-        async session({ session }) {
-            if (session.user) {
-                const user: PrismaUser | null = await db.user.findUnique({ where: { email: session.user.email } });
-                const newUser = { ...user, ...session.user };
-                session.user = newUser;
+        async session({ session, token }: { session: Session; token: JWT }) {
+            if (token.rights && session.user) {
+                session.user.rights = token.rights;
+            } else {
+                session.user.rights = null;
             }
+            console.log("========= SESSION RIGHTS ========", session.user.rights);
             return session;
         },
-        async jwt({ token, profile }) {
+        async jwt({ token }: { token: JWT }) {
+            const rights = await getRights(token.email);
+            if (token.sub && rights) {
+                token.rights = rights;
+            }
+            console.log("========= TOKEN RIGHTS ========", token.rights);
             return token;
         },
         async signIn(params: { user: AuthUser }) {
@@ -33,7 +45,8 @@ const config = {
             }
         }
     },
-    session: { strategy: "jwt" }
+    session: { strategy: "jwt" },
+    ...authConfig
 } satisfies NextAuthConfig;
 
 export const { handlers, auth, signIn, signOut } = NextAuth(config);

@@ -1,57 +1,30 @@
 "use server";
 
 import { db } from "@/lib/db";
+import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 
 ////////////// CREAT ///////////////////
 
 ////////////// READ ///////////////////
 
-export const isFormAdmin = async (email: string) => {
-    try {
-        const user = await db.user.findUnique({
-            where: { email }
-        });
-        return user?.formAdmin;
-    } catch (e) {
-        console.error("[isFormAdmin] Error: ", e);
-        return false;
+export const getRights = async (email: string | null | undefined) => {
+    var rights = null;
+    if (!email) {
+        console.log("========== USER NOT LOGGED IN ==============");
+        return rights;
     }
-};
-
-export const isUserAdmin = async (email: string) => {
     try {
-        const user = await db.user.findUnique({
-            where: { email }
-        });
-        return user?.userAdmin;
+        const user = await db.user.findUnique({ where: { email } });
+        rights = {
+            formAdmin: user?.formAdmin || false,
+            blogAdmin: user?.blogAdmin || false,
+            userAdmin: user?.userAdmin || false,
+            blogAuthor: user?.blogAuthor || false
+        };
     } catch (e) {
-        console.error("[isUserAdmin] Error: ", e);
-        return false;
+        console.error("[getRights] Error: ", e);
     }
-};
-
-export const isBlogAdmin = async (email: string) => {
-    try {
-        const user = await db.user.findUnique({
-            where: { email }
-        });
-        return user?.blogAdmin;
-    } catch (e) {
-        console.error("[isBlogAdmin] Error: ", e);
-        return false;
-    }
-};
-
-export const isBlogAuthor = async (email: string) => {
-    try {
-        const user = await db.user.findUnique({
-            where: { email }
-        });
-        return user?.blogAuthor;
-    } catch (e) {
-        console.error("[isBlogAuthor] Error: ", e);
-        return false;
-    }
+    return rights;
 };
 
 ////////////// UPDATE  ///////////////////
