@@ -206,9 +206,9 @@ const Combobox = ({ value, addRemoveValue }: { value: string[]; addRemoveValue: 
             </PopoverTrigger>
             <PopoverContent className="  p-0">
                 <Command>
-                    <CommandInput placeholder="Filtrer avec des mots clefs..." />
+                    <CommandInput placeholder="Sélectionnez-en au plus 6" />
                     <CommandList>
-                        <CommandEmpty>No framework found.</CommandEmpty>
+                        <CommandEmpty>Aucun filtre ne correspond à cette recherche</CommandEmpty>
                         <CommandGroup>
                             {keywords.map((word, i) => (
                                 <CommandItem

@@ -1,8 +1,8 @@
 import type { NextAuthConfig, User as AuthUser } from "next-auth";
 import NextAuth from "next-auth";
-import authConfig from "@/auth.config";
+import authConfig from "@/auth/auth.config";
 import { PrismaAdapter } from "@auth/prisma-adapter";
-import { db } from "./lib/db";
+import { db } from "../lib/db";
 import { User as PrismaUser } from "@prisma/client";
 
 const config = {
@@ -13,7 +13,6 @@ const config = {
                 const user: PrismaUser | null = await db.user.findUnique({ where: { email: session.user.email } });
                 const newUser = { ...user, ...session.user };
                 session.user = newUser;
-                console.log("new session ", user);
             }
             return session;
         },

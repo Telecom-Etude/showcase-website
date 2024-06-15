@@ -1,6 +1,6 @@
 import { NavBar } from "@/components/navigation/navbar";
 import { Footer } from "@/components/navigation/footer";
-import { auth } from "@/auth";
+import { auth } from "@/auth/auth";
 import { Locale } from "@/locales/config";
 import { ReactNode } from "react";
 

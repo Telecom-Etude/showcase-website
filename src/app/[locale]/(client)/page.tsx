@@ -3,7 +3,7 @@ import GroupPhoto from "@/../public/images/global/group_photo.jpg";
 import Image from "next/image";
 import { H1 } from "@/components/styles/titles";
 import { LocaleParams } from "@/locales/config";
-import { auth } from "@/auth";
+import { auth } from "@/auth/auth";
 
 export default async function Home({ params }: { params: LocaleParams }) {
     // const dictionary = await getDictionary(lang);
