@@ -17,7 +17,7 @@ const routes = {
     "/offer": (_: NextAuthRequest) => 200,
     "/admin/form-submission": (req: NextAuthRequest) => checkAdminRights(req, (r: Rights) => r.formAdmin),
     "/admin/users": (req: NextAuthRequest) => checkAdminRights(req, (r: Rights) => r.userAdmin),
-    "/admin/blog/edit": (req: NextAuthRequest) => checkAdminRights(req, (r: Rights) => r.blogAuthor)
+    "/admin/blog/new": (req: NextAuthRequest) => checkAdminRights(req, (r: Rights) => r.blogAuthor)
 };
 
 const checkAdminRights = (req: NextAuthRequest, check: (rights: Rights) => boolean) => {

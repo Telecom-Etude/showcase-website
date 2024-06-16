@@ -10,7 +10,6 @@ import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 export const getRights = async (email: string | null | undefined) => {
     var rights = null;
     if (!email) {
-        console.log("========== USER NOT LOGGED IN ==============");
         return rights;
     }
     try {
@@ -21,9 +20,7 @@ export const getRights = async (email: string | null | undefined) => {
             userAdmin: user?.userAdmin || false,
             blogAuthor: user?.blogAuthor || false
         };
-    } catch (e) {
-        console.error("[getRights] Error: ", e);
-    }
+    } catch (e) {}
     return rights;
 };
 

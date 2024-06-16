@@ -15,9 +15,7 @@ export default auth(async (req: NextAuthRequest) => {
     const localelessPath = pathname === `/${locale}` ? "/" : pathname.replace(`/${locale}`, "");
     const code = getAuthorisationCode(req, localelessPath);
 
-    console.log(`📲 Middleware                                !! a = ${req.auth !== null} | l = ${locale} | path = ${pathLocale} | c = ${code} !!`);
-
-    console.log(" ========== MIDDLEWARE RIGHTS ============ ", req.auth?.user.rights);
+    console.log(`📲 Middleware          !! a = ${req.auth !== null} | l = ${locale} | path = ${pathLocale} | c = ${code} !!`);
 
     if (code != 200) return rewrite(`/${locale}/error/${code}`, req);
 

@@ -20,7 +20,6 @@ const config = {
             } else {
                 session.user.rights = null;
             }
-            console.log("========= SESSION RIGHTS ========", session.user.rights);
             return session;
         },
         async jwt({ token }: { token: JWT }) {
@@ -28,7 +27,6 @@ const config = {
             if (token.sub && rights) {
                 token.rights = rights;
             }
-            console.log("========= TOKEN RIGHTS ========", token.rights);
             return token;
         },
         async signIn(params: { user: AuthUser }) {

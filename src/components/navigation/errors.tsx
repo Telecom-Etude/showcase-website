@@ -33,6 +33,7 @@ export function ErrorPage({ code, locale, message }: { code: string; locale: Loc
             };
             break;
         default:
+            console.error("Unexpected error code: " + code);
             pageInfo = {
                 http: errorsVocab.httpError + " " + code,
                 t: errorsVocab.unknown,

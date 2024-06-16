@@ -6,22 +6,26 @@ export const enDictionary: Dictionary = {
             unauthorized: {
                 title: "Access Unauthorized",
                 description: "You must be logged in to access this page.",
-                button: "Login"
+                button: "Login",
+                contact: null
             },
             forbidden: {
                 title: "Access Forbidden",
                 description: "You do not have the necessary permissions to access this page. Please contact the administrator.",
-                button: "Back to home page"
+                button: "Back to home page",
+                contact: "Ask for permissions to access"
             },
             notfound: {
                 title: "Page not found",
                 description: "The page you are looking for does not exist. Please check the URL or return to the home page.",
-                button: "Back to home page"
+                button: "Back to home page",
+                contact: null
             },
             unknown: {
                 title: "Unexpected error",
                 description: "Please try again later or contact the administrator (info@telecom-etude.fr)",
-                button: "Back to home page"
+                button: "Back to home page",
+                contact: "Report a problem"
             },
             httpError: "HTTP Error"
         },

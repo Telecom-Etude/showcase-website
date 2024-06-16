@@ -11,15 +11,16 @@ datasource db {
 }
 
 model User {
-  id         Int      @id @default(autoincrement())
-  email      String   @unique
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
-  blogs      Blog[]
-  blogAdmin  Boolean  @default(false)
-  userAdmin  Boolean  @default(false)
-  blogAuthor Boolean  @default(false)
-  formAdmin  Boolean  @default(false)
+  id               Int      @id @default(autoincrement())
+  email            String   @unique
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  blogAdmin        Boolean  @default(false)
+  userAdmin        Boolean  @default(false)
+  blogAuthor       Boolean  @default(false)
+  formAdmin        Boolean  @default(false)
+  createdBlogs     Blog[]   @relation("CreatedBlogs")
+  contributedBlogs Blog[]   @relation("ContributedBlogs")
 }
 
 model ContactForm {
@@ -35,17 +36,26 @@ model ContactForm {
 }
 
 model Blog {
-  id        Int                @id @unique @default(autoincrement())
-  User      User?              @relation(fields: [userEmail], references: [email])
-  userEmail String?
-  contents  AdaptableContent[]
-  title     String
+  id           Int          @id @unique @default(autoincrement())
+  localeBlogs  LocaleBlog[]
+  author       User         @relation("CreatedBlogs", fields: [authorId], references: [id])
+  contributors User[]       @relation("ContributedBlogs")
+  authorId     Int
 }
 
-model AdaptableContent {
-  id      Int    @id @unique @default(autoincrement())
-  type    String
-  content String
-  Blog    Blog?  @relation(fields: [blogId], references: [id])
-  blogId  Int?
+model LocaleBlog {
+  id      Int               @id @unique @default(autoincrement())
+  title   String            @unique
+  locale  String
+  content FlexibleContent[]
+  Blog    Blog              @relation(fields: [blogId], references: [id])
+  blogId  Int
+}
+
+model FlexibleContent {
+  id           Int         @id @unique @default(autoincrement())
+  type         String
+  content      String
+  LocaleBlog   LocaleBlog? @relation(fields: [localeBlogId], references: [id])
+  localeBlogId Int?
 }

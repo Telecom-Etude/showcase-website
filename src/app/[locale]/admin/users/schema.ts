@@ -7,7 +7,6 @@ export const userRolesSchema = z.object({
     userAdmin: z.boolean(),
     blogAuthor: z.boolean(),
     formAdmin: z.boolean(),
-    blogs: z.array(z.number()),
     createdAt: z.date(),
     updatedAt: z.date()
 });
