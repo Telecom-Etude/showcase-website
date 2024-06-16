@@ -9,6 +9,4 @@ const dictionaries = {
 
 export const getDictionary = (locale: Locale) => dictionaries[locale];
 
-export const nav = (locale: Locale, href: string) => `/${locale}${href}`;
-
 export type Dictionary = typeof frDictionary;

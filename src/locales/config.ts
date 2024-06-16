@@ -4,4 +4,3 @@ export type Locale = (typeof LOCALES)[number];
 export interface LocaleParams {
     params: { locale: Locale };
 }
-export const getLang = (locale: Locale) => locale;

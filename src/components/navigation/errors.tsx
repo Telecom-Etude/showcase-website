@@ -1,7 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { getDictionary, nav } from "@/locales/dictionaries";
+import { getDictionary } from "@/locales/dictionaries";
+import { nav } from "@/locales/routing";
 import { BirdBackground } from "../telecom-etude/bird-backgroud";
 import { H1 } from "../styles/titles";
 import { Locale } from "@/locales/config";

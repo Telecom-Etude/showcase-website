@@ -1,36 +1,42 @@
-import { NextRequest, NextResponse } from "next/server";
-import { DEFAULT_LOCALE, LOCALES } from "@/locales/config";
-import NextAuth, { Session } from "next-auth";
-import authConfig from "@/auth/auth.config";
+/**
+ * @file middleware.ts
+ * Middleware module for handling authentication and localization routing.
+ * This module exports a default function that acts as a middleware for Next.js.
+ * It is responsible for redirecting or rewriting URLs based on the authentication status and locale.
+ * The module also exports a configuration object for specifying the URL matcher.
+ * The middleware is great as it intercepts all requests before they reach the page.
+ *
+ * @module middleware
+ * @donotmove
+ */
+
+import { NextResponse } from "next/server";
 import { NextAuthRequest, getAuthorisationCode } from "./auth/routes";
 import { auth } from "./auth/auth";
+import { getLocaleRoutesProps } from "./locales/routing";
+import { NextAuthConfig } from "next-auth";
+import { NextConfig } from "next";
 
-const redirect = (url: string, req: NextAuthRequest) => NextResponse.redirect(new URL(url, req.nextUrl.href));
-const rewrite = (url: string, req: NextAuthRequest) => NextResponse.rewrite(new URL(url, req.nextUrl.href));
+/**
+ * A redirection will change the URL of the page and render the page at the new URL.
+ */
+const redirect = (url: string, req: NextAuthRequest): NextResponse => NextResponse.redirect(new URL(url, req.nextUrl.href));
+
+/**
+ * A rewrite will render the page of the specified url, but will not change the window URL.
+ */
+const rewrite = (url: string, req: NextAuthRequest): NextResponse => NextResponse.rewrite(new URL(url, req.nextUrl.href));
 
 export default auth(async (req: NextAuthRequest) => {
-    const { pathname } = req.nextUrl;
-    const pathLocale = LOCALES.find(locale => pathname.startsWith(`/${locale}/`) || pathname === "/" + locale);
-    const locale = pathLocale || DEFAULT_LOCALE;
-    const localelessPath = pathname === `/${locale}` ? "/" : pathname.replace(`/${locale}`, "");
+    const { hasLocale, locale, localelessPath } = getLocaleRoutesProps(req);
     const code = getAuthorisationCode(req, localelessPath);
-
-    console.log(`📲 Middleware          !! a = ${req.auth !== null} | l = ${locale} | path = ${pathLocale} | c = ${code} !!`);
-
     if (code != 200) return rewrite(`/${locale}/error/${code}`, req);
-
-    if (pathLocale === undefined) return redirect(`/${locale}${localelessPath}${req.nextUrl.search}`, req);
+    if (!hasLocale) return redirect(`/${locale}${localelessPath}${req.nextUrl.search}`, req);
 });
 
+/**
+ * @property {string[]} matcher - An array of URL patterns to match against. The middleware will solely be applied to URLs that match this patterns.
+ */
 export const config = {
-    matcher: [
-        // Match all request paths except for the ones starting with:
-        // - api (API routes)
-        // - _next/static (static files)
-        // - public (public files)
-        // - _next/image (image optimization files)
-        // - favicon.ico (favicon file)
-        // - __nextjs_ (internal Next.js paths)
-        "/((?!api|_next/static|public|_next/image|favicon.ico|__nextjs_).*)"
-    ]
+    matcher: ["/((?!api|_next/static|public|_next/image|favicon.ico|__nextjs_).*)"]
 };

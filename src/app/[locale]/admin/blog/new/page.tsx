@@ -4,7 +4,7 @@ import { auth } from "@/auth/auth";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { LocaleParams } from "@/locales/config";
-import { nav } from "@/locales/dictionaries";
+import { nav } from "@/locales/routing";
 
 export default async function NewBlog({ params: { locale } }: LocaleParams) {
     const session = await auth();
