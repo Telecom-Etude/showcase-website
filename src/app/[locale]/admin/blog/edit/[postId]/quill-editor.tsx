@@ -5,36 +5,44 @@ import "quill/dist/quill.snow.css";
 import Quill, { QuillOptions } from "quill";
 import { updateLocaleBlogContent } from "@/db/blogs";
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import { FaSave } from "react-icons/fa";
 import { Op } from "quill/core";
+import { Actions } from "./editor-actions";
 
-export const QuillEditor = ({ localeBlogId, content }: { localeBlogId: number; content: Op[] }) => {
+export const QuillEditor = ({ localeBlogId, content, title }: { localeBlogId: number; content: Op[]; title: string }) => {
     const editorRef = useRef(null);
     const [quill, setQuill] = useState<Quill | null>(null);
     const [value, setValue] = useState(JSON.stringify(content));
-    const [saving, setSaving] = useState(false);
+    const [toBeChanged, setToBeChanged] = useState(false);
+    const [html, setHtml] = useState("");
 
     const router = useRouter();
 
     useEffect(() => {
+        if (quill && toBeChanged) {
+            const newContent = quill.getContents().ops;
+            if (newContent !== content) {
+                updateLocaleBlogContent(localeBlogId, newContent).finally(() => router.refresh());
+            }
+        }
+    }, [toBeChanged, quill, content, value, localeBlogId, router]);
+
+    useEffect(() => {
         if (quill === null && editorRef.current && typeof window !== "undefined" && Quill) {
             const toolbar = [
-                [{ header: [1, 2, 3, 4, false] }],
+                [{ header: [2, 3, 4, false] }],
                 ["bold", "italic", "underline", "strike"], // toggled buttons
                 ["blockquote", "code-block"],
 
                 [{ list: "ordered" }, { list: "bullet" }],
                 [{ script: "sub" }, { script: "super" }], // superscript/subscript
                 [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
-                [{ direction: "rtl" }], // text direction
+                // [{ direction: "rtl" }], // text direction
 
-                [{ size: ["small", false, "large", "huge"] }], // custom dropdown
-                [{ header: "1" }, { header: "2" }], // custom button values
+                // [{ size: ["small", false, "large", "huge"] }], // custom dropdown
+                // [{ header: "1" }, { header: "2" }], // custom button values
                 [{ color: [] }, { background: [] }], // dropdown with defaults from theme
-                [{ font: [] }],
                 [{ align: [] }],
-
+                ["link", "image", "video"],
                 ["clean"] // remove formatting button
             ];
             const options: QuillOptions = {
@@ -47,38 +55,26 @@ export const QuillEditor = ({ localeBlogId, content }: { localeBlogId: number; c
             setQuill(q);
             console.log("created");
             q.on("text-change", () => {
-                console.log(q.getContents().ops);
                 setValue(JSON.stringify(q.getContents().ops));
-                if (!saving) {
-                    setSaving(true);
-                    updateLocaleBlogContent(localeBlogId, q.getContents().ops)
-                        .then(() => router.refresh())
-                        .finally(() => setSaving(false));
+                setHtml(q.root.innerHTML);
+                const newContent = q.getContents().ops;
+                if (newContent != content) {
+                    console.log("saving", new Date().toTimeString(), " ==> ", JSON.stringify(newContent));
+                    updateLocaleBlogContent(localeBlogId, newContent).finally(() => router.refresh());
                 }
             });
         }
-    }, [quill, content, localeBlogId, router, saving]);
+    }, [quill, content, localeBlogId, router]);
 
     return (
-        <div>
-            <div ref={editorRef} className="h-[200px] " />
-            <div className="mt-[20px] ">
-                <Button
-                    variant="ghost"
-                    onClick={() => {
-                        if (quill) {
-                            updateLocaleBlogContent(localeBlogId, quill.getContents().ops);
-                        }
-                    }}
-                >
-                    <FaSave />
-                </Button>
-                <p> ? = {JSON.stringify(content) === value ? "Saved" : "Save"}</p>
-                <p> C = {JSON.stringify(content)}</p>
-                <p> V = {value}</p>
-                <h3>Output:</h3>
-                <div dangerouslySetInnerHTML={{ __html: value }} />
+        <div className="w-full">
+            <Actions toBeChanged={toBeChanged} setToBeChanged={setToBeChanged} content={content} value={value} localeBlogId={localeBlogId} title={title} />
+            <div ref={editorRef} className="" />
+            <div className="flex w-full flex-col overflow-scroll">
+                <p>{JSON.stringify(content)}</p>
+                <p>{value}</p>
             </div>
+            {/* <div dangerouslySetInnerHTML={{ __html: html }}></div> */}
         </div>
     );
 };
