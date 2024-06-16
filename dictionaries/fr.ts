@@ -1,5 +1,32 @@
 export const frDictionary = {
     navigation: {
+        errors: {
+            unauthorized: {
+                title: "Accès non autorisé",
+                description: "Vous devez être connecté pour accéder à cette page",
+                button: "Login", 
+                contact: null
+            },
+            forbidden: {
+                title: "Accès interdit",
+                description: "Vous ne disposez pas des autorisations nécessaires pour accéder à cette page. Veuillez contacter l'administrateur",
+                button: "Retourner à la page d'accueil",
+                contact: "Demandez les droits d'accès"
+            },
+            notfound: {
+                title: "Page non trouvée",
+                description: "La page que vous recherchez n'existe pas. Veuillez vérifier l'URL ou retourner à la page d'accueil",
+                button: "Retourner à la page d'accueil",
+                contact: null
+            },
+            unknown: {
+                title: "Erreur inattendue",
+                description: "Veuillez réessayer plus tard ou nous contacter",
+                button: "Retourner à la page d'accueil",
+                contact: "Signaler un problème"
+            },
+            httpError: "Erreur HTTP"
+        },
         sitemap: {
             title: "Plan du site",
             whoarewe: "Qui sommes-nous ?",

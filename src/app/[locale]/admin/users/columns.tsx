@@ -1,18 +1,18 @@
 "use client";
 
-import { ColumnDef, Row } from "@tanstack/react-table";
-
-import { Badge } from "@/components/ui/badge";
-import { Checkbox } from "@/components/ui/checkbox";
-
-import { DataTableColumnHeader } from "@/components/table/data-table-column-header";
-import { UserRolesType } from "./schema";
-import { useRouter } from "next/navigation";
 import React from "react";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogFooter, DialogClose, DialogTrigger } from "@/components/ui/dialog";
 import { FaTrash } from "react-icons/fa";
+
+import { useRouter } from "next/navigation";
+
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogFooter, DialogClose, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { deleteUser, makeBlogAdmin, makeBlogAuthor, makeFormAdmin, makeUserAdmin } from "@/db/users";
+import { DataTableColumnHeader } from "@/components/meta-components/table/data-table-column-header";
+import { ColumnDef, Row } from "@tanstack/react-table";
+import { Checkbox } from "@/components/ui/checkbox";
+
+import { UserRolesType } from "./schema";
 
 const ActionCheckBox = ({
     row,
@@ -102,7 +102,7 @@ export const columns: ColumnDef<UserRolesType>[] = [
     },
     {
         accessorKey: "blogAuthor",
-        header: ({ column }) => <DataTableColumnHeader column={column} title="Administrateur Forms" />,
+        header: ({ column }) => <DataTableColumnHeader column={column} title="Auteur Blog" />,
         cell: ({ row }) => <ActionCheckBox row={row} column={"blogAuthor"} func={makeBlogAuthor} />
     },
     {

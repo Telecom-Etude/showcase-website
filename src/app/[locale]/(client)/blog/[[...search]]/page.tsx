@@ -8,6 +8,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { useState } from "react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { cn } from "@/lib/utils";
+import { ManyComboBox } from "@/components/meta-components/combobox";
 
 const keywords = [
     "events",
@@ -194,44 +195,6 @@ const posts: PostPresentation[] = [
     }
 ];
 
-const Combobox = ({ value, addRemoveValue }: { value: string[]; addRemoveValue: (v: string) => void }) => {
-    const [open, setOpen] = useState(false);
-    return (
-        <Popover open={open} onOpenChange={setOpen}>
-            <PopoverTrigger asChild>
-                <Button variant="outline" role="combobox" aria-expanded={open}>
-                    Filtrer avec des mots clefs...
-                    <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                </Button>
-            </PopoverTrigger>
-            <PopoverContent className="  p-0">
-                <Command>
-                    <CommandInput placeholder="Sélectionnez-en au plus 6" />
-                    <CommandList>
-                        <CommandEmpty>Aucun filtre ne correspond à cette recherche</CommandEmpty>
-                        <CommandGroup>
-                            {keywords.map((word, i) => (
-                                <CommandItem
-                                    key={i}
-                                    value={word}
-                                    onSelect={val => addRemoveValue(val)}
-                                    className={value.length == 6 && !value.includes(word) ? "cursor-not-allowed" : "cursor-pointer"}
-                                >
-                                    <Checkbox
-                                        className={cn("mr-2 h-4 w-4", value.includes(word) ? "opacity-100" : "opacity-0")}
-                                        checked={value.includes(word)}
-                                    />
-                                    {vocab[word as keyof typeof vocab]}
-                                </CommandItem>
-                            ))}
-                        </CommandGroup>
-                    </CommandList>
-                </Command>
-            </PopoverContent>
-        </Popover>
-    );
-};
-
 export default function Blog() {
     const [value, setValue] = useState<string[]>([]);
     const addRemoveValue = (v: string) => {
@@ -255,7 +218,7 @@ export default function Blog() {
                         </div>
                     ))}
                 </div>
-                <Combobox value={value} addRemoveValue={addRemoveValue} />
+                <ManyComboBox selectedKeys={value} addRemoveKey={addRemoveValue} items={vocab} />
             </div>
             <div className="grid xl:grid-cols-3">
                 {posts.map((post, i) => (

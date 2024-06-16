@@ -4,11 +4,11 @@ import { ColumnDef, Row } from "@tanstack/react-table";
 
 import { Checkbox } from "@/components/ui/checkbox";
 
-import { DataTableColumnHeader } from "@/components/table/data-table-column-header";
 import { ContactFormType } from "./schema";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { makeDone } from "@/db/form";
+import { DataTableColumnHeader } from "@/components/meta-components/table/data-table-column-header";
 
 const DoneCheck = (row: Row<ContactFormType>) => {
     const router = useRouter();

@@ -2,6 +2,29 @@ import { Dictionary } from "@/locales/dictionaries";
 
 export const enDictionary: Dictionary = {
     navigation: {
+        errors: {
+            unauthorized: {
+                title: "Access Unauthorized",
+                description: "You must be logged in to access this page.",
+                button: "Login"
+            },
+            forbidden: {
+                title: "Access Forbidden",
+                description: "You do not have the necessary permissions to access this page. Please contact the administrator.",
+                button: "Back to home page"
+            },
+            notfound: {
+                title: "Page not found",
+                description: "The page you are looking for does not exist. Please check the URL or return to the home page.",
+                button: "Back to home page"
+            },
+            unknown: {
+                title: "Unexpected error",
+                description: "Please try again later or contact the administrator (info@telecom-etude.fr)",
+                button: "Back to home page"
+            },
+            httpError: "HTTP Error"
+        },
         sitemap: {
             title: "Site plan",
             whoarewe: "Who are we?",
