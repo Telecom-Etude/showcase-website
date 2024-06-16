@@ -44,18 +44,10 @@ model Blog {
 }
 
 model LocaleBlog {
-  id      Int               @id @unique @default(autoincrement())
-  title   String            @unique
+  id      Int    @id @unique @default(autoincrement())
+  title   String @unique
   locale  String
-  content FlexibleContent[]
-  Blog    Blog              @relation(fields: [blogId], references: [id])
+  Blog    Blog   @relation(fields: [blogId], references: [id])
   blogId  Int
-}
-
-model FlexibleContent {
-  id           Int         @id @unique @default(autoincrement())
-  type         String
-  content      String
-  LocaleBlog   LocaleBlog? @relation(fields: [localeBlogId], references: [id])
-  localeBlogId Int?
+  content String
 }
