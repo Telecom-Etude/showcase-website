@@ -4,7 +4,7 @@ export const frDictionary = {
             unauthorized: {
                 title: "Accès non autorisé",
                 description: "Vous devez être connecté pour accéder à cette page",
-                button: "Login", 
+                button: "Login",
                 contact: null
             },
             forbidden: {
@@ -91,6 +91,29 @@ export const frDictionary = {
                 title: "Erreur lors de l'envoie",
                 message: "Merci de nous envoyé un mail directement à"
             }
+        },
+        legal: {
+            title: "Mentions légales",
+            credits: "Crédits Photos",
+            hosting: "Hébergement",
+            dev: "Développement",
+            madeBy: "Site réalisé en NextJS par Tom Webber",
+            loi: {
+                host: "Conformément aux dispositions de l'article 6 III-1 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique, vous trouverez ci-dessous les informations relatives à l'éditeur et à l'hébergeur de ce site internet.",
+                rgpd: {
+                    before: "Conformément au RGPD, vous pouvez faire valoir vos droit d'accès, de portabilité, de rectification, d'opposition ou d'effacement de vos données en envoyant une demande à",
+                    in: "ou via le ",
+                    contact: "formulaire de contact",
+                    after: "sur le site."
+                }
+            },
+            loi1901: "Association loi 1901, affiliée à la CNJE",
+            siegesocial: "Siège social : Télécom Paris, 19, place Marguerite Perey 91120 PALAISEAU",
+            siret: "[Numéro SIRET : 332 711 522 00018 | Numéro URSSAF : 757 090058076001011 8",
+            tva: "Numéro TVA Intra-communautaire : FR 1933 2711 522 00018 | Code APE : 6202A]",
+            respoRGPD: "Délégué à la protection des données (DPO) : Leïla Iksil",
+            rezelsiege: "Siège social : 19 Place Marguerite Perey, 91120 PALAISEAU",
+            contact: "Contact :"
         }
     }
 };

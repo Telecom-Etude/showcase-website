@@ -4,6 +4,7 @@ import Image from "next/image";
 import { H1 } from "@/components/styles/titles";
 import { LocaleParams } from "@/locales/config";
 import { auth } from "@/auth/auth";
+import TestPage from "./test";
 
 export default async function Home({ params }: { params: LocaleParams }) {
     // const dictionary = await getDictionary(lang);
@@ -12,6 +13,8 @@ export default async function Home({ params }: { params: LocaleParams }) {
         <>
             <H1>Telecom Etude</H1>
             <p>{JSON.stringify(session)}</p>
+            <TestPage />
+
             {/* {dictionary.title} */}
 
             {/* <Image src={TelecomParis} alt="Photo Telecom Paris" layout="fill" objectFit="cover" className="absolute h-dvh w-full top-0 z-10" />

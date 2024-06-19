@@ -7,8 +7,6 @@ import { TfiWorld } from "react-icons/tfi";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { X } from "lucide-react";
-import Link from "next/link";
 
 interface ActionProps {
     content: Op[];
@@ -62,17 +60,17 @@ const Rename = ({ title, localeBlogId }: { title: string; localeBlogId: number }
         <DialogContent>
             <DialogHeader>
                 <DialogTitle>Modification du titre du post</DialogTitle>
-                <DialogDescription>
-                    <form className="flex flex-col items-center w-full space-y-10">
-                        <Label htmlFor="title" className="w-full">
-                            Titre
-                        </Label>
-                        <Input defaultValue={title} className="w-full" type="text" name="title" id="title" />
-                        <Button variant="call2action" type="submit">
-                            Renommer
-                        </Button>
-                    </form>
-                </DialogDescription>
+                {/* <DialogDescription> */}
+                <form className="flex flex-col items-center w-full space-y-10" onSubmit={e => console.log(e.target)}>
+                    <Label htmlFor="title" className="w-full">
+                        Titre
+                    </Label>
+                    <Input defaultValue={title} className="w-full" type="text" name="title" id="title" />
+                    <Button variant="call2action" type="submit">
+                        Renommer
+                    </Button>
+                </form>
+                {/* </DialogDescription> */}
             </DialogHeader>
         </DialogContent>
     </Dialog>

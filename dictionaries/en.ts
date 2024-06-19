@@ -94,6 +94,29 @@ export const enDictionary: Dictionary = {
                 title: "Unexepected error...",
                 message: "Please contact us instead by sending a mail to"
             }
+        },
+        legal: {
+            title: "Legal Notice",
+            credits: "Photo credits",
+            hosting: "Hosting",
+            dev: "Development",
+            madeBy: "Website made in NextJS by Tom Webber",
+            loi: {
+                host: "In accordance with the provisions of Article 6 III-1 of Law No. 2004-575 of 21 June 2004 on confidence in the digital economy, you will find below information on the publisher and host of this website",
+                rgpd: {
+                    before: "In accordance with the RGPD, you may exercise your right to access, portability, rectification, opposition or deletion of your data by sending a request to",
+                    in: "or via the",
+                    contact: "contact form",
+                    after: " on the site."
+                }
+            },
+            loi1901: "Association loi 1901, affiliated to the CNJE",
+            siegesocial: "Head Office: Télécom Paris, 19, place Marguerite Perey 91120 PALAISEAU",
+            siret: "[SIRET number: 332 711 522 00018 | URSSAF number: 757 090058076001011 8",
+            tva: "Intra-community VAT number: FR 1933 2711 522 00018 | Code APE : 6202A]",
+            respoRGPD: "Data Protection Officer (DPO) : Leïla Iksil",
+            rezelsiege: "Head Office : 19 Place Marguerite Perey, 91120 PALAISEAU",
+            contact: "Contact:"
         }
     }
 };
