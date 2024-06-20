@@ -36,11 +36,11 @@ export default async function Legal({ params: { locale } }: LocaleParams) {
                 <div className="text-center">{t.respoRGPD}</div>
                 <div className="text-center">
                     {t.contact}
-                    <EmailContact email="secretaire.general@telecom-etude.fr" />
+                    <EmailContact rgpd />
                 </div>
                 <p className="text-center">
                     <>{t.loi.rgpd.before}</>
-                    <EmailContact email="secretaire.general@telecom-etude.fr" />
+                    <EmailContact rgpd />
                     <>{t.loi.rgpd.in}</>
                     <Link href={nav(locale, "/contact")}>{t.loi.rgpd.contact}</Link>
                     <>{t.loi.rgpd.after}</>

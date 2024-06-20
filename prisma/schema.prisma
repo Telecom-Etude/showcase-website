@@ -41,6 +41,7 @@ model Blog {
   author       User         @relation("CreatedBlogs", fields: [authorId], references: [id])
   contributors User[]       @relation("ContributedBlogs")
   authorId     Int
+  validated    Boolean      @default(false)
 }
 
 model LocaleBlog {

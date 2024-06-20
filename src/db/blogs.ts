@@ -69,3 +69,12 @@ export const getLocaleBlog = async (blogId: number, locale: Locale) => {
         throw new Error();
     }
 };
+
+export const deleteBlog = async (blogId: number) => {
+    try {
+        await db.blog.delete({ where: { id: blogId } });
+    } catch (e) {
+        console.error("[deleteBlog] ", e);
+        throw new Error();
+    }
+};

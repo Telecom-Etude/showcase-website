@@ -29,9 +29,11 @@ const routes = {
     "/faq": (_: NextAuthRequest) => 200,
     "/ieseg": (_: NextAuthRequest) => 200,
     "/offer": (_: NextAuthRequest) => 200,
+    "/legal-mentions": (_: NextAuthRequest) => 200,
     "/admin/form-submission": (req: NextAuthRequest) => checkAdminRights(req, (r: Rights) => r.formAdmin),
     "/admin/users": (req: NextAuthRequest) => checkAdminRights(req, (r: Rights) => r.userAdmin),
-    "/admin/blog/new": (req: NextAuthRequest) => checkAdminRights(req, (r: Rights) => r.blogAuthor)
+    "/admin/blog/new": (req: NextAuthRequest) => checkAdminRights(req, (r: Rights) => r.blogAuthor),
+    "/admin/blog/validation": (req: NextAuthRequest) => checkAdminRights(req, (r: Rights) => r.blogAdmin)
 };
 
 export const getAuthorisationCode = (req: NextAuthRequest, localelesspath: string): number => {
