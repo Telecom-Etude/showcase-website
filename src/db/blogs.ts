@@ -78,3 +78,15 @@ export const deleteBlog = async (blogId: number) => {
         throw new Error();
     }
 };
+
+export const renameLocaleBlog = async (localeBlogId: number, title: string) => {
+    try {
+        await db.localeBlog.update({
+            where: { id: localeBlogId },
+            data: { title }
+        });
+    } catch (e) {
+        console.error("[renameLocaleBlog] ", e);
+        throw new Error();
+    }
+};

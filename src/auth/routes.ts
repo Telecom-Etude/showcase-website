@@ -25,6 +25,7 @@ const routes = {
     "/about": (_: NextAuthRequest) => 200,
     "/blog": (_: NextAuthRequest) => 200,
     "/contact": (_: NextAuthRequest) => 200,
+    "/test": (_: NextAuthRequest) => (process.env.DEV_MODE ? 200 : 404),
     "/form": (_: NextAuthRequest) => 200,
     "/faq": (_: NextAuthRequest) => 200,
     "/ieseg": (_: NextAuthRequest) => 200,
