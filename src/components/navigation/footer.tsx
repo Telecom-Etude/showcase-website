@@ -48,42 +48,42 @@ const SiteMap = ({ locale }: { locale: Locale }) => {
         <>
             <h2 className="text-xl font-semibold">{t.title}</h2>
             <div className="flex sm:flex-row flex-col space-x-10">
-                <div>
-                    <SiteMapBlock
-                        title={t.whoarewe}
-                        items={[
-                            { name: t.home, href: "/" },
-                            { name: t.about, href: "/about" },
-                            { name: t.commitment, href: "/commitment" },
-                            { name: t.team, href: "/team" }
-                        ]}
-                    />
-                    <SiteMapBlock
-                        title={t.partners}
-                        items={[
-                            { name: t.company_partners, href: "/partners" },
-                            { name: "IESEG Conseil Paris", href: "/ieseg" }
-                        ]}
-                    />
-                </div>
-                <div>
-                    <SiteMapBlock
-                        title={t.offer}
-                        items={[
-                            { name: t.offer, href: "/offer" },
-                            { name: t.example_offers, href: "/blog/missions/" },
-                            { name: "FAQ", href: "/faq" }
-                        ]}
-                    />
-                    <SiteMapBlock
-                        title={t.contact_information}
-                        items={[
-                            { name: t.contact_form, href: "/contact" },
-                            { name: t.blog, href: "/blog" },
-                            { name: t.legal_mentions, href: "/legal-mentions" }
-                        ]}
-                    />
-                </div>
+                {/* <div> */}
+                <SiteMapBlock
+                    title={t.whoarewe}
+                    items={[
+                        { name: t.home, href: "/" },
+                        { name: t.about, href: "/about" },
+                        { name: t.commitment, href: "/commitment" },
+                        { name: t.team, href: "/team" }
+                    ]}
+                />
+                <SiteMapBlock
+                    title={t.partners}
+                    items={[
+                        { name: t.company_partners, href: "/partners" },
+                        { name: "IESEG Conseil Paris", href: "/ieseg" }
+                    ]}
+                />
+                {/* </div>
+                <div> */}
+                <SiteMapBlock
+                    title={t.offer}
+                    items={[
+                        { name: t.offer, href: "/offer" },
+                        { name: t.example_offers, href: "/blog/missions/" },
+                        { name: "FAQ", href: "/faq" }
+                    ]}
+                />
+                <SiteMapBlock
+                    title={t.contact_information}
+                    items={[
+                        { name: t.contact_form, href: "/contact" },
+                        { name: t.blog, href: "/blog" },
+                        { name: t.legal_mentions, href: "/legal-mentions" }
+                    ]}
+                />
+                {/* </div> */}
             </div>
         </>
     );

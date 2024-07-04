@@ -80,7 +80,19 @@ const config = {
         },
         extend
     },
-    plugins: [require("tailwindcss-animate")]
+    plugins: [
+        require("tailwindcss-animate"),
+        function ({ addUtilities }: { addUtilities: Function }) {
+            const newUtilities = {
+                ".bg-hatched": {
+                    "background-image": "linear-gradient(45deg, #000 25%, #333 25%, #333 50%, #000 50%, #000 75%, #333 75%, #333)",
+                    "background-size": "20px 20px"
+                }
+            };
+
+            addUtilities(newUtilities, ["responsive", "hover"]);
+        }
+    ]
 } satisfies Config;
 
 export default config;
