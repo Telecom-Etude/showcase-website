@@ -8,3 +8,5 @@ export const Block = ({ children, className, full }: { children: React.ReactNode
             <div className={cn("p-4 sm:p-10 max-w-[1200px]", className)}>{children}</div>
         </div>
     );
+
+export const blockCn = "p-4 sm:p-10 max-w-[1200px]";

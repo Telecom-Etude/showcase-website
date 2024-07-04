@@ -1,65 +1,58 @@
 "use client";
 
-import { Paragraphs } from "@/components/styles/texts";
-import { Pointer } from "lucide-react";
-import React, { MouseEventHandler, useState } from "react";
+import { BtnLink, EmailContact } from "@/components/telecom-etude/contact";
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
-const STEPS = ["Prise de contact", "Pré-étude", "Mission", "Finialisation"];
+const STEPS = ["Prise de contact", "Pré-étude", "Mission", "Finalisation"];
 const TEXTS = [
-    [
-        "Vous nous contactez pour nous expliquer votre projet. Vous pouvez nous contacter en nous envoyant un mail à contact@telecom-etude.fr ou en remplissant le formulaire de contact."
-    ],
-    [
-        "Lors de la pré-étude, nous faisons une réunion pour définir clairement vos attentes et besoins. Nous sélectionnons ensuite un intervenant expert dans le domaine correspondant à vos besoins. Une Convention d'Étude vous est ensuite envoyée. C'est le document qui pose le cadre légal et qui définit le cahier des chargers."
-    ],
-    ["Pendant la mission, nous restons en contact pour vous tenir au courant de l'avancement de l'étude."],
-    ["Une fois la mission réaliée, vous effectuez le paiment, nous vous rendons le livrable final, et nous vons envoyons un questionnaire de satisfaction."]
+    <p key={0}>
+        Vous nous contactez pour nous expliquer votre projet. Vous pouvez nous contacter en nous envoyant un mail à <EmailContact underline /> ou en remplissant
+        le{" "}
+        <BtnLink href="/contact" underline>
+            formulaire de contact
+        </BtnLink>
+        . Nous traiterons ensuite votre demande et retournerons vers vous le plus rapidement possible.
+    </p>,
+    <p key={1}>
+        Après la prise de contact, la mission passe en &laquo; Pré-étude &raquo;. Lors de cette étape, nous faisons une réunion pour définir clairement vos
+        attentes et besoins. Nous sélectionnons ensuite un intervenant - un étudiant de Télécom Paris - expert dans le domaine correspondant à votre demande.
+        Une Convention d&apos;Étude vous est ensuite envoyée. C&apos;est le document qui pose le cadre légal de l&apos;étude et qui définit le cahier des
+        chargers.
+    </p>,
+    <p key={2}>
+        Pendant la mission, nous restons en contact pour vous tenir au courant de l&apos;avancement de l&apos;étude. En fonction de vos envies et besoins, nous
+        faisons des réunions avec vous et l&apos;intervenant et mettons en place un moyen de communication rapide.
+    </p>,
+    <p key={3}>
+        Une fois la mission réaliée, nous faisons une réunion pour vous présenter le livrable. Ensuite, vous signez le Procès Verbal de Recette Final, qui vous
+        engage à payer. Après cette étape seulement, vous recevrez le livrable finale. Vous possédez toujours une période de garantie. Un questionnaire de
+        satisfaction vous est envoyé.
+    </p>
 ];
 
 export const OfferGraphic = () => {
-    const [selectedZone, setSelectedZone] = useState<number>(1);
-    const [mousePosition, setMousePosition] = useState<{ x: number; y: number }>({ x: 500, y: 0 });
-    const [previousX, setPreviousX] = useState<number>(500);
-    const [hovered, setHovered] = useState<boolean>(false);
-
-    const handleMouseMove: MouseEventHandler<HTMLDivElement> = e => {
-        setHovered(true);
-        const x = e.nativeEvent.offsetX;
-        const y = e.nativeEvent.offsetY;
-        setMousePosition({ x: x <= 2 ? 0 : x >= 498 ? 500 : x, y });
-        handleMouseClick(e);
-    };
-
-    const handleMouseClick: MouseEventHandler<HTMLDivElement> = () => {
-        const nb = (4 * mousePosition.x) / 500;
-        const zone = Math.ceil(nb === 0 ? 1 : nb);
-        setSelectedZone(zone);
-    };
-
-    const gradientColor = `linear-gradient(to right, var(--destructive), var(--primary) ${previousX}px, var(--muted), var(--muted) ${mousePosition.x}px)`;
-
-    React.useEffect(() => {
-        setPreviousX(mousePosition.x);
-    }, [mousePosition]);
-
-    const [show, setShow] = useState(false);
-
+    const gradientColor = `linear-gradient(to right, var(--destructive), var(--primary) 100px, var(--muted), var(--muted) 200px)`;
+    const [currentStep, setCurrentStep] = useState<number>(0);
     return (
         <>
-            <div className="flex items-center p-10">
+            <div className="flex items-center p-10 ">
                 <div
-                    onMouseMove={handleMouseMove}
-                    // onClick={handleMouseClick}
-                    className="flex w-[500px] h-[50px] cursor-col-resize relative"
-                    style={{ backgroundImage: gradientColor }}
+                    className="flex from-destructive to-primary via-primary relative bg-gradient-to-r"
+                    // style={{ backgroundImage: "linear-gradient(to right, var(--destructive), var(--primary) 100px, var(--muted), var(--muted) 200px)" }}
                 >
-                    {[1, 2, 3, 4].map(i => (
-                        <div
+                    {STEPS.map((step: string, i: number) => (
+                        <Button
                             key={i}
-                            className={`absolute left-[calc(${i}*100px)] h-full w-0 border-[1px] ${mousePosition.x >= i * 100 ? "border-muted" : "border-destructive"}`}
-                        />
+                            variant="ghost"
+                            className="rounded-none hover:bg-hatched hover:text-background hover:underline"
+                            onMouseEnter={() => setCurrentStep(i)}
+                            // className={`bg-blue-500 border-8 ${i % 2 === 0 ? "border-red-800" : "border-green-800"} h-full w-0`}
+                            // style={{ left: `calc(${i} * 100px)` }}
+                        >
+                            {step}
+                        </Button>
                     ))}
-                    {!hovered && <Pointer className="m-auto text-muted" />}
                 </div>
                 <div
                     className="w-0 h-0 
@@ -69,9 +62,7 @@ export const OfferGraphic = () => {
                     border-b-transparent"
                 ></div>
             </div>
-            {JSON.stringify(mousePosition)}
-            <h3 className="text-2xl">{STEPS[selectedZone - 1]}</h3>
-            <Paragraphs className="max-w-[500px] text-center" paragraphs={TEXTS[selectedZone - 1]} />
+            {TEXTS[currentStep]}
         </>
     );
 };
