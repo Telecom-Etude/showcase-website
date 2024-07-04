@@ -42,6 +42,14 @@ model Blog {
   contributors User[]       @relation("ContributedBlogs")
   authorId     Int
   validated    Boolean      @default(false)
+  labels       Label[]
+}
+
+model Label {
+  id     Int    @id @unique @default(autoincrement())
+  name   String
+  Blog   Blog?  @relation(fields: [blogId], references: [id])
+  blogId Int?
 }
 
 model LocaleBlog {
