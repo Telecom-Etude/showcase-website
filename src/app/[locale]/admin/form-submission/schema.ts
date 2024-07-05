@@ -4,7 +4,7 @@ import { z } from "zod";
 export const contactFormSchema = z.object({
     id: z.number().optional(),
     name: z.string(),
-    email: z.string().email().regex(TELECOM_REGEX),
+    email: z.string(),
     tel: z.bigint().optional(),
     societe: z.string().optional(),
     subject: z.string().optional(),

@@ -11,11 +11,9 @@
  */
 
 import { NextResponse } from "next/server";
-import { NextAuthRequest, getAuthorisationCode } from "./auth/routes";
-import { auth } from "./auth/auth";
-import { getLocaleRoutesProps } from "./locales/routing";
-import { NextAuthConfig } from "next-auth";
-import { NextConfig } from "next";
+import { NextAuthRequest, getAuthorisationCode } from "@/auth/routes";
+import { auth } from "@/auth/auth";
+import { getLocaleRoutesProps } from "@/locales/routing";
 
 /**
  * A redirection will change the URL of the page and render the page at the new URL.

@@ -2,7 +2,7 @@ import { TELECOM_REGEX } from "@/consts";
 import { z } from "zod";
 
 export const userRolesSchema = z.object({
-    email: z.string().email().regex(TELECOM_REGEX),
+    email: z.string(),
     blogAdmin: z.boolean(),
     userAdmin: z.boolean(),
     blogAuthor: z.boolean(),
