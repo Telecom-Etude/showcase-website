@@ -6,3 +6,7 @@
 
 - [Authjs tutorial](https://www.youtube.com/watch?v=1MTyCvS05V4)
 - [Google Provuder tutorial](https://www.youtube.com/watch?v=Rs8018RO5YQ)
+
+## Notes
+
+- Utiliser `LocaleParams` en type, pour ne pas se tromper (sinon on traduit pas la page).
