@@ -13,6 +13,10 @@ export interface Rights {
 
 const config = {
     trustHost: true,
+    pages: {
+        signIn: "/auth/signin",
+        signOut: "/auth/signout"
+    },
     callbacks: {
         async session({ session, token }: { session: Session; token: JWT }) {
             if (token.rights && session.user) {

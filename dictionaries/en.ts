@@ -2,6 +2,18 @@ import { Dictionary } from "@/locales/dictionaries";
 
 export const enDictionary: Dictionary = {
     navigation: {
+        auth: {
+            signin: {
+                title: "Sign In",
+                buttonText: "Sign in with Google",
+                contact: "A problem? Contact the IT department"
+            },
+            signout: {
+                title: "Sign Out",
+                buttonText: "Sign out",
+                contact: "A problem? Contact the IT department"
+            }
+        },
         errors: {
             unauthorized: {
                 title: "Access Unauthorized",

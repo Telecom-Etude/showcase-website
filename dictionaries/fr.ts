@@ -1,5 +1,17 @@
 export const frDictionary = {
     navigation: {
+        auth: {
+            signin: {
+                title: "Connection",
+                buttonText: "Se connecter avec Google",
+                contact: "Un problème\u00A0? Contactez-la DSI"
+            },
+            signout: {
+                title: "Déconnection",
+                buttonText: "Se déconnecter",
+                contact: "Un problème\u00A0? Contactez-la DSI"
+            }
+        },
         errors: {
             unauthorized: {
                 title: "Accès non autorisé",

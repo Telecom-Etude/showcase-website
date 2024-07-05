@@ -33,6 +33,8 @@ const routes: { [key: string]: (_: NextAuthRequest) => number } = {
     "/legal-mentions": _ => 200,
     "/commitment": _ => 200,
     "/partners": _ => 200,
+    "/auth/signin": _ => 200,
+    "/auth/signout": _ => 200,
     "/admin/form-submission": req => checkAdminRights(req, (r: Rights) => r.formAdmin),
     "/admin/users": req => checkAdminRights(req, (r: Rights) => r.userAdmin),
     "/admin/blog/new": req => checkAdminRights(req, (r: Rights) => r.blogAuthor),
