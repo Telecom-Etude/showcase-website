@@ -5,6 +5,7 @@ import { IconType } from "react-icons";
 import { Button } from "../ui/button";
 import { getDictionary } from "@/locales/dictionaries";
 import { Locale } from "@/locales/config";
+import { EmailContact } from "../telecom-etude/contact";
 
 const Network = ({ href, Icon }: { href: string; Icon: IconType }) => (
     <Link href={href}>
@@ -14,14 +15,11 @@ const Network = ({ href, Icon }: { href: string; Icon: IconType }) => (
 
 const LinkItem = ({ href, name }: { href: string; name: string }) => (
     <Button variant="link" className="text-foreground py-[3px]" asChild>
-        <Link className="w-fit h-fit pl-0 py-0 text-center" href={href}>
+        <Link className="w-fit h-fit pl-0 py-0" href={href}>
             {name}
         </Link>
     </Button>
 );
-
-const h3 = "text-lg font-semibold pb-2 pt-6 pl-0 w-fit";
-const section = "flex flex-col items-center";
 
 const NetworkLinks = () => (
     <div className="flex space-x-4 p-2">
@@ -33,8 +31,8 @@ const NetworkLinks = () => (
 );
 
 const SiteMapBlock = ({ title, items }: { title: string; items: { name: string; href: string }[] }) => (
-    <section className={section}>
-        <h3 className={h3}>{title}</h3>
+    <section className="flex flex-col items-center">
+        <h3 className="text-lg font-semibold pb-2 pt-6 pl-0 w-fit">{title}</h3>
         {items.map((item, k) => (
             <LinkItem {...item} key={k} />
         ))}
@@ -45,10 +43,8 @@ const SiteMap = ({ locale }: { locale: Locale }) => {
     const t = getDictionary(locale).navigation.sitemap;
 
     return (
-        <>
-            <h2 className="text-xl font-semibold">{t.title}</h2>
+        <div className="p-10">
             <div className="flex sm:flex-row flex-col space-x-10">
-                {/* <div> */}
                 <SiteMapBlock
                     title={t.whoarewe}
                     items={[
@@ -65,8 +61,6 @@ const SiteMap = ({ locale }: { locale: Locale }) => {
                         { name: "IESEG Conseil Paris", href: "/ieseg" }
                     ]}
                 />
-                {/* </div>
-                <div> */}
                 <SiteMapBlock
                     title={t.offer}
                     items={[
@@ -83,27 +77,23 @@ const SiteMap = ({ locale }: { locale: Locale }) => {
                         { name: t.legal_mentions, href: "/legal-mentions" }
                     ]}
                 />
-                {/* </div> */}
             </div>
-        </>
+        </div>
     );
 };
 
 export const Mentions = () => (
-    <div className="flex">
+    <div>
         <div className="w-[200px]">
             <FullLogo />
         </div>
         <div className="p-2 flex flex-col items-start space-y-2">
             <p>&copy;{new Date().getFullYear()} Telecom Etude</p>
-            <Button variant="link" className="text-foreground px-0 py-0 h-fit" asChild>
-                <Link href="mailto:contact@telecom-etude.fr" className="h-fit text-base font-normal">
-                    contact@telecom-etude.fr
-                </Link>
-            </Button>
-            <Button variant="link" className="text-foreground px-0 py-0 text-left h-fit text-wrap" asChild>
-                <Link href="https://maps.app.goo.gl/etZHknTudKMuTjRZ9" className="h-fit text-base font-normal" target="_blank">
-                    19, place Marguerite Perey, 91120 Palaiseau
+            <EmailContact />
+            <Button variant="link" className="text-foreground px-0 py-0 text-left text-wrap" asChild>
+                <Link href="https://maps.app.goo.gl/etZHknTudKMuTjRZ9" className="text-base font-normal flex flex-col items-start" target="_blank">
+                    <p>19, place Marguerite Perey</p>
+                    <p>91120 Palaiseau</p>
                 </Link>
             </Button>
         </div>
@@ -112,11 +102,12 @@ export const Mentions = () => (
 
 export const Footer = ({ locale }: { locale: Locale }) => {
     return (
-        <div className="border-t-[1px] border-primary flex flex-col items-center space-y-2 py-4">
-            <NetworkLinks />
+        <div className="border-t-[1px] border-primary flex flex-col lg:flex-row items-center space-y-2 py-4 justify-around">
+            <section className="p-10">
+                <Mentions />
+                <NetworkLinks />
+            </section>
             <SiteMap locale={locale} />
-            <div className="w-full border-t-[1px] border-primary"></div>
-            <Mentions />
         </div>
     );
 };

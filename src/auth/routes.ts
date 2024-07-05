@@ -20,28 +20,29 @@ const checkAdminRights = (req: NextAuthRequest, check: (rights: Rights) => boole
     }
 };
 
-const routes = {
-    "/": (_: NextAuthRequest) => 200,
-    "/about": (_: NextAuthRequest) => 200,
-    "/blog": (_: NextAuthRequest) => 200,
-    "/contact": (_: NextAuthRequest) => 200,
-    "/test": (_: NextAuthRequest) => (process.env.DEV_MODE ? 200 : 404),
-    "/form": (_: NextAuthRequest) => 200,
-    "/faq": (_: NextAuthRequest) => 200,
-    "/ieseg": (_: NextAuthRequest) => 200,
-    "/offer": (_: NextAuthRequest) => 200,
-    "/legal-mentions": (_: NextAuthRequest) => 200,
-    "/admin/form-submission": (req: NextAuthRequest) => checkAdminRights(req, (r: Rights) => r.formAdmin),
-    "/admin/users": (req: NextAuthRequest) => checkAdminRights(req, (r: Rights) => r.userAdmin),
-    "/admin/blog/new": (req: NextAuthRequest) => checkAdminRights(req, (r: Rights) => r.blogAuthor),
-    "/admin/blog/validation": (req: NextAuthRequest) => checkAdminRights(req, (r: Rights) => r.blogAdmin)
+const routes: { [key: string]: (_: NextAuthRequest) => number } = {
+    "/": _ => 200,
+    "/about": _ => 200,
+    "/blog": _ => 200,
+    "/contact": _ => 200,
+    "/test": _ => (process.env.DEV_MODE ? 200 : 404),
+    "/form": _ => 200,
+    "/faq": _ => 200,
+    "/ieseg": _ => 200,
+    "/offer": _ => 200,
+    "/legal-mentions": _ => 200,
+    "/commitment": _ => 200,
+    "/admin/form-submission": req => checkAdminRights(req, (r: Rights) => r.formAdmin),
+    "/admin/users": req => checkAdminRights(req, (r: Rights) => r.userAdmin),
+    "/admin/blog/new": req => checkAdminRights(req, (r: Rights) => r.blogAuthor),
+    "/admin/blog/validation": req => checkAdminRights(req, (r: Rights) => r.blogAdmin)
 };
 
-export const getAuthorisationCode = (req: NextAuthRequest, localelesspath: string): number => {
-    if (localelesspath in routes) {
-        const getCode = routes[localelesspath as keyof typeof routes];
+export const getAuthorisationCode = (req: NextAuthRequest, localelessPath: string): number => {
+    if (localelessPath in routes) {
+        const getCode = routes[localelessPath as keyof typeof routes];
         return getCode(req);
-    } else if (/^\/admin\/blog\/edit\/\d+$/.test(localelesspath)) {
+    } else if (/^\/admin\/blog\/edit\/\d+$/.test(localelessPath)) {
         return checkAdminRights(req, (r: Rights) => r.blogAuthor);
     } else {
         return 404;

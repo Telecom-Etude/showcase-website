@@ -1,4 +1,5 @@
 import { Paragraphs } from "@/components/styles/texts";
+import { EmailContact } from "@/components/telecom-etude/contact";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import Link from "next/link";
 
@@ -46,9 +47,8 @@ export default function FAQ() {
             <h1 className="text-4xl text-center">Foire aux Questions</h1>
             <p className="text-center max-w-[1000px] m-auto">
                 {" "}
-                Voici les réponses aux questions que vous pourriez vous poser. N&apos;hésitez pas à nous contacter à{" "}
-                <Link href="mailto:contact@telecom-etude.fr">contact@telecom-etude.fr</Link> ou en remplissant ce form <Link href="/contact"></Link> si vous
-                avez d&apos;autres questions ou pour avoir plus d&apos;informations.
+                Voici les réponses aux questions que vous pourriez vous poser. N&apos;hésitez pas à nous contacter à <EmailContact /> ou en remplissant ce form{" "}
+                <Link href="/contact"></Link> si vous avez d&apos;autres questions ou pour avoir plus d&apos;informations.
             </p>
             <Accordion type="single" collapsible className="w-full">
                 {questions.map((item: FaqItem, idx: number) => (
