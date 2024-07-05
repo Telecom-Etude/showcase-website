@@ -60,11 +60,6 @@ export const columns: ColumnDef<ValidationBlogType>[] = [
         }
     },
     {
-        accessorKey: "blogAdmin",
-        header: ({ column }) => <DataTableColumnHeader column={column} title="Administrateur Blog" />,
-        cell: ({ row }) => <ActionCheckBox row={row} column={"blogAdmin"} func={makeBlogAdmin} />
-    },
-    {
         accessorKey: "title",
         header: ({ column }) => <DataTableColumnHeader column={column} title="Titre" />,
         cell: ({ row }) => (

@@ -102,7 +102,7 @@ export const Mentions = () => (
 
 export const Footer = ({ locale }: { locale: Locale }) => {
     return (
-        <div className="border-t-[1px] border-primary flex flex-col lg:flex-row items-center space-y-2 py-4 justify-around">
+        <div className="border-t-[1px] border-primary flex flex-col sm:flex-row items-center space-y-2 py-4 justify-around">
             <section className="p-10">
                 <Mentions />
                 <NetworkLinks />

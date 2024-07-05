@@ -9,19 +9,28 @@ import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import { Paragraphs } from "@/components/styles/texts";
 import { getDictionary } from "@/locales/dictionaries";
 import { LocaleParams } from "@/locales/config";
+import { MdOpenInNew } from "react-icons/md";
+import { BtnLink } from "@/components/telecom-etude/contact";
 
 interface PartnerProps {
     title: string;
     logo: StaticImport;
     paragraphs: string[];
+    url: string;
 }
 
-function Partner({ title, logo, paragraphs }: PartnerProps) {
+function Partner({ title, logo, paragraphs, url }: PartnerProps) {
     return (
         <section className="p-4">
             <Card>
                 <CardHeader>
-                    <CardTitle className="w-full text-center pb-6">{title}</CardTitle>
+                    <CardTitle className="w-full text-center">{title}</CardTitle>
+                    <CardDescription className="flex justify-center">
+                        <BtnLink href={url} target="blank" className="flex items-center space-x-1">
+                            <p>Link</p>
+                            <MdOpenInNew />
+                        </BtnLink>
+                    </CardDescription>
                     <Separator />
                 </CardHeader>
                 <CardContent>
@@ -45,9 +54,9 @@ export default function Partners({ params: { locale } }: LocaleParams) {
                 <p className="text-lg max-w-[500px] text-center">Telecom Etude a des entreprises par</p>
             </header>
             <div className="flex flex-col sm:flex-row">
-                <Partner title="Bain" logo={Bain} paragraphs={[]} />
-                <Partner title="BearingPoint" logo={BearingPoint} paragraphs={[]} />
-                <Partner title="KPMG" logo={KPMG} paragraphs={[]} />
+                <Partner title="Bain" url="https://www.bain.com" logo={Bain} paragraphs={[]} />
+                <Partner title="BearingPoint" url="https://www.bearingpoint.com" logo={BearingPoint} paragraphs={[]} />
+                <Partner title="KPMG" url="https://www.kpmg.com" logo={KPMG} paragraphs={[]} />
             </div>
         </Block>
     );
