@@ -12,6 +12,7 @@ export default async function Home({ params }: { params: LocaleParams }) {
     return (
         <>
             <H1>Telecom Etude</H1>
+            <p>Nous développons aujourd&apos;hui les technologies de demain.</p>
             <p>{JSON.stringify(session)}</p>
             <TestPage />
 

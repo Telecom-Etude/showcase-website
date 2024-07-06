@@ -11,7 +11,7 @@
  */
 
 import { NextResponse } from "next/server";
-import { NextAuthRequest, getAuthorisationCode } from "@/auth/routes";
+import { NextAuthRequest, SIGNIN_PATH, SIGNOUT_PATH, getAuthorisationCode } from "@/auth/routes";
 import { auth } from "@/auth/auth";
 import { getLocaleRoutesProps } from "@/locales/routing";
 
@@ -27,14 +27,24 @@ const rewrite = (url: string, req: NextAuthRequest): NextResponse => NextRespons
 
 export default auth(async (req: NextAuthRequest) => {
     const { hasLocale, locale, localelessPath } = getLocaleRoutesProps(req);
-    const code = getAuthorisationCode(req, localelessPath);
-    if (code != 200) return rewrite(`/${locale}/error/${code}`, req);
-    if (!hasLocale) return redirect(`/${locale}${localelessPath}${req.nextUrl.search}`, req);
+    if (localelessPath.startsWith("/auth")) {
+        const authed = req.auth?.user.email;
+        if (localelessPath === SIGNIN_PATH && authed) {
+            return redirect(`/${locale}`, req);
+        }
+        if (localelessPath === SIGNOUT_PATH && !authed) {
+            return redirect(`/${locale}`, req);
+        }
+    } else {
+        const code = getAuthorisationCode(req, localelessPath);
+        if (code != 200) return rewrite(`/${locale}/error/${code}`, req);
+        if (!hasLocale) return redirect(`/${locale}${localelessPath}${req.nextUrl.search}`, req);
+    }
 });
 
 /**
  * @property {string[]} matcher - An array of URL patterns to match against. The middleware will solely be applied to URLs that match this patterns.
  */
 export const config = {
-    matcher: ["/((?!api|_next/static|public|_next/image|favicon.ico|__nextjs_).*)"]
+    matcher: ["/((?!_next/static|api|public|_next/image|favicon.ico|__nextjs_).*)"]
 };

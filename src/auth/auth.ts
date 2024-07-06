@@ -3,6 +3,7 @@ import type { JWT } from "next-auth/jwt";
 import authConfig from "@/auth/auth.config";
 import { db } from "@/lib/db";
 import { getRights } from "@/db/users";
+import { SIGNIN_PATH, SIGNOUT_PATH } from "./routes";
 
 export interface Rights {
     formAdmin: boolean;
@@ -14,8 +15,8 @@ export interface Rights {
 const config = {
     trustHost: true,
     pages: {
-        signIn: "/auth/signin",
-        signOut: "/auth/signout"
+        signIn: SIGNIN_PATH,
+        signOut: SIGNOUT_PATH
     },
     callbacks: {
         async session({ session, token }: { session: Session; token: JWT }) {

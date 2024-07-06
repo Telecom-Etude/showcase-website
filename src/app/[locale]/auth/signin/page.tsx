@@ -13,6 +13,7 @@ import { nav } from "@/locales/routing";
 
 export default async function SignIn({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).navigation.auth.signin;
+    const session = await auth();
     return (
         <div className="flex items-center w-full h-full flex-1 justify-center">
             <div className="bg-gradient-to-br from-primary to-destructive p-[2px] rounded-[12px]">
@@ -24,10 +25,10 @@ export default async function SignIn({ params: { locale } }: LocaleParams) {
                         <form
                             action={async () => {
                                 "use server";
-                                await signIn();
+                                await signIn("google");
                             }}
                         >
-                            <Button type="submit" variant="link" className="text-foreground bg-white space-x-2 border-0 rounded-[6px]">
+                            <Button type="submit" variant="link" className="text-foreground bg-white space-x-2 border-0 rounded-[6px] w-full">
                                 <Image src={Google} alt="Google Logo" />
                                 <p>{t.buttonText}</p>
                             </Button>

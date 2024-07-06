@@ -1,6 +1,6 @@
 "use server";
 
-import { signIn } from "@/auth/auth";
+import { signIn, signOut } from "@/auth/auth";
 import { EmailContact } from "@/components/telecom-etude/contact";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -22,7 +22,7 @@ export default async function SignIn({ params: { locale } }: LocaleParams) {
                         <form
                             action={async () => {
                                 "use server";
-                                await signIn();
+                                await signOut();
                             }}
                         >
                             <Button type="submit" variant="link" className="text-foreground bg-white space-x-2 w-full">

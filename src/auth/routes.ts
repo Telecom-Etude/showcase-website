@@ -6,6 +6,9 @@ export interface NextAuthRequest extends NextRequest {
     auth: Session | null;
 }
 
+export const SIGNIN_PATH = "/auth/signin";
+export const SIGNOUT_PATH = "/auth/signout";
+
 const checkAdminRights = (req: NextAuthRequest, check: (rights: Rights) => boolean) => {
     const rights = req.auth?.user.rights;
     if (rights && check(rights)) {
