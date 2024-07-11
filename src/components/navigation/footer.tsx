@@ -8,8 +8,8 @@ import { Locale } from "@/locales/config";
 import { EmailContact } from "../telecom-etude/contact";
 
 const Network = ({ href, Icon }: { href: string; Icon: IconType }) => (
-    <Link href={href}>
-        <Icon className="text-primary hover:text-foreground w-8 h-8" />
+    <Link href={href} className="p-1 m-0 rounded-full">
+        <Icon className="fill-[url(#te-gradient)] hover:fill-primary transition-colors duration-2000" />
     </Link>
 );
 
@@ -22,7 +22,7 @@ const LinkItem = ({ href, name }: { href: string; name: string }) => (
 );
 
 const NetworkLinks = () => (
-    <div className="flex space-x-4 p-2">
+    <div className="flex space-x-4 p-2 w-full justify-evenly">
         <Network href="https://www.linkedin.com/company/telecom-etude/" Icon={FaLinkedin} />
         <Network href="https://www.facebook.com/TelecomEtude" Icon={FaFacebook} />
         <Network href="https://www.instagram.com/telecometude" Icon={FaInstagram} />
@@ -32,7 +32,7 @@ const NetworkLinks = () => (
 
 const SiteMapBlock = ({ title, items }: { title: string; items: { name: string; href: string }[] }) => (
     <section className="flex flex-col items-center">
-        <h3 className="text-lg font-semibold pb-2 pt-6 pl-0 w-fit">{title}</h3>
+        <h3 className="text-lg font-semibold pb-2 pt-6 pl-0 w-fit text-center">{title}</h3>
         {items.map((item, k) => (
             <LinkItem {...item} key={k} />
         ))}
@@ -44,7 +44,7 @@ const SiteMap = ({ locale }: { locale: Locale }) => {
 
     return (
         <div className="p-10">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 space-x-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-10">
                 <SiteMapBlock
                     title={t.whoarewe}
                     items={[
@@ -65,7 +65,6 @@ const SiteMap = ({ locale }: { locale: Locale }) => {
                     title={t.offer}
                     items={[
                         { name: t.offer, href: "/offer" },
-                        // { name: t.example_offers, href: "/blog/missions/" },
                         { name: "FAQ", href: "/faq" }
                     ]}
                 />
