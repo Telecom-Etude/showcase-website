@@ -61,6 +61,45 @@ export const enDictionary: Dictionary = {
         }
     },
     pages: {
+        faq: {
+            title: "Frequently Asked Questions",
+            text: {
+                before: "Here at the answers of questions you might have. Don't hesitate to contact us at ",
+                between: "or be felling the ",
+                form: "contact form",
+                after: "if you have any other questions or in order to have more information."
+            },
+            list: [
+                {
+                    question: "What is a Junior-Enterprise\u00A0?",
+                    answer: [
+                        "A Junior-Enterprise is an educational, not-for-profit student association that offers professional services in their field of study. In the case of Telecom Etude, we sell services in the digital field, mainly in the areas of data, development, cybersecurity, image and marketing."
+                    ]
+                },
+                {
+                    question: "How do they work?",
+                    answer: [
+                        "They work by assignment. You submit a project to us and we make a proposal. Once the proposal has been accepted, we carry out the assignment by selecting a person to carry out the study."
+                    ]
+                },
+                {
+                    question: "Who will carry out my project\u00A0?",
+                    answer: ["We carefully select a Télécom Paris student who has the particular skills needed to carry out the assignment. "]
+                },
+                {
+                    question: "Why choose us?",
+                    answer: [
+                        "You should choose us for our expertise in our field, our responsiveness to your contacts and our dedication to providing excellent service."
+                    ]
+                },
+                {
+                    question: "How does an assignment work?",
+                    answer: [
+                        "An assignment begins with a discussion with the client to understand their needs, then a proposal is made. Once the proposal has been accepted, the work begins and the customer is kept informed throughout the process."
+                    ]
+                }
+            ]
+        },
         about: {
             description: "the Junior-Enterprise of digital and data",
             moreInfo: "More information",

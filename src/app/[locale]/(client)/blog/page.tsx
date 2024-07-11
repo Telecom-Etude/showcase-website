@@ -4,8 +4,6 @@ import { X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import { Checkbox } from "@/components/ui/checkbox";
-import { cn } from "@/lib/utils";
 import { ManyComboBox } from "@/components/meta-components/combobox";
 import { LocaleParams } from "@/locales/config";
 import { getDictionary } from "@/locales/dictionaries";
@@ -194,7 +192,7 @@ export default function Blog({ params: { locale } }: LocaleParams) {
                     <ManyComboBox selectedKeys={value} addRemoveKey={addRemoveValue} items={vocab} />
                 </div>
             </div>
-            <div className="grid xl:grid-cols-3 gap-6">
+            <div className="grid xl:grid-cols-3 md:grid-cols-2 gap-6">
                 {posts
                     .filter(post => allLabelsInValue(post.labels, value))
                     .map((post, i) => (

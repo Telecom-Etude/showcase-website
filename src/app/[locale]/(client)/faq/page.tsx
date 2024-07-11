@@ -1,6 +1,8 @@
 import { Paragraphs } from "@/components/styles/texts";
-import { EmailContact } from "@/components/telecom-etude/contact";
+import { BtnLink, EmailContact } from "@/components/telecom-etude/contact";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { LocaleParams } from "@/locales/config";
+import { getDictionary } from "@/locales/dictionaries";
 import Link from "next/link";
 
 interface FaqItem {
@@ -41,17 +43,21 @@ const questions = [
     }
 ];
 
-export default function FAQ() {
+export default function FAQ({ params: { locale } }: LocaleParams) {
+    const t = getDictionary(locale).pages.faq;
     return (
         <div className="p-10 space-y-10">
-            <h1 className="text-4xl text-center">Foire aux Questions</h1>
+            <h1 className="text-4xl text-center">{t.title}</h1>
             <p className="text-center max-w-[1000px] m-auto">
-                {" "}
-                Voici les réponses aux questions que vous pourriez vous poser. N&apos;hésitez pas à nous contacter à <EmailContact /> ou en remplissant ce form{" "}
-                <Link href="/contact"></Link> si vous avez d&apos;autres questions ou pour avoir plus d&apos;informations.
+                {t.text.before}
+                <EmailContact underline /> {t.text.between}
+                <BtnLink underline href="/contact">
+                    {t.text.form}
+                </BtnLink>{" "}
+                {t.text.after}
             </p>
             <Accordion type="single" collapsible className="w-full">
-                {questions.map((item: FaqItem, idx: number) => (
+                {t.list.map((item: FaqItem, idx: number) => (
                     <AccordionItem value={idx.toString()} key={idx} className="shadow-lg m-2">
                         <AccordionTrigger className="border-[1px] border-primary px-4">{item.question}</AccordionTrigger>
                         <AccordionContent className="p-4">
