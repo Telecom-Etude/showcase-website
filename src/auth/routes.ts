@@ -1,6 +1,7 @@
 import { Session } from "next-auth";
 import { Rights } from "./auth";
 import { NextRequest } from "next/server";
+import { MetadataRoute } from "next";
 
 export interface NextAuthRequest extends NextRequest {
     auth: Session | null;
@@ -9,7 +10,7 @@ export interface NextAuthRequest extends NextRequest {
 export const SIGNIN_PATH = "/auth/signin";
 export const SIGNOUT_PATH = "/auth/signout";
 
-const checkAdminRights = (req: NextAuthRequest, check: (rights: Rights) => boolean) => {
+const checkAdminRights = (check: (rights: Rights) => boolean) => (req: NextAuthRequest) => {
     const rights = req.auth?.user.rights;
     if (rights && check(rights)) {
         console.log("✅ allowed");
@@ -23,33 +24,50 @@ const checkAdminRights = (req: NextAuthRequest, check: (rights: Rights) => boole
     }
 };
 
-const routes: { [key: string]: (_: NextAuthRequest) => number } = {
-    "/": _ => 200,
-    "/about": _ => 200,
-    "/blog": _ => 200,
-    "/contact": _ => 200,
-    "/test": _ => (process.env.DEV_MODE ? 200 : 404),
-    "/form": _ => 200,
-    "/faq": _ => 200,
-    "/ieseg": _ => 200,
-    "/offer": _ => 200,
-    "/legal-mentions": _ => 200,
-    "/commitment": _ => 200,
-    "/partners": _ => 200,
-    "/auth/signin": _ => 200,
-    "/auth/signout": _ => 200,
-    "/admin/form-submission": req => checkAdminRights(req, (r: Rights) => r.formAdmin),
-    "/admin/users": req => checkAdminRights(req, (r: Rights) => r.userAdmin),
-    "/admin/blog/new": req => checkAdminRights(req, (r: Rights) => r.blogAuthor),
-    "/admin/blog/validation": req => checkAdminRights(req, (r: Rights) => r.blogAdmin)
+export interface RouteProps {
+    code?: 401 | 403 | 404;
+    auth?: (req: NextAuthRequest) => number;
+    priority?: number;
+    changeFrequency?: MetadataRoute.Sitemap[number]["changeFrequency"];
+    lastModified?: Date;
+}
+
+export const ROUTES: { [key: string]: RouteProps } = {
+    "/": {},
+    "/about": {},
+    "/blog": {},
+    "/contact": {},
+    "/test": process.env.DEV_MODE ? {} : { code: 404 },
+    "/form": {},
+    "/faq": {},
+    "/ieseg": {},
+    "/offer": {},
+    "/legal-mentions": {},
+    "/commitment": {},
+    "/partners": {},
+    "/auth/signin": {},
+    "/auth/signout": {},
+    "/admin/form-submission": { auth: checkAdminRights(r => r.formAdmin) },
+    "/admin/users": { auth: checkAdminRights(r => r.userAdmin) },
+    "/admin/blog/new": { auth: checkAdminRights(r => r.blogAuthor) },
+    "/admin/blog/validation": { auth: checkAdminRights(r => r.blogAdmin) }
+};
+
+const getCode = (req: NextAuthRequest, routeProps: RouteProps) => {
+    if (routeProps.code) {
+        return routeProps.code;
+    } else if (routeProps.auth) {
+        return routeProps.auth(req);
+    } else {
+        return 200;
+    }
 };
 
 export const getAuthorisationCode = (req: NextAuthRequest, localelessPath: string): number => {
-    if (localelessPath in routes) {
-        const getCode = routes[localelessPath as keyof typeof routes];
-        return getCode(req);
-    } else if (/^\/admin\/blog\/edit\/\d+$/.test(localelessPath)) {
-        return checkAdminRights(req, (r: Rights) => r.blogAuthor);
+    if (localelessPath in ROUTES) {
+        return getCode(req, ROUTES[localelessPath as keyof typeof ROUTES]);
+    } else if (localelessPath.startsWith("/admin/blog/edit/")) {
+        return checkAdminRights(r => r.blogAuthor)(req);
     } else {
         return 404;
     }
