@@ -27,7 +27,7 @@ export const BtnLink = ({
     className?: string;
 }) => (
     <Button variant="link" className={cn("py-0 px-0 text-inherit underline-offset-1 h-fit", underline && "underline")} asChild>
-        <Link href={href} target={target} className={className}>
+        <Link href={href} target={target} className="font-bold ">
             {children}
         </Link>
     </Button>

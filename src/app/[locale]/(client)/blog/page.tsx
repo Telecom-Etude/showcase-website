@@ -8,6 +8,7 @@ import { ManyComboBox } from "@/components/meta-components/combobox";
 import { LocaleParams } from "@/locales/config";
 import { getDictionary } from "@/locales/dictionaries";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { AppearOnScroll } from "@/components/animations/scroll";
 
 const keywords = [
     "events",
@@ -196,26 +197,28 @@ export default function Blog({ params: { locale } }: LocaleParams) {
                 {posts
                     .filter(post => allLabelsInValue(post.labels, value))
                     .map((post, i) => (
-                        <div key={i} className="w-[300px] shadow-lg bg-gradient-to-tl from-primary to-destructive p-[1px] rounded-[10px]">
-                            <Card className="rounded-[9px] border-0 h-full">
-                                <CardHeader>
-                                    <CardTitle>{post.title}</CardTitle>
-                                    <CardDescription>
-                                        {post.labels.map((label, i) => (
-                                            <p key={i}>{vocab[label]}</p>
-                                        ))}
-                                    </CardDescription>
-                                </CardHeader>
-                                <CardContent>
-                                    <p>{post.description}</p>
-                                </CardContent>
-                                <CardFooter>
-                                    <p>
-                                        Posté par {post.authorFirstName} {post.authorLastName} le {post.date.toLocaleDateString()}
-                                    </p>
-                                </CardFooter>
-                            </Card>
-                        </div>
+                        <AppearOnScroll key={i} className="h-full">
+                            <div className="w-[300px] shadow-lg bg-gradient-to-tl from-primary to-destructive p-[1px] rounded-[10px]">
+                                <Card className="rounded-[9px] border-0 h-full">
+                                    <CardHeader>
+                                        <CardTitle>{post.title}</CardTitle>
+                                        <CardDescription>
+                                            {/* {post.labels.map((label, i) => (
+                                                <p key={i}>{vocab[label]}</p>
+                                            ))} */}
+                                        </CardDescription>
+                                    </CardHeader>
+                                    <CardContent>
+                                        <p>{post.description}</p>
+                                    </CardContent>
+                                    <CardFooter>
+                                        <p>
+                                            Posté par {post.authorFirstName} {post.authorLastName} le {post.date.toLocaleDateString()}
+                                        </p>
+                                    </CardFooter>
+                                </Card>
+                            </div>
+                        </AppearOnScroll>
                     ))}
             </div>
         </div>
