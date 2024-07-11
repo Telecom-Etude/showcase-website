@@ -59,9 +59,51 @@ export const frDictionary = {
         }
     },
     pages: {
+        about: {
+            description: "la Junior-Entreprise du numérique et de la data.",
+            moreInfo: "Plus d'informations",
+            ourMandate: "Notre mandat",
+            alt: {
+                mandat: "Photo du Mandat de Telecom Etude",
+                tp: "Photo de Télécom Paris",
+                afnor: "Logo de l'AFNOR",
+                cnje: "Logo de la CNJE"
+            },
+            titles: {
+                ourje: "Notre JE",
+                ourschool: "Notre école\u00A0: Télécom Paris",
+                quality: "Une JE de qualité",
+                satisfaction: "Notre objectif\u00A0: Votre satisfaction",
+                ieseg: "Une préstation commune"
+            },
+            quality: [
+                "Un taux de satisfaction de nos de clients de plus de 97%.",
+                "Une des seules Junior-Entreprises à être certifiée AFNOR ISO\u00A09001.",
+                'Nous avons la meilleure mention "Satisfait" de la CNJE depuis plusieurs années.'
+            ],
+            ourshool: {
+                chooseTP: "Choisir Télécom Paris, c'est choisir la Junior-Entreprise de",
+                rankings: [
+                    "La **1ère école d'ingénieur du numérique** (Le Figaro, 2021)",
+                    "La **1ère école pour la proximité avec les entreprises**, et la **2ème école d'ingénieur** au classement général (L'Etudiant 2022)",
+                    'La **6ème "small university" au monde** (Times Higher Education World University Ranking 2021)'
+                ]
+            },
+            ourje: [
+                "Telecom Etude est la Junior-Entreprise (JE) de Télécom Paris, **première école du numérique** en France, et propose à ses clients l'expertise de plusieurs centaines d'étudiants.",
+                "Choisir notre JE, c'est avant tout travailler avec une **équipe réactive et disponible**. Vous développerez vos projets avec des étudiants de Télécom Paris, compétents, motivés et qui auront choisi de s'investir dans cette mission."
+            ],
+            ieseg: [
+                "**IESEG Conseil Paris et Telecom Etude** s'associent pour offrir des services complets en combinant leurs expertises en ingénierie et en gestion. Cette collaboration permet de proposer des solutions innovantes et adaptées aux besoins spécifiques des entreprises, allant de l'évaluation de la faisabilité technique à la mise en place de stratégies de croissance digitale.",
+                "Grâce à cette synergie, IESEG Conseil et Telecom Etude fournissent des analyses approfondies et des recommandations stratégiques, tout en développant des outils sur mesure tels que des **chatbots, des applications, des plateformes web ou des modèles d'intelligence artificielle**.",
+                "Cette double présentation combine **l'expertise en conseil** d'IESEG Conseil avec les **compétences technologiques** de Telecom Etude, offrant ainsi des solutions robustes et personnalisées pour vous accompagner dans votre transformation digitale et votre croissance."
+            ],
+            satisfaction:
+                "Depuis sa création, la CNJE œuvre pour promouvoir la marque Junior-Entreprise afin qu'elle reste un **gage de qualité**. Pour cela, elle décerne des labels qualité aux structures méritoires, et met en place des audits-conseils annuels. La CNJE fournit l'assurance que nos administrateurs ou chefs de projet reçoivent les formations adéquates pour proposer à nos clients **formalisme et efficacité**."
+        },
         contact: {
             title: "Contactez-nous !",
-            before: "Vous avez un projet en tête\u00A0? Vous avez besoin de plus d'informations sur notre offre ? N'hésitez pas à nous contacter en utilisant le formulaire ci-dessous ou en nous envoyant un email à ",
+            before: "Vous avez un projet en tête\u00A0? Vous avez besoin de plus d'informations sur notre offre\u00A0? N'hésitez pas à nous contacter en utilisant le formulaire ci-dessous ou en nous envoyant un email à ",
             after: ". Nous reviendrons vers vous dès que possible.",
             terms: "En soumettant ce formulaire, vous acceptez que vos données soient utilisées pour vous recontacter dans le cadre de votre demande et de la relation commerciale qui peut en découler. ",
             form: {

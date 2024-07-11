@@ -44,7 +44,7 @@ const SiteMap = ({ locale }: { locale: Locale }) => {
 
     return (
         <div className="p-10">
-            <div className="flex sm:flex-row flex-col space-x-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 space-x-10">
                 <SiteMapBlock
                     title={t.whoarewe}
                     items={[
@@ -65,7 +65,7 @@ const SiteMap = ({ locale }: { locale: Locale }) => {
                     title={t.offer}
                     items={[
                         { name: t.offer, href: "/offer" },
-                        { name: t.example_offers, href: "/blog/missions/" },
+                        // { name: t.example_offers, href: "/blog/missions/" },
                         { name: "FAQ", href: "/faq" }
                     ]}
                 />

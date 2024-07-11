@@ -5,6 +5,7 @@ import { ReactNode } from "react";
 import { getDictionary } from "@/locales/dictionaries";
 import { Locale } from "@/locales/config";
 import { User } from "next-auth";
+import { nav } from "@/locales/routing";
 
 interface NavItemProps {
     onClick?: () => void;
@@ -36,31 +37,31 @@ export const Links = ({ className, locale, user, ...itemProps }: LinksProps) => 
 
     return (
         <nav className={className}>
-            <NavItem {...itemProps} href="/about">
+            <NavItem {...itemProps} href={nav(locale, "/about")}>
                 {t.about}
             </NavItem>
-            <NavItem {...itemProps} href="/offer">
+            <NavItem {...itemProps} href={nav(locale, "/offer")}>
                 {t.offer}
             </NavItem>
-            <NavItem {...itemProps} href="/commitment">
+            <NavItem {...itemProps} href={nav(locale, "/commitment")}>
                 {t.commitment}
             </NavItem>
-            <NavItem {...itemProps} href="/blog">
+            <NavItem {...itemProps} href={nav(locale, "/blog")}>
                 {t.blog}
             </NavItem>
-            <NavItem {...itemProps} href="/faq">
+            <NavItem {...itemProps} href={nav(locale, "/faq")}>
                 FAQ
             </NavItem>
             {user === undefined ? (
-                <NavItem {...itemProps} href="/api/auth/signin">
+                <NavItem {...itemProps} href={nav(locale, "/auth/signin")}>
                     {t.login}
                 </NavItem>
             ) : (
-                <NavItem {...itemProps} href="/api/auth/signout">
+                <NavItem {...itemProps} href={nav(locale, "/auth/signout")}>
                     {t.logout}
                 </NavItem>
             )}
-            <NavItem {...itemProps} href="/contact" linkStyle="flex items-center space-x-2" variant="default">
+            <NavItem {...itemProps} href={nav(locale, "/contact")} linkStyle="flex items-center space-x-2" variant="default">
                 <p>Contact</p>
                 <FaArrowRight />
             </NavItem>

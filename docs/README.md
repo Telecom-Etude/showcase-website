@@ -10,6 +10,7 @@
 ## Notes
 
 - Utiliser `LocaleParams` en type, pour ne pas se tromper (sinon on traduit pas la page).
+- La traduction est dans un fichier `.ts` au lieu de `.json` pour avoir la vérification des types.
 
 ## Environment variables
 
@@ -19,7 +20,7 @@
 
 - `GOOGLE_CLIENT_ID`: Google client ID for Open Authentification
 - `GOOGLE_CLIENT_SECRET`: Google client secret for Open Authentification
-- `AUTH_SECRET`: Random secret for JWT
+- `AUTH_SECRET`: Random secret for JWT (can be generated with `openssl` command)
 
 #### `NodeMailer`
 

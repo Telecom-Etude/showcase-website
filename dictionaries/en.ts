@@ -61,6 +61,48 @@ export const enDictionary: Dictionary = {
         }
     },
     pages: {
+        about: {
+            description: "the Junior-Enterprise of digital and data",
+            moreInfo: "More information",
+            ourMandate: "Our mandate",
+            alt: {
+                mandat: "Photo of the Telecom Etude mandate",
+                tp: "Photo of Telecom Paris",
+                afnor: "AFNOR logo",
+                cnje: "CNJE logo"
+            },
+            titles: {
+                ourje: "Notre JE",
+                ourschool: "Our school: Télécom Paris",
+                quality: "A quality EY",
+                satisfaction: "Our objective: Your satisfaction",
+                ieseg: "A joint presentation"
+            },
+            quality: [
+                "A client satisfaction rate of over 97%",
+                "One of the only Junior-Entreprises to be AFNOR ISO00A09001 certified",
+                'We have had the best "Satisfied" rating from the CNJE for several years.'
+            ],
+            ourshool: {
+                chooseTP: "Choosing Télécom Paris means choosing the Junior-Enterprise of",
+                rankings: [
+                    "The **1st school for digital engineers** (Le Figaro, 2021)",
+                    "The **1st school for proximity to companies**, and the **2nd engineering school** in the general ranking (L'Etudiant 2022)",
+                    'The **6th "small university" in the world** (Times Higher Education World University Ranking 2021)'
+                ]
+            },
+            ourje: [
+                "Telecom Etude is the Junior-Enterprise (JE) of Télécom Paris, **the leading digital school** in France, and offers its clients the expertise of several hundred students",
+                "Choosing our JE means above all working with a **responsive and available team**. You will develop your projects with competent, motivated students from Télécom Paris who have chosen to invest themselves in this mission."
+            ],
+            ieseg: [
+                "**IESEG Conseil Paris and Telecom Etude** are joining forces to offer comprehensive services by combining their engineering and management expertise. This collaboration makes it possible to offer innovative solutions tailored to the specific needs of companies, from assessing technical feasibility to implementing digital growth strategies",
+                "Thanks to this synergy, IESEG Conseil and Telecom Etude provide in-depth analyses and strategic recommendations, while developing tailor-made tools such as **chatbots, applications, web platforms or artificial intelligence models**.",
+                "This dual presentation combines the **consulting expertise** of IESEG Conseil with the **technological skills** of Telecom Etude, offering robust and customised solutions to support you in your digital transformation and growth."
+            ],
+            satisfaction:
+                "Since its creation, the CNJE has been working to promote the Junior-Entreprise brand so that it remains a **gage of quality**. To this end, it awards quality labels to deserving structures and sets up annual advisory audits. The CNJE provides the assurance that our administrators and project managers receive the appropriate training to offer our clients **formalism and efficiency**"
+        },
         contact: {
             title: "Contact us!",
             before: "You have a project in mind? You need more information about our services? Don't hesitate to contact us using the form below or by sending us an email at ",
