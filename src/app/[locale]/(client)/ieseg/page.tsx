@@ -1,16 +1,21 @@
 import React, { ReactNode } from "react";
+import { ArrowRight } from "lucide-react";
+
+import { Metadata } from "next";
+import Link from "next/link";
 import Image from "next/image";
+
+import { cn } from "@/lib/utils";
+import { FORM_DEST_EMAIL, IESEG_EMAIL } from "@/mail/consts";
+import { Locale } from "@/locales/config";
+
+import { Button } from "@/components/ui/button";
+import { AppearOnScroll } from "@/components/animations/scroll";
+import ContactForm from "@/components/meta-components/contact-form";
+
 import IcpGraph from "@/../public/images/icpgraph.png";
 import MIT from "@/../public/images/mit.jpg";
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
-import Link from "next/link";
-import FormElements from "./form";
-import { cn } from "@/lib/utils";
 import Logo from "@/../public/images/logo.webp";
-import { Metadata } from "next";
-import { AppearOnScroll } from "@/components/animations/scroll";
-import { Separator } from "@radix-ui/react-separator";
 
 export const metadata: Metadata = {
     title: "Offre commune | Telecom Etude & IESEG Conseil Paris",
@@ -24,9 +29,10 @@ const Paragraph = ({ title, children }: { title: string; children: ReactNode }) 
         <p className="text-lg">{children}</p>
     </div>
 );
+
 const section = "flex flex-col items-center justify-center mb-12 space-x-0 space-y-10 p-10";
 
-export default function HomePage() {
+export default function HomePage({ params: { locale } }: { params: { locale: Locale } }) {
     return (
         <div className="container mx-auto px-4 py-8">
             <header className="text-center mb-12">
@@ -112,7 +118,7 @@ export default function HomePage() {
                 <section className={cn(section, "space-y-0")}>
                     <div className="w-full sm:w-2/3">
                         <h2 className="text-2xl text-left w-full font-semibold mb-4">Contactez-nous !</h2>
-                        <FormElements />
+                        <ContactForm emails={[FORM_DEST_EMAIL, IESEG_EMAIL]} locale={locale} />
                     </div>
                 </section>
             </AppearOnScroll>

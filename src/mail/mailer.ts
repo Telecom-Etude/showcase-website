@@ -1,8 +1,36 @@
 "use server";
 
-import { sendEmail } from "@/mailer";
+import nodemailer from "nodemailer";
 
-export async function sendForm(values: { name: string; email: string; tel?: string; societe?: string; subject?: string; message: string }) {
+export async function sendEmail(dest_email: string[], subject: string, html: string) {
+    let transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+            user: process.env.SMTP_EMAIL,
+            pass: process.env.SMTP_PASSWORD
+        }
+    });
+
+    let mailOptions = {
+        from: process.env.SMTP_EMAIL,
+        to: dest_email,
+        subject,
+        html
+    };
+
+    await transporter.sendMail(mailOptions);
+}
+
+interface FormProps {
+    name: string;
+    email: string;
+    tel?: string;
+    societe?: string;
+    subject: string;
+    message: string;
+}
+
+export async function sendForm({ name, email, tel, societe, subject, message }: FormProps, emails: string[]) {
     const date = new Date();
     const formattedDate = `${date.toLocaleDateString("fr-FR", {
         day: "2-digit",
@@ -44,23 +72,23 @@ export async function sendForm(values: { name: string; email: string; tel?: stri
             </head>
             <body>
                 <div class="infos">
-                    <H1>${values.subject || values.societe || values.name}</H1>
+                    <H1>${subject || societe || name}</H1>
                     <table>
                         <tr>
                             <td>Nom</td>
-                            <td>${values.name}</td>
+                            <td>${name}</td>
                         </tr>
                         <tr>
                             <td>Société</td>
-                            <td>${values.societe}</td>
+                            <td>${societe}</td>
                         </tr>
                         <tr>
                             <td>Mail</td>
-                            <td><a href="mailto:${values.email}">${values.email}</td>
+                            <td><a href="mailto:${email}">${email}</td>
                         </tr>
                         <tr>
                             <td>Téléphone</td>
-                            <td><a href="tel:${values.tel}">${values.tel}</a></td>
+                            <td><a href="tel:${tel}">${tel}</a></td>
                         </tr>
                         <tr>
                             <td>Date</td>
@@ -70,12 +98,12 @@ export async function sendForm(values: { name: string; email: string; tel?: stri
                     </table>
                 </div>
                 <H2>Message</H2>
-                <div class="text">${values.message}</div>
+                <div class="text">${message}</div>
                 </div>
             </body>
         </html>`;
 
-    const subject = `[form contact site][${values.societe || values.name}] ${values.subject || ""}`;
+    const email_subject = `[Formulaire de contact TE][${societe || name}] ${subject}`;
 
-    await sendEmail(process.env.FORM_DEST_EMAIL?.split(";") || [], subject, html);
+    await sendEmail(emails, email_subject, html);
 }

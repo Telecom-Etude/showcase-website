@@ -8,11 +8,10 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
-import { sendForm } from "./execution";
-import { useState } from "react";
-import { Dictionary, getDictionary } from "@/locales/dictionaries";
+import { getDictionary } from "@/locales/dictionaries";
 import { createForm } from "@/db/form";
 import { Locale } from "@/locales/config";
+import { sendForm } from "@/mail/mailer";
 
 type Fields = "name" | "email" | "tel" | "societe" | "subject" | "message";
 const ListFields = ["name", "email", "tel", "societe", "subject", "message"];
@@ -23,7 +22,7 @@ interface FieldVocabItem {
     error?: string;
 }
 
-export default function FormElements({ locale }: { locale: Locale }) {
+export default function ContactForm({ locale, emails }: { locale: Locale; emails: string[] }) {
     const t = getDictionary(locale).pages.contact;
 
     const formFields = {
@@ -35,7 +34,7 @@ export default function FormElements({ locale }: { locale: Locale }) {
         }),
         tel: z.string().optional(),
         societe: z.string().optional(),
-        subject: z.string().optional(),
+        subject: z.string(),
         message: z.string().min(5, {
             message: t.form.message.error
         })
@@ -66,7 +65,7 @@ export default function FormElements({ locale }: { locale: Locale }) {
         const fields = formSchema.safeParse(values);
         if (fields.success) {
             createForm(values);
-            sendForm(values)
+            sendForm(values, emails)
                 .then(() => {
                     toast({
                         title: t.success.title,
