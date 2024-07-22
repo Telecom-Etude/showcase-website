@@ -41,7 +41,7 @@ export const frDictionary = {
         },
         sitemap: {
             title: "Plan du site",
-            whoarewe: "Qui sommes-nous ?",
+            whoarewe: "Qui sommes-nous\u00A0?",
             home: "Page d'accueil",
             about: "À propos",
             commitment: "Nos engagements",
@@ -59,6 +59,22 @@ export const frDictionary = {
         }
     },
     pages: {
+        team: {
+            title: "Notre équipe",
+            alt: {
+                before: "Photo de",
+                after: "de Telecom Etude"
+            },
+            board: {
+                title: "Le bureau",
+                members: {
+                    prez: {
+                        job: "Présidente",
+                        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus dolor sit amet felis ornare rhoncus. Pellentesque accumsan tincidunt iaculis. Cras posuere quam a mi accumsan, eu dapibus tellus commodo. Mauris aliquet tellus risus, at feugiat nunc pulvinar nec. Phasellus eu augue sit amet urna vestibulum tempor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ac euismod justo. Sed ultricies velit ut diam pulvinar fringilla. Ut maximus condimentum tincidunt. Nullam commodo magna in nisi sollicitudin tincidunt. Vestibulum viverra turpis ac tellus pulvinar, dictum eleifend massa consequat. Aenean arcu tellus, rhoncus in mollis quis, laoreet ac tortor. Nunc mollis velit at hendrerit euismod. In vel ex quam. Ut lacinia turpis vitae nisl sodales, ut bibendum elit consequat."
+                    }
+                }
+            }
+        },
         faq: {
             title: "Foire aux questions",
             text: {

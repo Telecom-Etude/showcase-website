@@ -36,6 +36,7 @@ export const ROUTES: { [key: string]: RouteProps } = {
     "/": {},
     "/about": {},
     "/blog": {},
+    "/team": {},
     "/contact": {},
     "/test": process.env.DEV_MODE ? {} : { code: 404 },
     "/form": {},
