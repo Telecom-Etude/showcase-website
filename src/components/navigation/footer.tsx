@@ -5,7 +5,7 @@ import { IconType } from "react-icons";
 import { Button } from "../ui/button";
 import { getDictionary } from "@/locales/dictionaries";
 import { Locale } from "@/locales/config";
-import { EmailContact } from "../telecom-etude/contact";
+import { BtnLink, EmailContact } from "../telecom-etude/contact";
 
 const Network = ({ href, Icon }: { href: string; Icon: IconType }) => (
     <Link href={href} className="p-1 m-0 rounded-full">
@@ -89,12 +89,10 @@ export const Mentions = () => (
         <div className="p-2 flex flex-col items-start space-y-2">
             <p>&copy;{new Date().getFullYear()} Telecom Etude</p>
             <EmailContact />
-            <Button variant="link" className="text-foreground px-0 py-0 text-left text-wrap" asChild>
-                <Link href="https://maps.app.goo.gl/etZHknTudKMuTjRZ9" className="text-base font-normal flex flex-col items-start" target="_blank">
-                    <p>19, place Marguerite Perey</p>
-                    <p>91120 Palaiseau</p>
-                </Link>
-            </Button>
+            <BtnLink href="https://maps.app.goo.gl/etZHknTudKMuTjRZ9" className="flex flex-col">
+                <p>19, place Marguerite Perey</p>
+                <p>91120 Palaiseau</p>
+            </BtnLink>
         </div>
     </div>
 );

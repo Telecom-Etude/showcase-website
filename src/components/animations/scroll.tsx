@@ -35,5 +35,5 @@ export const AppearOnScroll = ({ children, invisible = ["opacity-0", "translate-
             window.removeEventListener("scroll", reveal);
         };
     });
-    return <div className={cn("scroll-appear-layout-div relative transition-all duration-2000 ease-in-out", className, invisible.join(" "))}>{children}</div>;
+    return <div className={cn("scroll-appear-layout-div relative transition-all duration-1500 ease-in-out", className, invisible.join(" "))}>{children}</div>;
 };
