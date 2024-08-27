@@ -8,8 +8,6 @@ import { LocaleParams } from "@/locales/config";
 import { getDictionary } from "@/locales/dictionaries";
 import Google from "@/../public/icons/google.svg";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { nav } from "@/locales/routing";
 
 export default async function SignIn({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).navigation.auth.signin;
