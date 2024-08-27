@@ -34,7 +34,7 @@ export default function NewPostForm({ email }: { email: string }) {
         createBlog(email, values.title, values.locale)
             .then((id: number) => {
                 window.alert(id);
-                router.push(nav("fr", `/admin/blog/edit/${id}`));
+                router.push(nav("fr", `/edit-blog/${id}`));
             })
             .catch(() => {
                 toast({

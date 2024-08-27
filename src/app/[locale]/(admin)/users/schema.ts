@@ -1,4 +1,3 @@
-import { TELECOM_REGEX } from "@/consts";
 import { z } from "zod";
 
 export const userRolesSchema = z.object({

@@ -48,10 +48,10 @@ export const ROUTES: { [key: string]: RouteProps } = {
     "/partners": {},
     "/auth/signin": {},
     "/auth/signout": {},
-    "/admin/form-submission": { auth: checkAdminRights(r => r.formAdmin) },
-    "/admin/users": { auth: checkAdminRights(r => r.userAdmin) },
-    "/admin/blog/new": { auth: checkAdminRights(r => r.blogAuthor) },
-    "/admin/blog/validation": { auth: checkAdminRights(r => r.blogAdmin) }
+    "/form-submission": { auth: checkAdminRights(r => r.formAdmin) },
+    "/users": { auth: checkAdminRights(r => r.userAdmin) },
+    "/new-blog": { auth: checkAdminRights(r => r.blogAuthor) },
+    "/validate-blog": { auth: checkAdminRights(r => r.blogAdmin) }
 };
 
 const getCode = (req: NextAuthRequest, routeProps: RouteProps) => {
@@ -67,7 +67,7 @@ const getCode = (req: NextAuthRequest, routeProps: RouteProps) => {
 export const getAuthorisationCode = (req: NextAuthRequest, localelessPath: string): number => {
     if (localelessPath in ROUTES) {
         return getCode(req, ROUTES[localelessPath as keyof typeof ROUTES]);
-    } else if (localelessPath.startsWith("/admin/blog/edit/")) {
+    } else if (localelessPath.startsWith("/edit-blog/")) {
         return checkAdminRights(r => r.blogAuthor)(req);
     } else {
         return 404;

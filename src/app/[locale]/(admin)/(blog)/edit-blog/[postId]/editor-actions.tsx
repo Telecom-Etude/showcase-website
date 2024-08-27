@@ -10,6 +10,8 @@ import { renameLocaleBlog } from "@/db/blogs";
 import { useRouter } from "next/navigation";
 import type { Op } from "quill/core";
 import type { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import { MdLabel } from "react-icons/md";
+
 
 const Rename = ({ title, localeBlogId, router }: { title: string; localeBlogId: number; router: AppRouterInstance }) => (
     <Dialog>
@@ -52,8 +54,8 @@ const AddLabel = ({ title, localeBlogId, router }: { title: string; localeBlogId
         <DialogTrigger asChild>
             <Button variant="outline">
                 <span className="flex items-center space-x-2">
-                    <p>Renommer</p>
-                    <FaPencil />
+                    <p>Ajouter des labels</p>
+                    <MdLabel />
                 </span>
             </Button>
         </DialogTrigger>
@@ -120,18 +122,20 @@ const OpenSave = ({ saving }: { saving: boolean }) => (
 interface ActionProps {
     content: Op[];
     value: string;
-    toBeChanged: boolean;
     setToBeChanged: (_: boolean) => void;
     localeBlogId: number;
     title: string;
+    blogId: number,
 }
 
-export const Actions = ({ toBeChanged, setToBeChanged, content, value, localeBlogId, title }: ActionProps) => {
+export const Actions = ({ setToBeChanged, content, value, localeBlogId, title, blogId }: ActionProps) => {
     const router = useRouter();
     return (
         <div className="p-6 flex items-center justify-between w-full">
             <div className="flex items-center space-x-2">
-                <Button variant="outline" onClick={() => {}}>
+                <Button variant="outline" onClick={() => {
+
+                }}>
                     <span className="flex items-center space-x-2">
                         <p>Traduire</p>
                         <TfiWorld />
