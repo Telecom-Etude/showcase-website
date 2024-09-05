@@ -33,13 +33,13 @@ export default function Team({ params: { locale } }: LocaleParams) {
     return (
         <Block>
             <header>
-                <h1 className="text-4xl font-bold">{t.title}</h1>
+                <h1 className="font-bold">{t.title}</h1>
                 <p></p>
             </header>
             {DEPARTMENTS.map(({ id, members }, i) => (
                 <section key={i}>
                     <AppearOnScroll>
-                        <h2 className="text-3xl">{t[id].title}</h2>
+                        <h2 >{t[id].title}</h2>
                         <Department d_members={members} t_members={t[id].members} alt={t.alt} />
                     </AppearOnScroll>
                 </section>

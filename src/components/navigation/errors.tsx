@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { getDictionary } from "@/locales/dictionaries";
 import { nav } from "@/locales/routing";
 import { BirdBackground } from "../telecom-etude/bird-backgroud";
-import { H1 } from "../styles/titles";
+
 import { Locale } from "@/locales/config";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -51,7 +51,7 @@ export function ErrorPage({ code, locale, message }: { code: string; locale: Loc
         <BirdBackground>
             <Card className="bg-muted">
                 <CardHeader>
-                    <CardTitle className="text-3xl">{t.title}</CardTitle>
+                    <CardTitle >{t.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
                     {message ? (

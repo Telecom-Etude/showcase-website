@@ -1,40 +1,37 @@
 import TelecomParis from "@/../public/images/global/tp.jpeg";
 import GroupPhoto from "@/../public/images/global/group_photo.jpg";
 import Image from "next/image";
-import { H1 } from "@/components/styles/titles";
-import { LocaleParams } from "@/locales/config";
-import { auth } from "@/auth/auth";
-import TestPage from "./test";
 
-export default async function Home({ params }: { params: LocaleParams }) {
-    // const dictionary = await getDictionary(lang);
-    const session = await auth();
+import { LocaleParams } from "@/locales/config";
+import { getDictionary } from "@/locales/dictionaries";
+import { BirdLogo } from "@/components/telecom-etude/logos";
+import { BtnLink } from "@/components/telecom-etude/contact";
+import { nav } from "@/locales/routing";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+
+export default function Home({ params: { locale } }: LocaleParams) {
+    const t = getDictionary(locale).pages.home;
     return (
         <>
-            <H1>Telecom Etude</H1>
-            <p>Nous développons aujourd&apos;hui les technologies de demain.</p>
-            <p>{JSON.stringify(session)}</p>
-            <TestPage />
+            <div className="grid grid-cols-2">
+                <div className="max-h-[300px] flex justify-center">
+                    <BirdLogo />
+                </div>
 
-            {/* {dictionary.title} */}
-
-            {/* <Image src={TelecomParis} alt="Photo Telecom Paris" layout="fill" objectFit="cover" className="absolute h-dvh w-full top-0 z-10" />
-
-            <div className="overflow-auto z-20">
-                <div className="relative h-screen">
-                    <div className="flex lg:flex-row flex-col items-center h-full max-w-[2000px]">
-                        <div className="flex lg:w-1/3 flex-col items-center justify-center">
-                            <h1 className="text-4xl">Telecom Etude</h1>
-                            <p>La Junior-Entreprise du numérique</p>
-                        </div>
-                        <Image src={GroupPhoto} alt="Photo Mandat Telecom Etude" className="flex flex-2 items-center justify-center lg:w-2/3" />
+                <div className="flex flex-col items-center justify-center h-full space-y-2 p-6 text-center">
+                    <h1>
+                        Telecom Etude
+                    </h1>
+                    <h2>
+                        {t.subtitle}
+                    </h2>
+                    <div className="flex flex-col items-center space-y-2">
+                        <p>{t.contact.description}</p>
+                        <Button asChild><Link href={nav(locale, "/contact")}>{t.contact.button}</Link></Button>
                     </div>
                 </div>
-                <div className="h-[300px] border-2">À propos</div>
-                <div className="h-[300px] border-2">À propos</div>
-                <div className="h-[300px] border-2">À propos</div>
-                <div className="h-[300px] border-2">À propos</div>
-            </div> */}
+            </div>
         </>
     );
 }

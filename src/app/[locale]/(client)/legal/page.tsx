@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 import { LocaleParams } from "@/locales/config";
 import { getDictionary } from "@/locales/dictionaries";
-import { H1, H2, H3 } from "@/components/styles/titles";
+
 import { EmailContact } from "@/components/telecom-etude/contact";
 import { nav } from "@/locales/routing";
 
@@ -13,14 +13,14 @@ export default async function Legal({ params: { locale } }: LocaleParams) {
     const titleSyle = "text-center pt-10";
     return (
         <div className="p-8 pt-0 ">
-            <H1 className={titleSyle}>{t.title}</H1>
-            <H2 className={titleSyle}>{t.credits}</H2>
-            <H3 className={titleSyle}>{t.dev}</H3>
+            <h1 className={titleSyle}>{t.title}</h1>
+            <h2 className={titleSyle}>{t.credits}</h2>
+            <h3 className={titleSyle}>{t.dev}</h3>
             <PartText>
                 <p className="text-center">{t.madeBy}</p>
                 <p className="text-center">{t.loi.host}</p>
             </PartText>
-            <H2 className={titleSyle}>Telecom Etude</H2>
+            <h2 className={titleSyle}>Telecom Etude</h2>
             <PartText>
                 <p className="text-center">{t.loi1901}</p>
                 <p className="text-center">{t.siegesocial}</p>
@@ -31,7 +31,7 @@ export default async function Legal({ params: { locale } }: LocaleParams) {
                 <p className="text-center">{t.siret}</p>
                 <p className="text-center">{t.tva}</p>
             </PartText>
-            <H2 className={titleSyle}>RGPD</H2>
+            <h2 className={titleSyle}>RGPD</h2>
             <PartText>
                 <div className="text-center">{t.respoRGPD}</div>
                 <div className="text-center">
@@ -46,7 +46,7 @@ export default async function Legal({ params: { locale } }: LocaleParams) {
                     <>{t.loi.rgpd.after}</>
                 </p>
             </PartText>
-            <H2 className={titleSyle}>{t.hosting}</H2>
+            <h2 className={titleSyle}>{t.hosting}</h2>
             <PartText>
                 <div className="text-center">Rezel Hosting (Rezel)</div>
                 <div className="text-center">{t.rezelsiege}</div>

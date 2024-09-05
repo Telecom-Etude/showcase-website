@@ -15,7 +15,7 @@ export default function FAQ({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.faq;
     return (
         <div className="p-10 space-y-10">
-            <h1 className="text-4xl text-center">{t.title}</h1>
+            <h1 className="text-center">{t.title}</h1>
             <p className="text-center max-w-[1000px] m-auto">
                 {t.text.before}
                 <EmailContact underline /> {t.text.between}

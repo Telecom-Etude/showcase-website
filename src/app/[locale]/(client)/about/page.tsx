@@ -16,16 +16,17 @@ import { VariantLink } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Paragraphs } from "@/components/styles/texts";
 import { AppearOnScroll } from "@/components/animations/scroll";
+import { Block } from "@/components/styles/blocks";
 
 const Text = ({ title, children }: { title: string | ReactNode; children: ReactNode }) => (
     <section className="flex flex-col pb-10 justify-evenly h-full items-center space-y-4 text-lg">
-        <h2 className="text-3xl">{title}</h2>
+        <h2>{title}</h2>
         {children}
     </section>
 );
 
 const SideImage = ({ src, alt, className, ...props }: { src: StaticImageData; alt: string; className?: string }) => (
-    <Image src={src} alt={alt} className={cn("w-auto m-auto max-h-[300px] rounded-2xl", className)} {...props} />
+    <Image placeholder="blur" src={src} alt={alt} className={cn("w-auto m-auto max-h-[300px] rounded-2xl", className)} {...props} />
 );
 
 const TopLeft = ({ title, pars, right }: { title: string | ReactNode; pars: ReactNode; right: ReactNode }) => (
@@ -51,8 +52,8 @@ const TopRight = ({ title, pars, left }: { title: string | ReactNode; pars: Reac
 export default function About({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.about;
     return (
-        <>
-            <h1 className="text-4xl max-w-[800px] p-10 m-auto">
+        <Block full>
+            <h1 className="p-10">
                 <strong className="text-transparent bg-clip-text bg-gradient-to-r from-destructive to-primary">Telecom Etude</strong>
                 <p>{t.description}</p>
             </h1>
@@ -108,6 +109,6 @@ export default function About({ params: { locale } }: LocaleParams) {
                 title={t.titles.ieseg}
                 pars={<Paragraphs paragraphs={t.ieseg} />}
             />
-        </>
+        </Block>
     );
 }

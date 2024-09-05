@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 
 const Paragraph = ({ title, children }: { title: string; children: ReactNode }) => (
     <div className="sm:w-2/3 w-full">
-        <h2 className="text-2xl font-semibold mb-4">{title}</h2>
+        <h2 className="font-semibold mb-4">{title}</h2>
         <p className="text-lg">{children}</p>
     </div>
 );
@@ -36,7 +36,7 @@ export default function HomePage({ params: { locale } }: { params: { locale: Loc
     return (
         <div className="container mx-auto px-4 py-8">
             <header className="text-center mb-12">
-                <h1 className="text-4xl font-bold">Telecom Etude et IESEG Conseil Paris</h1>
+                <h1 className="font-bold">Telecom Etude et IESEG Conseil Paris</h1>
                 <p className="text-xl font-semibold mt-4 text-center">Un partenariat unique pour des solutions innovantes et efficaces</p>
             </header>
             <section className={section}>
@@ -46,7 +46,7 @@ export default function HomePage({ params: { locale } }: { params: { locale: Loc
                     disposition l&apos;expertise et le dynamisme de ses consultants juniors pour vous accompagner dans vos projets de conseil en stratégie,
                     organisation, marketing, finance et systèmes d&apos;information.
                 </Paragraph>
-                <Image className="xl:w-1/3 sm:w-2/3 w-full bg-[#151f2a]" src={Logo} alt="Graphique Telecom Etude IESEG Conseil Paris" />
+                <Image className="xl:w-1/3 sm:w-2/3 w-full bg-[#151f2a]" placeholder="blur" src={Logo} alt="Graphique Telecom Etude IESEG Conseil Paris" />
             </section>
             <AppearOnScroll>
                 <section className={section}>
@@ -61,7 +61,12 @@ export default function HomePage({ params: { locale } }: { params: { locale: Loc
                         Nous croyons que chaque projet a un potentiel unique. Faites le choix d&apos;une approche à double facette alliant expertise technique
                         et perspective commerciale pour explorer le potentiel de votre produit.
                     </Paragraph>
-                    <Image className="xl:w-1/3 sm:w-2/3 w-full" src={IcpGraph} alt="Graphique Complémentarité Telecom Etude IESEG Conseil Paris" />
+                    <Image
+                        placeholder="blur"
+                        className="xl:w-1/3 sm:w-2/3 w-full"
+                        src={IcpGraph}
+                        alt="Graphique Complémentarité Telecom Etude IESEG Conseil Paris"
+                    />
                 </section>
             </AppearOnScroll>
             {/* <Separator /> */}
@@ -117,7 +122,7 @@ export default function HomePage({ params: { locale } }: { params: { locale: Loc
             <AppearOnScroll>
                 <section className={cn(section, "space-y-0")}>
                     <div className="w-full sm:w-2/3">
-                        <h2 className="text-2xl text-left w-full font-semibold mb-4">Contactez-nous !</h2>
+                        <h2 className="text-left w-full font-semibold mb-4">Contactez-nous !</h2>
                         <ContactForm emails={[FORM_DEST_EMAIL, IESEG_EMAIL]} locale={locale} />
                     </div>
                 </section>

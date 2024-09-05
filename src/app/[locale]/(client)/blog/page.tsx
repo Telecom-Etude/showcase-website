@@ -7,7 +7,7 @@ import { useState } from "react";
 import { ManyComboBox } from "@/components/meta-components/combobox";
 import { LocaleParams } from "@/locales/config";
 import { getDictionary } from "@/locales/dictionaries";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppearOnScroll } from "@/components/animations/scroll";
 
 const keywords = [
@@ -61,7 +61,8 @@ const posts: PostPresentation[] = [
     {
         title: "Lorem Ipsum",
         description:
-            "Lorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam",
+            "Lorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sit amet, consectetur adipiscing elit...",
+
         authorFirstName: "Bob",
         authorLastName: "Bob",
         date: new Date("12/12/2021"),
@@ -70,7 +71,8 @@ const posts: PostPresentation[] = [
     {
         title: "Lorem Ipsum",
         description:
-            "Lorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam",
+            "Lorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sit amet, consectetur adipiscing elit...",
+
         authorFirstName: "Bob",
         authorLastName: "Bob",
         date: new Date("12/12/2021"),
@@ -79,7 +81,8 @@ const posts: PostPresentation[] = [
     {
         title: "Lorem Ipsum",
         description:
-            "Lorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam",
+            "Lorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sit amet, consectetur adipiscing elit...",
+
         authorFirstName: "Bob",
         authorLastName: "Bob",
         date: new Date("12/12/2021"),
@@ -88,7 +91,8 @@ const posts: PostPresentation[] = [
     {
         title: "Lorem Ipsum",
         description:
-            "Lorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam",
+            "Lorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sit amet, consectetur adipiscing elit...",
+
         authorFirstName: "Bob",
         authorLastName: "Bob",
         date: new Date("12/12/2021"),
@@ -97,7 +101,8 @@ const posts: PostPresentation[] = [
     {
         title: "Lorem Ipsum",
         description:
-            "Lorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam",
+            "Lorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sit amet, consectetur adipiscing elit...",
+
         authorFirstName: "Bob",
         authorLastName: "Bob",
         date: new Date("12/12/2021"),
@@ -106,7 +111,8 @@ const posts: PostPresentation[] = [
     {
         title: "Lorem Ipsum",
         description:
-            "Lorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam",
+            "Lorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sit amet, consectetur adipiscing elit...",
+
         authorFirstName: "Bob",
         authorLastName: "Bob",
         date: new Date("12/12/2021"),
@@ -115,7 +121,8 @@ const posts: PostPresentation[] = [
     {
         title: "Lorem Ipsum",
         description:
-            "Lorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam",
+            "Lorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sit amet, consectetur adipiscing elit...",
+
         authorFirstName: "Bob",
         authorLastName: "Bob",
         date: new Date("12/12/2021"),
@@ -124,7 +131,8 @@ const posts: PostPresentation[] = [
     {
         title: "Lorem Ipsum",
         description:
-            "Lorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam",
+            "Lorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sit amet, consectetur adipiscing elit...",
+
         authorFirstName: "Bob",
         authorLastName: "Bob",
         date: new Date("12/12/2021"),
@@ -133,7 +141,8 @@ const posts: PostPresentation[] = [
     {
         title: "Lorem Ipsum",
         description:
-            "Lorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam",
+            "Lorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sit amet, consectetur adipiscing elit...",
+
         authorFirstName: "Bob",
         authorLastName: "Bob",
         date: new Date("12/12/2021"),
@@ -142,7 +151,8 @@ const posts: PostPresentation[] = [
     {
         title: "Lorem Ipsum",
         description:
-            "Lorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam",
+            "Lorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sit amet, consectetur adipiscing elit...",
+
         authorFirstName: "Bob",
         authorLastName: "Bob",
         date: new Date("12/12/2021"),
@@ -151,7 +161,8 @@ const posts: PostPresentation[] = [
     {
         title: "Lorem Ipsum",
         description:
-            "Lorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam",
+            "Lorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sit amet, consectetur adipiscing elit...",
+
         authorFirstName: "Bob",
         authorLastName: "Bob",
         date: new Date("12/12/2021"),
@@ -162,7 +173,7 @@ const posts: PostPresentation[] = [
 const allLabelsInValue = (postLabels: string[], selectedLabels: string[]) =>
     selectedLabels.filter(label => postLabels.includes(label)).length === selectedLabels.length;
 
-export default function Blog({ params: { locale } }: LocaleParams) {
+export default function BlogPage({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages;
     const [value, setValue] = useState<string[]>([]);
     const addRemoveValue = (v: string) => {
@@ -172,9 +183,14 @@ export default function Blog({ params: { locale } }: LocaleParams) {
             setValue([...value, v]);
         }
     };
+    // return (
+    //     <div>
+    //         Hello World
+    //     </div>
+    // )
     return (
         <div className="flex flex-col items-center p-10 space-y-10">
-            <h1 className="text-4xl">Nos actualités</h1>
+            <h1>Nos actualités</h1>
             <div className="flex flex-col sm:flex-row justify-between w-full">
                 <div className="sm:hidden">
                     <ManyComboBox selectedKeys={value} addRemoveKey={addRemoveValue} items={vocab} />
@@ -203,19 +219,21 @@ export default function Blog({ params: { locale } }: LocaleParams) {
                                     <CardHeader>
                                         <CardTitle>{post.title}</CardTitle>
                                         <CardDescription>
-                                            {/* {post.labels.map((label, i) => (
-                                                <p key={i}>{vocab[label]}</p>
-                                            ))} */}
+                                            <div>
+                                                <p className="italic text-gray text-sm">
+                                                    Posté par {post.authorFirstName} {post.authorLastName} le {post.date.toLocaleDateString()}
+                                                </p>
+                                            </div>
+                                            <div className="flex space-x-2 pt-2">
+                                                {post.labels.map((label, i) => (
+                                                    <p key={i} className="bg-gray-300 rounded-full p-1 px-2 text-black">{vocab[label]}</p>
+                                                ))}
+                                            </div>
                                         </CardDescription>
                                     </CardHeader>
                                     <CardContent>
                                         <p>{post.description}</p>
                                     </CardContent>
-                                    <CardFooter>
-                                        <p>
-                                            Posté par {post.authorFirstName} {post.authorLastName} le {post.date.toLocaleDateString()}
-                                        </p>
-                                    </CardFooter>
                                 </Card>
                             </div>
                         </AppearOnScroll>

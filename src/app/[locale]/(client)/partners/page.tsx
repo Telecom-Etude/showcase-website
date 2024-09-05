@@ -50,7 +50,7 @@ export default function Partners({ params: { locale } }: LocaleParams) {
     return (
         <Block>
             <header className="w-full h-[300px] max-h-dvh flex flex-col items-center justify-center space-y-4">
-                <h1 className="text-4xl font-bold">Nos entreprises partenaires</h1>
+                <h1 className="font-bold">Nos entreprises partenaires</h1>
                 <p className="text-lg max-w-[500px] text-center">Telecom Etude a des entreprises par</p>
             </header>
             <div className="flex flex-col sm:flex-row">

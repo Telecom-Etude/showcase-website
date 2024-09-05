@@ -57,18 +57,18 @@ export default function Commitment({ params: { locale } }: LocaleParams) {
     return (
         <Block>
             <header className="w-full h-[400px] max-h-dvh flex flex-col items-center justify-center space-y-4">
-                <h1 className="text-4xl font-bold">Nos engagements</h1>
+                <h1 className="font-bold">Nos engagements</h1>
                 <p className="text-lg max-w-[500px] text-center">
                     Telecom Etude est une association qui permet aux étudiants de développer des compétences techniques et de la connaissance du monde
                     professionnel. Nous avons des engagements autant dans notre préstation que dans divers domaines, avec des chartes d&apos;engagement.
                 </p>
             </header>
             <section className="flex flex-col items-center  justify-center">
-                <h2 className="text-2xl font-bold">Engagements de préstation</h2>
+                <h2 className="font-bold">Engagements de préstation</h2>
                 <Cards cards={educationalEngagements} />
             </section>
             <section className="flex flex-col items-center justify-center">
-                <h2 className="text-2xl font-bold">Chartes d&apos;engagement</h2>
+                <h2 className="font-bold">Chartes d&apos;engagement</h2>
                 <Cards cards={associationEngagements} />
             </section>
         </Block>

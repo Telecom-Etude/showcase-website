@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+// import { useState } from "react";
 import Image, { StaticImageData } from "next/image";
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -17,7 +17,9 @@ interface PersonProps {
 }
 
 export function Person({ image, name, t, alt, linkedin }: PersonProps) {
-    const [isHovered, setHover] = useState(false);
+    // const [isHovered, setHover] = useState(false);
+    const isHovered = "false";
+    const setHover = (a: boolean) => {};
     return (
         <AppearOnScroll>
             <Card>
@@ -26,7 +28,8 @@ export function Person({ image, name, t, alt, linkedin }: PersonProps) {
                     <CardDescription>{t.job}</CardDescription>
                 </CardHeader>
                 <CardContent onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
-                    {isHovered ? <p>{t.text}</p> : <Image src={image} alt={alt.before + " " + name + ", " + t.job + " " + alt.after} />}
+                    <p>{t.text}</p>
+                    <Image placeholder="blur" src={image} alt={alt.before + " " + name + ", " + t.job + " " + alt.after} />
                 </CardContent>
                 <CardFooter></CardFooter>
             </Card>
