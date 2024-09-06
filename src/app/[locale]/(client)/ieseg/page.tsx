@@ -98,7 +98,7 @@ export default function HomePage({ params: { locale } }: { params: { locale: Loc
                     <div className="w-1/2 flex flex-col items-center space-y-6">
                         <p className="text-center">Vous voulez voir des exemples de mission que nous avons réaliser en partenariat avec l&apos;IESEG ? </p>
                         <Button variant="call2action">
-                            <Link href="/blog?s=missions+ieseg/" className="flex items-center space-x-2">
+                            <Link href="/post?s=missions+ieseg/" className="flex items-center space-x-2">
                                 <p>Voir les exemples</p>
                                 <ArrowRight />
                             </Link>

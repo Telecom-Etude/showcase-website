@@ -11,16 +11,14 @@ datasource db {
 }
 
 model User {
-  id               Int      @id @default(autoincrement())
-  email            String   @unique
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
-  blogAdmin        Boolean  @default(false)
-  userAdmin        Boolean  @default(false)
-  blogAuthor       Boolean  @default(false)
-  formAdmin        Boolean  @default(false)
-  createdBlogs     Blog[]   @relation("CreatedBlogs")
-  contributedBlogs Blog[]   @relation("ContributedBlogs")
+  id         Int     @id @default(autoincrement())
+  email      String  @unique
+  image      String?
+  blogAdmin  Boolean @default(false)
+  userAdmin  Boolean @default(false)
+  blogAuthor Boolean @default(false)
+  formAdmin  Boolean @default(false)
+  PostIds    Post[]
 }
 
 model ContactForm {
@@ -35,28 +33,36 @@ model ContactForm {
   done    Boolean  @default(false)
 }
 
-model Blog {
-  id           Int          @id @unique @default(autoincrement())
-  localeBlogs  LocaleBlog[]
-  author       User         @relation("CreatedBlogs", fields: [authorId], references: [id])
-  contributors User[]       @relation("ContributedBlogs")
-  authorId     Int
-  validated    Boolean      @default(false)
-  labels       Label[]
+model Post {
+  id          Int          @id @unique @default(autoincrement())
+  localePosts LocalePost[]
+  authors     User[]
+  validated   Boolean      @default(false)
+  labels      Label[]
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
 }
 
 model Label {
-  id     Int    @id @unique @default(autoincrement())
-  name   String
-  Blog   Blog?  @relation(fields: [blogId], references: [id])
-  blogId Int?
+  id           Int           @id @unique @default(autoincrement())
+  localeLabels LocaleLabel[]
+  Post         Post?         @relation(fields: [blogId], references: [id])
+  blogId       Int?
 }
 
-model LocaleBlog {
+model LocaleLabel {
+  id      Int    @id @unique @default(autoincrement())
+  name    String @unique
+  locale  String
+  Label   Label? @relation(fields: [labelId], references: [id])
+  labelId Int?
+}
+
+model LocalePost {
   id      Int    @id @unique @default(autoincrement())
   title   String @unique
   locale  String
-  Blog    Blog   @relation(fields: [blogId], references: [id])
+  Post    Post   @relation(fields: [blogId], references: [id])
   blogId  Int
   content String
 }

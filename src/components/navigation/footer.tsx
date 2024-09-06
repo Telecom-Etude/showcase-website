@@ -72,7 +72,7 @@ const SiteMap = ({ locale }: { locale: Locale }) => {
                     title={t.contact_information}
                     items={[
                         { name: t.contact_form, href: "/contact" },
-                        { name: t.blog, href: "/blog" },
+                        { name: t.post, href: "/post" },
                         { name: t.legal_mentions, href: "/legal-mentions" }
                     ]}
                 />

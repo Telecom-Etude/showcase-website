@@ -3,32 +3,42 @@ import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/componen
 import { db } from "@/lib/db";
 import { columns } from "./columns";
 import { ValidationBlogType } from "./schema";
-import { ClassNameValue } from "tailwind-merge";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import { ValidationPanel } from "./validation-panel";
 
+type X = {
+    id: number;
+    validated: boolean;
+    authorIds: number[]
+    localePosts: {
+        id: number;
+        locale: string;
+        blogId: number;
+    }[];
+}
+
 export default async function Validation() {
-    const blogs: ValidationBlogType[] = await db.blog.findMany({
-        where: {
-            validated: false
-        },
+    const posts: ValidationBlogType[] = (await db.post.findMany({
         include: {
-            localeBlogs: true
+            localePosts: true,
+            authors: true,
         }
-    });
+    })).map(({ id, validated, authors, localePosts }) => ({
+        id, validated, authorIds: authors.map(({ id }) => id),
+        localePosts: localePosts.map(({ id, locale, blogId }) => ({ id, locale, blogId }))
+
+    }));
     return (
         <div>
             <ResizablePanelGroup direction="horizontal">
                 <ResizablePanel>
                     <div className="p-10">
-                        <DataTable search_column="title" data={blogs} columns={columns} filters={[]} />
+                        <DataTable search_column="title" data={posts} columns={columns} filters={[]} />
                     </div>
                 </ResizablePanel>
                 <ResizableHandle />
                 <ResizablePanel>
                     <div className="p-10">
-                        <ValidationPanel blogs={blogs} />
+                        <ValidationPanel blogs={posts} />
                     </div>
                 </ResizablePanel>
             </ResizablePanelGroup>

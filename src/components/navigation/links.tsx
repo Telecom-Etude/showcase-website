@@ -46,8 +46,8 @@ export const Links = ({ className, locale, user, ...itemProps }: LinksProps) => 
             <NavItem {...itemProps} href={nav(locale, "/commitment")}>
                 {t.commitment}
             </NavItem>
-            <NavItem {...itemProps} href={nav(locale, "/blog")}>
-                {t.blog}
+            <NavItem {...itemProps} href={nav(locale, "/post")}>
+                {t.post}
             </NavItem>
             <NavItem {...itemProps} href={nav(locale, "/faq")}>
                 FAQ

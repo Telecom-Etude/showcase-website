@@ -61,6 +61,28 @@ export const enDictionary: Dictionary = {
         }
     },
     pages: {
+        blog: {
+            date: {
+                posted_by: "Posted by",
+                on: "on the"
+            }
+        },
+        team: {
+            title: "Our team",
+            alt: {
+                before: "Telecom Etude's",
+                after: "photo"
+            },
+            board: {
+                title: "The board",
+                members: {
+                    prez: {
+                        job: "President",
+                        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus dolor sit amet felis ornare rhoncus. Pellentesque accumsan tincidunt iaculis. Cras posuere quam a mi accumsan, eu dapibus tellus commodo. Mauris aliquet tellus risus, at feugiat nunc pulvinar nec. Phasellus eu augue sit amet urna vestibulum tempor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ac euismod justo. Sed ultricies velit ut diam pulvinar fringilla. Ut maximus condimentum tincidunt. Nullam commodo magna in nisi sollicitudin tincidunt. Vestibulum viverra turpis ac tellus pulvinar, dictum eleifend massa consequat. Aenean arcu tellus, rhoncus in mollis quis, laoreet ac tortor. Nunc mollis velit at hendrerit euismod. In vel ex quam. Ut lacinia turpis vitae nisl sodales, ut bibendum elit consequat."
+                    }
+                }
+            }
+        },
         faq: {
             title: "Frequently Asked Questions",
             text: {

@@ -9,6 +9,8 @@ import { LocaleParams } from "@/locales/config";
 import { getDictionary } from "@/locales/dictionaries";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppearOnScroll } from "@/components/animations/scroll";
+import { getValidatedBlogsFromLocale, NamedAuthor } from "@/db/blogs";
+import { User } from "@prisma/client";
 
 const keywords = [
     "events",
@@ -50,131 +52,33 @@ const vocab = {
 
 interface PostPresentation {
     title: string;
-    description: string;
-    authorFirstName: string;
-    authorLastName: string;
+    content: string;
+    authors: NamedAuthor[];
     date: Date;
-    labels: (keyof typeof vocab)[];
+    labels: string[];
 }
-
-const posts: PostPresentation[] = [
-    {
-        title: "Lorem Ipsum",
-        description:
-            "Lorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sit amet, consectetur adipiscing elit...",
-
-        authorFirstName: "Bob",
-        authorLastName: "Bob",
-        date: new Date("12/12/2021"),
-        labels: ["events"]
-    },
-    {
-        title: "Lorem Ipsum",
-        description:
-            "Lorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sit amet, consectetur adipiscing elit...",
-
-        authorFirstName: "Bob",
-        authorLastName: "Bob",
-        date: new Date("12/12/2021"),
-        labels: ["missions"]
-    },
-    {
-        title: "Lorem Ipsum",
-        description:
-            "Lorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sit amet, consectetur adipiscing elit...",
-
-        authorFirstName: "Bob",
-        authorLastName: "Bob",
-        date: new Date("12/12/2021"),
-        labels: ["data", "blockchain"]
-    },
-    {
-        title: "Lorem Ipsum",
-        description:
-            "Lorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sit amet, consectetur adipiscing elit...",
-
-        authorFirstName: "Bob",
-        authorLastName: "Bob",
-        date: new Date("12/12/2021"),
-        labels: ["cyber"]
-    },
-    {
-        title: "Lorem Ipsum",
-        description:
-            "Lorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sit amet, consectetur adipiscing elit...",
-
-        authorFirstName: "Bob",
-        authorLastName: "Bob",
-        date: new Date("12/12/2021"),
-        labels: ["ia"]
-    },
-    {
-        title: "Lorem Ipsum",
-        description:
-            "Lorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sit amet, consectetur adipiscing elit...",
-
-        authorFirstName: "Bob",
-        authorLastName: "Bob",
-        date: new Date("12/12/2021"),
-        labels: ["chatbot"]
-    },
-    {
-        title: "Lorem Ipsum",
-        description:
-            "Lorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sit amet, consectetur adipiscing elit...",
-
-        authorFirstName: "Bob",
-        authorLastName: "Bob",
-        date: new Date("12/12/2021"),
-        labels: ["cyber", "se"]
-    },
-    {
-        title: "Lorem Ipsum",
-        description:
-            "Lorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sit amet, consectetur adipiscing elit...",
-
-        authorFirstName: "Bob",
-        authorLastName: "Bob",
-        date: new Date("12/12/2021"),
-        labels: ["web"]
-    },
-    {
-        title: "Lorem Ipsum",
-        description:
-            "Lorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sit amet, consectetur adipiscing elit...",
-
-        authorFirstName: "Bob",
-        authorLastName: "Bob",
-        date: new Date("12/12/2021"),
-        labels: ["mobile"]
-    },
-    {
-        title: "Lorem Ipsum",
-        description:
-            "Lorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sit amet, consectetur adipiscing elit...",
-
-        authorFirstName: "Bob",
-        authorLastName: "Bob",
-        date: new Date("12/12/2021"),
-        labels: ["cloud", "devops"]
-    },
-    {
-        title: "Lorem Ipsum",
-        description:
-            "Lorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sit amet, consectetur adipiscing elit...",
-
-        authorFirstName: "Bob",
-        authorLastName: "Bob",
-        date: new Date("12/12/2021"),
-        labels: ["dev"]
-    }
-];
 
 const allLabelsInValue = (postLabels: string[], selectedLabels: string[]) =>
     selectedLabels.filter(label => postLabels.includes(label)).length === selectedLabels.length;
 
+
+const displayAuthors = (authors: NamedAuthor[]) => {
+    const last = authors.pop();
+    const beforelast = authors.pop();
+    if (!last) {
+        console.error("Error while fetching user data.")
+        return "";
+    } else if (!beforelast) {
+        return `${last.firstname} ${last.lastname}`;
+    } else {
+        const end = `${beforelast.firstname} ${beforelast.lastname} & ${last.firstname} ${last.lastname}`;
+        return authors.reduce((acc, author) => `${acc}${author.firstname} ${author.lastname}, `, '') + end;
+    }
+}
+
+
 export default function BlogPage({ params: { locale } }: LocaleParams) {
-    const t = getDictionary(locale).pages;
+    const t = getDictionary(locale).pages.blog;
     const [value, setValue] = useState<string[]>([]);
     const addRemoveValue = (v: string) => {
         if (value.includes(v)) {
@@ -183,11 +87,14 @@ export default function BlogPage({ params: { locale } }: LocaleParams) {
             setValue([...value, v]);
         }
     };
-    // return (
-    //     <div>
-    //         Hello World
-    //     </div>
-    // )
+
+    const [dbBlogs, setDbBlogs] = useState<PostPresentation[]>([])
+    const [loading, setLoading] = useState(true);
+
+    getValidatedBlogsFromLocale(locale).then((blogs) => {
+        setDbBlogs(blogs); setLoading(false)
+    });
+
     return (
         <div className="flex flex-col items-center p-10 space-y-10">
             <h1>Nos actualités</h1>
@@ -199,7 +106,7 @@ export default function BlogPage({ params: { locale } }: LocaleParams) {
                     {value.map((keyword, i) => (
                         <div key={i} className="flex items-center bg-muted px-2 m-2 space-x-2 rounded-full w-fit">
                             <span>{vocab[keyword as keyof typeof vocab]}</span>
-                            <Button variant="ghost" className="hover:bg-transparent p-0 m-0" onClick={() => addRemoveValue(keyword)}>
+                            <Button variant="ghost" onClick={() => addRemoveValue(keyword)} className="hover:bg-transparent p-0 m-0">
                                 <X className="h-4 w-4 p-0 m-0" />
                             </Button>
                         </div>
@@ -210,34 +117,36 @@ export default function BlogPage({ params: { locale } }: LocaleParams) {
                 </div>
             </div>
             <div className="grid xl:grid-cols-3 md:grid-cols-2 gap-6">
-                {posts
-                    .filter(post => allLabelsInValue(post.labels, value))
-                    .map((post, i) => (
-                        <AppearOnScroll key={i} className="h-full">
-                            <div className="w-[300px] shadow-lg bg-gradient-to-tl from-primary to-destructive p-[1px] rounded-[10px]">
-                                <Card className="rounded-[9px] border-0 h-full">
-                                    <CardHeader>
-                                        <CardTitle>{post.title}</CardTitle>
-                                        <CardDescription>
-                                            <div>
-                                                <p className="italic text-gray text-sm">
-                                                    Posté par {post.authorFirstName} {post.authorLastName} le {post.date.toLocaleDateString()}
-                                                </p>
-                                            </div>
-                                            <div className="flex space-x-2 pt-2">
-                                                {post.labels.map((label, i) => (
-                                                    <p key={i} className="bg-gray-300 rounded-full p-1 px-2 text-black">{vocab[label]}</p>
-                                                ))}
-                                            </div>
-                                        </CardDescription>
-                                    </CardHeader>
-                                    <CardContent>
-                                        <p>{post.description}</p>
-                                    </CardContent>
-                                </Card>
-                            </div>
-                        </AppearOnScroll>
-                    ))}
+                {loading ? (<p>Loading</p>) :
+                    dbBlogs
+                        .filter(post => allLabelsInValue(post.labels, value))
+                        .map((post, i) => (
+                            <AppearOnScroll key={i} className="h-full">
+                                <div className="w-[300px] shadow-lg bg-gradient-to-tl from-primary to-destructive p-[1px] rounded-[10px]">
+                                    <Card className="rounded-[9px] border-0 h-full">
+                                        <CardHeader>
+                                            <CardTitle>{post.title}</CardTitle>
+                                            <CardDescription>
+                                                <div>
+                                                    <p className="italic text-gray text-sm">
+                                                        {t.date.posted_by + " " + displayAuthors(post.authors) + " " + t.date.on + " " + post.date.toLocaleDateString()}
+                                                    </p>
+                                                </div>
+                                                <div className="flex space-x-2 pt-2">
+                                                    {post.labels.map((label, i) => (
+                                                        <p key={i} className="bg-gray-300 rounded-full p-1 px-2 text-black">{label}</p>
+                                                    ))}
+                                                </div>
+                                            </CardDescription>
+                                        </CardHeader>
+                                        <CardContent>
+                                            <p>{post.content}</p>
+                                        </CardContent>
+                                    </Card>
+                                </div>
+                            </AppearOnScroll>
+                        ))}
+
             </div>
         </div>
     );
