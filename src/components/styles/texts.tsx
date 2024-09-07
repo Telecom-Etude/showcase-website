@@ -4,7 +4,7 @@ import remarkGfm from "remark-gfm";
 import { cn } from "@/lib/utils";
 
 interface ParagraphsProps {
-    paragraphs: string[];
+    paragraphs: readonly string[];
     VariableLayout?: ElementType;
     className?: string;
     md?: boolean;

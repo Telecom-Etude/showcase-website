@@ -4,11 +4,10 @@ import { BtnLink, EmailContact } from "@/components/telecom-etude/contact";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { LocaleParams } from "@/locales/config";
 import { getDictionary } from "@/locales/dictionaries";
-import Link from "next/link";
 
 interface FaqItem {
     question: string;
-    answer: string[];
+    answer: readonly string[];
 }
 
 export default function FAQ({ params: { locale } }: LocaleParams) {
