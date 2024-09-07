@@ -14,8 +14,10 @@ export const createBlog = async (authorEmail: string, title: string, locale: Loc
         }
         const blog = await db.post.create({
             data: {
-                authorId: author?.id,
-                localeBlogs: {
+                authors: {
+                    connect: [{ id: author.id }]
+                },
+                localePosts: {
                     create: [
                         {
                             title,
@@ -63,9 +65,9 @@ export const getLocaleBlog = async (blogId: number, locale: Locale) => {
         console.log("blogId = ", blogId, "locale = ", locale);
         const blog = await db.post.findUnique({
             where: { id: blogId },
-            select: { localeBlogs: { where: { locale } } }
+            select: { localePosts: { where: { locale } } }
         });
-        return blog!.localeBlogs[0];
+        return blog!.localePosts[0];
     } catch (e) {
         console.error("[getLocaleBlogId] ", e);
         throw new Error();
@@ -93,12 +95,12 @@ export const getValidatedBlogsFromLocale = async (
 ): Promise<{ authors: { firstname: string; lastname: string }[]; content: string; title: string; date: Date; labels: string[] }[]> => {
     try {
         const blogs = (await db.post.findMany({
-            include: { authors: true, localeBlogs: true, labels: true }
+            include: { authors: true, localePosts: true, labels: true }
         }))!.filter(blog => blog.validated);
         return await Promise.all(
-            blogs.map(async ({ localeBlogs, labels, authors, createdAt }) => {
+            blogs.map(async ({ localePosts, labels, authors, createdAt }) => {
                 return {
-                    ...localeBlogs.find(localeBlog => localeBlog.locale === locale)!,
+                    ...localePosts.find(localeBlog => localeBlog.locale === locale)!,
                     authors: authors.map(author => getUserName(author)),
                     labels: await getLabelNames(labels, locale),
                     date: createdAt
@@ -134,8 +136,8 @@ export const renameLocaleBlog = async (localeBlogId: number, title: string) => {
 
 export const getLocaleIdsFromBlog = async (blogId: number) => {
     try {
-        const blog = await db.post.findUnique({ where: { id: blogId }, include: { localeBlogs: true } });
-        return blog?.localeBlogs;
+        const blog = await db.post.findUnique({ where: { id: blogId }, include: { localePosts: true } });
+        return blog?.localePosts;
     } catch (e) {
         console.error("[getLocaleIdsFromBlog]", e);
     }

@@ -65,20 +65,20 @@ export const frDictionary = {
                 on: "le"
             }
         },
-        // home: {
-        //     subtitle: "Faire confiance à Telecom Etude, c'est faire appel dès aujourd'hui aux inventeurs des technologies de demain",
-        //     alt: "Photo du mandat de Telecom Etude",
+        home: {
+            subtitle: "Faire confiance à Telecom Etude, c'est faire appel dès aujourd'hui aux inventeurs des technologies de demain",
+            alt: "Photo du mandat de Telecom Etude",
 
-        //     first: [
-        //         "Junior-Entreprise de Télécom Paris, la première école du nuémrique en France, Telecom Etude est munie de plus de 40 ans d'expériences et d'une expertise dans les technologies du numérique.",
-        //         "Guider par nos valeurs phrases - exceller, valoriser, responsabilité - nous proposons un service de quailité, avec plus de 97% de nos clients satisfaits."
-        //     ],
-        //     contact: {
-        //         description: "Prenez contact avec nous pour discuter de votre project ! Vous proposez, nous réalisons !",
-        //         button: "Démarrer un projet"
-        //     },
-        //     cnje: "Les Junior-Entreprises sont des associations pédagogiques de conseil de loi 1901 ayant pour objet social la montée en compétences des étudiants à travers la réalisation de prestations de service pour des professionnels."
-        // },
+            first: [
+                "Junior-Entreprise de Télécom Paris, la première école du nuémrique en France, Telecom Etude est munie de plus de 40 ans d'expériences et d'une expertise dans les technologies du numérique.",
+                "Guider par nos valeurs phrases - exceller, valoriser, responsabilité - nous proposons un service de quailité, avec plus de 97% de nos clients satisfaits."
+            ],
+            contact: {
+                description: "Prenez contact avec nous pour discuter de votre project ! Vous proposez, nous réalisons !",
+                button: "Démarrer un projet"
+            },
+            cnje: "Les Junior-Entreprises sont des associations pédagogiques de conseil de loi 1901 ayant pour objet social la montée en compétences des étudiants à travers la réalisation de prestations de service pour des professionnels."
+        },
         team: {
             title: "Notre équipe",
             alt: {

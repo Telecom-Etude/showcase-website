@@ -33,6 +33,10 @@ export const getUserName = (user: User) => {
     let split = user.email.split("@")[0].split(".");
     return { firstname: capitalize(split[0]), lastname: capitalize(split[0]) };
 };
+export const getShortName = (user: User) => {
+    let split = user.email.split("@")[0].split(".");
+    return capitalize(split[0]) + " " + split[1].charAt(0);
+};
 
 ////////////// UPDATE  ///////////////////
 

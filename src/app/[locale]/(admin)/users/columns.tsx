@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogFooter, DialogClose, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { deleteUser, makeBlogAdmin, makeBlogAuthor, makeFormAdmin, makeUserAdmin } from "@/db/users";
+import { deleteUser, getShortName, makeBlogAdmin, makeBlogAuthor, makeFormAdmin, makeUserAdmin } from "@/db/users";
 import { DataTableColumnHeader } from "@/components/meta-components/table/data-table-column-header";
 import { ColumnDef, Row } from "@tanstack/react-table";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -80,7 +80,7 @@ export const columns: ColumnDef<UserRolesType>[] = [
         cell: ({ row }) => {
             return (
                 <div className="flex space-x-2">
-                    <span className="max-w-[500px] truncate font-medium">{row.getValue("email")}</span>
+                    <span className="max-w-[500px] truncate font-medium">{getShortName(row.getValue("email"))}</span>
                 </div>
             );
         }

@@ -4,10 +4,11 @@ import { UserRolesType } from "./schema";
 import { PrismaClient } from "@prisma/client";
 
 import { DataTable } from "@/components/meta-components/table/data-table";
+import { getShortName } from "@/db/users";
 
 export default async function Users() {
     const prisma = new PrismaClient();
-    const users: UserRolesType[] = await prisma.user.findMany();
+    const users: UserRolesType[] = (await prisma.user.findMany());
 
     return (
         <div className="w-full min-h-screen">

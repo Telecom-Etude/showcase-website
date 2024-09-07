@@ -61,6 +61,20 @@ export const enDictionary: Dictionary = {
         }
     },
     pages: {
+        home: {
+            subtitle: "When you put your trust in Telecom Etude, you are calling on the inventors of tomorrow's technologies today",
+            alt: "Photo of Telecom Etude's mandate",
+            first: [
+                "Junior-Enterprise of Télécom Paris, the first digital school in France, Telecom Etude has more than 40 years of experience and expertise in digital technologies",
+                "Guided by our core values - excel, value, responsibility - we offer a quality service, with over 97% of our clients satisfied."
+            ],
+            contact: {
+                description: "Contact us to discuss your project! You propose, we realise!",
+                button: "Start a project"
+            },
+            cnje: "Junior-Enterprises are educational consultancy associations governed by the French law of 1901. Their social purpose is to increase students' skills by providing services to professionals."
+        },
+
         blog: {
             date: {
                 posted_by: "Posted by",
