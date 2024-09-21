@@ -14,7 +14,11 @@ export default function Home({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.home;
     return (
         <>
-            <div className="grid grid-cols-2">
+            <div className="border-8 h-full w-full items-center flex justify-center">
+                <h1>Telecom Etude</h1>
+            </div>
+            {/* <div className="grid grid-cols-2">
+
                 <div className="max-h-[300px] flex justify-center">
                     <BirdLogo />
                 </div>
@@ -31,7 +35,7 @@ export default function Home({ params: { locale } }: LocaleParams) {
                         <Button asChild><Link href={nav(locale, "/contact")}>{t.contact.button}</Link></Button>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </>
     );
 }
