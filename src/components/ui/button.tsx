@@ -5,18 +5,18 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
-const buttonVariants = cva(
+export const buttonVariants = cva(
     "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
     {
         variants: {
             variant: {
-                default: "bg-gradient-to-br from-primary to-destructive text-primary-foreground hover:bg-primary/90",
+                default: "call2action text-primary-foreground hover:bg-primary/90",
                 destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
                 outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
                 secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
                 ghost: "hover:bg-accent hover:text-accent-foreground",
                 link: "text-primary underline-offset-4 hover:underline",
-                call2action: "font-medium flex flex-col justify-center text-white rounded-full call2action min-w-[150px]"
+                call2action: "font-medium flex flex-col justify-center text-primary-foreground rounded-full call2action min-w-[150px]"
             },
             size: {
                 default: "h-10 px-4 py-2",
@@ -36,26 +36,22 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
     asChild?: boolean;
 }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({ className, variant, size, asChild = false, ...props }, ref) => {
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({ className, variant, size, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "button";
     return <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />;
 });
 Button.displayName = "Button";
 
-export { Button, buttonVariants };
-
-export const VariantLink = ({
-    className,
-    variant,
-    href,
-    children
-}: {
+interface VariantLinkProps {
     className?: string;
     variant: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link" | "call2action" | null | undefined;
     href: string;
     children: React.ReactNode;
-}) => (
-    <Button variant={variant} asChild>
+    btnCn?: string;
+}
+
+export const VariantLink = ({ className, btnCn, variant, href, children }: VariantLinkProps) => (
+    <Button variant={variant} className={btnCn} asChild>
         <Link href={href}>
             <span className={className}>{children}</span>
         </Link>

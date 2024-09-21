@@ -1,5 +1,5 @@
 import { FaArrowRight } from "react-icons/fa";
-import { Button } from "../ui/button";
+import { Button, VariantLink } from "../ui/button";
 import Link from "next/link";
 import { ReactNode } from "react";
 import { getDictionary } from "@/locales/dictionaries";
@@ -7,7 +7,7 @@ import { Locale } from "@/locales/config";
 import { User } from "next-auth";
 import { nav } from "@/locales/routing";
 
-interface NavItemProps {
+interface VariantLinkProps {
     onClick?: () => void;
     children: ReactNode | string;
     buttonStyle?: string;
@@ -16,20 +16,12 @@ interface NavItemProps {
     variant?: "ghost" | "default";
 }
 
-const NavItem = ({ onClick, children, buttonStyle, linkStyle, href, variant = "ghost" }: NavItemProps) => (
-    <Button asChild variant={variant} className={buttonStyle} onClick={onClick ? () => onClick() : undefined}>
-        <Link href={href} className={linkStyle}>
-            {children}
-        </Link>
-    </Button>
-);
-
 interface LinksProps {
     className?: string;
     locale: Locale;
     user?: User;
     onClick?: () => void;
-    buttonStyle?: string;
+    btnCn?: string;
 }
 
 export const Links = ({ className, locale, user, ...itemProps }: LinksProps) => {
@@ -37,34 +29,34 @@ export const Links = ({ className, locale, user, ...itemProps }: LinksProps) => 
 
     return (
         <nav className={className}>
-            <NavItem {...itemProps} href={nav(locale, "/about")}>
+            <VariantLink {...itemProps} variant="ghost" href={nav(locale, "/about")}>
                 {t.about}
-            </NavItem>
-            <NavItem {...itemProps} href={nav(locale, "/offer")}>
+            </VariantLink>
+            <VariantLink {...itemProps} variant="ghost" href={nav(locale, "/offer")}>
                 {t.offer}
-            </NavItem>
-            <NavItem {...itemProps} href={nav(locale, "/commitment")}>
+            </VariantLink>
+            <VariantLink {...itemProps} variant="ghost" href={nav(locale, "/commitment")}>
                 {t.commitment}
-            </NavItem>
-            <NavItem {...itemProps} href={nav(locale, "/post")}>
+            </VariantLink>
+            <VariantLink {...itemProps} variant="ghost" href={nav(locale, "/post")}>
                 {t.blog}
-            </NavItem>
-            <NavItem {...itemProps} href={nav(locale, "/faq")}>
+            </VariantLink>
+            <VariantLink {...itemProps} variant="ghost" href={nav(locale, "/faq")}>
                 FAQ
-            </NavItem>
+            </VariantLink>
             {user === undefined ? (
-                <NavItem {...itemProps} href={nav(locale, "/auth/signin")}>
+                <VariantLink {...itemProps} variant="ghost" href={nav(locale, "/auth/signin")}>
                     {t.login}
-                </NavItem>
+                </VariantLink>
             ) : (
-                <NavItem {...itemProps} href={nav(locale, "/auth/signout")}>
+                <VariantLink {...itemProps} variant="ghost" href={nav(locale, "/auth/signout")}>
                     {t.logout}
-                </NavItem>
+                </VariantLink>
             )}
-            <NavItem {...itemProps} href={nav(locale, "/contact")} linkStyle="flex items-center space-x-2" variant="default">
+            <VariantLink {...itemProps} href={nav(locale, "/contact")} btnCn="group rounded-none" className="flex items-center space-x-2" variant="default">
                 <p>Contact</p>
-                <FaArrowRight />
-            </NavItem>
+                <FaArrowRight className="group-hover:animate-bounce-x" />
+            </VariantLink>
         </nav>
     );
 };
