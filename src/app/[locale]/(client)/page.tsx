@@ -14,8 +14,10 @@ export default function Home({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.home;
     return (
         <>
-            <div className="border-8 h-full w-full items-center flex justify-center">
-                <h1>Telecom Etude</h1>
+            <div className="p-10 space-y-2">
+                <h1 className="font-semibold text-center">Telecom Etude</h1>
+                <p className="text-center">La Junior Entreprise du numérique,
+                des nouvelles technologies et de la data</p>
             </div>
             {/* <div className="grid grid-cols-2">
 

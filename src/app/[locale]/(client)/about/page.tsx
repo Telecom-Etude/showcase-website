@@ -15,8 +15,8 @@ import { getDictionary } from "@/locales/dictionaries";
 import { VariantLink } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Paragraphs } from "@/components/styles/texts";
-import { AppearOnScroll } from "@/components/animations/scroll";
 import { Block } from "@/components/styles/blocks";
+import { nav } from "@/locales/routing";
 
 const Text = ({ title, children }: { title: string | ReactNode; children: ReactNode }) => (
     <section className="flex flex-col pb-10 justify-evenly h-full items-center space-y-4 text-lg">
@@ -31,21 +31,21 @@ const SideImage = ({ src, alt, className, ...props }: { src: StaticImageData; al
 
 const TopLeft = ({ title, pars, right }: { title: string | ReactNode; pars: ReactNode; right: ReactNode }) => (
     <div className="flex flex-col justify-center items-center xl:flex-row p-10 xl:space-x-10 xl:space-y-0 space-y-10 max-w-[800px] xl:max-w-[2000px] m-auto">
-        <AppearOnScroll className="xl:w-1/2">
+        <div className="xl:w-1/2">
             <Text title={title}>{pars}</Text>
-        </AppearOnScroll>
-        <AppearOnScroll className="xl:w-1/2">{right} </AppearOnScroll>
+        </div>
+        <div className="xl:w-1/2">{right}</div>
     </div>
 );
 const TopRight = ({ title, pars, left }: { title: string | ReactNode; pars: ReactNode; left: ReactNode }) => (
     <div className="flex flex-col justify-center items-center xl:flex-row p-10 xl:space-x-10 xl:space-y-0 space-y-10 max-w-[800px] xl:max-w-[2000px] m-auto">
-        <AppearOnScroll className="xl:hidden">
+        <div className="xl:hidden">
             <Text title={title}>{pars}</Text>
-        </AppearOnScroll>
-        <AppearOnScroll className="xl:w-1/2">{left} </AppearOnScroll>
-        <AppearOnScroll className="xl:block hidden w-1/2">
+        </div>
+        <div className="xl:w-1/2">{left}</div>
+        <div className="xl:block hidden w-1/2">
             <Text title={title}>{pars}</Text>
-        </AppearOnScroll>
+        </div>
     </div>
 );
 
@@ -100,7 +100,7 @@ export default function About({ params: { locale } }: LocaleParams) {
                 right={
                     <div className="flex flex-col space-y-10 items-center justify-between">
                         <SideImage src={ICP} alt="Logo IESEG Conseil Paris" className="bg-[#151f2a]" />
-                        <VariantLink variant="call2action" href="/ieseg" className="flex items-center space-x-2 text-xl p-2">
+                        <VariantLink variant="call2action" href={nav(locale, "/ieseg")} className="flex items-center space-x-2 text-xl p-2">
                             <p>{t.moreInfo}</p>
                             <ArrowRight />
                         </VariantLink>

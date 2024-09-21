@@ -45,6 +45,7 @@
         "react-markdown": "^9.0.1",
         "react-resizable-panels": "^2.1.2",
         "remark-gfm": "^4.0.0",
+        "sass": "^1.79.3",
         "sharp": "^0.33.5",
         "tailwind-merge": "^2.5.2",
         "tailwindcss-animate": "^1.0.7",

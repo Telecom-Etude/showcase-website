@@ -10,7 +10,7 @@ import { FORM_DEST_EMAIL, IESEG_EMAIL } from "@/mail/consts";
 import { Locale } from "@/locales/config";
 
 import { Button } from "@/components/ui/button";
-import { AppearOnScroll } from "@/components/animations/scroll";
+import { div } from "@/components/animations/scroll";
 import ContactForm from "@/components/meta-components/contact-form";
 
 import IcpGraph from "@/../public/images/icpgraph.png";
@@ -48,7 +48,7 @@ export default function HomePage({ params: { locale } }: { params: { locale: Loc
                 </Paragraph>
                 <Image className="xl:w-1/3 sm:w-2/3 w-full bg-[#151f2a]" placeholder="blur" src={Logo} alt="Graphique Telecom Etude IESEG Conseil Paris" />
             </section>
-            <AppearOnScroll>
+            <div>
                 <section className={section}>
                     <Paragraph title="Expertise Complémentaire">
                         En combinant l&apos;expertise technique de Telecom Etude et l&apos;expertise commerciale de IESEG Conseil Paris, nous offrons une
@@ -68,9 +68,9 @@ export default function HomePage({ params: { locale } }: { params: { locale: Loc
                         alt="Graphique Complémentarité Telecom Etude IESEG Conseil Paris"
                     />
                 </section>
-            </AppearOnScroll>
+            </div>
             {/* <Separator /> */}
-            <AppearOnScroll>
+            <div>
                 <section className={section}>
                     <Paragraph title="Solutions Innovantes">
                         Nous utilisons les dernières technologies et méthodes de data science pour analyser le marché et améliorer la visibilité en ligne de vos
@@ -83,8 +83,8 @@ export default function HomePage({ params: { locale } }: { params: { locale: Loc
                     </Paragraph>
                     <Image className="xl:w-1/3 sm:w-2/3 w-full" src={MIT} alt="MIT Super Chip" />
                 </section>
-            </AppearOnScroll>
-            <AppearOnScroll>
+            </div>
+            <div>
                 <section className={section}>
                     <Paragraph title="Approche Personnalisée">
                         Chaque projet est unique. Nous adaptons nos services à vos besoins spécifiques, que ce soit pour évaluer la faisabilité d&apos;un
@@ -105,8 +105,8 @@ export default function HomePage({ params: { locale } }: { params: { locale: Loc
                         </Button>
                     </div>
                 </section>
-            </AppearOnScroll>
-            <AppearOnScroll>
+            </div>
+            <div>
                 <section className={section}>
                     <Paragraph title="Gain de Temps et d'Efficacité">
                         En travaillant main dans la main, nous offrons un processus intégré qui vous permet de gagner du temps et de l&apos;efficacité. Vous
@@ -118,15 +118,15 @@ export default function HomePage({ params: { locale } }: { params: { locale: Loc
                         </strong>
                     </Paragraph>
                 </section>
-            </AppearOnScroll>
-            <AppearOnScroll>
+            </div>
+            <div>
                 <section className={cn(section, "space-y-0")}>
                     <div className="w-full sm:w-2/3">
                         <h2 className="text-left w-full font-semibold mb-4">Contactez-nous !</h2>
                         <ContactForm emails={[FORM_DEST_EMAIL, IESEG_EMAIL]} locale={locale} />
                     </div>
                 </section>
-            </AppearOnScroll>
+            </div>
         </div>
     );
 }

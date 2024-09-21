@@ -6,17 +6,29 @@ html {
     font-size: 16px;
 }
 
+
+
 @layer base {
+    h1 {
+        @apply text-3xl;
+    }
+    h2 {
+        @apply text-2xl;
+    }
+    h3 {
+        @apply text-xl;
+    }
+
     :root {
         --je-orange: hsl(24 98% 60%);
         --je-red: hsl(357 73% 55%);
-
+        
         --background: white;
         --foreground: black;
-
+        
         --card: white;
         --card-foreground: hsl(0 0% 3.9%);
-
+        
         --popover: white;
         --popover-foreground: hsl(0 0% 3.9%);
 

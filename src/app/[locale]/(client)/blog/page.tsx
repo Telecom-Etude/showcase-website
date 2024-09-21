@@ -3,12 +3,12 @@
 import { X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ManyComboBox } from "@/components/meta-components/combobox";
 import { LocaleParams } from "@/locales/config";
 import { getDictionary } from "@/locales/dictionaries";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { AppearOnScroll } from "@/components/animations/scroll";
+import { div } from "@/components/animations/scroll";
 import { getValidatedBlogsFromLocale, NamedAuthor } from "@/db/blogs";
 import { User } from "@prisma/client";
 
@@ -61,21 +61,19 @@ interface PostPresentation {
 const allLabelsInValue = (postLabels: string[], selectedLabels: string[]) =>
     selectedLabels.filter(label => postLabels.includes(label)).length === selectedLabels.length;
 
-
 const displayAuthors = (authors: NamedAuthor[]) => {
     const last = authors.pop();
     const beforelast = authors.pop();
     if (!last) {
-        console.error("Error while fetching user data.")
+        console.error("Error while fetching user data.");
         return "";
     } else if (!beforelast) {
         return `${last.firstname} ${last.lastname}`;
     } else {
         const end = `${beforelast.firstname} ${beforelast.lastname} & ${last.firstname} ${last.lastname}`;
-        return authors.reduce((acc, author) => `${acc}${author.firstname} ${author.lastname}, `, '') + end;
+        return authors.reduce((acc, author) => `${acc}${author.firstname} ${author.lastname}, `, "") + end;
     }
-}
-
+};
 
 export default function BlogPage({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.blog;
@@ -88,12 +86,15 @@ export default function BlogPage({ params: { locale } }: LocaleParams) {
         }
     };
 
-    const [dbBlogs, setDbBlogs] = useState<PostPresentation[]>([])
+    const [dbBlogs, setDbBlogs] = useState<PostPresentation[]>([]);
     const [loading, setLoading] = useState(true);
 
-    getValidatedBlogsFromLocale(locale).then((blogs) => {
-        setDbBlogs(blogs); setLoading(false)
-    });
+    useEffect(() => {
+        getValidatedBlogsFromLocale(locale).then(blogs => {
+            setDbBlogs(blogs);
+            setLoading(false);
+        });
+    }, [locale]);
 
     return (
         <div className="flex flex-col items-center p-10 space-y-10">
@@ -117,11 +118,15 @@ export default function BlogPage({ params: { locale } }: LocaleParams) {
                 </div>
             </div>
             <div className="grid xl:grid-cols-3 md:grid-cols-2 gap-6">
-                {loading ? (<p>Loading</p>) :
+                {loading ? (
+                    <p>Loading</p>
+                ) : dbBlogs.length == 0 ? (
+                    <p>No blogs found.</p>
+                ) : (
                     dbBlogs
                         .filter(post => allLabelsInValue(post.labels, value))
                         .map((post, i) => (
-                            <AppearOnScroll key={i} className="h-full">
+                            <div key={i} className="h-full">
                                 <div className="w-[300px] shadow-lg bg-gradient-to-tl from-primary to-destructive p-[1px] rounded-[10px]">
                                     <Card className="rounded-[9px] border-0 h-full">
                                         <CardHeader>
@@ -129,12 +134,20 @@ export default function BlogPage({ params: { locale } }: LocaleParams) {
                                             <CardDescription>
                                                 <div>
                                                     <p className="italic text-gray text-sm">
-                                                        {t.date.posted_by + " " + displayAuthors(post.authors) + " " + t.date.on + " " + post.date.toLocaleDateString()}
+                                                        {t.date.posted_by +
+                                                            " " +
+                                                            displayAuthors(post.authors) +
+                                                            " " +
+                                                            t.date.on +
+                                                            " " +
+                                                            post.date.toLocaleDateString()}
                                                     </p>
                                                 </div>
                                                 <div className="flex space-x-2 pt-2">
                                                     {post.labels.map((label, i) => (
-                                                        <p key={i} className="bg-gray-300 rounded-full p-1 px-2 text-black">{label}</p>
+                                                        <p key={i} className="bg-gray-300 rounded-full p-1 px-2 text-black">
+                                                            {label}
+                                                        </p>
                                                     ))}
                                                 </div>
                                             </CardDescription>
@@ -144,9 +157,9 @@ export default function BlogPage({ params: { locale } }: LocaleParams) {
                                         </CardContent>
                                     </Card>
                                 </div>
-                            </AppearOnScroll>
-                        ))}
-
+                            </div>
+                        ))
+                )}
             </div>
         </div>
     );

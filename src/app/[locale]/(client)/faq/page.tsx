@@ -1,10 +1,9 @@
-import { AppearOnScroll } from "@/components/animations/scroll";
+import { div } from "@/components/animations/scroll";
 import { Paragraphs } from "@/components/styles/texts";
 import { BtnLink, EmailContact } from "@/components/telecom-etude/contact";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { LocaleParams } from "@/locales/config";
 import { getDictionary } from "@/locales/dictionaries";
-
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 interface FaqItem {
     question: string;
     answer: readonly string[];
@@ -25,14 +24,12 @@ export default function FAQ({ params: { locale } }: LocaleParams) {
             </p>
             <Accordion type="single" collapsible className="w-full">
                 {t.list.map((item: FaqItem, idx: number) => (
-                    <AppearOnScroll key={idx}>
-                        <AccordionItem value={idx.toString()} className="shadow-lg m-2">
-                            <AccordionTrigger className="border-[1px] border-primary px-4">{item.question}</AccordionTrigger>
-                            <AccordionContent className="p-4">
-                                <Paragraphs paragraphs={item.answer} />
-                            </AccordionContent>
-                        </AccordionItem>
-                    </AppearOnScroll>
+                    <AccordionItem value={idx.toString()} key={idx} className="shadow-lg m-2">
+                        <AccordionTrigger className="border-[1px] border-primary px-4">{item.question}</AccordionTrigger>
+                        <AccordionContent className="p-4">
+                            <Paragraphs paragraphs={item.answer} />
+                        </AccordionContent>
+                    </AccordionItem>
                 ))}
             </Accordion>
         </div>
