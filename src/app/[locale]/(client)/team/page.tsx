@@ -2,7 +2,6 @@ import { LocaleParams } from "@/locales/config";
 import { Dictionary, getDictionary } from "@/locales/dictionaries";
 import { DEPARTMENTS } from "./members";
 import { Block } from "@/components/styles/blocks";
-import { AppearOnScroll } from "@/components/animations/scroll";
 import { Person } from "./person";
 
 export interface Alt {
@@ -38,10 +37,8 @@ export default function Team({ params: { locale } }: LocaleParams) {
             </header>
             {DEPARTMENTS.map(({ id, members }, i) => (
                 <section key={i}>
-                    <AppearOnScroll>
-                        <h2 >{t[id].title}</h2>
-                        <Department d_members={members} t_members={t[id].members} alt={t.alt} />
-                    </AppearOnScroll>
+                    <h2>{t[id].title}</h2>
+                    <Department d_members={members} t_members={t[id].members} alt={t.alt} />
                 </section>
             ))}
         </Block>

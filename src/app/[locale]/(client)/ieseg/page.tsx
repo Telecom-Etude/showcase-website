@@ -10,12 +10,11 @@ import { FORM_DEST_EMAIL, IESEG_EMAIL } from "@/mail/consts";
 import { Locale } from "@/locales/config";
 
 import { Button } from "@/components/ui/button";
-import { div } from "@/components/animations/scroll";
 import ContactForm from "@/components/meta-components/contact-form";
 
-import IcpGraph from "@/../public/images/icpgraph.png";
-import MIT from "@/../public/images/mit.jpg";
-import Logo from "@/../public/images/logo.webp";
+import IcpGraph from "@/../public/images/ieseg/icpgraph.png";
+import MIT from "@/../public/images/ieseg/mit.jpg";
+import Logo from "@/../public/images/ieseg/logo.webp";
 
 export const metadata: Metadata = {
     title: "Offre commune | Telecom Etude & IESEG Conseil Paris",

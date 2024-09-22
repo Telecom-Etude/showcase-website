@@ -1,16 +1,19 @@
-import { Block } from "@/components/styles/blocks";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import Bain from "@/../public/images/partenaires/bain.svg";
-import BearingPoint from "@/../public/images/partenaires/bearingpoint.svg";
-import KPMG from "@/../public/images/partenaires/kpmg.svg";
-import { Separator } from "@/components/ui/separator";
+import { MdOpenInNew } from "react-icons/md";
 import Image from "next/image";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
-import { Paragraphs } from "@/components/styles/texts";
+
 import { getDictionary } from "@/locales/dictionaries";
 import { LocaleParams } from "@/locales/config";
-import { MdOpenInNew } from "react-icons/md";
+
+import { Block } from "@/components/styles/blocks";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import { Paragraphs } from "@/components/styles/texts";
 import { BtnLink } from "@/components/telecom-etude/contact";
+
+import Bain from "@/../public/images/companies/partners/bain.svg";
+import BearingPoint from "@/../public/images/companies/partners/bearingpoint.svg";
+import KPMG from "@/../public/images/companies/partners/kpmg.svg";
 
 interface PartnerProps {
     title: string;

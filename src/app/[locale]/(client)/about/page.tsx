@@ -2,11 +2,11 @@ import { ReactNode } from "react";
 import Image, { StaticImageData } from "next/image";
 import { ArrowRight } from "lucide-react";
 
-import GroupPhoto from "@/../public/images/global/group_photo.jpg";
-import TP from "@/../public/images/global/tp.jpeg";
-import CNJE from "@/../public/images/global/cnje_text.png";
-import AFNOR from "@/../public/images/global/afnor.png";
-import ICP from "@/../public/images/logo.webp";
+import GroupPhoto from "@/../public/images/about/group_photo.jpg";
+import TP from "@/../public/images/about/tp.jpeg";
+import CNJE from "@/../public/images/about/cnje_text.png";
+import AFNOR from "@/../public/images/about/afnor.png";
+import ICP from "@/../public/images/ieseg/logo.webp";
 
 import { cn } from "@/lib/utils";
 import { LocaleParams } from "@/locales/config";

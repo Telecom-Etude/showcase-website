@@ -1,4 +1,3 @@
-import { div } from "@/components/animations/scroll";
 import { Paragraphs } from "@/components/styles/texts";
 import { BtnLink, EmailContact } from "@/components/telecom-etude/contact";
 import { LocaleParams } from "@/locales/config";

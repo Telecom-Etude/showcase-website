@@ -1,4 +1,4 @@
-import Prez from "@/../public/images/bureau/prez.jpg";
+import Prez from "@/../public/images/board/prez.jpg";
 import { StaticImageData } from "next/image";
 
 export const DEPARTMENTS = [

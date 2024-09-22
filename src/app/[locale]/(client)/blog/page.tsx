@@ -8,7 +8,6 @@ import { ManyComboBox } from "@/components/meta-components/combobox";
 import { LocaleParams } from "@/locales/config";
 import { getDictionary } from "@/locales/dictionaries";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { div } from "@/components/animations/scroll";
 import { getValidatedBlogsFromLocale, NamedAuthor } from "@/db/blogs";
 import { User } from "@prisma/client";
 
