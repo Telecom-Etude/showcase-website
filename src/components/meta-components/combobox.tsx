@@ -25,9 +25,9 @@ export const ManyComboBox = ({
                     <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                 </Button>
             </PopoverTrigger>
-            <PopoverContent className="  p-0">
+            <PopoverContent className="p-0">
                 <Command>
-                    <CommandInput placeholder="Sélectionnez-en au plus 4" />
+                    <CommandInput placeholder="Sélectionnez-en au plus 3" />
                     <CommandList>
                         <CommandEmpty>Aucun filtre ne correspond à cette recherche</CommandEmpty>
                         <CommandGroup>
@@ -36,7 +36,7 @@ export const ManyComboBox = ({
                                     key={i}
                                     value={key}
                                     onSelect={val => addRemoveKey(val)}
-                                    className={selectedKeys.length == 4 && !selectedKeys.includes(key) ? "cursor-not-allowed" : "cursor-pointer"}
+                                    className={selectedKeys.length == 3 && !selectedKeys.includes(key) ? "cursor-not-allowed" : "cursor-pointer"}
                                 >
                                     <Checkbox
                                         className={cn("mr-2 h-4 w-4", selectedKeys.includes(key) ? "opacity-100" : "opacity-0")}

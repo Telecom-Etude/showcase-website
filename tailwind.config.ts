@@ -9,7 +9,8 @@ const colors: CustomThemeConfig["colors"] = {
     foreground: "var(--foreground)",
     primary: {
         DEFAULT: "var(--primary)",
-        foreground: "var(--primary-foreground)"
+        foreground: "var(--primary-foreground)",
+        muted: "var(--primary-muted)"
     },
     secondary: {
         DEFAULT: "var(--secondary)",

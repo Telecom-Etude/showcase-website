@@ -30,17 +30,18 @@ function Department({
 export default function Team({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.team;
     return (
-        <Block>
-            <header>
-                <h1 className="font-bold">{t.title}</h1>
-                <p></p>
-            </header>
-            {DEPARTMENTS.map(({ id, members }, i) => (
-                <section key={i}>
-                    <h2>{t[id].title}</h2>
-                    <Department d_members={members} t_members={t[id].members} alt={t.alt} />
-                </section>
-            ))}
-        </Block>
+        <div></div>
+        // <Block>
+        //     <header>
+        //         <h1 className="font-bold">{t.title}</h1>
+        //         <p></p>
+        //     </header>
+        //     {DEPARTMENTS.map(({ id, members }, i) => (
+        //         <section key={i}>
+        //             <h2>{t[id].title}</h2>
+        //             <Department d_members={members} t_members={t[id].members} alt={t.alt} />
+        //         </section>
+        //     ))}
+        // </Block>
     );
 }

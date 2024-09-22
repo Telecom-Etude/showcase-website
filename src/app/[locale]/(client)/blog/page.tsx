@@ -37,13 +37,13 @@ const vocab = {
     cyber: "Cybersécurité",
     ia: "IA",
     chatbot: "Chatbot",
-    se: "Systèmes embarqués",
+    se: "SE",
     web: "Web",
     mobile: "Mobile",
     cloud: "Cloud",
     devops: "DevOps",
     dev: "Développement",
-    iot: "Internet des objets",
+    iot: "IoT",
     blockchain: "Blockchain",
     crypto: "Cryptomonnaie",
     startup: "Startup"
@@ -80,7 +80,7 @@ export default function BlogPage({ params: { locale } }: LocaleParams) {
     const addRemoveValue = (v: string) => {
         if (value.includes(v)) {
             setValue(value.filter(val => val !== v));
-        } else if (value.length < 4) {
+        } else if (value.length < 3) {
             setValue([...value, v]);
         }
     };
@@ -91,6 +91,7 @@ export default function BlogPage({ params: { locale } }: LocaleParams) {
     useEffect(() => {
         getValidatedBlogsFromLocale(locale).then(blogs => {
             setDbBlogs(blogs);
+            4;
             setLoading(false);
         });
     }, [locale]);
@@ -102,7 +103,7 @@ export default function BlogPage({ params: { locale } }: LocaleParams) {
                 <div className="sm:hidden">
                     <ManyComboBox selectedKeys={value} addRemoveKey={addRemoveValue} items={vocab} />
                 </div>
-                <div className="flex flex-col sm:flex-row overflow-clip space-x-2">
+                <div className="flex flex-col justify-center md:flex-row overflow-clip space-x-2">
                     {value.map((keyword, i) => (
                         <div key={i} className="flex items-center bg-muted px-2 m-2 space-x-2 rounded-full w-fit">
                             <span>{vocab[keyword as keyof typeof vocab]}</span>
@@ -116,13 +117,13 @@ export default function BlogPage({ params: { locale } }: LocaleParams) {
                     <ManyComboBox selectedKeys={value} addRemoveKey={addRemoveValue} items={vocab} />
                 </div>
             </div>
-            <div className="grid xl:grid-cols-3 md:grid-cols-2 gap-6">
-                {loading ? (
-                    <p>Loading</p>
-                ) : dbBlogs.length == 0 ? (
-                    <p>No blogs found.</p>
-                ) : (
-                    dbBlogs
+            {loading ? (
+                <p>Loading</p>
+            ) : dbBlogs.length == 0 ? (
+                <p>No blogs found.</p>
+            ) : (
+                <div className="grid xl:grid-cols-3 md:grid-cols-2 gap-6">
+                    {dbBlogs
                         .filter(post => allLabelsInValue(post.labels, value))
                         .map((post, i) => (
                             <div key={i} className="h-full">
@@ -157,9 +158,9 @@ export default function BlogPage({ params: { locale } }: LocaleParams) {
                                     </Card>
                                 </div>
                             </div>
-                        ))
-                )}
-            </div>
+                        ))}
+                </div>
+            )}
         </div>
     );
 }

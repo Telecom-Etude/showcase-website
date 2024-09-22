@@ -1,20 +1,9 @@
 import { FaArrowRight } from "react-icons/fa";
-import { Button, VariantLink } from "../ui/button";
-import Link from "next/link";
-import { ReactNode } from "react";
+import { VariantLink } from "../ui/button";
 import { getDictionary } from "@/locales/dictionaries";
 import { Locale } from "@/locales/config";
 import { User } from "next-auth";
 import { nav } from "@/locales/routing";
-
-interface VariantLinkProps {
-    onClick?: () => void;
-    children: ReactNode | string;
-    buttonStyle?: string;
-    linkStyle?: string;
-    href: string;
-    variant?: "ghost" | "default";
-}
 
 interface LinksProps {
     className?: string;
@@ -38,7 +27,7 @@ export const Links = ({ className, locale, user, ...itemProps }: LinksProps) => 
             <VariantLink {...itemProps} variant="ghost" href={nav(locale, "/commitment")}>
                 {t.commitment}
             </VariantLink>
-            <VariantLink {...itemProps} variant="ghost" href={nav(locale, "/post")}>
+            <VariantLink {...itemProps} variant="ghost" href={nav(locale, "/blog")}>
                 {t.blog}
             </VariantLink>
             <VariantLink {...itemProps} variant="ghost" href={nav(locale, "/faq")}>

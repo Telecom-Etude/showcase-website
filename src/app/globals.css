@@ -22,6 +22,7 @@ html {
     :root {
         --je-orange: hsl(24 98% 60%);
         --je-red: hsl(357 73% 55%);
+
         
         --background: white;
         --foreground: black;
@@ -31,8 +32,9 @@ html {
         
         --popover: white;
         --popover-foreground: hsl(0 0% 3.9%);
-
+        
         --primary: var(--je-orange);
+        --primary-muted: hsla(24, 98%, 60%, 0.5);
         --primary-foreground: hsl(0, 0%, 100%);
 
         --secondary: hsl(0 0% 96.1%);
