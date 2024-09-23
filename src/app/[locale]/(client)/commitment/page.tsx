@@ -37,7 +37,7 @@ const associationEngagements: Card[] = [
 
 function Cards({ cards }: { cards: Card[] }) {
     return (
-        <div className={`grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 p-4`}>
+        <div className="grid grid-cols-1 md:grid-cols-2 p-4">
             {cards.map(({ title, content }, i) => (
                 <Card key={i} className="m-6">
                     <CardHeader>
