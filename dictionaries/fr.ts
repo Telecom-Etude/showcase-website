@@ -64,7 +64,7 @@ export const frDictionary = {
             legal_mentions: "Mentions légales",
             login: "Connexion",
             logout: "Déconnexion",
-            ieseg: "Partenariat IESEG Conseil Paris",
+            ieseg: "IESEG Conseil Paris",
             contact: "Contactez-nous"
         }
     },

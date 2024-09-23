@@ -93,7 +93,7 @@ const DesktopLinks = ({ links }: { links: Link[] }) => {
                         <NavigationMenuItem key={i}>
                             <NavigationMenuTrigger>{link.title}</NavigationMenuTrigger>
                             <NavigationMenuContent>
-                                <ul className="grid grid-cols-2 w-[500px] p-2">
+                                <ul className="grid grid-cols-2 w-[400px] p-2">
                                     {link.links.map(({ title, href }, i) => (
                                         <ListItem key={i} title={title} href={href}>
                                             {/* {title} */}
@@ -205,7 +205,7 @@ export const Links = ({
         { href: nav(locale, "/offer"), title: s.offer },
         { href: nav(locale, "/blog"), title: s.blog },
         authLink,
-        { href: nav(locale, "/contact"), title: s.contact, call2action: true }
+        { href: nav(locale, "/contact"), title: s.contact_form, call2action: true }
     ] as const;
 
     if (mobile) {

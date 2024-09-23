@@ -7,10 +7,8 @@ import { useRouter } from "next/navigation";
 
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogFooter, DialogClose, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { deleteUser, makeBlogAdmin, makeBlogAuthor, makeFormAdmin, makeUserAdmin } from "@/db/users";
 import { DataTableColumnHeader } from "@/components/meta-components/table/data-table-column-header";
 import { ColumnDef, Row } from "@tanstack/react-table";
-import { Checkbox } from "@/components/ui/checkbox";
 
 import { ValidationBlogType } from "./schema";
 import { deleteBlog } from "@/db/blogs";
@@ -19,8 +17,8 @@ const Delete = ({ row }: { row: Row<ValidationBlogType> }) => {
     const router = useRouter();
     return (
         <Dialog>
-            <DialogTrigger className="w-full" asChild>
-                <Button variant="link" className="w-full flex justify-center text-je-orange">
+            <DialogTrigger asChild>
+                <Button variant="link">
                     <FaTrash className="w-6 h-6" />
                 </Button>
             </DialogTrigger>
@@ -49,12 +47,16 @@ const Delete = ({ row }: { row: Row<ValidationBlogType> }) => {
 
 export const columns: ColumnDef<ValidationBlogType>[] = [
     {
-        accessorKey: "email",
-        header: ({ column }) => <DataTableColumnHeader column={column} title="Email" />,
+        accessorKey: "emails",
+        header: ({ column }) => <DataTableColumnHeader column={column} title="Emails" />,
         cell: ({ row }) => {
             return (
-                <div className="flex space-x-2">
-                    <span className="max-w-[500px] truncate font-medium">{row.getValue("email")}</span>
+                <div className="flex flex-col">
+                    {(row.getValue("emails") as string[]).map((email, i) => (
+                        <span key={i} className="max-w-[500px] truncate font-medium">
+                            {email}
+                        </span>
+                    ))}
                 </div>
             );
         }

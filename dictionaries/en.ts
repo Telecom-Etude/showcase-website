@@ -66,7 +66,7 @@ export const enDictionary: Dictionary = {
             legal_mentions: "Legal notices",
             login: "Log In",
             logout: "Log Out",
-            ieseg: "Partnership with IESEG Conseil Paris",
+            ieseg: "IESEG Conseil Paris",
             contact: "Contact us"
         }
     },

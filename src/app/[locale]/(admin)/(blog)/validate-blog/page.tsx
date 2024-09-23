@@ -4,29 +4,32 @@ import { db } from "@/lib/db";
 import { columns } from "./columns";
 import { ValidationBlogType } from "./schema";
 import { ValidationPanel } from "./validation-panel";
+import { LocaleParams } from "@/locales/config";
 
-type X = {
-    id: number;
-    validated: boolean;
-    authorIds: number[]
-    localePosts: {
-        id: number;
-        locale: string;
-        blogId: number;
-    }[];
-}
-
-export default async function Validation() {
-    const posts: ValidationBlogType[] = (await db.post.findMany({
-        include: {
-            localePosts: true,
-            authors: true,
+export default async function Validation({ params: { locale } }: LocaleParams) {
+    const posts: ValidationBlogType[] = (
+        await db.post.findMany({
+            include: {
+                localePosts: true,
+                authors: true
+            }
+        })
+    ).map(({ id, validated, authors, localePosts }) => {
+        let localePost = localePosts.find(localP => localP.locale === locale);
+        if (!localePost) {
+            localePost = localePosts[0];
         }
-    })).map(({ id, validated, authors, localePosts }) => ({
-        id, validated, authorIds: authors.map(({ id }) => id),
-        localePosts: localePosts.map(({ id, locale, blogId }) => ({ id, locale, blogId }))
 
-    }));
+        return {
+            id,
+            validated,
+            emails: [...authors.map(({ email }) => email), ...authors.map(({ email }) => email)],
+            title: localePost.title,
+            content: localePost.content,
+            localeId: localePost.id
+        };
+    });
+
     return (
         <div>
             <ResizablePanelGroup direction="horizontal">

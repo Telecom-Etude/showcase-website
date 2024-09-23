@@ -33,8 +33,7 @@ export default function NewPostForm({ email }: { email: string }) {
     const onSubmit = (values: z.infer<typeof newPostSchema>) => {
         createBlog(email, values.title, values.locale)
             .then((id: number) => {
-                window.alert(id);
-                router.push(nav("fr", `/edit-post/${id}`));
+                router.push(nav("fr", `/edit-blog/${id}`));
             })
             .catch(() => {
                 toast({

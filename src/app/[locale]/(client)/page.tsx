@@ -60,7 +60,6 @@ export default async function Home({ params: { locale } }: LocaleParams) {
     const session = await auth();
     return (
         <>
-            {JSON.stringify(session)}
             <header className="py-20 px-8 space-y-4">
                 <h1 className="font-semibold text-center">Telecom Etude</h1>
                 <p className="text-center">{t.subtitle}</p>
