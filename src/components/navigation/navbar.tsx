@@ -38,7 +38,7 @@ export const NavBar = ({ locale, user }: { locale: Locale; user?: User }) => {
                             <FullLogo />
                         </Link>
                     </Button>
-                    <Links btnCn="rounded-none" locale={locale} user={user} />
+                    <Links mobile={false} btnCn="rounded-none" locale={locale} user={user} />
                 </div>
                 <div className="md:hidden">
                     <MobileNavBar locale={locale} user={user} />

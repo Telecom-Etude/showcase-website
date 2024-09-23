@@ -24,7 +24,7 @@ export const MobileNavBar = ({ locale, user }: { locale: Locale; user?: User }) 
                     <Menu className="text-primary" />
                 </Button>
             </div>
-            {deployed && <Links className="flex flex-col m-auto" locale={locale} user={user} btnCn="rounded-none w-full" />}
+            {deployed && <Links mobile={true} locale={locale} user={user} btnCn="rounded-none w-full" />}
         </div>
     );
 };

@@ -57,12 +57,26 @@ const extend: Partial<CustomThemeConfig> = {
         "bounce-x": {
             "0%, 100%": { transform: "translateX(0)" },
             "50%": { transform: "translateX(5px)" }
+        },
+        wiggle: {
+            "0%, 100%": { transform: "translate(0px, 0px) scale(0.5)" },
+            "25%": { transform: "translate(100px, 20px) scale(1)" },
+            "50%": { transform: "translate(100px, -20px) scale(0.2)" },
+            "75%": { transform: "translate(-100px, 20px) scale(1)" }
+        },
+        largewiggle: {
+            "0%, 100%": { transform: "translate(0px, 0px) scale(1)" },
+            "25%": { transform: "translate(-100px, -20px) scale(0.5)" },
+            "50%": { transform: "translate(-100px, 20px) scale(0.8)" },
+            "75%": { transform: "translate(100px, 20px) scale(0.2)" }
         }
     },
     animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "bounce-x": "bounce-x 1s infinite"
+        "bounce-x": "bounce-x 1s infinite",
+        "float-around": "wiggle 20s ease-in-out infinite",
+        "float-around-2": "largewiggle 20s ease-in-out infinite"
     },
     transitionDuration: {
         1500: "1500ms",

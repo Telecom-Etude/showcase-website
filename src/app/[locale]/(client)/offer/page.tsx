@@ -13,6 +13,7 @@ export default function Offer() {
             <section className={cn(blockCn, "flex flex-col items-center space-y-2 p-2")}>
                 <h2>Déroulement d&apos;une étude</h2>
                 {/* <OfferGraphic /> */}
+                {/* <Diagram /> */}
             </section>
         </div>
     );
