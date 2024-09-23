@@ -67,17 +67,27 @@ export const frDictionary = {
         },
         home: {
             subtitle: "La Junior Entreprise du numérique, des nouvelles technologies et de la data",
-            alt: "Photo du mandat de Telecom Etude"
-
-            // first: [
-            //     "Junior-Entreprise de Télécom Paris, la première école du nuémrique en France, Telecom Etude est munie de plus de 40 ans d'expériences et d'une expertise dans les technologies du numérique.",
-            //     "Guider par nos valeurs phrases - exceller, valoriser, responsabilité - nous proposons un service de quailité, avec plus de 97% de nos clients satisfaits."
-            // ],
-            // contact: {
-            //     description: "Prenez contact avec nous pour discuter de votre project ! Vous proposez, nous réalisons !",
-            //     button: "Démarrer un projet"
-            // },
-            // cnje: "Les Junior-Entreprises sont des associations pédagogiques de conseil de loi 1901 ayant pour objet social la montée en compétences des étudiants à travers la réalisation de prestations de service pour des professionnels."
+            alt: "Photo du mandat de Telecom Etude",
+            whoarewe: "Qui sommes-nous ?",
+            contact: "Contact us",
+            cnje: "Les Junior-Entreprises sont des associations pédagogiques de conseil de loi 1901 ayant pour objet social la montée en compétences des étudiants à travers la réalisation de prestations de service pour des professionnels.",
+            numbers: {
+                title: "Telecom Etude en quelques chiffres",
+                clients: "Clients satisfaits",
+                projects: "Projets chaque année",
+                years: "Années d'expérience",
+                pupils: "Élèves ingénieurs qualifés",
+                admins: "Administrateurs à votre écoute"
+            },
+            domains: {
+                title: "Nos domaines de prédilection",
+                data: "Data science, Intelligence artificielle & Machine learning",
+                web: "Développement Logiciel, Applications & Web",
+                cyber: "Cybersécurité, Réseaux, Cryptographie & Blockchain",
+                image: "Traitement d'images & Modélisation 3D",
+                market: "Études de marchés, États de l'art & Audits",
+                se: "Système embarqués"
+            }
         },
         team: {
             title: "Notre équipe",

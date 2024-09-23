@@ -63,11 +63,11 @@ export default function Home({ params: { locale } }: LocaleParams) {
                 <p className="text-center">{t.subtitle}</p>
                 <div className="flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0 justify-center">
                     <VariantLink variant="outline" href={nav(locale, "/about")} btnCn="rounded-lg group" className="items-center flex space-x-2">
-                        <p>Qui sommes-nous ?</p>
+                        <p>{t.whoarewe}</p>
                         <FaArrowRight className="group-hover:animate-bounce-x" />
                     </VariantLink>
                     <VariantLink variant="call2action" href={nav(locale, "/contact")} btnCn="rounded-lg group" className="items-center flex space-x-2">
-                        <p>Contactez-nous</p>
+                        <p>{t.contact}</p>
                         <FaArrowRight className="group-hover:animate-bounce-x" />
                     </VariantLink>
                 </div>
@@ -80,10 +80,7 @@ export default function Home({ params: { locale } }: LocaleParams) {
                     </div>
                 </div>
                 <div className="flex flex-col justify-center space-y-2">
-                    <q className="italic text-justify">
-                        Les Junior-Entreprises sont des associations pédagogiques de conseil de loi 1901 ayant pour objet social la montée en compétences des
-                        étudiants à travers la réalisation de prestations de service pour des professionnels.
-                    </q>
+                    <q className="italic text-justify">{t.cnje}</q>
                     <Link href="https://junior-entreprises.com/" className="underline w-fit ml-auto">
                         Confédération Nationale des Junior-Entreprises
                     </Link>
@@ -92,26 +89,26 @@ export default function Home({ params: { locale } }: LocaleParams) {
             <Separator />
             <section className="py-20">
                 <Block>
-                    <h2 className="text-center pb-8">Telecom Etude en quelques chiffres</h2>
+                    <h2 className="text-center pb-8">{t.numbers.title}</h2>
                     <div className="flex lg:flex-row flex-col items-center w-full border-y-2 border-primary justify-around">
-                        <NumberCard nb={97} suffix="%" text="Clients satisfaits" />
-                        <NumberCard nb={60} text="Projets chaque année" />
-                        <NumberCard nb={45} text="Années d'expérience" />
-                        <NumberCard nb={800} prefix="+" text="Élèves ingénieurs qualifés" />
-                        <NumberCard nb={33} text="Administrateurs à votre écoute" />
+                        <NumberCard nb={97} suffix="%" text={t.numbers.clients} />
+                        <NumberCard nb={60} text={t.numbers.projects} />
+                        <NumberCard nb={45} text={t.numbers.years} />
+                        <NumberCard nb={800} prefix="+" text={t.numbers.pupils} />
+                        <NumberCard nb={33} text={t.numbers.admins} />
                     </div>
                 </Block>
             </section>
             <Separator />
             <section className="py-20">
-                <h2 className="text-center pb-8">Nos domaines de prédilection</h2>
+                <h2 className="text-center pb-8">{t.domains.title}</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 place-items-center md:grid-cols-3 3xl:grid-cols-6 space-x-0 max-w-[2000px] m-auto">
-                    <DomainCard title="Data science, Intelligence artificielle & Machine learning" id="data" image={Data} locale={locale} />
-                    <DomainCard title="Développement Logiciel, Applications & Web" id="dev" image={Cyber} locale={locale} />
-                    <DomainCard title="Cybersécurité, Réseaux, Cryptographie & Blockchain" id="cyber" image={Ima} locale={locale} />
-                    <DomainCard title="Traitement d'images & Modélisation 3D" id="image" image={Se} locale={locale} />
-                    <DomainCard title="Études de marchés, États de l'art & Audits" id="marrket" image={Market} locale={locale} />
-                    <DomainCard title="Système embarqués" id="marrket" image={Dev} locale={locale} />
+                    <DomainCard title={t.domains.data} id="data" image={Data} locale={locale} />
+                    <DomainCard title={t.domains.web} id="dev" image={Cyber} locale={locale} />
+                    <DomainCard title={t.domains.cyber} id="cyber" image={Ima} locale={locale} />
+                    <DomainCard title={t.domains.image} id="image" image={Se} locale={locale} />
+                    <DomainCard title={t.domains.market} id="marrket" image={Market} locale={locale} />
+                    <DomainCard title={t.domains.se} id="marrket" image={Dev} locale={locale} />
                 </div>
             </section>
         </>
