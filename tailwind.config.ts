@@ -69,6 +69,9 @@ const extend: Partial<CustomThemeConfig> = {
         2000: "2000ms",
         2500: "2500ms",
         3000: "3000ms"
+    },
+    screens: {
+        "3xl": "1920px"
     }
 };
 

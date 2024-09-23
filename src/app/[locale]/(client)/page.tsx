@@ -40,13 +40,13 @@ const NumberCard = ({ nb, prefix, suffix, text }: { nb: number; prefix?: string;
 
 const DomainCard = ({ title, id, image }: { title: string; id: string; image: StaticImageData }) => {
     return (
-        <button className="p-2 hover:p-0 transition-all duration-300 group">
-            <Card className="w-[200px] h-full flex-col border-none bg-primary-muted rounded-lg">
+        <button className="p-4 hover:p-0 transition-all duration-300 h-[400px] w-[300px]">
+            <Card className="w-full h-full flex-col border-none bg-primary-muted rounded-lg">
                 <CardHeader>
-                    <CardTitle className="text-center h-[70px]">{title}</CardTitle>
+                    <CardTitle className="text-center h-[52px] w-[180px] m-auto font-normal">{title}</CardTitle>
                 </CardHeader>
-                <CardContent className="p-0 flex justify-center">
-                    <Image src={image} className="overflow-clip" alt={title} />
+                <CardContent className="p-0 block">
+                    <Image src={image} className="m-auto overflow-clip" alt={title} />
                 </CardContent>
             </Card>
         </button>
@@ -57,7 +57,7 @@ export default function Home({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.home;
     return (
         <>
-            <header className="p-10 pt-20 space-y-4">
+            <header className="py-20 px-8 space-y-4">
                 <h1 className="font-semibold text-center">Telecom Etude</h1>
                 <p className="text-center">La Junior Entreprise du numérique, des nouvelles technologies et de la data</p>
                 <div className="flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0 justify-center">
@@ -72,7 +72,7 @@ export default function Home({ params: { locale } }: LocaleParams) {
                 </div>
             </header>
             <Separator />
-            <Block className="flex flex-col sm:flex-row space-y-4 space-x-10">
+            <Block className="flex flex-col sm:flex-row space-y-4 px-8 py-20 sm:space-x-10">
                 <div className="flex justify-center">
                     <div className="w-[300px]">
                         <BirdLogo />
@@ -89,19 +89,22 @@ export default function Home({ params: { locale } }: LocaleParams) {
                 </div>
             </Block>
             <Separator />
-            <section className="p-8">
-                <h2 className="text-center pb-8">Telecom Etude en quelques chiffres</h2>
-                <div className="flex lg:flex-row flex-col items-center w-full border-y-2 border-primary justify-around">
-                    <NumberCard nb={97} suffix="%" text="Clients satisfaits" />
-                    <NumberCard nb={60} text="Projets chaque année" />
-                    <NumberCard nb={45} text="Années d'expérience" />
-                    <NumberCard nb={800} prefix="+" text="Élèves ingénieurs qualifés" />
-                    <NumberCard nb={33} text="Administrateurs à votre écoute" />
-                </div>
+            <section className="py-20">
+                <Block>
+                    <h2 className="text-center pb-8">Telecom Etude en quelques chiffres</h2>
+                    <div className="flex lg:flex-row flex-col items-center w-full border-y-2 border-primary justify-around">
+                        <NumberCard nb={97} suffix="%" text="Clients satisfaits" />
+                        <NumberCard nb={60} text="Projets chaque année" />
+                        <NumberCard nb={45} text="Années d'expérience" />
+                        <NumberCard nb={800} prefix="+" text="Élèves ingénieurs qualifés" />
+                        <NumberCard nb={33} text="Administrateurs à votre écoute" />
+                    </div>
+                </Block>
             </section>
-            <section className="p-8">
+            <Separator />
+            <section className="py-20">
                 <h2 className="text-center pb-8">Nos domaines de prédilection</h2>
-                <div className="grid grid-cols-2 place-items-center md:grid-cols-3 xl:grid-cols-6 space-x-0">
+                <div className="grid grid-cols-1 sm:grid-cols-2 place-items-center md:grid-cols-3 3xl:grid-cols-6 space-x-0 max-w-[2000px] m-auto">
                     <DomainCard title="Data science, Intelligence artificielle & Machine learning" id="data" image={Data} />
                     <DomainCard title="Développement Logiciel, Applications & Web" id="dev" image={Cyber} />
                     <DomainCard title="Cybersécurité, Réseaux, Cryptographie & Blockchain" id="cyber" image={Ima} />
