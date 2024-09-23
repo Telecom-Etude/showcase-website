@@ -20,6 +20,7 @@ import {
     navigationMenuTriggerStyle,
     NavigationMenuViewport
 } from "@/components/ui/navigation-menu";
+import { ExtendedRights } from "@/auth/auth";
 
 interface LinksProps {
     className?: string;
@@ -92,7 +93,7 @@ const DesktopLinks = ({ links }: { links: Link[] }) => {
                         <NavigationMenuItem key={i}>
                             <NavigationMenuTrigger>{link.title}</NavigationMenuTrigger>
                             <NavigationMenuContent>
-                                <ul className="grid grid-cols-2 w-[400px] p-2">
+                                <ul className="grid grid-cols-2 w-[500px] p-2">
                                     {link.links.map(({ title, href }, i) => (
                                         <ListItem key={i} title={title} href={href}>
                                             {/* {title} */}
@@ -140,32 +141,71 @@ interface MultipleLink {
 }
 type Link = SingleLink | MultipleLink;
 
-export const Links = ({ locale, user, onClick, btnCn, mobile }: { mobile: boolean; locale: Locale; user?: User; onClick?: () => void; btnCn?: string }) => {
-    const t = getDictionary(locale).navigation.sitemap;
+export const Links = ({
+    locale,
+    user,
+    onClick,
+    btnCn,
+    mobile
+}: {
+    mobile: boolean;
+    locale: Locale;
+    user?: ExtendedRights;
+    onClick?: () => void;
+    btnCn?: string;
+}) => {
+    const t = getDictionary(locale).navigation;
+    const s = t.sitemap;
+
+    var authLinks: SingleLink[] = [];
+    if (user?.rights?.blogAdmin) {
+        authLinks.push({ href: nav(locale, "/validate-blog"), title: t.admin.validate });
+    }
+    if (user?.rights?.blogAuthor) {
+        authLinks.push({ href: nav(locale, "/new-blog"), title: t.admin.newblog });
+        authLinks.push({ href: nav(locale, "/blog"), title: t.admin.edit });
+    }
+    if (user?.rights?.formAdmin) {
+        authLinks.push({ href: nav(locale, "/form-submission"), title: t.admin.form });
+    }
+    if (user?.rights?.userAdmin) {
+        authLinks.push({ href: nav(locale, "/users"), title: t.admin.users });
+    }
+    const logoutLink = { href: nav(locale, "/auth/signout"), title: s.logout };
+    authLinks.push(logoutLink);
+
+    const authLink: Link =
+        typeof user === "undefined"
+            ? { title: s.login, href: nav(locale, "/auth/signin") }
+            : authLinks.length <= 1
+            ? logoutLink
+            : {
+                  title: t.admin.account,
+                  links: authLinks
+              };
 
     const links: Link[] = [
         {
-            title: "About us",
+            title: s.about,
             links: [
-                { href: nav(locale, "/"), title: t.home },
-                { href: nav(locale, "/whoarewe"), title: t.whoarewe },
-                { href: nav(locale, "/about"), title: t.about },
+                { href: nav(locale, "/"), title: s.home },
+                { href: nav(locale, "/about"), title: s.whoarewe },
                 { href: nav(locale, "/faq"), title: "FAQ" },
-                { href: nav(locale, "/commitment"), title: t.commitment },
-                { href: nav(locale, "/team"), title: t.team }
+                { href: nav(locale, "/commitment"), title: s.commitment },
+                { href: nav(locale, "/team"), title: s.team }
             ]
         },
         {
-            title: t.partners,
+            title: s.partners,
             links: [
-                { href: nav(locale, "/partners"), title: t.company_partners },
-                { href: nav(locale, "/ieseg"), title: "IESEG" }
+                { href: nav(locale, "/partners"), title: s.company_partners },
+                { href: nav(locale, "/ieseg"), title: s.ieseg }
             ]
         },
-        { href: nav(locale, "/offer"), title: t.offer },
-        { href: nav(locale, "/blog"), title: t.blog },
-        { href: nav(locale, user === undefined ? "/auth/signin" : "/auth/signout"), title: user === undefined ? t.login : t.logout },
-        { href: nav(locale, "/contact"), title: t.contact_form, call2action: true }
+        { href: nav(locale, "/offer"), title: s.offer },
+        { href: nav(locale, "/blog"), title: s.blog },
+        authLink,
+        { href: nav(locale, "/contact"), title: s.contact, call2action: true }
     ] as const;
 
     if (mobile) {

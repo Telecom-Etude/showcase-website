@@ -39,6 +39,14 @@ export const frDictionary = {
             },
             httpError: "Erreur HTTP"
         },
+        admin: {
+            validate: "Valider des posts",
+            newblog: "Nouveau blog",
+            edit: "Modifier des posts",
+            form: "Soumissions au form",
+            users: "Gestion des utilisateurs",
+            account: "Mon compte"
+        },
         sitemap: {
             title: "Plan du site",
             whoarewe: "Qui sommes-nous\u00A0?",
@@ -55,7 +63,9 @@ export const frDictionary = {
             blog: "Blog",
             legal_mentions: "Mentions légales",
             login: "Connexion",
-            logout: "Déconnexion"
+            logout: "Déconnexion",
+            ieseg: "Partenariat IESEG Conseil Paris",
+            contact: "Contactez-nous"
         }
     },
     pages: {

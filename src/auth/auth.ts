@@ -1,4 +1,4 @@
-import NextAuth, { type NextAuthConfig, type User as AuthUser, type Session } from "next-auth";
+import NextAuth, { type NextAuthConfig, type User as AuthUser, type Session, User } from "next-auth";
 import type { JWT } from "next-auth/jwt";
 import authConfig from "@/auth/auth.config";
 import { db } from "@/lib/db";
@@ -11,6 +11,12 @@ export interface Rights {
     userAdmin: boolean;
     blogAuthor: boolean;
 }
+
+export type ExtendedRights =
+    | (User & {
+          rights: Rights | null;
+      })
+    | undefined;
 
 const config = {
     trustHost: true,

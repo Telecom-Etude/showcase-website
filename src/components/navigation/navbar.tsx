@@ -8,8 +8,9 @@ import { Links } from "./links";
 import { useState, useEffect } from "react";
 import { Locale } from "@/locales/config";
 import { User } from "next-auth";
+import { ExtendedRights, Rights } from "@/auth/auth";
 
-export const NavBar = ({ locale, user }: { locale: Locale; user?: User }) => {
+export const NavBar = ({ locale, user }: { locale: Locale; user?: ExtendedRights }) => {
     const [isScrolled, setIsScrolled] = useState(false);
 
     const handleScroll = () => {
@@ -30,7 +31,6 @@ export const NavBar = ({ locale, user }: { locale: Locale; user?: User }) => {
 
     return (
         <>
-            {/* <div className={`sticky z-30 top-0 ${isScrolled ? "bg-background" : "bg-transparent"}`}> */}
             <div className="sticky z-30 top-0 bg-background">
                 <div className="hidden md:flex justify-between border-b-[1px] border-primary">
                     <Button asChild variant="ghost" className="rounded-none px-0 py-0">

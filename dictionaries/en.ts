@@ -41,6 +41,14 @@ export const enDictionary: Dictionary = {
             },
             httpError: "HTTP Error"
         },
+        admin: {
+            validate: "Validate blogs",
+            newblog: "New blog",
+            edit: "Edit blogs",
+            form: "Form submissions",
+            users: "Users managment",
+            account: "My account"
+        },
         sitemap: {
             title: "Site plan",
             whoarewe: "Who are we?",
@@ -57,7 +65,9 @@ export const enDictionary: Dictionary = {
             blog: "Blog",
             legal_mentions: "Legal notices",
             login: "Log In",
-            logout: "Log Out"
+            logout: "Log Out",
+            ieseg: "Partnership with IESEG Conseil Paris",
+            contact: "Contact us"
         }
     },
     pages: {

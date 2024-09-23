@@ -8,8 +8,9 @@ import { Menu } from "lucide-react";
 import { Links } from "./links";
 import { Locale } from "@/locales/config";
 import { User } from "next-auth";
+import { ExtendedRights } from "@/auth/auth";
 
-export const MobileNavBar = ({ locale, user }: { locale: Locale; user?: User }) => {
+export const MobileNavBar = ({ locale, user }: { locale: Locale; user?: ExtendedRights }) => {
     const [deployed, setDeployed] = useState(false);
     const close = () => setDeployed(false);
     return (

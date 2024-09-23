@@ -21,6 +21,7 @@ import Se from "@/../public/images/domains/icons/se.png";
 import Market from "@/../public/images/domains/icons/market.png";
 import Dev from "@/../public/images/domains/icons/dev.png";
 import LogoBirdSvg from "@/../public/icons/logo-bird.svg";
+import { auth } from "@/auth/auth";
 
 const NumberCard = ({ nb, prefix, suffix, text }: { nb: number; prefix?: string; suffix?: string; text: string }) => {
     return (
@@ -54,10 +55,12 @@ const DomainCard = ({ title, id, image, locale }: { title: string; id: string; i
     );
 };
 
-export default function Home({ params: { locale } }: LocaleParams) {
+export default async function Home({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.home;
+    const session = await auth();
     return (
         <>
+            {JSON.stringify(session)}
             <header className="py-20 px-8 space-y-4">
                 <h1 className="font-semibold text-center">Telecom Etude</h1>
                 <p className="text-center">{t.subtitle}</p>
