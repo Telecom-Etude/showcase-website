@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { Op } from "quill/core";
 import { Actions } from "./editor-actions";
 
-export const QuillEditor = ({ localeBlogId, content, title, blogId }: { blogId: number, localeBlogId: number; content: Op[]; title: string }) => {
+export const QuillEditor = ({ localeBlogId, content, title, blogId }: { blogId: number; localeBlogId: number; content: Op[]; title: string }) => {
     const editorRef = useRef(null);
     const [quill, setQuill] = useState<Quill | null>(null);
     const [value, setValue] = useState(JSON.stringify(content));
@@ -68,13 +68,8 @@ export const QuillEditor = ({ localeBlogId, content, title, blogId }: { blogId: 
 
     return (
         <div className="w-full">
-            <Actions {...{ setToBeChanged, content, value, localeBlogId, title, blogId }} />
-            <div ref={editorRef} className="" />
-            {/* <div className="flex w-full flex-col overflow-scroll">
-                <p>{JSON.stringify(content)}</p>
-                <p>{value}</p>
-            </div> */}
-            {/* <div dangerouslySetInnerHTML={{ __html: html }}></div> */}
+            <Actions {...{ setToBeChanged, content, value, localeBlogId, title, blogId, dbLabels: [] }} />
+            <div ref={editorRef} />
         </div>
     );
 };

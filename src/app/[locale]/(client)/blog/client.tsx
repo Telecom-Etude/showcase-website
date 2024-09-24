@@ -88,12 +88,14 @@ export default function BlogPage({ locale, isEditor, email, posts }: { locale: L
         }
     };
 
+    const LabelSelector = () => <ManyComboBox limit={3} selectedKeys={value} addRemoveKey={addRemoveValue} items={vocab} vocab={t.labelSelector} />;
+
     return (
         <div className="flex flex-col items-center p-10 space-y-10">
             <h1>Nos actualités</h1>
             <div className="flex flex-col sm:flex-row justify-between w-full">
                 <div className="sm:hidden">
-                    <ManyComboBox selectedKeys={value} addRemoveKey={addRemoveValue} items={vocab} />
+                    <LabelSelector />
                 </div>
                 <div className="flex flex-col justify-center md:flex-row overflow-clip space-x-2">
                     {value.map((keyword, i) => (
@@ -106,7 +108,7 @@ export default function BlogPage({ locale, isEditor, email, posts }: { locale: L
                     ))}
                 </div>
                 <div className="hidden sm:block">
-                    <ManyComboBox selectedKeys={value} addRemoveKey={addRemoveValue} items={vocab} />
+                    <LabelSelector />
                 </div>
             </div>
             {posts.length == 0 ? (

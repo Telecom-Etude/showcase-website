@@ -100,7 +100,8 @@ export const enDictionary: Dictionary = {
             date: {
                 posted_by: "Posted by",
                 on: "on the"
-            }
+            },
+            labelSelector: { title: "Filter by label", selectorMessage: "Select up to 3 labels" }
         },
         team: {
             title: "Our team",
@@ -121,6 +122,7 @@ export const enDictionary: Dictionary = {
         partners: {
             title: "Our partner companies",
             text: "Telecom Etude has partner companies",
+            bain: "Bain & Company is the international consulting firm that helps ambitious managers transform their companies into pioneers of tomorrow's world. This prestigious partnership enables us to put Telecom Paris students in touch with Bain & Company consultants and recruiters through special events.",
             kpmg: "Our partnership with KPMG is designed to benefit both parties. In return, KPMG, in collaboration with Telecom Etude, organises events for students at Telecom Etude's premises during the year to introduce them to the consulting professions, as well as a visit to KPMG's premises at the end of the year accompanied by a discussion in small groups.",
             bearingPoint:
                 "Together, we are more than a company: this is the raison d'être of this management and technology consultancy. BearingPoint supports clients in more than 75 countries, helping them to achieve measurable, sustainable and responsible results. Since 2005, BearingPoint has supported our structure, both by training us and by offering us commercial opportunities. This real synergy is the result of a shared desire to make the most of today's talent in a company that reflects our image: a force for innovation and at the forefront of tomorrow's world. By allowing telecoms students to visit our offices, or by promoting our network of alumni, BearingPoint is part of our ecosystem through a mutually beneficial collaboration."
