@@ -1,11 +1,32 @@
 "use client";
 
 import { Button, VariantLink } from "@/components/ui/button";
+import { toast } from "@/components/ui/use-toast";
+import { ValidateBlog } from "@/db/blogs";
 import { LocaleParams } from "@/locales/config";
 import { nav } from "@/locales/routing";
+import { useRouter } from "next/navigation";
 import { IoClose } from "react-icons/io5";
 
-export default function Page({ params: { locale } }: LocaleParams) {
+type PageProps = LocaleParams & { params: { id: number } };
+
+export default function Page({ params: { locale, id } }: PageProps) {
+    const router = useRouter();
+
+    const validateBlogInterface = () => {
+        ValidateBlog(id)
+            .then(() => {
+                router.refresh();
+            })
+            .catch(() => {
+                toast({
+                    title: "Erreur innnatendue",
+                    description: "Un erreure innatendu s'est produite lors de la validation du blog. Réeassayez plus tard ou contactez la DSI.",
+                    variant: "destructive"
+                });
+            });
+    };
+
     return (
         <div>
             <div className="space-y-4">
@@ -70,7 +91,9 @@ export default function Page({ params: { locale } }: LocaleParams) {
                 </div>
             </div>
             <div className="w-full flex justify-center p-4">
-                <Button onClick={() => console.log("validation")}>Valider</Button>
+                <Button onClick={() => validateBlogInterface()}>
+                    <p>Valider</p>
+                </Button>
             </div>
         </div>
     );

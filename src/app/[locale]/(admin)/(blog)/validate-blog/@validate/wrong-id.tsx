@@ -3,7 +3,7 @@ function Template({ title }: { title: string }) {
         <div className="flex items-center h-full justify-center">
             <div className="space-y-6">
                 <p className="w-full text-center">{title}</p>
-                <p className="w-full text-center">Cliquer sur le titre d'un blog sur le panneau de gauche pour l'ouvrir et le valider</p>
+                <p className="w-full text-center">Cliquer sur le titre d&paos;un blog sur le panneau de gauche pour l&apos;ouvrir et le valider</p>
             </div>
         </div>
     );

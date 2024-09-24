@@ -92,18 +92,19 @@ const getLabelNames = async (labels: Label[], locale: Locale) => {
 
 export const getValidatedBlogsFromLocale = async (
     locale: Locale
-): Promise<{ authors: { firstname: string; lastname: string }[]; content: string; title: string; date: Date; labels: string[] }[]> => {
+): Promise<{ authors: { firstname: string; lastname: string }[]; content: string; title: string; date: Date; labels: string[]; id: number }[]> => {
     try {
         const blogs = (await db.post.findMany({
             include: { authors: true, localePosts: true, labels: true }
         }))!.filter(blog => blog.validated);
         return await Promise.all(
-            blogs.map(async ({ localePosts, labels, authors, createdAt }) => {
+            blogs.map(async ({ localePosts, labels, authors, createdAt, id }) => {
                 return {
                     ...localePosts.find(localeBlog => localeBlog.locale === locale)!,
                     authors: authors.map(author => getUserName(author)),
                     labels: await getLabelNames(labels, locale),
-                    date: createdAt
+                    date: createdAt,
+                    id
                 };
             })
         );
@@ -140,5 +141,13 @@ export const getLocaleIdsFromBlog = async (blogId: number) => {
         return blog?.localePosts;
     } catch (e) {
         console.error("[getLocaleIdsFromBlog]", e);
+    }
+};
+
+export const ValidateBlog = async (blogId: number) => {
+    try {
+        db.post.update({ where: { id: blogId }, data: { validated: true } });
+    } catch (e) {
+        console.error("[validateBlog] ", e);
     }
 };

@@ -4,7 +4,7 @@ import { auth, ExtendedRights } from "@/auth/auth";
 import { Locale } from "@/locales/config";
 import { ReactNode } from "react";
 
-export default async function RootLayout({
+export default async function LocaleLayout({
     children,
     params: { locale }
 }: Readonly<{
@@ -14,9 +14,9 @@ export default async function RootLayout({
     const user: ExtendedRights = (await auth())?.user;
     return (
         <>
-            {/* <NavBar locale={locale} user={user} /> */}
+            <NavBar locale={locale} user={user} />
             <main className="flex flex-col h-full flex-grow">{children}</main>
-            {/* <Footer locale={locale} /> */}
+            <Footer locale={locale} />
         </>
     );
 }
