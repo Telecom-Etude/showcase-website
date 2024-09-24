@@ -69,6 +69,8 @@ export const getAuthorisationCode = (req: NextAuthRequest, localelessPath: strin
         return getCode(req, ROUTES[localelessPath as keyof typeof ROUTES]);
     } else if (localelessPath.startsWith("/edit-blog/")) {
         return checkAdminRights(r => r.blogAuthor)(req);
+    } else if (localelessPath.startsWith("/validate-blog")) {
+        return checkAdminRights(r => r.blogAdmin)(req);
     } else {
         return 404;
     }

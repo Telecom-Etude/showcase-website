@@ -12,14 +12,15 @@ import { ColumnDef, Row } from "@tanstack/react-table";
 
 import { ValidationBlogType } from "./schema";
 import { deleteBlog } from "@/db/blogs";
+import { BtnLink, EmailBtn } from "@/components/telecom-etude/contact";
 
 const Delete = ({ row }: { row: Row<ValidationBlogType> }) => {
     const router = useRouter();
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <Button variant="link">
-                    <FaTrash className="w-6 h-6" />
+                <Button variant="link" className="text-foreground">
+                    <FaTrash className="w-4 h-4" />
                 </Button>
             </DialogTrigger>
             <DialogContent>
@@ -53,9 +54,7 @@ export const columns: ColumnDef<ValidationBlogType>[] = [
             return (
                 <div className="flex flex-col">
                     {(row.getValue("emails") as string[]).map((email, i) => (
-                        <span key={i} className="max-w-[500px] truncate font-medium">
-                            {email}
-                        </span>
+                        <EmailBtn email={email} key={i} />
                     ))}
                 </div>
             );
@@ -65,9 +64,12 @@ export const columns: ColumnDef<ValidationBlogType>[] = [
         accessorKey: "title",
         header: ({ column }) => <DataTableColumnHeader column={column} title="Titre" />,
         cell: ({ row }) => (
-            <div className="flex space-x-2">
-                <span className="max-w-[500px] truncate font-medium">{row.getValue("title")}</span>
-            </div>
+            <BtnLink href={`/validate-blog/${1}`}>
+                <p>{row.getValue("title")}</p>
+                <div className="flex space-x-2">
+                    <span className="truncate"></span>
+                </div>
+            </BtnLink>
         )
     },
     {
