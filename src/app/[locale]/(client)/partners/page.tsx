@@ -18,11 +18,11 @@ import KPMG from "@/../public/images/companies/partners/kpmg.svg";
 interface PartnerProps {
     title: string;
     logo: StaticImport;
-    paragraphs: string[];
+    text: string;
     url: string;
 }
 
-function Partner({ title, logo, paragraphs, url }: PartnerProps) {
+function Partner({ title, logo, text, url }: PartnerProps) {
     return (
         <section className="p-4">
             <Card>
@@ -30,7 +30,7 @@ function Partner({ title, logo, paragraphs, url }: PartnerProps) {
                     <CardTitle className="w-full text-center">{title}</CardTitle>
                     <CardDescription className="flex justify-center">
                         <BtnLink href={url} target="blank" className="flex items-center space-x-1">
-                            <p>Link</p>
+                            <>Link</>
                             <MdOpenInNew />
                         </BtnLink>
                     </CardDescription>
@@ -39,9 +39,7 @@ function Partner({ title, logo, paragraphs, url }: PartnerProps) {
                 <CardContent>
                     <Image src={logo} alt={title + " logo"} width={400} />
                     <Separator className="my-6" />
-                    <div>
-                        <Paragraphs paragraphs={paragraphs} />
-                    </div>
+                    <p>{text}</p>
                 </CardContent>
             </Card>
         </section>
@@ -49,17 +47,17 @@ function Partner({ title, logo, paragraphs, url }: PartnerProps) {
 }
 
 export default function Partners({ params: { locale } }: LocaleParams) {
-    const t = getDictionary(locale);
+    const t = getDictionary(locale).pages.partners;
     return (
         <Block>
             <header className="w-full h-[300px] max-h-dvh flex flex-col items-center justify-center space-y-4">
-                <h1 className="font-bold">Nos entreprises partenaires</h1>
-                <p className="text-lg max-w-[500px] text-center">Telecom Etude a des entreprises par</p>
+                <h1 className="font-bold">{t.title}</h1>
+                <p className="text-lg max-w-[500px] text-center">{t.text}</p>
             </header>
-            <div className="flex flex-col sm:flex-row">
-                <Partner title="Bain" url="https://www.bain.com" logo={Bain} paragraphs={[]} />
-                <Partner title="BearingPoint" url="https://www.bearingpoint.com" logo={BearingPoint} paragraphs={[]} />
-                <Partner title="KPMG" url="https://www.kpmg.com" logo={KPMG} paragraphs={[]} />
+            <div className="grid grid-cols-1 sm:grid-cols-3">
+                <Partner title="Bain" url="https://www.bain.com" logo={Bain} text={"On attends en Sacha"} />
+                <Partner title="BearingPoint" url="https://www.bearingpoint.com" logo={BearingPoint} text={t.bearingPoint} />
+                <Partner title="KPMG" url="https://www.kpmg.com" logo={KPMG} text={t.kpmg} />
             </div>
         </Block>
     );

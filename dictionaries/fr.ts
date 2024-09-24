@@ -156,6 +156,13 @@ export const frDictionary = {
                 }
             ]
         },
+        partners: {
+            title: "Nos entreprises partenaires",
+            text: "Telecom Etude a des entreprises par",
+            kpmg: "Notre partenariat avec KPMG s'inscrit dans une volonté de bénéficier aux deux parties. Telecom Etude participe au rayonnement de KPMG auprès des étudiants, en contrepartie KPMG organise en collaboration avec Telecom Etude des évènements à destination des étudiants dans les locaux de Telecom durant l'année afin de faire découvrir les métiers du conseil, ainsi qu'une visite des locaux de KPMG en fin d'année accompagné d'un échange en petits groupes.",
+            bearingPoint:
+                "Ensemble, nous sommes plus qu'une entreprise: telle est la raison d'être de ce cabinet de conseil en management et technologie. BearingPoint accompagne ses clients dans plus de 75 pays et les aide à obtenir des résultats mesurables, durables, et responsables. Depuis 2005, BearingPoint accompagne notre structure, tant en nous formant qu'en nous offrant des opportunités commerciales. Cette réelle synergie est le fruit d'une volonté commune de faire valoir les talents d'aujourd'hui dans une entreprise à notre image : force de proposition et à l'avant-garde de demain. En permettant à des étudiant télécomiens de se rendre dans leurs locaux, ou en valorisant notre réseau d'alumni, BearingPoint s'inscrit dans notre écosystème au travers d'une collaboration mutuellement bénéfique."
+        },
         about: {
             description: "la Junior-Entreprise du numérique et de la data",
             moreInfo: "Plus d'informations",

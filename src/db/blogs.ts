@@ -144,9 +144,10 @@ export const getLocaleIdsFromBlog = async (blogId: number) => {
     }
 };
 
-export const ValidateBlog = async (blogId: number) => {
+export const validateBlog = async (blogId: number) => {
     try {
         db.post.update({ where: { id: blogId }, data: { validated: true } });
+        console.log("blog number", blogId, "was updated");
     } catch (e) {
         console.error("[validateBlog] ", e);
     }

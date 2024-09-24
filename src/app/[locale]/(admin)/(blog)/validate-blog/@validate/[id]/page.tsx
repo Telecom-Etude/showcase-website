@@ -2,7 +2,7 @@
 
 import { Button, VariantLink } from "@/components/ui/button";
 import { toast } from "@/components/ui/use-toast";
-import { ValidateBlog } from "@/db/blogs";
+import { validateBlog } from "@/db/blogs";
 import { LocaleParams } from "@/locales/config";
 import { nav } from "@/locales/routing";
 import { useRouter } from "next/navigation";
@@ -14,8 +14,10 @@ export default function Page({ params: { locale, id } }: PageProps) {
     const router = useRouter();
 
     const validateBlogInterface = () => {
-        ValidateBlog(id)
+        window.alert(` on va valider ${id}`);
+        validateBlog(id)
             .then(() => {
+                window.alert("VALIDER ! ");
                 router.refresh();
             })
             .catch(() => {
