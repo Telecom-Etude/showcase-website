@@ -1,37 +1,18 @@
 "use client";
 
 import { X } from "lucide-react";
-
-import { Button, VariantLink } from "@/components/ui/button";
-import { useEffect, useState } from "react";
-import { ManyComboBox } from "@/components/meta-components/combobox";
-import { Locale, LocaleParams } from "@/locales/config";
-import { getDictionary } from "@/locales/dictionaries";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { getValidatedBlogsFromLocale, NamedAuthor } from "@/db/blogs";
+import { useState } from "react";
 import { FaPencil } from "react-icons/fa6";
+
+import { NamedAuthor } from "@/db/blogs";
+
+import { getDictionary } from "@/locales/dictionaries";
+import { Locale, LocaleParams } from "@/locales/config";
 import { nav } from "@/locales/routing";
 
-const keywords = ["events", "missions", "data", "cyber", "ia", "chatbot", "se", "web", "cloud", "devops", "dev", "iot", "blockchain", "crypto", "startup"];
-
-const vocab = {
-    events: "Événements",
-    missions: "Missions",
-    data: "Données",
-    cyber: "Cybersécurité",
-    ia: "IA",
-    chatbot: "Chatbot",
-    se: "SE",
-    web: "Web",
-    mobile: "Mobile",
-    cloud: "Cloud",
-    devops: "DevOps",
-    dev: "Développement",
-    iot: "IoT",
-    blockchain: "Blockchain",
-    crypto: "Cryptomonnaie",
-    startup: "Startup"
-} as const;
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button, VariantLink } from "@/components/ui/button";
+import { ComboLabels, ManyComboBox, ManyComboBoxProps } from "@/components/meta-components/combobox";
 
 export interface PostPresentation {
     id: number;
@@ -39,13 +20,14 @@ export interface PostPresentation {
     content: string;
     authors: NamedAuthor[];
     date: Date;
-    labels: string[];
+    labels: ComboLabels;
+    emails: string[];
 }
 
-const allLabelsInValue = (postLabels: string[], selectedLabels: string[]) =>
+const allLabelsInValue = (postLabels: number[], selectedLabels: number[]) =>
     selectedLabels.filter(label => postLabels.includes(label)).length === selectedLabels.length;
 
-const displayAuthors = (authors: NamedAuthor[]) => {
+const getAuthors = (authors: NamedAuthor[]) => {
     const last = authors.pop();
     const beforelast = authors.pop();
     if (!last) {
@@ -59,89 +41,120 @@ const displayAuthors = (authors: NamedAuthor[]) => {
     }
 };
 
-export default function BlogPage({ locale, isEditor, email, posts }: { locale: Locale; isEditor: boolean; email?: string; posts: PostPresentation[] }) {
+const displayAuthors = (locale: Locale, post: PostPresentation) => {
+    const t = getDictionary(locale).pages.blog.date;
+    return t.posted_by + " " + getAuthors(post.authors) + " " + t.on + " " + post.date.toLocaleDateString();
+};
+
+const LabelSelection = (props: ManyComboBoxProps & { dbLabels: ComboLabels }) => {
+    const LabelSelector = () => <ManyComboBox {...props} />;
+
+    return (
+        <div className="flex flex-col sm:flex-row justify-between w-full">
+            <div className="sm:hidden">
+                <LabelSelector />
+            </div>
+            <div className="flex flex-col justify-center md:flex-row overflow-clip space-x-2">
+                {props.selectedKeys.map((id, i) => (
+                    <div key={i} className="flex items-center bg-muted px-2 m-2 space-x-2 rounded-full w-fit">
+                        <span>{props.dbLabels[id]}</span>
+                        <Button variant="ghost" onClick={() => props.addRemoveKey(id)} className="hover:bg-transparent p-0 m-0">
+                            <X className="h-4 w-4 p-0 m-0" />
+                        </Button>
+                    </div>
+                ))}
+            </div>
+            <div className="hidden sm:block">
+                <LabelSelector />
+            </div>
+        </div>
+    );
+};
+
+const BlogsList = ({ posts, locale, email, isEditor }: { posts: PostPresentation[]; locale: Locale; isEditor: boolean; email?: string }) =>
+    posts.length == 0 ? (
+        <p>No blogs found.</p>
+    ) : (
+        <div className="grid xl:grid-cols-3 md:grid-cols-2 gap-6">
+            {posts.map((post, i) => (
+                <div key={i} className="h-full">
+                    <div className="w-[300px] shadow-lg bg-gradient-to-tl from-primary to-destructive p-[1px] rounded-[10px]">
+                        <Card className="rounded-[9px] border-0 h-full">
+                            <CardHeader>
+                                <CardTitle className="flex justify-between">
+                                    <p>{post.title}</p>
+                                    {isEditor && email && post.emails.includes(email) ? (
+                                        <VariantLink variant="ghost" href={nav(locale, `/edit-blog/${post.id}`)}>
+                                            <FaPencil className="w-4 h-4" />
+                                        </VariantLink>
+                                    ) : null}
+                                </CardTitle>
+                                <CardDescription>
+                                    <div>
+                                        <p className="italic text-gray text-sm">{displayAuthors(locale, post)}</p>
+                                    </div>
+                                    <div className="flex space-x-2 pt-2">
+                                        {Object.values(post.labels).map((label, i) => (
+                                            <p key={i} className="bg-gray-300 rounded-full p-1 px-2 text-black">
+                                                {label}
+                                            </p>
+                                        ))}
+                                    </div>
+                                </CardDescription>
+                            </CardHeader>
+                            <CardContent>
+                                <p>{post.content}</p>
+                            </CardContent>
+                        </Card>
+                    </div>
+                </div>
+            ))}
+        </div>
+    );
+
+export default function BlogPage({
+    posts,
+    dbLabels,
+    locale,
+    ...props
+}: {
+    locale: Locale;
+    isEditor: boolean;
+    email?: string;
+    posts: PostPresentation[];
+    dbLabels: ComboLabels;
+}) {
     const t = getDictionary(locale).pages.blog;
 
-    const [value, setValue] = useState<string[]>([]);
-    const addRemoveValue = (v: string) => {
-        if (value.includes(v)) {
-            setValue(value.filter(val => val !== v));
-        } else if (value.length < 3) {
-            setValue([...value, v]);
+    const [selectedLabels, setValue] = useState<number[]>([]);
+    const addRemoveValue = (labelId: keyof typeof dbLabels) => {
+        if (selectedLabels.includes(labelId)) {
+            setValue(selectedLabels.filter(key => key !== labelId));
+        } else if (selectedLabels.length < 3) {
+            setValue([...selectedLabels, labelId]);
         }
     };
 
-    const LabelSelector = () => <ManyComboBox limit={3} selectedKeys={value} addRemoveKey={addRemoveValue} items={vocab} vocab={t.labelSelector} />;
-
     return (
-        <div className="flex flex-col items-center p-10 space-y-10">
-            <h1>Nos actualités</h1>
-            <div className="flex flex-col sm:flex-row justify-between w-full">
-                <div className="sm:hidden">
-                    <LabelSelector />
-                </div>
-                <div className="flex flex-col justify-center md:flex-row overflow-clip space-x-2">
-                    {value.map((keyword, i) => (
-                        <div key={i} className="flex items-center bg-muted px-2 m-2 space-x-2 rounded-full w-fit">
-                            <span>{vocab[keyword as keyof typeof vocab]}</span>
-                            <Button variant="ghost" onClick={() => addRemoveValue(keyword)} className="hover:bg-transparent p-0 m-0">
-                                <X className="h-4 w-4 p-0 m-0" />
-                            </Button>
-                        </div>
-                    ))}
-                </div>
-                <div className="hidden sm:block">
-                    <LabelSelector />
-                </div>
-            </div>
-            {posts.length == 0 ? (
-                <p>No blogs found.</p>
-            ) : (
-                <div className="grid xl:grid-cols-3 md:grid-cols-2 gap-6">
-                    {posts
-                        .filter(post => allLabelsInValue(post.labels, value))
-                        .map((post, i) => (
-                            <div key={i} className="h-full">
-                                <div className="w-[300px] shadow-lg bg-gradient-to-tl from-primary to-destructive p-[1px] rounded-[10px]">
-                                    <Card className="rounded-[9px] border-0 h-full">
-                                        <CardHeader>
-                                            <CardTitle className="flex justify-between">
-                                                <p>{post.title}</p>( posts.emails.includes(email) ? (
-                                                <VariantLink variant="ghost" href={nav(locale, `/edit-blog/${post.id}`)}>
-                                                    <FaPencil className="w-4 h-4" />
-                                                </VariantLink>
-                                                ) : null )
-                                            </CardTitle>
-                                            <CardDescription>
-                                                <div>
-                                                    <p className="italic text-gray text-sm">
-                                                        {t.date.posted_by +
-                                                            " " +
-                                                            displayAuthors(post.authors) +
-                                                            " " +
-                                                            t.date.on +
-                                                            " " +
-                                                            post.date.toLocaleDateString()}
-                                                    </p>
-                                                </div>
-                                                <div className="flex space-x-2 pt-2">
-                                                    {post.labels.map((label, i) => (
-                                                        <p key={i} className="bg-gray-300 rounded-full p-1 px-2 text-black">
-                                                            {label}
-                                                        </p>
-                                                    ))}
-                                                </div>
-                                            </CardDescription>
-                                        </CardHeader>
-                                        <CardContent>
-                                            <p>{post.content}</p>
-                                        </CardContent>
-                                    </Card>
-                                </div>
-                            </div>
-                        ))}
-                </div>
-            )}
-        </div>
+        <>
+            <LabelSelection
+                dbLabels={dbLabels}
+                limit={3}
+                selectedKeys={selectedLabels}
+                addRemoveKey={addRemoveValue}
+                items={dbLabels}
+                vocab={t.labelSelector}
+            />
+            <BlogsList
+                locale={locale}
+                posts={posts.filter(post =>
+                    allLabelsInValue(
+                        Object.keys(post.labels).map(id => Number(id)),
+                        selectedLabels
+                    )
+                )}
+                {...props}
+            />
+        </>
     );
 }

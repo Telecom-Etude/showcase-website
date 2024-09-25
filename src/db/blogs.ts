@@ -5,6 +5,7 @@ import { Locale } from "@/locales/config";
 import { Op } from "quill/core";
 import { getUserName } from "./users";
 import { Label } from "@prisma/client";
+import { PostPresentation } from "@/app/[locale]/(client)/blog/client";
 
 export const createBlog = async (authorEmail: string, title: string, locale: Locale) => {
     try {
@@ -90,9 +91,7 @@ const getLabelNames = async (labels: Label[], locale: Locale) => {
     );
 };
 
-export const getValidatedBlogsFromLocale = async (
-    locale: Locale
-): Promise<{ authors: { firstname: string; lastname: string }[]; content: string; title: string; date: Date; labels: string[]; id: number }[]> => {
+export const getValidatedBlogsFromLocale = async (locale: Locale): Promise<PostPresentation[]> => {
     try {
         const blogs = (await db.post.findMany({
             include: { authors: true, localePosts: true, labels: true }
@@ -102,6 +101,7 @@ export const getValidatedBlogsFromLocale = async (
                 return {
                     ...localePosts.find(localeBlog => localeBlog.locale === locale)!,
                     authors: authors.map(author => getUserName(author)),
+                    emails: authors.map(author => author.email),
                     labels: await getLabelNames(labels, locale),
                     date: createdAt,
                     id

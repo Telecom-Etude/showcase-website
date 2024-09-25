@@ -3,7 +3,7 @@ import { getLocaleBlogContent, getLocaleBlog, getLocaleIdsFromBlog } from "@/db/
 import { Block } from "@/components/styles/blocks";
 import { Locale } from "@/locales/config";
 
-export default async function EditBlog({ params: { postId, locale } }: { params: { postId: string, locale: Locale } }) {
+export default async function EditBlog({ params: { postId, locale } }: { params: { postId: string; locale: Locale } }) {
     const localeBlog = await getLocaleBlog(parseInt(postId), locale);
     const content = await getLocaleBlogContent(localeBlog.id);
     const title = localeBlog.title;

@@ -13,7 +13,7 @@ import { useRouter } from "next/navigation";
 import type { Op } from "quill/core";
 import type { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { MdLabel } from "react-icons/md";
-import { ManyComboBox } from "@/components/meta-components/combobox";
+import { ComboLabels, ManyComboBox } from "@/components/meta-components/combobox";
 import { useState } from "react";
 
 const Rename = ({ title, localeBlogId, router }: { title: string; localeBlogId: number; router: AppRouterInstance }) => (
@@ -52,19 +52,19 @@ const Rename = ({ title, localeBlogId, router }: { title: string; localeBlogId: 
     </Dialog>
 );
 
-const AddLabel = ({ dbLabels, router, blogId }: { blogId: number; dbLabels: string[]; router: AppRouterInstance }) => {
-    const [getLabels, setLabels] = useState<string[]>(dbLabels);
-    const addRemoveLabel = (label: string) => {
-        if (getLabels.includes(label)) {
-            setLabels(labels => labels.filter(l => l !== label));
+const AddLabel = ({ dbLabels, router, blogId }: { blogId: number; dbLabels: ComboLabels; router: AppRouterInstance }) => {
+    const [getLabels, setLabels] = useState<number[]>([]);
+    const addRemoveLabel = (labelId: keyof typeof dbLabels) => {
+        if (getLabels.filter(l => l == labelId).length > 0) {
+            setLabels(labels => labels.filter(l => l !== labelId));
         } else {
             setLabels(labels => {
-                labels.push(label);
+                labels.push(labelId);
                 return labels;
             });
         }
     };
-    const items = { a: "b" };
+    const items = ["eg1, eg2"];
 
     return (
         <Dialog>
