@@ -1,6 +1,5 @@
 "use client";
 
-import { BtnLink } from "@/components/telecom-etude/contact";
 import { NavigationMenuItem, NavigationMenuLink } from "@/components/ui/navigation-menu";
 import { isLocale, Locale } from "@/locales/config";
 import { nav } from "@/locales/routing";
@@ -15,11 +14,14 @@ const useLocaledUrl = (locale: Locale) => {
     while (index < split.length && split[index].length === 0) {
         index++;
     }
+    window.alert(split[index]);
     if (index === split.length) {
         return nav(locale, "/");
     } else if (isLocale(split[index])) {
-        return nav(locale, split.slice(index).join("/"));
+        window.alert("is locale");
+        return nav(locale, split.slice(index + 1).join("/"));
     } else {
+        window.alert("not locale");
         return nav(locale, split.join("/"));
     }
 };
@@ -29,19 +31,11 @@ export const LocaleSwitch = ({ locale }: { locale: Locale }) => {
 
     return (
         <NavigationMenuItem>
-            {locale === "fr" ? (
-                <Link href={localedUrl} legacyBehavior passHref>
-                    <NavigationMenuLink>
-                        <GB title="English" className="h-6 w-6" />
-                    </NavigationMenuLink>
-                </Link>
-            ) : (
-                <Link href={localedUrl} legacyBehavior passHref>
-                    <NavigationMenuLink>
-                        <GB title="English" className="h-6 w-6" />
-                    </NavigationMenuLink>
-                </Link>
-            )}
+            <Link href={localedUrl} legacyBehavior passHref>
+                <NavigationMenuLink>
+                    {locale === "fr" ? <GB title="English" className="h-6 w-6" /> : <FR title="Français" className="h-6 w-6" />}
+                </NavigationMenuLink>
+            </Link>
         </NavigationMenuItem>
     );
 };

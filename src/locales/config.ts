@@ -52,4 +52,4 @@ export interface LocaleParams {
     readonly params: { locale: Locale };
 }
 
-export const isLocale = (locale: string) => locale in LOCALES;
+export const isLocale = (locale: string) => locale == "en" || locale == "fr";

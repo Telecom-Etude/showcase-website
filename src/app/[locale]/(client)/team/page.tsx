@@ -3,6 +3,7 @@ import { Dictionary, getDictionary } from "@/locales/dictionaries";
 import { DEPARTMENTS } from "./members";
 import { Block } from "@/components/styles/blocks";
 import { Person } from "./person";
+import { auth } from "@/auth/auth";
 
 export interface Alt {
     before: string;
@@ -27,10 +28,11 @@ function Department({
     );
 }
 
-export default function Team({ params: { locale } }: LocaleParams) {
+export default async function Team({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.team;
+    const session = await auth();
     return (
-        <div></div>
+        <div>{JSON.stringify(session)}</div>
         // <Block>
         //     <header>
         //         <h1 className="font-bold">{t.title}</h1>

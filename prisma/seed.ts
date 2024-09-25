@@ -3,20 +3,14 @@ require("dotenv").config({ path: ".env.local" });
 
 const prisma = new PrismaClient();
 
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
-
-if (ADMIN_EMAIL) {
-    console.log("Creating administrator with email ", ADMIN_EMAIL);
-} else {
-    throw new Error("Missing ADMIN_EMAIL in .env.local. Please add it and try again.");
-}
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL!;
 
 async function main() {
     await prisma.user.upsert({
-        where: { email: "bobbob75105@gmail.com" },
+        where: { email: ADMIN_EMAIL },
         update: {},
         create: {
-            email: "bobbob75105@gmail.com",
+            email: ADMIN_EMAIL,
             blogAdmin: true,
             userAdmin: true,
             blogAuthor: true,

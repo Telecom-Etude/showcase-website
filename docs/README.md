@@ -35,10 +35,14 @@
     npm run dev
     ```
 
+    > DO *NOT* USE THE `--turbo` flag if you need next auth.
+    >
+    > See, for example, [this issue](https://github.com/nextauthjs/next-auth/issues/11674).
+
 ## Tutorials
 
 - [Authjs tutorial](https://www.youtube.com/watch?v=1MTyCvS05V4)
-- [Google Provuder tutorial](https://www.youtube.com/watch?v=Rs8018RO5YQ)
+- [Google Provider tutorial](https://www.youtube.com/watch?v=Rs8018RO5YQ)
 
 ## Notes
 
