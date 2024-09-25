@@ -1,7 +1,7 @@
-import { Footer } from "@/components/navigation/footer";
+import { ReactNode } from "react";
 import { auth, ExtendedUser } from "@/auth/auth";
 import { Locale } from "@/locales/config";
-import { ReactNode } from "react";
+import { Footer } from "@/components/navigation/footer";
 import { NavBar } from "@/components/navigation/navbar/navbar";
 
 export default async function LocaleLayout({
