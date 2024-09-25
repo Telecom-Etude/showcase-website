@@ -4,10 +4,8 @@ import { X } from "lucide-react";
 import { useState } from "react";
 import { FaPencil } from "react-icons/fa6";
 
-import { NamedAuthor } from "@/db/blogs";
-
 import { getDictionary } from "@/locales/dictionaries";
-import { Locale, LocaleParams } from "@/locales/config";
+import { Locale } from "@/locales/config";
 import { nav } from "@/locales/routing";
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -18,7 +16,7 @@ export interface PostPresentation {
     id: number;
     title: string;
     content: string;
-    authors: NamedAuthor[];
+    authors: string[];
     date: Date;
     labels: ComboLabels;
     emails: string[];
@@ -27,17 +25,13 @@ export interface PostPresentation {
 const allLabelsInValue = (postLabels: number[], selectedLabels: number[]) =>
     selectedLabels.filter(label => postLabels.includes(label)).length === selectedLabels.length;
 
-const getAuthors = (authors: NamedAuthor[]) => {
+const getAuthors = (authors: string[]) => {
     const last = authors.pop();
-    const beforelast = authors.pop();
     if (!last) {
         console.error("Error while fetching user data.");
         return "";
-    } else if (!beforelast) {
-        return `${last.firstname} ${last.lastname}`;
     } else {
-        const end = `${beforelast.firstname} ${beforelast.lastname} & ${last.firstname} ${last.lastname}`;
-        return authors.reduce((acc, author) => `${acc}${author.firstname} ${author.lastname}, `, "") + end;
+        return authors.reduce((acc, author) => `${acc}${author}, `, "") + `& ${last}`;
     }
 };
 

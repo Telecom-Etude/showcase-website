@@ -1,7 +1,6 @@
 "use server";
 
 import { db } from "@/lib/db";
-import { User } from "@prisma/client";
 
 ////////////// CREAT ///////////////////
 
@@ -25,17 +24,6 @@ export const getRights = async (email: string | null | undefined) => {
         // console.error(`[getRights] Error:\n\n${e}\n`);
         return false;
     }
-};
-
-const capitalize = (string: string) => string.charAt(0).toUpperCase() + string.slice(1);
-
-export const getUserName = (user: User) => {
-    let split = user.email.split("@")[0].split(".");
-    return { firstname: capitalize(split[0]), lastname: capitalize(split[0]) };
-};
-export const getShortName = (user: User) => {
-    let split = user.email.split("@")[0].split(".");
-    return capitalize(split[0]) + " " + split[1].charAt(0);
 };
 
 ////////////// UPDATE  ///////////////////

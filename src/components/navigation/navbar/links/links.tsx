@@ -48,7 +48,7 @@ const DesktopLinks = ({ links, contactLink, locale, mobile = false }: { mobile?:
                 <>
                     <NavigationMenuTrigger className={mobile ? "w-full" : ""}>{link.title}</NavigationMenuTrigger>
                     <NavigationMenuContent>
-                        <ul className="grid grid-cols-2 w-screens p-2">
+                        <ul className="grid grid-cols-2 w-[400px] p-2">
                             {link.links.map(({ title, href }, i) => (
                                 <DeployableListItem key={i} title={title} href={href}>
                                     {/* {title} */}

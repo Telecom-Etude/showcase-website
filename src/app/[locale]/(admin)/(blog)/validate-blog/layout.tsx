@@ -28,7 +28,7 @@ export default async function Validation({ params: { locale }, validate }: PageP
         return {
             id,
             validated,
-            emails: [...authors.map(({ email }) => email), ...authors.map(({ email }) => email)],
+            emails: authors.map(({ email }) => email),
             title: localePost.title,
             content: localePost.content,
             localeId: localePost.id
