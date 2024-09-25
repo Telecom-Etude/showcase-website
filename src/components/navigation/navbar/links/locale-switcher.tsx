@@ -23,14 +23,16 @@ const useLocaledUrl = (locale: Locale) => {
     }
 };
 
-export const LocaleSwitch = ({ locale }: { locale: Locale }) => {
+export const LocaleSwitch = ({ locale, mobile = false }: { locale: Locale; mobile?: boolean }) => {
     const localedUrl = useLocaledUrl(locale == "fr" ? "en" : "fr");
 
     return (
         <NavigationMenuItem>
             <Link href={localedUrl} legacyBehavior passHref>
                 <NavigationMenuLink>
-                    <div className="px-2">{locale === "fr" ? <GB title="English" className="h-6 w-6" /> : <FR title="Français" className="h-6 w-6" />}</div>
+                    <div className={mobile ? "py-2" : "px-2"}>
+                        {locale === "fr" ? <GB title="English" className="h-6 w-6" /> : <FR title="Français" className="h-6 w-6" />}
+                    </div>
                 </NavigationMenuLink>
             </Link>
         </NavigationMenuItem>
