@@ -2,50 +2,48 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
-import localFont from 'next/font/local';
+import localFont from "next/font/local";
 
 const avenir = localFont({
     src: [
         {
-            path: '../fonts/Avenir-Bold.otf',
-            weight: '700',
-            style: 'normal',
+            path: "../fonts/Avenir-Bold.otf",
+            weight: "700",
+            style: "normal"
         },
         {
-            path: '../fonts/Avenir-Demi.otf',
-            weight: '600',
-            style: 'normal',
+            path: "../fonts/Avenir-Demi.otf",
+            weight: "600",
+            style: "normal"
         },
         {
-            path: '../fonts/Avenir-DemiIt.otf',
-            weight: '600',
-            style: 'italic',
+            path: "../fonts/Avenir-DemiIt.otf",
+            weight: "600",
+            style: "italic"
         },
         {
-            path: '../fonts/Avenir-It.otf',
-            weight: '400',
-            style: 'italic',
+            path: "../fonts/Avenir-It.otf",
+            weight: "400",
+            style: "italic"
         },
         {
-            path: '../fonts/Avenir-Regular.otf',
-            weight: '400',
-            style: 'normal',
-        },
-    ],
+            path: "../fonts/Avenir-Regular.otf",
+            weight: "400",
+            style: "normal"
+        }
+    ]
 });
 
 // https://nextjs.org/docs/app/api-reference/functions/generate-metadata
 
-export const viewport: Viewport = {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-    userScalable: true,
-    themeColor: "dark",
-    colorScheme: "dark"
-};
-
-// <meta name="language" content="French">
+// export const viewport: Viewport = {
+//     width: "device-width",
+//     initialScale: 1,
+//     maximumScale: 1,
+//     userScalable: true,
+//     themeColor: "dark",
+//     colorScheme: "dark"
+// };
 
 export const metadata: Metadata = {
     /// VAR ///

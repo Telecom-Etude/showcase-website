@@ -51,7 +51,7 @@ export function ErrorPage({ code, locale, message }: { code: string; locale: Loc
         <BirdBackground>
             <Card className="bg-muted">
                 <CardHeader>
-                    <CardTitle >{t.title}</CardTitle>
+                    <CardTitle>{t.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
                     {message ? (

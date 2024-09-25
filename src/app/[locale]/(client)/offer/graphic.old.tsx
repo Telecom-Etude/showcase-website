@@ -70,7 +70,7 @@ export const OfferGraphic = () => {
                 ></div>
             </div>
             {JSON.stringify(mousePosition)}
-            <h3 >{STEPS[selectedZone - 1]}</h3>
+            <h3>{STEPS[selectedZone - 1]}</h3>
             <Paragraphs className="max-w-[500px] text-center" paragraphs={TEXTS[selectedZone - 1]} />
         </>
     );
