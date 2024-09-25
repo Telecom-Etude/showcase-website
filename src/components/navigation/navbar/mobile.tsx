@@ -1,16 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { Button } from "../ui/button";
-import { FullLogo } from "../telecom-etude/logos";
+import { Button } from "../../ui/button";
+import { FullLogo } from "../../telecom-etude/logos";
 import { useState } from "react";
 import { Menu } from "lucide-react";
-import { Links } from "./links";
+import { Links } from "./links/links";
 import { Locale } from "@/locales/config";
 import { User } from "next-auth";
-import { ExtendedRights } from "@/auth/auth";
+import { ExtendedUser } from "@/auth/auth";
 
-export const MobileNavBar = ({ locale, user }: { locale: Locale; user?: ExtendedRights }) => {
+export const MobileNavBar = ({ locale, user }: { locale: Locale; user?: ExtendedUser }) => {
     const [deployed, setDeployed] = useState(false);
     const close = () => setDeployed(false);
     return (

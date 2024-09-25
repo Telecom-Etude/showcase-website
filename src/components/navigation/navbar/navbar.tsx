@@ -1,16 +1,15 @@
 "use client";
 
-import { Button } from "../ui/button";
-import { FullLogo } from "../telecom-etude/logos";
+import { Button } from "../../ui/button";
+import { FullLogo } from "../../telecom-etude/logos";
 import Link from "next/link";
 import { MobileNavBar } from "./mobile";
-import { Links } from "./links";
+import { Links } from "./links/links";
 import { useState, useEffect } from "react";
 import { Locale } from "@/locales/config";
-import { User } from "next-auth";
-import { ExtendedRights, Rights } from "@/auth/auth";
+import { ExtendedUser } from "@/auth/auth";
 
-export const NavBar = ({ locale, user }: { locale: Locale; user?: ExtendedRights }) => {
+export const NavBar = ({ locale, user }: { locale: Locale; user?: ExtendedUser }) => {
     const [isScrolled, setIsScrolled] = useState(false);
 
     const handleScroll = () => {

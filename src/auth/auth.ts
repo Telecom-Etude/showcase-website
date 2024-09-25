@@ -12,7 +12,7 @@ export interface Rights {
     blogAuthor: boolean;
 }
 
-export type ExtendedRights =
+export type ExtendedUser =
     | (User & {
           rights: Rights | null;
       })

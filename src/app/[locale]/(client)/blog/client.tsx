@@ -12,24 +12,7 @@ import { getValidatedBlogsFromLocale, NamedAuthor } from "@/db/blogs";
 import { FaPencil } from "react-icons/fa6";
 import { nav } from "@/locales/routing";
 
-const keywords = [
-    "events",
-    "missions",
-    "data",
-    "cyber",
-    "ia",
-    "chatbot",
-    "se",
-    "web",
-    "mobile",
-    "cloud",
-    "devops",
-    "dev",
-    "iot",
-    "blockchain",
-    "crypto",
-    "startup"
-];
+const keywords = ["events", "missions", "data", "cyber", "ia", "chatbot", "se", "web", "cloud", "devops", "dev", "iot", "blockchain", "crypto", "startup"];
 
 const vocab = {
     events: "Événements",

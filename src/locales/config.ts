@@ -49,5 +49,7 @@ export type Locale = (typeof LOCALES)[number];
  * ```
  */
 export interface LocaleParams {
-    params: { locale: Locale };
+    readonly params: { locale: Locale };
 }
+
+export const isLocale = (locale: string) => locale in LOCALES;
