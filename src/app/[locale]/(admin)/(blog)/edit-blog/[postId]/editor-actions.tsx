@@ -1,3 +1,5 @@
+"use client";
+
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { FaCheck, FaSave } from "react-icons/fa";
 import { FaPencil } from "react-icons/fa6";
@@ -66,47 +68,36 @@ const AddLabel = ({ dbLabels, router, blogId }: { blogId: number; dbLabels: stri
 
     return (
         <Dialog>
-            <DialogTrigger>Open</DialogTrigger>
+            <DialogTrigger asChild>
+                <Button variant="outline">
+                    <span className="flex items-center space-x-2">
+                        <p>Ajouter des labels</p>
+                        <MdLabel />
+                    </span>
+                </Button>
+            </DialogTrigger>
             <DialogContent>
                 <DialogHeader>
-                    <DialogTitle>Are you absolutely sure?</DialogTitle>
-                    <DialogDescription>
-                        This action cannot be undone. This will permanently delete your account and remove your data from our servers.
-                    </DialogDescription>
+                    <DialogTitle>Ajouter des labels</DialogTitle>
+                    <ManyComboBox
+                        selectedKeys={getLabels}
+                        addRemoveKey={addRemoveLabel}
+                        items={items}
+                        vocab={{ title: "Choisir des labels", selectorMessage: "Selectionner au plus 6 labels" }}
+                        limit={6}
+                    />
+                    <ul className="p-2">
+                        {getLabels.map((label, i) => (
+                            <li key={i}>{label}</li>
+                        ))}
+                    </ul>
+                    <Button variant="call2action" type="submit">
+                        Valider
+                    </Button>
                 </DialogHeader>
             </DialogContent>
         </Dialog>
     );
-    // <Dialog>
-    //     <DialogTrigger asChild>
-    //         <Button variant="outline">
-    //             <span className="flex items-center space-x-2">
-    //                 <p>Ajouter des labels</p>
-    //                 <MdLabel />
-    //             </span>
-    //         </Button>
-    //     </DialogTrigger>
-    //     <DialogContent>
-    //         <DialogHeader>
-    //             <DialogTitle>Ajouter des labels</DialogTitle>
-    //             <ManyComboBox
-    //                 selectedKeys={getLabels}
-    //                 addRemoveKey={addRemoveLabel}
-    //                 items={items}
-    //                 vocab={{ title: "Choisir des labels", selectorMessage: "Selectionner au plus 6 labels" }}
-    //                 limit={6}
-    //             />
-    //             <ul className="p-2">
-    //                 {getLabels.map((label, i) => (
-    //                     <li key={i}>{label}</li>
-    //                 ))}
-    //             </ul>
-    //             <Button variant="call2action" type="submit" onClick={}>
-    //                 Valider
-    //             </Button>
-    //         </DialogHeader>
-    //     </DialogContent>
-    // </Dialog>
 };
 
 const OpenSave = ({ saving }: { saving: boolean }) => (

@@ -20,7 +20,7 @@ export default async function NewBlog({ params: { locale } }: LocaleParams) {
                 </CardContent>
                 <CardFooter className="flex justify-center">
                     <Button variant="link" asChild>
-                        <Link href={nav(locale, "/post/")}>Éditer un post existant</Link>
+                        <Link href={nav(locale, "/blog")}>Éditer un post existant</Link>
                     </Button>
                 </CardFooter>
             </Card>

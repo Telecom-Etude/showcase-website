@@ -144,10 +144,10 @@ export const getLocaleIdsFromBlog = async (blogId: number) => {
     }
 };
 
-export const validateBlog = async (blogId: number) => {
+export const validateBlog = async (localePostId: number) => {
     try {
-        db.post.update({ where: { id: blogId }, data: { validated: true } });
-        console.log("blog number", blogId, "was updated");
+        const localPost = await db.localePost.findUnique({ where: { id: localePostId } })!;
+        await db.post.update({ where: { id: localPost!.blogId }, data: { validated: true } });
     } catch (e) {
         console.error("[validateBlog] ", e);
     }

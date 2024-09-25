@@ -20,7 +20,6 @@ import Ima from "@/../public/images/domains/icons/image.png";
 import Se from "@/../public/images/domains/icons/se.png";
 import Market from "@/../public/images/domains/icons/market.png";
 import Dev from "@/../public/images/domains/icons/dev.png";
-import LogoBirdSvg from "@/../public/icons/logo-bird.svg";
 import { auth } from "@/auth/auth";
 
 const NumberCard = ({ nb, prefix, suffix, text }: { nb: number; prefix?: string; suffix?: string; text: string }) => {

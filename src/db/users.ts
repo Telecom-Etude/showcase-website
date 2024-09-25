@@ -22,7 +22,7 @@ export const getRights = async (email: string | null | undefined) => {
         };
         return rights;
     } catch (e) {
-        console.error(`[getRights] Error:\n\n${e}\n`);
+        // console.error(`[getRights] Error:\n\n${e}\n`);
         return false;
     }
 };

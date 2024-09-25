@@ -14,14 +14,11 @@ const useLocaledUrl = (locale: Locale) => {
     while (index < split.length && split[index].length === 0) {
         index++;
     }
-    window.alert(split[index]);
     if (index === split.length) {
         return nav(locale, "/");
     } else if (isLocale(split[index])) {
-        window.alert("is locale");
-        return nav(locale, split.slice(index + 1).join("/"));
+        return nav(locale, "/" + split.slice(index + 1).join("/"));
     } else {
-        window.alert("not locale");
         return nav(locale, split.join("/"));
     }
 };
@@ -33,7 +30,7 @@ export const LocaleSwitch = ({ locale }: { locale: Locale }) => {
         <NavigationMenuItem>
             <Link href={localedUrl} legacyBehavior passHref>
                 <NavigationMenuLink>
-                    {locale === "fr" ? <GB title="English" className="h-6 w-6" /> : <FR title="Français" className="h-6 w-6" />}
+                    <div className="px-2">{locale === "fr" ? <GB title="English" className="h-6 w-6" /> : <FR title="Français" className="h-6 w-6" />}</div>
                 </NavigationMenuLink>
             </Link>
         </NavigationMenuItem>

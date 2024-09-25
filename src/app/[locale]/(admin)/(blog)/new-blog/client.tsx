@@ -65,7 +65,7 @@ export default function NewPostForm({ email }: { email: string }) {
                         control={form.control}
                         name="locale"
                         render={({ field }) => (
-                            <FormItem className="flex flex-col justify-center items-center space-y-4">
+                            <FormItem className="flex-col justify-center items-center space-y-4 hidden">
                                 <FormControl>
                                     <select
                                         {...field}
