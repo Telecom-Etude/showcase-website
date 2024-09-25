@@ -52,7 +52,7 @@ model Label {
 
 model LocaleLabel {
   id      Int    @id @unique @default(autoincrement())
-  name    String @unique
+  name    String
   locale  String
   Label   Label? @relation(fields: [labelId], references: [id])
   labelId Int?
