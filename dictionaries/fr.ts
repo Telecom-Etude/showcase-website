@@ -205,7 +205,7 @@ export const frDictionary = {
         },
         partners: {
             title: "Nos entreprises partenaires",
-            text: "Telecom Etude a des entreprises par",
+            text: "Telecom Etude possède des entreprises partenaires. Ces partenariats avec des entreprises nous permettent de bénéficier de formations pratiques, de prêter nos locaux pour leurs événements, et d'établir des relations professionnelles solides. En tant qu'étudiants, c'est une occasion unique d'acquérir des compétences tout en découvrant le monde de l'entreprise. Cela renforce nos opportunités futures et développe notre réseau.",
             kpmg: {
                 type: "Audit et conseil",
                 text: "Notre partenariat avec KPMG s'inscrit dans une volonté de bénéficier aux deux parties. Telecom Etude participe au rayonnement de KPMG auprès des étudiants, en contrepartie KPMG organise en collaboration avec Telecom Etude des évènements à destination des étudiants dans les locaux de Telecom durant l'année afin de faire découvrir les métiers du conseil, ainsi qu'une visite des locaux de KPMG en fin d'année accompagné d'un échange en petits groupes."

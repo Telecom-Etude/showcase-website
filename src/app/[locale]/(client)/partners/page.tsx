@@ -25,24 +25,26 @@ interface PartnerProps {
 function Partner({ title, logo, t, url }: PartnerProps) {
     return (
         <section className="p-4">
-            <Card>
-                <CardHeader>
-                    <CardTitle className="w-full text-center">{title}</CardTitle>
-                    <CardDescription className="flex flex-col items-center">
-                        <>{t.type}</>
-                        <BtnLink href={url} target="blank" className="flex items-center space-x-1">
-                            <>Link</>
-                            <MdOpenInNew />
-                        </BtnLink>
-                    </CardDescription>
-                </CardHeader>
-                <CardContent>
-                    <Separator />
-                    <Image src={logo} alt={title + " logo"} width={400} />
-                    <Separator className="my-6" />
-                    <p>{t.text}</p>
-                </CardContent>
-            </Card>
+            <div className="p-[2px] rounded-lg bg-gradient-to-tl from-primary to-destructive">
+                <Card className="rounded-lg">
+                    <CardHeader>
+                        <CardTitle className="w-full text-center">{title}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <div className="flex flex-col items-center">
+                            <p>{t.type}</p>
+                            <BtnLink href={url} target="blank" className="flex items-center space-x-1">
+                                <p>Link</p>
+                                <MdOpenInNew />
+                            </BtnLink>
+                            <Separator className="my-6" />
+                            <Image src={logo} alt={title + " logo"} width={400} />
+                        </div>
+                        <Separator className="my-6" />
+                        <p>{t.text}</p>
+                    </CardContent>
+                </Card>
+            </div>
         </section>
     );
 }
@@ -51,7 +53,7 @@ export default function Partners({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.partners;
     return (
         <Block>
-            <header className="w-full h-[300px] max-h-dvh flex flex-col items-center justify-center space-y-4">
+            <header className="w-full flex flex-col items-center justify-center space-y-8 pb-8">
                 <h1 className="font-bold">{t.title}</h1>
                 <p className="text-lg max-w-[500px] text-center">{t.text}</p>
             </header>
