@@ -3,7 +3,7 @@ import { FullLogo } from "../telecom-etude/logos";
 import Link from "next/link";
 import { IconType } from "react-icons";
 import { Button } from "../ui/button";
-import { getDictionary } from "@/locales/dictionaries";
+import { Dictionary, getDictionary } from "@/locales/dictionaries";
 import { Locale } from "@/locales/config";
 import { BtnLink, EmailContact } from "../telecom-etude/contact";
 
@@ -39,9 +39,7 @@ const SiteMapBlock = ({ title, items }: { title: string; items: { name: string; 
     </section>
 );
 
-const SiteMap = ({ locale }: { locale: Locale }) => {
-    const t = getDictionary(locale).navigation.sitemap;
-
+const SiteMap = ({ t }: { t: Dictionary["navigation"]["sitemap"] }) => {
     return (
         <div className="p-10">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-10">
@@ -73,7 +71,7 @@ const SiteMap = ({ locale }: { locale: Locale }) => {
                     items={[
                         { name: t.contact_form, href: "/contact" },
                         { name: t.blog, href: "/post" },
-                        { name: t.legal_mentions, href: "/legal-mentions" }
+                        { name: t.legal_mentions, href: "/legal" }
                     ]}
                 />
             </div>
@@ -81,30 +79,32 @@ const SiteMap = ({ locale }: { locale: Locale }) => {
     );
 };
 
-export const Mentions = () => (
+export const Mentions = ({ bug }: { bug: string }) => (
     <div>
         <div className="w-[200px]">
             <FullLogo />
         </div>
-        <div className="p-2 flex flex-col items-start space-y-2">
+        <div className="p-2 flex flex-col items-center space-y-2">
             <p>&copy;{new Date().getFullYear()} Telecom Etude</p>
             <EmailContact />
             <BtnLink href="https://maps.app.goo.gl/etZHknTudKMuTjRZ9" className="flex flex-col">
                 <p>19, place Marguerite Perey</p>
                 <p>91120 Palaiseau</p>
             </BtnLink>
+            <EmailContact dsi text={bug} />
         </div>
     </div>
 );
 
 export const Footer = ({ locale }: { locale: Locale }) => {
+    const t = getDictionary(locale).navigation.sitemap;
     return (
         <div className="border-t-[1px] border-primary flex flex-col sm:flex-row items-center space-y-2 py-4 justify-around">
             <section className="p-10">
-                <Mentions />
+                <Mentions bug={t.bug} />
                 <NetworkLinks />
             </section>
-            <SiteMap locale={locale} />
+            <SiteMap t={t} />
         </div>
     );
 };
