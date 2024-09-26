@@ -80,7 +80,7 @@ export default function HomePage({ params: { locale } }: { params: { locale: Loc
                             performances grâce à des régressions multi-linéaires et des outils de visualisation de données.
                         </strong>
                     </Paragraph>
-                    <Image className="xl:w-1/3 sm:w-2/3 w-full" src={MIT} alt="MIT Super Chip" />
+                    <Image placeholder="blur" className="xl:w-1/3 sm:w-2/3 w-full" src={MIT} alt="MIT Super Chip" />
                 </section>
             </div>
             <div>

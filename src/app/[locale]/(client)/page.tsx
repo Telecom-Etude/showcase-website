@@ -47,7 +47,7 @@ const DomainCard = ({ title, id, image, locale }: { title: string; id: string; i
                     <CardTitle className="text-center h-[52px] w-[180px] m-auto font-normal">{title}</CardTitle>
                 </CardHeader>
                 <CardContent className="p-0 block">
-                    <Image src={image} className="m-auto overflow-clip" alt={title} />
+                    <Image placeholder="blur" src={image} className="m-auto overflow-clip" alt={title} />
                 </CardContent>
             </Card>
         </Link>

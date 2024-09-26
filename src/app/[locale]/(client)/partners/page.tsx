@@ -18,17 +18,18 @@ import KPMG from "@/../public/images/companies/partners/kpmg.svg";
 interface PartnerProps {
     title: string;
     logo: StaticImport;
-    text: string;
+    t: { text: string; type: string };
     url: string;
 }
 
-function Partner({ title, logo, text, url }: PartnerProps) {
+function Partner({ title, logo, t, url }: PartnerProps) {
     return (
         <section className="p-4">
             <Card>
                 <CardHeader>
                     <CardTitle className="w-full text-center">{title}</CardTitle>
-                    <CardDescription className="flex justify-center">
+                    <CardDescription className="flex flex-col items-center">
+                        <p>{t.type}</p>
                         <BtnLink href={url} target="blank" className="flex items-center space-x-1">
                             <>Link</>
                             <MdOpenInNew />
@@ -39,7 +40,7 @@ function Partner({ title, logo, text, url }: PartnerProps) {
                 <CardContent>
                     <Image src={logo} alt={title + " logo"} width={400} />
                     <Separator className="my-6" />
-                    <p>{text}</p>
+                    <p>{t.text}</p>
                 </CardContent>
             </Card>
         </section>
@@ -55,9 +56,9 @@ export default function Partners({ params: { locale } }: LocaleParams) {
                 <p className="text-lg max-w-[500px] text-center">{t.text}</p>
             </header>
             <div className="grid grid-cols-1 sm:grid-cols-3">
-                <Partner title="Bain" url="https://www.bain.com" logo={Bain} text={"On attends en Sacha"} />
-                <Partner title="BearingPoint" url="https://www.bearingpoint.com" logo={BearingPoint} text={t.bearingPoint} />
-                <Partner title="KPMG" url="https://www.kpmg.com" logo={KPMG} text={t.kpmg} />
+                <Partner title="Bain" url="https://www.bain.com" logo={Bain} t={t.bain} />
+                <Partner title="BearingPoint" url="https://www.bearingpoint.com" logo={BearingPoint} t={t.bearingPoint} />
+                <Partner title="KPMG" url="https://www.kpmg.com" logo={KPMG} t={t.kpmg} />
             </div>
         </Block>
     );
