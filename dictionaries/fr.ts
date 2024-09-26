@@ -65,7 +65,8 @@ export const frDictionary = {
             login: "Connexion",
             logout: "Déconnexion",
             ieseg: "IESEG Conseil Paris",
-            contact: "Contactez-nous"
+            contact: "Contactez-nous",
+            bug: "Signaler un bug"
         }
     },
     pages: {
@@ -106,14 +107,49 @@ export const frDictionary = {
                 before: "Photo de",
                 after: "de Telecom Etude"
             },
-            board: {
-                title: "Le bureau",
-                members: {
-                    prez: {
-                        job: "Présidente",
-                        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus dolor sit amet felis ornare rhoncus. Pellentesque accumsan tincidunt iaculis. Cras posuere quam a mi accumsan, eu dapibus tellus commodo. Mauris aliquet tellus risus, at feugiat nunc pulvinar nec. Phasellus eu augue sit amet urna vestibulum tempor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ac euismod justo. Sed ultricies velit ut diam pulvinar fringilla. Ut maximus condimentum tincidunt. Nullam commodo magna in nisi sollicitudin tincidunt. Vestibulum viverra turpis ac tellus pulvinar, dictum eleifend massa consequat. Aenean arcu tellus, rhoncus in mollis quis, laoreet ac tortor. Nunc mollis velit at hendrerit euismod. In vel ex quam. Ut lacinia turpis vitae nisl sodales, ut bibendum elit consequat."
-                    }
-                }
+            poles: {
+                board: "Le bureau",
+                devco: "Pôle développement commercial",
+                auditqua: "Pôle audit et qualité",
+                event: "Pôle évenementiel",
+                info: "Pôle informatique",
+                com: "Pôle communication",
+                suivi: "Pôle suivi des études"
+            },
+            members: {
+                prez: "Présidente",
+                trez: "Trésorière",
+                vicetrez: "Vice-trésorière",
+                vpi: "Vice-président interne",
+                vpe: "Vice-président externe",
+                secge: "Secrétaire général",
+                dirco: "Directrice commerciale",
+                //
+                respodevco: "Responsable Développement Commercial",
+                respoaudit: "Responsable Audit",
+                respocom: "Responsable Communication",
+                resposuivi: "Responsable Suivi des Etudes",
+                respoevent: "Responsable Evènements",
+                respoquality: "Responsable Qualité",
+                respoinfo: "Responsable Informatique",
+                //
+                appel: "Chargé appel d'offre",
+                alumni: "Chargé alumni",
+                international: "Chargé international",
+                selectionCDP: "Chargé Sélection CDP",
+                processus: "Chargé de revue des processus",
+                templates: "Chargé templates",
+                pots: "Chargé Pots",
+                teambuildings: "Chargé Cohésion",
+                linkedin: "Chargé Linkedin",
+                insta: "Chargé Instagram",
+                formations: "Chargé formations",
+                cominterne: "Chargé Communication Interne",
+                //
+                devco: "Membre pôle développement commercial",
+                info: "Membre pôle informatique",
+                suivi: "Membre pôle suivi des études",
+                audit: "Membre pôle audit"
             }
         },
         faq: {
@@ -160,10 +196,18 @@ export const frDictionary = {
         partners: {
             title: "Nos entreprises partenaires",
             text: "Telecom Etude a des entreprises par",
-            kpmg: "Notre partenariat avec KPMG s'inscrit dans une volonté de bénéficier aux deux parties. Telecom Etude participe au rayonnement de KPMG auprès des étudiants, en contrepartie KPMG organise en collaboration avec Telecom Etude des évènements à destination des étudiants dans les locaux de Telecom durant l'année afin de faire découvrir les métiers du conseil, ainsi qu'une visite des locaux de KPMG en fin d'année accompagné d'un échange en petits groupes.",
-            bain: "Bain & Company est le cabinet de conseil international qui accompagne les dirigeants ambitieux pour transformer leurs entreprises en pionnières du monde de demain. Ce partenariat prestigieux nous permet de mettre en relation les étudiants de Telecom Paris avec les consultants et recruteurs de Bain & Company à travers des évènements privilégiés.",
-            bearingPoint:
-                "Ensemble, nous sommes plus qu'une entreprise: telle est la raison d'être de ce cabinet de conseil en management et technologie. BearingPoint accompagne ses clients dans plus de 75 pays et les aide à obtenir des résultats mesurables, durables, et responsables. Depuis 2005, BearingPoint accompagne notre structure, tant en nous formant qu'en nous offrant des opportunités commerciales. Cette réelle synergie est le fruit d'une volonté commune de faire valoir les talents d'aujourd'hui dans une entreprise à notre image : force de proposition et à l'avant-garde de demain. En permettant à des étudiant télécomiens de se rendre dans leurs locaux, ou en valorisant notre réseau d'alumni, BearingPoint s'inscrit dans notre écosystème au travers d'une collaboration mutuellement bénéfique."
+            kpmg: {
+                type: "Audit et conseil",
+                text: "Notre partenariat avec KPMG s'inscrit dans une volonté de bénéficier aux deux parties. Telecom Etude participe au rayonnement de KPMG auprès des étudiants, en contrepartie KPMG organise en collaboration avec Telecom Etude des évènements à destination des étudiants dans les locaux de Telecom durant l'année afin de faire découvrir les métiers du conseil, ainsi qu'une visite des locaux de KPMG en fin d'année accompagné d'un échange en petits groupes."
+            },
+            bain: {
+                type: "Cabinet de conseil",
+                text: "Bain & Company est le cabinet de conseil international qui accompagne les dirigeants ambitieux pour transformer leurs entreprises en pionnières du monde de demain. Ce partenariat prestigieux nous permet de mettre en relation les étudiants de Telecom Paris avec les consultants et recruteurs de Bain & Company à travers des évènements privilégiés."
+            },
+            bearingPoint: {
+                type: "Cabinet de conseil",
+                text: "Ensemble, nous sommes plus qu'une entreprise: telle est la raison d'être de ce cabinet de conseil en management et technologie. BearingPoint accompagne ses clients dans plus de 75 pays et les aide à obtenir des résultats mesurables, durables, et responsables. Depuis 2005, BearingPoint accompagne notre structure, tant en nous formant qu'en nous offrant des opportunités commerciales. Cette réelle synergie est le fruit d'une volonté commune de faire valoir les talents d'aujourd'hui dans une entreprise à notre image : force de proposition et à l'avant-garde de demain. En permettant à des étudiant télécomiens de se rendre dans leurs locaux, ou en valorisant notre réseau d'alumni, BearingPoint s'inscrit dans notre écosystème au travers d'une collaboration mutuellement bénéfique."
+            }
         },
         about: {
             description: "la Junior-Entreprise du numérique et de la data",

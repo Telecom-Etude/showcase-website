@@ -67,7 +67,8 @@ export const enDictionary: Dictionary = {
             login: "Log In",
             logout: "Log Out",
             ieseg: "IESEG Conseil Paris",
-            contact: "Contact us"
+            contact: "Contact us",
+            bug: "Report a bug"
         }
     },
     pages: {
@@ -109,23 +110,66 @@ export const enDictionary: Dictionary = {
                 before: "Telecom Etude's",
                 after: "photo"
             },
-            board: {
-                title: "The board",
-                members: {
-                    prez: {
-                        job: "President",
-                        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus dolor sit amet felis ornare rhoncus. Pellentesque accumsan tincidunt iaculis. Cras posuere quam a mi accumsan, eu dapibus tellus commodo. Mauris aliquet tellus risus, at feugiat nunc pulvinar nec. Phasellus eu augue sit amet urna vestibulum tempor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ac euismod justo. Sed ultricies velit ut diam pulvinar fringilla. Ut maximus condimentum tincidunt. Nullam commodo magna in nisi sollicitudin tincidunt. Vestibulum viverra turpis ac tellus pulvinar, dictum eleifend massa consequat. Aenean arcu tellus, rhoncus in mollis quis, laoreet ac tortor. Nunc mollis velit at hendrerit euismod. In vel ex quam. Ut lacinia turpis vitae nisl sodales, ut bibendum elit consequat."
-                    }
-                }
+            poles: {
+                board: "Le bureau",
+                devco: "Buisnees development department",
+                auditqua: "Audit and quality department",
+                event: "Events department",
+                info: "IT department",
+                com: "Communication department",
+                suivi: "Projects monitoring division"
+            },
+            members: {
+                prez: "Chief Executive Officer",
+                trez: "Treasurer",
+                vicetrez: "Vice-treasurer",
+                vpi: "Internal vice-president",
+                vpe: "External vice-president",
+                secge: "General secretary",
+                dirco: "Commercial director",
+                //
+                respodevco: "Business development officer",
+                respoaudit: "Audit officer",
+                respocom: "Communications officer",
+                resposuivi: "Projects monitoring officer",
+                respoevent: "Events officer",
+                respoquality: "Quality officer",
+                respoinfo: "Chief information officer",
+                //
+                appel: "Tender Officer",
+                alumni: "Alumni Manager",
+                international: "International Manager",
+                selectionCDP: "CDP Selection Manager",
+                processus: "Process Review Manager",
+                templates: "Templates Manager",
+                pots: "Pots Manager",
+                teambuildings: "in charge of cohesion",
+                linkedin: "Responsible for Linkedin",
+                insta: "Responsible for Instagram",
+                formations: "Chargé formations",
+                cominterne: "Internal Communications Officer",
+                //
+                devco: "Business development",
+                info: "IT",
+                audit: "Audit & Quality",
+                suivi: "Projects monitoring"
             }
         },
         partners: {
             title: "Our partner companies",
             text: "Telecom Etude has partner companies",
-            bain: "Bain & Company is the international consulting firm that helps ambitious managers transform their companies into pioneers of tomorrow's world. This prestigious partnership enables us to put Telecom Paris students in touch with Bain & Company consultants and recruiters through special events.",
-            kpmg: "Our partnership with KPMG is designed to benefit both parties. In return, KPMG, in collaboration with Telecom Etude, organises events for students at Telecom Etude's premises during the year to introduce them to the consulting professions, as well as a visit to KPMG's premises at the end of the year accompanied by a discussion in small groups.",
-            bearingPoint:
-                "Together, we are more than a company: this is the raison d'être of this management and technology consultancy. BearingPoint supports clients in more than 75 countries, helping them to achieve measurable, sustainable and responsible results. Since 2005, BearingPoint has supported our structure, both by training us and by offering us commercial opportunities. This real synergy is the result of a shared desire to make the most of today's talent in a company that reflects our image: a force for innovation and at the forefront of tomorrow's world. By allowing telecoms students to visit our offices, or by promoting our network of alumni, BearingPoint is part of our ecosystem through a mutually beneficial collaboration."
+            bain: {
+                type: "Consulting firm",
+                text: "Bain & Company is the international consulting firm that helps ambitious managers transform their companies into pioneers of tomorrow's world. This prestigious partnership enables us to put Telecom Paris students in touch with Bain & Company consultants and recruiters through special events."
+            },
+            kpmg: {
+                type: "Audit and consulting",
+                text: "Our partnership with KPMG is designed to benefit both parties. In return, KPMG, in collaboration with Telecom Etude, organises events for students at Telecom Etude's premises during the year to introduce them to the consulting professions, as well as a visit to KPMG's premises at the end of the year accompanied by a discussion in small groups."
+            },
+            bearingPoint: {
+                type: "Consulting firm",
+                text: "Together, we are more than a company: this is the raison d'être of this management and technology consultancy. BearingPoint supports clients in more than 75 countries, helping them to achieve measurable, sustainable and responsible results. Since 2005, BearingPoint has supported our structure, both by training us and by offering us commercial opportunities. This real synergy is the result of a shared desire to make the most of today's talent in a company that reflects our image: a force for innovation and at the forefront of tomorrow's world. By allowing telecoms students to visit our offices, or by promoting our network of alumni, BearingPoint is part of our ecosystem through a mutually beneficial collaboration."
+            }
         },
         faq: {
             title: "Frequently Asked Questions",
