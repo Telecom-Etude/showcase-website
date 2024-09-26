@@ -32,22 +32,23 @@ export interface RouteProps {
     lastModified?: Date;
 }
 
-export const ROUTES: { [key: string]: RouteProps } = {
+export const SITEMAP_ROUTES: { [key: string]: RouteProps } = {
     "/": { priority: 1 },
-    "/about": {},
+    "/about": { priority: 1 },
     "/blog": { changeFrequency: "weekly", priority: 0.5 },
     "/team": {},
     "/contact": {},
-    "/test": process.env.DEV_MODE ? {} : { code: 404 },
-    "/form": {},
-    "/faq": { changeFrequency: "monthly" },
-    "/ieseg": {},
-    "/offer": {},
-    "/legal": {},
-    "/plaquette.pdf": {},
-    "/orga.png": {},
-    "/commitment": {},
     "/partners": {},
+    "/faq": { changeFrequency: "monthly", priority: 1 },
+    "/ieseg": { priority: 0.5 },
+    "/offer": { priority: 1 },
+    "/commitment": {}
+};
+
+export const ALL_ROUTES: { [key: string]: RouteProps } = {
+    ...SITEMAP_ROUTES,
+    "/legal": {},
+    "/test": process.env.DEV_MODE ? {} : { code: 404 },
     "/auth/signin": {},
     "/auth/signout": {},
     "/form-submission": { auth: checkAdminRights(r => r.formAdmin) },
@@ -67,8 +68,8 @@ const getCode = (req: NextAuthRequest, routeProps: RouteProps) => {
 };
 
 export const getAuthorisationCode = (req: NextAuthRequest, localelessPath: string): number => {
-    if (localelessPath in ROUTES) {
-        return getCode(req, ROUTES[localelessPath as keyof typeof ROUTES]);
+    if (localelessPath in ALL_ROUTES) {
+        return getCode(req, ALL_ROUTES[localelessPath as keyof typeof ALL_ROUTES]);
     } else if (localelessPath.startsWith("/edit-blog/")) {
         return checkAdminRights(r => r.blogAuthor)(req);
     } else if (localelessPath.startsWith("/blog/")) {

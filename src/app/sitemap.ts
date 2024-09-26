@@ -1,4 +1,4 @@
-import { RouteProps, ROUTES } from "@/auth/routes";
+import { RouteProps, SITEMAP_ROUTES } from "@/auth/routes";
 import { MetadataRoute } from "next";
 
 const getSitemapItem = ([url, { lastModified, changeFrequency, priority }]: [string, RouteProps]) => ({
@@ -9,5 +9,5 @@ const getSitemapItem = ([url, { lastModified, changeFrequency, priority }]: [str
 });
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    return Object.entries(ROUTES).map(getSitemapItem);
+    return Object.entries(SITEMAP_ROUTES).map(getSitemapItem);
 }
