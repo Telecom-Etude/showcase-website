@@ -17,14 +17,13 @@ export default async function Legal({ params: { locale } }: LocaleParams) {
             <h2 className={titleSyle}>{t.credits}</h2>
             <h3 className={titleSyle}>{t.dev}</h3>
             <PartText>
-                <p className="text-center">{t.madeBy}</p>
                 <p className="text-center">{t.loi.host}</p>
             </PartText>
             <h2 className={titleSyle}>Telecom Etude</h2>
             <PartText>
                 <p className="text-center">{t.loi1901}</p>
                 <p className="text-center">{t.siegesocial}</p>
-                <div className="text-center flex space-x-4">
+                <div className="flex justify-center space-x-4">
                     <p>{t.contact}</p>
                     <EmailContact />
                 </div>

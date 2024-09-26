@@ -96,8 +96,8 @@ export const enDictionary: Dictionary = {
                 se: "Embedded Systems"
             }
         },
-
         blog: {
+            title: "Our news",
             date: {
                 posted_by: "Posted by",
                 on: "on the"

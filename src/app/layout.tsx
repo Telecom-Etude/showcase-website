@@ -56,7 +56,7 @@ export const metadata: Metadata = {
 
     // IMPORTANT
     description:
-        "Telecom Etude, fondée en 1979, est la Junior-Entreprise de Télécom Paris, une école d'ingénieurs de premier plan dans les technologies de l'information et de la communication. Connectez-vous avec notre équipe dynamique de 23 administrateurs pour des solutions sur mesure à vos projets. Explorez l'expertise de Telecom Etude et engagez-vous avec plus de 1000 ingénieurs étudiants de Telecom Paris.", // IMPORTANT
+        "Telecom Etude, fondée en 1979, est la Junior-Entreprise de Télécom Paris, une école d'ingénieur de premier plan dans les technologies de l'information et du numérique. Connectez-vous avec notre équipe réactive et professionnelle de 33 administrateurs pour des solutions sur mesure à vos projets. Explorez l'expertise de Telecom Etude et engagez-vous avec plus de 1000 ingénieurs étudiants de Télécom Paris.", // IMPORTANT
     keywords: ["Numérique", "Data", "IA", "Machine Learning", "Développement"],
     metadataBase: new URL("https://telecom-etude.fr"), // settings for below
     alternates: {

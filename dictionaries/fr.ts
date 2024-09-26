@@ -71,6 +71,7 @@ export const frDictionary = {
     },
     pages: {
         blog: {
+            title: "Nos actualités",
             date: {
                 posted_by: "Posté par",
                 on: "le"
