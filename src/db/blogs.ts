@@ -88,21 +88,31 @@ const getLabelNames = async (labels: Label[], locale: Locale) => {
 
 export const getValidatedBlogsFromLocale = async (locale: Locale): Promise<PostPresentation[]> => {
     try {
-        const blogs = (await db.post.findMany({
+        const dbBlogs = await db.post.findMany({
             include: { authors: true, localePosts: true, labels: true }
-        }))!.filter(blog => blog.validated);
-        return await Promise.all(
-            blogs.map(async ({ localePosts, labels, authors, createdAt, id }) => {
-                return {
-                    ...localePosts.find(localeBlog => localeBlog.locale === locale)!,
-                    authors: authors.map(author => getUserName(author.email)),
-                    emails: authors.map(author => author.email),
-                    labels: await getLabelNames(labels, locale),
-                    date: createdAt,
-                    id
-                };
-            })
-        );
+        })!;
+        const blogs = dbBlogs
+            .filter(blog => blog.validated)
+            .map(({ localePosts, labels, authors, createdAt, id }) => ({
+                localePost: localePosts.find(localeBlog => localeBlog.locale === locale),
+                authors: authors.map(author => getUserName(author.email)),
+                emails: authors.map(author => author.email),
+                labels,
+                date: createdAt,
+                id
+            }))
+            .filter(blog => blog.localePost);
+        return (
+            await Promise.all(
+                blogs.map(async ({ labels, localePost, ...blog }) => {
+                    return {
+                        labels: await getLabelNames(labels, locale),
+                        ...localePost,
+                        ...blog
+                    };
+                })
+            )
+        ).filter(blog => !!blog.title) as PostPresentation[];
     } catch (e) {
         console.error("[getBlogs] ", e);
         throw new Error();

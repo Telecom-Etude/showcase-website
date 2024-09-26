@@ -27,11 +27,14 @@ const allLabelsInValue = (postLabels: number[], selectedLabels: number[]) =>
 
 const getAuthors = (authors: string[]) => {
     const last = authors.pop();
+    const beforeLast = authors.pop();
     if (!last) {
         console.error("Error while fetching user data.");
         return "";
+    } else if (!beforeLast) {
+        return last;
     } else {
-        return authors.reduce((acc, author) => `${acc}${author}, `, "") + `& ${last}`;
+        return authors.reduce((acc, author) => `${acc}${author}, `, "") + `${beforeLast} & ${last}`;
     }
 };
 
@@ -96,9 +99,6 @@ const BlogsList = ({ posts, locale, email, isEditor }: { posts: PostPresentation
                                     </div>
                                 </CardDescription>
                             </CardHeader>
-                            <CardContent>
-                                <p>{post.content}</p>
-                            </CardContent>
                         </Card>
                     </div>
                 </div>

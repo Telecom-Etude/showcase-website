@@ -33,14 +33,14 @@ export interface RouteProps {
 }
 
 export const ROUTES: { [key: string]: RouteProps } = {
-    "/": {},
+    "/": { priority: 1 },
     "/about": {},
-    "/blog": {},
+    "/blog": { changeFrequency: "weekly", priority: 0.5 },
     "/team": {},
     "/contact": {},
     "/test": process.env.DEV_MODE ? {} : { code: 404 },
     "/form": {},
-    "/faq": {},
+    "/faq": { changeFrequency: "monthly" },
     "/ieseg": {},
     "/offer": {},
     "/legal": {},
