@@ -29,15 +29,15 @@ function Partner({ title, logo, t, url }: PartnerProps) {
                 <CardHeader>
                     <CardTitle className="w-full text-center">{title}</CardTitle>
                     <CardDescription className="flex flex-col items-center">
-                        <p>{t.type}</p>
+                        <>{t.type}</>
                         <BtnLink href={url} target="blank" className="flex items-center space-x-1">
                             <>Link</>
                             <MdOpenInNew />
                         </BtnLink>
                     </CardDescription>
-                    <Separator />
                 </CardHeader>
                 <CardContent>
+                    <Separator />
                     <Image src={logo} alt={title + " logo"} width={400} />
                     <Separator className="my-6" />
                     <p>{t.text}</p>
@@ -55,7 +55,7 @@ export default function Partners({ params: { locale } }: LocaleParams) {
                 <h1 className="font-bold">{t.title}</h1>
                 <p className="text-lg max-w-[500px] text-center">{t.text}</p>
             </header>
-            <div className="grid grid-cols-1 sm:grid-cols-3">
+            <div className="grid grid-cols-1 md:grid-cols-3">
                 <Partner title="Bain" url="https://www.bain.com" logo={Bain} t={t.bain} />
                 <Partner title="BearingPoint" url="https://www.bearingpoint.com" logo={BearingPoint} t={t.bearingPoint} />
                 <Partner title="KPMG" url="https://www.kpmg.com" logo={KPMG} t={t.kpmg} />

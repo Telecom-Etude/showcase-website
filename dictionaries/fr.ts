@@ -79,11 +79,18 @@ export const frDictionary = {
             labelSelector: { title: "Filtrer par étiquette", selectorMessage: "Sélectionnez-en au plus 3" }
         },
         home: {
+            trust: "Ils nous ont fait confiance",
+            description:
+                "Telecom Etude, fondée en 1979, est la Junior-Entreprise de Télécom Paris, une école d'ingénieur de premier plan dans les technologies de l'information et du numérique. Connectez-vous avec notre équipe réactive et professionnelle de 33 administrateurs pour des solutions sur mesure à vos projets. Explorez l'expertise de Telecom Etude et engagez-vous avec plus de 1000 ingénieurs étudiants de Télécom Paris.",
+            questions: "Plus de questions",
             subtitle: "La Junior Entreprise du numérique, des nouvelles technologies et de la data",
             alt: "Photo du mandat de Telecom Etude",
             whoarewe: "Qui sommes-nous ?",
             contact: "Contact us",
-            cnje: "Les Junior-Entreprises sont des associations pédagogiques de conseil de loi 1901 ayant pour objet social la montée en compétences des étudiants à travers la réalisation de prestations de service pour des professionnels.",
+            cnje: [
+                "Les Junior-Entreprises sont des associations pédagogiques de conseil de loi 1901 ayant pour objet social la montée en compétences des étudiants à travers la réalisation de prestations de service pour des professionnels.",
+                "Ces structures sont implantées au sein d'établissements de l'enseignement supérieur. Elles proposent des services de qualité aux entreprises et permettent aux étudiants de développer leurs savoirs en mettant en pratique leur formation afin de répondre aux besoins des clients."
+            ],
             numbers: {
                 title: "Telecom Etude en quelques chiffres",
                 clients: "Clients satisfaits",
@@ -93,6 +100,8 @@ export const frDictionary = {
                 admins: "Administrateurs à votre écoute"
             },
             domains: {
+                subtitle: "Nous trouvons une réponse à chacun de vos besoins",
+                description: "Notre expértise et nos compétences s'étendent sur une vaste étendue du numérique, dont voici quelques examples:",
                 title: "Nos domaines de prédilection",
                 data: "Data science, Intelligence artificielle & Machine learning",
                 web: "Développement Logiciel, Applications & Web",

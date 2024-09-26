@@ -31,7 +31,8 @@ html {
         --popover-foreground: hsl(0 0% 3.9%);
 
         --primary: var(--je-orange);
-        --primary-muted: hsla(24, 98%, 60%, 0.5);
+        --primary-muted: hsla(24, 98%, 60%, 0.6);
+        --primary-accent: hsla(24, 98%, 60%, 0.8);
         --primary-foreground: hsl(0, 0%, 100%);
 
         --secondary: hsl(0 0% 96.1%);

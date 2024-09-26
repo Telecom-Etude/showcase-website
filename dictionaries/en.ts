@@ -73,11 +73,18 @@ export const enDictionary: Dictionary = {
     },
     pages: {
         home: {
+            trust: "They put their trust in us",
+            description:
+                "Telecom Etude, founded in 1979, is the Junior-Enterprise of Télécom Paris, a leading engineering school in information and digital technologies. Connect with our responsive and professional team of 33 administrators for tailor-made solutions to your projects. Explore Telecom Etude's expertise and engage with over 1,000 student engineers from Telecom Paris",
+            questions: "More questions",
             subtitle: "La Junior Entreprise du numérique, des nouvelles technologies et de la data",
             alt: "Photo of Telecom Etude's mandate",
-            whoarewe: "About us",
+            whoarewe: "Who are we?",
             contact: "Contact us",
-            cnje: "Junior-Enterprises are educational consultancy associations governed by the French law of 1901. Their social purpose is to increase the skills of students by providing services to professionals",
+            cnje: [
+                "Junior-Enterprises are educational consultancy associations governed by the French law of 1901, whose social purpose is to help students develop their skills by providing services to professionals",
+                "These structures are set up within higher education establishments. They offer quality services to companies and enable students to develop their knowledge by putting their training into practice in order to meet clients' needs."
+            ],
             numbers: {
                 title: "Telecom Etude in figures",
                 clients: "Satisfied clients",
@@ -87,8 +94,10 @@ export const enDictionary: Dictionary = {
                 admins: "Administrators at your service"
             },
             domains: {
+                subtitle: "We find an answer to any of your needs",
+                description: "Our experience and skills cover a wide range of digital areas, including the following examples:",
                 title: "Our areas of expertise",
-                data: "Data science, Artificial Intelligence & Machine learning",
+                data: "Data science, Artificial intelligence & Machine learning",
                 web: "Software Development, Applications & Web",
                 cyber: "Cybersecurity, Networks, Cryptography & Blockchain",
                 image: "Image processing & 3D modelling",

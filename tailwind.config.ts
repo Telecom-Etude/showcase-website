@@ -10,6 +10,7 @@ const colors: CustomThemeConfig["colors"] = {
     primary: {
         DEFAULT: "var(--primary)",
         foreground: "var(--primary-foreground)",
+        accent: "var(--primary-accent)",
         muted: "var(--primary-muted)"
     },
     secondary: {
