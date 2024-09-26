@@ -56,7 +56,9 @@ export const OfferGraphic = () => {
                     {[1, 2, 3, 4].map(i => (
                         <div
                             key={i}
-                            className={`absolute left-[calc(${i}*100px)] h-full w-0 border-[1px] ${mousePosition.x >= i * 100 ? "border-muted" : "border-destructive"}`}
+                            className={`absolute left-[calc(${i}*100px)] h-full w-0 border-[1px] ${
+                                mousePosition.x >= i * 100 ? "border-muted" : "border-destructive"
+                            }`}
                         />
                     ))}
                     {!hovered && <Pointer className="m-auto text-muted" />}

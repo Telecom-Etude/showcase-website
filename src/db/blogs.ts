@@ -66,7 +66,10 @@ export const getLocaleBlog = async (blogId: number, locale: Locale) => {
         console.log("blogId = ", blogId, "locale = ", locale);
         const blog = await db.post.findUnique({
             where: { id: blogId },
-            select: { localePosts: { where: { locale } } }
+            include: {
+                authors: true,
+                localePosts: { where: { locale } }
+            }
         });
         return blog!.localePosts[0];
     } catch (e) {
@@ -106,9 +109,10 @@ export const getValidatedBlogsFromLocale = async (locale: Locale): Promise<PostP
             await Promise.all(
                 blogs.map(async ({ labels, localePost, ...blog }) => {
                     return {
-                        labels: await getLabelNames(labels, locale),
+                        ...blog,
                         ...localePost,
-                        ...blog
+                        labels: await getLabelNames(labels, locale),
+                        localeId: localePost?.id
                     };
                 })
             )

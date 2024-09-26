@@ -11,9 +11,12 @@ import { nav } from "@/locales/routing";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button, VariantLink } from "@/components/ui/button";
 import { ComboLabels, ManyComboBox, ManyComboBoxProps } from "@/components/meta-components/combobox";
+import { displayAuthors } from "@/lib/users";
+import { BtnLink } from "@/components/telecom-etude/contact";
+import Link from "next/link";
 
 export interface PostPresentation {
-    id: number;
+    localeId: number;
     title: string;
     content: string;
     authors: string[];
@@ -24,24 +27,6 @@ export interface PostPresentation {
 
 const allLabelsInValue = (postLabels: number[], selectedLabels: number[]) =>
     selectedLabels.filter(label => postLabels.includes(label)).length === selectedLabels.length;
-
-const getAuthors = (authors: string[]) => {
-    const last = authors.pop();
-    const beforeLast = authors.pop();
-    if (!last) {
-        console.error("Error while fetching user data.");
-        return "";
-    } else if (!beforeLast) {
-        return last;
-    } else {
-        return authors.reduce((acc, author) => `${acc}${author}, `, "") + `${beforeLast} & ${last}`;
-    }
-};
-
-const displayAuthors = (locale: Locale, post: PostPresentation) => {
-    const t = getDictionary(locale).pages.blog.date;
-    return t.posted_by + " " + getAuthors(post.authors) + " " + t.on + " " + post.date.toLocaleDateString();
-};
 
 const LabelSelection = (props: ManyComboBoxProps & { dbLabels: ComboLabels }) => {
     const LabelSelector = () => <ManyComboBox {...props} />;
@@ -79,26 +64,28 @@ const BlogsList = ({ posts, locale, email, isEditor }: { posts: PostPresentation
                         <Card className="rounded-[9px] border-0 h-full">
                             <CardHeader>
                                 <CardTitle className="flex justify-between">
-                                    <p>{post.title}</p>
+                                    <Link className="hover:underline" href={nav(locale, `/blog/${post.localeId}`)}>
+                                        {post.title}
+                                    </Link>
                                     {isEditor && email && post.emails.includes(email) ? (
-                                        <VariantLink variant="ghost" href={nav(locale, `/edit-blog/${post.id}`)}>
+                                        <VariantLink variant="ghost" href={nav(locale, `/edit-blog/${post.localeId}`)}>
                                             <FaPencil className="w-4 h-4" />
                                         </VariantLink>
                                     ) : null}
                                 </CardTitle>
-                                <CardDescription>
-                                    <div>
-                                        <p className="italic text-gray text-sm">{displayAuthors(locale, post)}</p>
-                                    </div>
-                                    <div className="flex space-x-2 pt-2">
-                                        {Object.values(post.labels).map((label, i) => (
-                                            <p key={i} className="bg-gray-300 rounded-full p-1 px-2 text-black">
-                                                {label}
-                                            </p>
-                                        ))}
-                                    </div>
-                                </CardDescription>
                             </CardHeader>
+                            <CardContent>
+                                <div>
+                                    <p className="italic text-gray text-sm">{displayAuthors(locale, post)}</p>
+                                </div>
+                                <div className="flex space-x-2 pt-2">
+                                    {Object.values(post.labels).map((label, i) => (
+                                        <p key={i} className="bg-gray-300 rounded-full p-1 px-2 text-black">
+                                            {label}
+                                        </p>
+                                    ))}
+                                </div>
+                            </CardContent>
                         </Card>
                     </div>
                 </div>

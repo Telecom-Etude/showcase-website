@@ -3,7 +3,9 @@ import { db } from "@/lib/db";
 import { LocaleParams } from "@/locales/config";
 import { nav } from "@/locales/routing";
 import { IoClose } from "react-icons/io5";
-import { Render, ValidateButton } from "./client";
+import { ValidateButton } from "./client";
+import { RenderQuill } from "@/components/quill/render";
+import { getDictionary } from "@/locales/dictionaries";
 
 type PageProps = LocaleParams & { params: { localeId: string } };
 
@@ -22,10 +24,10 @@ export default async function Page({ params: { locale, localeId } }: PageProps) 
                         <IoClose className="w-4 h-4" />
                     </VariantLink>
                 </div>
-                <Render content={JSON.parse(blog?.content || "[]")} />
+                <RenderQuill content={JSON.parse(blog?.content || "[]")} />
             </div>
             <div className="w-full flex justify-center p-4">
-                <ValidateButton localePostId={localePostId} />
+                <ValidateButton localePostId={localePostId} t={getDictionary(locale).navigation.errors.unknown} />
             </div>
         </div>
     );

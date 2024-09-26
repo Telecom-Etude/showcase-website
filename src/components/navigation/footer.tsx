@@ -6,6 +6,7 @@ import { Button } from "../ui/button";
 import { Dictionary, getDictionary } from "@/locales/dictionaries";
 import { Locale } from "@/locales/config";
 import { BtnLink, EmailContact } from "../telecom-etude/contact";
+import { nav } from "@/locales/routing";
 
 const Network = ({ href, Icon }: { href: string; Icon: IconType }) => (
     <Link href={href} className="p-1 m-0 rounded-full">
@@ -30,20 +31,21 @@ const NetworkLinks = () => (
     </div>
 );
 
-const SiteMapBlock = ({ title, items }: { title: string; items: { name: string; href: string }[] }) => (
+const SiteMapBlock = ({ title, items, locale }: { locale: Locale; title: string; items: { name: string; href: string }[] }) => (
     <section className="flex flex-col items-center">
         <h3 className="text-lg font-semibold pb-2 pt-6 pl-0 w-fit text-center">{title}</h3>
-        {items.map((item, k) => (
-            <LinkItem {...item} key={k} />
+        {items.map(({ name, href }, k) => (
+            <LinkItem name={name} href={nav(locale, href)} key={k} />
         ))}
     </section>
 );
 
-const SiteMap = ({ t }: { t: Dictionary["navigation"]["sitemap"] }) => {
+const SiteMap = ({ t, locale }: { locale: Locale; t: Dictionary["navigation"]["sitemap"] }) => {
     return (
         <div className="p-10">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-10">
                 <SiteMapBlock
+                    locale={locale}
                     title={t.whoarewe}
                     items={[
                         { name: t.home, href: "/" },
@@ -53,6 +55,7 @@ const SiteMap = ({ t }: { t: Dictionary["navigation"]["sitemap"] }) => {
                     ]}
                 />
                 <SiteMapBlock
+                    locale={locale}
                     title={t.partners}
                     items={[
                         { name: t.company_partners, href: "/partners" },
@@ -60,6 +63,7 @@ const SiteMap = ({ t }: { t: Dictionary["navigation"]["sitemap"] }) => {
                     ]}
                 />
                 <SiteMapBlock
+                    locale={locale}
                     title={t.offer}
                     items={[
                         { name: t.offer, href: "/offer" },
@@ -67,6 +71,7 @@ const SiteMap = ({ t }: { t: Dictionary["navigation"]["sitemap"] }) => {
                     ]}
                 />
                 <SiteMapBlock
+                    locale={locale}
                     title={t.contact_information}
                     items={[
                         { name: t.contact_form, href: "/contact" },
@@ -104,7 +109,7 @@ export const Footer = ({ locale }: { locale: Locale }) => {
                 <Mentions bug={t.bug} />
                 <NetworkLinks />
             </section>
-            <SiteMap t={t} />
+            <SiteMap t={t} locale={locale} />
         </div>
     );
 };

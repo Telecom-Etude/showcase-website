@@ -53,13 +53,11 @@ export const QuillEditor = ({ localeBlogId, content, title, blogId }: { blogId: 
             const q: Quill = new Quill(editorRef.current, options);
             q.setContents(content);
             setQuill(q);
-            console.log("created");
             q.on("text-change", () => {
                 setValue(JSON.stringify(q.getContents().ops));
                 setHtml(q.root.innerHTML);
                 const newContent = q.getContents().ops;
                 if (newContent != content) {
-                    console.log("saving", new Date().toTimeString(), " ==> ", JSON.stringify(newContent));
                     updateLocaleBlogContent(localeBlogId, newContent).finally(() => router.refresh());
                 }
             });

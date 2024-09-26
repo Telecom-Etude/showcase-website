@@ -13,7 +13,7 @@ export const getHeaderLocale = (headers: Headers): Locale => {
         let languages = new Negotiator({ headers: negociator_headers }).languages();
         return match(languages, LOCALES, DEFAULT_LOCALE) as Locale;
     } catch (e) {
-        console.error("Error occured while fetching locale: ", e);
+        // console.error("Error occured while fetching locale: ", e);
         return DEFAULT_LOCALE;
     }
 };
