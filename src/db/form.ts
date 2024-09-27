@@ -43,6 +43,5 @@ export const makeDone = async (id: number, done: boolean) => {
         });
     } catch (e) {
         console.error(`[makeDone] Error:\n\n${e}\n`);
-        throw new Error();
     }
 };

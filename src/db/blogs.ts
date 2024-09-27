@@ -32,7 +32,7 @@ export const createBlog = async (authorEmail: string, title: string, locale: Loc
         return blog.id;
     } catch (e) {
         console.error("[createBlog] ", e);
-        throw new Error();
+        throw new Error("Post not found");
     }
 };
 
@@ -44,11 +44,10 @@ export const updateLocaleBlogContent = async (localeBlogId: number, content: Op[
         });
     } catch (e) {
         console.error("[updateBlogContent] ", e);
-        throw new Error();
     }
 };
 
-export const getLocaleBlogContent = async (localeBlogId: number): Promise<Op[]> => {
+export const getLocaleBlogContent = async (localeBlogId: number): Promise<Op[] | undefined> => {
     try {
         const blog = await db.localePost.findUnique({
             where: { id: localeBlogId },
@@ -57,7 +56,6 @@ export const getLocaleBlogContent = async (localeBlogId: number): Promise<Op[]> 
         return JSON.parse(blog!.content);
     } catch (e) {
         console.error("[getLocaleBlogContent] ", e);
-        throw new Error();
     }
 };
 
@@ -74,7 +72,6 @@ export const getLocaleBlog = async (blogId: number, locale: Locale) => {
         return blog!.localePosts[0];
     } catch (e) {
         console.error("[getLocaleBlogId] ", e);
-        throw new Error();
     }
 };
 
@@ -89,7 +86,7 @@ const getLabelNames = async (labels: Label[], locale: Locale) => {
     );
 };
 
-export const getValidatedBlogsFromLocale = async (locale: Locale): Promise<PostPresentation[]> => {
+export const getValidatedBlogsFromLocale = async (locale: Locale): Promise<PostPresentation[] | undefined> => {
     try {
         const dbBlogs = await db.post.findMany({
             include: { authors: true, localePosts: true, labels: true }
@@ -119,7 +116,6 @@ export const getValidatedBlogsFromLocale = async (locale: Locale): Promise<PostP
         ).filter(blog => !!blog.title) as PostPresentation[];
     } catch (e) {
         console.error("[getBlogs] ", e);
-        throw new Error();
     }
 };
 
@@ -128,7 +124,6 @@ export const deleteBlog = async (blogId: number) => {
         await db.post.delete({ where: { id: blogId } });
     } catch (e) {
         console.error("[deleteBlog] ", e);
-        throw new Error();
     }
 };
 
@@ -140,7 +135,6 @@ export const renameLocaleBlog = async (localeBlogId: number, title: string) => {
         });
     } catch (e) {
         console.error("[renameLocaleBlog] ", e);
-        throw new Error();
     }
 };
 
