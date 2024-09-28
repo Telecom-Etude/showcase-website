@@ -41,7 +41,7 @@ function Department({ department, t }: { t: Dictionary["pages"]["team"]["members
                         <div className="bg-black bg-opacity-20 absolute w-[300px] h-[300px] rounded-lg"></div>
                         <div className="text-background font-semibold absolute bottom-0 p-2">
                             <h3>{name}</h3>
-                            <p>{t[id]}</p>
+                            <p className="text-left">{t[id]}</p>
                         </div>
                     </div>
                 </Linkedin>

@@ -149,7 +149,7 @@ export const enDictionary: Dictionary = {
                 suivi: "Projects monitoring division"
             },
             members: {
-                prez: "Chief Executive Officer",
+                prez: "Chief executive officer",
                 trez: "Treasurer",
                 vicetrez: "Vice-treasurer",
                 vpi: "Internal vice-president",
@@ -165,18 +165,18 @@ export const enDictionary: Dictionary = {
                 respoquality: "Quality officer",
                 respoinfo: "Chief information officer",
                 //
-                appel: "Tender Officer",
-                alumni: "Alumni Manager",
-                international: "International Manager",
-                selectionCDP: "CDP Selection Manager",
-                processus: "Process Review Manager",
-                templates: "Templates Manager",
-                pots: "Pots Manager",
+                appel: "Tender invitation officer",
+                alumni: "Alumni manager",
+                international: "International manager",
+                selectionCDP: "CDP Selection manager",
+                processus: "Process Review manager",
+                templates: "Templates manager",
+                pots: "Evenings manager",
                 teambuildings: "in charge of cohesion",
                 linkedin: "Responsible for Linkedin",
                 insta: "Responsible for Instagram",
                 formations: "Chargé formations",
-                cominterne: "Internal Communications Officer",
+                cominterne: "Internal Communications officer",
                 //
                 devco: "Business development",
                 info: "IT",
@@ -346,7 +346,7 @@ export const enDictionary: Dictionary = {
             siegesocial: "Head Office: Télécom Paris, 19, place Marguerite Perey 91120 PALAISEAU",
             siret: "[SIRET number: 332 711 522 00018 | URSSAF number: 757 090058076001011 8",
             tva: "Intra-community VAT number: FR 1933 2711 522 00018 | Code APE : 6202A]",
-            respoRGPD: "Data Protection Officer (DPO) : Leïla Iksil",
+            respoRGPD: "Data Protection officer (DPO) : Leïla Iksil",
             rezelsiege: "Head Office : 19 Place Marguerite Perey, 91120 PALAISEAU",
             contact: "Contact:"
         }

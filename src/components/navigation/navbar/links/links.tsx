@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
 
@@ -9,7 +9,7 @@ import { Locale } from "@/locales/config";
 import { nav } from "@/locales/routing";
 import { ExtendedUser } from "@/auth/auth";
 import { LocaleSwitch } from "./locale-switcher";
-import { getLinks, SingleLink, ExtendedLink } from "./get-links";
+import { getLinks, SingleLink, ExtendedLink, MultipleLink } from "./get-links";
 import { cn } from "@/lib/utils";
 
 import {
@@ -23,6 +23,9 @@ import {
     navigationMenuTriggerStyle
 } from "@/components/ui/navigation-menu";
 import { Button } from "@/components/ui/button";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa6";
+import { useRouter } from "next/navigation";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
 const ContactButton = ({ link, mobile = false }: { link: SingleLink; mobile?: boolean }) => (
     <Button asChild variant="call2action" className="w-full rounded-none group/buttoncontact ">
@@ -37,16 +40,95 @@ const ContactButton = ({ link, mobile = false }: { link: SingleLink; mobile?: bo
     </Button>
 );
 
-const DesktopLinks = ({ links, contactLink, locale, mobile = false }: { mobile?: boolean; links: ExtendedLink[]; contactLink: SingleLink; locale: Locale }) => {
+const MultipleMobileLinks = ({
+    link,
+    isOpen,
+    setOpen,
+    onClick,
+    router
+}: {
+    router: AppRouterInstance;
+    onClick: () => void;
+    isOpen: boolean;
+    setOpen: () => void;
+    link: MultipleLink;
+}) => {
+    return (
+        <>
+            <Button variant="ghost" onClick={() => setOpen()} className={cn("w-full flex items-center space-x-2", isOpen && "bg-muted")}>
+                <p> {link.title}</p>
+                {isOpen ? <FaChevronUp className="w-2 h-2" /> : <FaChevronDown className="w-2 h-2" />}
+            </Button>
+            {isOpen &&
+                link.links.map((singleLink, i) => (
+                    <Button
+                        className="w-full"
+                        variant="ghost"
+                        onClick={() => {
+                            onClick();
+                            router.push(singleLink.href);
+                        }}
+                        key={i}
+                    >
+                        {singleLink.title}
+                    </Button>
+                ))}
+        </>
+    );
+};
+
+const MobileLinks = ({ links, contactLink, locale, onClick }: { onClick: () => void; links: ExtendedLink[]; contactLink: SingleLink; locale: Locale }) => {
+    const [opened, setOpened] = useState<null | number>(null);
+    const router = useRouter();
+
     const navLinks = links.map((link: ExtendedLink, i: number) => (
-        <NavigationMenuItem key={i} className={mobile ? "w-full" : ""}>
+        <NavigationMenuItem key={i} className="w-full">
+            {"href" in link ? (
+                <Button
+                    className="w-full"
+                    variant="ghost"
+                    onClick={() => {
+                        setOpened(null);
+                        onClick();
+                        router.push(link.href);
+                    }}
+                >
+                    {link.title}
+                </Button>
+            ) : (
+                <MultipleMobileLinks
+                    router={router}
+                    onClick={onClick}
+                    link={link}
+                    isOpen={opened === i}
+                    setOpen={() => setOpened(last => (last === i ? null : i))}
+                />
+            )}
+        </NavigationMenuItem>
+    ));
+    navLinks.push(<LocaleSwitch locale={locale} mobile={true} />);
+    navLinks.push(<ContactButton link={contactLink} mobile={true} />);
+
+    return (
+        <NavigationMenu>
+            <NavigationMenuList className="flex flex-col border-y-[1px] border-primary w-screen">
+                {navLinks.map((elt, i) => (
+                    <Fragment key={i}>{elt}</Fragment>
+                ))}
+            </NavigationMenuList>
+        </NavigationMenu>
+    );
+};
+const DesktopLinks = ({ links, contactLink, locale }: { links: ExtendedLink[]; contactLink: SingleLink; locale: Locale }) => {
+    const navLinks = links.map((link: ExtendedLink, i: number) => (
+        <NavigationMenuItem key={i}>
             {"href" in link ? (
                 <Link href={link.href} legacyBehavior passHref>
-                    <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), mobile && "w-full")}>{link.title}</NavigationMenuLink>
+                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>{link.title}</NavigationMenuLink>
                 </Link>
             ) : (
                 <>
-                    <NavigationMenuTrigger className={mobile ? "w-full" : ""}>{link.title}</NavigationMenuTrigger>
+                    <NavigationMenuTrigger>{link.title}</NavigationMenuTrigger>
                     <NavigationMenuContent>
                         <ul className="grid grid-cols-2 w-[400px] p-2">
                             {link.links.map(({ title, href }, i) => (
@@ -60,12 +142,12 @@ const DesktopLinks = ({ links, contactLink, locale, mobile = false }: { mobile?:
             )}
         </NavigationMenuItem>
     ));
-    navLinks.push(<LocaleSwitch locale={locale} mobile={mobile} />);
-    navLinks.push(<ContactButton link={contactLink} mobile={mobile} />);
+    navLinks.push(<LocaleSwitch locale={locale} mobile={false} />);
+    navLinks.push(<ContactButton link={contactLink} mobile={false} />);
 
     return (
         <NavigationMenu>
-            <NavigationMenuList className={mobile ? "flex flex-col border-y-[1px] border-primary w-screen" : ""}>
+            <NavigationMenuList>
                 {navLinks.map((elt, i) => (
                     <Fragment key={i}>{elt}</Fragment>
                 ))}
@@ -90,9 +172,13 @@ export const Links = ({
     const t = getDictionary(locale).navigation.sitemap;
     if (mobile) {
         return (
-            <DesktopLinks mobile={true} links={getLinks(locale, user)} locale={locale} contactLink={{ href: nav(locale, "/contact"), title: t.contact_form }} />
+            <MobileLinks
+                onClick={onClick!}
+                links={getLinks(locale, user)}
+                locale={locale}
+                contactLink={{ href: nav(locale, "/contact"), title: t.contact_form }}
+            />
         );
-        // return <MobileLinks locale={locale} user={user} btnCn={btnCn} onClick={onClick} />;
     } else {
         return <DesktopLinks links={getLinks(locale, user)} locale={locale} contactLink={{ href: nav(locale, "/contact"), title: t.contact_form }} />;
     }
