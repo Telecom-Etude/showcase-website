@@ -2,22 +2,16 @@ import { LocaleParams } from "@/locales/config";
 import { Dictionary, getDictionary } from "@/locales/dictionaries";
 import { DEPARTMENTS, PersonProps } from "./members";
 import { Block } from "@/components/styles/blocks";
-import { auth } from "@/auth/auth";
-import { cn } from "@/lib/utils";
 import { FaLinkedin } from "react-icons/fa6";
 import Link from "next/link";
 import { ReactNode } from "react";
+import Image from "next/image";
 
-function PersonBackground({ children, linkedin, imageCn }: { children: ReactNode; linkedin?: string; imageCn: string }) {
-    const className = cn(imageCn, "bg-cover rounded-lg group");
+function Linkedin({ children, linkedin }: { children: ReactNode; linkedin?: string }) {
     if (linkedin) {
-        return (
-            <Link href={linkedin} className={className}>
-                {children}
-            </Link>
-        );
+        return <Link href={linkedin}>{children}</Link>;
     } else {
-        return <div className={className}>{children}</div>;
+        return <div>{children}</div>;
     }
 }
 
@@ -37,11 +31,20 @@ function Person({ name, job, linkedin }: { name: string; job: string; linkedin: 
 
 function Department({ department, t }: { t: Dictionary["pages"]["team"]["members"]; department: PersonProps[] }) {
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-6 gap-6 ">
-            {department.map(({ name, ...person }, i) => (
-                <PersonBackground key={i} {...person}>
-                    <Person job={t[person.id]} name={name} linkedin={typeof person.linkedin !== "undefined"} />
-                </PersonBackground>
+        <div className="grid grid-cols-1 place-items-center md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-6 gap-6 ">
+            {department.map(({ linkedin, name, id, image }, i) => (
+                <Linkedin key={i} linkedin={linkedin}>
+                    <div className="relative m-2 w-[300px] h-[300px]  ">
+                        <div className=" absolute">
+                            <Image src={image} alt="ezr" width={300} height={300} className="rounded-lg" />
+                        </div>
+                        <div className="bg-black bg-opacity-20 absolute w-[300px] h-[300px] rounded-lg"></div>
+                        <div className="text-background font-semibold absolute bottom-0 p-2">
+                            <h3>{name}</h3>
+                            <p>{t[id]}</p>
+                        </div>
+                    </div>
+                </Linkedin>
             ))}
         </div>
     );
@@ -52,11 +55,11 @@ export default async function Team({ params: { locale } }: LocaleParams) {
     return (
         <Block>
             <header>
-                <h1 className="font-bold">{t.title}</h1>
+                <h1 className="text-center font-bold">{t.title}</h1>
             </header>
             {DEPARTMENTS.map(({ id, members }, i) => (
                 <section key={i} className="py-6">
-                    <h2 className="p-2">{t.poles[id]}</h2>
+                    <h2 className="p-2 font-semibold">{t.poles[id]}</h2>
                     <Department department={members} t={t.members} />
                 </section>
             ))}

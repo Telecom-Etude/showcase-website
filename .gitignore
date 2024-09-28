@@ -42,5 +42,4 @@ prisma/*.db*
 *lock*
 
 # Images data
-members-drive
-members-filtered
+onthewaytocompression/

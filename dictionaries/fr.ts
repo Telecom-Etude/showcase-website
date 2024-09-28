@@ -129,7 +129,7 @@ export const frDictionary = {
             },
             members: {
                 prez: "Présidente",
-                trez: "Trésorière",
+                trez: "Trésorier",
                 vicetrez: "Vice-trésorière",
                 vpi: "Vice-président interne",
                 vpe: "Vice-président externe",
