@@ -72,6 +72,25 @@ export const enDictionary: Dictionary = {
         }
     },
     pages: {
+        commitments: {
+            title: "Our commitments",
+            description:
+                "Telecom Etude is an association that enables students to develop technical skills and knowledge of the professional world. We are committed both in our prestation and in various other areas, with charters of commitment",
+            jamaissanselles: {
+                title: "Charter #JamaisSansElles",
+                text: "The #JamaisSansElles charter, co-drafted by the Jamais Sans Elles association and the CNJE, defines the commitments of the signatory Junior-Enterprises, including Télécom Étude, in terms of parity and gender diversity. By signing this charter, Télécom Étude undertakes to guarantee the presence of women in all representations involving at least three people. The Junior-Enterprise also undertakes to promote gender equality within its structure, both in the recruitment process and in access to positions of responsibility. Lastly, Télécom Étude is stepping up its action against sexist and sexual violence, through prevention initiatives aimed at students and the application of the CNJE's recommendations at its events",
+                alt: "JamaisSansElles logo"
+            },
+            rse: {
+                title: "CSR Charter",
+                paragraphs: [
+                    "The CSR Charter, designed by AgroParisTech Service Études, is aimed at Junior-Enterprises and defines the guiding principles that they, including Télécom Étude, must respect in terms of Corporate Social Responsibility. It is based on four main areas: studies, human resources, governance and communication",
+                    "With regard to research, Télécom Étude is committed to introducing an RS-Score, an indicator that assesses the social and environmental impact of projects carried out. In terms of human resources, the commitments mainly concern the well-being of members, the promotion of diversity and parity, as well as particular attention to organisational sobriety",
+                    "In terms of governance, Télécom Étude is committed to adopting inclusive management, training its members in CSR issues and monitoring its carbon footprint. Finally, in terms of communication, the emphasis is on more responsible canvassing, raising student awareness of CSR issues and transparency regarding the organisation's CSR policy."
+                ],
+                alt: "Focus of the CSR Charter."
+            }
+        },
         home: {
             trust: "They put their trust in us",
             description:
@@ -97,7 +116,7 @@ export const enDictionary: Dictionary = {
                 subtitle: "We find an answer to any of your needs",
                 description: "Our experience and skills cover a wide range of digital areas, including the following examples:",
                 title: "Our areas of expertise",
-                data: "Data science, Artificial intelligence & Machine learning",
+                data: "Data science, AI & Machine learning",
                 web: "Software Development, Applications & Web",
                 cyber: "Cybersecurity, Networks, Cryptography & Blockchain",
                 image: "Image processing & 3D modelling",

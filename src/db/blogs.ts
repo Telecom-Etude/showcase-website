@@ -31,7 +31,7 @@ export const createBlog = async (authorEmail: string, title: string, locale: Loc
         });
         return blog.id;
     } catch (e) {
-        console.error("[createBlog] ", e);
+        // console.error("[createBlog] ", e);
         throw new Error("Post not found");
     }
 };
@@ -43,7 +43,7 @@ export const updateLocaleBlogContent = async (localeBlogId: number, content: Op[
             data: { content: JSON.stringify(content) }
         });
     } catch (e) {
-        console.error("[updateBlogContent] ", e);
+        // console.error("[updateBlogContent] ", e);
     }
 };
 
@@ -55,7 +55,7 @@ export const getLocaleBlogContent = async (localeBlogId: number): Promise<Op[] |
         });
         return JSON.parse(blog!.content);
     } catch (e) {
-        console.error("[getLocaleBlogContent] ", e);
+        // console.error("[getLocaleBlogContent] ", e);
     }
 };
 
@@ -71,7 +71,7 @@ export const getLocaleBlog = async (blogId: number, locale: Locale) => {
         });
         return blog!.localePosts[0];
     } catch (e) {
-        console.error("[getLocaleBlogId] ", e);
+        // console.error("[getLocaleBlogId] ", e);
     }
 };
 
@@ -115,7 +115,7 @@ export const getValidatedBlogsFromLocale = async (locale: Locale): Promise<PostP
             )
         ).filter(blog => !!blog.title) as PostPresentation[];
     } catch (e) {
-        console.error("[getBlogs] ", e);
+        // console.error("[getBlogs] ", e);
     }
 };
 
@@ -123,7 +123,7 @@ export const deleteBlog = async (blogId: number) => {
     try {
         await db.post.delete({ where: { id: blogId } });
     } catch (e) {
-        console.error("[deleteBlog] ", e);
+        // console.error("[deleteBlog] ", e);
     }
 };
 
@@ -134,7 +134,7 @@ export const renameLocaleBlog = async (localeBlogId: number, title: string) => {
             data: { title }
         });
     } catch (e) {
-        console.error("[renameLocaleBlog] ", e);
+        // console.error("[renameLocaleBlog] ", e);
     }
 };
 
@@ -143,7 +143,7 @@ export const getLocaleIdsFromBlog = async (blogId: number) => {
         const blog = await db.post.findUnique({ where: { id: blogId }, include: { localePosts: true } });
         return blog?.localePosts;
     } catch (e) {
-        console.error("[getLocaleIdsFromBlog]", e);
+        // console.error("[getLocaleIdsFromBlog]", e);
     }
 };
 
@@ -152,6 +152,6 @@ export const validateBlog = async (localePostId: number) => {
         const localPost = await db.localePost.findUnique({ where: { id: localePostId } })!;
         await db.post.update({ where: { id: localPost!.blogId }, data: { validated: true } });
     } catch (e) {
-        console.error("[validateBlog] ", e);
+        // console.error("[validateBlog] ", e);
     }
 };

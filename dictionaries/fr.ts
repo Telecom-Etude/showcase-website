@@ -103,7 +103,7 @@ export const frDictionary = {
                 subtitle: "Nous trouvons une réponse à chacun de vos besoins",
                 description: "Notre expértise et nos compétences s'étendent sur une vaste étendue du numérique, dont voici quelques examples:",
                 title: "Nos domaines de prédilection",
-                data: "Data science, Intelligence artificielle & Machine learning",
+                data: "Data science, IA & Machine learning",
                 web: "Développement Logiciel, Applications & Web",
                 cyber: "Cybersécurité, Réseaux, Cryptographie & Blockchain",
                 image: "Traitement d'images & Modélisation 3D",
@@ -260,6 +260,25 @@ export const frDictionary = {
             ],
             satisfaction:
                 "Depuis sa création, la CNJE œuvre pour promouvoir la marque Junior-Entreprise afin qu'elle reste un **gage de qualité**. Pour cela, elle décerne des labels qualité aux structures méritoires, et met en place des audits-conseils annuels. La CNJE fournit l'assurance que nos administrateurs ou chefs de projet reçoivent les formations adéquates pour proposer à nos clients **formalisme et efficacité**."
+        },
+        commitments: {
+            title: "Nos engagements",
+            description:
+                "Telecom Etude est une association qui permet aux étudiants de développer des compétences techniques et de la connaissance du monde professionnel. Nous avons des engagements autant dans notre préstation que dans divers domaines, avec des chartes d'engagement.",
+            jamaissanselles: {
+                title: "Charte #JamaisSansElles",
+                text: "La charte #JamaisSansElles, co-rédigée par l'association Jamais Sans Elles et la CNJE, définit les engagements des Junior-Entreprises signataires, dont Télécom Étude, en matière de parité et de mixité. En signant cette charte, Télécom Étude s’engage à garantir la présence de femmes dans toutes les représentations où interviennent au moins trois personnes. La Junior-Entreprise s’engage également à promouvoir la mixité au sein de sa structure, tant dans les processus de recrutement que dans l’accès aux postes à responsabilités. Enfin, Télécom Étude renforce son action contre les violences sexistes et sexuelles, à travers des initiatives de prévention auprès des étudiants et l'application des recommandations de la CNJE lors de ses événements.",
+                alt: "Logo de JamaisSansElles"
+            },
+            rse: {
+                title: "Charte RSE",
+                paragraphs: [
+                    "La charte RSE, conçue par AgroParisTech Service Études, s'adresse aux Junior-Entreprises et définit les principes directeurs que ces dernières, dont Télécom Étude, doivent respecter en matière de Responsabilité Sociétale des Entreprises. Elle repose sur quatre axes principaux : les études, les ressources humaines, la gouvernance et la communication.",
+                    "Concernant les études, Télécom Étude s'engage notamment à instaurer un RS-Score, un indicateur évaluant l'impact social et environnemental des projets réalisés. Du côté des ressources humaines, les engagements portent principalement sur le bien-être des membres, la promotion de la diversité et de la parité, ainsi qu'une attention particulière à la sobriété organisationnelle.",
+                    "En matière de gouvernance, Télécom Étude s'engage à adopter un management inclusif, à former ses membres aux enjeux RSE et à suivre son empreinte carbone. Enfin, en termes de communication, l'accent est mis sur une prospection plus responsable, la sensibilisation des étudiants aux problématiques RSE et la transparence concernant la politique RSE de la structure."
+                ],
+                alt: "Axes de la charte RSE"
+            }
         },
         contact: {
             title: "Contactez-nous !",
