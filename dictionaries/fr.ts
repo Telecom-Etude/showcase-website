@@ -76,7 +76,8 @@ export const frDictionary = {
                 posted_by: "Posté par",
                 on: "le"
             },
-            labelSelector: { title: "Filtrer par étiquette", selectorMessage: "Sélectionnez-en au plus 3" }
+            labelSelector: { title: "Filtrer par étiquette", selectorMessage: "Sélectionnez-en au plus 3" },
+            none: "Aucun blog n'a encore été publié, revenez plus tard."
         },
         home: {
             trust: "Ils nous ont fait confiance",
@@ -86,7 +87,7 @@ export const frDictionary = {
             subtitle: "La Junior Entreprise du numérique, des nouvelles technologies et de la data",
             alt: "Photo du mandat de Telecom Etude",
             whoarewe: "Qui sommes-nous ?",
-            contact: "Contact us",
+            contact: "Contactez-nous",
             cnje: [
                 "Les Junior-Entreprises sont des associations pédagogiques de conseil de loi 1901 ayant pour objet social la montée en compétences des étudiants à travers la réalisation de prestations de service pour des professionnels.",
                 "Ces structures sont implantées au sein d'établissements de l'enseignement supérieur. Elles proposent des services de qualité aux entreprises et permettent aux étudiants de développer leurs savoirs en mettant en pratique leur formation afin de répondre aux besoins des clients."
@@ -121,7 +122,7 @@ export const frDictionary = {
                 board: "Le bureau",
                 devco: "Pôle développement commercial",
                 auditqua: "Pôle audit et qualité",
-                event: "Pôle évenementiel",
+                event: "Pôle événementiel",
                 info: "Pôle informatique",
                 com: "Pôle communication",
                 suivi: "Pôle suivi des études"

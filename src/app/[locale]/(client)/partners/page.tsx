@@ -54,7 +54,7 @@ export default function Partners({ params: { locale } }: LocaleParams) {
     return (
         <Block>
             <header className="w-full flex flex-col items-center justify-center space-y-8 pb-8">
-                <h1 className="font-bold">{t.title}</h1>
+                <h1 className="font-bold text-center">{t.title}</h1>
                 <p className="text-lg max-w-[500px] text-center">{t.text}</p>
             </header>
             <div className="grid grid-cols-1 md:grid-cols-3">

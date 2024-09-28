@@ -14,8 +14,7 @@ export default function FAQ({ params: { locale } }: LocaleParams) {
         <div className="p-10 space-y-10">
             <h1 className="text-center">{t.title}</h1>
             <p className="text-center max-w-[1000px] m-auto">
-                {t.text.before}
-                <EmailContact underline /> {t.text.between}
+                {t.text.before} <EmailContact underline /> {t.text.between}{" "}
                 <BtnLink underline href="/contact">
                     {t.text.form}
                 </BtnLink>{" "}

@@ -53,9 +53,21 @@ const LabelSelection = (props: ManyComboBoxProps & { dbLabels: ComboLabels }) =>
     );
 };
 
-const BlogsList = ({ posts, locale, email, isEditor }: { posts: PostPresentation[]; locale: Locale; isEditor: boolean; email?: string }) =>
+const BlogsList = ({
+    posts,
+    locale,
+    email,
+    isEditor,
+    t_none
+}: {
+    t_none: string;
+    posts: PostPresentation[];
+    locale: Locale;
+    isEditor: boolean;
+    email?: string;
+}) =>
     posts.length == 0 ? (
-        <p>No blogs found.</p>
+        <p>{t_none}</p>
     ) : (
         <div className="grid xl:grid-cols-3 md:grid-cols-2 gap-6">
             {posts.map((post, i) => (
@@ -100,6 +112,7 @@ export default function BlogPage({
     ...props
 }: {
     locale: Locale;
+    t_none: string;
     isEditor: boolean;
     email?: string;
     posts: PostPresentation[];

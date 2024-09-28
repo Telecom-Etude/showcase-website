@@ -149,12 +149,12 @@ export const Actions = ({ setToBeChanged, content, value, localeBlogId, title, b
     return (
         <div className="p-6 flex items-center justify-between w-full">
             <div className="flex items-center space-x-2">
-                <Button variant="outline" onClick={() => {}}>
+                {/* <Button variant="outline" onClick={() => {}}>
                     <span className="flex items-center space-x-2">
                         <p>Traduire</p>
                         <TfiWorld />
                     </span>
-                </Button>
+                </Button> */}
                 <Button
                     variant="outline"
                     onClick={() => {

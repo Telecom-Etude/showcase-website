@@ -29,6 +29,7 @@ export default async function Page({ params: { locale } }: LocaleParams) {
                 isEditor={session?.user?.rights?.blogAuthor || false}
                 email={session?.user?.email || undefined}
                 posts={posts}
+                t_none={t.none}
             />
         </div>
     );
