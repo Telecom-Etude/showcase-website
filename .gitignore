@@ -40,4 +40,7 @@ next-env.d.ts
 prisma/*/
 prisma/*.db*
 *lock*
-drive-photos
+
+# Images data
+members-drive
+members-filtered
