@@ -1,14 +1,14 @@
 import { LocaleParams } from "@/locales/config";
 import BlogPage from "./client";
 import { auth } from "@/auth/auth";
-import { getValidatedBlogsFromLocale } from "@/db/blogs";
 import { getLocaleLabels } from "@/db/labels";
 import { ComboLabels } from "@/components/meta-components/combobox";
 import { getDictionary } from "@/locales/dictionaries";
 import { redirect } from "next/navigation";
+import { getValidatedBlogs } from "@/db/blogs";
 
 export default async function Page({ params: { locale } }: LocaleParams) {
-    const posts = await getValidatedBlogsFromLocale(locale);
+    const posts = await getValidatedBlogs(locale);
     const session = await auth();
     const labels = await getLocaleLabels(locale);
     const t = getDictionary(locale).pages.blog;

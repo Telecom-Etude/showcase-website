@@ -5,6 +5,7 @@ import { columns } from "./select/columns";
 import { ValidationBlogType } from "./select/schema";
 import { LocaleParams } from "@/locales/config";
 import { ReactNode } from "react";
+import { getAllBlog } from "@/db/blogs";
 
 interface PageProps extends LocaleParams {
     children: ReactNode;
@@ -12,28 +13,14 @@ interface PageProps extends LocaleParams {
 }
 
 export default async function Validation({ params: { locale }, validate }: PageProps) {
-    const posts: ValidationBlogType[] = (
-        await db.post.findMany({
-            include: {
-                localePosts: true,
-                authors: true
-            }
-        })
-    ).map(({ id, validated, authors, localePosts }) => {
-        let localePost = localePosts.find(localP => localP.locale === locale);
-        if (!localePost) {
-            localePost = localePosts[0];
-        }
-
-        return {
-            id,
-            validated,
-            emails: authors.map(({ email }) => email),
-            title: localePost.title,
-            content: localePost.content,
-            localeId: localePost.id
-        };
-    });
+    const posts = await getAllBlog();
+    const data: ValidationBlogType[] = posts.map(({ id, validated, authors, title, content }) => ({
+        id,
+        validated,
+        emails: authors.map(author => author.email),
+        title,
+        content
+    }));
 
     return (
         <div className="flex flex-1">
@@ -41,7 +28,7 @@ export default async function Validation({ params: { locale }, validate }: PageP
                 <ResizablePanelGroup direction="horizontal">
                     <ResizablePanel>
                         <div className="p-10 h-full">
-                            <DataTable search_column="title" data={posts} columns={columns} filters={[]} />
+                            <DataTable search_column="title" data={data} columns={columns} filters={[]} />
                         </div>
                     </ResizablePanel>
                     <ResizableHandle />

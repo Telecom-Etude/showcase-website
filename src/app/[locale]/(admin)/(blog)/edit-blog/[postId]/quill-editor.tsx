@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { Op } from "quill/core";
 import { Actions } from "./editor-actions";
 
-export const QuillEditor = ({ localeBlogId, content, title, blogId }: { blogId: number; localeBlogId: number; content: Op[]; title: string }) => {
+export const QuillEditor = ({ id, content, title }: { id: number; content: Op[]; title: string }) => {
     const editorRef = useRef(null);
     const [quill, setQuill] = useState<Quill | null>(null);
     const [value, setValue] = useState(JSON.stringify(content));
@@ -21,10 +21,10 @@ export const QuillEditor = ({ localeBlogId, content, title, blogId }: { blogId: 
         if (quill && toBeChanged) {
             const newContent = quill.getContents().ops;
             if (newContent !== content) {
-                updateLocaleBlogContent(localeBlogId, newContent).finally(() => router.refresh());
+                updateLocaleBlogContent(id, newContent).finally(() => router.refresh());
             }
         }
-    }, [toBeChanged, quill, content, value, localeBlogId, router]);
+    }, [toBeChanged, quill, content, value, id, router]);
 
     useEffect(() => {
         if (quill === null && editorRef.current && typeof window !== "undefined" && Quill) {
@@ -58,15 +58,15 @@ export const QuillEditor = ({ localeBlogId, content, title, blogId }: { blogId: 
                 setHtml(q.root.innerHTML);
                 const newContent = q.getContents().ops;
                 if (newContent != content) {
-                    updateLocaleBlogContent(localeBlogId, newContent).finally(() => router.refresh());
+                    updateLocaleBlogContent(id, newContent).finally(() => router.refresh());
                 }
             });
         }
-    }, [quill, content, localeBlogId, router]);
+    }, [quill, content, id, router]);
 
     return (
         <div className="w-full">
-            <Actions {...{ setToBeChanged, content, value, localeBlogId, title, blogId, dbLabels: [] }} />
+            <Actions {...{ setToBeChanged, content, value, id, title, dbLabels: [] }} />
             <div ref={editorRef} />
         </div>
     );

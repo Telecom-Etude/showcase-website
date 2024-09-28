@@ -14,6 +14,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 
 import { UserRolesType } from "./schema";
 import { getUserName } from "@/lib/users";
+import { toast } from "@/components/ui/use-toast";
 
 const ActionCheckBox = ({
     row,
@@ -22,7 +23,7 @@ const ActionCheckBox = ({
 }: {
     row: Row<UserRolesType>;
     column: keyof UserRolesType;
-    func: (email: string, value: boolean) => Promise<boolean>;
+    func: (email: string, value: boolean) => Promise<void>;
 }) => {
     const email = row.original.email!;
     const router = useRouter();
@@ -31,9 +32,17 @@ const ActionCheckBox = ({
             <Checkbox
                 checked={row.original[column] as boolean}
                 onCheckedChange={(value: boolean) => {
-                    func(email, value).then(() => {
-                        router.refresh();
-                    });
+                    func(email, value)
+                        .then(() => {
+                            router.refresh();
+                        })
+                        .catch(() => {
+                            toast({
+                                title: "Une erreure inconnue s'est produite",
+                                description: "Contactez la DSI",
+                                variant: "destructive"
+                            });
+                        });
                 }}
                 aria-label="Select all"
                 className="translate-y-[2px]"

@@ -34,35 +34,22 @@ model ContactForm {
 }
 
 model Post {
-  id          Int          @id @unique @default(autoincrement())
-  localePosts LocalePost[]
-  authors     User[]
-  validated   Boolean      @default(false)
-  labels      Label[]
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
+  id        Int      @id @unique @default(autoincrement())
+  title     String
+  locale    String
+  authors   User[]
+  content   String
+  validated Boolean  @default(false)
+  labels    Label[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Label {
-  id           Int           @id @unique @default(autoincrement())
-  localeLabels LocaleLabel[]
-  Post         Post?         @relation(fields: [blogId], references: [id])
-  blogId       Int?
-}
+  id     Int    @id @unique @default(autoincrement())
+  locale String
+  name   String
+  posts  Post[]
 
-model LocaleLabel {
-  id      Int    @id @unique @default(autoincrement())
-  name    String
-  locale  String
-  Label   Label  @relation(fields: [labelId], references: [id])
-  labelId Int
-}
-
-model LocalePost {
-  id      Int    @id @unique @default(autoincrement())
-  title   String @unique
-  locale  String
-  Post    Post   @relation(fields: [blogId], references: [id])
-  blogId  Int
-  content String
+  @@unique([locale, name])
 }

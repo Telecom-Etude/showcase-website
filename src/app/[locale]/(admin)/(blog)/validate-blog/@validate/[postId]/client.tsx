@@ -6,11 +6,11 @@ import { toast } from "@/components/ui/use-toast";
 import { validateBlog } from "@/db/blogs";
 import { useRouter } from "next/navigation";
 
-export const ValidateButton = ({ localePostId, t }: { localePostId: number; t: { title: string; description: string } }) => {
+export const ValidateButton = ({ id, t }: { id: number; t: { title: string; description: string } }) => {
     const router = useRouter();
 
     const validateBlogInterface = () => {
-        validateBlog(localePostId)
+        validateBlog(id)
             .then(() => {
                 router.refresh();
             })

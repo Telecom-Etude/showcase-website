@@ -8,15 +8,15 @@ import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { renameLocaleBlog } from "@/db/blogs";
 import { useRouter } from "next/navigation";
 import type { Op } from "quill/core";
 import type { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { MdLabel } from "react-icons/md";
 import { ComboLabels, ManyComboBox } from "@/components/meta-components/combobox";
 import { useState } from "react";
+import { renameBlog } from "@/db/blogs";
 
-const Rename = ({ title, localeBlogId, router }: { title: string; localeBlogId: number; router: AppRouterInstance }) => (
+const Rename = ({ title, id, router }: { title: string; id: number; router: AppRouterInstance }) => (
     <Dialog>
         <DialogTrigger asChild>
             <Button variant="outline">
@@ -34,7 +34,7 @@ const Rename = ({ title, localeBlogId, router }: { title: string; localeBlogId: 
                     onSubmit={e => {
                         const formData = new FormData(e.target as HTMLFormElement);
                         const title = formData.get("title") as string;
-                        renameLocaleBlog(localeBlogId, title).finally(() => {
+                        renameBlog(id, title).finally(() => {
                             router.refresh();
                         });
                     }}
@@ -52,7 +52,7 @@ const Rename = ({ title, localeBlogId, router }: { title: string; localeBlogId: 
     </Dialog>
 );
 
-const AddLabel = ({ dbLabels, router, blogId }: { blogId: number; dbLabels: ComboLabels; router: AppRouterInstance }) => {
+const AddLabel = ({ dbLabels, router, id }: { id: number; dbLabels: ComboLabels; router: AppRouterInstance }) => {
     const [getLabels, setLabels] = useState<number[]>([]);
     const addRemoveLabel = (labelId: keyof typeof dbLabels) => {
         if (getLabels.filter(l => l == labelId).length > 0) {
@@ -138,13 +138,12 @@ interface ActionProps {
     content: Op[];
     value: string;
     setToBeChanged: (_: boolean) => void;
-    localeBlogId: number;
     title: string;
-    blogId: number;
+    id: number;
     dbLabels: string[];
 }
 
-export const Actions = ({ setToBeChanged, content, value, localeBlogId, title, blogId, dbLabels }: ActionProps) => {
+export const Actions = ({ setToBeChanged, content, value, title, id, dbLabels }: ActionProps) => {
     const router = useRouter();
     return (
         <div className="p-6 flex items-center justify-between w-full">
@@ -166,8 +165,8 @@ export const Actions = ({ setToBeChanged, content, value, localeBlogId, title, b
                         <FaSave />
                     </span>
                 </Button>
-                <Rename localeBlogId={localeBlogId} title={title} router={router} />
-                <AddLabel dbLabels={dbLabels} blogId={blogId} router={router} />
+                <Rename id={id} title={title} router={router} />
+                <AddLabel dbLabels={dbLabels} id={id} router={router} />
             </div>
             <div>
                 <OpenSave saving={JSON.stringify(content) !== value} />

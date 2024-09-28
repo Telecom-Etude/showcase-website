@@ -52,4 +52,8 @@ export interface LocaleParams {
     readonly params: { locale: Locale };
 }
 
+export type LocalePostParams = LocaleParams & {
+    readonly params: { postId: string };
+};
+
 export const isLocale = (locale: string) => locale == "en" || locale == "fr";

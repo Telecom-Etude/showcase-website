@@ -1,12 +1,13 @@
 "use server";
 
+import { Rights } from "@/auth/auth";
 import { db } from "@/lib/db";
 
 ////////////// CREAT ///////////////////
 
 ////////////// READ ///////////////////
 
-export const getRights = async (email: string | null | undefined) => {
+export const getRights = async (email: string | null | undefined): Promise<Rights | null> => {
     var rights = null;
     if (!email) {
         return rights;
@@ -22,7 +23,7 @@ export const getRights = async (email: string | null | undefined) => {
         return rights;
     } catch (e) {
         // console.error(`[getRights] Error:\n\n${e}\n`);
-        return false;
+        return null;
     }
 };
 
@@ -34,10 +35,8 @@ export const makeBlogAdmin = async (email: string, value: boolean) => {
             where: { email },
             data: { blogAdmin: value }
         });
-        return true;
     } catch (e) {
         console.error(`[makeBlogAdmin] Error:\n\n${e}\n`);
-        return false;
     }
 };
 
@@ -47,10 +46,8 @@ export const makeUserAdmin = async (email: string, value: boolean) => {
             where: { email },
             data: { userAdmin: value }
         });
-        return true;
     } catch (e) {
         console.error(`[makeUserAdmin] Error:\n\n${e}\n`);
-        return false;
     }
 };
 
@@ -60,10 +57,8 @@ export const makeFormAdmin = async (email: string, value: boolean) => {
             where: { email },
             data: { formAdmin: value }
         });
-        return true;
     } catch (e) {
         console.error(`[makeFormAdmin] Error:\n\n${e}\n`);
-        return false;
     }
 };
 
@@ -73,10 +68,8 @@ export const makeBlogAuthor = async (email: string, value: boolean) => {
             where: { email },
             data: { blogAuthor: value }
         });
-        return true;
     } catch (e) {
         console.error(`[makeFormAdmin] Error:\n\n${e}\n`);
-        return false;
     }
 };
 
@@ -85,9 +78,7 @@ export const makeBlogAuthor = async (email: string, value: boolean) => {
 export const deleteUser = async (email: string) => {
     try {
         await db.user.delete({ where: { email } });
-        return true;
     } catch (e) {
         console.error(`[deleteUser] Error:\n\n${e}\n`);
-        return false;
     }
 };

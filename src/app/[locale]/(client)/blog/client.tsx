@@ -16,13 +16,12 @@ import { BtnLink } from "@/components/telecom-etude/contact";
 import Link from "next/link";
 
 export interface PostPresentation {
-    localeId: number;
+    id: number;
     title: string;
     content: string;
     authors: string[];
     date: Date;
     labels: ComboLabels;
-    emails: string[];
 }
 
 const allLabelsInValue = (postLabels: number[], selectedLabels: number[]) =>
@@ -76,11 +75,11 @@ const BlogsList = ({
                         <Card className="rounded-[9px] border-0 h-full">
                             <CardHeader>
                                 <CardTitle className="flex justify-between">
-                                    <Link className="hover:underline" href={nav(locale, `/blog/${post.localeId}`)}>
+                                    <Link className="hover:underline" href={nav(locale, `/blog/${post.id}`)}>
                                         {post.title}
                                     </Link>
-                                    {isEditor && email && post.emails.includes(email) ? (
-                                        <VariantLink variant="ghost" href={nav(locale, `/edit-blog/${post.localeId}`)}>
+                                    {isEditor && email && post.authors.includes(email) ? (
+                                        <VariantLink variant="ghost" href={nav(locale, `/edit-blog/${post.id}`)}>
                                             <FaPencil className="w-4 h-4" />
                                         </VariantLink>
                                     ) : null}
