@@ -31,7 +31,7 @@ export default function NewPostForm({ email }: { email: string }) {
     const router = useRouter();
 
     const onSubmit = (values: z.infer<typeof newPostSchema>) => {
-        createBlog(email, values.title, values.locale)
+        createBlog(email, values.title, "fr")
             .then((id: number) => {
                 router.push(nav("fr", `/edit-blog/${id}`));
             })

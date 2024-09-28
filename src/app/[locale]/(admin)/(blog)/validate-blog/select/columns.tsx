@@ -32,7 +32,7 @@ const Delete = ({ row }: { row: Row<ValidationBlogType> }) => {
                         <Button
                             variant="call2action"
                             onClick={() => {
-                                deleteBlog(row.original.id).then(() => {
+                                deleteBlog(row.getValue("id")).then(() => {
                                     router.refresh();
                                 });
                             }}
@@ -47,6 +47,13 @@ const Delete = ({ row }: { row: Row<ValidationBlogType> }) => {
 };
 
 export const columns: ColumnDef<ValidationBlogType>[] = [
+    {
+        accessorKey: "id",
+        header: ({ column }) => <DataTableColumnHeader column={column} title="id" />,
+        cell: ({ row }) => <div className="w-[80px]">{row.getValue("id")}</div>,
+        enableSorting: false,
+        enableHiding: false
+    },
     {
         accessorKey: "emails",
         header: ({ column }) => <DataTableColumnHeader column={column} title="Emails" />,
@@ -64,7 +71,7 @@ export const columns: ColumnDef<ValidationBlogType>[] = [
         accessorKey: "title",
         header: ({ column }) => <DataTableColumnHeader column={column} title="Titre" />,
         cell: ({ row }) => (
-            <BtnLink href={`/validate-blog/${1}`}>
+            <BtnLink href={`/validate-blog/${row.getValue("id")}`}>
                 <p>{row.getValue("title")}</p>
                 <div className="flex space-x-2">
                     <span className="truncate"></span>

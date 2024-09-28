@@ -14,13 +14,15 @@ interface PageProps extends LocaleParams {
 
 export default async function Validation({ params: { locale }, validate }: PageProps) {
     const posts = await getAllBlog();
-    const data: ValidationBlogType[] = posts.map(({ id, validated, authors, title, content }) => ({
-        id,
-        validated,
-        emails: authors.map(author => author.email),
-        title,
-        content
-    }));
+    const data: ValidationBlogType[] = posts
+        .filter(post => !post.validated)
+        .map(({ id, validated, authors, title, content }) => ({
+            id,
+            validated,
+            emails: authors.map(author => author.email),
+            title,
+            content
+        }));
 
     return (
         <div className="flex flex-1">

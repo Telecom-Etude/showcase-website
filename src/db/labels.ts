@@ -10,3 +10,13 @@ export async function getLocaleLabels(locale: Locale): Promise<{ id: number; nam
         console.error("[getLocaleLabels] ", e);
     }
 }
+
+// export async function updateLabels(locale: Locale, id: number, labels: string[]) {
+//     try {
+//         Promise.all()
+//         await db.label.findUnique
+//         await db.post.update({ where: { id }, data: { labels: [] } });
+//     } catch (e) {
+//         console.error("[updateLabels] ", e);
+//     }
+// }

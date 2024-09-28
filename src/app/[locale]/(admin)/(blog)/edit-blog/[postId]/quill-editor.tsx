@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { Op } from "quill/core";
 import { Actions } from "./editor-actions";
 
-export const QuillEditor = ({ id, content, title }: { id: number; content: Op[]; title: string }) => {
+export const QuillEditor = ({ id, content, title, dbLabels }: { dbLabels: string[]; id: number; content: Op[]; title: string }) => {
     const editorRef = useRef(null);
     const [quill, setQuill] = useState<Quill | null>(null);
     const [value, setValue] = useState(JSON.stringify(content));
@@ -66,7 +66,7 @@ export const QuillEditor = ({ id, content, title }: { id: number; content: Op[];
 
     return (
         <div className="w-full">
-            <Actions {...{ setToBeChanged, content, value, id, title, dbLabels: [] }} />
+            <Actions {...{ setToBeChanged, content, value, id, title, dbLabels }} />
             <div ref={editorRef} />
         </div>
     );

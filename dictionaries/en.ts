@@ -130,7 +130,7 @@ export const enDictionary: Dictionary = {
                 posted_by: "Posted by",
                 on: "on the"
             },
-            labelSelector: { title: "Filter by label", selectorMessage: "Select up to 3 labels" },
+            labelSelector: { title: "Filter by label", selectorMessage: "Select up to 3 labels", empty: "No labels found" },
             none: "No blogs blogs found, come back later."
         },
         team: {

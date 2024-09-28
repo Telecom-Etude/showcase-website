@@ -3,7 +3,6 @@
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { FaCheck, FaSave } from "react-icons/fa";
 import { FaPencil } from "react-icons/fa6";
-import { TfiWorld } from "react-icons/tfi";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -64,7 +63,6 @@ const AddLabel = ({ dbLabels, router, id }: { id: number; dbLabels: ComboLabels;
             });
         }
     };
-    const items = ["eg1, eg2"];
 
     return (
         <Dialog>
@@ -82,13 +80,17 @@ const AddLabel = ({ dbLabels, router, id }: { id: number; dbLabels: ComboLabels;
                     <ManyComboBox
                         selectedKeys={getLabels}
                         addRemoveKey={addRemoveLabel}
-                        items={items}
-                        vocab={{ title: "Choisir des labels", selectorMessage: "Selectionner au plus 6 labels" }}
+                        items={dbLabels}
+                        vocab={{
+                            title: "Choisir des labels",
+                            selectorMessage: "Selectionner au plus 6 labels",
+                            empty: "Aucun filtre ne correspond à cette recherche"
+                        }}
                         limit={6}
                     />
                     <ul className="p-2">
                         {getLabels.map((label, i) => (
-                            <li key={i}>{label}</li>
+                            <li key={i}>{dbLabels[label]}</li>
                         ))}
                     </ul>
                     <Button variant="call2action" type="submit">

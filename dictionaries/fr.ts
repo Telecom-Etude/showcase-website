@@ -76,7 +76,7 @@ export const frDictionary = {
                 posted_by: "Posté par",
                 on: "le"
             },
-            labelSelector: { title: "Filtrer par étiquette", selectorMessage: "Sélectionnez-en au plus 3" },
+            labelSelector: { title: "Filtrer par étiquette", selectorMessage: "Sélectionnez-en au plus 3", empty: "Aucun label trouvé" },
             none: "Aucun blog n'a encore été publié, revenez plus tard."
         },
         home: {

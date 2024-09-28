@@ -19,6 +19,7 @@ export interface PostPresentation {
     id: number;
     title: string;
     content: string;
+    emails: string[];
     authors: string[];
     date: Date;
     labels: ComboLabels;
@@ -78,7 +79,7 @@ const BlogsList = ({
                                     <Link className="hover:underline" href={nav(locale, `/blog/${post.id}`)}>
                                         {post.title}
                                     </Link>
-                                    {isEditor && email && post.authors.includes(email) ? (
+                                    {isEditor && email && post.emails.includes(email) ? (
                                         <VariantLink variant="ghost" href={nav(locale, `/edit-blog/${post.id}`)}>
                                             <FaPencil className="w-4 h-4" />
                                         </VariantLink>

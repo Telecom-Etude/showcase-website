@@ -15,13 +15,14 @@ export interface ManyComboBoxProps {
     vocab: {
         selectorMessage: string;
         title: string;
+        empty: string;
     };
     selectedKeys: number[];
     addRemoveKey: (v: number) => void;
     items: ComboLabels;
 }
 
-export const ManyComboBox = ({ selectedKeys, addRemoveKey, items, vocab: { title, selectorMessage }, limit }: ManyComboBoxProps) => {
+export const ManyComboBox = ({ selectedKeys, addRemoveKey, items, vocab: { title, selectorMessage, empty }, limit }: ManyComboBoxProps) => {
     const [open, setOpen] = useState(false);
     const entries = Object.entries(items).map(([key, value]) => [Number(key), value]) as [number, string][];
     return (
@@ -36,7 +37,7 @@ export const ManyComboBox = ({ selectedKeys, addRemoveKey, items, vocab: { title
                 <Command>
                     <CommandInput placeholder={selectorMessage} />
                     <CommandList>
-                        <CommandEmpty>Aucun filtre ne correspond à cette recherche</CommandEmpty>
+                        <CommandEmpty>{empty}</CommandEmpty>
                         <CommandGroup>
                             {entries.map(([id, name], i) => (
                                 <CommandItem
