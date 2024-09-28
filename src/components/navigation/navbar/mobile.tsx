@@ -15,7 +15,7 @@ export const MobileNavBar = ({ locale, user }: { locale: Locale; user?: Extended
     const close = () => setDeployed(false);
     return (
         <div>
-            <div className="flex justify-between border-b-[1px] border-primary">
+            <div className="flex justify-between border-b-2 border-accent">
                 <Button asChild variant="ghost" className="p-2" onClick={() => close()}>
                     <Link href="/" className="flex justify-start px-0 py-0">
                         <FullLogo />

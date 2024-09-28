@@ -104,7 +104,7 @@ export const Mentions = ({ bug }: { bug: string }) => (
 export const Footer = ({ locale }: { locale: Locale }) => {
     const t = getDictionary(locale).navigation.sitemap;
     return (
-        <div className="border-t-[1px] border-primary flex flex-col sm:flex-row items-center space-y-2 py-4 justify-around">
+        <div className="border-t-2 border-accent flex flex-col sm:flex-row items-center space-y-2 py-4 justify-around">
             <section className="p-10">
                 <Mentions bug={t.bug} />
                 <NetworkLinks />
