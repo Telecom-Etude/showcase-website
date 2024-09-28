@@ -169,19 +169,19 @@ export const enDictionary: Dictionary = {
                 alumni: "Alumni manager",
                 international: "International manager",
                 selectionCDP: "CDP Selection manager",
-                processus: "Process Review manager",
+                processus: "Process review manager",
                 templates: "Templates manager",
-                pots: "Evenings manager",
-                teambuildings: "in charge of cohesion",
+                pots: "Evening events manager",
+                teambuildings: "In charge of cohesion",
                 linkedin: "Responsible for Linkedin",
                 insta: "Responsible for Instagram",
-                formations: "Chargé formations",
-                cominterne: "Internal Communications officer",
+                formations: "Traning officer",
+                cominterne: "Internal communications officer",
                 //
-                devco: "Business development",
-                info: "IT",
-                audit: "Audit & Quality",
-                suivi: "Projects monitoring"
+                devco: "Business development member",
+                info: "IT member",
+                audit: "Audit & Quality member",
+                suivi: "Projects monitoring member"
             }
         },
         partners: {

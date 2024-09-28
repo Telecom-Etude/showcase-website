@@ -60,9 +60,14 @@ export const DEPARTMENTS: DepartmentProps[] = [
                 image: Rémy
             },
             {
-                id: "vicetrez",
-                name: "Tasnim Drissi",
-                image: Tasnim
+                id: "dirco",
+                name: "Rahma Loukil",
+                image: Rahma
+            },
+            {
+                id: "vpi",
+                name: "Sacha Radovanovic",
+                image: Sacha
             },
             {
                 id: "vpe",
@@ -75,14 +80,9 @@ export const DEPARTMENTS: DepartmentProps[] = [
                 image: Leïla
             },
             {
-                id: "dirco",
-                name: "Rahma Loukil",
-                image: Rahma
-            },
-            {
-                id: "vpi",
-                name: "Sacha Radovanovic",
-                image: Sacha
+                id: "vicetrez",
+                name: "Tasnim Drissi",
+                image: Tasnim
             }
         ]
     },
