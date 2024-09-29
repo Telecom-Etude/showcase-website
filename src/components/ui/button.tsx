@@ -50,11 +50,12 @@ interface VariantLinkProps {
     href: string;
     children: React.ReactNode;
     btnCn?: string;
+    target?: React.HTMLAttributeAnchorTarget;
 }
 
-export const VariantLink = ({ className, btnCn, variant, href, children }: VariantLinkProps) => (
+export const VariantLink = ({ target, className, btnCn, variant, href, children }: VariantLinkProps) => (
     <Button variant={variant} className={btnCn} asChild>
-        <Link href={href}>
+        <Link href={href} target={target}>
             <span className={className}>{children}</span>
         </Link>
     </Button>

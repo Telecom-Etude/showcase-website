@@ -67,7 +67,8 @@ const SiteMap = ({ t, locale }: { locale: Locale; t: Dictionary["navigation"]["s
                     title={t.offer}
                     items={[
                         { name: t.offer, href: "/offer" },
-                        { name: "FAQ", href: "/faq" }
+                        { name: "FAQ", href: "/faq" },
+                        { name: t.plaquette, href: "/plaquette.fr" }
                     ]}
                 />
                 <SiteMapBlock

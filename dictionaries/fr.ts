@@ -66,10 +66,57 @@ export const frDictionary = {
             logout: "Déconnexion",
             ieseg: "IESEG Conseil Paris",
             contact: "Contactez-nous",
-            bug: "Signaler un bug"
+            bug: "Signaler un bug",
+            plaquette: "Plaquette"
         }
     },
     pages: {
+        offer: {
+            title: "Notre offre",
+            timeline: {
+                title: "Déroulement d'une étude",
+                text: "Nous avons une approche cadrée et rigoureuse afin de suivre avec qualité, expertise et réactivité la mission. Voici les étapes principales du déroulement d'un étude à la JE:",
+                steps: [
+                    {
+                        title: "Contact du client",
+                        text: "Première mise en relation entre vous et notre Junior Entreprise. Vous pouvez nous contacter en remplissant le formulaire ci-dessous ou sur hello@telecom-etude.fr. Nous serons très heureux de répondre à votre demande et de planifier une première réunion avec vous."
+                    },
+                    {
+                        title: "Réunion avec le client",
+                        text: "Cette réunion vous sert à nous présenter votre projet avec le plus de détails possibles. Nous vous recevons dans nos locaux à Télécom Paris ou lors d'une visioconférence. Nous pouvons ainsi avoir une première idée du cahier des charges qui vous conviendrait. À la fin de cette réunion, vous serez au point sur notre fonctionnement et nous serons prêt, grâce aux informations que vous nous avez fournies, à avancer sereinement dans l'étude."
+                    },
+                    {
+                        title: "Offre commerciale",
+                        text: "À la suite de la réunion, vous recevrez notre offre commerciale, c'est ici que vous aurez une idée du budget. Dans cette offre commerciale, nous vous représenterons votre projet vous permettant ainsi de voir que nous avons effectivement cerné votre problème et votre besoin.  Suite à cela, nous serons prêts à lancer la recherche d'intervenants."
+                    },
+                    {
+                        title: "Recherche d'intervenants",
+                        text: "En fonction de la complexité de la mission que vous souhaitez nous convier, nous choisirons un ou plusieurs intervenants différents. Nous contactons pour cela tous les élèves de l'école qui nous envoient à leur tour leur CV. Nous retenons ensuite les plus prometteurs et nous leur faisons passer un entretien pour être sûrs que leurs qualifications correspondent aux besoins de la mission."
+                    },
+                    {
+                        title: "Réunion tripartite",
+                        text: "À la fin de la sélection, nous réorganiserons une réunion avec l'intervenant et vous pour qu'il puisse avec son expertise, vous poser des question précises sur des points potentiellement sombres et que l'on puisse ainsi réaliser le cahier des charges qui vous conviendra le plus précis possible."
+                    },
+                    {
+                        title: "Signature des contrats",
+                        text: "Une fois que tous les documents sont rédigés, nous vous les présenterons pour que vous les signiez, cela marquera le début de l'étude."
+                    },
+                    {
+                        title: "Suivi mission avec l'intervenant",
+                        text: "Tout au long de l'étude, nous organiserons des réunions avec l'intervenant et vous pour qu'il puisse vous montrer ses progrès et que vous puissiez discuter de l'avancement de la mission. Vous serez ainsi présent à chaque étape de l'avancement de votre projet. Durant cette phase, nos chefs de projet suivront le bon fonctionnement de l'étude avec l'intervenant et seront vos interlocuteurs privilégiés."
+                    },
+                    {
+                        title: "Paiement et retours de satisfaction",
+                        text: "Quand la fin de la mission arrive, nous organiserons une dernière réunion lors de laquelle l'intervenant vous présentera le produit final. S'il vous convient, et il vous conviendra très certainement au vu de notre très haut taux de satisfaction, nous vous transmettrons la facture, puis le livrable. Nous nous séparerons alors en espérant vous revoir très vite. Vous recevrez aussi de notre part un questionnaire de satisfaction quelques temps après nous permettant de connaître précisément votre ressenti sur cette étude achevée et nous donnant potentiellement des axes d'amélioration pour les prochaines."
+                    }
+                ]
+            },
+            plaquette: {
+                title: "Notre plaquette",
+                text: "Découvrez-en plus avec notre plaquette",
+                button: "Voir la plaquette"
+            }
+        },
         blog: {
             title: "Nos actualités",
             date: {

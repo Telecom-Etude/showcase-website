@@ -68,10 +68,53 @@ export const enDictionary: Dictionary = {
             logout: "Log Out",
             ieseg: "IESEG Conseil Paris",
             contact: "Contact us",
-            bug: "Report a bug"
+            bug: "Report a bug",
+            plaquette: "Brochure"
         }
     },
     pages: {
+        offer: {
+            title: "Our offer",
+            timeline: {
+                title: "How a study is carried out",
+                text: "We adopt a rigorous, structured approach to ensure that our assignments are carried out with quality, expertise and responsiveness. Here are the main stages in the conduct of a study at JE:",
+                steps: [
+                    {
+                        title: "Client contact",
+                        text: "Initial contact between you and our Junior Entreprise. You can contact us by filling in the form below or on hello@telecom-etude.fr. We will be delighted to respond to your request and schedule an initial meeting with you."
+                    },
+                    {
+                        title: "Client meeting",
+                        text: "This meeting is for you to present your project to us in as much detail as possible. We will meet you at our Télécom Paris offices or by videoconference. This will give us an initial idea of the specifications that would suit you. By the end of the meeting, you'll have a clear idea of how we work and we'll be ready, thanks to the information you've given us, to move calmly forward with the study"
+                    },
+                    {
+                        title: "Commercial offer",
+                        text: "Following the meeting, you will receive our commercial offer, which is where you will get an idea of the budget. In this quotation, we will present your project to you, so that you can see that we have effectively identified your problem and your needs.  Once we've done that, we'll be ready to start looking for people to work on your project."
+                    },
+                    {
+                        title: "Stakeholder search",
+                        text: "Depending on the complexity of the assignment you want us to undertake, we will choose one or more different speakers. To do this, we contact all the students at the school, who in turn send us their CVs. We then select the most promising and interview them to make sure that their qualifications match the needs of the assignment."
+                    },
+                    {
+                        title: "Tripartite meeting",
+                        text: "At the end of the selection process, we'll arrange another meeting with you and the consultant so that he can use his expertise to ask you specific questions about potential problem areas and so that we can draw up the most precise specifications possible."
+                    },
+                    {
+                        title: "Signing the contracts",
+                        text: "Once all the documents have been drawn up, we'll present them to you for signature, which will mark the start of the study."
+                    },
+                    {
+                        title: "Follow-up mission with the consultant",
+                        text: "Throughout the study, we will organise meetings with you and the contractor so that they can show you their progress and you can discuss the progress of the assignment. So you'll be there every step of the way. During this phase, our project managers will monitor the smooth running of the study with the contractor and will be your key contacts."
+                    },
+                    {
+                        title: "Payment and satisfaction feedback",
+                        text: "At the end of the assignment, we will organise a final meeting at which the consultant will present you with the final product. If you are happy with it - and you certainly will be, given our very high satisfaction rate - we will send you the invoice, followed by the deliverable. We will then part company and hope to see you again very soon. We will also send you a satisfaction questionnaire shortly afterwards, so that we can find out exactly how you feel about this completed study and potentially give us areas for improvement for future studies."
+                    }
+                ]
+            },
+            plaquette: { title: "Our brochure", text: "Find out more with our brochure", button: "See the brochure" }
+        },
         commitments: {
             title: "Our commitments",
             description:
@@ -284,7 +327,7 @@ export const enDictionary: Dictionary = {
         contact: {
             title: "Contact us!",
             before: "You have a project in mind? You need more information about our services? Don't hesitate to contact us using the form below or by sending us an email at ",
-            after: ". We will get back to you as soon as possible.",
+            after: "We will get back to you as soon as possible.",
             terms: "By submitting this form, you agree that your data will be used to contact you in connection with your request and the commercial relationship that may result from it.",
             form: {
                 name: {

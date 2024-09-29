@@ -39,11 +39,11 @@ export const getLinks = (locale: Locale, user: ExtendedUser) => {
         typeof user === "undefined"
             ? { title: s.login, href: nav(locale, "/auth/signin") }
             : authLinks.length <= 1
-              ? logoutLink
-              : {
-                    title: t.admin.account,
-                    links: authLinks
-                };
+            ? logoutLink
+            : {
+                  title: t.admin.account,
+                  links: authLinks
+              };
 
     const links: ExtendedLink[] = [
         {
@@ -53,7 +53,8 @@ export const getLinks = (locale: Locale, user: ExtendedUser) => {
                 { href: nav(locale, "/about"), title: s.whoarewe },
                 { href: nav(locale, "/faq"), title: "FAQ" },
                 { href: nav(locale, "/commitment"), title: s.commitment },
-                { href: nav(locale, "/team"), title: s.team }
+                { href: nav(locale, "/team"), title: s.team },
+                { href: nav(locale, "/plaquette.pdf"), title: s.plaquette }
             ]
         },
         {

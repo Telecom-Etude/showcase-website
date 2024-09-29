@@ -97,7 +97,7 @@ export default async function Home({ params: { locale } }: LocaleParams) {
             </section>
             <Separator />
             <section className="py-6 space-y-6">
-                <DomainBlock t={t.domains} locale={locale} />
+                <DomainBlock locale={locale} />
             </section>
             <Separator />
             <Block className="flex flex-col sm:flex-row space-y-4 px-8 py-6 sm:space-x-10">
