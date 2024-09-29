@@ -5,6 +5,7 @@ import { Locale } from "@/locales/config";
 import { Op } from "quill/core";
 import { PostPresentation } from "@/app/[locale]/(client)/blog/client";
 import { getUserName } from "@/lib/users";
+import { Post, User } from "@prisma/client";
 
 export const createBlog = async (authorEmail: string, title: string, locale: Locale): Promise<number> => {
     try {
@@ -72,7 +73,11 @@ export const getValidatedBlogs = async (locale: Locale): Promise<PostPresentatio
     }
 };
 
-export const getAllBlog = async () => {
+export type UserPost = {
+    authors: User[];
+} & Post;
+
+export const getAllBlog = async (): Promise<UserPost[]> => {
     try {
         return (await db.post.findMany({ include: { authors: true } })) || [];
     } catch (e) {
@@ -80,9 +85,9 @@ export const getAllBlog = async () => {
         return [];
     }
 };
-export const getBlog = async (id: number) => {
+export const getBlog = async (id: number): Promise<UserPost | undefined> => {
     try {
-        return (await db.post.findUnique({ where: { id: id } })) || undefined;
+        return (await db.post.findUnique({ where: { id: id }, include: { authors: true } })) || undefined;
     } catch (e) {
         console.error("[getBlog] ", e);
     }
@@ -112,5 +117,13 @@ export const validateBlog = async (id: number) => {
         await db.post.update({ where: { id }, data: { validated: true } });
     } catch (e) {
         console.error("[validateBlog] ", e);
+    }
+};
+
+export const unvalidateBlog = async (id: number) => {
+    try {
+        await db.post.update({ where: { id }, data: { validated: false } });
+    } catch (e) {
+        console.error("[unvalidateBlog] ", e);
     }
 };
