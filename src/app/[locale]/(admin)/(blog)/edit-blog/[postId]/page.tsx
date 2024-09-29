@@ -6,19 +6,20 @@ import { LocalePostParams } from "@/locales/config";
 import { redirect } from "next/navigation";
 import { getBlog } from "@/db/blogs";
 import { UnValidate } from "./unvalidate";
+import { nav } from "@/locales/routing";
 
 export default async function EditBlog({ params: { postId, locale } }: LocalePostParams) {
     const id = parseInt(postId);
     const blog = await getBlog(id);
     const email = (await auth())?.user.email;
     if (!email) {
-        redirect("/error/401");
+        redirect(nav(locale, "/error/401"));
     }
     if (Number.isNaN(id) || !blog) {
-        redirect("/error/404");
+        redirect(nav(locale, "/error/404"));
     }
     if (!blog.authors.map(a => a.email).includes(email)) {
-        redirect("/error/403");
+        redirect(nav(locale, "/error/403"));
     }
     const localeLabels = await getLocaleLabels(locale);
     const labels = (localeLabels || []).map(({ name }) => name);

@@ -28,7 +28,7 @@ export default async function Page({ params: { locale, postId } }: LocalePostPar
                 <RenderQuill content={JSON.parse(blog.content)} />
             </div>
             <div className="w-full flex justify-center p-4">
-                <ValidateButton id={id} t={getDictionary(locale).navigation.errors.unknown} />
+                <ValidateButton locale={locale} id={id} t={getDictionary(locale).navigation.errors.unknown} />
             </div>
         </div>
     );

@@ -6,6 +6,7 @@ import { ComboLabels } from "@/components/meta-components/combobox";
 import { getDictionary } from "@/locales/dictionaries";
 import { redirect } from "next/navigation";
 import { getValidatedBlogs } from "@/db/blogs";
+import { nav } from "@/locales/routing";
 
 export default async function Page({ params: { locale } }: LocaleParams) {
     const posts = await getValidatedBlogs(locale);
@@ -14,7 +15,7 @@ export default async function Page({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.blog;
 
     if (!labels || !posts) {
-        redirect("/error/404");
+        redirect(nav(locale, "/error/404"));
     }
 
     return (

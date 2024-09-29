@@ -13,6 +13,7 @@ import { ColumnDef, Row } from "@tanstack/react-table";
 import { ValidationBlogType } from "./schema";
 import { deleteBlog } from "@/db/blogs";
 import { BtnLink, EmailBtn } from "@/components/telecom-etude/contact";
+import { getUserName } from "@/lib/users";
 
 const Delete = ({ row }: { row: Row<ValidationBlogType> }) => {
     const router = useRouter();
@@ -49,8 +50,8 @@ const Delete = ({ row }: { row: Row<ValidationBlogType> }) => {
 export const columns: ColumnDef<ValidationBlogType>[] = [
     {
         accessorKey: "id",
-        header: ({ column }) => <DataTableColumnHeader column={column} title="id" />,
-        cell: ({ row }) => <div className="w-[80px]">{row.getValue("id")}</div>,
+        header: ({ column }) => <></>,
+        cell: ({ row }) => <></>,
         enableSorting: false,
         enableHiding: false
     },
@@ -60,8 +61,8 @@ export const columns: ColumnDef<ValidationBlogType>[] = [
         cell: ({ row }) => {
             return (
                 <div className="flex flex-col">
-                    {(row.getValue("emails") as string[]).map((email, i) => (
-                        <EmailBtn email={email} key={i} />
+                    {(row.getValue("emails") as string[]).map((email: string, i) => (
+                        <EmailBtn email={email} text={getUserName(email)} key={i} />
                     ))}
                 </div>
             );
