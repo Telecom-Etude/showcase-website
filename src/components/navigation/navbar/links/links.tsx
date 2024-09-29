@@ -52,15 +52,16 @@ const MultipleMobileLinks = ({
     isOpen: boolean;
     setOpen: () => void;
     link: MultipleLink;
-}) => {
-    return (
-        <>
-            <Button variant="ghost" onClick={() => setOpen()} className={cn("w-full flex items-center space-x-2", isOpen && "bg-muted")}>
-                <p> {link.title}</p>
-                {isOpen ? <FaChevronUp className="w-2 h-2" /> : <FaChevronDown className="w-2 h-2" />}
-            </Button>
-            {isOpen &&
-                link.links.map((singleLink, i) => (
+}) => (
+    <>
+        <Button variant="ghost" onClick={() => setOpen()} className={cn("w-full flex items-center space-x-2", isOpen && "bg-muted")}>
+            <p>{link.title}</p>
+            {isOpen ? <FaChevronUp className="w-2 h-2" /> : <FaChevronDown className="w-2 h-2" />}
+        </Button>
+
+        {isOpen && (
+            <div className="border-b-2">
+                {link.links.map((singleLink, i) => (
                     <Button
                         className="w-full"
                         variant="ghost"
@@ -70,12 +71,13 @@ const MultipleMobileLinks = ({
                         }}
                         key={i}
                     >
-                        {singleLink.title}
+                        <p className="italic">{singleLink.title}</p>
                     </Button>
                 ))}
-        </>
-    );
-};
+            </div>
+        )}
+    </>
+);
 
 const MobileLinks = ({ links, contactLink, locale, onClick }: { onClick: () => void; links: ExtendedLink[]; contactLink: SingleLink; locale: Locale }) => {
     const [opened, setOpened] = useState<null | number>(null);
@@ -123,12 +125,12 @@ const DesktopLinks = ({ links, contactLink, locale }: { links: ExtendedLink[]; c
     const navLinks = links.map((link: ExtendedLink, i: number) => (
         <NavigationMenuItem key={i}>
             {"href" in link ? (
-                <Link href={link.href} legacyBehavior passHref>
-                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>{link.title}</NavigationMenuLink>
+                <Link href={link.href} legacyBehavior passHref className="rounded-none">
+                    <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "rounded-none")}>{link.title}</NavigationMenuLink>
                 </Link>
             ) : (
                 <>
-                    <NavigationMenuTrigger>{link.title}</NavigationMenuTrigger>
+                    <NavigationMenuTrigger className="rounded-none">{link.title}</NavigationMenuTrigger>
                     <NavigationMenuContent>
                         <ul className="grid grid-cols-2 w-[400px] p-2">
                             {link.links.map(({ title, href }, i) => (

@@ -7,6 +7,7 @@ import { BirdBackground } from "../telecom-etude/bird-backgroud";
 
 import { Locale } from "@/locales/config";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { EmailContact } from "../telecom-etude/contact";
 
 export function ErrorPage({ code, locale, message }: { code: string; locale: Locale; message?: string }) {
     const errorsVocab = getDictionary(locale).navigation.errors;
@@ -34,7 +35,6 @@ export function ErrorPage({ code, locale, message }: { code: string; locale: Loc
             };
             break;
         default:
-            console.error("Unexpected error code: " + code);
             pageInfo = {
                 http: errorsVocab.httpError + " " + code,
                 t: errorsVocab.unknown,
@@ -67,11 +67,7 @@ export function ErrorPage({ code, locale, message }: { code: string; locale: Loc
                     <Button variant="call2action" asChild>
                         <Link href={href}>{t.button}</Link>
                     </Button>
-                    {t.contact && (
-                        <Button variant="link" asChild>
-                            <Link href="mailto:jet.info@telecom-etude.fr">{t.contact}</Link>
-                        </Button>
-                    )}
+                    {t.contact && <EmailContact text={t.contact} dsi />}
                 </CardFooter>
             </Card>
         </BirdBackground>
