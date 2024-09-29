@@ -70,16 +70,22 @@ const getCode = (req: NextAuthRequest, routeProps: RouteProps) => {
     }
 };
 
+const PREFIX_ROUTES: { [key: string]: RouteProps } = {
+    "/edit-blog": { auth: checkAdminRights(r => r.blogAuthor) },
+    "/blog": { auth: checkAdminRights(r => r.blogAuthor) },
+    "/validate-blog": { auth: checkAdminRights(r => r.blogAdmin) },
+    "/error": {}
+};
+
 export const getAuthorisationCode = (req: NextAuthRequest, localelessPath: string): number => {
     if (localelessPath in ALL_ROUTES) {
         return getCode(req, ALL_ROUTES[localelessPath as keyof typeof ALL_ROUTES]);
-    } else if (localelessPath.startsWith("/edit-blog/")) {
-        return checkAdminRights(r => r.blogAuthor)(req);
-    } else if (localelessPath.startsWith("/blog/")) {
-        return checkAdminRights(r => r.blogAuthor)(req);
-    } else if (localelessPath.startsWith("/validate-blog")) {
-        return checkAdminRights(r => r.blogAdmin)(req);
-    } else {
-        return 404;
     }
+    for (const [path, props] of Object.entries(PREFIX_ROUTES)) {
+        const regex = new RegExp(`^${path}/\\d+$`);
+        if (regex.test(localelessPath)) {
+            return getCode(req, props);
+        }
+    }
+    return 404;
 };
