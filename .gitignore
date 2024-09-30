@@ -40,6 +40,7 @@ next-env.d.ts
 prisma/*/
 prisma/*.db*
 *lock*
+*.old*
 
 # Images data
 onthewaytocompression/
