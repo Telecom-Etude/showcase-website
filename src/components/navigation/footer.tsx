@@ -46,10 +46,10 @@ const SiteMap = ({ t, locale }: { locale: Locale; t: Dictionary["navigation"]["s
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-10">
                 <SiteMapBlock
                     locale={locale}
-                    title={t.whoarewe}
+                    title={t.about}
                     items={[
                         { name: t.home, href: "/" },
-                        { name: t.about, href: "/about" },
+                        { name: t.whoarewe, href: "/about" },
                         { name: t.commitment, href: "/commitment" },
                         { name: t.team, href: "/team" }
                     ]}
@@ -68,7 +68,7 @@ const SiteMap = ({ t, locale }: { locale: Locale; t: Dictionary["navigation"]["s
                     items={[
                         { name: t.offer, href: "/offer" },
                         { name: "FAQ", href: "/faq" },
-                        { name: t.plaquette, href: "/plaquette.fr" }
+                        { name: t.plaquette, href: "/plaquette.pdf" }
                     ]}
                 />
                 <SiteMapBlock

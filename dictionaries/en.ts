@@ -81,7 +81,7 @@ export const enDictionary: Dictionary = {
                 steps: [
                     {
                         title: "Client contact",
-                        text: "Initial contact between you and our Junior Entreprise. You can contact us by filling in the form below or on hello@telecom-etude.fr. We will be delighted to respond to your request and schedule an initial meeting with you."
+                        text: "Initial contact between you and our Junior Entreprise. You can contact us by filling in the form below or on contact@telecom-etude.fr. We will be delighted to respond to your request and schedule an initial meeting with you."
                     },
                     {
                         title: "Client meeting",

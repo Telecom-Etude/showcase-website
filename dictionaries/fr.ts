@@ -75,11 +75,11 @@ export const frDictionary = {
             title: "Notre offre",
             timeline: {
                 title: "Déroulement d'une étude",
-                text: "Nous avons une approche cadrée et rigoureuse afin de suivre avec qualité, expertise et réactivité la mission. Voici les étapes principales du déroulement d'un étude à la JE:",
+                text: "Nous avons une approche cadrée et rigoureuse afin de suivre avec qualité, expertise et réactivité la mission. Voici les étapes principales du déroulement d'une étude à la JE:",
                 steps: [
                     {
                         title: "Contact du client",
-                        text: "Première mise en relation entre vous et notre Junior Entreprise. Vous pouvez nous contacter en remplissant le formulaire ci-dessous ou sur hello@telecom-etude.fr. Nous serons très heureux de répondre à votre demande et de planifier une première réunion avec vous."
+                        text: "Première mise en relation entre vous et notre Junior Entreprise. Vous pouvez nous contacter en remplissant le formulaire ci-dessous ou sur contact@telecom-etude.fr. Nous serons très heureux de répondre à votre demande et de planifier une première réunion avec vous."
                     },
                     {
                         title: "Réunion avec le client",
@@ -87,7 +87,7 @@ export const frDictionary = {
                     },
                     {
                         title: "Offre commerciale",
-                        text: "À la suite de la réunion, vous recevrez notre offre commerciale, c'est ici que vous aurez une idée du budget. Dans cette offre commerciale, nous vous représenterons votre projet vous permettant ainsi de voir que nous avons effectivement cerné votre problème et votre besoin.  Suite à cela, nous serons prêts à lancer la recherche d'intervenants."
+                        text: "À la suite de la réunion, vous recevrez notre offre commerciale, c'est ici que vous aurez une idée du budget. Dans cette offre commerciale, nous vous ferons une récapiltutlatif de  votre projet vous permettant ainsi de voir que nous avons effectivement cerné votre problématique et vos besoin. Suite à cela, nous serons prêts à lancer la recherche d'intervenants."
                     },
                     {
                         title: "Recherche d'intervenants",
@@ -95,7 +95,7 @@ export const frDictionary = {
                     },
                     {
                         title: "Réunion tripartite",
-                        text: "À la fin de la sélection, nous réorganiserons une réunion avec l'intervenant et vous pour qu'il puisse avec son expertise, vous poser des question précises sur des points potentiellement sombres et que l'on puisse ainsi réaliser le cahier des charges qui vous conviendra le plus précis possible."
+                        text: "À la fin de la sélection, nous réorganiserons une réunion avec l'intervenant et vous pour qu'il puisse avec son expertise, vous poser des question plus précises sur votre projet. Cela nous permettra de cerner vos attentes le plus précisément possible afin d'avoir un cahier des charges le plus explicite possible."
                     },
                     {
                         title: "Signature des contrats",
@@ -107,7 +107,7 @@ export const frDictionary = {
                     },
                     {
                         title: "Paiement et retours de satisfaction",
-                        text: "Quand la fin de la mission arrive, nous organiserons une dernière réunion lors de laquelle l'intervenant vous présentera le produit final. S'il vous convient, et il vous conviendra très certainement au vu de notre très haut taux de satisfaction, nous vous transmettrons la facture, puis le livrable. Nous nous séparerons alors en espérant vous revoir très vite. Vous recevrez aussi de notre part un questionnaire de satisfaction quelques temps après nous permettant de connaître précisément votre ressenti sur cette étude achevée et nous donnant potentiellement des axes d'amélioration pour les prochaines."
+                        text: "À la fin de la mission, nous organiserons une dernière réunion lors de laquelle l'intervenant vous présentera le produit final, pour vous montrer la qualité de notre travail. Après cette présentations, et si vous n'avez plus de questions, nous vous transmettrons la Procès Verbale de Recette Finale. Après signature de ce dernier, nous vous rendrons le livrable. En cas de tout problème, nous restons à votre écoute pendant toute la durée de la garantie. Vous recevrez également un questionnaire de satisfaction, nous permettant de connaître votre ressenti le déroulement de l'étude."
                     }
                 ]
             },
@@ -228,7 +228,7 @@ export const frDictionary = {
                 {
                     question: "Comment fonctionnent-elles\u00A0?",
                     answer: [
-                        "Elles fonctionnent par missions. Vous nous soumettez un projet et nous réalisons une proposition. Une fois la proposition acceptée, nous réalisons sélectionnons un intervenant parmi un peu moins de 1000 élèves-ingénieurs par les compétences particulères nécessitées par la mission. C'est cet intervenant qui réalisera le projet que vous nous soumettez."
+                        "Elles fonctionnent par missions. Vous nous soumettez un projet et nous réalisons une proposition. Une fois la proposition acceptée, nous sélectionnons un intervenant parmi presque 1000 élèves-ingénieurs possédant les compétences nécessaires. C'est cet intervenant qui réalisera le projet que vous nous soumettez."
                     ]
                 },
                 {
@@ -240,13 +240,13 @@ export const frDictionary = {
                 {
                     question: "Pourquoi nous choisir\u00A0?",
                     answer: [
-                        "Vous devriez nous choisir pour notre expertise dans notre domaine, notre réactivité à vos contacts et notre dévouement à fournir un excellent service. En plus de cela, nous sommes la Junior-Entreprise de la première école du numériquee en France, ce qui fait de nous la Junior-Entreprise de choix pour toute mission dans les domaines connexes."
+                        "Pour notre expertise dans notre domaine, notre réactivité et notre dévouement à fournir un excellent service. De plus, nous sommes la JE de la première école d'ingénieur du numériquee en France, ce qui fait de nous la Junior-Entreprise de choix pour toute mission dans les domaines connexes."
                     ]
                 },
                 {
                     question: "Comment se déroule une mission\u00A0?",
                     answer: [
-                        "Une mission commence par une discussion avec le client pour comprendre ses besoins, puis nous vous proposons une offre commerciale. Après des réunions pour bien connaitre vos besoins, nous sélectionnons un intervenant compétent qui va réalisé la mission. Le client est tenu informé tout au long du processus."
+                        "Une mission commence par une discussion pour comprendre vos besoins, puis nous vous proposons une offre commerciale. Après des réunions pour bien cerner votre projet, nous sélectionnons un intervenant compétent qui va réaliser la mission. Vous êtes tenu informé tout au long du processus."
                     ]
                 }
             ]
@@ -282,7 +282,7 @@ export const frDictionary = {
                 ourschool: "Notre école\u00A0: Télécom Paris",
                 quality: "Une JE de qualité",
                 satisfaction: "Notre objectif\u00A0: Votre satisfaction",
-                ieseg: "Une préstation commune"
+                ieseg: "Une prestation commune"
             },
             quality: [
                 "Un taux de satisfaction de nos de clients de plus de 97%.",
@@ -312,18 +312,18 @@ export const frDictionary = {
         commitments: {
             title: "Nos engagements",
             description:
-                "Telecom Etude est une association qui permet aux étudiants de développer des compétences techniques et de la connaissance du monde professionnel. Nous avons des engagements autant dans notre préstation que dans divers domaines, avec des chartes d'engagement.",
+                "Telecom Etude est une association qui permet aux étudiants de développer des compétences techniques et de la connaissance du monde professionnel. Nous avons des engagements autant dans notre prestation que dans divers domaines, avec des chartes d'engagement.",
             jamaissanselles: {
                 title: "Charte #JamaisSansElles",
-                text: "La charte #JamaisSansElles, co-rédigée par l'association Jamais Sans Elles et la CNJE, définit les engagements des Junior-Entreprises signataires, dont Télécom Étude, en matière de parité et de mixité. En signant cette charte, Télécom Étude s’engage à garantir la présence de femmes dans toutes les représentations où interviennent au moins trois personnes. La Junior-Entreprise s’engage également à promouvoir la mixité au sein de sa structure, tant dans les processus de recrutement que dans l’accès aux postes à responsabilités. Enfin, Télécom Étude renforce son action contre les violences sexistes et sexuelles, à travers des initiatives de prévention auprès des étudiants et l'application des recommandations de la CNJE lors de ses événements.",
+                text: "La charte #JamaisSansElles, co-rédigée par l'association Jamais Sans Elles et la CNJE, définit les engagements des Junior-Entreprises signataires, dont Telecom Etude, en matière de parité et de mixité. En signant cette charte, Telecom Etude s’engage à garantir la présence de femmes dans toutes les représentations où interviennent au moins trois personnes. La Junior-Entreprise s’engage également à promouvoir la mixité au sein de sa structure, tant dans les processus de recrutement que dans l’accès aux postes à responsabilités. Enfin, Telecom Etude renforce son action contre les violences sexistes et sexuelles, à travers des initiatives de prévention auprès des étudiants et l'application des recommandations de la CNJE lors de ses événements.",
                 alt: "Logo de JamaisSansElles"
             },
             rse: {
                 title: "Charte RSE",
                 paragraphs: [
-                    "La charte RSE, conçue par AgroParisTech Service Études, s'adresse aux Junior-Entreprises et définit les principes directeurs que ces dernières, dont Télécom Étude, doivent respecter en matière de Responsabilité Sociétale des Entreprises. Elle repose sur quatre axes principaux : les études, les ressources humaines, la gouvernance et la communication.",
-                    "Concernant les études, Télécom Étude s'engage notamment à instaurer un RS-Score, un indicateur évaluant l'impact social et environnemental des projets réalisés. Du côté des ressources humaines, les engagements portent principalement sur le bien-être des membres, la promotion de la diversité et de la parité, ainsi qu'une attention particulière à la sobriété organisationnelle.",
-                    "En matière de gouvernance, Télécom Étude s'engage à adopter un management inclusif, à former ses membres aux enjeux RSE et à suivre son empreinte carbone. Enfin, en termes de communication, l'accent est mis sur une prospection plus responsable, la sensibilisation des étudiants aux problématiques RSE et la transparence concernant la politique RSE de la structure."
+                    "La charte RSE, conçue par AgroParisTech Service Études, s'adresse aux Junior-Entreprises et définit les principes directeurs que ces dernières, dont Telecom Etude, doivent respecter en matière de Responsabilité Sociétale des Entreprises. Elle repose sur quatre axes principaux : les études, les ressources humaines, la gouvernance et la communication.",
+                    "Concernant les études, Telecom Etude s'engage notamment à instaurer un RS-Score, un indicateur évaluant l'impact social et environnemental des projets réalisés. Du côté des ressources humaines, les engagements portent principalement sur le bien-être des membres, la promotion de la diversité et de la parité, ainsi qu'une attention particulière à la sobriété organisationnelle.",
+                    "En matière de gouvernance, Telecom Etude s'engage à adopter un management inclusif, à former ses membres aux enjeux RSE et à suivre son empreinte carbone. Enfin, en termes de communication, l'accent est mis sur une prospection plus responsable, la sensibilisation des étudiants aux problématiques RSE et la transparence concernant la politique RSE de la structure."
                 ],
                 alt: "Axes de la charte RSE"
             }
