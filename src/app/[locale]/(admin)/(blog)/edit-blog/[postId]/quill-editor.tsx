@@ -7,15 +7,18 @@ import { updateLocaleBlogContent } from "@/db/blogs";
 import { useRouter } from "next/navigation";
 import { Op } from "quill/core";
 import { Actions } from "./editor-actions";
+import { Locale } from "@/locales/config";
 
 export const QuillEditor = ({
     id,
     content,
     title,
+    locale,
     dbLabels,
     blogLabels
 }: {
     dbLabels: string[];
+    locale: Locale;
     id: number;
     content: Op[];
     title: string;
@@ -78,7 +81,7 @@ export const QuillEditor = ({
 
     return (
         <div className="w-full">
-            <Actions {...{ setToBeChanged, content, value, id, title, dbLabels, blogLabels }} />
+            <Actions {...{ locale, setToBeChanged, content, value, id, title, dbLabels, blogLabels }} />
             <div ref={editorRef} />
         </div>
     );

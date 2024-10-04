@@ -79,35 +79,36 @@ export const frDictionary = {
                 steps: [
                     {
                         title: "Contact du client",
-                        text: "Première mise en relation entre vous et notre Junior Entreprise. Vous pouvez nous contacter en remplissant le formulaire ci-dessous ou sur contact@telecom-etude.fr. Nous serons très heureux de répondre à votre demande et de planifier une première réunion avec vous."
+                        text: "Première mise en relation entre vous et notre Junior Entreprise. Vous pouvez nous contacter via le formulaire ci-dessous ou sur contact@telecom-etude.fr. Nous vous répondrons dans les plus brefs délais afin de planifier une première réunion."
                     },
                     {
                         title: "Réunion avec le client",
-                        text: "Cette réunion vous sert à nous présenter votre projet avec le plus de détails possibles. Nous vous recevons dans nos locaux à Télécom Paris ou lors d'une visioconférence. Nous pouvons ainsi avoir une première idée du cahier des charges qui vous conviendrait. À la fin de cette réunion, vous serez au point sur notre fonctionnement et nous serons prêt, grâce aux informations que vous nous avez fournies, à avancer sereinement dans l'étude."
+                        text: "Deux chefs de projet vous reçoivent dans nos locaux à Télécom Paris ou lors d'une visioconférence. Le but de cette réunion pour nous est de comprendre en détails les besoins de votre projet afin de vous proposer par la suite une offre adaptée à vos attentes. Nous établissons notamment ensemble les lignes directrices du cahier des charges."
                     },
                     {
                         title: "Offre commerciale",
-                        text: "À la suite de la réunion, vous recevrez notre offre commerciale, c'est ici que vous aurez une idée du budget. Dans cette offre commerciale, nous vous ferons une récapiltutlatif de  votre projet vous permettant ainsi de voir que nous avons effectivement cerné votre problématique et vos besoin. Suite à cela, nous serons prêts à lancer la recherche d'intervenants."
+                        text: "À la suite de cette réunion, nous rédigeons une offre commerciale personnalisée qui présente les points clés de votre projet et la manière dont nous pouvons les adresser. Vous recevez également dans cette offre commerciale une estimation du budget et de la durée de la mission."
                     },
                     {
                         title: "Recherche d'intervenants",
-                        text: "En fonction de la complexité de la mission que vous souhaitez nous convier, nous choisirons un ou plusieurs intervenants différents. Nous contactons pour cela tous les élèves de l'école qui nous envoient à leur tour leur CV. Nous retenons ensuite les plus prometteurs et nous leur faisons passer un entretien pour être sûrs que leurs qualifications correspondent aux besoins de la mission."
+                        content:
+                            "Nous publions ensuite un appel à candidatures auprès des élèves de Télécom Paris afin de recueillir les meilleurs profils pour réaliser votre projet. Après une analyse détaillée des compétences, de l'expérience et de la motivation des candidats nous les rencontrons lors d'un entretien pour nous assurer que leurs qualifications correspondent aux besoins de la mission."
                     },
                     {
                         title: "Réunion tripartite",
-                        text: "À la fin de la sélection, nous réorganiserons une réunion avec l'intervenant et vous pour qu'il puisse avec son expertise, vous poser des question plus précises sur votre projet. Cela nous permettra de cerner vos attentes le plus précisément possible afin d'avoir un cahier des charges le plus explicite possible."
+                        text: "A l'issue de la sélection, vous rencontrez l'intervenant lors d'une seconde réunion afin de préciser à la lumière de son expertise tous les détails de votre projet. C'est en particulier grâce à cet échange que nous pouvons construire un cahier des charges précis et exhaustif."
                     },
                     {
-                        title: "Signature des contrats",
-                        text: "Une fois que tous les documents sont rédigés, nous vous les présenterons pour que vous les signiez, cela marquera le début de l'étude."
+                        title: "Signature de la Convention d'étude",
+                        text: "Nous formalisons enfin tous les détails de la mission dans une convention d'étude qui contient notamment le cahier des charges complet, la méthodologie appliquée par l'intervenant, le planning de réalisation des différentes étapes de la mission, les différents livrables attendus ainsi que le budget de la mission. Une fois ce document signé, la mission peut réellement commencer !"
                     },
                     {
                         title: "Suivi mission avec l'intervenant",
-                        text: "Tout au long de l'étude, nous organiserons des réunions avec l'intervenant et vous pour qu'il puisse vous montrer ses progrès et que vous puissiez discuter de l'avancement de la mission. Vous serez ainsi présent à chaque étape de l'avancement de votre projet. Durant cette phase, nos chefs de projet suivront le bon fonctionnement de l'étude avec l'intervenant et seront vos interlocuteurs privilégiés."
+                        text: "Nous organisons, avec vous, des points de suivi réguliers afin de s'assurer que la mission suive la trajectoire prévue et respecte les délais fixés ! Durant toute la mission, nos chefs de projets sont vos interlocuteurs privilégiés et vous tiennent informés de l'avancement du projet."
                     },
                     {
                         title: "Paiement et retours de satisfaction",
-                        text: "À la fin de la mission, nous organiserons une dernière réunion lors de laquelle l'intervenant vous présentera le produit final, pour vous montrer la qualité de notre travail. Après cette présentations, et si vous n'avez plus de questions, nous vous transmettrons la Procès Verbale de Recette Finale. Après signature de ce dernier, nous vous rendrons le livrable. En cas de tout problème, nous restons à votre écoute pendant toute la durée de la garantie. Vous recevrez également un questionnaire de satisfaction, nous permettant de connaître votre ressenti le déroulement de l'étude."
+                        text: "Une fois la mission terminée, nous nous réunissons une dernière fois pour vous présenter le livrable final, que vous confirmez être conforme au cahier des charges via signature. Vous recevrez enfin un questionnaire de satisfaction qui vous permettra d’évaluer votre expérience avec notre structure."
                     }
                 ]
             },
@@ -315,7 +316,7 @@ export const frDictionary = {
                 "Telecom Etude est une association qui permet aux étudiants de développer des compétences techniques et de la connaissance du monde professionnel. Nous avons des engagements autant dans notre prestation que dans divers domaines, avec des chartes d'engagement.",
             jamaissanselles: {
                 title: "Charte #JamaisSansElles",
-                text: "La charte #JamaisSansElles, co-rédigée par l'association Jamais Sans Elles et la CNJE, définit les engagements des Junior-Entreprises signataires, dont Telecom Etude, en matière de parité et de mixité. En signant cette charte, Telecom Etude s’engage à garantir la présence de femmes dans toutes les représentations où interviennent au moins trois personnes. La Junior-Entreprise s’engage également à promouvoir la mixité au sein de sa structure, tant dans les processus de recrutement que dans l’accès aux postes à responsabilités. Enfin, Telecom Etude renforce son action contre les violences sexistes et sexuelles, à travers des initiatives de prévention auprès des étudiants et l'application des recommandations de la CNJE lors de ses événements.",
+                text: "La charte #JamaisSansElles, co-rédigée par l'association Jamais Sans Elles et la CNJE, définit les engagements des Junior-Entreprises signataires, dont Telecom Etude, en matière de parité et de mixité. En signant cette charte, Telecom Etude s'engage à garantir la présence de femmes dans toutes les représentations où interviennent au moins trois personnes. La Junior-Entreprise s'engage également à promouvoir la mixité au sein de sa structure, tant dans les processus de recrutement que dans l'accès aux postes à responsabilités. Enfin, Telecom Etude renforce son action contre les violences sexistes et sexuelles, à travers des initiatives de prévention auprès des étudiants et l'application des recommandations de la CNJE lors de ses événements.",
                 alt: "Logo de JamaisSansElles"
             },
             rse: {

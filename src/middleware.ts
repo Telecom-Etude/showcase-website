@@ -27,6 +27,8 @@ const rewrite = (url: string, req: NextAuthRequest): NextResponse => NextRespons
 
 export default auth(async (req: NextAuthRequest) => {
     const { hasLocale, locale, localelessPath } = getLocaleRoutesProps(req);
+    const code = getAuthorisationCode(req, localelessPath);
+    if (code != 200) return rewrite(`/${locale}/error/${code}`, req);
     if (localelessPath.startsWith("/auth")) {
         const authed = req.auth?.user.email;
         if (localelessPath === SIGNIN_PATH && authed) {
@@ -36,8 +38,6 @@ export default auth(async (req: NextAuthRequest) => {
             return redirect(`/${locale}`, req);
         }
     } else {
-        const code = getAuthorisationCode(req, localelessPath);
-        if (code != 200) return rewrite(`/${locale}/error/${code}`, req);
         if (!hasLocale) return redirect(`/${locale}${localelessPath}${req.nextUrl.search}`, req);
     }
 });
