@@ -33,7 +33,8 @@ export function DomainBlock({ locale }: { locale: Locale }) {
 
 const DomainCard = ({ title, id, image, locale }: { title: string; id: string; image: StaticImageData; locale: Locale }) => {
     return (
-        <Link href={nav(locale, `/offer/${id}`)} className="p-4 w-full h-full">
+        // <Link href={nav(locale, `/offer/${id}`)} className="p-4 w-full h-full">
+        <div className="p-4 w-full h-full">
             <Card className="hover:-translate-y-1 w-full h-full hover:scale-105 transition-all ease-out duration-500 grid grid-cols-2  bg-primary-accent hover:bg-primary-muted rounded-lg">
                 <CardHeader>
                     <CardTitle className="text-center m-auto font-normal leading-6">{title}</CardTitle>
@@ -42,6 +43,7 @@ const DomainCard = ({ title, id, image, locale }: { title: string; id: string; i
                     <Image placeholder="blur" src={image} className="w-full h-full " alt={title} />
                 </CardContent>
             </Card>
-        </Link>
+        </div>
+        // </Link>
     );
 };

@@ -14,6 +14,7 @@ import { ValidationBlogType } from "./schema";
 import { deleteBlog } from "@/db/blogs";
 import { BtnLink, EmailBtn } from "@/components/telecom-etude/contact";
 import { getUserName } from "@/lib/users";
+import { Checkbox } from "@/components/ui/checkbox";
 
 const Delete = ({ row }: { row: Row<ValidationBlogType> }) => {
     const router = useRouter();
@@ -57,7 +58,7 @@ export const columns: ColumnDef<ValidationBlogType>[] = [
     },
     {
         accessorKey: "emails",
-        header: ({ column }) => <DataTableColumnHeader column={column} title="Emails" />,
+        header: ({ column }) => <DataTableColumnHeader column={column} title="Auteur" />,
         cell: ({ row }) => {
             return (
                 <div className="flex flex-col">
@@ -81,8 +82,17 @@ export const columns: ColumnDef<ValidationBlogType>[] = [
         )
     },
     {
+        accessorKey: "validated",
+        header: ({ column }) => <DataTableColumnHeader column={column} title="Valié" />,
+        cell: ({ row }) => {
+            const value: boolean = row.getValue("validated");
+            return <Checkbox className="cursor-not-allowed" checked={value} contentEditable={false} />;
+        }
+    },
+    {
         accessorKey: "delete",
-        header: () => <span>Supprimer</span>,
-        cell: ({ row }) => <Delete row={row} />
+        header: ({ column }) => <DataTableColumnHeader column={column} title="Supprimer" />,
+        cell: ({ row }) => <Delete row={row} />,
+        enableSorting: false
     }
 ];

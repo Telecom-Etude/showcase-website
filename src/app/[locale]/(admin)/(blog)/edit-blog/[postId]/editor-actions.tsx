@@ -3,7 +3,7 @@
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { FaCheck, FaSave } from "react-icons/fa";
 import { FaPencil } from "react-icons/fa6";
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -14,6 +14,9 @@ import { MdLabel } from "react-icons/md";
 import { ComboLabels, ManyComboBox } from "@/components/meta-components/combobox";
 import { useState } from "react";
 import { renameBlog } from "@/db/blogs";
+import { updatePostLabels } from "@/db/labels";
+import { toast } from "@/components/ui/use-toast";
+import { Locale } from "@/locales/config";
 
 const Rename = ({ title, id, router }: { title: string; id: number; router: AppRouterInstance }) => (
     <Dialog>
@@ -51,8 +54,25 @@ const Rename = ({ title, id, router }: { title: string; id: number; router: AppR
     </Dialog>
 );
 
-const AddLabel = ({ dbLabels, router, id }: { id: number; dbLabels: ComboLabels; router: AppRouterInstance }) => {
-    const [getLabels, setLabels] = useState<number[]>([]);
+const AddLabel = ({
+    dbLabels,
+    router,
+    id,
+    locale,
+    blogLabels
+}: {
+    blogLabels: string[];
+    locale: Locale;
+    id: number;
+    dbLabels: ComboLabels;
+    router: AppRouterInstance;
+}) => {
+    const [getLabels, setLabels] = useState<number[]>(
+        Object.values(dbLabels)
+            .map((l, i) => ({ l, i }))
+            .filter(({ l }) => blogLabels.includes(l))
+            .map(({ i }: { i: number }) => i)
+    );
     const addRemoveLabel = (labelId: keyof typeof dbLabels) => {
         if (getLabels.filter(l => l == labelId).length > 0) {
             setLabels(labels => labels.filter(l => l !== labelId));
@@ -88,14 +108,33 @@ const AddLabel = ({ dbLabels, router, id }: { id: number; dbLabels: ComboLabels;
                         }}
                         limit={6}
                     />
-                    <ul className="p-2">
+                    <ul className="p-2 flex flex-col items-center">
                         {getLabels.map((label, i) => (
                             <li key={i}>{dbLabels[label]}</li>
                         ))}
                     </ul>
-                    <Button variant="call2action" type="submit">
-                        Valider
-                    </Button>
+                    <DialogClose asChild>
+                        <Button
+                            variant="call2action"
+                            type="button"
+                            onClick={() => {
+                                updatePostLabels(
+                                    getLabels.map(i => dbLabels[i]),
+                                    id,
+                                    locale
+                                )
+                                    .then(() => router.refresh())
+                                    .catch(() => {
+                                        toast({
+                                            title: "Erreure inatendue",
+                                            description: "Les étiquettes n'ont pas pu être ajotuées. Réessayez plus tard ou contactez la DSI."
+                                        });
+                                    });
+                            }}
+                        >
+                            Valider
+                        </Button>
+                    </DialogClose>
                 </DialogHeader>
             </DialogContent>
         </Dialog>
@@ -143,9 +182,11 @@ interface ActionProps {
     title: string;
     id: number;
     dbLabels: string[];
+    blogLabels: string[];
+    locale: Locale;
 }
 
-export const Actions = ({ setToBeChanged, content, value, title, id, dbLabels }: ActionProps) => {
+export const Actions = ({ setToBeChanged, content, value, title, id, dbLabels, blogLabels, locale }: ActionProps) => {
     const router = useRouter();
     return (
         <div className="p-6 flex items-center justify-between w-full">
@@ -168,7 +209,7 @@ export const Actions = ({ setToBeChanged, content, value, title, id, dbLabels }:
                     </span>
                 </Button>
                 <Rename id={id} title={title} router={router} />
-                <AddLabel dbLabels={dbLabels} id={id} router={router} />
+                <AddLabel locale={locale} dbLabels={dbLabels} blogLabels={blogLabels} id={id} router={router} />
             </div>
             <div>
                 <OpenSave saving={JSON.stringify(content) !== value} />

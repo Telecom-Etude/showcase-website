@@ -5,7 +5,7 @@ import { Locale } from "@/locales/config";
 import { Op } from "quill/core";
 import { PostPresentation } from "@/app/[locale]/(client)/blog/client";
 import { getUserName } from "@/lib/users";
-import { Post, User } from "@prisma/client";
+import { Label, Post, User } from "@prisma/client";
 
 export const createBlog = async (authorEmail: string, title: string, locale: Locale): Promise<number> => {
     try {
@@ -75,11 +75,12 @@ export const getValidatedBlogs = async (locale: Locale): Promise<PostPresentatio
 
 export type UserPost = {
     authors: User[];
+    labels: Label[];
 } & Post;
 
 export const getAllBlog = async (): Promise<UserPost[]> => {
     try {
-        return (await db.post.findMany({ include: { authors: true } })) || [];
+        return (await db.post.findMany({ include: { authors: true, labels: true } })) || [];
     } catch (e) {
         console.error("[getBlog] ", e);
         return [];
@@ -87,7 +88,7 @@ export const getAllBlog = async (): Promise<UserPost[]> => {
 };
 export const getBlog = async (id: number): Promise<UserPost | undefined> => {
     try {
-        return (await db.post.findUnique({ where: { id: id }, include: { authors: true } })) || undefined;
+        return (await db.post.findUnique({ where: { id: id }, include: { authors: true, labels: true } })) || undefined;
     } catch (e) {
         console.error("[getBlog] ", e);
     }

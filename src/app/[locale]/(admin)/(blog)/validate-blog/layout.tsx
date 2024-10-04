@@ -15,7 +15,7 @@ interface PageProps extends LocaleParams {
 export default async function Validation({ params: { locale }, validate }: PageProps) {
     const posts = await getAllBlog();
     const data: ValidationBlogType[] = posts
-        .filter(post => !post.validated)
+        // .filter(post => !post.validated)
         .map(({ id, validated, authors, title, content }) => ({
             id,
             validated,

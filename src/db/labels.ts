@@ -20,3 +20,21 @@ export async function getLocaleLabels(locale: Locale): Promise<{ id: number; nam
 //         console.error("[updateLabels] ", e);
 //     }
 // }
+
+export async function updatePostLabels(labels: string[], id: number, locale: Locale) {
+    try {
+        const dbLabels: { id: number }[] = await Promise.all(
+            labels.map(async name => ({ id: (await db.label.findUnique({ where: { locale_name: { name, locale } } }))!.id }))
+        );
+        await db.post.update({
+            where: { id },
+            data: {
+                labels: {
+                    connect: dbLabels
+                }
+            }
+        });
+    } catch (e) {
+        console.error("[addLabelsToBlog] ", e);
+    }
+}
