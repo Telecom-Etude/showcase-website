@@ -35,7 +35,7 @@ const DomainCard = ({ title, id, image, locale }: { title: string; id: string; i
     return (
         // <Link href={nav(locale, `/offer/${id}`)} className="p-4 w-full h-full">
         <div className="p-4 w-full h-full">
-            <Card className="hover:-translate-y-1 w-full h-full hover:scale-105 transition-all ease-out duration-500 grid grid-cols-2  bg-primary-accent hover:bg-primary-muted rounded-lg">
+            <Card className="hover:-translate-y-1 w-full h-full hover:scale-105 transition-all ease-out bg-gradient-to-br from-primary via-primary to-destructive hover:opacity-80 duration-500 grid grid-cols-2 rounded-lg">
                 <CardHeader>
                     <CardTitle className="text-center m-auto font-normal leading-6">{title}</CardTitle>
                 </CardHeader>
