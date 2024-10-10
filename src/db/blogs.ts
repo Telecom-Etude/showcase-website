@@ -64,7 +64,7 @@ export const getValidatedBlogs = async (locale: Locale): Promise<PostPresentatio
                 authors: authors.map(author => getUserName(author.email)),
                 emails: authors.map(author => author.email),
                 date: updatedAt,
-                labels: labels.filter(label => label.locale === locale).map(label => label.name),
+                labels: labels.filter(l => l.locale === locale).map(l => l.name),
                 ...blog
             }));
         return blogs;

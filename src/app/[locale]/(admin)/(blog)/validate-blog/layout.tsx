@@ -1,6 +1,5 @@
 import { DataTable } from "@/components/meta-components/table/data-table";
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable";
-import { db } from "@/lib/db";
 import { columns } from "./select/columns";
 import { ValidationBlogType } from "./select/schema";
 import { LocaleParams } from "@/locales/config";
@@ -28,13 +27,13 @@ export default async function Validation({ params: { locale }, validate }: PageP
         <div className="flex flex-1">
             <div className="w-full">
                 <ResizablePanelGroup direction="horizontal">
-                    <ResizablePanel>
+                    <ResizablePanel defaultSize={100}>
                         <div className="p-10 h-full">
                             <DataTable search_column="title" data={data} columns={columns} filters={[]} />
                         </div>
                     </ResizablePanel>
                     <ResizableHandle />
-                    <ResizablePanel>
+                    <ResizablePanel defaultSize={100}>
                         <div className="p-10 h-full">{validate}</div>
                     </ResizablePanel>
                 </ResizablePanelGroup>

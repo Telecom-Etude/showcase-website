@@ -9,31 +9,25 @@ import { Op } from "quill/core";
 import { Actions } from "./editor-actions";
 import { Locale } from "@/locales/config";
 
-export const QuillEditor = ({
-    id,
-    content,
-    title,
-    locale,
-    dbLabels,
-    blogLabels
-}: {
+export interface QuillEditorProps {
     dbLabels: string[];
     locale: Locale;
     id: number;
     content: Op[];
     title: string;
     blogLabels: string[];
-}) => {
-    const editorRef = useRef(null);
+}
+
+export const QuillEditor = ({ id, content, title, locale, dbLabels, blogLabels }: QuillEditorProps) => {
     const [quill, setQuill] = useState<Quill | null>(null);
     const [value, setValue] = useState(JSON.stringify(content));
     const [toBeChanged, setToBeChanged] = useState(false);
-    const [html, setHtml] = useState("");
 
+    const editorRef = useRef(null);
     const router = useRouter();
 
     useEffect(() => {
-        if (quill && toBeChanged) {
+        if (typeof window !== "undefined" && typeof document !== "undefined" && quill && toBeChanged) {
             const newContent = quill.getContents().ops;
             if (newContent !== content) {
                 updateLocaleBlogContent(id, newContent).finally(() => router.refresh());
@@ -42,19 +36,14 @@ export const QuillEditor = ({
     }, [toBeChanged, quill, content, value, id, router]);
 
     useEffect(() => {
-        if (quill === null && editorRef.current && typeof window !== "undefined" && Quill) {
+        if (typeof window !== "undefined" && typeof document !== "undefined" && quill === null && editorRef.current) {
             const toolbar = [
                 [{ header: [2, 3, 4, false] }],
                 ["bold", "italic", "underline", "strike"], // toggled buttons
                 ["blockquote", "code-block"],
-
                 [{ list: "ordered" }, { list: "bullet" }],
                 [{ script: "sub" }, { script: "super" }], // superscript/subscript
                 [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
-                // [{ direction: "rtl" }], // text direction
-
-                // [{ size: ["small", false, "large", "huge"] }], // custom dropdown
-                // [{ header: "1" }, { header: "2" }], // custom button values
                 [{ color: [] }, { background: [] }], // dropdown with defaults from theme
                 [{ align: [] }],
                 ["link", "image", "video"],
@@ -65,13 +54,17 @@ export const QuillEditor = ({
                 placeholder: "Écrivez votre article ici...",
                 modules: { toolbar }
             };
-            const q: Quill = new Quill(editorRef.current, options);
-            q.setContents(content);
+            const q = new Quill(editorRef.current, options);
             setQuill(q);
-            q.on("text-change", () => {
-                setValue(JSON.stringify(q.getContents().ops));
-                setHtml(q.root.innerHTML);
-                const newContent = q.getContents().ops;
+        }
+    }, [quill]);
+
+    useEffect(() => {
+        if (quill !== null) {
+            quill.setContents(content);
+            quill.on("text-change", () => {
+                setValue(JSON.stringify(quill.getContents().ops));
+                const newContent = quill.getContents().ops;
                 if (newContent != content) {
                     updateLocaleBlogContent(id, newContent).finally(() => router.refresh());
                 }

@@ -3,7 +3,9 @@
 import { db } from "@/lib/db";
 import { Locale } from "@/locales/config";
 
-export async function getLocaleLabels(locale: Locale): Promise<{ id: number; name: string }[] | undefined> {
+export type DbLabels = { id: number; name: string }[];
+
+export async function getLocaleLabels(locale: Locale): Promise<DbLabels | undefined> {
     try {
         return await db.label.findMany({ where: { locale } });
     } catch (e) {
@@ -11,21 +13,43 @@ export async function getLocaleLabels(locale: Locale): Promise<{ id: number; nam
     }
 }
 
-// export async function updateLabels(locale: Locale, id: number, labels: string[]) {
-//     try {
-//         Promise.all()
-//         await db.label.findUnique
-//         await db.post.update({ where: { id }, data: { labels: [] } });
-//     } catch (e) {
-//         console.error("[updateLabels] ", e);
-//     }
-// }
-
 export async function updatePostLabels(labels: string[], id: number, locale: Locale) {
     try {
-        const dbLabels: { id: number }[] = await Promise.all(
-            labels.map(async name => ({ id: (await db.label.findUnique({ where: { locale_name: { name, locale } } }))!.id }))
+        // console.clear();
+        const currentLabels = await db.post.findUnique({
+            where: { id },
+            select: { labels: true }
+        });
+
+        // console.log("old labels = ", currentLabels?.labels);
+
+        if (currentLabels?.labels) {
+            await db.post.update({
+                where: { id },
+                data: {
+                    labels: {
+                        disconnect: currentLabels.labels.map(label => ({ id: label.id }))
+                    }
+                }
+            });
+        }
+
+        // const intermediateLabels = await db.post.findUnique({
+        //     where: { id },
+        //     select: { labels: true }
+        // });
+        // console.log("intermediate labels", intermediateLabels);
+
+        const dbLabels = await Promise.all(
+            labels.map(async name => {
+                let label = await db.label.findUnique({ where: { locale_name: { name, locale } } });
+                if (!label) {
+                    label = await db.label.create({ data: { name, locale } });
+                }
+                return { id: label.id };
+            })
         );
+
         await db.post.update({
             where: { id },
             data: {
@@ -34,7 +58,13 @@ export async function updatePostLabels(labels: string[], id: number, locale: Loc
                 }
             }
         });
+
+        // const endLabels = await db.post.findUnique({
+        //     where: { id },
+        //     select: { labels: true }
+        // });
+        // console.log("end labels", endLabels);
     } catch (e) {
-        console.error("[addLabelsToBlog] ", e);
+        console.error("[updatePostLabels] ", e);
     }
 }

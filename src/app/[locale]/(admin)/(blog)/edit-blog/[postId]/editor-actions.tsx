@@ -11,10 +11,10 @@ import { useRouter } from "next/navigation";
 import type { Op } from "quill/core";
 import type { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { MdLabel } from "react-icons/md";
-import { ComboLabels, ManyComboBox } from "@/components/meta-components/combobox";
-import { useState } from "react";
-import { renameBlog } from "@/db/blogs";
-import { updatePostLabels } from "@/db/labels";
+import { DisplayItems, ManyComboBox } from "@/components/meta-components/combobox";
+import { useEffect, useState } from "react";
+import { getBlog, renameBlog } from "@/db/blogs";
+import { DbLabels, updatePostLabels } from "@/db/labels";
 import { toast } from "@/components/ui/use-toast";
 import { Locale } from "@/locales/config";
 
@@ -54,92 +54,19 @@ const Rename = ({ title, id, router }: { title: string; id: number; router: AppR
     </Dialog>
 );
 
-const AddLabel = ({
-    dbLabels,
-    router,
-    id,
-    locale,
-    blogLabels
-}: {
-    blogLabels: string[];
-    locale: Locale;
-    id: number;
-    dbLabels: ComboLabels;
-    router: AppRouterInstance;
-}) => {
-    const [getLabels, setLabels] = useState<number[]>(
-        Object.values(dbLabels)
-            .map((l, i) => ({ l, i }))
-            .filter(({ l }) => blogLabels.includes(l))
-            .map(({ i }: { i: number }) => i)
-    );
-    const addRemoveLabel = (labelId: keyof typeof dbLabels) => {
-        if (getLabels.filter(l => l == labelId).length > 0) {
-            setLabels(labels => labels.filter(l => l !== labelId));
-        } else {
-            setLabels(labels => {
-                labels.push(labelId);
-                return labels;
-            });
-        }
-    };
-
-    return (
-        <Dialog>
-            <DialogTrigger asChild>
-                <Button variant="outline">
-                    <span className="flex items-center space-x-2">
-                        <p>Ajouter des labels</p>
-                        <MdLabel />
-                    </span>
-                </Button>
-            </DialogTrigger>
-            <DialogContent>
-                <DialogHeader>
-                    <DialogTitle>Ajouter des labels</DialogTitle>
-                    <ManyComboBox
-                        selectedKeys={getLabels}
-                        addRemoveKey={addRemoveLabel}
-                        items={dbLabels}
-                        vocab={{
-                            title: "Choisir des labels",
-                            selectorMessage: "Selectionner au plus 6 labels",
-                            empty: "Aucun filtre ne correspond à cette recherche"
-                        }}
-                        limit={6}
-                    />
-                    <ul className="p-2 flex flex-col items-center">
-                        {getLabels.map((label, i) => (
-                            <li key={i}>{dbLabels[label]}</li>
-                        ))}
-                    </ul>
-                    <DialogClose asChild>
-                        <Button
-                            variant="call2action"
-                            type="button"
-                            onClick={() => {
-                                updatePostLabels(
-                                    getLabels.map(i => dbLabels[i]),
-                                    id,
-                                    locale
-                                )
-                                    .then(() => router.refresh())
-                                    .catch(() => {
-                                        toast({
-                                            title: "Erreure inatendue",
-                                            description: "Les étiquettes n'ont pas pu être ajotuées. Réessayez plus tard ou contactez la DSI."
-                                        });
-                                    });
-                            }}
-                        >
-                            Valider
-                        </Button>
-                    </DialogClose>
-                </DialogHeader>
-            </DialogContent>
-        </Dialog>
-    );
-};
+const AddLabel = ({ getLabels, addRemoveLabel, dbLabels }: { getLabels: string[]; addRemoveLabel: (x: string) => void; dbLabels: string[] }) => (
+    <ManyComboBox
+        selected={getLabels}
+        addRemove={addRemoveLabel}
+        items={dbLabels}
+        vocab={{
+            title: "Modifier les labels",
+            selectorMessage: "Selectionner au plus 6 labels",
+            empty: "Aucun filtre ne correspond à cette recherche"
+        }}
+        limit={6}
+    />
+);
 
 const OpenSave = ({ saving }: { saving: boolean }) => (
     <Dialog>
@@ -164,10 +91,11 @@ const OpenSave = ({ saving }: { saving: boolean }) => (
             <DialogHeader className="space-y-6">
                 <DialogTitle>Sauvegarde automatique des posts</DialogTitle>
                 <DialogDescription className="flex items-center flex-col">
-                    Une sauvegarde automatique s&apos;effectue en permanence pour éviter les pertes de données. Cependant, elles peuvent être longue donc je
-                    vous conseille de sauvegarder manuellement - avec le bouton de sauvegarde - avant de quitter la page.
+                    Une sauvegarde automatique s&apos;effectue en permanence pour éviter les pertes de données. Comme elles peuvent prendre du temps, vous
+                    pouvez faire une sauvegarde manuelle avant de quitter la page avec le bouton &ldquo;Sauvegarder&rdquo;. Spammer ce bouton ne sert à rien,
+                    juste peut entraîner des crash.
                 </DialogDescription>
-                <DialogFooter>
+                <DialogFooter className="text-destructive">
                     ATTENTION: ne quittez pas la page tant que le status n&apos;est pas marqué en &ldquo;Sauvegardé&rdquo; au risque de perdre votre contenu...
                 </DialogFooter>
             </DialogHeader>
@@ -176,44 +104,61 @@ const OpenSave = ({ saving }: { saving: boolean }) => (
 );
 
 interface ActionProps {
-    content: Op[];
-    value: string;
-    setToBeChanged: (_: boolean) => void;
-    title: string;
-    id: number;
-    dbLabels: string[];
-    blogLabels: string[];
-    locale: Locale;
+    readonly content: Op[];
+    readonly value: string;
+    readonly setToBeChanged: (_: boolean) => void;
+    readonly title: string;
+    readonly id: number;
+    readonly dbLabels: string[];
+    readonly blogLabels: string[];
+    readonly locale: Locale;
 }
 
 export const Actions = ({ setToBeChanged, content, value, title, id, dbLabels, blogLabels, locale }: ActionProps) => {
+    const [getLabels, setLabels] = useState<string[]>(blogLabels);
+    const addRemoveLabel = (label: string) => {
+        var newLabels = getLabels;
+        if (getLabels.includes(label)) {
+            newLabels = getLabels.filter(l => l !== label);
+        } else if (getLabels.length < 6) {
+            newLabels.push(label);
+        }
+        setLabels(newLabels);
+        console.log("NEWLABELS", JSON.stringify(newLabels));
+        console.log("GETLABELS", JSON.stringify(getLabels));
+
+        updatePostLabels(newLabels, id, locale).finally(() => {
+            getBlog(id).then(post => console.log("DBLABELS ", JSON.stringify(post?.labels)));
+        });
+    };
+
     const router = useRouter();
+
     return (
-        <div className="p-6 flex items-center justify-between w-full">
-            <div className="flex items-center space-x-2">
-                {/* <Button variant="outline" onClick={() => {}}>
-                    <span className="flex items-center space-x-2">
-                        <p>Traduire</p>
-                        <TfiWorld />
-                    </span>
-                </Button> */}
-                <Button
-                    variant="outline"
-                    onClick={() => {
-                        setToBeChanged(true);
-                    }}
-                >
-                    <span className="flex items-center space-x-2">
-                        <p>Sauvergarder</p>
-                        <FaSave />
-                    </span>
-                </Button>
-                <Rename id={id} title={title} router={router} />
-                <AddLabel locale={locale} dbLabels={dbLabels} blogLabels={blogLabels} id={id} router={router} />
+        <>
+            <div className="p-6 flex items-center justify-between w-full">
+                <div className="flex items-center space-x-2">
+                    <Button
+                        variant="outline"
+                        onClick={() => {
+                            setToBeChanged(true);
+                        }}
+                    >
+                        <span className="flex items-center space-x-2">
+                            <p>Sauvergarder</p>
+                            <FaSave />
+                        </span>
+                    </Button>
+                    <Rename id={id} title={title} router={router} />
+                    <AddLabel addRemoveLabel={addRemoveLabel} dbLabels={dbLabels} getLabels={getLabels} />
+                </div>
+                <div>
+                    <OpenSave saving={JSON.stringify(content) !== value} />
+                </div>
             </div>
-            <div>
-                <OpenSave saving={JSON.stringify(content) !== value} />
-            </div>
-        </div>
+            {/* <div className="pb-4">
+                <DisplayItems items={getLabels} removeItem={addRemoveLabel} />
+            </div> */}
+        </>
     );
 };

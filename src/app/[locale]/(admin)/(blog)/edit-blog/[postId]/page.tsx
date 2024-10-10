@@ -2,7 +2,7 @@ import { auth } from "@/auth/auth";
 import { QuillEditor } from "./quill-editor";
 import { Block } from "@/components/styles/blocks";
 import { getLocaleLabels } from "@/db/labels";
-import { LocalePostParams } from "@/locales/config";
+import { Locale, LocalePostParams } from "@/locales/config";
 import { redirect } from "next/navigation";
 import { getBlog } from "@/db/blogs";
 import { UnValidate } from "./unvalidate";
@@ -21,14 +21,15 @@ export default async function EditBlog({ params: { postId, locale } }: LocalePos
     if (!blog.authors.map(a => a.email).includes(email)) {
         redirect(nav(locale, "/error/403"));
     }
-    const localeLabels = await getLocaleLabels(locale);
+    const blogLocale: Locale = blog.locale as Locale;
+    const localeLabels = await getLocaleLabels(blogLocale);
     const labels = (localeLabels || []).map(({ name }) => name);
     return (
         <Block className="w-full">
             <h1>{blog.title}</h1>
             {blog.validated && <UnValidate locale={locale} id={id} />}
             <QuillEditor
-                locale={locale}
+                locale={blogLocale}
                 id={id}
                 content={JSON.parse(blog.content)}
                 title={blog.title}

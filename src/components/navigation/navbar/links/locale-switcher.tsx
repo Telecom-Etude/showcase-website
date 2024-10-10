@@ -31,7 +31,7 @@ export const LocaleSwitch = ({ locale, mobile = false }: { locale: Locale; mobil
             <Link href={localedUrl} legacyBehavior passHref className="border-2 border-red-500">
                 <NavigationMenuLink>
                     <div className={mobile ? " hover:bg-muted w-screen flex justify-center py-2" : ""}>
-                        {locale === "fr" ? <GB title="English" className="h-6 w-6" /> : <FR title="Français" className="h-6 w-6" />}
+                        {locale === "en" ? <GB title="English" className="h-6 w-6" /> : <FR title="Français" className="h-6 w-6" />}
                     </div>
                 </NavigationMenuLink>
             </Link>
