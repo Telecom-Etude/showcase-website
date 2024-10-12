@@ -13,7 +13,7 @@ export default async function Page({ params: { locale } }: LocaleParams) {
     const labels = await getLocaleLabels(locale);
     const t = getDictionary(locale).pages.blog;
 
-    if (!labels || !posts) {
+    if (typeof labels === "undefined" || typeof posts === "undefined") {
         redirect(nav(locale, "/error/404"));
     }
 
