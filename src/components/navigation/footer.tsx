@@ -51,7 +51,8 @@ const SiteMap = ({ t, locale }: { locale: Locale; t: Dictionary["navigation"]["s
                         { name: t.home, href: "/" },
                         { name: t.whoarewe, href: "/about" },
                         { name: t.commitment, href: "/commitment" },
-                        { name: t.team, href: "/team" }
+                        { name: t.team, href: "/team" },
+                        { name: t.plaquette, href: "/plaquette.pdf" }
                     ]}
                 />
                 <SiteMapBlock
@@ -67,8 +68,7 @@ const SiteMap = ({ t, locale }: { locale: Locale; t: Dictionary["navigation"]["s
                     title={t.offer}
                     items={[
                         { name: t.offer, href: "/offer" },
-                        { name: "FAQ", href: "/faq" },
-                        { name: t.plaquette, href: "/plaquette.pdf" }
+                        { name: "FAQ", href: "/faq" }
                     ]}
                 />
                 <SiteMapBlock

@@ -150,7 +150,7 @@ export const frDictionary = {
             },
             domains: {
                 subtitle: "Nous trouvons une réponse à chacun de vos besoins",
-                description: "Notre expértise et nos compétences s'étendent sur une vaste étendue du numérique, dont voici quelques examples:",
+                description: "Notre expértise et nos compétences s'étendent sur une vaste étendue du numérique, dont voici quelques exemples:",
                 title: "Nos domaines de prédilection",
                 data: "Data science, IA & Machine learning",
                 web: "Développement Logiciel, Applications & Web",
@@ -241,7 +241,7 @@ export const frDictionary = {
                 {
                     question: "Pourquoi nous choisir\u00A0?",
                     answer: [
-                        "Pour notre expertise dans notre domaine, notre réactivité et notre dévouement à fournir un excellent service. De plus, nous sommes la JE de la première école d'ingénieur du numériquee en France, ce qui fait de nous la Junior-Entreprise de choix pour toute mission dans les domaines connexes."
+                        "Pour notre expertise dans notre domaine, notre réactivité et notre dévouement à fournir un excellent service. De plus, nous sommes la JE de la première école d'ingénieur du numérique en France, ce qui fait de nous la Junior-Entreprise de choix pour toute mission dans les domaines connexes."
                     ]
                 },
                 {
