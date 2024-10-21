@@ -91,8 +91,7 @@ export const frDictionary = {
                     },
                     {
                         title: "Recherche d'intervenants",
-                        content:
-                            "Nous publions ensuite un appel à candidatures auprès des élèves de Télécom Paris afin de recueillir les meilleurs profils pour réaliser votre projet. Après une analyse détaillée des compétences, de l'expérience et de la motivation des candidats nous les rencontrons lors d'un entretien pour nous assurer que leurs qualifications correspondent aux besoins de la mission."
+                        text: "Nous publions ensuite un appel à candidatures auprès des élèves de Télécom Paris afin de recueillir les meilleurs profils pour réaliser votre projet. Après une analyse détaillée des compétences, de l'expérience et de la motivation des candidats nous les rencontrons lors d'un entretien pour nous assurer que leurs qualifications correspondent aux besoins de la mission."
                     },
                     {
                         title: "Réunion tripartite",
