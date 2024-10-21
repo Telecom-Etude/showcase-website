@@ -124,11 +124,11 @@ export const Actions = ({ setToBeChanged, content, value, title, id, dbLabels, b
             newLabels.push(label);
         }
         setLabels(newLabels);
-        console.log("NEWLABELS", JSON.stringify(newLabels));
-        console.log("GETLABELS", JSON.stringify(getLabels));
 
         updatePostLabels(newLabels, id, locale).finally(() => {
-            getBlog(id).then(post => console.log("DBLABELS ", JSON.stringify(post?.labels)));
+            getBlog(id).then(post => {
+                if (process.env.DEBUG) console.log("DBLABELS ", JSON.stringify(post?.labels));
+            });
         });
     };
 

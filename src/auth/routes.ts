@@ -10,19 +10,21 @@ export interface NextAuthRequest extends NextRequest {
 export const SIGNIN_PATH = "/auth/signin";
 export const SIGNOUT_PATH = "/auth/signout";
 
+const DEV_MODE = process.env.DEV_MODE;
+
 const checkAdminRights = (check: (rights: Rights) => boolean) => (req: NextAuthRequest) => {
     if (process.env.DEV_MODE) {
         return 200;
     }
     const rights = req.auth?.user.rights;
     if (rights && check(rights)) {
-        console.log("✅ allowed");
+        if (DEV_MODE) console.log("✅ allowed");
         return 200;
     } else if (rights) {
-        console.log("🚫 logged in but not allowed");
+        if (DEV_MODE) console.log("🚫 logged in but not allowed");
         return 403;
     } else {
-        console.log("🔒 protected and not logged in");
+        if (DEV_MODE) console.log("🔒 protected and not logged in");
         return 401;
     }
 };
@@ -39,12 +41,12 @@ export const SITEMAP_ROUTES: { [key: string]: RouteProps } = {
     "/": { priority: 1 },
     "/about": { priority: 1 },
     "/blog": { changeFrequency: "weekly", priority: 0.5 },
-    "/team": {},
+    "/team": { changeFrequency: "yearly" },
     "/contact": {},
     "/partners": {},
     "/faq": { changeFrequency: "monthly", priority: 1 },
     "/ieseg": { priority: 0.5 },
-    "/offer": { priority: 1 },
+    "/offer": { changeFrequency: "monthly", priority: 1 },
     "/commitment": {}
 };
 

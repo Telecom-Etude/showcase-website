@@ -9,6 +9,12 @@ import { getDictionary } from "@/locales/dictionaries";
 import { FaArrowRight } from "react-icons/fa6";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Notre offre"
+};
+
 function MobileTimeline({ locale }: { locale: Locale }) {
     const t = getDictionary(locale).pages.offer.timeline;
     return (

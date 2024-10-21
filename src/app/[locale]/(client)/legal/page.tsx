@@ -6,6 +6,12 @@ import { getDictionary } from "@/locales/dictionaries";
 import { EmailContact } from "@/components/telecom-etude/contact";
 import { nav } from "@/locales/routing";
 
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Mentions légales"
+};
+
 const PartText = ({ children }: { children: React.ReactNode }) => <div className="space-y-4">{children}</div>;
 
 export default async function Legal({ params: { locale } }: LocaleParams) {

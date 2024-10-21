@@ -7,7 +7,11 @@ import Rse from "@/../public/images/rse.jpg";
 import Link from "next/link";
 import { LocaleParams } from "@/locales/config";
 import { getDictionary } from "@/locales/dictionaries";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+    title: "Engagements"
+};
 export default function Page({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.commitments;
     return (

@@ -5,7 +5,11 @@ import { Block } from "@/components/styles/blocks";
 import { EmailContact } from "@/components/telecom-etude/contact";
 import ContactForm from "@/components/meta-components/contact-form";
 import { FORM_DEST_EMAIL } from "@/mail/consts";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+    title: "Contact"
+};
 export default async function Contact({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.contact;
 

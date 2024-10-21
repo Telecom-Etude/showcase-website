@@ -17,6 +17,11 @@ import { Separator } from "@/components/ui/separator";
 import { Paragraphs } from "@/components/styles/texts";
 import { Block } from "@/components/styles/blocks";
 import { nav } from "@/locales/routing";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "À propos"
+};
 
 const Text = ({ title, children }: { title: string | ReactNode; children: ReactNode }) => (
     <section className="flex flex-col pb-10 justify-evenly h-full items-center space-y-4 text-lg">

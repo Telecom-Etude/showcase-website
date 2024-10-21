@@ -14,7 +14,11 @@ import { BtnLink } from "@/components/telecom-etude/contact";
 import Bain from "@/../public/images/companies/partners/bain.svg";
 import BearingPoint from "@/../public/images/companies/partners/bearingpoint.svg";
 import KPMG from "@/../public/images/companies/partners/kpmg.svg";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+    title: "Nos partenaires"
+};
 interface PartnerProps {
     title: string;
     logo: StaticImport;

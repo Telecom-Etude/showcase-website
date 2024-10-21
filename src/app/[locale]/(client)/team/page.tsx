@@ -6,7 +6,11 @@ import { FaLinkedin } from "react-icons/fa6";
 import Link from "next/link";
 import { ReactNode } from "react";
 import Image from "next/image";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+    title: "Notre équipe"
+};
 function Linkedin({ children, linkedin }: { children: ReactNode; linkedin?: string }) {
     if (linkedin) {
         return <Link href={linkedin}>{children}</Link>;

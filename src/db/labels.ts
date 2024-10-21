@@ -15,13 +15,10 @@ export async function getLocaleLabels(locale: Locale): Promise<DbLabels | undefi
 
 export async function updatePostLabels(labels: string[], id: number, locale: Locale) {
     try {
-        // console.clear();
         const currentLabels = await db.post.findUnique({
             where: { id },
             select: { labels: true }
         });
-
-        // console.log("old labels = ", currentLabels?.labels);
 
         if (currentLabels?.labels) {
             await db.post.update({
@@ -33,12 +30,6 @@ export async function updatePostLabels(labels: string[], id: number, locale: Loc
                 }
             });
         }
-
-        // const intermediateLabels = await db.post.findUnique({
-        //     where: { id },
-        //     select: { labels: true }
-        // });
-        // console.log("intermediate labels", intermediateLabels);
 
         const dbLabels = await Promise.all(
             labels.map(async name => {
@@ -58,12 +49,6 @@ export async function updatePostLabels(labels: string[], id: number, locale: Loc
                 }
             }
         });
-
-        // const endLabels = await db.post.findUnique({
-        //     where: { id },
-        //     select: { labels: true }
-        // });
-        // console.log("end labels", endLabels);
     } catch (e) {
         console.error("[updatePostLabels] ", e);
     }

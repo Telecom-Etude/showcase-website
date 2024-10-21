@@ -11,7 +11,6 @@ import Image from "next/image";
 
 export default async function SignIn({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).navigation.auth.signin;
-    const session = await auth();
     return (
         <div className="flex items-center w-full h-full flex-1 justify-center p-10">
             <div className="bg-gradient-to-br from-primary to-destructive p-[2px] rounded-[12px]">

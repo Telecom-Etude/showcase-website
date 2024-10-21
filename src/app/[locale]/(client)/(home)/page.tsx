@@ -26,6 +26,7 @@ import SaintGobain from "@/../public/images/companies/trusted/SaintGobain.png";
 import BNP_Paribas from "@/../public/images/companies/trusted/BNP_Paribas.png";
 import Mitsubishi_Motors from "@/../public/images/companies/trusted/Mitsubishi_Motors.png";
 import BnF from "@/../public/images/companies/trusted/BnF.png";
+import { Metadata } from "next";
 
 const trusted: { src: StaticImageData; alt: string }[] = [
     { alt: "Safran logo", src: Safran },
@@ -41,6 +42,10 @@ const trusted: { src: StaticImageData; alt: string }[] = [
     { alt: "Mitsubishi_Motors logo", src: Mitsubishi_Motors },
     { alt: "BnF logo", src: BnF }
 ];
+
+export const metadata: Metadata = {
+    title: "Accueil"
+};
 
 const NumberCard = ({ nb, prefix, suffix, text }: { nb: number; prefix?: string; suffix?: string; text: string }) => {
     return (

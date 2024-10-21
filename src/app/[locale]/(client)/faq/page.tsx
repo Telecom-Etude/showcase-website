@@ -3,6 +3,11 @@ import { BtnLink, EmailContact } from "@/components/telecom-etude/contact";
 import { LocaleParams } from "@/locales/config";
 import { getDictionary } from "@/locales/dictionaries";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Foire Aux Questions"
+};
 interface FaqItem {
     question: string;
     answer: readonly string[];

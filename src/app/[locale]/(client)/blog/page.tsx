@@ -6,6 +6,11 @@ import { getDictionary } from "@/locales/dictionaries";
 import { redirect } from "next/navigation";
 import { getValidatedBlogs } from "@/db/blogs";
 import { nav } from "@/locales/routing";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Blog"
+};
 
 export default async function Page({ params: { locale } }: LocaleParams) {
     const posts = await getValidatedBlogs(locale);
