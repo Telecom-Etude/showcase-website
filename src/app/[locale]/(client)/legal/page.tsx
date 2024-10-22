@@ -3,64 +3,87 @@ import React from "react";
 import { LocaleParams } from "@/locales/config";
 import { getDictionary } from "@/locales/dictionaries";
 
-import { EmailContact } from "@/components/telecom-etude/contact";
-import { nav } from "@/locales/routing";
-
 import { Metadata } from "next";
+import { Block } from "@/components/styles/blocks";
+import { BtnLink, EmailContact } from "@/components/telecom-etude/contact";
 
 export const metadata: Metadata = {
     title: "Mentions légales"
 };
 
-const PartText = ({ children }: { children: React.ReactNode }) => <div className="space-y-4">{children}</div>;
+const Stg = ({ children }: { children: React.ReactNode }) => <strong className="font-semibold">{children}</strong>;
 
 export default async function Legal({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.legal;
-    const titleSyle = "text-center pt-10";
     return (
-        <div className="p-8 pt-0 ">
-            <h1 className={titleSyle}>{t.title}</h1>
-            <h2 className={titleSyle}>{t.credits}</h2>
-            <h3 className={titleSyle}>{t.dev}</h3>
-            <PartText>
-                <p className="text-center">{t.loi.host}</p>
-            </PartText>
-            <h2 className={titleSyle}>Telecom Etude</h2>
-            <PartText>
-                <p className="text-center">{t.loi1901}</p>
-                <p className="text-center">{t.siegesocial}</p>
-                <div className="flex justify-center space-x-4">
-                    <p>{t.contact}</p>
-                    <EmailContact />
+        <Block>
+            <h1 className="font-bold text-center">{t.title}</h1>
+            <section className="m-4">
+                <h2 className="font-semibold mb-4">{t.legal.title}</h2>
+                <div className="space-y-4">
+                    <div>
+                        <h3 className="font-semibold">{t.legal.owner.title}</h3>
+                        <div>
+                            <p>{t.legal.owner.description}</p>
+                            <p>{t.legal.owner.association}</p>
+                            <p>
+                                {t.legal.owner.contact} <EmailContact />
+                            </p>
+                        </div>
+                        <div className="flex flex-col italic text-sm p-2 border-l-2">
+                            <p>{t.legal.owner.siret + ": "} 332 711 522 00018</p>
+                            <p>{t.legal.owner.urssaf + ": "} 757 090058076001011 8</p>
+                            <p>{t.legal.owner.vat + ": "} FR 1933 2711 522 00018</p>
+                            <p>{t.legal.owner.ape + ": "} 6202A</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 className="font-semibold">{t.legal.director.title}</h3>
+                        <p>{t.legal.director.description}</p>
+                    </div>
+                    <div>
+                        <h3 className="font-semibold">{t.legal.host.title}</h3>
+                        <p>{t.legal.host.description}</p>
+                        <p>
+                            {t.legal.host.contact} <EmailContact />
+                        </p>
+                        <p>
+                            {t.legal.host.website} <BtnLink href="https://www.rezel.net">rezel.net</BtnLink>
+                        </p>
+                    </div>
                 </div>
-                <p className="text-center">{t.siret}</p>
-                <p className="text-center">{t.tva}</p>
-            </PartText>
-            <h2 className={titleSyle}>RGPD</h2>
-            <PartText>
-                <div className="text-center">{t.respoRGPD}</div>
-                <div className="text-center">
-                    {t.contact}
-                    <EmailContact rgpd />
+            </section>
+
+            <section className="m-4">
+                <h2 className="font-semibold mb-4">{t.property.title}</h2>
+                <p>{t.property.description}</p>
+            </section>
+
+            <section className="m-4">
+                <h2 className="font-semibold mb-4">{t.data.title}</h2>
+                <div className="space-y-4">
+                    <p>{t.data.description1}</p>
+                    <p>
+                        {t.data.description2} <EmailContact rgpd />
+                    </p>
+                    <p>{t.data.description3}</p>
                 </div>
-                <p className="text-center">
-                    <>{t.loi.rgpd.before}</>
-                    <EmailContact rgpd />
-                    <>{t.loi.rgpd.in}</>
-                    <Link href={nav(locale, "/contact")}>{t.loi.rgpd.contact}</Link>
-                    <>{t.loi.rgpd.after}</>
-                </p>
-            </PartText>
-            <h2 className={titleSyle}>{t.hosting}</h2>
-            <PartText>
-                <div className="text-center">Rezel Hosting (Rezel)</div>
-                <div className="text-center">{t.rezelsiege}</div>
-                <div className="text-center">
-                    <Link className="hover:underline" href="rezel.net">
-                        rezel.net
-                    </Link>
-                </div>
-            </PartText>
-        </div>
+            </section>
+
+            <section className="m-4">
+                <h2 className="font-semibold mb-4">{t.cookies.title}</h2>
+                <p>{t.cookies.description}</p>
+            </section>
+
+            <section className="m-4">
+                <h2 className="font-semibold mb-4">{t.liability.title}</h2>
+                <p>{t.liability.description}</p>
+            </section>
+
+            <section className="m-4">
+                <h2 className="font-semibold mb-4">{t.law.title}</h2>
+                <p>{t.law.description}</p>
+            </section>
+        </Block>
     );
 }

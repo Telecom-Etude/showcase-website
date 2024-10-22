@@ -375,26 +375,58 @@ export const frDictionary = {
         },
         legal: {
             title: "Mentions légales",
-            credits: "Crédits Photos",
-            hosting: "Hébergement",
-            dev: "Développement",
-            madeBy: "Site réalisé en NextJS par Tom Webber",
-            loi: {
-                host: "Conformément aux dispositions de l'article 6 III-1 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique, vous trouverez ci-dessous les informations relatives à l'éditeur et à l'hébergeur de ce site internet.",
-                rgpd: {
-                    before: "Conformément au RGPD, vous pouvez faire valoir vos droit d'accès, de portabilité, de rectification, d'opposition ou d'effacement de vos données en envoyant une demande à",
-                    in: "ou via le ",
-                    contact: "formulaire de contact",
-                    after: "sur le site."
+            legal: {
+                title: "Informations légales",
+                owner: {
+                    title: "Propriétaire du site",
+                    description: "Telecom Etude, demeurant à 19, Place Marguerite Perey, 91120, PALAISEAU",
+                    association: "Association de loi 1901",
+                    siret: "Numéro SIRET",
+                    urssaf: "Numéro URSSAF",
+                    ape: "Code APE",
+                    vat: "Numéro de TVA intra-communautaire",
+                    contact: "Contact: "
+                },
+                director: {
+                    title: "Directrice de la publication",
+                    description: "Manon Strasser, présidente de Telecom Etude"
+                },
+                host: {
+                    title: "Hébergeur du site",
+                    description: "Rezel, demeurant à 19, Place Marguerite Perey, 91120, PALAISEAU",
+                    contact: "Contact: ",
+                    website: "Site internet: "
                 }
             },
-            loi1901: "Association loi 1901, affiliée à la CNJE",
-            siegesocial: "Siège social : Télécom Paris, 19, place Marguerite Perey 91120 PALAISEAU",
-            siret: "[Numéro SIRET : 332 711 522 00018 | Numéro URSSAF : 757 090058076001011 8",
-            tva: "Numéro TVA Intra-communautaire : FR 1933 2711 522 00018 | Code APE : 6202A]",
-            respoRGPD: "Délégué à la protection des données (DPO) : Leïla Iksil",
-            rezelsiege: "Siège social : 19 Place Marguerite Perey, 91120 PALAISEAU",
-            contact: "Contact :"
+            property: {
+                title: "Propriété intellectuelle",
+                description:
+                    "Tous les éléments présents sur le site (textes, images, logos, etc.) sont protégés par les dispositions du Code de la propriété intellectuelle et appartiennent à Telecom Etude ou sont utilisés avec l'autorisation de leurs propriétaires respectifs. Toute reproduction, représentation, modification ou exploitation partielle ou totale des contenus du site est interdite sans l'accord préalable et écrit de Telecom Etude."
+            },
+            data: {
+                title: "Données personnelles",
+                description1:
+                    "Les informations recueillies via les formulaires présents sur le site sont destinées exclusivement à l'usage interne de Telecom Etude et ne seront en aucun cas communiquées à des tiers sans votre consentement explicite, sauf si cela est requis par la loi.",
+                description2:
+                    "Conformément à la loi \"Informatique et Libertés\" du 6 janvier 1978 modifiée et au Règlement Général sur la Protection des Données (RGPD), vous disposez d'un droit d'accès, de rectification, d'opposition, de suppression et de portabilité des données vous concernant. Vous pouvez exercer ce droit en envoyant un email à ",
+                description3:
+                    "Telecom Etude utilise des JSON Web Tokens (JWT) pour l'authentification des utilisateurs sur le site. Ces jetons permettent de sécuriser l'accès aux fonctionnalités du site, sans avoir recours aux cookies. Les JWT ne collectent pas de données personnelles supplémentaires autres que celles nécessaires à l'authentification."
+            },
+            cookies: {
+                title: "Absence de cookies",
+                description:
+                    "Le site Telecom Etude n'utilise aucun cookie pour suivre la navigation des utilisateurs ou pour des finalités publicitaires. Les seules informations stockées et utilisées sont liées à l'authentification via des jetons JWT."
+            },
+            liability: {
+                title: "Limitation de responsabilité",
+                description:
+                    "Telecom Etude met tout en œuvre pour assurer l'exactitude et la mise à jour des informations diffusées sur le site, mais ne saurait être tenu responsable d'erreurs, d'omissions ou des résultats qui pourraient être obtenus en raison d'une mauvaise utilisation de ces informations. Telecom Etude décline également toute responsabilité pour tout dommage, direct ou indirect, résultant de l'accès au site ou de son utilisation."
+            },
+            law: {
+                title: "Droit applicable",
+                description:
+                    "Les présentes mentions légales sont régies par le droit français. En cas de litige, et après une tentative de résolution amiable, les tribunaux français seront seuls compétents."
+            }
         }
     }
 };

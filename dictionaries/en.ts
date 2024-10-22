@@ -74,46 +74,50 @@ export const enDictionary: Dictionary = {
     },
     pages: {
         offer: {
-            title: "Our offer",
+            title: "Our Offer",
             timeline: {
-                title: "How a study is carried out",
-                text: "We adopt a rigorous, structured approach to ensure that our assignments are carried out with quality, expertise and responsiveness. Here are the main stages in the conduct of a study at JE:",
+                title: "Process of a Study",
+                text: "We have a structured and rigorous approach to ensure quality, expertise, and responsiveness throughout the mission. Here are the main steps in conducting a study at JE:",
                 steps: [
                     {
-                        title: "Client contact",
-                        text: "Initial contact between you and our Junior Entreprise. You can contact us by filling in the form below or on contact@telecom-etude.fr. We will be delighted to respond to your request and schedule an initial meeting with you."
+                        title: "Client Contact",
+                        text: "The first contact between you and our Junior Enterprise. You can reach us through the form below or at contact@telecom-etude.fr. We will respond as soon as possible to schedule an initial meeting."
                     },
                     {
-                        title: "Client meeting",
-                        text: "This meeting is for you to present your project to us in as much detail as possible. We will meet you at our Télécom Paris offices or by videoconference. This will give us an initial idea of the specifications that would suit you. By the end of the meeting, you'll have a clear idea of how we work and we'll be ready, thanks to the information you've given us, to move calmly forward with the study"
+                        title: "Meeting with the Client",
+                        text: "Two project managers will meet you at our offices at Télécom Paris or via a video conference. The purpose of this meeting is for us to understand your project's needs in detail to subsequently propose an offer tailored to your expectations. We will also establish the guidelines for the specifications together."
                     },
                     {
-                        title: "Commercial offer",
-                        text: "Following the meeting, you will receive our commercial offer, which is where you will get an idea of the budget. In this quotation, we will present your project to you, so that you can see that we have effectively identified your problem and your needs.  Once we've done that, we'll be ready to start looking for people to work on your project."
+                        title: "Commercial Offer",
+                        text: "Following this meeting, we will draft a personalized commercial offer outlining the key points of your project and how we can address them. This commercial offer will also include an estimate of the budget and duration of the mission."
                     },
                     {
-                        title: "Stakeholder search",
-                        text: "Depending on the complexity of the assignment you want us to undertake, we will choose one or more different speakers. To do this, we contact all the students at the school, who in turn send us their CVs. We then select the most promising and interview them to make sure that their qualifications match the needs of the assignment."
+                        title: "Search for Contributors",
+                        text: "We then publish a call for applications to the students of Télécom Paris to gather the best profiles to execute your project. After a detailed analysis of the candidates' skills, experience, and motivation, we will meet them for an interview to ensure their qualifications meet the mission's needs."
                     },
                     {
-                        title: "Tripartite meeting",
-                        text: "At the end of the selection process, we'll arrange another meeting with you and the consultant so that he can use his expertise to ask you specific questions about potential problem areas and so that we can draw up the most precise specifications possible."
+                        title: "Tripartite Meeting",
+                        text: "After the selection, you will meet the contributor in a second meeting to clarify all the details of your project in light of their expertise. It is especially through this exchange that we can build a precise and comprehensive specifications document."
                     },
                     {
-                        title: "Signing the contracts",
-                        text: "Once all the documents have been drawn up, we'll present them to you for signature, which will mark the start of the study."
+                        title: "Signing of the Study Agreement",
+                        text: "Finally, we formalize all the details of the mission in a study agreement that includes the complete specifications document, the methodology applied by the contributor, the schedule for the various stages of the mission, the expected deliverables, as well as the budget for the mission. Once this document is signed, the mission can officially begin!"
                     },
                     {
-                        title: "Follow-up mission with the consultant",
-                        text: "Throughout the study, we will organise meetings with you and the contractor so that they can show you their progress and you can discuss the progress of the assignment. So you'll be there every step of the way. During this phase, our project managers will monitor the smooth running of the study with the contractor and will be your key contacts."
+                        title: "Mission Follow-up with the Contributor",
+                        text: "We organize regular follow-up meetings with you to ensure that the mission stays on track and meets the deadlines! Throughout the mission, our project managers are your primary contacts and keep you informed of the project's progress."
                     },
                     {
-                        title: "Payment and satisfaction feedback",
-                        text: "At the end of the assignment, we will organise a final meeting at which the consultant will present you with the final product. If you are happy with it - and you certainly will be, given our very high satisfaction rate - we will send you the invoice, followed by the deliverable. We will then part company and hope to see you again very soon. We will also send you a satisfaction questionnaire shortly afterwards, so that we can find out exactly how you feel about this completed study and potentially give us areas for improvement for future studies."
+                        title: "Payment and Satisfaction Feedback",
+                        text: "Once the mission is completed, we meet one last time to present the final deliverable, which you confirm is in accordance with the specifications by signing. You will also receive a satisfaction questionnaire that allows you to evaluate your experience with our organization."
                     }
                 ]
             },
-            plaquette: { title: "Our brochure", text: "Find out more with our brochure", button: "See the brochure" }
+            plaquette: {
+                title: "Our Brochure",
+                text: "Learn more with our brochure",
+                button: "View the Brochure"
+            }
         },
         commitments: {
             title: "Our commitments",
@@ -372,26 +376,58 @@ export const enDictionary: Dictionary = {
         },
         legal: {
             title: "Legal Notice",
-            credits: "Photo credits",
-            hosting: "Hosting",
-            dev: "Development",
-            madeBy: "Website made in NextJS by Tom Webber",
-            loi: {
-                host: "In accordance with the provisions of Article 6 III-1 of Law No. 2004-575 of 21 June 2004 on confidence in the digital economy, you will find below information on the publisher and host of this website",
-                rgpd: {
-                    before: "In accordance with the RGPD, you may exercise your right to access, portability, rectification, opposition or deletion of your data by sending a request to",
-                    in: "or via the",
-                    contact: "contact form",
-                    after: " on the site."
+            legal: {
+                title: "Legal Information",
+                owner: {
+                    title: "Site Owner",
+                    description: "Telecom Etude, residing at 19, Place Marguerite Perey, 91120, PALAISEAU",
+                    association: "Association of the 1901 law",
+                    siret: "SIRET number",
+                    urssaf: "URSSAF number",
+                    vat: "Intra-community sales tax",
+                    ape: "APE code",
+                    contact: "Contact: "
+                },
+                director: {
+                    title: "Publication Director",
+                    description: "Manon Strasser, president of Telecom Etude"
+                },
+                host: {
+                    title: "Site Host",
+                    description: "Rezel, residing at 19, Place Marguerite Perey, 91120, PALAISEAU",
+                    contact: "Contact: ",
+                    website: "Website: "
                 }
             },
-            loi1901: "Association loi 1901, affiliated to the CNJE",
-            siegesocial: "Head Office: Télécom Paris, 19, place Marguerite Perey 91120 PALAISEAU",
-            siret: "[SIRET number: 332 711 522 00018 | URSSAF number: 757 090058076001011 8",
-            tva: "Intra-community VAT number: FR 1933 2711 522 00018 | Code APE : 6202A]",
-            respoRGPD: "Data Protection officer (DPO) : Leïla Iksil",
-            rezelsiege: "Head Office : 19 Place Marguerite Perey, 91120 PALAISEAU",
-            contact: "Contact:"
+            property: {
+                title: "Intellectual Property",
+                description:
+                    "All elements present on the site (texts, images, logos, etc.) are protected by the provisions of the Intellectual Property Code and belong to Telecom Etude or are used with the authorization of their respective owners. Any reproduction, representation, modification, or partial or total exploitation of the site's contents is prohibited without the prior written consent of Telecom Etude."
+            },
+            data: {
+                title: "Personal Data",
+                description1:
+                    "The information collected through the forms on the site is intended exclusively for the internal use of Telecom Etude and will not be communicated to third parties without your explicit consent, unless required by law.",
+                description2:
+                    "In accordance with the 'Informatique et Libertés' law of January 6, 1978, as amended, and the General Data Protection Regulation (GDPR), you have the right to access, rectify, oppose, delete, and port your data. You can exercise this right by sending an email to ",
+                description3:
+                    "Telecom Etude uses JSON Web Tokens (JWT) for user authentication on the site. These tokens secure access to the site's features without using cookies. JWTs do not collect additional personal data other than what is necessary for authentication."
+            },
+            cookies: {
+                title: "No Cookies",
+                description:
+                    "The Telecom Etude site does not use any cookies to track user navigation or for advertising purposes. The only information stored and used is related to authentication via JWT tokens."
+            },
+            liability: {
+                title: "Limitation of Liability",
+                description:
+                    "Telecom Etude makes every effort to ensure the accuracy and updating of the information disseminated on the site, but cannot be held responsible for errors, omissions, or results that may be obtained due to misuse of this information. Telecom Etude also declines any responsibility for any direct or indirect damage resulting from access to or use of the site."
+            },
+            law: {
+                title: "Applicable Law",
+                description:
+                    "These legal notices are governed by French law. In case of dispute, and after an attempt at amicable resolution, only French courts will be competent."
+            }
         }
     }
 };
