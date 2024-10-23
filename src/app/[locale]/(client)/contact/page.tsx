@@ -4,7 +4,6 @@ import { getDictionary } from "@/locales/dictionaries";
 import { Block } from "@/components/styles/blocks";
 import { EmailContact } from "@/components/telecom-etude/contact";
 import ContactForm from "@/components/meta-components/contact-form";
-import { FORM_DEST_EMAIL } from "@/mail/consts";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -22,7 +21,7 @@ export default async function Contact({ params: { locale } }: LocaleParams) {
                 {t.after}
             </p>
             <div className="bg-background w-full flex items-center justify-center ">
-                <ContactForm locale={locale} emails={[FORM_DEST_EMAIL]} />
+                <ContactForm locale={locale} emails={[process.env.FORM_DEST_EMAIL]} />
             </div>
         </Block>
     );

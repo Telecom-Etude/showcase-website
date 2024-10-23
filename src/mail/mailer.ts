@@ -3,6 +3,8 @@
 import nodemailer from "nodemailer";
 
 export async function sendEmail(dest_email: string[], subject: string, html: string) {
+    if (process.env.DEV_MODE) console.log("Send email");
+
     let transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
@@ -19,6 +21,8 @@ export async function sendEmail(dest_email: string[], subject: string, html: str
     };
 
     await transporter.sendMail(mailOptions);
+
+    if (process.env.DEV_MODE) console.log("Email sent");
 }
 
 interface FormProps {
@@ -31,6 +35,8 @@ interface FormProps {
 }
 
 export async function sendForm({ name, email, tel, societe, subject, message }: FormProps, emails: string[]) {
+    if (process.env.DEV_MODE) console.log("sending form");
+
     const date = new Date();
     const formattedDate = `${date.toLocaleDateString("fr-FR", {
         day: "2-digit",
@@ -106,4 +112,6 @@ export async function sendForm({ name, email, tel, societe, subject, message }: 
     const email_subject = `[Formulaire de contact TE][${societe || name}] ${subject}`;
 
     await sendEmail(emails, email_subject, html);
+
+    if (process.env.DEV_MODE) console.log("form sent");
 }

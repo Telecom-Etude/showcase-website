@@ -22,8 +22,13 @@ interface FieldVocabItem {
     error?: string;
 }
 
-export default function ContactForm({ locale, emails }: { locale: Locale; emails: string[] }) {
+export default function ContactForm({ locale, emails }: { locale: Locale; emails: (string | undefined)[] }) {
     const t = getDictionary(locale).pages.contact;
+    const checkedEmails: string[] = emails.filter(e => typeof e !== "undefined");
+
+    if (checkedEmails.length == 0) {
+        throw new Error("Missing destination email");
+    }
 
     const formFields = {
         name: z.string().min(2, {
@@ -65,7 +70,7 @@ export default function ContactForm({ locale, emails }: { locale: Locale; emails
         const fields = formSchema.safeParse(values);
         if (fields.success) {
             createForm(values);
-            sendForm(values, emails)
+            sendForm(values, checkedEmails)
                 .then(() => {
                     toast({
                         title: t.success.title,
@@ -133,7 +138,7 @@ export default function ContactForm({ locale, emails }: { locale: Locale; emails
                 ))}
 
                 <div className="w-full flex justify-center">
-                    <Button variant="call2action" onClick={() => onSubmit(form.getValues())}>
+                    <Button variant="call2action" type="submit">
                         {t.form.send}
                     </Button>
                 </div>

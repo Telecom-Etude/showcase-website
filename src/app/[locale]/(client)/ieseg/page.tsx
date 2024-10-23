@@ -1,19 +1,14 @@
 import React, { ReactNode } from "react";
-import { ArrowRight } from "lucide-react";
 
 import { Metadata } from "next";
-import Link from "next/link";
 import Image from "next/image";
 
 import { cn } from "@/lib/utils";
-import { FORM_DEST_EMAIL, IESEG_EMAIL } from "@/mail/consts";
 import { Locale } from "@/locales/config";
 
-import { Button } from "@/components/ui/button";
 import ContactForm from "@/components/meta-components/contact-form";
 
 import IcpGraph from "@/../public/images/ieseg/icpgraph.png";
-import MIT from "@/../public/images/ieseg/mit.jpg";
 import Logo from "@/../public/images/ieseg/logo.webp";
 
 export const metadata: Metadata = {
@@ -122,7 +117,7 @@ export default function HomePage({ params: { locale } }: { params: { locale: Loc
                 <section className={cn(section, "space-y-0")}>
                     <div className="w-full sm:w-2/3">
                         <h2 className="text-left w-full font-semibold mb-4">Contactez-nous !</h2>
-                        <ContactForm emails={[FORM_DEST_EMAIL, IESEG_EMAIL]} locale={locale} />
+                        <ContactForm emails={[process.env.FORM_DEST_EMAIL, process.env.IESEG_EMAIL]} locale={locale} />
                     </div>
                 </section>
             </div>
