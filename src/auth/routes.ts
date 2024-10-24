@@ -29,25 +29,30 @@ const checkAdminRights = (check: (rights: Rights) => boolean) => (req: NextAuthR
     }
 };
 
-export interface RouteProps {
+interface RouteProps {
     code?: 401 | 403 | 404;
     auth?: (req: NextAuthRequest) => number;
-    priority?: number;
-    changeFrequency?: MetadataRoute.Sitemap[number]["changeFrequency"];
-    lastModified?: Date;
 }
 
-export const SITEMAP_ROUTES: { [key: string]: RouteProps } = {
-    "/": { priority: 1 },
-    "/about": { priority: 1 },
-    "/blog": { changeFrequency: "weekly", priority: 0.5 },
-    "/team": { changeFrequency: "yearly" },
-    "/contact": {},
-    "/partners": {},
-    "/faq": { changeFrequency: "monthly", priority: 1 },
-    "/ieseg": { priority: 0.5 },
-    "/offer": { changeFrequency: "monthly", priority: 1 },
-    "/commitment": {}
+type SiteMap = MetadataRoute.Sitemap[number];
+
+export interface SiteMapRouteProps extends RouteProps {
+    priority?: number;
+    changeFrequency?: SiteMap["changeFrequency"];
+    lastModified: string;
+}
+
+export const SITEMAP_ROUTES: { [key: string]: SiteMapRouteProps } = {
+    "/": { priority: 1, lastModified: "10/24/2024" },
+    "/about": { priority: 1, lastModified: "10/24/2024" },
+    "/blog": { priority: 0.8, changeFrequency: "weekly", lastModified: "10/24/2024" },
+    "/team": { priority: 0.5, changeFrequency: "yearly", lastModified: "10/24/2024" },
+    "/contact": { priority: 0, lastModified: "10/24/2024" },
+    "/partners": { priority: 0.3, lastModified: "10/24/2024" },
+    "/faq": { priority: 1, changeFrequency: "monthly", lastModified: "10/24/2024" },
+    "/ieseg": { priority: 0.8, lastModified: "10/24/2024" },
+    "/offer": { priority: 1, changeFrequency: "monthly", lastModified: "10/24/2024" },
+    "/commitment": { priority: 0.5, lastModified: "10/24/2024" }
 };
 
 export const ALL_ROUTES: { [key: string]: RouteProps } = {
