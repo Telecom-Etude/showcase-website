@@ -124,7 +124,7 @@ export const frDictionary = {
                 on: "le"
             },
             labelSelector: { title: "Filtrer par étiquette", selectorMessage: "Sélectionnez-en au plus 3", empty: "Aucun label trouvé" },
-            none: "Aucun blog n'a encore été publié, revenez plus tard."
+            none: "Aucun blog n'a encore été publié, merci de revenir ultérieurement."
         },
         home: {
             trust: "Ils nous ont fait confiance",
@@ -222,7 +222,7 @@ export const frDictionary = {
                 {
                     question: "Qu'est-ce qu'une Junior-Entreprise\u00A0?",
                     answer: [
-                        "Une Junior-Entreprise est une association d'étudiants à but pédagogique et non lucratif qui propose des services professionnels dans leur domaine d'études. Dans le cas de Telecom Etude, nous vendons des services dans le domaine du numérique, princpalement dans les domaines de la data, du développement, de la cybersécurité, du traitement d'image et du marketing."
+                        "Une Junior-Entreprise est une association d'étudiants à but pédagogique et non lucratif qui propose des services professionnels dans leur domaine d'études. Dans le cas de Telecom Etude, nous proposons des services dans le domaine du numérique, princpalement dans les domaines de la data, du développement, de la cybersécurité, du traitement d'image et du marketing."
                     ]
                 },
                 {
@@ -287,7 +287,7 @@ export const frDictionary = {
             quality: [
                 "Un taux de satisfaction de nos de clients de plus de 97%.",
                 "Une des seules Junior-Entreprises à être certifiée AFNOR ISO\u00A09001.",
-                'Nous avons la meilleure mention "Satisfait" de la CNJE depuis plusieurs années.'
+                'Nous avons la meilleure mention "Satisfaisant" de la CNJE depuis plusieurs années.'
             ],
             ourshool: {
                 chooseTP: "Choisir Télécom Paris, c'est choisir la Junior-Entreprise de",

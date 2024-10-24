@@ -259,7 +259,7 @@ export const enDictionary: Dictionary = {
                 {
                     question: "What is a Junior-Enterprise\u00A0?",
                     answer: [
-                        "A Junior-Enterprise is an educational, not-for-profit student association that offers professional services in their field of study. In the case of Telecom Etude, we sell services in the digital field, mainly in the areas of data, development, cybersecurity, image and marketing."
+                        "A Junior-Enterprise is an educational, not-for-profit student association that offers professional services in their field of study. In the case of Telecom Etude, we offer services in the digital field, mainly in the areas of data, development, cybersecurity, image and marketing."
                     ]
                 },
                 {
@@ -306,7 +306,7 @@ export const enDictionary: Dictionary = {
             quality: [
                 "A client satisfaction rate of over 97%",
                 "One of the only Junior-Entreprises to be AFNOR ISO00A09001 certified",
-                'We have had the best "Satisfied" rating from the CNJE for several years.'
+                'We have had the best "Satisfaisant" rating from the CNJE for several years.'
             ],
             ourshool: {
                 chooseTP: "Choosing Télécom Paris means choosing the Junior-Enterprise of",

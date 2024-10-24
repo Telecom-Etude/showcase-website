@@ -8,8 +8,8 @@ import { Locale } from "@/locales/config";
 import { BtnLink, EmailContact } from "../telecom-etude/contact";
 import { nav } from "@/locales/routing";
 
-const Network = ({ href, Icon }: { href: string; Icon: IconType }) => (
-    <Link href={href} className="p-1 m-0 rounded-full">
+const Network = ({ href, Icon, label }: { href: string; Icon: IconType; label: string }) => (
+    <Link href={href} className="p-1 m-0 rounded-full" aria-label={label}>
         <Icon className="fill-[url(#te-gradient)] hover:fill-primary transition-colors duration-2000" />
     </Link>
 );
@@ -24,10 +24,10 @@ const LinkItem = ({ href, name }: { href: string; name: string }) => (
 
 const NetworkLinks = () => (
     <div className="flex space-x-4 p-2 w-full justify-evenly">
-        <Network href="https://www.linkedin.com/company/telecom-etude/" Icon={FaLinkedin} />
-        <Network href="https://www.facebook.com/TelecomEtude" Icon={FaFacebook} />
-        <Network href="https://www.instagram.com/telecometude" Icon={FaInstagram} />
-        <Network href="mailto:contact@telecom-etude.fr" Icon={FaEnvelope} />
+        <Network href="https://www.linkedin.com/company/telecom-etude/" Icon={FaLinkedin} label="Linkedin" />
+        <Network href="https://www.facebook.com/TelecomEtude" Icon={FaFacebook} label="Facebook" />
+        <Network href="https://www.instagram.com/telecometude" Icon={FaInstagram} label="Instagram" />
+        <Network href="mailto:contact@telecom-etude.fr" Icon={FaEnvelope} label="Email" />
     </div>
 );
 

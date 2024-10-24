@@ -16,7 +16,7 @@ export const MobileNavBar = ({ locale, user }: { locale: Locale; user?: Extended
     return (
         <div>
             <div className="flex justify-between border-b-2 border-accent">
-                <Button asChild variant="ghost" className="p-2" onClick={() => close()}>
+                <Button asChild variant="ghost" className="p-2" onClick={() => close()} aria-label="menu">
                     <Link href="/" className="flex justify-start px-0 py-0">
                         <FullLogo />
                     </Link>

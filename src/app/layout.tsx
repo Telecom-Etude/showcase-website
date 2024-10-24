@@ -2,8 +2,10 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
 import localFont from "next/font/local";
+import { headers } from "next/headers";
+import { getLocale, localeIsEn } from "@/headers";
 
-export { metadata } from "./metadata";
+export { generateMetadata } from "./metadata";
 
 const avenir = localFont({
     src: [
@@ -40,8 +42,9 @@ export default async function RootLayout({
 }: Readonly<{
     children: ReactNode;
 }>) {
+    const locale = await getLocale();
     return (
-        <html>
+        <html lang={locale}>
             <body className={cn(avenir.className, "min-h-dvh flex flex-col")}>
                 <svg width="0" height="0">
                     <linearGradient id="te-gradient" x1="100%" y1="100%" x2="0%" y2="0%">

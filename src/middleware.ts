@@ -40,6 +40,9 @@ export default auth(async (req: NextAuthRequest) => {
     } else {
         if (!hasLocale) return redirect(`/${locale}${localelessPath}${req.nextUrl.search}`, req);
     }
+    const headers = new Headers(req.headers);
+    headers.set("x-current-path", req.nextUrl.pathname);
+    return NextResponse.next({ headers });
 });
 
 /**

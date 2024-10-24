@@ -62,9 +62,9 @@ export default function Partners({ params: { locale } }: LocaleParams) {
                 <p className="text-lg max-w-[500px] text-center">{t.text}</p>
             </header>
             <div className="grid grid-cols-1 md:grid-cols-3">
-                <Partner title="Bain" url="https://www.bain.com" logo={Bain} t={t.bain} />
-                <Partner title="BearingPoint" url="https://www.bearingpoint.com" logo={BearingPoint} t={t.bearingPoint} />
                 <Partner title="KPMG" url="https://www.kpmg.com" logo={KPMG} t={t.kpmg} />
+                <Partner title="BearingPoint" url="https://www.bearingpoint.com" logo={BearingPoint} t={t.bearingPoint} />
+                <Partner title="Bain" url="https://www.bain.com" logo={Bain} t={t.bain} />
             </div>
         </Block>
     );
