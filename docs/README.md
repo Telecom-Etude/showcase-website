@@ -46,9 +46,9 @@
 
 ## Notes
 
-- Utiliser `LocaleParams` en type, pour ne pas se tromper (sinon on traduit pas la page).
-- La traduction est dans un fichier `.ts` au lieu de `.json` pour avoir la vérification des types.
-
+- Use `LocaleParams` type to avoid translation errors on pages.
+- The translations are in `.ts` files instead of `.json` files to add type checks.
+ 
 ## Environment variables
 
 ### `.env.local`
@@ -65,7 +65,13 @@
 - `SMTP_EMAIL`: Email for mailer
 - `SMTP_PASSWORD`: Password for mailer
 - `FORM_DEST_EMAIL`: Email for form destination
+- `IESEG_EMAIL`: Email for form destination on `/ieseg` page
 
 ### `.env`
 
 - `DATABASE_URL`: Relative path to the database file
+- `WEBSITE_URL`: Full website URL
+
+### Check
+
+You can check none are missing in [env.d.ts](./env.d.ts).

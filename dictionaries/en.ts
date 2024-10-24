@@ -187,7 +187,7 @@ export const enDictionary: Dictionary = {
                 after: "photo"
             },
             poles: {
-                board: "Le bureau",
+                board: "The board",
                 devco: "Buisnees development department",
                 auditqua: "Audit and quality department",
                 event: "Events department",
