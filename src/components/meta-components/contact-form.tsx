@@ -1,17 +1,20 @@
 "use client";
 
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { z } from "zod";
 import { ControllerRenderProps, UseFormReturn, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+
+import { createForm } from "@/db/form";
+import { sendForm } from "@/mail/mailer";
+
+import { Locale } from "@/locales/config";
+import { getDictionary } from "@/locales/dictionaries";
+
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
-import { getDictionary } from "@/locales/dictionaries";
-import { createForm } from "@/db/form";
-import { Locale } from "@/locales/config";
-import { sendForm } from "@/mail/mailer";
+import { FormDescription, Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 
 type Fields = "name" | "email" | "tel" | "societe" | "subject" | "message";
 const ListFields = ["name", "email", "tel", "societe", "subject", "message"];
@@ -90,59 +93,55 @@ export default function ContactForm({ locale, emails }: { locale: Locale; emails
         }
     };
 
-    const FormElement = ({
-        form,
-        name,
-        value,
-        textarea = false
-    }: {
-        form: UseFormReturn<FormType>;
-        name: Fields;
-        value: FieldVocabItem;
-        textarea?: boolean;
-    }) => (
-        <FormField
-            control={form.control}
-            name={name}
-            render={({ field }: { field: ControllerRenderProps<FormType> }) => (
-                <FormItem>
-                    <FormLabel>{value.label}</FormLabel>
-                    <FormControl>
-                        {textarea ? (
-                            <Textarea
-                                className="border-[1px] rounded-none  border-primary p-6"
-                                placeholder={value.placeholder}
-                                {...field}
-                                onInput={e => {
-                                    let target = e.target as HTMLElement;
-                                    target.style.height = "inherit";
-                                    let fontSize = parseFloat(window.getComputedStyle(target, null).getPropertyValue("font-size"));
-                                    target.style.height = `${target.scrollHeight + fontSize}px`;
-                                }}
-                            />
-                        ) : (
-                            <Input className="border-[1px] rounded-none border-primary p-6" placeholder={value.placeholder} {...field} />
-                        )}
-                    </FormControl>
-                    <FormMessage />
-                </FormItem>
-            )}
-        />
-    );
+    const starRequired = (fieldName: Fields) => {
+        if (["name", "email", "subject", "message"].includes(fieldName)) return " *";
+        else return ` (${t.optional})`;
+    };
 
     return (
-        <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full">
-                {formEntries.map(([name, value], idx) => (
-                    <FormElement name={name} value={value} form={form} key={idx} textarea={name === "message"} />
-                ))}
-
-                <div className="w-full flex justify-center">
-                    <Button variant="call2action" type="submit">
-                        {t.form.send}
-                    </Button>
-                </div>
-            </form>
-        </Form>
+        <div className="space-y-6">
+            <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full">
+                    <div className="space-y-4">
+                        {formEntries.map(([name, value], idx) => (
+                            <FormField
+                                key={idx}
+                                control={form.control}
+                                name={name}
+                                render={({ field }: { field: ControllerRenderProps<FormType> }) => (
+                                    <FormItem>
+                                        <FormLabel className="font-semibold">{value.label + starRequired(name)}</FormLabel>
+                                        <FormControl>
+                                            {name === "message" ? (
+                                                <Textarea
+                                                    className="border-[1px] rounded-none  border-primary p-4"
+                                                    placeholder={value.placeholder}
+                                                    {...field}
+                                                    onInput={e => {
+                                                        let target = e.target as HTMLElement;
+                                                        target.style.height = "inherit";
+                                                        let fontSize = parseFloat(window.getComputedStyle(target, null).getPropertyValue("font-size"));
+                                                        target.style.height = `${target.scrollHeight + fontSize}px`;
+                                                    }}
+                                                />
+                                            ) : (
+                                                <Input className="border-[1px] rounded-none border-primary p-4" placeholder={value.placeholder} {...field} />
+                                            )}
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                        ))}
+                    </div>
+                    <div className="w-full flex justify-center">
+                        <Button variant="call2action" type="submit">
+                            {t.form.send}
+                        </Button>
+                    </div>
+                </form>
+            </Form>
+            <p className="text-sm italic">{t.terms}</p>
+        </div>
     );
 }

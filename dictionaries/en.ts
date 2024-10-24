@@ -330,8 +330,9 @@ export const enDictionary: Dictionary = {
         },
         contact: {
             title: "Contact us!",
+            optional: "optional",
             before: "You have a project in mind? You need more information about our services? Don't hesitate to contact us using the form below or by sending us an email at ",
-            after: "We will get back to you as soon as possible.",
+            after: ". We will get back to you as soon as possible.",
             terms: "By submitting this form, you agree that your data will be used to contact you in connection with your request and the commercial relationship that may result from it.",
             form: {
                 name: {

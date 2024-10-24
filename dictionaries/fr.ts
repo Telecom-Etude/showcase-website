@@ -330,6 +330,7 @@ export const frDictionary = {
         },
         contact: {
             title: "Contactez-nous !",
+            optional: "facultatif",
             before: "Vous avez un projet en tête\u00A0? Vous avez besoin de plus d'informations sur notre offre\u00A0? N'hésitez pas à nous contacter en utilisant le formulaire ci-dessous ou en nous envoyant un email à ",
             after: ". Nous reviendrons vers vous dès que possible.",
             terms: "En soumettant ce formulaire, vous acceptez que vos données soient utilisées pour vous recontacter dans le cadre de votre demande et de la relation commerciale qui peut en découler. ",

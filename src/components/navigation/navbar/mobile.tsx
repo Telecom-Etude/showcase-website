@@ -21,7 +21,7 @@ export const MobileNavBar = ({ locale, user }: { locale: Locale; user?: Extended
                         <FullLogo />
                     </Link>
                 </Button>
-                <Button variant="ghost" className="p-2" onClick={() => setDeployed(d => !d)}>
+                <Button variant="ghost" className="p-2 rounded-none" onClick={() => setDeployed(d => !d)}>
                     <Menu className="text-primary" />
                 </Button>
             </div>

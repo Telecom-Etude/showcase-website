@@ -31,7 +31,7 @@ const ContactButton = ({ link, mobile = false }: { link: SingleLink; mobile?: bo
     <Button asChild variant="call2action" className="w-full rounded-none group/buttoncontact ">
         <NavigationMenuItem className="pt-0 pb-0 pl-0 pr-0">
             <Link href={link.href} legacyBehavior passHref>
-                <NavigationMenuLink className="flex space-x-2 items-center px-4 h-full">
+                <NavigationMenuLink className="w-full flex space-x-2 justify-center items-center px-4 h-full">
                     <p>{link.title}</p>
                     <FaArrowRight className="group-hover/buttoncontact:animate-bounce-x" />
                 </NavigationMenuLink>
