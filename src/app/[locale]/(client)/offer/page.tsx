@@ -1,15 +1,19 @@
-import { Block } from "@/components/styles/blocks";
-import { DomainBlock } from "../(home)/domains";
 import { Locale, LocaleParams } from "@/locales/config";
-import { DesktopTimeline } from "./client";
-import { Separator } from "@/components/ui/separator";
-import { VariantLink } from "@/components/ui/button";
 import { nav } from "@/locales/routing";
 import { getDictionary } from "@/locales/dictionaries";
-import { FaArrowRight } from "react-icons/fa6";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
+import { FaArrowRight } from "react-icons/fa6";
 import { Metadata } from "next";
+import Image from "next/image";
+
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Block } from "@/components/styles/blocks";
+import { Separator } from "@/components/ui/separator";
+import { VariantLink } from "@/components/ui/button";
+
+import { DesktopTimeline } from "./client";
+import { DomainBlock } from "../(home)/domains";
+import { OFFER_IMAGES } from "./images";
 
 export const metadata: Metadata = {
     title: "Notre offre"
@@ -25,7 +29,10 @@ function MobileTimeline({ locale }: { locale: Locale }) {
                         <div className="bg-primary aspect-square rounded-full p-1 w-8 h-8">{i + 1}</div>
                         <p>{title}</p>
                     </AccordionTrigger>
-                    <AccordionContent>{text}</AccordionContent>
+                    <AccordionContent className="flex flex-col items-center justify-center space-y-4">
+                        <p>{text}</p>
+                        <Image src={OFFER_IMAGES[i]} alt="" width={200} />
+                    </AccordionContent>
                 </AccordionItem>
             ))}
         </Accordion>
@@ -37,32 +44,31 @@ export default function Page({ params: { locale } }: LocaleParams) {
     return (
         <>
             <Block>
-                <header className="p-8 space-y-8">
+                <header className="p-4">
                     <h1>{t.title}</h1>
                 </header>
             </Block>
-            <Separator />
             <Block>
-                <section className="p-8 space-y-8">
+                <section className="space-y-4">
                     <h2>{t.timeline.title}</h2>
                     <p>{t.timeline.text}</p>
-                    <div className="hidden md:grid grid-cols-2 place-items-center gap-8">
+                    <div className="p-4 hidden md:grid grid-cols-2 place-items-center gap-4">
                         <DesktopTimeline locale={locale} />
                     </div>
-                    <div className="block md:hidden">
+                    <div className="p-4  block md:hidden">
                         <MobileTimeline locale={locale} />
                     </div>
                 </section>
             </Block>
             <Separator />
             <Block>
-                <section className="p-8 space-y-8">
+                <section className="p-4 space-y-4">
                     <DomainBlock locale={locale} />
                 </section>
             </Block>
             <Separator />
             <Block>
-                <section className="p-8 space-y-8 flex flex-col items-center">
+                <section className="p-4 space-y-4 flex flex-col items-center">
                     <h2>{t.plaquette.title}</h2>
                     <p>{t.plaquette.text}</p>
                     <VariantLink
