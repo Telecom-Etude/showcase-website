@@ -329,6 +329,7 @@ export const frDictionary = {
             }
         },
         contact: {
+            sending: "Formulaire en cours d'envoi. Merci de patienter",
             title: "Contactez-nous !",
             optional: "facultatif",
             before: "Vous avez un projet en tête\u00A0? Vous avez besoin de plus d'informations sur notre offre\u00A0? N'hésitez pas à nous contacter en utilisant le formulaire ci-dessous ou en nous envoyant un email à ",
@@ -367,7 +368,8 @@ export const frDictionary = {
             },
             success: {
                 title: "Message envoyé !",
-                message: "Merci pour votre message. Nous vous recontacterons dès que possible."
+                message: "Merci pour votre message. Nous vous recontacterons dès que possible.",
+                back: "Revenir à l'accueil"
             },
             error: {
                 title: "Erreur lors de l'envoie",

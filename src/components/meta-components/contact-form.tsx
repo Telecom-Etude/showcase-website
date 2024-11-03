@@ -3,6 +3,8 @@
 import { z } from "zod";
 import { ControllerRenderProps, UseFormReturn, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
+import { VscLoading } from "react-icons/vsc";
 
 import { createForm } from "@/db/form";
 import { sendForm } from "@/mail/mailer";
@@ -14,7 +16,12 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
-import { FormDescription, Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { useRouter } from "next/navigation";
+
+import { AlertDialog, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
+import Link from "next/link";
+import { nav } from "@/locales/routing";
 
 type Fields = "name" | "email" | "tel" | "societe" | "subject" | "message";
 const ListFields = ["name", "email", "tel", "societe", "subject", "message"];
@@ -26,6 +33,10 @@ interface FieldVocabItem {
 }
 
 export default function ContactForm({ locale, emails }: { locale: Locale; emails: (string | undefined)[] }) {
+    const [finished, setFinished] = useState(false);
+    const [success, setSuccess] = useState(false);
+    const [sending, setSending] = useState(false);
+
     const t = getDictionary(locale).pages.contact;
     const checkedEmails: string[] = emails.filter(e => typeof e !== "undefined");
 
@@ -67,29 +78,25 @@ export default function ContactForm({ locale, emails }: { locale: Locale; emails
         }
     });
 
-    const { toast } = useToast();
-
     const onSubmit = (values: FormType) => {
         const fields = formSchema.safeParse(values);
         if (fields.success) {
+            setSending(true);
             createForm(values);
             sendForm(values, checkedEmails)
                 .then(() => {
-                    toast({
-                        title: t.success.title,
-                        description: t.success.message,
-                        duration: 5000,
-                        variant: "success"
-                    });
+                    setSending(false);
+                    setSuccess(true);
+                    setFinished(true);
                 })
                 .catch(() => {
-                    toast({
-                        title: t.error.title,
-                        description: t.error.message,
-                        duration: 5000,
-                        variant: "destructive"
-                    });
+                    setSending(false);
+                    setSuccess(false);
+                    setFinished(true);
                 });
+        } else {
+            setSuccess(false);
+            setFinished(true);
         }
     };
 
@@ -142,6 +149,31 @@ export default function ContactForm({ locale, emails }: { locale: Locale; emails
                 </form>
             </Form>
             <p className="text-sm italic">{t.terms}</p>
+            <AlertDialog open={finished}>
+                <AlertDialogContent>
+                    <AlertDialogHeader>
+                        <AlertDialogTitle>{t[success ? "success" : "error"].title}</AlertDialogTitle>
+                        <AlertDialogDescription>{t[success ? "success" : "error"].message}</AlertDialogDescription>
+                    </AlertDialogHeader>
+                    {success ? (
+                        <AlertDialogFooter>
+                            <Button asChild variant="call2action">
+                                <Link href={nav(locale, "/")}>{t.success.back}</Link>
+                            </Button>
+                        </AlertDialogFooter>
+                    ) : null}
+                </AlertDialogContent>
+            </AlertDialog>
+            <AlertDialog open={sending}>
+                <AlertDialogContent>
+                    <AlertDialogHeader>
+                        <AlertDialogTitle className="flex items-center space-x-4">
+                            <VscLoading className="animate-spin" />
+                            <p>{t.sending}</p>
+                        </AlertDialogTitle>
+                    </AlertDialogHeader>
+                </AlertDialogContent>
+            </AlertDialog>
         </div>
     );
 }

@@ -329,6 +329,7 @@ export const enDictionary: Dictionary = {
                 "Since its creation, the CNJE has been working to promote the Junior-Entreprise brand so that it remains a **gage of quality**. To this end, it awards quality labels to deserving structures and sets up annual advisory audits. The CNJE provides the assurance that our administrators and project managers receive the appropriate training to offer our clients **formalism and efficiency**"
         },
         contact: {
+            sending: "Form is being submitted. Please wait",
             title: "Contact us!",
             optional: "optional",
             before: "You have a project in mind? You need more information about our services? Don't hesitate to contact us using the form below or by sending us an email at ",
@@ -368,7 +369,8 @@ export const enDictionary: Dictionary = {
             },
             success: {
                 title: "Message sent!",
-                message: "Thank you for contacting us. We will get back to you as soon as possible."
+                message: "Thank you for contacting us. We will get back to you as soon as possible.",
+                back: "Go back to home page"
             },
             error: {
                 title: "Unexepected error...",
