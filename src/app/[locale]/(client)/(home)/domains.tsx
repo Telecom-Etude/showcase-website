@@ -1,9 +1,7 @@
-import Link from "next/link";
 import Image, { StaticImageData } from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { nav } from "@/locales/routing";
 import { Locale } from "@/locales/config";
-import { Dictionary, getDictionary } from "@/locales/dictionaries";
+import { getDictionary } from "@/locales/dictionaries";
 
 import Data from "@/../public/images/domains/icons/data.png";
 import Cyber from "@/../public/images/domains/icons/cyber.png";
@@ -37,7 +35,7 @@ const DomainCard = ({ title, id, image, locale }: { title: string; id: string; i
         <div className="p-4 w-full h-full">
             <Card className="hover:-translate-y-1 w-full h-full hover:scale-105 transition-all ease-out bg-gradient-to-br from-primary via-primary to-destructive hover:opacity-80 duration-500 grid grid-cols-2 rounded-lg">
                 <CardHeader>
-                    <CardTitle className="m-auto font-normal leading-6">{title}</CardTitle>
+                    <CardTitle className="m-auto font-normal text-lg leading-6">{title}</CardTitle>
                 </CardHeader>
                 <CardContent className="p-0 block">
                     <Image placeholder="blur" src={image} className="w-full h-full " alt={title} />
