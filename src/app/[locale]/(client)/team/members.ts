@@ -71,8 +71,8 @@ export const DEPARTMENTS: DepartmentProps[] = [
             },
             {
                 id: "vpe",
-                name: "Kevin Garnier",
-                image: Kevin
+                name: "Nathan Casanova",
+                image: Nathan
             },
             {
                 id: "secge",
@@ -203,11 +203,6 @@ export const DEPARTMENTS: DepartmentProps[] = [
                 id: "resposuivi",
                 name: "Luka Judas",
                 image: Luka
-            },
-            {
-                id: "formations",
-                name: "Nathan Casanova",
-                image: Nathan
             },
             {
                 id: "selectionCDP",
