@@ -70,6 +70,10 @@ export const enDictionary: Dictionary = {
             contact: "Contact us",
             bug: "Report a bug",
             plaquette: "Brochure"
+        },
+        button: {
+            open: "Expand menu",
+            close: "Close menu"
         }
     },
     pages: {

@@ -9,10 +9,12 @@ import { Links } from "./links/links";
 import { Locale } from "@/locales/config";
 import { User } from "next-auth";
 import { ExtendedUser } from "@/auth/auth";
+import { getDictionary } from "@/locales/dictionaries";
 
 export const MobileNavBar = ({ locale, user }: { locale: Locale; user?: ExtendedUser }) => {
     const [deployed, setDeployed] = useState(false);
     const close = () => setDeployed(false);
+    const button_vocab = getDictionary(locale).navigation.button;
     return (
         <div>
             <div className="flex justify-between border-b-2 border-accent">
@@ -21,7 +23,12 @@ export const MobileNavBar = ({ locale, user }: { locale: Locale; user?: Extended
                         <FullLogo />
                     </Link>
                 </Button>
-                <Button variant="ghost" className="p-2 rounded-none" onClick={() => setDeployed(d => !d)}>
+                <Button
+                    variant="ghost"
+                    className="p-2 rounded-none"
+                    onClick={() => setDeployed(d => !d)}
+                    aria-label={deployed ? button_vocab.close : button_vocab.open}
+                >
                     <Menu className="text-primary" />
                 </Button>
             </div>

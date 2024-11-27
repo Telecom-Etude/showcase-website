@@ -68,6 +68,10 @@ export const frDictionary = {
             contact: "Contactez-nous",
             bug: "Signaler un bug",
             plaquette: "Plaquette"
+        },
+        button: {
+            open: "Ouvrir le menu",
+            close: "Fermer le menu"
         }
     },
     pages: {
