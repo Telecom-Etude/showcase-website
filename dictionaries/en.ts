@@ -46,7 +46,7 @@ export const enDictionary: Dictionary = {
             newblog: "New blog",
             edit: "Edit blogs",
             form: "Form submissions",
-            users: "Users managment",
+            users: "Users management",
             account: "My account"
         },
         sitemap: {
@@ -182,7 +182,7 @@ export const enDictionary: Dictionary = {
                 on: "on the"
             },
             labelSelector: { title: "Filter by label", selectorMessage: "Select up to 3 labels", empty: "No labels found" },
-            none: "No blogs blogs found, come back later."
+            none: "No blogs found, come back later."
         },
         team: {
             title: "Our team",
@@ -192,7 +192,7 @@ export const enDictionary: Dictionary = {
             },
             poles: {
                 board: "The board",
-                devco: "Buisnees development department",
+                devco: "Buisness development department",
                 auditqua: "Audit and quality department",
                 event: "Events department",
                 info: "IT department",
@@ -226,7 +226,7 @@ export const enDictionary: Dictionary = {
                 teambuildings: "In charge of cohesion",
                 linkedin: "Responsible for Linkedin",
                 insta: "Responsible for Instagram",
-                formations: "Traning officer",
+                formations: "Training officer",
                 cominterne: "Internal communications officer",
                 //
                 devco: "Business development member",
@@ -254,8 +254,8 @@ export const enDictionary: Dictionary = {
         faq: {
             title: "Frequently Asked Questions",
             text: {
-                before: "Here at the answers of questions you might have. Don't hesitate to contact us at ",
-                between: "or be felling the ",
+                before: "Here are answers to questions you might have. Don't hesitate to contact us at ",
+                between: "or by filling the ",
                 form: "contact form",
                 after: "if you have any other questions or in order to have more information."
             },
@@ -303,7 +303,7 @@ export const enDictionary: Dictionary = {
             titles: {
                 ourje: "Notre JE",
                 ourschool: "Our school: Télécom Paris",
-                quality: "A quality EY",
+                quality: "A quality JE",
                 satisfaction: "Our objective: Your satisfaction",
                 ieseg: "A joint presentation"
             },
@@ -377,7 +377,7 @@ export const enDictionary: Dictionary = {
                 back: "Go back to home page"
             },
             error: {
-                title: "Unexepected error...",
+                title: "Unexpected error...",
                 message: "Please contact us instead by sending a mail to"
             }
         },

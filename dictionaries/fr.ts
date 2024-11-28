@@ -7,7 +7,7 @@ export const frDictionary = {
                 contact: "Un problème\u00A0? Contactez-la DSI"
             },
             signout: {
-                title: "Déconnection",
+                title: "Déconnexion",
                 buttonText: "Se déconnecter",
                 contact: "Un problème\u00A0? Contactez-la DSI"
             }
@@ -153,14 +153,14 @@ export const frDictionary = {
             },
             domains: {
                 subtitle: "Nous trouvons une réponse à chacun de vos besoins",
-                description: "Notre expértise et nos compétences s'étendent sur une vaste étendue du numérique, dont voici quelques exemples:",
+                description: "Notre expertise et nos compétences s'étendent sur une vaste étendue du numérique, dont voici quelques exemples:",
                 title: "Nos domaines de prédilection",
                 data: "Data science, IA & Machine learning",
                 web: "Développement Logiciel, Applications & Web",
                 cyber: "Cybersécurité, Réseaux, Cryptographie & Blockchain",
                 image: "Traitement d'images & Modélisation 3D",
                 market: "Études de marchés, États de l'art & Audits",
-                se: "Système embarqués"
+                se: "Systèmes embarqués"
             }
         },
         team: {
@@ -191,11 +191,11 @@ export const frDictionary = {
                 respoaudit: "Responsable Audit",
                 respocom: "Responsable Communication",
                 resposuivi: "Responsable Suivi des Etudes",
-                respoevent: "Responsable Evènements",
+                respoevent: "Responsable Évènements",
                 respoquality: "Responsable Qualité",
                 respoinfo: "Responsable Informatique",
                 //
-                appel: "Chargé appel d'offre",
+                appel: "Chargé appel d'offres",
                 alumni: "Chargé alumni",
                 international: "Chargé international",
                 selectionCDP: "Chargé Sélection CDP",
@@ -226,7 +226,7 @@ export const frDictionary = {
                 {
                     question: "Qu'est-ce qu'une Junior-Entreprise\u00A0?",
                     answer: [
-                        "Une Junior-Entreprise est une association d'étudiants à but pédagogique et non lucratif qui propose des services professionnels dans leur domaine d'études. Dans le cas de Telecom Etude, nous proposons des services dans le domaine du numérique, princpalement dans les domaines de la data, du développement, de la cybersécurité, du traitement d'image et du marketing."
+                        "Une Junior-Entreprise est une association d'étudiants à but pédagogique et non lucratif qui propose des services professionnels dans leur domaine d'études. Dans le cas de Telecom Etude, nous proposons des services dans le domaine du numérique, principalement dans les domaines de la data, du développement, de la cybersécurité, du traitement d'image et du marketing."
                     ]
                 },
                 {
@@ -376,8 +376,8 @@ export const frDictionary = {
                 back: "Revenir à l'accueil"
             },
             error: {
-                title: "Erreur lors de l'envoie",
-                message: "Merci de nous envoyé un mail directement à"
+                title: "Erreur lors de l'envoi",
+                message: "Merci de nous envoyer un mail directement à"
             }
         },
         legal: {
