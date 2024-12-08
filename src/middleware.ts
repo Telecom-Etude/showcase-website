@@ -23,12 +23,17 @@ const redirect = (url: string, req: NextAuthRequest): NextResponse => NextRespon
 /**
  * A rewrite will render the page of the specified url, but will not change the window URL.
  */
-const rewrite = (url: string, req: NextAuthRequest): NextResponse => NextResponse.rewrite(new URL(url, req.nextUrl.href));
+const rewrite = (url: string, req: NextAuthRequest, code: number): NextResponse => {
+    const new_url = req.nextUrl.clone();
+    new_url.pathname = url;
+    const res = NextResponse.rewrite(new_url);
+    return new NextResponse(res.body, { status: code, headers: res.headers });
+};
 
 export default auth(async (req: NextAuthRequest) => {
     const { hasLocale, locale, localelessPath } = getLocaleRoutesProps(req);
     const code = getAuthorisationCode(req, localelessPath);
-    if (code != 200) return rewrite(`/${locale}/error/${code}`, req);
+    if (code != 200) return rewrite(`/${locale}/error/${code}`, req, code);
     if (localelessPath.startsWith("/auth")) {
         const authed = req.auth?.user.email;
         if (localelessPath === SIGNIN_PATH && authed) {
