@@ -18,7 +18,7 @@ export default async function LocaleLayout({
             <NavBar locale={locale} user={user} />
             <main className="flex flex-col h-full flex-grow">{children}</main>
             <Footer locale={locale} />
-            <CookieConsent locale={locale} />
+            {process.env.ANALYTICS && <CookieConsent locale={locale} />}
         </>
     );
 }
