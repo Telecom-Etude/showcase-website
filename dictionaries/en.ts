@@ -2,6 +2,15 @@ import { Dictionary } from "@/locales/dictionaries";
 
 export const enDictionary: Dictionary = {
     navigation: {
+        cookies: {
+            title: "We value your privacy",
+            description:
+                "This website uses cookies to improve your experience, analyse traffic and deliver personalised content. You can accept or decline non-essential cookies. All data is collected and does not leave Télécom Paris' internal network. To find out more, visit our",
+            link: "Privacy policy.",
+            accept: "Accept all cookies",
+            reject: "Reject all cookies"
+        },
+
         auth: {
             signin: {
                 title: "Sign In",
@@ -421,9 +430,9 @@ export const enDictionary: Dictionary = {
                     "Telecom Etude uses JSON Web Tokens (JWT) for user authentication on the site. These tokens secure access to the site's features without using cookies. JWTs do not collect additional personal data other than what is necessary for authentication."
             },
             cookies: {
-                title: "No Cookies",
+                title: "Cookies",
                 description:
-                    "The Telecom Etude site does not use any cookies to track user navigation or for advertising purposes. The only information stored and used is related to authentication via JWT tokens."
+                    "The Telecom Etude website uses cookies to track users' browsing habits. This data is collected for information purposes only and is not used for commercial purposes. These cookies are only stored if you expressly accept them. These cookies are stored locally and do not leave the Télécom Paris internal network."
             },
             liability: {
                 title: "Limitation of Liability",

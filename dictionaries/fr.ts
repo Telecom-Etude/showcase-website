@@ -1,5 +1,13 @@
 export const frDictionary = {
     navigation: {
+        cookies: {
+            title: "Nous respectons votre vie privée",
+            description:
+                "Ce site web utilise des cookies pour améliorer votre expérience, analyser le trafic et proposer un contenu personnalisé. Vous pouvez accepter ou refuser les cookies non essentiels. Toutes les données sont collectées et ne quitte pas le réseau interne de Télécom Paris. Pour en savoir plus, consultez notre",
+            link: "Politique de confidentialité",
+            accept: "Accepter les cookies",
+            reject: "Rejecter les cookies"
+        },
         auth: {
             signin: {
                 title: "Connection",
@@ -420,9 +428,9 @@ export const frDictionary = {
                     "Telecom Etude utilise des JSON Web Tokens (JWT) pour l'authentification des utilisateurs sur le site. Ces jetons permettent de sécuriser l'accès aux fonctionnalités du site, sans avoir recours aux cookies. Les JWT ne collectent pas de données personnelles supplémentaires autres que celles nécessaires à l'authentification."
             },
             cookies: {
-                title: "Absence de cookies",
+                title: "Cookies",
                 description:
-                    "Le site Telecom Etude n'utilise aucun cookie pour suivre la navigation des utilisateurs ou pour des finalités publicitaires. Les seules informations stockées et utilisées sont liées à l'authentification via des jetons JWT."
+                    "Le site Telecom Etude utilise des cookies pour suivre la navigation des utilisateurs. Ces données sont recueillis à valeur indicative et ne sont pas utilisées à des fins commerciales. Ces cookies ne sont stockées que dans le cas d'une acceptation expresse de votre part. Ces cookies sont stockées localement, et ne quittent pas le réseau interne de Télécom Paris."
             },
             liability: {
                 title: "Limitation de responsabilité",
