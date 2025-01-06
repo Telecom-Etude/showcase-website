@@ -8,9 +8,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { toast } from "@/components/ui/use-toast";
 import { nav } from "@/locales/routing";
-import { createBlog } from "@/db/blogs";
 import { DEFAULT_LOCALE, LOCALES, Locale } from "@/locales/config";
 
 export const newPostSchema = z.object({
@@ -30,19 +28,23 @@ export default function NewPostForm({ email }: { email: string }) {
 
     const router = useRouter();
 
-    const onSubmit = (values: z.infer<typeof newPostSchema>) => {
-        createBlog(email, values.title, "fr")
-            .then((id: number) => {
-                router.push(nav("fr", `/edit-blog/${id}`));
-            })
-            .catch(() => {
-                toast({
-                    title: "Une erreur est survenue.",
-                    variant: "destructive",
-                    description:
-                        "Une erreur est survenue lors de la création du post. Rafraîchissez la page et réessayez, ou contactez le support à jet.info@telecom-etude.fr"
-                });
-            });
+    const onSubmit = async (values: z.infer<typeof newPostSchema>) => {
+        const apiData = JSON.stringify({ authorEmail: email, title: values.title, locale: "fr" });
+        const response = await fetch("/api/create-blog", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: apiData
+        });
+        if (!response.ok) {
+            console.error("Error creating blog: ", response.status, response.body);
+            router.push(nav("fr", "/errors/500"));
+        } else {
+            const id = (await response.json()).blogId;
+            if (process.env.DEV_MODE) console.log("Created POST with ID = ", id);
+            router.push(nav("fr", `/edit-blog/${id}`));
+        }
     };
 
     return (
@@ -53,7 +55,7 @@ export default function NewPostForm({ email }: { email: string }) {
                         control={form.control}
                         name="title"
                         render={({ field }) => (
-                            <FormItem className="flex flex-col jusitfy-center items-center space-y-4 w-full">
+                            <FormItem className="flex flex-col justify-center items-center space-y-4 h-full w-full">
                                 <FormControl>
                                     <Input className="rounded-md rounded-r-none border-none" placeholder="Titre" {...field} />
                                 </FormControl>
@@ -61,18 +63,20 @@ export default function NewPostForm({ email }: { email: string }) {
                             </FormItem>
                         )}
                     />
-                    <FormField
+                    {/* <FormField
                         control={form.control}
                         name="locale"
                         render={({ field }) => (
-                            <FormItem className="flex-col justify-center items-center space-y-4 hidden">
+                            <FormItem className="flex-col justify-center items-center space-y-4 h-full">
                                 <FormControl>
                                     <select
                                         {...field}
                                         defaultValue={DEFAULT_LOCALE}
                                         className="p-2 rounded-md rounded-l-none"
+                                        value={selectedLocale}
                                         onChange={e => {
                                             form.setValue("locale", e.target.value as Locale);
+                                            setSelectedLocale(e.target.value as Locale);
                                         }}
                                     >
                                         {LOCALES.map(l => (
@@ -85,7 +89,7 @@ export default function NewPostForm({ email }: { email: string }) {
                                 <FormMessage />
                             </FormItem>
                         )}
-                    />
+                    /> */}
                 </div>
                 <Button className="w-full" variant="call2action" type="submit">
                     Créer

@@ -9,6 +9,9 @@ import { Label, Post, User } from "@prisma/client";
 
 export const createBlog = async (authorEmail: string, title: string, locale: Locale): Promise<number> => {
     try {
+        if (!authorEmail) {
+            throw new Error("Author email is undefined");
+        }
         const author = await db.user.findUnique({ where: { email: authorEmail } });
         if (!author) {
             throw new Error("User not found");

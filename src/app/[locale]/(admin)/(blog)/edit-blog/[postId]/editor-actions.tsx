@@ -127,7 +127,7 @@ export const Actions = ({ setToBeChanged, content, value, title, id, dbLabels, b
 
         updatePostLabels(newLabels, id, locale).finally(() => {
             getBlog(id).then(post => {
-                if (process.env.DEBUG) console.log("DBLABELS ", JSON.stringify(post?.labels));
+                if (process.env.DEV_MODE) console.log("DBLABELS ", JSON.stringify(post?.labels));
             });
         });
     };
