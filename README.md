@@ -37,28 +37,28 @@
 
     > DO *NOT* USE THE `--turbo` flag if you need next auth.
     >
-    > See, for example, [this issue](https://github.com/nextauthjs/next-auth/issues/11674).
+    > It is unstable as of now (2024). See, for example, [this issue](https://github.com/nextauthjs/next-auth/issues/11674).
 
 ## Tutorials
 
-- [Authjs tutorial](https://www.youtube.com/watch?v=1MTyCvS05V4)
+- [Auth.js tutorial](https://www.youtube.com/watch?v=1MTyCvS05V4)
 - [Google Provider tutorial](https://www.youtube.com/watch?v=Rs8018RO5YQ)
 
 ## Notes
 
 - Use `LocaleParams` type to avoid translation errors on pages.
 - The translations are in `.ts` files instead of `.json` files to add type checks.
- 
+
 ## Environment variables
 
 ### `.env.local`
 
 #### `Auth.js`
 
-- `GOOGLE_CLIENT_ID`: Google client ID for Open Authentification
-- `GOOGLE_CLIENT_SECRET`: Google client secret for Open Authentification
+- `GOOGLE_CLIENT_ID`: Google client ID for Open Authentication
+- `GOOGLE_CLIENT_SECRET`: Google client secret for Open Authentication
 - `AUTH_SECRET`: Random secret for JWT (can be generated with `openssl` command)
-- `ADMIN_EMAIL`: Email to an administrator (will automatically have the `UserAdmin` right)
+- `ADMIN_EMAIL`: Email to an administrator (will automatically have the `UserAdmin` right).
 
 #### `NodeMailer`
 
@@ -71,7 +71,8 @@
 
 - `DATABASE_URL`: Relative path to the database file
 - `WEBSITE_URL`: Full website URL
+- `ANALYTICS`: Enable analytics and tracking.
 
 ### Check
 
-You can check none are missing in [env.d.ts](./env.d.ts).
+You can check none are missing with [env.d.ts](./env.d.ts).
