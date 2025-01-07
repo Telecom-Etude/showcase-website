@@ -20,7 +20,7 @@ export const getLinks = (locale: Locale, user: ExtendedUser) => {
 
     var authLinks: SingleLink[] = [];
     if (user?.rights?.blogAdmin) {
-        authLinks.push({ href: nav(locale, "/validate-blog"), title: t.admin.validate });
+        authLinks.push({ href: nav(locale, "/list-blog"), title: t.admin.validate });
     }
     if (user?.rights?.blogAuthor) {
         authLinks.push({ href: nav(locale, "/new-blog"), title: t.admin.newblog });

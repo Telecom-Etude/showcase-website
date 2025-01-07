@@ -15,6 +15,7 @@ import { deleteBlog } from "@/db/blogs";
 import { BtnLink, EmailBtn } from "@/components/telecom-etude/contact";
 import { getUserName } from "@/lib/users";
 import { Checkbox } from "@/components/ui/checkbox";
+import Link from "next/link";
 
 const Delete = ({ row }: { row: Row<ValidationBlogType> }) => {
     const router = useRouter();
@@ -67,7 +68,8 @@ export const columns: ColumnDef<ValidationBlogType>[] = [
                     ))}
                 </div>
             );
-        }
+        },
+        enableSorting: false
     },
 
     {
@@ -85,13 +87,23 @@ export const columns: ColumnDef<ValidationBlogType>[] = [
         header: ({ column }) => <DataTableColumnHeader column={column} title="Valider" />,
         cell: ({ row }) => {
             const value: boolean = row.getValue("validated");
-            return <Checkbox className="cursor-not-allowed" checked={value} contentEditable={false} />;
+            return <Checkbox className="cursor-not-allowed m-auto" checked={value} contentEditable={false} />;
         }
     },
     {
         accessorKey: "delete",
         header: ({ column }) => <DataTableColumnHeader column={column} title="Supprimer" />,
         cell: ({ row }) => <Delete row={row} />,
+        enableSorting: false
+    },
+    {
+        accessorKey: "edit",
+        header: ({ column }) => <DataTableColumnHeader column={column} title="Editer" />,
+        cell: ({ row }) => (
+            <Button variant="link" className="m-auto" asChild>
+                <Link href={`/edit-blog/${row.getValue("id")}`}>Editer</Link>
+            </Button>
+        ),
         enableSorting: false
     },
     {
