@@ -31,6 +31,6 @@
             "@/*": ["./src/*"]
         }
     },
-    "include": ["**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "prisma/seed.mts"],
+    "include": ["**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "prisma/seed.ts"],
     "exclude": ["node_modules"]
 }

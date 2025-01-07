@@ -2,54 +2,55 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+    provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
+    provider = "sqlite"
+    url      = env("DATABASE_URL")
 }
 
 model User {
-  id         Int     @id @default(autoincrement())
-  email      String  @unique
-  image      String?
-  blogAdmin  Boolean @default(false)
-  userAdmin  Boolean @default(false)
-  blogAuthor Boolean @default(false)
-  formAdmin  Boolean @default(false)
-  PostIds    Post[]
+    id         Int     @id @default(autoincrement())
+    email      String  @unique
+    image      String?
+    blogAdmin  Boolean @default(false)
+    userAdmin  Boolean @default(false)
+    blogAuthor Boolean @default(false)
+    formAdmin  Boolean @default(false)
+    PostIds    Post[]
 }
 
 model ContactForm {
-  id      Int      @id @default(autoincrement())
-  name    String
-  email   String
-  tel     BigInt?
-  societe String?
-  subject String?
-  message String
-  date    DateTime
-  done    Boolean  @default(false)
+    id      Int      @id @default(autoincrement())
+    name    String
+    email   String
+    tel     BigInt?
+    societe String?
+    subject String?
+    message String
+    date    DateTime
+    done    Boolean  @default(false)
 }
 
 model Post {
-  id        Int      @id @unique @default(autoincrement())
-  title     String
-  locale    String
-  authors   User[]
-  content   String
-  validated Boolean  @default(false)
-  labels    Label[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+    id        Int      @id @unique @default(autoincrement())
+    title     String
+    locale    String
+    slug      String   @unique
+    authors   User[]
+    content   String
+    validated Boolean  @default(false)
+    labels    Label[]
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
 }
 
 model Label {
-  id     Int    @id @unique @default(autoincrement())
-  locale String
-  name   String
-  posts  Post[]
+    id     Int    @id @unique @default(autoincrement())
+    locale String
+    name   String
+    posts  Post[]
 
-  @@unique([locale, name])
+    @@unique([locale, name])
 }

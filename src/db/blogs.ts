@@ -6,6 +6,7 @@ import { Op } from "quill/core";
 import { PostPresentation } from "@/app/[locale]/(client)/blog/client";
 import { getUserName } from "@/lib/users";
 import { Label, Post, User } from "@prisma/client";
+import { generateSlug } from "./slug";
 
 export const createBlog = async (authorEmail: string, title: string, locale: Locale): Promise<number> => {
     try {
@@ -23,6 +24,7 @@ export const createBlog = async (authorEmail: string, title: string, locale: Loc
                 },
                 locale,
                 title,
+                slug: generateSlug(title),
                 content: "[]"
             }
         });

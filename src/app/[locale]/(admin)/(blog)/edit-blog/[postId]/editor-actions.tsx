@@ -3,19 +3,17 @@
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { FaCheck, FaSave } from "react-icons/fa";
 import { FaPencil } from "react-icons/fa6";
-import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useRouter } from "next/navigation";
 import type { Op } from "quill/core";
 import type { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
-import { MdLabel } from "react-icons/md";
-import { DisplayItems, ManyComboBox } from "@/components/meta-components/combobox";
-import { useEffect, useState } from "react";
+import { ManyComboBox } from "@/components/meta-components/combobox";
+import { useState } from "react";
 import { getBlog, renameBlog } from "@/db/blogs";
-import { DbLabels, updatePostLabels } from "@/db/labels";
-import { toast } from "@/components/ui/use-toast";
+import { updatePostLabels } from "@/db/labels";
 import { Locale } from "@/locales/config";
 
 const Rename = ({ title, id, router }: { title: string; id: number; router: AppRouterInstance }) => (

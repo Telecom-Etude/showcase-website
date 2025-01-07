@@ -6,12 +6,12 @@ import { getValidatedBlogs } from "@/db/blogs";
 import { nav } from "@/locales/routing";
 
 export default async function BlogPage({ params: { locale, postId } }: LocalePostParams) {
-    const id = parseInt(postId);
+    const slug = postId;
     const posts = await getValidatedBlogs(locale);
     if (!posts) {
         redirect(nav(locale, "/error/404"));
     }
-    const localePost = posts.find(blog => blog.id === id);
+    const localePost = posts.find(blog => blog.slug === slug);
     if (!localePost) {
         redirect(nav(locale, "/error/404"));
     } else {

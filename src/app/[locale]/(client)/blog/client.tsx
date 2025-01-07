@@ -25,6 +25,7 @@ export interface PostPresentation {
     authors: string[];
     date: Date;
     labels: string[];
+    slug: string;
 }
 
 const allLabelsInValue = (postLabels: string[], selectedLabels: string[]) =>
@@ -76,7 +77,7 @@ const BlogsList = ({
                 <div key={i} className="w-full">
                     <div className="flex items-center space-x-4">
                         <h3>
-                            <Link className="hover:underline" href={nav(locale, "/blog/" + post.id)}>
+                            <Link className="hover:underline" href={nav(locale, "/blog/" + post.slug)}>
                                 {post.title}
                             </Link>
                         </h3>
