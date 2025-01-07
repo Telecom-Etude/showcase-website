@@ -79,7 +79,7 @@ const getCode = (req: NextAuthRequest, routeProps: RouteProps) => {
 
 const PREFIX_ROUTES: { [key: string]: RouteProps } = {
     "/edit-blog": { auth: checkAdminRights(r => r.blogAuthor) },
-    "/blog": { auth: checkAdminRights(r => r.blogAuthor) },
+    "/blog": {},
     "/list-blog": { auth: checkAdminRights(r => r.blogAdmin || r.blogAuthor) },
     "/error": {}
 };
