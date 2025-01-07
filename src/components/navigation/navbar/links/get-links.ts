@@ -24,7 +24,7 @@ export const getLinks = (locale: Locale, user: ExtendedUser) => {
     }
     if (user?.rights?.blogAuthor) {
         authLinks.push({ href: nav(locale, "/new-blog"), title: t.admin.newblog });
-        authLinks.push({ href: nav(locale, "/blog"), title: t.admin.edit });
+        authLinks.push({ href: nav(locale, "/list-blog"), title: t.admin.edit });
     }
     if (user?.rights?.formAdmin) {
         authLinks.push({ href: nav(locale, "/form-submission"), title: t.admin.form });
@@ -39,11 +39,11 @@ export const getLinks = (locale: Locale, user: ExtendedUser) => {
         typeof user === "undefined"
             ? { title: s.login, href: nav(locale, "/auth/signin") }
             : authLinks.length <= 1
-              ? logoutLink
-              : {
-                    title: t.admin.account,
-                    links: authLinks
-                };
+            ? logoutLink
+            : {
+                  title: t.admin.account,
+                  links: authLinks
+              };
 
     const links: ExtendedLink[] = [
         {

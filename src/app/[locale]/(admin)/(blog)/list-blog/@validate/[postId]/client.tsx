@@ -14,7 +14,7 @@ export const ValidateButton = ({ id, t, locale }: { locale: Locale; id: number; 
     const validateBlogInterface = () => {
         validateBlog(id)
             .then(() => {
-                router.push(nav(locale, "/validate-blog"));
+                router.push(nav(locale, "/list-blog"));
             })
             .catch(() => {
                 toast({

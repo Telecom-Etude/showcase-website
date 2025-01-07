@@ -5,7 +5,9 @@ export const validationBlogSchema = z.object({
     validated: z.boolean(),
     emails: z.array(z.string()),
     title: z.string(),
-    content: z.string()
+    content: z.string(),
+    createdAt: z.date(),
+    updatedAt: z.date()
 });
 
 export type ValidationBlogType = z.infer<typeof validationBlogSchema>;

@@ -64,7 +64,7 @@ export const ALL_ROUTES: { [key: string]: RouteProps } = {
     "/form-submission": { auth: checkAdminRights(r => r.formAdmin) },
     "/users": { auth: checkAdminRights(r => r.userAdmin) },
     "/new-blog": { auth: checkAdminRights(r => r.blogAuthor) },
-    "/validate-blog": { auth: checkAdminRights(r => r.blogAdmin) }
+    "/list-blog": { auth: checkAdminRights(r => r.blogAdmin || r.blogAuthor) }
 };
 
 const getCode = (req: NextAuthRequest, routeProps: RouteProps) => {
@@ -80,7 +80,7 @@ const getCode = (req: NextAuthRequest, routeProps: RouteProps) => {
 const PREFIX_ROUTES: { [key: string]: RouteProps } = {
     "/edit-blog": { auth: checkAdminRights(r => r.blogAuthor) },
     "/blog": { auth: checkAdminRights(r => r.blogAuthor) },
-    "/validate-blog": { auth: checkAdminRights(r => r.blogAdmin) },
+    "/list-blog": { auth: checkAdminRights(r => r.blogAdmin || r.blogAuthor) },
     "/error": {}
 };
 

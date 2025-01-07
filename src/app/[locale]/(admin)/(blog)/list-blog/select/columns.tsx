@@ -69,21 +69,20 @@ export const columns: ColumnDef<ValidationBlogType>[] = [
             );
         }
     },
+
     {
-        accessorKey: "title",
-        header: ({ column }) => <DataTableColumnHeader column={column} title="Titre" />,
-        cell: ({ row }) => (
-            <BtnLink href={`/validate-blog/${row.getValue("id")}`}>
-                <p>{row.getValue("title")}</p>
-                <div className="flex space-x-2">
-                    <span className="truncate"></span>
-                </div>
-            </BtnLink>
-        )
+        accessorKey: "createdAt",
+        header: ({ column }) => <DataTableColumnHeader column={column} title="Créé le" />,
+        cell: ({ row }) => <p>{(row.getValue("createdAt") as Date).toLocaleDateString()}</p>
+    },
+    {
+        accessorKey: "updatedAt",
+        header: ({ column }) => <DataTableColumnHeader column={column} title="Modifié le" />,
+        cell: ({ row }) => <p>{(row.getValue("updatedAt") as Date).toLocaleDateString()}</p>
     },
     {
         accessorKey: "validated",
-        header: ({ column }) => <DataTableColumnHeader column={column} title="Valié" />,
+        header: ({ column }) => <DataTableColumnHeader column={column} title="Valider" />,
         cell: ({ row }) => {
             const value: boolean = row.getValue("validated");
             return <Checkbox className="cursor-not-allowed" checked={value} contentEditable={false} />;
@@ -94,5 +93,17 @@ export const columns: ColumnDef<ValidationBlogType>[] = [
         header: ({ column }) => <DataTableColumnHeader column={column} title="Supprimer" />,
         cell: ({ row }) => <Delete row={row} />,
         enableSorting: false
+    },
+    {
+        accessorKey: "title",
+        header: ({ column }) => <DataTableColumnHeader column={column} title="Titre" />,
+        cell: ({ row }) => (
+            <BtnLink href={`/list-blog/${row.getValue("id")}`}>
+                <p>{row.getValue("title")}</p>
+                <div className="flex space-x-2">
+                    <span className="truncate"></span>
+                </div>
+            </BtnLink>
+        )
     }
 ];
