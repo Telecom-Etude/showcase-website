@@ -2,8 +2,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
 import localFont from "next/font/local";
-import { headers } from "next/headers";
-import { getLocale, localeIsEn } from "@/headers";
+import { getLocale } from "@/headers";
 
 export { generateMetadata } from "./metadata";
 

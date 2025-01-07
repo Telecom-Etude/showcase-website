@@ -12,7 +12,9 @@ export default function ClientBlog({ localePost, locale }: { locale: Locale; loc
                 <h1>{localePost.title}</h1>
                 <p className="italic">{displayAuthors(locale, localePost)}</p>
             </header>
-            <RenderQuill content={JSON.parse(localePost.content)} />
+            <div className="custom-quill-styles">
+                <RenderQuill content={JSON.parse(localePost.content)} />
+            </div>
         </>
     );
 }

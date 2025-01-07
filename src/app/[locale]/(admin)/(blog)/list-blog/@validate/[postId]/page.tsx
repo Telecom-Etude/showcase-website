@@ -27,7 +27,9 @@ export default async function Page({ params: { locale, postId } }: LocalePostPar
                         <IoClose className="w-4 h-4" />
                     </VariantLink>
                 </div>
-                <RenderQuill content={JSON.parse(blog.content)} />
+                <div className="custom-quill-styles">
+                    <RenderQuill content={JSON.parse(blog.content)} />
+                </div>
             </div>
             {isAdmin && (
                 <div className="w-full flex justify-center p-4">

@@ -130,3 +130,10 @@ p {
         background-position: 50% 0%;
     }
 }
+
+.custom-quill-styles {
+    a {
+        color: blue;
+        text-decoration: underline;
+    }
+}
