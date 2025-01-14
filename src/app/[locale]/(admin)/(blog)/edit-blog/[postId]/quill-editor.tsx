@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { Op } from "quill/core";
 import { Actions } from "./editor-actions";
 import { Locale } from "@/locales/config";
+import dynamic from "next/dynamic";
 
 export interface QuillEditorProps {
     dbLabels: string[];
@@ -20,20 +21,12 @@ export interface QuillEditorProps {
 
 export const QuillEditor = ({ id, content, title, locale, dbLabels, blogLabels }: QuillEditorProps) => {
     const [quill, setQuill] = useState<Quill | null>(null);
+    const [loaded, setLoaded] = useState(false); // to do only one request to the server per render
     const [value, setValue] = useState(JSON.stringify(content));
     const [toBeChanged, setToBeChanged] = useState(false);
 
     const editorRef = useRef(null);
     const router = useRouter();
-
-    useEffect(() => {
-        if (typeof window !== "undefined" && typeof document !== "undefined" && quill && toBeChanged) {
-            const newContent = quill.getContents().ops;
-            if (newContent !== content) {
-                updateLocaleBlogContent(id, newContent).finally(() => router.refresh());
-            }
-        }
-    }, [toBeChanged, quill, content, value, id, router]);
 
     useEffect(() => {
         if (typeof window !== "undefined" && typeof document !== "undefined" && quill === null && editorRef.current) {
@@ -54,13 +47,15 @@ export const QuillEditor = ({ id, content, title, locale, dbLabels, blogLabels }
                 placeholder: "Écrivez votre article ici...",
                 modules: { toolbar }
             };
-            const q = new Quill(editorRef.current, options);
-            setQuill(q);
+            try {
+                const q = new Quill(editorRef.current, options);
+                setQuill(q);
+            } catch (_) {}
         }
     }, [quill]);
 
     useEffect(() => {
-        if (quill !== null) {
+        if (quill !== null && !loaded) {
             quill.setContents(content);
             quill.on("text-change", () => {
                 setValue(JSON.stringify(quill.getContents().ops));
@@ -69,8 +64,9 @@ export const QuillEditor = ({ id, content, title, locale, dbLabels, blogLabels }
                     updateLocaleBlogContent(id, newContent).finally(() => router.refresh());
                 }
             });
+            setLoaded(true);
         }
-    }, [quill, content, id, router]);
+    }, [quill, content, id, router, loaded]);
 
     return (
         <div className="w-full">

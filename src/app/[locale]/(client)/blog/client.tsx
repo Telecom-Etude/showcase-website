@@ -8,14 +8,12 @@ import { getDictionary } from "@/locales/dictionaries";
 import { Locale } from "@/locales/config";
 import { nav } from "@/locales/routing";
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button, VariantLink } from "@/components/ui/button";
 import { ManyComboBox, ManyComboBoxProps } from "@/components/meta-components/combobox";
 import { displayAuthors } from "@/lib/users";
-import { BtnLink } from "@/components/telecom-etude/contact";
-import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
 import { Block } from "@/components/styles/blocks";
+import { useRouter } from "next/navigation";
 
 export interface PostPresentation {
     id: number;
@@ -68,26 +66,31 @@ const BlogsList = ({
     locale: Locale;
     isEditor: boolean;
     email?: string;
-}) =>
-    posts.length == 0 ? (
+}) => {
+    const router = useRouter();
+    const displayedPosts = posts.map(post => ({ displayedAuthors: displayAuthors(locale, post), ...post }));
+    return posts.length == 0 ? (
         <p>{t_none}</p>
     ) : (
         <div className="flex flex-col items-start space-y-10 w-full">
-            {posts.map((post, i) => (
-                <div key={i} className="w-full">
+            {displayedPosts.map((post, i) => (
+                <div
+                    key={i}
+                    className="w-full cursor-pointer"
+                    onClick={() => {
+                        router.push(nav(locale, "/blog/" + post.slug));
+                    }}
+                >
                     <div className="flex items-center space-x-4">
-                        <h3>
-                            <Link className="hover:underline" href={nav(locale, "/blog/" + post.slug)}>
-                                {post.title}
-                            </Link>
-                        </h3>
-                        {isEditor && email && post.emails.includes(email) ? (
+                        <h3>{post.title}</h3>
+                        {/* {isEditor && email && post.emails.includes(email) ? (
                             <VariantLink variant="ghost" href={nav(locale, `/edit-blog/${post.id}`)}>
                                 <FaPencil className="w-4 h-4" />
                             </VariantLink>
-                        ) : null}
+                        ) : null} */}
                     </div>
-                    <p className="italic text-gray text-sm">{displayAuthors(locale, post)}</p>
+                    <p className="italic text-gray text-sm">{post.displayedAuthors}</p>
+                    <p>{post.authors}</p>
                     <div className="flex space-x-2 pt-2">
                         {Object.values(post.labels).map((label, i) => (
                             <p key={i} className="bg-muted rounded-full p-1 px-2">
@@ -100,6 +103,7 @@ const BlogsList = ({
             ))}
         </div>
     );
+};
 
 export default function BlogPage({
     posts,

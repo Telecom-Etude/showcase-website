@@ -76,7 +76,7 @@ const SiteMap = ({ t, locale }: { locale: Locale; t: Dictionary["navigation"]["s
                     title={t.contact_information}
                     items={[
                         { name: t.contact_form, href: "/contact" },
-                        { name: t.blog, href: "/post" },
+                        { name: t.blog, href: "/blog" },
                         { name: t.legal_mentions, href: "/legal" }
                     ]}
                 />
