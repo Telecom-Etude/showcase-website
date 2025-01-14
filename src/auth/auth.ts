@@ -4,6 +4,7 @@ import authConfig from "@/auth/auth.config";
 import { db } from "@/lib/db";
 import { getRights } from "@/db/users";
 import { SIGNIN_PATH, SIGNOUT_PATH } from "./routes";
+import { measureMemory } from "vm";
 
 export interface Rights {
     formAdmin: boolean;
@@ -41,12 +42,21 @@ const config = {
             return token;
         },
         async signIn(params: { user: AuthUser }) {
-            const email = params.user.email;
+            const { email, name } = params.user;
+            if (!email) {
+                return false;
+            }
+            var data;
+            if (name) {
+                data = { email: email!, name: name! };
+            } else {
+                data = { email };
+            }
             if (email) {
                 await db.user.upsert({
                     where: { email },
-                    update: { email },
-                    create: { email }
+                    update: data!,
+                    create: data!
                 });
                 return true;
             } else {

@@ -66,7 +66,7 @@ export const getValidatedBlogs = async (locale: Locale): Promise<PostPresentatio
         const blogs = dbBlogs
             .filter(blog => blog.validated && blog.locale == locale)
             .map(({ authors, labels, updatedAt, ...blog }) => ({
-                authors: authors.map(author => getUserName(author.email)),
+                authors: authors.map(author => author.name),
                 emails: authors.map(author => author.email),
                 date: updatedAt,
                 labels: labels.filter(l => l.locale === locale).map(l => l.name),

@@ -12,6 +12,7 @@ datasource db {
 
 model User {
     id         Int     @id @default(autoincrement())
+    name       String  @default("")
     email      String  @unique
     image      String?
     blogAdmin  Boolean @default(false)
