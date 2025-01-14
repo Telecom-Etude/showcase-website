@@ -49,9 +49,9 @@ export const metadata: Metadata = {
 
 const NumberCard = ({ nb, prefix, suffix, text }: { nb: number; prefix?: string; suffix?: string; text: string }) => {
     return (
-        <Card className="w-[200px] h-full flex-col border-none rounded-lg">
+        <Card className="w-[200px] flex-col border-none rounded-lg bg-transparent">
             <CardHeader>
-                <CardTitle className="text-center">
+                <CardTitle className="text-center m-auto">
                     {prefix ? prefix + " " : ""}
                     {<LoadNumber value={nb} duration={5000} />}
                     {suffix ? " " + suffix : ""}
@@ -88,24 +88,22 @@ export default async function Home({ params: { locale } }: LocaleParams) {
                 </header>
             </Block>
             <Separator />
-            <section className="py-6">
-                <Block className="space-y-6">
-                    <h2 className="text-center">{t.numbers.title}</h2>
-                    <div className="flex lg:flex-row flex-col items-center w-full border-y-2 border-primary justify-around">
-                        <NumberCard nb={97} suffix="%" text={t.numbers.clients} />
-                        <NumberCard nb={60} text={t.numbers.projects} />
-                        <NumberCard nb={45} text={t.numbers.years} />
-                        <NumberCard nb={800} prefix="+" text={t.numbers.pupils} />
-                        <NumberCard nb={33} text={t.numbers.admins} />
-                    </div>
-                </Block>
+            <section className="p-6 space-y-6 bg-navigation">
+                <h2 className="text-center">{t.numbers.title}</h2>
+                <div className="flex lg:flex-row flex-col items-center w-full border-y-2 border-primary justify-around">
+                    <NumberCard nb={97} suffix="%" text={t.numbers.clients} />
+                    <NumberCard nb={60} text={t.numbers.projects} />
+                    <NumberCard nb={45} text={t.numbers.years} />
+                    <NumberCard nb={800} prefix="+" text={t.numbers.pupils} />
+                    <NumberCard nb={33} text={t.numbers.admins} />
+                </div>
             </section>
             <Separator />
             <section className="py-6 space-y-6">
                 <DomainBlock locale={locale} />
             </section>
             <Separator />
-            <Block className="flex flex-col sm:flex-row space-y-4 px-8 py-6 sm:space-x-10">
+            <Block className="flex flex-col sm:flex-row space-y-4 px-8 py-6 sm:space-x-10 bg-navigation">
                 <div className="flex justify-center">
                     <div className="w-[300px]">
                         <BirdLogo />

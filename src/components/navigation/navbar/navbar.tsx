@@ -33,7 +33,7 @@ export const NavBar = ({ locale, user }: { locale: Locale; user?: ExtendedUser }
 
     return (
         <>
-            <div className="sticky z-30 top-0 bg-background">
+            <div className="sticky z-30 top-0 bg-navigation">
                 <div className="hidden lg:flex justify-between border-b-2 border-accent">
                     <Button asChild variant="ghost" className="rounded-none px-0 py-0">
                         <Link

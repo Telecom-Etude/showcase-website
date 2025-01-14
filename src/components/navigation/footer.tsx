@@ -85,7 +85,7 @@ const SiteMap = ({ t, locale }: { locale: Locale; t: Dictionary["navigation"]["s
     );
 };
 
-export const Mentions = ({ bug }: { bug: string }) => (
+const Mentions = ({ bug }: { bug: string }) => (
     <div>
         <div className="w-[200px]">
             <FullLogo />
@@ -105,7 +105,7 @@ export const Mentions = ({ bug }: { bug: string }) => (
 export const Footer = ({ locale }: { locale: Locale }) => {
     const t = getDictionary(locale).navigation.sitemap;
     return (
-        <div className="border-t-2 border-accent flex flex-col sm:flex-row items-center space-y-2 py-4 justify-around">
+        <div className="bg-navigation border-t-2 border-accent flex flex-col sm:flex-row items-center space-y-2 py-4 justify-around">
             <section className="p-10">
                 <Mentions bug={t.bug} />
                 <NetworkLinks />

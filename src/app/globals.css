@@ -21,7 +21,8 @@ html {
         --je-orange: hsl(24 98% 60%);
         --je-red: hsl(357 73% 55%);
 
-        --background: white;
+        --navigation: hsl(24, 98%, 98%);
+        --background: hsl(24, 98%, 99.5%);
         --foreground: black;
 
         --card: white;

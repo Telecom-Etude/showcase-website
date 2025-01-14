@@ -125,12 +125,12 @@ const DesktopLinks = ({ links, contactLink, locale }: { links: ExtendedLink[]; c
     const navLinks = links.map((link: ExtendedLink, i: number) => (
         <NavigationMenuItem key={i}>
             {"href" in link ? (
-                <Link href={link.href} legacyBehavior passHref className="rounded-none">
-                    <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "rounded-none")}>{link.title}</NavigationMenuLink>
+                <Link href={link.href} legacyBehavior passHref className="rounded-none bg-navigation">
+                    <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "rounded-none bg-navigation")}>{link.title}</NavigationMenuLink>
                 </Link>
             ) : (
                 <>
-                    <NavigationMenuTrigger className="rounded-none">{link.title}</NavigationMenuTrigger>
+                    <NavigationMenuTrigger className="rounded-none bg-navigation">{link.title}</NavigationMenuTrigger>
                     <NavigationMenuContent>
                         <ul className="grid grid-cols-2 w-[700px] p-2">
                             {link.links.map(({ title, href }, i) => (
