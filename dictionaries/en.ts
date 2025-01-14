@@ -135,10 +135,10 @@ export const enDictionary: Dictionary = {
         commitments: {
             title: "Our commitments",
             description:
-                "Telecom Etude is an association that enables students to develop technical skills and knowledge of the professional world. We are committed both in our prestation and in various other areas, with charters of commitment",
+                "Telecom Etude is an association that enables students to develop technical skills and knowledge of the professional world. We are committed both in our offer and in various other areas, with charters of commitment",
             jamaissanselles: {
                 title: "Charter #JamaisSansElles",
-                text: "The #JamaisSansElles charter, co-drafted by the Jamais Sans Elles association and the CNJE, defines the commitments of the signatory Junior-Enterprises, including Télécom Étude, in terms of parity and gender diversity. By signing this charter, Télécom Étude undertakes to guarantee the presence of women in all representations involving at least three people. The Junior-Enterprise also undertakes to promote gender equality within its structure, both in the recruitment process and in access to positions of responsibility. Lastly, Télécom Étude is stepping up its action against sexist and sexual violence, through prevention initiatives aimed at students and the application of the CNJE's recommendations at its events",
+                text: 'The #JamaisSansElles charter, co-drafted by the "Jamais Sans Elles" association and the CNJE, defines the commitments of the signatory Junior-Enterprises, including Télécom Étude, in terms of parity and gender diversity. By signing this charter, Télécom Étude undertakes to guarantee the presence of women in all representations involving at least three people. The Junior-Enterprise also undertakes to promote gender equality within its structure, both in the recruitment process and in access to positions of responsibility. Lastly, Télécom Étude is stepping up its action against sexist and sexual violence, through prevention initiatives aimed at students and the application of the CNJE\'s recommendations at its events',
                 alt: "JamaisSansElles logo"
             },
             rse: {
@@ -156,7 +156,7 @@ export const enDictionary: Dictionary = {
             description:
                 "Telecom Etude, founded in 1979, is the Junior-Enterprise of Télécom Paris, a leading engineering school in information and digital technologies. Connect with our responsive and professional team of 33 administrators for tailor-made solutions to your projects. Explore Telecom Etude's expertise and engage with over 1,000 student engineers from Telecom Paris",
             questions: "More questions",
-            subtitle: "The Junior Entreprise for digital, new technologies and data",
+            subtitle: "The Junior Enterprise for digital, new technologies and data",
             alt: "Photo of Telecom Etude's mandate",
             whoarewe: "Who are we?",
             contact: "Contact us",
@@ -201,7 +201,7 @@ export const enDictionary: Dictionary = {
             },
             poles: {
                 board: "The board",
-                devco: "Buisness development department",
+                devco: "Business development department",
                 auditqua: "Audit and quality department",
                 event: "Events department",
                 info: "IT department",
@@ -318,7 +318,7 @@ export const enDictionary: Dictionary = {
             },
             quality: [
                 "A client satisfaction rate of over 97%",
-                "One of the only Junior-Entreprises to be AFNOR ISO00A09001 certified",
+                "One of the only Junior-Enterprises to be AFNOR ISO00A09001 certified",
                 'We have had the best "Satisfaisant" rating from the CNJE for several years.'
             ],
             ourshool: {
@@ -339,7 +339,7 @@ export const enDictionary: Dictionary = {
                 "This dual presentation combines the **consulting expertise** of IESEG Conseil with the **technological skills** of Telecom Etude, offering robust and customised solutions to support you in your digital transformation and growth."
             ],
             satisfaction:
-                "Since its creation, the CNJE has been working to promote the Junior-Entreprise brand so that it remains a **gage of quality**. To this end, it awards quality labels to deserving structures and sets up annual advisory audits. The CNJE provides the assurance that our administrators and project managers receive the appropriate training to offer our clients **formalism and efficiency**"
+                "Since its creation, the CNJE has been working to promote the Junior-Enterprise brand so that it remains a **gage of quality**. To this end, it awards quality labels to deserving structures and sets up annual advisory audits. The CNJE provides the assurance that our administrators and project managers receive the appropriate training to offer our clients **formalism and efficiency**"
         },
         contact: {
             sending: "Form is being submitted. Please wait",

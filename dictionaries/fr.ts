@@ -6,7 +6,7 @@ export const frDictionary = {
                 "Ce site web utilise des cookies pour améliorer votre expérience, analyser le trafic et proposer un contenu personnalisé. Vous pouvez accepter ou refuser les cookies non essentiels. Toutes les données sont collectées et ne quitte pas le réseau interne de Télécom Paris. Pour en savoir plus, consultez notre",
             link: "Politique de confidentialité",
             accept: "Accepter les cookies",
-            reject: "Rejecter les cookies"
+            reject: "Rejeter les cookies"
         },
         auth: {
             signin: {
@@ -276,7 +276,7 @@ export const frDictionary = {
             },
             bearingPoint: {
                 type: "Cabinet de conseil",
-                text: "Ensemble, nous sommes plus qu'une entreprise: telle est la raison d'être de ce cabinet de conseil en management et technologie. BearingPoint accompagne ses clients dans plus de 75 pays et les aide à obtenir des résultats mesurables, durables, et responsables. Depuis 2005, BearingPoint accompagne notre structure, tant en nous formant qu'en nous offrant des opportunités commerciales. Cette réelle synergie est le fruit d'une volonté commune de faire valoir les talents d'aujourd'hui dans une entreprise à notre image : force de proposition et à l'avant-garde de demain. En permettant à des étudiant télécomiens de se rendre dans leurs locaux, ou en valorisant notre réseau d'alumni, BearingPoint s'inscrit dans notre écosystème au travers d'une collaboration mutuellement bénéfique."
+                text: "Ensemble, nous sommes plus qu'une entreprise: telle est la raison d'être de ce cabinet de conseil en management et technologie. BearingPoint accompagne ses clients dans plus de 75 pays et les aide à obtenir des résultats mesurables, durables, et responsables. Depuis 2005, BearingPoint accompagne notre structure, tant en nous formant qu'en nous offrant des opportunités commerciales. Cette réelle synergie est le fruit d'une volonté commune de faire valoir les talents d'aujourd'hui dans une entreprise à notre image : force de proposition et à l'avant-garde de demain. En permettant à des étudiant de Télécom Paris de se rendre dans leurs locaux, ou en valorisant notre réseau d'alumni, BearingPoint s'inscrit dans notre écosystème au travers d'une collaboration mutuellement bénéfique."
             }
         },
         about: {
