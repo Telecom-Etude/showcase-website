@@ -12,6 +12,13 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
     title: "Engagements"
 };
+
+export async function generateStaticParams() {
+    return [{ locale: "en" }, { locale: "fr" }];
+}
+
+export const dynamicParams = false;
+
 export default function Page({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.commitments;
     return (

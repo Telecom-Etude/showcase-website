@@ -19,6 +19,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
     title: "Nos partenaires"
 };
+
 interface PartnerProps {
     title: string;
     logo: StaticImport;
@@ -53,7 +54,13 @@ function Partner({ title, logo, t, url }: PartnerProps) {
     );
 }
 
-export default function Partners({ params: { locale } }: LocaleParams) {
+export async function generateStaticParams() {
+    return [{ locale: "en" }, { locale: "fr" }];
+}
+
+export const dynamicParams = false;
+
+export default function Page({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.partners;
     return (
         <Block>

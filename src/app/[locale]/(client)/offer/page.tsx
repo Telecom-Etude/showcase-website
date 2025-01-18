@@ -19,6 +19,12 @@ export const metadata: Metadata = {
     title: "Notre offre"
 };
 
+export async function generateStaticParams() {
+    return [{ locale: "en" }, { locale: "fr" }];
+}
+
+export const dynamicParams = false;
+
 function MobileTimeline({ locale }: { locale: Locale }) {
     const t = getDictionary(locale).pages.offer.timeline;
     return (

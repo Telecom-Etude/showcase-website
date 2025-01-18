@@ -54,7 +54,13 @@ const TopRight = ({ title, pars, left }: { title: string | ReactNode; pars: Reac
     </div>
 );
 
-export default function About({ params: { locale } }: LocaleParams) {
+export async function generateStaticParams() {
+    return [{ locale: "en" }, { locale: "fr" }];
+}
+
+export const dynamicParams = false;
+
+export default function Page({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.about;
     return (
         <Block full>

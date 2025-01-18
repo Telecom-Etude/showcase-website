@@ -54,6 +54,12 @@ function Department({ department, t }: { t: Dictionary["pages"]["team"]["members
     );
 }
 
+export async function generateStaticParams() {
+    return [{ locale: "en" }, { locale: "fr" }];
+}
+
+export const dynamicParams = false;
+
 export default async function Team({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.team;
     return (

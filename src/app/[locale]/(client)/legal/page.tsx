@@ -11,7 +11,11 @@ export const metadata: Metadata = {
     title: "Mentions légales"
 };
 
-const Stg = ({ children }: { children: React.ReactNode }) => <strong className="font-semibold">{children}</strong>;
+export async function generateStaticParams() {
+    return [{ locale: "en" }, { locale: "fr" }];
+}
+
+export const dynamicParams = false;
 
 export default async function Legal({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.legal;

@@ -5,15 +5,22 @@ import { getDictionary } from "@/locales/dictionaries";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
-    title: "Foire Aux Questions"
-};
 interface FaqItem {
     question: string;
     answer: readonly string[];
 }
 
-export default function FAQ({ params: { locale } }: LocaleParams) {
+export const metadata: Metadata = {
+    title: "Foire Aux Questions"
+};
+
+export async function generateStaticParams() {
+    return [{ locale: "en" }, { locale: "fr" }];
+}
+
+export const dynamicParams = false;
+
+export default function Page({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.faq;
     return (
         <div className="p-10 space-y-10">

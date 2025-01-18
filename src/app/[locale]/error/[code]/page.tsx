@@ -9,8 +9,12 @@ type Params = LocaleParams & {
     params: { code: string };
 };
 
-const Errors = ({ params: { locale, code } }: Params) => {
-    return <ErrorPage code={code} locale={locale} />;
-};
+export async function generateStaticParams() {
+    return [{ locale: "en" }, { locale: "fr" }];
+}
 
-export default Errors;
+export const dynamicParams = false;
+
+export default function Page({ params: { locale, code } }: Params) {
+    return <ErrorPage code={code} locale={locale} />;
+}

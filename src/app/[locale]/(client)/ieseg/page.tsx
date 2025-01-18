@@ -26,6 +26,12 @@ const Paragraph = ({ title, children }: { title: string; children: ReactNode }) 
 
 const section = "flex flex-col items-center justify-center mb-12 space-x-0 space-y-10 p-10";
 
+export async function generateStaticParams() {
+    return [{ locale: "en" }, { locale: "fr" }];
+}
+
+export const dynamicParams = false;
+
 export default function HomePage({ params: { locale } }: { params: { locale: Locale } }) {
     return (
         <div className="container mx-auto px-4 py-8">

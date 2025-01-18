@@ -1,6 +1,6 @@
 "use server";
 
-import { auth, signIn } from "@/auth/auth";
+import { signIn } from "@/auth/auth";
 import { EmailContact } from "@/components/telecom-etude/contact";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";

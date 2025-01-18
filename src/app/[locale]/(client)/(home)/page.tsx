@@ -43,10 +43,6 @@ const trusted: { src: StaticImageData; alt: string }[] = [
     { alt: "BnF logo", src: BnF }
 ];
 
-export const metadata: Metadata = {
-    title: "Accueil"
-};
-
 const NumberCard = ({ nb, prefix, suffix, text }: { nb: number; prefix?: string; suffix?: string; text: string }) => {
     return (
         <Card className="w-[200px] flex-col border-none rounded-lg bg-transparent">
@@ -64,7 +60,17 @@ const NumberCard = ({ nb, prefix, suffix, text }: { nb: number; prefix?: string;
     );
 };
 
-export default async function Home({ params: { locale } }: LocaleParams) {
+export const metadata: Metadata = {
+    title: "Accueil"
+};
+
+export async function generateStaticParams() {
+    return [{ locale: "en" }, { locale: "fr" }];
+}
+
+export const dynamicParams = false;
+
+export default async function Page({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.home;
     return (
         <>

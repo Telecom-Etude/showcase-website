@@ -14,7 +14,6 @@ export const metadata: Metadata = {
 
 export default async function Page({ params: { locale } }: LocaleParams) {
     const posts = await getValidatedBlogs(locale);
-    const session = await auth();
     const labels = await getLocaleLabels(locale);
     const t = getDictionary(locale).pages.blog;
 
@@ -25,14 +24,7 @@ export default async function Page({ params: { locale } }: LocaleParams) {
     return (
         <div className="flex flex-col items-center p-10 space-y-10">
             <h1>{t.title}</h1>
-            <BlogPage
-                dbLabels={labels.map(({ name }) => name)}
-                locale={locale}
-                isEditor={session?.user?.rights?.blogAuthor || false}
-                email={session?.user?.email || undefined}
-                posts={posts}
-                t_none={t.none}
-            />
+            <BlogPage dbLabels={labels.map(({ name }) => name)} locale={locale} posts={posts} t_none={t.none} />
         </div>
     );
 }

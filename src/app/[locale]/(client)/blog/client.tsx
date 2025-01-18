@@ -54,19 +54,7 @@ const LabelSelection = (props: ManyComboBoxProps) => {
     );
 };
 
-const BlogsList = ({
-    posts,
-    locale,
-    email,
-    isEditor,
-    t_none
-}: {
-    t_none: string;
-    posts: PostPresentation[];
-    locale: Locale;
-    isEditor: boolean;
-    email?: string;
-}) => {
+const BlogsList = ({ posts, locale, t_none }: { t_none: string; posts: PostPresentation[]; locale: Locale }) => {
     const router = useRouter();
     const displayedPosts = posts.map(post => ({ displayedAuthors: displayAuthors(locale, post), ...post }));
     return posts.length == 0 ? (
@@ -105,19 +93,7 @@ const BlogsList = ({
     );
 };
 
-export default function BlogPage({
-    posts,
-    locale,
-    dbLabels,
-    ...props
-}: {
-    locale: Locale;
-    dbLabels: string[];
-    t_none: string;
-    isEditor: boolean;
-    email?: string;
-    posts: PostPresentation[];
-}) {
+export default function BlogPage({ posts, locale, dbLabels, ...props }: { locale: Locale; dbLabels: string[]; t_none: string; posts: PostPresentation[] }) {
     const t = getDictionary(locale).pages.blog;
 
     const [selectedLabels, setValue] = useState<string[]>([]);

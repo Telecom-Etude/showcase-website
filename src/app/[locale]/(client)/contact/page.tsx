@@ -9,7 +9,14 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
     title: "Contact"
 };
-export default async function Contact({ params: { locale } }: LocaleParams) {
+
+export async function generateStaticParams() {
+    return [{ locale: "en" }, { locale: "fr" }];
+}
+
+export const dynamicParams = false;
+
+export default async function Page({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.contact;
 
     return (
