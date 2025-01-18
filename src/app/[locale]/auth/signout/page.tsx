@@ -23,7 +23,7 @@ export default async function SignIn({ params: { locale } }: LocaleParams) {
                                 await signOut();
                             }}
                         >
-                            <Button type="submit" variant="link" className="text-foreground bg-white space-x-2 w-full">
+                            <Button type="submit" variant="link" className="text-black bg-white space-x-2 w-full">
                                 <p>{t.buttonText}</p>
                             </Button>
                         </form>

@@ -31,7 +31,7 @@ export default async function Legal({ params: { locale } }: LocaleParams) {
                             </p>
                         </div>
                         <div className="flex flex-col italic text-sm p-2 border-l-2">
-                            <p>{t.legal.owner.siret + ": "} 332 711 522 00018</p>
+                            <p>{t.legal.owner.siret + ": "} 332 711 522 00026</p>
                             <p>{t.legal.owner.urssaf + ": "} 757 090058076001011 8</p>
                             <p>{t.legal.owner.vat + ": "} FR 1933 2711 522 00018</p>
                             <p>{t.legal.owner.ape + ": "} 6202A</p>

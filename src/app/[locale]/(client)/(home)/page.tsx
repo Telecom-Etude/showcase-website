@@ -134,7 +134,7 @@ export default async function Home({ params: { locale } }: LocaleParams) {
                     <div className="grid grid-cols-3 md:grid-cols-6">
                         {trusted.map(({ alt, src }, i) => (
                             <div key={i} className="w-full h-full items-center justify-center flex">
-                                <div className="w-[50%]">
+                                <div className="w-[70%] bg-white p-2">
                                     <Image placeholder="blur" src={src} alt={alt} />
                                 </div>
                             </div>

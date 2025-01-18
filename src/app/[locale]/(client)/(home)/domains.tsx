@@ -9,6 +9,7 @@ import Ima from "@/../public/images/domains/icons/image.png";
 import Se from "@/../public/images/domains/icons/se.png";
 import Market from "@/../public/images/domains/icons/market.png";
 import Dev from "@/../public/images/domains/icons/dev.png";
+import { ReactNode } from "react";
 
 export function DomainBlock({ locale }: { locale: Locale }) {
     const t = getDictionary(locale).pages.home.domains;
@@ -29,18 +30,29 @@ export function DomainBlock({ locale }: { locale: Locale }) {
     );
 }
 
+const ThemedCard = ({ children }: { children: ReactNode }) => (
+    <>
+        <Card className="dark:hidden hover:-translate-y-1 w-full h-full hover:scale-105 transition-all ease-out bg-gradient-to-br from-primary via-primary to-destructive hover:opacity-80 duration-500 grid grid-cols-3 xs:grid-cols-2 rounded-lg">
+            {children}
+        </Card>
+        <Card className="hidden hover:-translate-y-1 w-full h-full hover:scale-105 transition-all ease-out bg-gradient-to-br from-primary via-destructive to-destructive hover:opacity-80 duration-500 dark:grid grid-cols-3 xs:grid-cols-2 rounded-lg">
+            {children}
+        </Card>
+    </>
+);
+
 const DomainCard = ({ title, image, locale }: { title: string; image: StaticImageData; locale: Locale }) => {
     return (
         // <Link href={nav(locale, `/offer/${id}`)} className="p-4 w-full h-full">
         <div className="p-4 w-full h-full">
-            <Card className="hover:-translate-y-1 w-full h-full hover:scale-105 transition-all ease-out bg-gradient-to-br from-primary via-primary to-destructive hover:opacity-80 duration-500 grid grid-cols-3 xs:grid-cols-2 rounded-lg">
+            <ThemedCard>
                 <CardHeader className="">
                     <CardTitle className="m-auto font-normal text-sm xs:text-xl leading-6">{title}</CardTitle>
                 </CardHeader>
                 <CardContent className="col-span-2 xs:col-span-1  flex p-0 ">
                     <Image placeholder="blur" src={image} alt={title} />
                 </CardContent>
-            </Card>
+            </ThemedCard>
         </div>
         // </Link>
     );

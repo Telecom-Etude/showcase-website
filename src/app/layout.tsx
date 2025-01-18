@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
 import localFont from "next/font/local";
 import { getLocale } from "@/headers";
+import { ThemeProvider } from "@/components/themes";
 
 export { generateMetadata } from "./metadata";
 
@@ -45,13 +46,9 @@ export default async function RootLayout({
     return (
         <html lang={locale}>
             <body className={cn(avenir.className, "min-h-dvh flex flex-col")}>
-                <svg width="0" height="0">
-                    <linearGradient id="te-gradient" x1="100%" y1="100%" x2="0%" y2="0%">
-                        <stop stopColor="var(--destructive)" offset="0%" />
-                        <stop stopColor="var(--primary)" offset="100%" />
-                    </linearGradient>
-                </svg>
-                {children}
+                <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+                    {children}
+                </ThemeProvider>
             </body>
         </html>
     );

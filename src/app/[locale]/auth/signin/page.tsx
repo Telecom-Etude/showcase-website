@@ -25,7 +25,7 @@ export default async function SignIn({ params: { locale } }: LocaleParams) {
                                 await signIn("google");
                             }}
                         >
-                            <Button type="submit" variant="link" className="text-foreground bg-white space-x-2 border-0 rounded-[6px] w-full">
+                            <Button type="submit" variant="link" className="text-black bg-white space-x-2 border-0 rounded-[6px] w-full">
                                 <Image src={Google} alt="Google Logo" />
                                 <p>{t.buttonText}</p>
                             </Button>

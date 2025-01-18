@@ -26,6 +26,7 @@ import { Button } from "@/components/ui/button";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa6";
 import { useRouter } from "next/navigation";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import { ThemeSwitch } from "@/components/themes";
 
 const ContactButton = ({ link, mobile = false }: { link: SingleLink; mobile?: boolean }) => (
     <Button asChild variant="call2action" className="w-full rounded-none group/buttoncontact ">
@@ -108,7 +109,7 @@ const MobileLinks = ({ links, contactLink, locale, onClick }: { onClick: () => v
             )}
         </NavigationMenuItem>
     ));
-    navLinks.push(<LocaleSwitch locale={locale} mobile={true} />);
+    navLinks.push(<ThemeSwitch />);
     navLinks.push(<ContactButton link={contactLink} mobile={true} />);
 
     return (
@@ -144,7 +145,8 @@ const DesktopLinks = ({ links, contactLink, locale }: { links: ExtendedLink[]; c
             )}
         </NavigationMenuItem>
     ));
-    navLinks.push(<LocaleSwitch locale={locale} mobile={false} />);
+    navLinks.push(<ThemeSwitch />);
+    navLinks.push(<LocaleSwitch locale={locale} mobile={false} onClick={() => {}} setOpened={() => {}} />);
     navLinks.push(<ContactButton link={contactLink} mobile={false} />);
 
     return (

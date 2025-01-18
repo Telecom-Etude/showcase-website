@@ -1,0 +1,36 @@
+"use client";
+
+import * as React from "react";
+import { ThemeProvider as NextThemesProvider } from "next-themes";
+
+import { useTheme } from "next-themes";
+
+import { Button } from "@/components/ui/button";
+import { IoSunny, IoMoon } from "react-icons/io5";
+
+export function ThemeSwitch() {
+    const { setTheme, theme } = useTheme();
+
+    return (
+        <Button
+            variant="ghost"
+            size="icon"
+            className="px-2 rounded-none"
+            onClick={() => {
+                if (theme == "dark") {
+                    setTheme("light");
+                } else {
+                    setTheme("dark");
+                }
+            }}
+        >
+            <IoSunny className="dark:hidden" />
+            <IoMoon className="dark:block hidden" />
+            <span className="sr-only">Toggle theme</span>
+        </Button>
+    );
+}
+
+export function ThemeProvider({ children, ...props }: React.ComponentProps<typeof NextThemesProvider>) {
+    return <NextThemesProvider {...props}>{children}</NextThemesProvider>;
+}
