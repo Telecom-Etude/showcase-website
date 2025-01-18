@@ -148,7 +148,7 @@ export default function ContactForm({ locale, emails }: { locale: Locale; emails
                     </div>
                 </form>
             </Form>
-            <p className="text-sm italic">{t.terms}</p>
+            <p className="text-sm italic pt-10">{t.terms}</p>
             <AlertDialog open={finished}>
                 <AlertDialogContent>
                     <AlertDialogHeader>

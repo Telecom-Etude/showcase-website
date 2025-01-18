@@ -20,9 +20,9 @@ export default async function Page({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.contact;
 
     return (
-        <Block className="flex flex-col items-center">
+        <Block className="py-10 space-y-10 flex flex-col items-center">
             <h1>{t.title}</h1>
-            <p className="p-2 pb-8 text-center sm:w-[80%] w-[90%]">
+            <p className="pb-8 text-center sm:w-[80%] w-[90%]">
                 {t.before}
                 <EmailContact />
                 {t.after}

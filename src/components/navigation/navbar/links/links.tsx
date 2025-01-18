@@ -28,8 +28,16 @@ import { useRouter } from "next/navigation";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { ThemeSwitch } from "@/components/themes";
 
-const ContactButton = ({ link, mobile = false }: { link: SingleLink; mobile?: boolean }) => (
-    <Button asChild variant="call2action" className="w-full rounded-none group/buttoncontact ">
+const ContactButton = ({ link, onClick, setOpened }: { link: SingleLink; onClick: () => void; setOpened: (open: null | number) => void }) => (
+    <Button
+        asChild
+        variant="call2action"
+        className="w-full rounded-none group/buttoncontact"
+        onClick={() => {
+            onClick();
+            setOpened(null);
+        }}
+    >
         <NavigationMenuItem className="pt-0 pb-0 pl-0 pr-0">
             <Link href={link.href} legacyBehavior passHref>
                 <NavigationMenuLink className="w-full flex space-x-2 justify-center items-center px-4 h-full">
@@ -109,8 +117,9 @@ const MobileLinks = ({ links, contactLink, locale, onClick }: { onClick: () => v
             )}
         </NavigationMenuItem>
     ));
-    navLinks.push(<ThemeSwitch />);
-    navLinks.push(<ContactButton link={contactLink} mobile={true} />);
+    navLinks.push(<ThemeSwitch onClick={onClick} setOpened={setOpened} />);
+    navLinks.push(<LocaleSwitch locale={locale} mobile={true} onClick={onClick} setOpened={setOpened} />);
+    navLinks.push(<ContactButton link={contactLink} onClick={onClick} setOpened={setOpened} />);
 
     return (
         <NavigationMenu>
