@@ -33,6 +33,7 @@ const rewrite = (url: string, req: NextAuthRequest, code: number): NextResponse 
 export default auth(async (req: NextAuthRequest) => {
     const { hasLocale, locale, localelessPath } = getLocaleRoutesProps(req);
     const code = getAuthorisationCode(req, localelessPath);
+    console.log("Middleware: ", localelessPath, "| code = ", code);
     if (code == 404) return;
     if (code != 200) return rewrite(`/${locale}/error/${code}`, req, code);
     if (localelessPath.startsWith("/auth")) {

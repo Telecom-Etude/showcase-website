@@ -57,9 +57,6 @@ html {
     }
 
     .dark {
-        /* --primary-muted: hsla(24, 98%, 60%, 0.5);
-        --primary-accent: hsla(24, 98%, 60%, 0.7); */
-
         --navigation: hsl(0, 0%, 12%);
         --background: hsl(0, 0%, 7%);
         --foreground: white;
