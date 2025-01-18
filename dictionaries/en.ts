@@ -70,7 +70,7 @@ export const enDictionary: Dictionary = {
             offer: "Our offer",
             example_offers: "Example of offers",
             contact_information: "Contact & Information",
-            contact_form: "Contact form",
+            contact_form: "Contact",
             blog: "Blog",
             legal_mentions: "Legal notices",
             login: "Log In",
@@ -86,6 +86,33 @@ export const enDictionary: Dictionary = {
         }
     },
     pages: {
+        ieseg: {
+            title: "Telecom Etude and IÉSEG Conseil Paris",
+            subtitle: "A unique partnership for innovative and effective solutions",
+            presentation: {
+                title: "Presentation IÉSEG Conseil Paris",
+                par: "IÉSEG CONSEIL Paris, Junior-Enterprise of the IÉSEG School of Management, is a Junior-Enterprise whose members are students specializing in Management, Marketing, Finance, Auditing and Information Systems. Created in 2007, IÉSEG CONSEIL Paris offers you the expertise and dynamism of its junior consultants to support you in your consulting projects in strategy, organization, marketing, finance and information systems."
+            },
+            complementary: {
+                title: "Expertise Complémentaire",
+                before: "By combining the technical expertise of Telecom Etude and the commercial expertise of IÉSEG Conseil Paris, we offer a complete solution that covers all aspects of your projects, from engineering to market strategy",
+                strong: " Our approach enables us to support you from A to Z, integrating an assessment of technical feasibility with an in-depth analysis of market demand. ",
+                after: "We believe that every project has unique potential. Choose a two-pronged approach combining technical expertise and commercial perspective to explore your product's potential.",
+                alt: "Graph Complémentarité Telecom Etude IÉSEG Conseil Paris."
+            },
+            innovation: {
+                title: "Innovative Solutions",
+                before: "We use the latest technologies and data science methods to analyze the market and improve the online visibility of your products, enabling you to stay at the forefront of innovation.",
+                strong: " Our services include implementing new technologies, launching new products and optimizing your performance using multi-linear regression and data visualization tools. "
+            },
+
+            gain: {
+                title: "Saving Time and Efficiency",
+                before: "Working hand in hand, we offer an integrated process that saves you time and efficiency. You benefit from our combined skills, without having to coordinate multiple service providers.",
+                strong: " Our collaboration translates into detailed pre-studies, rigorous progress monitoring and clear deliverables, enabling your projects to be implemented quickly and efficiently."
+            },
+            contact: "Contact us!"
+        },
         offer: {
             title: "Our Offer",
             timeline: {

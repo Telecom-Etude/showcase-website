@@ -67,7 +67,7 @@ export const frDictionary = {
             offer: "Notre offre",
             example_offers: "Exemple d'offres",
             contact_information: "Contact & Informations",
-            contact_form: "Formulaire de contact",
+            contact_form: "Contact",
             blog: "Blog",
             legal_mentions: "Mentions légales",
             login: "Connexion",
@@ -83,6 +83,32 @@ export const frDictionary = {
         }
     },
     pages: {
+        ieseg: {
+            title: "Telecom Etude et IÉSEG Conseil Paris",
+            subtitle: "Un partenariat unique pour des solutions innovantes et efficaces",
+            presentation: {
+                title: "Présentation IÉSEG Conseil Paris",
+                par: " IÉSEG CONSEIL Paris, Junior-Entreprise de l'IÉSEG School of Management, est une Junior-Entreprise dont les membres sont des étudiants spécialisés en Management, Marketing, Finance, Audit et Systèmes d'information. Créée en 2007, IÉSEG CONSEIL Paris met à votre disposition l'expertise et le dynamisme de ses consultants juniors pour vous accompagner dans vos projets de conseil en stratégie, organisation, marketing, finance et systèmes d'information."
+            },
+            complementary: {
+                title: "Expertise Complémentaire",
+                before: "En combinant l'expertise technique de Telecom Etude et l'expertise commerciale de IÉSEG Conseil Paris, nous offrons une solution complète qui couvre tous les aspects de vos projets, de l'ingénierie à la stratégie de marché.",
+                strong: " Notre approche permet de vous accompagner de A à Z, en intégrant une évaluation de la faisabilité technique et une analyse approfondie de la demande du marché. ",
+                after: "Nous croyons que chaque projet a un potentiel unique. Faites le choix d'une approche à double facette alliant expertise technique et perspective commerciale pour explorer le potentiel de votre produit.",
+                alt: "Graphique Complémentarité Telecom Etude IÉSEG Conseil Paris"
+            },
+            innovation: {
+                title: "Solutions Innovantes",
+                before: "Nous utilisons les dernières technologies et méthodes de data science pour analyser le marché et améliorer la visibilité en ligne de vos produits, vous permettant ainsi de rester à la pointe de l'innovation.",
+                strong: " Nos services incluent l'implantation de nouvelles technologies, le lancement de nouveaux produits et l'optimisation de vos performances grâce à des régressions multi-linéaires et des outils de visualisation de données. "
+            },
+            gain: {
+                title: "Gain de Temps et d'Efficacité",
+                before: "En travaillant main dans la main, nous offrons un processus intégré qui vous permet de gagner du temps et de l'efficacité. Vous bénéficiez de nos compétences combinées sans avoir à coordonner plusieurs prestataires.",
+                strong: " Notre collaboration se traduit par une pré-étude détaillée, un suivi rigoureux de l'avancement et des livrables clairs, permettant une mise en œuvre rapide et efficace de vos projets."
+            },
+            contact: "Contactez-nous !"
+        },
         offer: {
             title: "Notre offre",
             timeline: {

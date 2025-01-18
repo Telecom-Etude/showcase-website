@@ -10,6 +10,7 @@ import ContactForm from "@/components/meta-components/contact-form";
 
 import IcpGraph from "@/../public/images/ieseg/icpgraph.png";
 import Logo from "@/../public/images/ieseg/logo.webp";
+import { getDictionary } from "@/locales/dictionaries";
 
 export const metadata: Metadata = {
     title: "Offre commune | Telecom Etude & IÉSEG Conseil Paris",
@@ -33,55 +34,33 @@ export async function generateStaticParams() {
 export const dynamicParams = false;
 
 export default function HomePage({ params: { locale } }: { params: { locale: Locale } }) {
+    const t = getDictionary(locale).pages.ieseg;
     return (
         <div className="container mx-auto px-4 py-8">
             <header className="text-center mb-12">
-                <h1 className="font-bold">Telecom Etude et IÉSEG Conseil Paris</h1>
-                <p className="text-xl font-semibold mt-4 text-center">Un partenariat unique pour des solutions innovantes et efficaces</p>
+                <h1 className="font-bold">{t.title}</h1>
+                <p className="text-xl font-semibold mt-4 text-center">{t.subtitle}</p>
             </header>
             <section className={section}>
-                <Paragraph title="Présentation IÉSEG Conseil Paris">
-                    IÉSEG CONSEIL Paris, Junior-Entreprise de l&apos;IÉSEG School of Management, est une Junior-Entreprise dont les membres sont des étudiants
-                    spécialisés en Management, Marketing, Finance, Audit et Systèmes d&apos;information. Créée en 2007, IÉSEG CONSEIL Paris met à votre
-                    disposition l&apos;expertise et le dynamisme de ses consultants juniors pour vous accompagner dans vos projets de conseil en stratégie,
-                    organisation, marketing, finance et systèmes d&apos;information.
-                </Paragraph>
+                <Paragraph title={t.presentation.title}>{t.presentation.par}</Paragraph>
                 <Image className="xl:w-1/3 sm:w-2/3 w-full bg-[#151f2a]" placeholder="blur" src={Logo} alt="Graphique Telecom Etude IÉSEG Conseil Paris" />
             </section>
             <div>
                 <section className={section}>
-                    <Paragraph title="Expertise Complémentaire">
-                        En combinant l&apos;expertise technique de Telecom Etude et l&apos;expertise commerciale de IÉSEG Conseil Paris, nous offrons une
-                        solution complète qui couvre tous les aspects de vos projets, de l&apos;ingénierie à la stratégie de marché.
-                        <strong className="font-semibold">
-                            {" "}
-                            Notre approche permet de vous accompagner de A à Z, en intégrant une évaluation de la faisabilité technique et une analyse
-                            approfondie de la demande du marché.
-                        </strong>{" "}
-                        Nous croyons que chaque projet a un potentiel unique. Faites le choix d&apos;une approche à double facette alliant expertise technique
-                        et perspective commerciale pour explorer le potentiel de votre produit.
+                    <Paragraph title={t.complementary.title}>
+                        {t.complementary.before}
+                        <strong className="font-semibold">{t.complementary.strong}</strong>
+                        {t.complementary.after}
                     </Paragraph>
-                    <Image
-                        placeholder="blur"
-                        className="xl:w-1/3 sm:w-2/3 w-full"
-                        src={IcpGraph}
-                        alt="Graphique Complémentarité Telecom Etude IÉSEG Conseil Paris"
-                    />
+                    <Image placeholder="blur" className="xl:w-1/3 sm:w-2/3 w-full" src={IcpGraph} alt={t.complementary.alt} />
                 </section>
             </div>
-            {/* <Separator /> */}
             <div>
                 <section className={section}>
-                    <Paragraph title="Solutions Innovantes">
-                        Nous utilisons les dernières technologies et méthodes de data science pour analyser le marché et améliorer la visibilité en ligne de vos
-                        produits, vous permettant ainsi de rester à la pointe de l&apos;innovation.
-                        <strong className="font-semibold">
-                            {" "}
-                            Nos services incluent l&apos;implantation de nouvelles technologies, le lancement de nouveaux produits et l&apos;optimisation de vos
-                            performances grâce à des régressions multi-linéaires et des outils de visualisation de données.
-                        </strong>
+                    <Paragraph title={t.innovation.title}>
+                        {t.innovation.before}
+                        <strong className="font-semibold">{t.innovation.strong}</strong>
                     </Paragraph>
-                    {/* <Image placeholder="blur" className="xl:w-1/3 sm:w-2/3 w-full" src={MIT} alt="MIT Super Chip" /> */}
                 </section>
             </div>
             <div>
@@ -108,21 +87,16 @@ export default function HomePage({ params: { locale } }: { params: { locale: Loc
             </div>
             <div>
                 <section className={section}>
-                    <Paragraph title="Gain de Temps et d'Efficacité">
-                        En travaillant main dans la main, nous offrons un processus intégré qui vous permet de gagner du temps et de l&apos;efficacité. Vous
-                        bénéficiez de nos compétences combinées sans avoir à coordonner plusieurs prestataires.
-                        <strong className="font-semibold">
-                            {" "}
-                            Notre collaboration se traduit par une pré-étude détaillée, un suivi rigoureux de l&apos;avancement et des livrables clairs,
-                            permettant une mise en œuvre rapide et efficace de vos projets.
-                        </strong>
+                    <Paragraph title={t.gain.title}>
+                        {t.gain.before}
+                        <strong className="font-semibold">{t.gain.strong}</strong>
                     </Paragraph>
                 </section>
             </div>
             <div>
                 <section className={cn(section, "space-y-0")}>
                     <div className="w-full sm:w-2/3">
-                        <h2 className="text-left w-full font-semibold mb-4">Contactez-nous !</h2>
+                        <h2 className="text-left w-full font-semibold mb-4">{t.contact}</h2>
                         <ContactForm emails={[process.env.FORM_DEST_EMAIL, process.env.IESEG_EMAIL]} locale={locale} />
                     </div>
                 </section>
