@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
             userAgent: "*",
             allow: "*"
         },
-        sitemap: "https://telecom-etude.fr/sitemap.xml"
+        sitemap: process.env.WEBSITE_URL + "/sitemap.xml"
     };
 }

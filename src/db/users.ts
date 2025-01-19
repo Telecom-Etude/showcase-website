@@ -7,7 +7,7 @@ import { db } from "@/lib/db";
 
 ////////////// READ ///////////////////
 
-export const getRights = async (email: string | null | undefined): Promise<Rights | null> => {
+export async function getRights(email: string | null | undefined): Promise<Rights | null> {
     var rights = null;
     if (!email) {
         return rights;
@@ -25,11 +25,11 @@ export const getRights = async (email: string | null | undefined): Promise<Right
         // console.error(`[getRights] Error:\n\n${e}\n`);
         return null;
     }
-};
+}
 
 ////////////// UPDATE  ///////////////////
 
-export const makeBlogAdmin = async (email: string, value: boolean) => {
+export async function makeBlogAdmin(email: string, value: boolean) {
     try {
         await db.user.update({
             where: { email },
@@ -38,9 +38,9 @@ export const makeBlogAdmin = async (email: string, value: boolean) => {
     } catch (e) {
         console.error(`[makeBlogAdmin] Error:\n\n${e}\n`);
     }
-};
+}
 
-export const makeUserAdmin = async (email: string, value: boolean) => {
+export async function makeUserAdmin(email: string, value: boolean) {
     try {
         const x = await db.user.update({
             where: { email },
@@ -49,9 +49,9 @@ export const makeUserAdmin = async (email: string, value: boolean) => {
     } catch (e) {
         console.error(`[makeUserAdmin] Error:\n\n${e}\n`);
     }
-};
+}
 
-export const makeFormAdmin = async (email: string, value: boolean) => {
+export async function makeFormAdmin(email: string, value: boolean) {
     try {
         await db.user.update({
             where: { email },
@@ -60,9 +60,9 @@ export const makeFormAdmin = async (email: string, value: boolean) => {
     } catch (e) {
         console.error(`[makeFormAdmin] Error:\n\n${e}\n`);
     }
-};
+}
 
-export const makeBlogAuthor = async (email: string, value: boolean) => {
+export async function makeBlogAuthor(email: string, value: boolean) {
     try {
         await db.user.update({
             where: { email },
@@ -71,14 +71,14 @@ export const makeBlogAuthor = async (email: string, value: boolean) => {
     } catch (e) {
         console.error(`[makeFormAdmin] Error:\n\n${e}\n`);
     }
-};
+}
 
 ////////////// DELETE  ///////////////////
 
-export const deleteUser = async (email: string) => {
+export async function deleteUser(email: string) {
     try {
         await db.user.delete({ where: { email } });
     } catch (e) {
         console.error(`[deleteUser] Error:\n\n${e}\n`);
     }
-};
+}

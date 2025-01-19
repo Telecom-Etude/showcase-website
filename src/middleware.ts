@@ -18,17 +18,19 @@ import { getLocaleRoutesProps } from "@/locales/routing";
 /**
  * A redirection will change the URL of the page and render the page at the new URL.
  */
-const redirect = (url: string, req: NextAuthRequest): NextResponse => NextResponse.redirect(new URL(url, req.nextUrl.href));
+function redirect(url: string, req: NextAuthRequest) {
+    return NextResponse.redirect(new URL(url, req.nextUrl.href));
+}
 
 /**
  * A rewrite will render the page of the specified url, but will not change the window URL.
  */
-const rewrite = (url: string, req: NextAuthRequest, code: number): NextResponse => {
+function rewrite(url: string, req: NextAuthRequest, code: number) {
     const new_url = req.nextUrl.clone();
     new_url.pathname = url;
     const res = NextResponse.rewrite(new_url);
     return new NextResponse(res.body, { status: code, headers: res.headers });
-};
+}
 
 export default auth(async (req: NextAuthRequest) => {
     const { hasLocale, locale, localelessPath } = getLocaleRoutesProps(req);

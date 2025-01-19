@@ -29,7 +29,7 @@ export interface PostPresentation {
 const allLabelsInValue = (postLabels: string[], selectedLabels: string[]) =>
     selectedLabels.filter(label => postLabels.includes(label)).length === selectedLabels.length;
 
-const LabelSelection = (props: ManyComboBoxProps) => {
+function LabelSelection(props: ManyComboBoxProps) {
     const LabelSelector = () => <ManyComboBox {...props} />;
 
     return (
@@ -52,9 +52,9 @@ const LabelSelection = (props: ManyComboBoxProps) => {
             </div>
         </div>
     );
-};
+}
 
-const BlogsList = ({ posts, locale, t_none }: { t_none: string; posts: PostPresentation[]; locale: Locale }) => {
+function BlogsList({ posts, locale, t_none }: { t_none: string; posts: PostPresentation[]; locale: Locale }) {
     const router = useRouter();
     const displayedPosts = posts.map(post => ({ displayedAuthors: displayAuthors(locale, post), ...post }));
     return posts.length == 0 ? (
@@ -91,7 +91,7 @@ const BlogsList = ({ posts, locale, t_none }: { t_none: string; posts: PostPrese
             ))}
         </div>
     );
-};
+}
 
 export default function BlogPage({ posts, locale, dbLabels, ...props }: { locale: Locale; dbLabels: string[]; t_none: string; posts: PostPresentation[] }) {
     const t = getDictionary(locale).pages.blog;

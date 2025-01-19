@@ -67,7 +67,7 @@ export const ALL_ROUTES: { [key: string]: RouteProps } = {
     "/list-blog": { auth: checkAdminRights(r => r.blogAdmin || r.blogAuthor) }
 };
 
-const getCode = (req: NextAuthRequest, routeProps: RouteProps) => {
+function getCode(req: NextAuthRequest, routeProps: RouteProps) {
     if (routeProps.code) {
         return routeProps.code;
     } else if (routeProps.auth) {
@@ -75,7 +75,7 @@ const getCode = (req: NextAuthRequest, routeProps: RouteProps) => {
     } else {
         return 200;
     }
-};
+}
 
 const PREFIX_ROUTES: { [key: string]: RouteProps } = {
     "/edit-blog": { auth: checkAdminRights(r => r.blogAuthor) },
@@ -84,7 +84,7 @@ const PREFIX_ROUTES: { [key: string]: RouteProps } = {
     "/error": {}
 };
 
-export const getAuthorisationCode = (req: NextAuthRequest, localelessPath: string): number => {
+export function getAuthorisationCode(req: NextAuthRequest, localelessPath: string) {
     if (localelessPath in ALL_ROUTES) {
         return getCode(req, ALL_ROUTES[localelessPath as keyof typeof ALL_ROUTES]);
     }
@@ -95,4 +95,4 @@ export const getAuthorisationCode = (req: NextAuthRequest, localelessPath: strin
         }
     }
     return 404;
-};
+}

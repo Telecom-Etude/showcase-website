@@ -19,7 +19,7 @@ export interface QuillEditorProps {
     blogLabels: string[];
 }
 
-export const QuillEditor = ({ id, content, title, locale, dbLabels, blogLabels }: QuillEditorProps) => {
+export function QuillEditor({ id, content, title, locale, dbLabels, blogLabels }: QuillEditorProps) {
     const [quill, setQuill] = useState<Quill | null>(null);
     const [loaded, setLoaded] = useState(false); // to do only one request to the server per render
     const [value, setValue] = useState(JSON.stringify(content));
@@ -74,4 +74,4 @@ export const QuillEditor = ({ id, content, title, locale, dbLabels, blogLabels }
             <div ref={editorRef} />
         </div>
     );
-};
+}

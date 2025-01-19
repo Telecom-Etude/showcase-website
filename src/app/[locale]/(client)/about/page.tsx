@@ -23,36 +23,43 @@ export const metadata: Metadata = {
     title: "À propos"
 };
 
-const Text = ({ title, children }: { title: string | ReactNode; children: ReactNode }) => (
-    <section className="flex flex-col pb-10 justify-evenly h-full items-center space-y-4 text-lg">
-        <h2>{title}</h2>
-        {children}
-    </section>
-);
+function Text({ title, children }: { title: string | ReactNode; children: ReactNode }) {
+    return (
+        <section className="flex flex-col pb-10 justify-evenly h-full items-center space-y-4 text-lg">
+            <h2>{title}</h2>
+            {children}
+        </section>
+    );
+}
 
-const SideImage = ({ src, alt, className, ...props }: { src: StaticImageData; alt: string; className?: string }) => (
-    <Image placeholder="blur" src={src} alt={alt} className={cn("w-auto m-auto max-h-[300px] rounded-2xl", className)} {...props} />
-);
+function SideImage({ src, alt, className, ...props }: { src: StaticImageData; alt: string; className?: string }) {
+    return <Image placeholder="blur" src={src} alt={alt} className={cn("w-auto m-auto max-h-[300px] rounded-2xl", className)} {...props} />;
+}
 
-const TopLeft = ({ title, pars, right }: { title: string | ReactNode; pars: ReactNode; right: ReactNode }) => (
-    <div className="flex flex-col justify-center items-center xl:flex-row p-10 xl:space-x-10 xl:space-y-0 space-y-10 max-w-[800px] xl:max-w-[2000px] m-auto">
-        <div className="xl:w-1/2">
-            <Text title={title}>{pars}</Text>
+function TopLeft({ title, pars, right }: { title: string | ReactNode; pars: ReactNode; right: ReactNode }) {
+    return (
+        <div className="flex flex-col justify-center items-center xl:flex-row p-10 xl:space-x-10 xl:space-y-0 space-y-10 max-w-[800px] xl:max-w-[2000px] m-auto">
+            <div className="xl:w-1/2">
+                <Text title={title}>{pars}</Text>
+            </div>
+            <div className="xl:w-1/2">{right}</div>
         </div>
-        <div className="xl:w-1/2">{right}</div>
-    </div>
-);
-const TopRight = ({ title, pars, left }: { title: string | ReactNode; pars: ReactNode; left: ReactNode }) => (
-    <div className="flex flex-col justify-center items-center xl:flex-row p-10 xl:space-x-10 xl:space-y-0 space-y-10 max-w-[800px] xl:max-w-[2000px] m-auto">
-        <div className="xl:hidden">
-            <Text title={title}>{pars}</Text>
+    );
+}
+
+function TopRight({ title, pars, left }: { title: string | ReactNode; pars: ReactNode; left: ReactNode }) {
+    return (
+        <div className="flex flex-col justify-center items-center xl:flex-row p-10 xl:space-x-10 xl:space-y-0 space-y-10 max-w-[800px] xl:max-w-[2000px] m-auto">
+            <div className="xl:hidden">
+                <Text title={title}>{pars}</Text>
+            </div>
+            <div className="xl:w-1/2">{left}</div>
+            <div className="xl:block hidden w-1/2">
+                <Text title={title}>{pars}</Text>
+            </div>
         </div>
-        <div className="xl:w-1/2">{left}</div>
-        <div className="xl:block hidden w-1/2">
-            <Text title={title}>{pars}</Text>
-        </div>
-    </div>
-);
+    );
+}
 
 export async function generateStaticParams() {
     return [{ locale: "en" }, { locale: "fr" }];

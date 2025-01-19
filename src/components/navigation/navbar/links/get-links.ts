@@ -14,7 +14,7 @@ export interface MultipleLink {
 }
 export type ExtendedLink = SingleLink | MultipleLink;
 
-export const getLinks = (locale: Locale, user: ExtendedUser) => {
+export function getLinks(locale: Locale, user: ExtendedUser) {
     const t = getDictionary(locale).navigation;
     const s = t.sitemap;
 
@@ -39,11 +39,11 @@ export const getLinks = (locale: Locale, user: ExtendedUser) => {
         typeof user === "undefined"
             ? { title: s.login, href: nav(locale, "/auth/signin") }
             : authLinks.length <= 1
-              ? logoutLink
-              : {
-                    title: t.admin.account,
-                    links: authLinks
-                };
+            ? logoutLink
+            : {
+                  title: t.admin.account,
+                  links: authLinks
+              };
 
     const links: ExtendedLink[] = [
         {
@@ -70,4 +70,4 @@ export const getLinks = (locale: Locale, user: ExtendedUser) => {
     ] as const;
 
     return links;
-};
+}

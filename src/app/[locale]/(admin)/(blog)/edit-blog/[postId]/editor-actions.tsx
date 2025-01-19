@@ -16,90 +16,97 @@ import { getBlog, renameBlog } from "@/db/blogs";
 import { updatePostLabels } from "@/db/labels";
 import { Locale } from "@/locales/config";
 
-const Rename = ({ title, id, router }: { title: string; id: number; router: AppRouterInstance }) => (
-    <Dialog>
-        <DialogTrigger asChild>
-            <Button variant="outline">
-                <span className="flex items-center space-x-2">
-                    <p>Renommer</p>
-                    <FaPencil />
-                </span>
-            </Button>
-        </DialogTrigger>
-        <DialogContent>
-            <DialogHeader>
-                <DialogTitle>Modification du titre du post</DialogTitle>
-                <form
-                    className="flex flex-col items-center w-full space-y-10"
-                    onSubmit={e => {
-                        const formData = new FormData(e.target as HTMLFormElement);
-                        const title = formData.get("title") as string;
-                        renameBlog(id, title).finally(() => {
-                            router.refresh();
-                        });
-                    }}
-                >
-                    <Label htmlFor="title" className="w-full">
-                        Titre
-                    </Label>
-                    <Input defaultValue={title} className="w-full" type="text" name="title" id="title" />
-                    <Button variant="call2action" type="submit">
-                        Renommer
-                    </Button>
-                </form>
-            </DialogHeader>
-        </DialogContent>
-    </Dialog>
-);
+function Rename({ title, id, router }: { title: string; id: number; router: AppRouterInstance }) {
+    return (
+        <Dialog>
+            <DialogTrigger asChild>
+                <Button variant="outline">
+                    <span className="flex items-center space-x-2">
+                        <p>Renommer</p>
+                        <FaPencil />
+                    </span>
+                </Button>
+            </DialogTrigger>
+            <DialogContent>
+                <DialogHeader>
+                    <DialogTitle>Modification du titre du post</DialogTitle>
+                    <form
+                        className="flex flex-col items-center w-full space-y-10"
+                        onSubmit={e => {
+                            const formData = new FormData(e.target as HTMLFormElement);
+                            const title = formData.get("title") as string;
+                            renameBlog(id, title).finally(() => {
+                                router.refresh();
+                            });
+                        }}
+                    >
+                        <Label htmlFor="title" className="w-full">
+                            Titre
+                        </Label>
+                        <Input defaultValue={title} className="w-full" type="text" name="title" id="title" />
+                        <Button variant="call2action" type="submit">
+                            Renommer
+                        </Button>
+                    </form>
+                </DialogHeader>
+            </DialogContent>
+        </Dialog>
+    );
+}
 
-const AddLabel = ({ getLabels, addRemoveLabel, dbLabels }: { getLabels: string[]; addRemoveLabel: (x: string) => void; dbLabels: string[] }) => (
-    <ManyComboBox
-        selected={getLabels}
-        addRemove={addRemoveLabel}
-        items={dbLabels}
-        vocab={{
-            title: "Modifier les labels",
-            selectorMessage: "Selectionner au plus 6 labels",
-            empty: "Aucun filtre ne correspond à cette recherche"
-        }}
-        limit={6}
-    />
-);
+function AddLabel({ getLabels, addRemoveLabel, dbLabels }: { getLabels: string[]; addRemoveLabel: (x: string) => void; dbLabels: string[] }) {
+    return (
+        <ManyComboBox
+            selected={getLabels}
+            addRemove={addRemoveLabel}
+            items={dbLabels}
+            vocab={{
+                title: "Modifier les labels",
+                selectorMessage: "Selectionner au plus 6 labels",
+                empty: "Aucun filtre ne correspond à cette recherche"
+            }}
+            limit={6}
+        />
+    );
+}
 
-const OpenSave = ({ saving }: { saving: boolean }) => (
-    <Dialog>
-        <DialogTrigger asChild>
-            <Button variant="outline">
-                <span className="flex items-center space-x-2">
-                    {saving ? (
-                        <>
-                            <p>Sauvegarde en cours</p>
-                            <AiOutlineLoading3Quarters className="animate-spin" />
-                        </>
-                    ) : (
-                        <>
-                            <p>Sauvegardé</p>
-                            <FaCheck />
-                        </>
-                    )}
-                </span>
-            </Button>
-        </DialogTrigger>
-        <DialogContent>
-            <DialogHeader className="space-y-6">
-                <DialogTitle>Sauvegarde automatique des posts</DialogTitle>
-                <DialogDescription className="flex items-center flex-col">
-                    Une sauvegarde automatique s&apos;effectue en permanence pour éviter les pertes de données. Comme elles peuvent prendre du temps, vous
-                    pouvez faire une sauvegarde manuelle avant de quitter la page avec le bouton &ldquo;Sauvegarder&rdquo;. Spammer ce bouton ne sert à rien,
-                    juste peut entraîner des crash.
-                </DialogDescription>
-                <DialogFooter className="text-destructive">
-                    ATTENTION: ne quittez pas la page tant que le status n&apos;est pas marqué en &ldquo;Sauvegardé&rdquo; au risque de perdre votre contenu...
-                </DialogFooter>
-            </DialogHeader>
-        </DialogContent>
-    </Dialog>
-);
+function OpenSave({ saving }: { saving: boolean }) {
+    return (
+        <Dialog>
+            <DialogTrigger asChild>
+                <Button variant="outline">
+                    <span className="flex items-center space-x-2">
+                        {saving ? (
+                            <>
+                                <p>Sauvegarde en cours</p>
+                                <AiOutlineLoading3Quarters className="animate-spin" />
+                            </>
+                        ) : (
+                            <>
+                                <p>Sauvegardé</p>
+                                <FaCheck />
+                            </>
+                        )}
+                    </span>
+                </Button>
+            </DialogTrigger>
+            <DialogContent>
+                <DialogHeader className="space-y-6">
+                    <DialogTitle>Sauvegarde automatique des posts</DialogTitle>
+                    <DialogDescription className="flex items-center flex-col">
+                        Une sauvegarde automatique s&apos;effectue en permanence pour éviter les pertes de données. Comme elles peuvent prendre du temps, vous
+                        pouvez faire une sauvegarde manuelle avant de quitter la page avec le bouton &ldquo;Sauvegarder&rdquo;. Spammer ce bouton ne sert à
+                        rien, juste peut entraîner des crash.
+                    </DialogDescription>
+                    <DialogFooter className="text-destructive">
+                        ATTENTION: ne quittez pas la page tant que le status n&apos;est pas marqué en &ldquo;Sauvegardé&rdquo; au risque de perdre votre
+                        contenu...
+                    </DialogFooter>
+                </DialogHeader>
+            </DialogContent>
+        </Dialog>
+    );
+}
 
 interface ActionProps {
     readonly content: Op[];
@@ -112,7 +119,7 @@ interface ActionProps {
     readonly locale: Locale;
 }
 
-export const Actions = ({ setToBeChanged, content, value, title, id, dbLabels, blogLabels, locale }: ActionProps) => {
+export function Actions({ setToBeChanged, content, value, title, id, dbLabels, blogLabels, locale }: ActionProps) {
     const [getLabels, setLabels] = useState<string[]>(blogLabels);
     const addRemoveLabel = (label: string) => {
         var newLabels = getLabels;
@@ -159,4 +166,4 @@ export const Actions = ({ setToBeChanged, content, value, title, id, dbLabels, b
             </div> */}
         </>
     );
-};
+}

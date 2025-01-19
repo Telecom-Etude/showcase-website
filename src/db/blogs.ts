@@ -8,7 +8,7 @@ import { getUserName } from "@/lib/users";
 import { Label, Post, User } from "@prisma/client";
 import { generateSlug } from "./slug";
 
-export const createBlog = async (authorEmail: string, title: string, locale: Locale): Promise<number> => {
+export async function createBlog(authorEmail: string, title: string, locale: Locale): Promise<number> {
     try {
         if (!authorEmail) {
             throw new Error("Author email is undefined");
@@ -33,9 +33,9 @@ export const createBlog = async (authorEmail: string, title: string, locale: Loc
         console.error("[createBlog] ", e);
         throw new Error();
     }
-};
+}
 
-export const updateLocaleBlogContent = async (id: number, content: Op[]) => {
+export async function updateLocaleBlogContent(id: number, content: Op[]) {
     try {
         await db.post.update({
             where: { id: id },
@@ -44,9 +44,9 @@ export const updateLocaleBlogContent = async (id: number, content: Op[]) => {
     } catch (e) {
         console.error("[updateBlogContent] ", e);
     }
-};
+}
 
-export const getBlogContent = async (id: number): Promise<Op[] | undefined> => {
+export async function getBlogContent(id: number): Promise<Op[] | undefined> {
     try {
         const blog = await db.post.findUnique({
             where: { id: id },
@@ -56,9 +56,9 @@ export const getBlogContent = async (id: number): Promise<Op[] | undefined> => {
     } catch (e) {
         // console.error("[getLocaleBlogContent] ", e);
     }
-};
+}
 
-export const getValidatedBlogs = async (locale: Locale): Promise<PostPresentation[] | undefined> => {
+export async function getValidatedBlogs(locale: Locale): Promise<PostPresentation[] | undefined> {
     try {
         const dbBlogs = await db.post.findMany({
             include: { authors: true, labels: true }
@@ -76,38 +76,38 @@ export const getValidatedBlogs = async (locale: Locale): Promise<PostPresentatio
     } catch (e) {
         console.error("[getBlogs] ", e);
     }
-};
+}
 
 export type UserPost = {
     authors: User[];
     labels: Label[];
 } & Post;
 
-export const getAllBlog = async (): Promise<UserPost[]> => {
+export async function getAllBlog(): Promise<UserPost[]> {
     try {
         return (await db.post.findMany({ include: { authors: true, labels: true } })) || [];
     } catch (e) {
         console.error("[getBlog] ", e);
         return [];
     }
-};
-export const getBlog = async (id: number): Promise<UserPost | undefined> => {
+}
+export async function getBlog(id: number): Promise<UserPost | undefined> {
     try {
         return (await db.post.findUnique({ where: { id: id }, include: { authors: true, labels: true } })) || undefined;
     } catch (e) {
         console.error("[getBlog] ", e);
     }
-};
+}
 
-export const deleteBlog = async (id: number) => {
+export async function deleteBlog(id: number) {
     try {
         await db.post.delete({ where: { id: id } });
     } catch (e) {
         console.error("[deleteBlog] ", e);
     }
-};
+}
 
-export const renameBlog = async (id: number, title: string) => {
+export async function renameBlog(id: number, title: string) {
     try {
         await db.post.update({
             where: { id: id },
@@ -116,20 +116,20 @@ export const renameBlog = async (id: number, title: string) => {
     } catch (e) {
         console.error("[renameLocaleBlog] ", e);
     }
-};
+}
 
-export const validateBlog = async (id: number) => {
+export async function validateBlog(id: number) {
     try {
         await db.post.update({ where: { id }, data: { validated: true } });
     } catch (e) {
         console.error("[validateBlog] ", e);
     }
-};
+}
 
-export const unvalidateBlog = async (id: number) => {
+export async function unvalidateBlog(id: number) {
     try {
         await db.post.update({ where: { id }, data: { validated: false } });
     } catch (e) {
         console.error("[unvalidateBlog] ", e);
     }
-};
+}

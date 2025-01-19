@@ -2,10 +2,10 @@
 
 import { headers } from "next/headers";
 
-export const localeIsEn = async () => {
+export async function localeIsEn() {
     return headers().get("x-current-path")?.startsWith("/en");
-};
+}
 
-export const getLocale = async () => {
+export async function getLocale() {
     return (await localeIsEn()) ? "en" : "fr";
-};
+}

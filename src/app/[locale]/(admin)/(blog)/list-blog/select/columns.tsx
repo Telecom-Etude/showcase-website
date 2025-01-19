@@ -17,7 +17,7 @@ import { getUserName } from "@/lib/users";
 import { Checkbox } from "@/components/ui/checkbox";
 import Link from "next/link";
 
-const Delete = ({ row }: { row: Row<ValidationBlogType> }) => {
+function Delete({ row }: { row: Row<ValidationBlogType> }) {
     const router = useRouter();
     return (
         <Dialog>
@@ -28,7 +28,7 @@ const Delete = ({ row }: { row: Row<ValidationBlogType> }) => {
             </DialogTrigger>
             <DialogContent>
                 <DialogHeader>
-                    <DialogTitle>Êtes-vous sur de vouloir suprimer ce post ?</DialogTitle>
+                    <DialogTitle>Êtes-vous sur de vouloir supprimer ce post ?</DialogTitle>
                     <DialogDescription>Cette action est irréversible. Toutes les données seront écrasées.</DialogDescription>
                     <DialogFooter>
                         <DialogClose>Annuler</DialogClose>
@@ -47,7 +47,7 @@ const Delete = ({ row }: { row: Row<ValidationBlogType> }) => {
             </DialogContent>
         </Dialog>
     );
-};
+}
 
 export const columns: ColumnDef<ValidationBlogType>[] = [
     {
@@ -60,15 +60,13 @@ export const columns: ColumnDef<ValidationBlogType>[] = [
     {
         accessorKey: "emails",
         header: ({ column }) => <DataTableColumnHeader column={column} title="Auteur" />,
-        cell: ({ row }) => {
-            return (
-                <div className="flex flex-col">
-                    {(row.getValue("emails") as string[]).map((email: string, i) => (
-                        <EmailBtn email={email} text={getUserName(email)} key={i} />
-                    ))}
-                </div>
-            );
-        },
+        cell: ({ row }) => (
+            <div className="flex flex-col">
+                {(row.getValue("emails") as string[]).map((email: string, i) => (
+                    <EmailBtn email={email} text={getUserName(email)} key={i} />
+                ))}
+            </div>
+        ),
         enableSorting: false
     },
 

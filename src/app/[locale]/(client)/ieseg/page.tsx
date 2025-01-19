@@ -18,12 +18,14 @@ export const metadata: Metadata = {
         "IÉSEG Conseil Paris (ICP) et Telecom Etude (TE) s'associent pour offrir une gamme complète de services de consulting, combinant leurs expertises en ingénierie et en commerce pour répondre aux besoins variés des entreprises. Leur offre commune se décline en plusieurs volets, notamment la maîtrise des données de marché, l'analyse marketing, l'optimisation de l'expérience client, et l'acquisition digitale. Par exemple, pour l'implantation de nouvelles technologies, ils proposent une approche intégrée pour évaluer la faisabilité technique et la demande du marché, en utilisant à la fois l'analyse sectorielle, le benchmark et le prototypage. En matière d'analyse de l'expérience client, ICP réalise des visites mystères et des interviews de sortie pour évaluer objectivement le service, tandis que TE développe des modèles de prédiction pour anticiper les heures de pointe. En marketing digital, ICP crée des stratégies de communication et de référencement, tandis que TE se concentre sur le développement d'outils digitaux tels que des sites web et des applications. Cette synergie entre ICP, fort de ses nombreuses études et de ses ressources documentaires, et TE, reconnue pour son excellence en ingénierie numérique, permet d'offrir des solutions complètes et adaptées aux besoins spécifiques des entreprises, allant de petites PME aux grands comptes."
 };
 
-const Paragraph = ({ title, children }: { title: string; children: ReactNode }) => (
-    <div className="sm:w-2/3 w-full">
-        <h2 className="font-semibold mb-4">{title}</h2>
-        <p className="text-lg">{children}</p>
-    </div>
-);
+function Paragraph({ title, children }: { title: string; children: ReactNode }) {
+    return (
+        <div className="sm:w-2/3 w-full">
+            <h2 className="font-semibold mb-4">{title}</h2>
+            <p className="text-lg">{children}</p>
+        </div>
+    );
+}
 
 const section = "flex flex-col items-center justify-center mb-12 space-x-0 space-y-10 p-10";
 

@@ -10,8 +10,6 @@ type Params = LocaleParams & {
     params: { code: string };
 };
 
-const Errors = async () => {
+export default async function Errors() {
     return <ErrorPage code={"404"} locale={await getLocale()} />;
-};
-
-export default Errors;
+}

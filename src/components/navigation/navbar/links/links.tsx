@@ -154,9 +154,9 @@ const DesktopLinks = ({ links, contactLink, locale }: { links: ExtendedLink[]; c
             )}
         </NavigationMenuItem>
     ));
-    navLinks.push(<ThemeSwitch />);
+    navLinks.push(<ThemeSwitch onClick={() => {}} setOpened={() => {}} />);
     navLinks.push(<LocaleSwitch locale={locale} mobile={false} onClick={() => {}} setOpened={() => {}} />);
-    navLinks.push(<ContactButton link={contactLink} mobile={false} />);
+    navLinks.push(<ContactButton link={contactLink} onClick={() => {}} setOpened={() => {}} />);
 
     return (
         <NavigationMenu>

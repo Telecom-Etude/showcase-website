@@ -16,7 +16,7 @@ import { UserRolesType } from "./schema";
 import { getUserName } from "@/lib/users";
 import { toast } from "@/components/ui/use-toast";
 
-const ActionCheckBox = ({
+function ActionCheckBox({
     row,
     column,
     func
@@ -24,7 +24,7 @@ const ActionCheckBox = ({
     row: Row<UserRolesType>;
     column: keyof UserRolesType;
     func: (email: string, value: boolean) => Promise<void>;
-}) => {
+}) {
     const email = row.original.email!;
     const router = useRouter();
     return (
@@ -49,9 +49,9 @@ const ActionCheckBox = ({
             />
         </div>
     );
-};
+}
 
-const Delete = ({ row }: { row: Row<UserRolesType> }) => {
+function Delete({ row }: { row: Row<UserRolesType> }) {
     const router = useRouter();
     return (
         <Dialog>
@@ -62,7 +62,7 @@ const Delete = ({ row }: { row: Row<UserRolesType> }) => {
             </DialogTrigger>
             <DialogContent>
                 <DialogHeader>
-                    <DialogTitle>Êtes-vous sur de vouloir suprimer ce compte ?</DialogTitle>
+                    <DialogTitle>Êtes-vous sur de vouloir supprimer ce compte ?</DialogTitle>
                     <DialogDescription>Cette action est irréversible. Toutes les données seront écrasées.</DialogDescription>
                     <DialogFooter>
                         <DialogClose>Annuler</DialogClose>
@@ -81,19 +81,17 @@ const Delete = ({ row }: { row: Row<UserRolesType> }) => {
             </DialogContent>
         </Dialog>
     );
-};
+}
 
 export const columns: ColumnDef<UserRolesType>[] = [
     {
         accessorKey: "email",
         header: ({ column }) => <DataTableColumnHeader column={column} title="Email" />,
-        cell: ({ row }) => {
-            return (
-                <div className="flex space-x-2">
-                    <span className="max-w-[500px] truncate font-medium">{getUserName(row.original.email)}</span>
-                </div>
-            );
-        }
+        cell: ({ row }) => (
+            <div className="flex space-x-2">
+                <span className="max-w-[500px] truncate font-medium">{getUserName(row.original.email)}</span>
+            </div>
+        )
     },
     {
         accessorKey: "blogAdmin",

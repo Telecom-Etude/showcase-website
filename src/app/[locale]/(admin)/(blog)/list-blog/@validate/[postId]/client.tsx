@@ -23,6 +23,7 @@ export const ValidateButton = ({ id, t, locale }: { locale: Locale; id: number; 
                 });
             });
     };
+
     return (
         <Button onClick={() => validateBlogInterface()}>
             <p>Valider</p>

@@ -30,18 +30,20 @@ export function DomainBlock({ locale }: { locale: Locale }) {
     );
 }
 
-const ThemedCard = ({ children }: { children: ReactNode }) => (
-    <>
-        <Card className="dark:hidden hover:-translate-y-1 w-full h-full hover:scale-105 transition-all ease-out bg-gradient-to-br from-primary via-primary to-destructive hover:opacity-80 duration-500 grid grid-cols-3 xs:grid-cols-2 rounded-lg">
-            {children}
-        </Card>
-        <Card className="hidden hover:-translate-y-1 w-full h-full hover:scale-105 transition-all ease-out bg-gradient-to-br from-primary via-destructive to-destructive hover:opacity-80 duration-500 dark:grid grid-cols-3 xs:grid-cols-2 rounded-lg">
-            {children}
-        </Card>
-    </>
-);
+function ThemedCard({ children }: { children: ReactNode }) {
+    return (
+        <>
+            <Card className="dark:hidden hover:-translate-y-1 w-full h-full hover:scale-105 transition-all ease-out bg-gradient-to-br from-primary via-primary to-destructive hover:opacity-80 duration-500 grid grid-cols-3 xs:grid-cols-2 rounded-lg">
+                {children}
+            </Card>
+            <Card className="hidden hover:-translate-y-1 w-full h-full hover:scale-105 transition-all ease-out bg-gradient-to-br from-primary via-destructive to-destructive hover:opacity-80 duration-500 dark:grid grid-cols-3 xs:grid-cols-2 rounded-lg">
+                {children}
+            </Card>
+        </>
+    );
+}
 
-const DomainCard = ({ title, image, locale }: { title: string; image: StaticImageData; locale: Locale }) => {
+function DomainCard({ title, image, locale }: { title: string; image: StaticImageData; locale: Locale }) {
     return (
         // <Link href={nav(locale, `/offer/${id}`)} className="p-4 w-full h-full">
         <div className="p-4 w-full h-full">
@@ -56,4 +58,4 @@ const DomainCard = ({ title, image, locale }: { title: string; image: StaticImag
         </div>
         // </Link>
     );
-};
+}

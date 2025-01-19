@@ -43,7 +43,7 @@ const trusted: { src: StaticImageData; alt: string }[] = [
     { alt: "BnF logo", src: BnF }
 ];
 
-const NumberCard = ({ nb, prefix, suffix, text }: { nb: number; prefix?: string; suffix?: string; text: string }) => {
+function NumberCard({ nb, prefix, suffix, text }: { nb: number; prefix?: string; suffix?: string; text: string }) {
     return (
         <Card className="w-[200px] flex-col border-none rounded-lg bg-transparent">
             <CardHeader>
@@ -58,7 +58,7 @@ const NumberCard = ({ nb, prefix, suffix, text }: { nb: number; prefix?: string;
             </CardContent>
         </Card>
     );
-};
+}
 
 export const metadata: Metadata = {
     title: "Accueil"
