@@ -1,15 +1,14 @@
-import { MdOpenInNew } from "react-icons/md";
-import Image from "next/image";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
+import Image from "next/image";
+import { MdOpenInNew } from "react-icons/md";
 
-import { getDictionary } from "@/locales/dictionaries";
 import { LocaleParams } from "@/locales/config";
+import { getDictionary } from "@/locales/dictionaries";
 
 import { Block } from "@/components/styles/blocks";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
-import { Paragraphs } from "@/components/styles/texts";
 import { BtnLink } from "@/components/telecom-etude/contact";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 
 import Bain from "@/../public/images/companies/partners/bain.svg";
 import BearingPoint from "@/../public/images/companies/partners/bearingpoint.svg";

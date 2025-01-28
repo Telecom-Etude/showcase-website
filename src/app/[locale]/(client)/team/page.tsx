@@ -1,12 +1,10 @@
 import { LocaleParams } from "@/locales/config";
 import { Dictionary, getDictionary } from "@/locales/dictionaries";
-import { DEPARTMENTS, PersonProps } from "./members";
-import { Block } from "@/components/styles/blocks";
-import { FaLinkedin } from "react-icons/fa6";
+import { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ReactNode } from "react";
-import Image from "next/image";
-import { Metadata } from "next";
+import { DEPARTMENTS, PersonProps } from "./members";
 
 export const metadata: Metadata = {
     title: "Notre équipe"
@@ -19,20 +17,6 @@ function Linkedin({ children, linkedin }: { children: ReactNode; linkedin?: stri
     }
 }
 
-function Person({ name, job, linkedin }: { name: string; job: string; linkedin: boolean }) {
-    return (
-        <div className="rounded-lg font-semibold space-y-2 aspect-square w-full bg-black bg-opacity-20 text-secondary">
-            <div className="p-4 flex flex-col justify-end bg-orange-400 bg-opacity-0 h-full group-hover:bg-opacity-20">
-                <div className="flex justify-between">
-                    <h3>{name}</h3>
-                    {linkedin && <FaLinkedin className="w-6 h-6" />}
-                </div>
-                <h4>{job}</h4>
-            </div>
-        </div>
-    );
-}
-
 function Department({ department, t }: { t: Dictionary["pages"]["team"]["members"]; department: PersonProps[] }) {
     return (
         <div className="grid grid-cols-1 place-items-center md:grid-cols-2 xl:grid-cols-3 4xl:grid-cols-6 gap-6 w-fit">
@@ -43,7 +27,7 @@ function Department({ department, t }: { t: Dictionary["pages"]["team"]["members
                             <Image src={image} alt={name} width={300} height={300} className="rounded-lg" />
                         </div>
                         <div className="bg-black bg-opacity-20 absolute w-[300px] h-[300px] rounded-lg"></div>
-                        <div className="text-background font-semibold absolute bottom-0 p-2">
+                        <div className="text-white font-semibold absolute bottom-0 p-2">
                             <h3>{name}</h3>
                             <p className="text-left">{t[id]}</p>
                         </div>
