@@ -136,7 +136,11 @@ p {
 
 .custom-quill-styles {
     a {
-        color: blue;
+        color: var(--primary) !important;
         text-decoration: underline;
+    }
+
+    * {
+        color: var(--foreground) !important;
     }
 }
