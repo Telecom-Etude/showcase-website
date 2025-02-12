@@ -14,9 +14,9 @@ export const metadata: Metadata = {
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
-    return LOCALES.map(locale => {
-        locale;
-    });
+    return LOCALES.map(locale => ({
+        locale
+    }));
 }
 
 export default async function Page({ params: { locale } }: LocaleParams) {

@@ -1,6 +1,6 @@
-import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
+import * as React from "react";
 
 import { cn } from "@/lib/utils";
 import Link from "next/link";
@@ -54,9 +54,11 @@ interface VariantLinkProps {
 }
 
 export const VariantLink = ({ target, className, btnCn, variant, href, children }: VariantLinkProps) => (
-    <Button variant={variant} className={btnCn} asChild>
-        <Link href={href} target={target}>
+    <Button variant={variant} className={btnCn}>
+        <Link href={href} target={target} passHref>
             <span className={className}>{children}</span>
         </Link>
     </Button>
 );
+
+// reading properties of navigations and pages on home page.

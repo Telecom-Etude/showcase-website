@@ -4,9 +4,9 @@ import { ReactNode } from "react";
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
-    return LOCALES.map(locale => {
-        locale;
-    });
+    return LOCALES.map(locale => ({
+        locale
+    }));
 }
 
 export default function Layout({ children }: { children: ReactNode }) {
