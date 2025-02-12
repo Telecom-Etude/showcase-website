@@ -340,6 +340,7 @@ export const enDictionary: Dictionary = {
                 ourje: "Notre JE",
                 ourschool: "Our school: Télécom Paris",
                 quality: "A quality JE",
+                quality_policy: "Our quality privacy",
                 satisfaction: "Our objective: Your satisfaction",
                 ieseg: "A joint presentation"
             },

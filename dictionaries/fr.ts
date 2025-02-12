@@ -319,6 +319,7 @@ export const frDictionary = {
                 ourje: "Notre JE",
                 ourschool: "Notre école\u00A0: Télécom Paris",
                 quality: "Une JE de qualité",
+                quality_policy: "Notre politique qualité",
                 satisfaction: "Notre objectif\u00A0: Votre satisfaction",
                 ieseg: "Une prestation commune"
             },

@@ -7,6 +7,7 @@ import CNJE from "@/../public/images/about/cnje_text.png";
 import GroupPhoto from "@/../public/images/about/group_photo.jpg";
 import TP from "@/../public/images/about/tp.jpeg";
 import ICP from "@/../public/images/ieseg/logo.webp";
+import QualityPolicy from "@/../public/images/quality_policy.png";
 
 import { cn } from "@/lib/utils";
 import { LocaleParams } from "@/locales/config";
@@ -25,10 +26,10 @@ export const metadata: Metadata = {
 
 function Text({ title, children }: { title: string | ReactNode; children: ReactNode }) {
     return (
-        <section className="flex flex-col pb-10 justify-evenly h-full items-center space-y-4 text-lg">
+        <div className="flex flex-col pb-10 justify-evenly h-full items-center space-y-4 text-lg">
             <h2>{title}</h2>
             {children}
-        </section>
+        </div>
     );
 }
 
@@ -38,18 +39,18 @@ function SideImage({ src, alt, className, ...props }: { src: StaticImageData; al
 
 function TopLeft({ title, pars, right }: { title: string | ReactNode; pars: ReactNode; right: ReactNode }) {
     return (
-        <div className="flex flex-col justify-center items-center xl:flex-row p-10 xl:space-x-10 xl:space-y-0 space-y-10 max-w-[800px] xl:max-w-[2000px] m-auto">
+        <section className="flex flex-col justify-center items-center xl:flex-row p-10 xl:space-x-10 xl:space-y-0 space-y-10 max-w-[800px] xl:max-w-[2000px] m-auto">
             <div className="xl:w-1/2">
                 <Text title={title}>{pars}</Text>
             </div>
             <div className="xl:w-1/2">{right}</div>
-        </div>
+        </section>
     );
 }
 
 function TopRight({ title, pars, left }: { title: string | ReactNode; pars: ReactNode; left: ReactNode }) {
     return (
-        <div className="flex flex-col justify-center items-center xl:flex-row p-10 xl:space-x-10 xl:space-y-0 space-y-10 max-w-[800px] xl:max-w-[2000px] m-auto">
+        <section className="flex flex-col justify-center items-center xl:flex-row p-10 xl:space-x-10 xl:space-y-0 space-y-10 max-w-[800px] xl:max-w-[2000px] m-auto">
             <div className="xl:hidden">
                 <Text title={title}>{pars}</Text>
             </div>
@@ -57,7 +58,7 @@ function TopRight({ title, pars, left }: { title: string | ReactNode; pars: Reac
             <div className="xl:block hidden w-1/2">
                 <Text title={title}>{pars}</Text>
             </div>
-        </div>
+        </section>
     );
 }
 
@@ -106,6 +107,14 @@ export default function Page({ params: { locale } }: LocaleParams) {
                 }
             />
             <Separator />
+            <section className="flex flex-col items-center p-10 space-y-10">
+                <h2>{t.titles.quality_policy}</h2>
+                <div className="max-w-[800px]">
+                    <Image src={QualityPolicy} alt={t.titles.quality_policy} />
+                </div>
+            </section>
+            <Separator />
+
             <TopRight left={<SideImage src={CNJE} alt={t.alt.cnje} />} title={t.titles.satisfaction} pars={<Paragraphs paragraphs={[t.satisfaction]} />} />
             <Separator />
             <TopLeft
