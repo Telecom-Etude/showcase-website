@@ -1,16 +1,23 @@
-import { LocaleParams } from "@/locales/config";
-import BlogPage from "./client";
-import { auth } from "@/auth/auth";
-import { getLocaleLabels } from "@/db/labels";
-import { getDictionary } from "@/locales/dictionaries";
-import { redirect } from "next/navigation";
 import { getValidatedBlogs } from "@/db/blogs";
+import { getLocaleLabels } from "@/db/labels";
+import { LocaleParams, LOCALES } from "@/locales/config";
+import { getDictionary } from "@/locales/dictionaries";
 import { nav } from "@/locales/routing";
 import { Metadata } from "next";
+import { redirect } from "next/navigation";
+import BlogPage from "./client";
 
 export const metadata: Metadata = {
     title: "Blog"
 };
+
+export const dynamicParams = false;
+
+export async function generateStaticParams() {
+    return LOCALES.map(locale => {
+        locale;
+    });
+}
 
 export default async function Page({ params: { locale } }: LocaleParams) {
     const posts = await getValidatedBlogs(locale);

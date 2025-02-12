@@ -1,20 +1,14 @@
-import { Locale, LocaleParams } from "@/locales/config";
+import { LocaleParams } from "@/locales/config";
 import { getDictionary } from "@/locales/dictionaries";
 
+import ContactForm from "@/components/meta-components/contact-form";
 import { Block } from "@/components/styles/blocks";
 import { EmailContact } from "@/components/telecom-etude/contact";
-import ContactForm from "@/components/meta-components/contact-form";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: "Contact"
 };
-
-export async function generateStaticParams() {
-    return [{ locale: "en" }, { locale: "fr" }];
-}
-
-export const dynamicParams = false;
 
 export default async function Page({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.contact;

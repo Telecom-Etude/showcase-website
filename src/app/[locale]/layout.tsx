@@ -1,9 +1,9 @@
-import { ReactNode } from "react";
 import { auth, ExtendedUser } from "@/auth/auth";
-import { Locale } from "@/locales/config";
+import { CookieConsent } from "@/components/analytics";
 import { Footer } from "@/components/navigation/footer";
 import { NavBar } from "@/components/navigation/navbar/navbar";
-import { CookieConsent } from "@/components/analytics";
+import { Locale } from "@/locales/config";
+import { ReactNode } from "react";
 
 export default async function LocaleLayout({
     children,

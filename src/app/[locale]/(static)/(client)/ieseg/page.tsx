@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 
 import { Metadata } from "next";
 import Image from "next/image";
@@ -28,12 +28,6 @@ function Paragraph({ title, children }: { title: string; children: ReactNode }) 
 }
 
 const section = "flex flex-col items-center justify-center mb-12 space-x-0 space-y-10 p-10";
-
-export async function generateStaticParams() {
-    return [{ locale: "en" }, { locale: "fr" }];
-}
-
-export const dynamicParams = false;
 
 export default function HomePage({ params: { locale } }: { params: { locale: Locale } }) {
     const t = getDictionary(locale).pages.ieseg;

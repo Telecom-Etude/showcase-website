@@ -1,23 +1,16 @@
 import { Block } from "@/components/styles/blocks";
-import { BtnLink } from "@/components/telecom-etude/contact";
 import Image from "next/image";
 
 import JamaisSansElles from "@/../public/images/jamaissanselles.jpg";
 import Rse from "@/../public/images/rse.jpg";
-import Link from "next/link";
 import { LocaleParams } from "@/locales/config";
 import { getDictionary } from "@/locales/dictionaries";
 import { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
     title: "Engagements"
 };
-
-export async function generateStaticParams() {
-    return [{ locale: "en" }, { locale: "fr" }];
-}
-
-export const dynamicParams = false;
 
 export default function Page({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.commitments;

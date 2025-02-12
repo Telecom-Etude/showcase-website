@@ -53,10 +53,6 @@ function Partner({ title, logo, t, url }: PartnerProps) {
     );
 }
 
-export async function generateStaticParams() {
-    return [{ locale: "en" }, { locale: "fr" }];
-}
-
 export const dynamicParams = false;
 
 export default function Page({ params: { locale } }: LocaleParams) {

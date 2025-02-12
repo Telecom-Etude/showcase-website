@@ -1,21 +1,21 @@
-import { ReactNode } from "react";
-import Image, { StaticImageData } from "next/image";
 import { ArrowRight } from "lucide-react";
+import Image, { StaticImageData } from "next/image";
+import { ReactNode } from "react";
 
+import AFNOR from "@/../public/images/about/afnor.png";
+import CNJE from "@/../public/images/about/cnje_text.png";
 import GroupPhoto from "@/../public/images/about/group_photo.jpg";
 import TP from "@/../public/images/about/tp.jpeg";
-import CNJE from "@/../public/images/about/cnje_text.png";
-import AFNOR from "@/../public/images/about/afnor.png";
 import ICP from "@/../public/images/ieseg/logo.webp";
 
 import { cn } from "@/lib/utils";
 import { LocaleParams } from "@/locales/config";
 import { getDictionary } from "@/locales/dictionaries";
 
+import { Block } from "@/components/styles/blocks";
+import { Paragraphs } from "@/components/styles/texts";
 import { VariantLink } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { Paragraphs } from "@/components/styles/texts";
-import { Block } from "@/components/styles/blocks";
 import { nav } from "@/locales/routing";
 import { Metadata } from "next";
 
@@ -60,12 +60,6 @@ function TopRight({ title, pars, left }: { title: string | ReactNode; pars: Reac
         </div>
     );
 }
-
-export async function generateStaticParams() {
-    return [{ locale: "en" }, { locale: "fr" }];
-}
-
-export const dynamicParams = false;
 
 export default function Page({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.about;

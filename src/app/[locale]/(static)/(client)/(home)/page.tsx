@@ -1,5 +1,5 @@
-import Link from "next/link";
 import Image, { StaticImageData } from "next/image";
+import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
 
 import { LocaleParams } from "@/locales/config";
@@ -7,25 +7,25 @@ import { getDictionary } from "@/locales/dictionaries";
 import { nav } from "@/locales/routing";
 import { DomainBlock } from "./domains";
 
-import { Separator } from "@/components/ui/separator";
 import { LoadNumber } from "@/components/animations/load-number";
 import { Block } from "@/components/styles/blocks";
 import { BirdLogo } from "@/components/telecom-etude/logos";
 import { VariantLink } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 
-import Safran from "@/../public/images/companies/trusted/Safran.png";
-import Bearing_Point from "@/../public/images/companies/trusted/Bearing_Point.jpg";
-import Telecom_Paris from "@/../public/images/companies/trusted/Telecom_Paris.png";
-import Pont from "@/../public/images/companies/trusted/Pont-neuf.webp";
-import SNCF from "@/../public/images/companies/trusted/SNCF.png";
-import France from "@/../public/images/companies/trusted/France.tv.png";
 import Alma from "@/../public/images/companies/trusted/Alma.jpeg";
-import Ministere_de_la_Culture from "@/../public/images/companies/trusted/Ministere_de_la_Culture.png";
-import SaintGobain from "@/../public/images/companies/trusted/SaintGobain.png";
-import BNP_Paribas from "@/../public/images/companies/trusted/BNP_Paribas.png";
-import Mitsubishi_Motors from "@/../public/images/companies/trusted/Mitsubishi_Motors.png";
+import Bearing_Point from "@/../public/images/companies/trusted/Bearing_Point.jpg";
 import BnF from "@/../public/images/companies/trusted/BnF.png";
+import BNP_Paribas from "@/../public/images/companies/trusted/BNP_Paribas.png";
+import France from "@/../public/images/companies/trusted/France.tv.png";
+import Ministere_de_la_Culture from "@/../public/images/companies/trusted/Ministere_de_la_Culture.png";
+import Mitsubishi_Motors from "@/../public/images/companies/trusted/Mitsubishi_Motors.png";
+import Pont from "@/../public/images/companies/trusted/Pont-neuf.webp";
+import Safran from "@/../public/images/companies/trusted/Safran.png";
+import SaintGobain from "@/../public/images/companies/trusted/SaintGobain.png";
+import SNCF from "@/../public/images/companies/trusted/SNCF.png";
+import Telecom_Paris from "@/../public/images/companies/trusted/Telecom_Paris.png";
 import { Metadata } from "next";
 
 const trusted: { src: StaticImageData; alt: string }[] = [
@@ -63,12 +63,6 @@ function NumberCard({ nb, prefix, suffix, text }: { nb: number; prefix?: string;
 export const metadata: Metadata = {
     title: "Accueil"
 };
-
-export async function generateStaticParams() {
-    return [{ locale: "en" }, { locale: "fr" }];
-}
-
-export const dynamicParams = false;
 
 export default async function Page({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.home;

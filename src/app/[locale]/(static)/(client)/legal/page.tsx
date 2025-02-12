@@ -1,21 +1,13 @@
-import Link from "next/link";
-import React from "react";
 import { LocaleParams } from "@/locales/config";
 import { getDictionary } from "@/locales/dictionaries";
 
-import { Metadata } from "next";
 import { Block } from "@/components/styles/blocks";
 import { BtnLink, EmailContact } from "@/components/telecom-etude/contact";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: "Mentions légales"
 };
-
-export async function generateStaticParams() {
-    return [{ locale: "en" }, { locale: "fr" }];
-}
-
-export const dynamicParams = false;
 
 export default async function Legal({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.legal;

@@ -1,11 +1,10 @@
 "use server";
 
+import { PostPresentation } from "@/app/[locale]/(blog)/(client)/blog/client";
 import { db } from "@/lib/db";
 import { Locale } from "@/locales/config";
-import { Op } from "quill/core";
-import { PostPresentation } from "@/app/[locale]/(client)/blog/client";
-import { getUserName } from "@/lib/users";
 import { Label, Post, User } from "@prisma/client";
+import { Op } from "quill/core";
 import { generateSlug } from "./slug";
 
 export async function createBlog(authorEmail: string, title: string, locale: Locale): Promise<number> {

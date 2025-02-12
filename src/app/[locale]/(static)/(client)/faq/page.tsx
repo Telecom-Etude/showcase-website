@@ -1,8 +1,8 @@
 import { Paragraphs } from "@/components/styles/texts";
 import { BtnLink, EmailContact } from "@/components/telecom-etude/contact";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { LocaleParams } from "@/locales/config";
 import { getDictionary } from "@/locales/dictionaries";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Metadata } from "next";
 
 interface FaqItem {
@@ -13,12 +13,6 @@ interface FaqItem {
 export const metadata: Metadata = {
     title: "Foire Aux Questions"
 };
-
-export async function generateStaticParams() {
-    return [{ locale: "en" }, { locale: "fr" }];
-}
-
-export const dynamicParams = false;
 
 export default function Page({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.faq;

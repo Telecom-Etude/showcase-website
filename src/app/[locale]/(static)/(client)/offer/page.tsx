@@ -1,29 +1,23 @@
 import { Locale, LocaleParams } from "@/locales/config";
-import { nav } from "@/locales/routing";
 import { getDictionary } from "@/locales/dictionaries";
+import { nav } from "@/locales/routing";
 
-import { FaArrowRight } from "react-icons/fa6";
 import { Metadata } from "next";
 import Image from "next/image";
+import { FaArrowRight } from "react-icons/fa6";
 
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Block } from "@/components/styles/blocks";
-import { Separator } from "@/components/ui/separator";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { VariantLink } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 
-import { DesktopTimeline } from "./client";
 import { DomainBlock } from "../(home)/domains";
+import { DesktopTimeline } from "./client";
 import { OFFER_IMAGES } from "./images";
 
 export const metadata: Metadata = {
     title: "Notre offre"
 };
-
-export async function generateStaticParams() {
-    return [{ locale: "en" }, { locale: "fr" }];
-}
-
-export const dynamicParams = false;
 
 function MobileTimeline({ locale }: { locale: Locale }) {
     const t = getDictionary(locale).pages.offer.timeline;
