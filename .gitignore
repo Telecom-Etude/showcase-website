@@ -36,11 +36,9 @@ yarn-error.log*
 next-env.d.ts
 
 .*/
+!.github
 *test*
 prisma/*/
-prisma/*.db*
-*lock*
+*.db
+*-journal
 *.old*
-
-# Images data
-onthewaytocompression/

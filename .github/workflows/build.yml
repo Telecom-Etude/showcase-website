@@ -1,0 +1,32 @@
+name: Next.js CI
+
+on:
+    push:
+        branches:
+            - "*"
+    pull_request:
+        branches:
+            - "*"
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v4
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: "22"
+                  cache: "npm"
+
+            - name: Node install
+              run: npm install
+
+            - name: Generate Prisma
+              run: npx prisma generate
+
+            - name: Next build
+              run: npm run build
