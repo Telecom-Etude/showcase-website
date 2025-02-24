@@ -38,7 +38,7 @@ next-env.d.ts
 .*/
 !.github
 *test*
-prisma/*/
 *.db
 *-journal
 *.old*
+*.txt
