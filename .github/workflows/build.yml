@@ -28,5 +28,10 @@ jobs:
             - name: Generate Prisma
               run: npx prisma generate
 
+            - name: Migrate Prisma
+              run: npx prisma migrate dev
+              env:
+                  ADMIN_EMAIL: example@example.com
+
             - name: Next build
               run: npm run build

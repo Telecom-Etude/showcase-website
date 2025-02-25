@@ -23,6 +23,7 @@ You must also generate a Google Secret and ID. To set those up, refer to this [t
 Here's what your `.env.local` file must look like at this stage:
 
 ```bash
+# .env.local
 AUTH_SECRET=your_auth_secret
 AUTH_GOOGLE_ID=your_google_id
 AUTH_GOOGLE_SECRET=your_google_secret
@@ -45,6 +46,7 @@ You can test the forms by adding custom emails. Here is a quick overview of the 
 At the end of this step, you must have these variables set:
 
 ```bash
+# .env.local
 ADMIN_EMAIL=admin-email@example.com
 SMTP_EMAIL=smtp-email@example.com
 SMTP_PASSWORD=somesmtppassword
