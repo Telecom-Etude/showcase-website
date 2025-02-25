@@ -102,6 +102,12 @@ export const frDictionary = {
                 before: "Nous utilisons les dernières technologies et méthodes de data science pour analyser le marché et améliorer la visibilité en ligne de vos produits, vous permettant ainsi de rester à la pointe de l'innovation.",
                 strong: " Nos services incluent l'implantation de nouvelles technologies, le lancement de nouveaux produits et l'optimisation de vos performances grâce à des régressions multi-linéaires et des outils de visualisation de données. "
             },
+            personalised: {
+                title: "Approche Personnalisée", 
+                before: "Chaque projet est unique. Nous adaptons nos services à vos besoins spécifiques, que ce soit pour évaluer la faisabilité d&apos; un nouveau produit, optimiser votre service client ou améliorer votre stratégie marketing.",
+                strong: " Notre approche personnalisée garantit des résultats concrets en s&apos;appuyant sur des visites mystères, des exit interviews et des benchmarks sectoriels adaptés à vos enjeux particuliers."
+
+            },
             gain: {
                 title: "Gain de Temps et d'Efficacité",
                 before: "En travaillant main dans la main, nous offrons un processus intégré qui vous permet de gagner du temps et de l'efficacité. Vous bénéficiez de nos compétences combinées sans avoir à coordonner plusieurs prestataires.",

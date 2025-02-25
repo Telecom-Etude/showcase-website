@@ -94,16 +94,22 @@ export const enDictionary: Dictionary = {
                 par: "IÉSEG CONSEIL Paris, Junior-Enterprise of the IÉSEG School of Management, is a Junior-Enterprise whose members are students specializing in Management, Marketing, Finance, Auditing and Information Systems. Created in 2007, IÉSEG CONSEIL Paris offers you the expertise and dynamism of its junior consultants to support you in your consulting projects in strategy, organization, marketing, finance and information systems."
             },
             complementary: {
-                title: "Expertise Complémentaire",
+                title: "Complementary expertise",
                 before: "By combining the technical expertise of Telecom Etude and the commercial expertise of IÉSEG Conseil Paris, we offer a complete solution that covers all aspects of your projects, from engineering to market strategy",
                 strong: " Our approach enables us to support you from A to Z, integrating an assessment of technical feasibility with an in-depth analysis of market demand. ",
                 after: "We believe that every project has unique potential. Choose a two-pronged approach combining technical expertise and commercial perspective to explore your product's potential.",
-                alt: "Graph Complémentarité Telecom Etude IÉSEG Conseil Paris."
+                alt: "Graph showing the complementary Telecom Etude IÉSEG Conseil Paris."
             },
             innovation: {
                 title: "Innovative Solutions",
                 before: "We use the latest technologies and data science methods to analyze the market and improve the online visibility of your products, enabling you to stay at the forefront of innovation.",
                 strong: " Our services include implementing new technologies, launching new products and optimizing your performance using multi-linear regression and data visualization tools. "
+            },
+            personalised: {
+                title: "Personalised approach", 
+                before: "Every project is unique. We tailor our services to your specific needs, whether you want to assess the feasibility of a new product, optimise your customer service or improve your marketing strategy.",
+                strong: " Our personalised approach guarantees concrete results, based on mystery visits, exit interviews and sector benchmarks tailored to your particular challenges."
+
             },
 
             gain: {

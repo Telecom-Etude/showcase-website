@@ -61,24 +61,12 @@ export default function HomePage({ params: { locale } }: { params: { locale: Loc
             </div>
             <div>
                 <section className={section}>
-                    <Paragraph title="Approche Personnalisée">
-                        Chaque projet est unique. Nous adaptons nos services à vos besoins spécifiques, que ce soit pour évaluer la faisabilité d&apos;un
-                        nouveau produit, optimiser votre service client ou améliorer votre stratégie marketing.
+                    <Paragraph title={t.personalised.title}>
+                        {t.personalised.before}
                         <strong className="font-semibold">
-                            {" "}
-                            Notre approche personnalisée garantit des résultats concrets en s&apos;appuyant sur des visites mystères, des exit interviews et des
-                            benchmarks sectoriels adaptés à vos enjeux particuliers.
-                        </strong>
+                            {t.personalised.strong}
+                               </strong>
                     </Paragraph>
-                    {/* <div className="w-1/2 flex flex-col items-center space-y-6">
-                        <p className="text-center">Vous voulez voir des exemples de mission que nous avons réaliser en partenariat avec l&apos;IÉSEG ? </p>
-                        <Button variant="call2action">
-                            <Link href="/post?s=missions+ieseg/" className="flex items-center space-x-2">
-                                <p>Voir les exemples</p>
-                                <ArrowRight />
-                            </Link>
-                        </Button>
-                    </div> */}
                 </section>
             </div>
             <div>
