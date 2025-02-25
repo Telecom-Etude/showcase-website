@@ -1,8 +1,6 @@
-# Jet Centre: Telecom Etude Centralised Tool
+# Telecom Etude's Showcase Website
 
-Jet Centre is an ERP-CRM for [Telecom Etude](https://telecom-etude.fr). It allows the administrators of the latter to manage more easily and proficiently their missions and their projects within the Junior-Enterprise.
-
-This is a centralised app, that will allow CDP to enter once the data, and see it mirrored on all documents, deadlines, notifications, etc., as well as having everything in one and single place (documents, communication, notifications, help for new CDPs, etc.).
+This is the code for the website available [here](https://telecom-etude.fr).
 
 ## Getting Started
 
@@ -26,7 +24,6 @@ Please refer to the [Contribution Guide](CONTRIBUTING.md) before contributing to
 -   [TypeScript](https://www.typescriptlang.org/), for type safety.
 -   [Tailwind CSS](https://tailwindcss.com/), for styling.
 -   [Auth.js](https://authjs.dev/) (v5 of [NextAuth.js](https://next-auth.js.org/)), for authentication, with the Google Provider.
--   [PostgreSQL](https://www.postgresql.org/), for the database.
 -   [Prisma](https://www.prisma.io/), for object modeling.
 
 ### Recommended tutorials

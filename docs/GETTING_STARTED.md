@@ -1,17 +1,18 @@
-# Telecom Etude Centralised Tool
+# Telecom Etude's Showcase Website
 
 ## Installation
 
 ### Requirements
 
 -   [Node.js and npm](https://nodejs.org/en/download)
--   [Postgresql](https://www.postgresql.org/download/)
 
 ### Setting up the database
 
 The database is set up using [Prisma and sqlite](https://www.prisma.io/docs/orm/overview/databases/sqlite). The data is thus stored in a local file. A few configurations are needed though, as explained below.
 
 ### Environment variables
+
+#### Authentication
 
 > If you just want to test it locally with access to all pages, you can just set `DEV_MODE=true` and enter rubbish in the 3 `AUTH_` variables to skip this section.
 
@@ -26,6 +27,34 @@ AUTH_SECRET=your_auth_secret
 AUTH_GOOGLE_ID=your_google_id
 AUTH_GOOGLE_SECRET=your_google_secret
 ```
+
+#### Email setup
+
+> You can enter rubbish in all variables if you want to skip this step.
+
+<p style="color: red">
+Danger: don't add real emails for <code>FORM_DEST_EMAIL</code> and <code>IESEG_EMAIL</code> as submitting the contact forms will send emails to those.
+</p>
+
+You can test the forms by adding custom emails. Here is a quick overview of the variables:
+
+-   The `ADMIN_EMAIL` is the email of admin by default (at creation of the database).
+-   To send emails, you need an email and an SMTP password (that you can generate on your Google account page).
+-   The form submissions will be sent to `FORM_DEST_EMAIL` on the `/contact` page and to `FORM_DEST_EMAIL` and `IESEG_EMAIL` on the `/ieseg` page.
+
+At the end of this step, you must have these variables set:
+
+```bash
+ADMIN_EMAIL=admin-email@example.com
+SMTP_EMAIL=smtp-email@example.com
+SMTP_PASSWORD=somesmtppassword
+FORM_DEST_EMAIL=contact-telecom-etude@example.com
+IESEG_EMAIL=contact-ieseg@example.com
+```
+
+#### Checking
+
+This documentation may not be up to date. To make sure all required environment variables are defined, you can take a look at [../env.d.ts](../env.d.ts).
 
 ### Initialise the database
 
