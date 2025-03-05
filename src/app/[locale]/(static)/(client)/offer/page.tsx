@@ -31,7 +31,7 @@ function MobileTimeline({ locale }: { locale: Locale }) {
                     </AccordionTrigger>
                     <AccordionContent className="flex flex-col items-center justify-center space-y-4">
                         <p>{text}</p>
-                        <Image src={OFFER_IMAGES[i]} alt="" width={200}/>
+                        <Image src={OFFER_IMAGES[i]} alt="" width={200} />
                     </AccordionContent>
                 </AccordionItem>
             ))}

@@ -24,7 +24,7 @@ export function DesktopTimeline({ locale }: { locale: Locale }) {
                             variant="ghost"
                             className={cn(
                                 "border-[2px] w-full border-primary border-opacity-50",
-                                selected === i ? "bg-primary dark:bg-[radial-gradient(hsl(357,73%,40%),hsl(24,98%,60%))] hover:bg-x" : ""
+                                selected === i ? "bg-primary dark:bg-[radial-gradient(var(--destructive),var(--primary))] hover:bg-x" : ""
                             )}
                             key={i}
                             onClick={() => setSelected(i)}
