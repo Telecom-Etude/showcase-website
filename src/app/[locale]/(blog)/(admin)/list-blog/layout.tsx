@@ -21,7 +21,7 @@ export default async function Validation({ params: { locale }, validate }: PageP
         title,
         content,
         createdAt,
-        updatedAt
+        updatedAt,
     }));
     const session = (await auth())?.user;
     const isAdmin = session?.rights?.blogAdmin;

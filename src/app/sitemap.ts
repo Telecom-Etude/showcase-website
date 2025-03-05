@@ -9,8 +9,8 @@ function getSitemapItem([url, { lastModified, changeFrequency, priority }]: [str
         changeFrequency: changeFrequency || "yearly",
         priority: priority || 0,
         alternates: {
-            languages: LOCALES.reduce((o, locale) => ({ ...o, [locale]: process.env.WEBSITE_URL + "/" + locale + url }), {})
-        }
+            languages: LOCALES.reduce((o, locale) => ({ ...o, [locale]: process.env.WEBSITE_URL + "/" + locale + url }), {}),
+        },
     };
 }
 

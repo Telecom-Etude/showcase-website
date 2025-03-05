@@ -21,7 +21,7 @@ import { nav } from "@/locales/routing";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "À propos"
+    title: "À propos",
 };
 
 function Text({ title, children }: { title: string | ReactNode; children: ReactNode }) {

@@ -7,7 +7,7 @@ import { ReactNode } from "react";
 import { DEPARTMENTS, PersonProps } from "./members";
 
 export const metadata: Metadata = {
-    title: "Notre équipe"
+    title: "Notre équipe",
 };
 function Linkedin({ children, linkedin }: { children: ReactNode; linkedin?: string }) {
     if (linkedin) {

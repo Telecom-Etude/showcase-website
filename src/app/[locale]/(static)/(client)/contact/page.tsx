@@ -7,7 +7,7 @@ import { EmailContact } from "@/components/telecom-etude/contact";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Contact"
+    title: "Contact",
 };
 
 export default async function Page({ params: { locale } }: LocaleParams) {

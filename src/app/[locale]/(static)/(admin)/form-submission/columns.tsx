@@ -43,7 +43,7 @@ export const columns: ColumnDef<ContactFormType>[] = [
                     <span className="max-w-[500px] truncate font-medium">{row.getValue("name")}</span>
                 </div>
             );
-        }
+        },
     },
     {
         accessorKey: "email",
@@ -54,12 +54,12 @@ export const columns: ColumnDef<ContactFormType>[] = [
                     <span className="max-w-[500px] truncate font-medium">{row.getValue("email")}</span>
                 </div>
             );
-        }
+        },
     },
     {
         accessorKey: "done",
         header: ({ column }) => <DataTableColumnHeader column={column} title="Fait" />,
-        cell: ({ row }) => DoneCheck(row)
+        cell: ({ row }) => DoneCheck(row),
     },
     {
         accessorKey: "societe",
@@ -70,7 +70,7 @@ export const columns: ColumnDef<ContactFormType>[] = [
                     <span className="max-w-[500px] truncate font-medium">{row.getValue("societe")}</span>
                 </div>
             );
-        }
+        },
     },
     {
         accessorKey: "tel",
@@ -81,7 +81,7 @@ export const columns: ColumnDef<ContactFormType>[] = [
                     <span className="max-w-[500px] truncate font-medium">{row.getValue("tel")}</span>
                 </div>
             );
-        }
+        },
     },
     {
         accessorKey: "subject",
@@ -92,11 +92,11 @@ export const columns: ColumnDef<ContactFormType>[] = [
                     <span className="max-w-[500px] truncate font-medium">{row.getValue("subject")}</span>
                 </div>
             );
-        }
+        },
     },
     {
         accessorKey: "message",
         header: ({ column }) => <DataTableColumnHeader column={column} title="Message" />,
-        cell: ({ row }) => <Message row={row} />
-    }
+        cell: ({ row }) => <Message row={row} />,
+    },
 ];

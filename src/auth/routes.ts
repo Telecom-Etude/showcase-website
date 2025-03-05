@@ -52,7 +52,7 @@ export const SITEMAP_ROUTES: { [key: string]: SiteMapRouteProps } = {
     "/faq": { priority: 1, changeFrequency: "monthly", lastModified: "10/24/2024" },
     "/ieseg": { priority: 0.8, lastModified: "10/24/2024" },
     "/offer": { priority: 1, changeFrequency: "monthly", lastModified: "10/24/2024" },
-    "/commitment": { priority: 0.5, lastModified: "10/24/2024" }
+    "/commitment": { priority: 0.5, lastModified: "10/24/2024" },
 };
 
 export const ALL_ROUTES: { [key: string]: RouteProps } = {
@@ -64,7 +64,7 @@ export const ALL_ROUTES: { [key: string]: RouteProps } = {
     "/form-submission": { auth: checkAdminRights(r => r.formAdmin) },
     "/users": { auth: checkAdminRights(r => r.userAdmin) },
     "/new-blog": { auth: checkAdminRights(r => r.blogAuthor) },
-    "/list-blog": { auth: checkAdminRights(r => r.blogAdmin || r.blogAuthor) }
+    "/list-blog": { auth: checkAdminRights(r => r.blogAdmin || r.blogAuthor) },
 };
 
 function getCode(req: NextAuthRequest, routeProps: RouteProps) {
@@ -81,7 +81,7 @@ const PREFIX_ROUTES: { [key: string]: RouteProps } = {
     "/edit-blog": { auth: checkAdminRights(r => r.blogAuthor) },
     "/blog": {},
     "/list-blog": { auth: checkAdminRights(r => r.blogAdmin || r.blogAuthor) },
-    "/error": {}
+    "/error": {},
 };
 
 export function getAuthorisationCode(req: NextAuthRequest, localelessPath: string) {

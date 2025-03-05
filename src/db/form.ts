@@ -22,7 +22,7 @@ export const createForm = (values: { name: string; email: string; societe?: stri
 
             db.contactForm
                 .create({
-                    data: { ...values, date: localeDate, tel: tel_nb }
+                    data: { ...values, date: localeDate, tel: tel_nb },
                 })
                 .then(() => resolve(null))
                 .catch(e => {
@@ -39,7 +39,7 @@ export const makeDone = async (id: number, done: boolean) => {
     try {
         await db.contactForm.update({
             where: { id },
-            data: { done }
+            data: { done },
         });
     } catch (e) {
         console.error(`[makeDone] Error:\n\n${e}\n`);

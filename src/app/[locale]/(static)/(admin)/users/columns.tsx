@@ -19,7 +19,7 @@ import { toast } from "@/components/ui/use-toast";
 function ActionCheckBox({
     row,
     column,
-    func
+    func,
 }: {
     row: Row<UserRolesType>;
     column: keyof UserRolesType;
@@ -40,7 +40,7 @@ function ActionCheckBox({
                             toast({
                                 title: "Une erreure inconnue s'est produite",
                                 description: "Contactez la DSI",
-                                variant: "destructive"
+                                variant: "destructive",
                             });
                         });
                 }}
@@ -91,31 +91,31 @@ export const columns: ColumnDef<UserRolesType>[] = [
             <div className="flex space-x-2">
                 <span className="max-w-[500px] truncate font-medium">{getUserName(row.original.email)}</span>
             </div>
-        )
+        ),
     },
     {
         accessorKey: "blogAdmin",
         header: ({ column }) => <DataTableColumnHeader column={column} title="Administrateur Blog" />,
-        cell: ({ row }) => <ActionCheckBox row={row} column={"blogAdmin"} func={makeBlogAdmin} />
+        cell: ({ row }) => <ActionCheckBox row={row} column={"blogAdmin"} func={makeBlogAdmin} />,
     },
     {
         accessorKey: "userAdmin",
         header: ({ column }) => <DataTableColumnHeader column={column} title="Administrateur Utilisateurs" />,
-        cell: ({ row }) => <ActionCheckBox row={row} column={"userAdmin"} func={makeUserAdmin} />
+        cell: ({ row }) => <ActionCheckBox row={row} column={"userAdmin"} func={makeUserAdmin} />,
     },
     {
         accessorKey: "formAdmin",
         header: ({ column }) => <DataTableColumnHeader column={column} title="Administrateur Forms" />,
-        cell: ({ row }) => <ActionCheckBox row={row} column={"formAdmin"} func={makeFormAdmin} />
+        cell: ({ row }) => <ActionCheckBox row={row} column={"formAdmin"} func={makeFormAdmin} />,
     },
     {
         accessorKey: "blogAuthor",
         header: ({ column }) => <DataTableColumnHeader column={column} title="Auteur Blog" />,
-        cell: ({ row }) => <ActionCheckBox row={row} column={"blogAuthor"} func={makeBlogAuthor} />
+        cell: ({ row }) => <ActionCheckBox row={row} column={"blogAuthor"} func={makeBlogAuthor} />,
     },
     {
         accessorKey: "delete",
         header: () => <span>Supprimer</span>,
-        cell: ({ row }) => <Delete row={row} />
-    }
+        cell: ({ row }) => <Delete row={row} />,
+    },
 ];

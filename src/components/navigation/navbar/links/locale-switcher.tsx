@@ -28,7 +28,7 @@ export const LocaleSwitch = ({
     locale,
     mobile,
     onClick,
-    setOpened
+    setOpened,
 }: {
     locale: Locale;
     mobile: boolean;

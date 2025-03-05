@@ -55,7 +55,7 @@ export const columns: ColumnDef<ValidationBlogType>[] = [
         header: ({ column }) => <></>,
         cell: ({ row }) => <></>,
         enableSorting: false,
-        enableHiding: false
+        enableHiding: false,
     },
     {
         accessorKey: "emails",
@@ -67,18 +67,18 @@ export const columns: ColumnDef<ValidationBlogType>[] = [
                 ))}
             </div>
         ),
-        enableSorting: false
+        enableSorting: false,
     },
 
     {
         accessorKey: "createdAt",
         header: ({ column }) => <DataTableColumnHeader column={column} title="Créé le" />,
-        cell: ({ row }) => <p>{(row.getValue("createdAt") as Date).toLocaleDateString()}</p>
+        cell: ({ row }) => <p>{(row.getValue("createdAt") as Date).toLocaleDateString()}</p>,
     },
     {
         accessorKey: "updatedAt",
         header: ({ column }) => <DataTableColumnHeader column={column} title="Modifié le" />,
-        cell: ({ row }) => <p>{(row.getValue("updatedAt") as Date).toLocaleDateString()}</p>
+        cell: ({ row }) => <p>{(row.getValue("updatedAt") as Date).toLocaleDateString()}</p>,
     },
     {
         accessorKey: "validated",
@@ -86,13 +86,13 @@ export const columns: ColumnDef<ValidationBlogType>[] = [
         cell: ({ row }) => {
             const value: boolean = row.getValue("validated");
             return <Checkbox className="cursor-not-allowed m-auto" checked={value} contentEditable={false} />;
-        }
+        },
     },
     {
         accessorKey: "delete",
         header: ({ column }) => <DataTableColumnHeader column={column} title="Supprimer" />,
         cell: ({ row }) => <Delete row={row} />,
-        enableSorting: false
+        enableSorting: false,
     },
     {
         accessorKey: "edit",
@@ -102,7 +102,7 @@ export const columns: ColumnDef<ValidationBlogType>[] = [
                 <Link href={`/edit-blog/${row.getValue("id")}`}>Editer</Link>
             </Button>
         ),
-        enableSorting: false
+        enableSorting: false,
     },
     {
         accessorKey: "title",
@@ -114,6 +114,6 @@ export const columns: ColumnDef<ValidationBlogType>[] = [
                     <span className="truncate"></span>
                 </div>
             </BtnLink>
-        )
-    }
+        ),
+    },
 ];
