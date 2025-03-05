@@ -13,9 +13,6 @@ import { OFFER_IMAGES } from "./images";
 
 export function DesktopTimeline({ locale }: { locale: Locale }) {
     const [selected, setSelected] = useState<number>(0);
-
-    // Need to listen for arrows
-
     const t = getDictionary(locale).pages.offer.timeline;
     return (
         <>
@@ -48,12 +45,3 @@ export function DesktopTimeline({ locale }: { locale: Locale }) {
         </>
     );
 }
-
-
-
-/*
-
-<Button variant="call2action" type="submit">
-                            {t.form.send}
-                        </Button>
-*/
