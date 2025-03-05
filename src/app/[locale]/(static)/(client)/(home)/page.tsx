@@ -14,6 +14,7 @@ import { VariantLink } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 
+import fond_acc from "@/../public/images/fond_accueil.jpg";
 import Alma from "@/../public/images/companies/trusted/Alma.jpeg";
 import Bearing_Point from "@/../public/images/companies/trusted/Bearing_Point.jpg";
 import BnF from "@/../public/images/companies/trusted/BnF.png";
@@ -67,9 +68,13 @@ export const metadata: Metadata = {
 export default async function Page({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.home;
     return (
-        <>
+        <>  
+            <Separator />
+                <section className="bg-fixed bg-contain h-[380px]" style={{ backgroundImage: `url(${fond_acc.src})` }}>
+                </section>
+            <Separator />
             <Block>
-                <header className="py-10 space-y-10">
+                <header className="py-0 space-y-10">
                     <h1 className="font-semibold text-center bg-gradient-to-r from-primary to-destructive w-fit m-auto text-transparent bg-clip-text">
                         Telecom Etude
                     </h1>
