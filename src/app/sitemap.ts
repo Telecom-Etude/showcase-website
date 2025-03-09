@@ -1,10 +1,10 @@
 import { SiteMapRouteProps, SITEMAP_ROUTES } from "@/auth/routes";
-import { Locale, LOCALES } from "@/locales/config";
+import { DEFAULT_LOCALE, Locale, LOCALES } from "@/locales/config";
 import { MetadataRoute } from "next";
 
 function getSitemapItem([url, { lastModified, changeFrequency, priority }]: [string, SiteMapRouteProps]) {
     return {
-        url: process.env.WEBSITE_URL + "/" + url,
+        url: process.env.WEBSITE_URL + "/" + DEFAULT_LOCALE + url,
         lastModified: new Date(Date.parse(lastModified)),
         changeFrequency: changeFrequency || "yearly",
         priority: priority || 0,
