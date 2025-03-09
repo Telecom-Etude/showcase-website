@@ -4,7 +4,7 @@
 
 ### Requirements
 
-- [Node.js and npm](https://nodejs.org/en/download)
+-   [Node.js and npm](https://nodejs.org/en/download)
 
 ### Setting up the database
 
@@ -39,9 +39,9 @@ Danger: don't add real emails for <code>FORM_DEST_EMAIL</code> and <code>IESEG_E
 
 You can test the forms by adding custom emails. Here is a quick overview of the variables:
 
-- The `ADMIN_EMAIL` is the email of admin by default (at creation of the database).
-- To send emails, you need an email and an SMTP password (that you can generate on your Google account page).
-- The form submissions will be sent to `FORM_DEST_EMAIL` on the `/contact` page and to `FORM_DEST_EMAIL` and `IESEG_EMAIL` on the `/ieseg` page.
+-   The `ADMIN_EMAIL` is the email of admin by default (at creation of the database).
+-   To send emails, you need an email and an SMTP password (that you can generate on your Google account page).
+-   The form submissions will be sent to `FORM_DEST_EMAIL` on the `/contact` page and to `FORM_DEST_EMAIL` and `IESEG_EMAIL` on the `/ieseg` page.
 
 At the end of this step, you must have these variables set:
 
@@ -60,11 +60,11 @@ This documentation may not be up to date. To make sure all required environment 
 
 ### Initialise the database
 
-You know need to initialise your database:
+You now need to initialise your database:
 
 ```bash
 npx prisma generate
-npm run prisma migrate dev
+npx prisma migrate dev
 ```
 
 ### Node Setup
@@ -113,8 +113,8 @@ Before using a component, please check that it doesn't already exist, either in 
 
 ### Additional Notes
 
-- Use `LocaleParams` type to avoid translation errors on pages.
-- The translations are in `.ts` files instead of `.json` files to add type checking.
-- Never use "use client" unless it is necessary: performance are better with server-side rendering.
-- To refresh or redirect from `use client` page, use `import { useRouter } from "next/navigation";`. The import is from `next/navigation` not `next/router`!
-- If you add a variable in [globals.css](../src/app/globals.css), you must also add it in [tailwind.config.ts](../tailwind.config.ts).
+-   Use `LocaleParams` type to avoid translation errors on pages.
+-   The translations are in `.ts` files instead of `.json` files to add type checking.
+-   Never use "use client" unless it is necessary: performance are better with server-side rendering.
+-   To refresh or redirect from `use client` page, use `import { useRouter } from "next/navigation";`. The import is from `next/navigation` not `next/router`!
+-   If you add a variable in [globals.css](../src/app/globals.css), you must also add it in [tailwind.config.ts](../tailwind.config.ts).
