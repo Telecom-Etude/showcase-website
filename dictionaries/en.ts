@@ -51,12 +51,20 @@ export const enDictionary: Dictionary = {
             httpError: "HTTP Error",
         },
         admin: {
-            validate: "Validate blogs",
-            newblog: "New blog",
-            edit: "Edit blogs",
-            form: "Form submissions",
-            users: "Users management",
-            account: "My account",
+            manageaccount: {
+                validate: "Validate blogs",
+                newblog: "New blog",
+                edit: "Edit blogs",
+                form: "Form submissions",
+                users: "Users management",
+                account: "My account",
+            },
+            blog: {
+                title: "Create a new post",
+                formentry: "Title",
+                new: "Create",
+                edit: "Edit an existing post",
+            },
         },
         sitemap: {
             title: "Site plan",

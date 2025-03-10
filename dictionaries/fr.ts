@@ -48,12 +48,20 @@ export const frDictionary = {
             httpError: "Erreur HTTP",
         },
         admin: {
-            validate: "Valider des posts",
-            newblog: "Nouveau blog",
-            edit: "Modifier des posts",
-            form: "Soumissions au form",
-            users: "Gestion des utilisateurs",
-            account: "Mon compte",
+            manageaccount: {
+                validate: "Valider des posts",
+                newblog: "Nouveau blog",
+                edit: "Modifier des posts",
+                form: "Soumissions au form",
+                users: "Gestion des utilisateurs",
+                account: "Mon compte",
+            },
+            blog: {
+                title: "Création d'un post",
+                formentry: "Titre",
+                new: "Créer",
+                edit: "Editer un post existant",
+            },
         },
         sitemap: {
             title: "Plan du site",

@@ -10,6 +10,7 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 import { Input } from "@/components/ui/input";
 import { nav } from "@/locales/routing";
 import { DEFAULT_LOCALE, LOCALES, Locale } from "@/locales/config";
+import { getDictionary } from "@/locales/dictionaries";
 
 export const newPostSchema = z.object({
     title: z.string().min(2, {
@@ -18,7 +19,7 @@ export const newPostSchema = z.object({
     locale: z.enum(LOCALES),
 });
 
-export default function NewPostForm({ email }: { email: string }) {
+export default function NewPostForm({ email, locale }: { email: string; locale: Locale }) {
     const form = useForm<z.infer<typeof newPostSchema>>({
         resolver: zodResolver(newPostSchema),
         defaultValues: {
@@ -46,7 +47,7 @@ export default function NewPostForm({ email }: { email: string }) {
             router.push(nav("fr", `/edit-blog/${id}`));
         }
     };
-
+    const t = getDictionary(locale).navigation.admin.blog;
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}>
@@ -57,7 +58,7 @@ export default function NewPostForm({ email }: { email: string }) {
                         render={({ field }) => (
                             <FormItem className="flex flex-col justify-center items-center space-y-4 h-full w-full">
                                 <FormControl>
-                                    <Input className="rounded-md rounded-r-none border-none" placeholder="Titre" {...field} />
+                                    <Input className="rounded-md rounded-r-none border-none" placeholder={t.formentry} {...field} />
                                 </FormControl>
                                 <FormMessage className="bg-transparent" />
                             </FormItem>
@@ -92,7 +93,7 @@ export default function NewPostForm({ email }: { email: string }) {
                     /> */}
                 </div>
                 <Button className="w-full" variant="call2action" type="submit">
-                    Créer
+                    {t.new}
                 </Button>
             </form>
         </Form>
