@@ -11,7 +11,8 @@ const buttonVariantsStyles = {
     outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground px-4",
     secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80 px-4",
     ghost: "hover:bg-accent hover:text-accent-foreground px-4",
-    link: "text-primary underline-offset-4 hover:underline",
+    link: "text-primary underline-offset-4 hover:underline px-4",
+    linkFooter: "text-primary underline-offset-4 hover:underline",
     call2action: "font-medium flex flex-col justify-center text-primary-foreground rounded-full call2action min-w-[150px] px-4",
 };
 export const buttonVariants = cva(
