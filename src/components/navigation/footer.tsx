@@ -8,7 +8,6 @@ import { BtnLink, EmailContact } from "../telecom-etude/contact";
 import { FullLogo } from "../telecom-etude/logos";
 import { Button } from "../ui/button";
 
-
 const Network = ({ href, Icon, label }: { href: string; Icon: IconType; label: string }) => (
     <Link href={href} className="p-2 group" aria-label={label}>
         <Icon className="group-hover:text-primary transition-colors duration-200" />
