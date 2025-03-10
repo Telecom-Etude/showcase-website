@@ -17,7 +17,7 @@ import { updatePostLabels } from "@/db/labels";
 import { Locale } from "@/locales/config";
 import { getDictionary } from "@/locales/dictionaries";
 
-function Rename({ title, id, router, t }: { title: string; id: number; router: AppRouterInstance; t: any }) {
+function Rename({ title, id, router, t, locale }: { title: string; id: number; router: AppRouterInstance; t: any; locale: Locale }) {
     return (
         <Dialog>
             <DialogTrigger asChild>
@@ -36,7 +36,7 @@ function Rename({ title, id, router, t }: { title: string; id: number; router: A
                         onSubmit={e => {
                             const formData = new FormData(e.target as HTMLFormElement);
                             const title = formData.get("title") as string;
-                            renameBlog(id, title).finally(() => {
+                            renameBlog(id, title, locale).finally(() => {
                                 router.refresh();
                             });
                         }}
@@ -149,7 +149,7 @@ export function Actions({ setToBeChanged, content, value, title, id, dbLabels, b
                             <FaSave />
                         </span>
                     </Button>
-                    <Rename id={id} title={title} router={router} t={t} />
+                    <Rename id={id} title={title} router={router} t={t} locale={locale} />
                     <AddLabel addRemoveLabel={addRemoveLabel} dbLabels={dbLabels} getLabels={getLabels} t={t} />
                 </div>
                 <div>

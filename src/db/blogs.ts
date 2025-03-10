@@ -16,18 +16,37 @@ export async function createBlog(authorEmail: string, title: string, locale: Loc
         if (!author) {
             throw new Error("User not found");
         }
-        const blog = await db.post.create({
-            data: {
-                authors: {
-                    connect: [{ id: author.id }],
+        if (locale === "fr") {
+            const blog = await db.post.create({
+                data: {
+                    authors: {
+                        connect: [{ id: author.id }],
+                    },
+                    locale,
+                    titlefr: title,
+                    titleen: "",
+                    slugfr: generateSlug(title),
+                    slugen: "",
+                    content: "[]",
                 },
-                locale,
-                title,
-                slug: generateSlug(title),
-                content: "[]",
-            },
-        });
-        return blog.id;
+            });
+            return blog.id;
+        } else {
+            const blog = await db.post.create({
+                data: {
+                    authors: {
+                        connect: [{ id: author.id }],
+                    },
+                    locale,
+                    titlefr: "",
+                    titleen: title,
+                    slugfr: "",
+                    slugen: generateSlug(title),
+                    content: "[]",
+                },
+            });
+            return blog.id;
+        }
     } catch (e) {
         console.error("[createBlog] ", e);
         throw new Error();
@@ -64,7 +83,9 @@ export async function getValidatedBlogs(locale: Locale): Promise<PostPresentatio
         })!;
         const blogs = dbBlogs
             .filter(blog => blog.validated && blog.locale == locale)
-            .map(({ authors, labels, updatedAt, ...blog }) => ({
+            .map(({ authors, labels, updatedAt, titlefr, titleen, slugfr, slugen, locale, ...blog }) => ({
+                title: locale === "fr" ? titlefr : titleen,
+                slug: locale === "fr" ? slugfr : slugen,
                 authors: authors.map(author => author.name),
                 emails: authors.map(author => author.email),
                 date: updatedAt,
@@ -106,11 +127,11 @@ export async function deleteBlog(id: number) {
     }
 }
 
-export async function renameBlog(id: number, title: string) {
+export async function renameBlog(id: number, title: string, locale: Locale) {
     try {
         await db.post.update({
             where: { id: id },
-            data: { title },
+            data: { titlefr: locale === "fr" ? title : "", titleen: locale === "en" ? title : "" },
         });
     } catch (e) {
         console.error("[renameLocaleBlog] ", e);
