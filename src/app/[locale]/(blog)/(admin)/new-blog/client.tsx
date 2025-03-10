@@ -27,10 +27,12 @@ export default function NewPostForm({ email, locale }: { email: string; locale: 
         },
     });
 
+    const t = getDictionary(locale).navigation.admin.createblog;
+
     const router = useRouter();
 
     const onSubmit = async (values: z.infer<typeof newPostSchema>) => {
-        const apiData = JSON.stringify({ authorEmail: email, title: values.title, locale: "fr" });
+        const apiData = JSON.stringify({ authorEmail: email, title: values.title, locale: values.locale });
         const response = await fetch("/api/create-blog", {
             method: "POST",
             headers: {
@@ -40,14 +42,14 @@ export default function NewPostForm({ email, locale }: { email: string; locale: 
         });
         if (!response.ok) {
             console.error("Error creating blog: ", response.status, response.body);
-            router.push(nav("fr", "/errors/500"));
+            router.push(nav(locale, "/errors/500"));
         } else {
             const id = (await response.json()).blogId;
             if (process.env.DEV_MODE) console.log("Created POST with ID = ", id);
-            router.push(nav("fr", `/edit-blog/${id}`));
+            router.push(nav(locale, `/edit-blog/${id}`));
         }
     };
-    const t = getDictionary(locale).navigation.admin.blog;
+
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}>
@@ -64,7 +66,7 @@ export default function NewPostForm({ email, locale }: { email: string; locale: 
                             </FormItem>
                         )}
                     />
-                    {/* <FormField
+                    <FormField
                         control={form.control}
                         name="locale"
                         render={({ field }) => (
@@ -74,10 +76,8 @@ export default function NewPostForm({ email, locale }: { email: string; locale: 
                                         {...field}
                                         defaultValue={DEFAULT_LOCALE}
                                         className="p-2 rounded-md rounded-l-none"
-                                        value={selectedLocale}
                                         onChange={e => {
                                             form.setValue("locale", e.target.value as Locale);
-                                            setSelectedLocale(e.target.value as Locale);
                                         }}
                                     >
                                         {LOCALES.map(l => (
@@ -90,7 +90,7 @@ export default function NewPostForm({ email, locale }: { email: string; locale: 
                                 <FormMessage />
                             </FormItem>
                         )}
-                    /> */}
+                    />
                 </div>
                 <Button className="w-full" variant="call2action" type="submit">
                     {t.new}
