@@ -6,7 +6,7 @@ import { BtnLink, EmailContact } from "@/components/telecom-etude/contact";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Mentions légales",
+    title: "Mentions légales"
 };
 
 export default async function Legal({ params: { locale } }: LocaleParams) {

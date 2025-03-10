@@ -16,7 +16,7 @@ import KPMG from "@/../public/images/companies/partners/kpmg.svg";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Nos partenaires",
+    title: "Nos partenaires"
 };
 
 interface PartnerProps {
@@ -60,7 +60,9 @@ export default function Page({ params: { locale } }: LocaleParams) {
     return (
         <Block>
             <header className="w-full flex flex-col items-center justify-center space-y-8 pb-8">
-                <h1 className="font-bold text-center">{t.title}</h1>
+                <h1 className="font-semibold text-center bg-gradient-to-r from-primary to-destructive w-fit m-auto text-transparent bg-clip-text">
+                        {t.title}
+                </h1>
                 <p className="text-lg max-w-[500px] text-center">{t.text}</p>
             </header>
             <div className="grid grid-cols-1 md:grid-cols-3">

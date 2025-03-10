@@ -16,7 +16,7 @@ import { DesktopTimeline } from "./client";
 import { OFFER_IMAGES } from "./images";
 
 export const metadata: Metadata = {
-    title: "Notre offre",
+    title: "Notre offre"
 };
 
 function MobileTimeline({ locale }: { locale: Locale }) {
@@ -44,13 +44,13 @@ export default function Page({ params: { locale } }: LocaleParams) {
     return (
         <>
             <Block>
-                <header className="p-4">
-                    <h1>{t.title}</h1>
-                </header>
+                <h1 className="font-semibold text-center bg-gradient-to-r from-primary to-destructive w-fit m-auto text-transparent bg-clip-text">
+                        {t.title}
+                </h1>
             </Block>
             <Block>
                 <section className="space-y-4">
-                    <h2>{t.timeline.title}</h2>
+                    <h2><b>{t.timeline.title}</b></h2>
                     <p>{t.timeline.text}</p>
                     <div className="p-4 hidden md:grid grid-cols-2 place-items-center gap-4">
                         <DesktopTimeline locale={locale} />

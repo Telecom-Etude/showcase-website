@@ -7,7 +7,7 @@ import { EmailContact } from "@/components/telecom-etude/contact";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Contact",
+    title: "Contact"
 };
 
 export default async function Page({ params: { locale } }: LocaleParams) {
@@ -15,7 +15,10 @@ export default async function Page({ params: { locale } }: LocaleParams) {
 
     return (
         <Block className="py-10 space-y-10 flex flex-col items-center">
-            <h1>{t.title}</h1>
+            <img className="w-32" src="/icons/contact_icon.png" alt="Contactez-nous"/>
+            <h1 className="font-semibold text-center bg-gradient-to-r from-primary to-destructive w-fit m-auto text-transparent bg-clip-text">
+                        {t.title}
+                </h1>
             <p className="pb-8 text-center sm:w-[80%] w-[90%]">
                 {t.before}
                 <EmailContact />

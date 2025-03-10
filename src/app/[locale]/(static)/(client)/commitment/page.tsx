@@ -9,7 +9,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-    title: "Engagements",
+    title: "Engagements"
 };
 
 export default function Page({ params: { locale } }: LocaleParams) {
@@ -17,7 +17,9 @@ export default function Page({ params: { locale } }: LocaleParams) {
     return (
         <Block className="space-y-10">
             <header className="flex flex-col items-center justify-center space-y-4">
-                <h1 className="font-semibold">{t.title}</h1>
+            <h1 className="font-semibold text-center bg-gradient-to-r from-primary to-destructive w-fit m-auto text-transparent bg-clip-text">
+                        {t.title}
+            </h1>
                 <p className="text-center">{t.description}</p>
             </header>
             <section className="flex flex-col items-center justify-center space-y-4">
@@ -34,7 +36,7 @@ export default function Page({ params: { locale } }: LocaleParams) {
                 {t.rse.paragraphs.map((text, i) => [
                     <p className="text-justify" key={i}>
                         {text}
-                    </p>,
+                    </p>
                 ])}
                 <Image placeholder="blur" alt="Logo RSE" src={Rse} width={1000} />
             </section>

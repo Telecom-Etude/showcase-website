@@ -7,7 +7,7 @@ import { ReactNode } from "react";
 import { DEPARTMENTS, PersonProps } from "./members";
 
 export const metadata: Metadata = {
-    title: "Notre équipe",
+    title: "Notre équipe"
 };
 function Linkedin({ children, linkedin }: { children: ReactNode; linkedin?: string }) {
     if (linkedin) {
@@ -45,7 +45,9 @@ export default async function Team({ params: { locale } }: LocaleParams) {
     return (
         <div className="p-4 flex flex-col items-center">
             <header>
-                <h1 className="text-center font-bold">{t.title}</h1>
+            <h1 className="font-semibold text-center bg-gradient-to-r from-primary to-destructive w-fit m-auto text-transparent bg-clip-text">
+                        {t.title}
+            </h1>
             </header>
             {DEPARTMENTS.map(({ id, members }, i) => (
                 <section key={i} className="py-6">

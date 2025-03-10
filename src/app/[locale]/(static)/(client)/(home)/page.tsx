@@ -40,7 +40,7 @@ const trusted: { src: StaticImageData; alt: string }[] = [
     { alt: "SaintGobain logo", src: SaintGobain },
     { alt: "BNP_Paribas logo", src: BNP_Paribas },
     { alt: "Mitsubishi_Motors logo", src: Mitsubishi_Motors },
-    { alt: "BnF logo", src: BnF },
+    { alt: "BnF logo", src: BnF }
 ];
 
 function NumberCard({ nb, prefix, suffix, text }: { nb: number; prefix?: string; suffix?: string; text: string }) {
@@ -61,7 +61,7 @@ function NumberCard({ nb, prefix, suffix, text }: { nb: number; prefix?: string;
 }
 
 export const metadata: Metadata = {
-    title: "Accueil",
+    title: "Accueil"
 };
 
 export default async function Page({ params: { locale } }: LocaleParams) {
@@ -138,7 +138,7 @@ export default async function Page({ params: { locale } }: LocaleParams) {
             <Block>
                 <section className="py-10 space-y-10">
                     <h2 className="text-center">{t.trust}</h2>
-                    <div className="grid grid-cols-3 md:grid-cols-6 bg-white">
+                    <div className="grid grid-cols-3 md:grid-cols-6 bg-white rounded-xl">
                         {trusted.map(({ alt, src }, i) => (
                             <div key={i} className="w-full h-full items-center justify-center flex">
                                 <div className="w-[70%] p-4">

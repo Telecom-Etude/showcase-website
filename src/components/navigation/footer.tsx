@@ -4,7 +4,7 @@ import { nav } from "@/locales/routing";
 import Link from "next/link";
 import { IconType } from "react-icons";
 import { FaEnvelope, FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
-import { BtnLink, EmailContact } from "../telecom-etude/contact";
+import { BtnLink, EmailBtn, EmailContact } from "../telecom-etude/contact";
 import { FullLogo } from "../telecom-etude/logos";
 import { Button } from "../ui/button";
 
@@ -15,7 +15,7 @@ const Network = ({ href, Icon, label }: { href: string; Icon: IconType; label: s
 );
 
 const LinkItem = ({ href, name }: { href: string; name: string }) => (
-    <Button variant="link" className="text-foreground py-[3px]" asChild>
+    <Button variant="link" className="text-foreground px-1 py-[3px]" asChild>
         <Link className="w-fit h-fit pl-0 py-0" href={href}>
             {name}
         </Link>
@@ -33,7 +33,7 @@ const NetworkLinks = () => (
 
 const SiteMapBlock = ({ title, items, locale }: { locale: Locale; title: string; items: { name: string; href: string }[] }) => (
     <section className="flex flex-col items-center">
-        <h3 className="text-lg font-semibold w-fit text-center">{title}</h3>
+        <h3 className="font-semibold w-fit text-center font-semibold bg-gradient-to-r from-primary to-destructive w-fit m-auto text-transparent bg-clip-text">{title}</h3>
         {items.map(({ name, href }, k) => (
             <LinkItem name={name} href={nav(locale, href)} key={k} />
         ))}
@@ -52,7 +52,7 @@ const SiteMap = ({ t, locale }: { locale: Locale; t: Dictionary["navigation"]["s
                     { name: t.whoarewe, href: "/about" },
                     { name: t.commitment, href: "/commitment" },
                     { name: t.team, href: "/team" },
-                    { name: t.plaquette, href: "/plaquette.pdf" },
+                    { name: t.plaquette, href: "/plaquette.pdf" }
                 ]}
             />
             <SiteMapBlock
@@ -60,7 +60,7 @@ const SiteMap = ({ t, locale }: { locale: Locale; t: Dictionary["navigation"]["s
                 title={t.partners}
                 items={[
                     { name: t.company_partners, href: "/partners" },
-                    { name: "IESEG Conseil Paris", href: "/ieseg" },
+                    { name: "IESEG Conseil Paris", href: "/ieseg" }
                 ]}
             />
             <SiteMapBlock
@@ -68,7 +68,7 @@ const SiteMap = ({ t, locale }: { locale: Locale; t: Dictionary["navigation"]["s
                 title={t.offer}
                 items={[
                     { name: t.offer, href: "/offer" },
-                    { name: "FAQ", href: "/faq" },
+                    { name: "FAQ", href: "/faq" }
                 ]}
             />
             <SiteMapBlock
@@ -77,10 +77,27 @@ const SiteMap = ({ t, locale }: { locale: Locale; t: Dictionary["navigation"]["s
                 items={[
                     { name: t.contact_form, href: "/contact" },
                     { name: t.blog, href: "/blog" },
-                    { name: t.legal_mentions, href: "/legal" },
+                    { name: t.legal_mentions, href: "/legal" }
                 ]}
             />
         </>
+    );
+};
+
+export const EmailContact_footer = ({ rgpd = false, dsi = false, text, underline = false }: { rgpd?: boolean; dsi?: boolean; text?: string; underline?: boolean }) => {
+    return (
+        <div className="flex justify-between">
+            <div className="py-0.5">
+            <img className = "w-5 h-5" src = "/icons/footer/email.png" alt = "localisation"/>
+            </div>
+            <div className="px-1">
+            <EmailBtn
+                underline={underline}
+                email={rgpd ? "secretaire.general@telecom-etude.fr" : dsi ? "info.telecom-paris.fr" : "contact@telecom-etude.fr"}
+                text={text}
+            />
+            </div>
+        </div>
     );
 };
 
@@ -89,10 +106,16 @@ const Mentions = ({ bug }: { bug: string }) => (
         <div className="p-2 flex flex-col items-center space-y-2">
             <FullLogo />
             <p>&copy;{new Date().getFullYear()} Telecom Etude</p>
-            <EmailContact />
+            <EmailContact_footer />
             <BtnLink href="https://maps.app.goo.gl/etZHknTudKMuTjRZ9" className="flex flex-col">
-                <p>19, place Marguerite Perey</p>
-                <p>91120 Palaiseau</p>
+                <div className="flex justify-between">
+                    <img className = "w-5" src = "/icons/footer/localisation.png" alt = "localisation"/>
+                    <>
+                    <p>19, place Marguerite Perey</p>
+                    <p>91120 Palaiseau</p>
+                    </>
+
+                </div>
             </BtnLink>
             <EmailContact dsi text={bug} />
         </div>

@@ -11,14 +11,16 @@ interface FaqItem {
 }
 
 export const metadata: Metadata = {
-    title: "Foire Aux Questions",
+    title: "Foire Aux Questions"
 };
 
 export default function Page({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.faq;
     return (
         <div className="p-10 space-y-10">
-            <h1 className="text-center">{t.title}</h1>
+            <h1 className="font-semibold text-center bg-gradient-to-r from-primary to-destructive w-fit m-auto text-transparent bg-clip-text">
+                        {t.title}
+                </h1>
             <p className="text-center max-w-[1000px] m-auto">
                 {t.text.before} <EmailContact underline /> {t.text.between}{" "}
                 <BtnLink underline href="/contact">
