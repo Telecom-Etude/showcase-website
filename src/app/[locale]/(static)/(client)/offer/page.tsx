@@ -16,7 +16,7 @@ import { DesktopTimeline } from "./client";
 import { OFFER_IMAGES } from "./images";
 
 export const metadata: Metadata = {
-    title: "Notre offre"
+    title: "Notre offre",
 };
 
 function MobileTimeline({ locale }: { locale: Locale }) {

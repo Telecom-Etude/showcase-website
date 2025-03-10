@@ -53,7 +53,7 @@ const SiteMap = ({ t, locale }: { locale: Locale; t: Dictionary["navigation"]["s
                     { name: t.whoarewe, href: "/about" },
                     { name: t.commitment, href: "/commitment" },
                     { name: t.team, href: "/team" },
-                    { name: t.plaquette, href: "/plaquette.pdf" }
+                    { name: t.plaquette, href: "/plaquette.pdf" },
                 ]}
             />
             <SiteMapBlock
@@ -61,7 +61,7 @@ const SiteMap = ({ t, locale }: { locale: Locale; t: Dictionary["navigation"]["s
                 title={t.partners}
                 items={[
                     { name: t.company_partners, href: "/partners" },
-                    { name: "IESEG Conseil Paris", href: "/ieseg" }
+                    { name: "IESEG Conseil Paris", href: "/ieseg" },
                 ]}
             />
             <SiteMapBlock
@@ -69,7 +69,7 @@ const SiteMap = ({ t, locale }: { locale: Locale; t: Dictionary["navigation"]["s
                 title={t.offer}
                 items={[
                     { name: t.offer, href: "/offer" },
-                    { name: "FAQ", href: "/faq" }
+                    { name: "FAQ", href: "/faq" },
                 ]}
             />
             <SiteMapBlock
@@ -78,7 +78,7 @@ const SiteMap = ({ t, locale }: { locale: Locale; t: Dictionary["navigation"]["s
                 items={[
                     { name: t.contact_form, href: "/contact" },
                     { name: t.blog, href: "/blog" },
-                    { name: t.legal_mentions, href: "/legal" }
+                    { name: t.legal_mentions, href: "/legal" },
                 ]}
             />
         </>

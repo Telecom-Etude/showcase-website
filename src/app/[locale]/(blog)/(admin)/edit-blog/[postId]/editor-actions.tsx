@@ -63,7 +63,7 @@ function AddLabel({ getLabels, addRemoveLabel, dbLabels }: { getLabels: string[]
             vocab={{
                 title: "Modifier les labels",
                 selectorMessage: "Selectionner au plus 6 labels",
-                empty: "Aucun filtre ne correspond à cette recherche"
+                empty: "Aucun filtre ne correspond à cette recherche",
             }}
             limit={6}
         />

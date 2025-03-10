@@ -16,7 +16,7 @@ import KPMG from "@/../public/images/companies/partners/kpmg.svg";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Nos partenaires"
+    title: "Nos partenaires",
 };
 
 interface PartnerProps {

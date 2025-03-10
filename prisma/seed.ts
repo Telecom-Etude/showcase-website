@@ -14,8 +14,8 @@ async function main() {
             blogAdmin: true,
             userAdmin: true,
             blogAuthor: true,
-            formAdmin: true
-        }
+            formAdmin: true,
+        },
     });
     const labels = [
         { locale: "fr", name: "Événements" },
@@ -49,7 +49,7 @@ async function main() {
         { locale: "fr", name: "Cryptomonnaie" },
         { locale: "en", name: "Cryptocurrency" },
         { locale: "fr", name: "Startup" },
-        { locale: "en", name: "Startup" }
+        { locale: "en", name: "Startup" },
     ];
 
     for (const label of labels) {
@@ -57,14 +57,14 @@ async function main() {
             where: {
                 locale_name: {
                     locale: label.locale,
-                    name: label.name
-                }
+                    name: label.name,
+                },
             },
             update: {},
             create: {
                 locale: label.locale,
-                name: label.name
-            }
+                name: label.name,
+            },
         });
     }
 }

@@ -23,7 +23,7 @@ const config = {
     trustHost: true,
     pages: {
         signIn: SIGNIN_PATH,
-        signOut: SIGNOUT_PATH
+        signOut: SIGNOUT_PATH,
     },
     callbacks: {
         async session({ session, token }: { session: Session; token: JWT }) {
@@ -56,16 +56,16 @@ const config = {
                 await db.user.upsert({
                     where: { email },
                     update: data!,
-                    create: data!
+                    create: data!,
                 });
                 return true;
             } else {
                 return false;
             }
-        }
+        },
     },
     session: { strategy: "jwt" },
-    ...authConfig
+    ...authConfig,
 } satisfies NextAuthConfig;
 
 export const { handlers, auth, signIn, signOut } = NextAuth(config);

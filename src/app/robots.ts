@@ -4,8 +4,8 @@ export default function robots(): MetadataRoute.Robots {
     return {
         rules: {
             userAgent: "*",
-            allow: "*"
+            allow: "*",
         },
-        sitemap: process.env.WEBSITE_URL + "/sitemap.xml"
+        sitemap: process.env.WEBSITE_URL + "/sitemap.xml",
     };
 }

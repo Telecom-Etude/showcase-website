@@ -3,7 +3,7 @@ import { LocaleParams } from "@/locales/config";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Erreur"
+    title: "Erreur",
 };
 type Params = LocaleParams & {
     params: { code: string };

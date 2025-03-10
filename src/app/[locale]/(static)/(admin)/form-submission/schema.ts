@@ -9,7 +9,7 @@ export const contactFormSchema = z.object({
     subject: z.string().optional(),
     message: z.string(),
     date: z.date(),
-    done: z.boolean()
+    done: z.boolean(),
 });
 
 export type ContactFormType = z.infer<typeof contactFormSchema>;

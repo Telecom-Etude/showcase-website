@@ -18,7 +18,7 @@ export async function getRights(email: string | null | undefined): Promise<Right
             formAdmin: user?.formAdmin || false,
             blogAdmin: user?.blogAdmin || false,
             userAdmin: user?.userAdmin || false,
-            blogAuthor: user?.blogAuthor || false
+            blogAuthor: user?.blogAuthor || false,
         };
         return rights;
     } catch (e) {
@@ -33,7 +33,7 @@ export async function makeBlogAdmin(email: string, value: boolean) {
     try {
         await db.user.update({
             where: { email },
-            data: { blogAdmin: value }
+            data: { blogAdmin: value },
         });
     } catch (e) {
         console.error(`[makeBlogAdmin] Error:\n\n${e}\n`);
@@ -44,7 +44,7 @@ export async function makeUserAdmin(email: string, value: boolean) {
     try {
         const x = await db.user.update({
             where: { email },
-            data: { userAdmin: value }
+            data: { userAdmin: value },
         });
     } catch (e) {
         console.error(`[makeUserAdmin] Error:\n\n${e}\n`);
@@ -55,7 +55,7 @@ export async function makeFormAdmin(email: string, value: boolean) {
     try {
         await db.user.update({
             where: { email },
-            data: { formAdmin: value }
+            data: { formAdmin: value },
         });
     } catch (e) {
         console.error(`[makeFormAdmin] Error:\n\n${e}\n`);
@@ -66,7 +66,7 @@ export async function makeBlogAuthor(email: string, value: boolean) {
     try {
         await db.user.update({
             where: { email },
-            data: { blogAuthor: value }
+            data: { blogAuthor: value },
         });
     } catch (e) {
         console.error(`[makeFormAdmin] Error:\n\n${e}\n`);

@@ -40,12 +40,12 @@ export function QuillEditor({ id, content, title, locale, dbLabels, blogLabels }
                 [{ color: [] }, { background: [] }], // dropdown with defaults from theme
                 [{ align: [] }],
                 ["link", "image", "video"],
-                ["clean"] // remove formatting button
+                ["clean"], // remove formatting button
             ];
             const options: QuillOptions = {
                 theme: "snow",
                 placeholder: "Écrivez votre article ici...",
-                modules: { toolbar }
+                modules: { toolbar },
             };
             try {
                 const q = new Quill(editorRef.current, options);
