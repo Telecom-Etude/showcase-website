@@ -7,7 +7,6 @@ import { FaEnvelope, FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa"
 import { BtnLink, EmailContact } from "../telecom-etude/contact";
 import { FullLogo } from "../telecom-etude/logos";
 import { Button } from "../ui/button";
-import { ButtonLink } from "../ui/button_link";
 
 
 const Network = ({ href, Icon, label }: { href: string; Icon: IconType; label: string }) => (
@@ -17,11 +16,11 @@ const Network = ({ href, Icon, label }: { href: string; Icon: IconType; label: s
 );
 
 const LinkItem = ({ href, name }: { href: string; name: string }) => (
-    <ButtonLink variant="link" className="text-foreground py-[3px]" asChild>
+    <Button variant="link" className="text-foreground py-[3px]" asChild>
         <Link className="w-fit h-fit pl-0 py-0" href={href}>
             {name}
         </Link>
-    </ButtonLink>
+    </Button>
 );
 
 const NetworkLinks = () => (
