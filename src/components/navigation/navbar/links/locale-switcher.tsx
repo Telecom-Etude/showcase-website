@@ -7,8 +7,20 @@ import { nav } from "@/locales/routing";
 import { GB, FR } from "country-flag-icons/react/3x2";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
-const useLocaledUrl = (locale: Locale) => {
+const fetchSlug = async (slug: string) => {
+    try {
+        const response = await fetch(`/api/getPostSlug?slug=${slug}`);
+        if (!response.ok) throw new Error("Erreur de récupération du slug");
+        return await response.json();
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
+};
+
+const useLocaledUrl = (locale: Locale, post: any) => {
     const oldUrl = usePathname();
     const split = oldUrl.split("/");
     let index = 0;
@@ -20,7 +32,16 @@ const useLocaledUrl = (locale: Locale) => {
     } else if (isLocale(split[index])) {
         return nav(locale, "/" + split.slice(index + 1).join("/"));
     } else {
-        return nav(locale, split.join("/"));
+        if (split[-2] === "blog") {
+            if (locale === "fr") {
+                split[-1] = post?.slugen || split[-1];
+            } else {
+                split[-1] = post?.slugfr || split[-1];
+            }
+            return nav(locale, split.join("/"));
+        } else {
+            return nav(locale, split.join("/"));
+        }
     }
 };
 
@@ -35,7 +56,21 @@ export const LocaleSwitch = ({
     onClick: () => void;
     setOpened: (open: null | number) => void;
 }) => {
-    const localedUrl = useLocaledUrl(locale == "fr" ? "en" : "fr");
+    const pathname = usePathname();
+    const [post, setPost] = useState<{ slugen: string; slugfr: string } | null>(null);
+
+    // Vérifie si l'URL correspond à un post
+    const pathParts = pathname.split("/");
+    const isBlogPost = pathParts.includes("blog");
+    const postSlug = isBlogPost ? pathParts[pathParts.length - 1] : null;
+
+    useEffect(() => {
+        if (postSlug) {
+            fetchSlug(postSlug).then(data => setPost(data));
+        }
+    }, [postSlug]);
+
+    const localedUrl = useLocaledUrl(locale == "fr" ? "en" : "fr", post);
 
     return (
         <NavigationMenuItem className={mobile ? "" : "p-2 hover:bg-muted"}>
