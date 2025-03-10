@@ -33,7 +33,9 @@ const NetworkLinks = () => (
 
 const SiteMapBlock = ({ title, items, locale }: { locale: Locale; title: string; items: { name: string; href: string }[] }) => (
     <section className="flex flex-col items-center">
-        <h3 className="font-semibold w-fit text-center font-semibold bg-gradient-to-r from-primary to-destructive w-fit m-auto text-transparent bg-clip-text">{title}</h3>
+        <h3 className="font-semibold w-fit text-center font-semibold bg-gradient-to-r from-primary to-destructive w-fit m-auto text-transparent bg-clip-text">
+            {title}
+        </h3>
         {items.map(({ name, href }, k) => (
             <LinkItem name={name} href={nav(locale, href)} key={k} />
         ))}
@@ -84,20 +86,25 @@ const SiteMap = ({ t, locale }: { locale: Locale; t: Dictionary["navigation"]["s
     );
 };
 
-export const EmailContact_footer = ({ rgpd = false, dsi = false, text, underline = false }: { rgpd?: boolean; dsi?: boolean; text?: string; underline?: boolean }) => {
+export const EmailContact_footer = ({
+    rgpd = false,
+    dsi = false,
+    text,
+    underline = false
+}: {
+    rgpd?: boolean;
+    dsi?: boolean;
+    text?: string;
+    underline?: boolean;
+}) => {
     return (
-        <div className="flex justify-between">
-            <div className="py-0.5">
-            <img className = "w-5 h-5" src = "/icons/footer/email.png" alt = "localisation"/>
-            </div>
-            <div className="px-1">
+        <>
             <EmailBtn
                 underline={underline}
                 email={rgpd ? "secretaire.general@telecom-etude.fr" : dsi ? "info.telecom-paris.fr" : "contact@telecom-etude.fr"}
                 text={text}
             />
-            </div>
-        </div>
+        </>
     );
 };
 
@@ -108,13 +115,9 @@ const Mentions = ({ bug }: { bug: string }) => (
             <p>&copy;{new Date().getFullYear()} Telecom Etude</p>
             <EmailContact_footer />
             <BtnLink href="https://maps.app.goo.gl/etZHknTudKMuTjRZ9" className="flex flex-col">
-                <div className="flex justify-between">
-                    <img className = "w-5" src = "/icons/footer/localisation.png" alt = "localisation"/>
-                    <>
+                <div>
                     <p>19, place Marguerite Perey</p>
                     <p>91120 Palaiseau</p>
-                    </>
-
                 </div>
             </BtnLink>
             <EmailContact dsi text={bug} />

@@ -11,6 +11,7 @@ import ContactForm from "@/components/meta-components/contact-form";
 import IcpGraph from "@/../public/images/ieseg/icpgraph.png";
 import Logo from "@/../public/images/ieseg/logo.webp";
 import { getDictionary } from "@/locales/dictionaries";
+import { OrangeTitle } from "@/components/styles/texts";
 
 export const metadata: Metadata = {
     title: "Offre commune | Telecom Etude & IÉSEG Conseil Paris",
@@ -34,9 +35,7 @@ export default function HomePage({ params: { locale } }: { params: { locale: Loc
     return (
         <div className="container mx-auto px-4 py-8">
             <header className="text-center mb-12">
-                <h1 className="font-semibold text-center bg-gradient-to-r from-primary to-destructive w-fit m-auto text-transparent bg-clip-text">
-                        {t.title}
-                </h1>
+                <OrangeTitle title={t.title} />
                 <p className="text-xl font-semibold mt-4 text-center">{t.subtitle}</p>
             </header>
             <section className={section}>
@@ -65,9 +64,7 @@ export default function HomePage({ params: { locale } }: { params: { locale: Loc
                 <section className={section}>
                     <Paragraph title={t.personalised.title}>
                         {t.personalised.before}
-                        <strong className="font-semibold">
-                            {t.personalised.strong}
-                               </strong>
+                        <strong className="font-semibold">{t.personalised.strong}</strong>
                     </Paragraph>
                 </section>
             </div>
