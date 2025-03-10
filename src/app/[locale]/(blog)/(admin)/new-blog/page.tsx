@@ -10,7 +10,7 @@ import { getDictionary } from "@/locales/dictionaries";
 export default async function NewBlog({ params: { locale } }: LocaleParams) {
     const session = await auth();
     const email = session?.user?.email as string;
-    const t = getDictionary(locale).navigation.admin.blog;
+    const t = getDictionary(locale).navigation.admin.createblog;
     return (
         <div className="flex-grow flex justify-center items-center">
             <Card className="min-w-[50vw] max-w-[1000px] bg-accent">
