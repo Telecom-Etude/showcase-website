@@ -13,7 +13,6 @@ import { OFFER_IMAGES } from "./images";
 
 export function DesktopTimeline({ locale }: { locale: Locale }) {
     const [selected, setSelected] = useState<number>(0);
-
     // Need to listen for arrows
 
     const t = getDictionary(locale).pages.offer.timeline;
@@ -40,7 +39,7 @@ export function DesktopTimeline({ locale }: { locale: Locale }) {
                 <div className="w-0 h-0 border-l-8 border-l-transparent border-r-8 border-r-transparent border-t-[16px] border-t-primary dark:border-t-destructive" />
             </div>
             <div className="h-full flex flex-col  items-center space-y-4">
-                <div className="p-4 bg-white rounded-xl">
+                <div className="p-4 rounded-xl">
                     <Image src={OFFER_IMAGES[selected]} width={300} height={300} alt="" />
                 </div>
                 <p className="h-[250px]">{t.steps[selected].text}</p>
