@@ -40,7 +40,7 @@ const trusted: { src: StaticImageData; alt: string }[] = [
     { alt: "SaintGobain logo", src: SaintGobain },
     { alt: "BNP_Paribas logo", src: BNP_Paribas },
     { alt: "Mitsubishi_Motors logo", src: Mitsubishi_Motors },
-    { alt: "BnF logo", src: BnF }
+    { alt: "BnF logo", src: BnF },
 ];
 
 function NumberCard({ nb, prefix, suffix, text }: { nb: number; prefix?: string; suffix?: string; text: string }) {
@@ -61,7 +61,7 @@ function NumberCard({ nb, prefix, suffix, text }: { nb: number; prefix?: string;
 }
 
 export const metadata: Metadata = {
-    title: "Accueil"
+    title: "Accueil",
 };
 
 export default async function Page({ params: { locale } }: LocaleParams) {

@@ -19,13 +19,13 @@ export async function createBlog(authorEmail: string, title: string, locale: Loc
         const blog = await db.post.create({
             data: {
                 authors: {
-                    connect: [{ id: author.id }]
+                    connect: [{ id: author.id }],
                 },
                 locale,
                 title,
                 slug: generateSlug(title),
-                content: "[]"
-            }
+                content: "[]",
+            },
         });
         return blog.id;
     } catch (e) {
@@ -38,7 +38,7 @@ export async function updateLocaleBlogContent(id: number, content: Op[]) {
     try {
         await db.post.update({
             where: { id: id },
-            data: { content: JSON.stringify(content) }
+            data: { content: JSON.stringify(content) },
         });
     } catch (e) {
         console.error("[updateBlogContent] ", e);
@@ -49,7 +49,7 @@ export async function getBlogContent(id: number): Promise<Op[] | undefined> {
     try {
         const blog = await db.post.findUnique({
             where: { id: id },
-            select: { content: true }
+            select: { content: true },
         });
         return JSON.parse(blog!.content);
     } catch (e) {
@@ -60,7 +60,7 @@ export async function getBlogContent(id: number): Promise<Op[] | undefined> {
 export async function getValidatedBlogs(locale: Locale): Promise<PostPresentation[] | undefined> {
     try {
         const dbBlogs = await db.post.findMany({
-            include: { authors: true, labels: true }
+            include: { authors: true, labels: true },
         })!;
         const blogs = dbBlogs
             .filter(blog => blog.validated && blog.locale == locale)
@@ -69,7 +69,7 @@ export async function getValidatedBlogs(locale: Locale): Promise<PostPresentatio
                 emails: authors.map(author => author.email),
                 date: updatedAt,
                 labels: labels.filter(l => l.locale === locale).map(l => l.name),
-                ...blog
+                ...blog,
             }));
         return blogs;
     } catch (e) {
@@ -110,7 +110,7 @@ export async function renameBlog(id: number, title: string) {
     try {
         await db.post.update({
             where: { id: id },
-            data: { title }
+            data: { title },
         });
     } catch (e) {
         console.error("[renameLocaleBlog] ", e);

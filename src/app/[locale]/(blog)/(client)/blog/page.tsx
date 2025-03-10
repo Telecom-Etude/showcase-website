@@ -8,14 +8,14 @@ import { redirect } from "next/navigation";
 import BlogPage from "./client";
 
 export const metadata: Metadata = {
-    title: "Blog"
+    title: "Blog",
 };
 
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
     return LOCALES.map(locale => ({
-        locale
+        locale,
     }));
 }
 

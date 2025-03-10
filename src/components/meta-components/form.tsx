@@ -57,7 +57,7 @@ const FormElement = <T extends FieldValues>({ field, value }: FormElementProps<T
 export default function FormPage<T extends FieldValues>({ fields, onSubmit, submitButton, defaultValues, formSchema }: FormPageProps<T>) {
     const form: UseFormReturn<T> = useForm<T>({
         resolver: zodResolver(formSchema),
-        defaultValues: defaultValues as DefaultValues<T>
+        defaultValues: defaultValues as DefaultValues<T>,
     });
 
     return (

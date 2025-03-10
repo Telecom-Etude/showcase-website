@@ -58,5 +58,5 @@ export default auth(async (req: NextAuthRequest) => {
  * @property {string[]} matcher - An array of URL patterns to match against. The middleware will solely be applied to URLs that match this patterns.
  */
 export const config = {
-    matcher: ["/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|logo.*g|fr/plaquette.pdf|en/plaquette.pdf).*)"]
+    matcher: ["/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|logo.*g|fr/plaquette.pdf|en/plaquette.pdf).*)"],
 };

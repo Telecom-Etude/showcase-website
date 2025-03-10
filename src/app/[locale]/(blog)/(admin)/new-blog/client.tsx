@@ -13,17 +13,17 @@ import { DEFAULT_LOCALE, LOCALES, Locale } from "@/locales/config";
 
 export const newPostSchema = z.object({
     title: z.string().min(2, {
-        message: "Le titre doit comporter au moins 2 caractères."
+        message: "Le titre doit comporter au moins 2 caractères.",
     }),
-    locale: z.enum(LOCALES)
+    locale: z.enum(LOCALES),
 });
 
 export default function NewPostForm({ email }: { email: string }) {
     const form = useForm<z.infer<typeof newPostSchema>>({
         resolver: zodResolver(newPostSchema),
         defaultValues: {
-            locale: DEFAULT_LOCALE
-        }
+            locale: DEFAULT_LOCALE,
+        },
     });
 
     const router = useRouter();
@@ -33,9 +33,9 @@ export default function NewPostForm({ email }: { email: string }) {
         const response = await fetch("/api/create-blog", {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
             },
-            body: apiData
+            body: apiData,
         });
         if (!response.ok) {
             console.error("Error creating blog: ", response.status, response.body);

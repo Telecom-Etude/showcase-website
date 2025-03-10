@@ -13,7 +13,7 @@ import {
     getFilteredRowModel,
     getPaginationRowModel,
     getSortedRowModel,
-    useReactTable
+    useReactTable,
 } from "@tanstack/react-table";
 
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -41,7 +41,7 @@ export function DataTable<TData, TValue>({ columns, data, filters, search_column
             sorting,
             columnVisibility,
             rowSelection,
-            columnFilters
+            columnFilters,
         },
         enableRowSelection: true,
         onRowSelectionChange: setRowSelection,
@@ -53,7 +53,7 @@ export function DataTable<TData, TValue>({ columns, data, filters, search_column
         getPaginationRowModel: getPaginationRowModel(),
         getSortedRowModel: getSortedRowModel(),
         getFacetedRowModel: getFacetedRowModel(),
-        getFacetedUniqueValues: getFacetedUniqueValues()
+        getFacetedUniqueValues: getFacetedUniqueValues(),
     });
 
     return (

@@ -7,7 +7,7 @@ import { ReactNode } from "react";
 
 export default async function LocaleLayout({
     children,
-    params: { locale }
+    params: { locale },
 }: Readonly<{
     children: ReactNode;
     params: { locale: Locale };

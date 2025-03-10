@@ -11,7 +11,7 @@ interface FaqItem {
 }
 
 export const metadata: Metadata = {
-    title: "Foire Aux Questions"
+    title: "Foire Aux Questions",
 };
 
 export default function Page({ params: { locale } }: LocaleParams) {

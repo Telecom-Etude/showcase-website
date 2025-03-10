@@ -10,7 +10,7 @@ async function backfillSlugs() {
 
         await prisma.post.update({
             where: { id: post.id },
-            data: { slug }
+            data: { slug },
         });
 
         console.log(`Updated slug for post ID ${post.id}: ${slug}`);
