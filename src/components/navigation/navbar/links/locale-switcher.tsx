@@ -70,7 +70,7 @@ export const LocaleSwitch = ({
         }
     }, [postSlug]);
 
-    const localedUrl = useLocaledUrl(locale == "fr" ? "en" : "fr", post);
+    const localedUrl = useLocaledUrl(locale === "fr" ? "en" : "fr", post);
 
     return (
         <NavigationMenuItem className={mobile ? "" : "p-2 hover:bg-muted"}>
