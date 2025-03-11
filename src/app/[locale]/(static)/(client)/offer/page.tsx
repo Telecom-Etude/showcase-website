@@ -14,6 +14,7 @@ import { Separator } from "@/components/ui/separator";
 import { DomainBlock } from "../(home)/domains";
 import { DesktopTimeline } from "./client";
 import { OFFER_IMAGES } from "./images";
+import { OrangeTitle } from "@/components/styles/texts";
 
 export const metadata: Metadata = {
     title: "Notre offre",
@@ -44,13 +45,13 @@ export default function Page({ params: { locale } }: LocaleParams) {
     return (
         <>
             <Block>
-                <header className="p-4">
-                    <h1>{t.title}</h1>
-                </header>
+                <OrangeTitle title={t.title} />
             </Block>
             <Block>
                 <section className="space-y-4">
-                    <h2>{t.timeline.title}</h2>
+                    <h2>
+                        <b>{t.timeline.title}</b>
+                    </h2>
                     <p>{t.timeline.text}</p>
                     <div className="p-4 hidden md:grid grid-cols-2 place-items-center gap-4">
                         <DesktopTimeline locale={locale} />

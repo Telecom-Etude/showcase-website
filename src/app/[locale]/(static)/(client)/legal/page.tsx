@@ -4,6 +4,7 @@ import { getDictionary } from "@/locales/dictionaries";
 import { Block } from "@/components/styles/blocks";
 import { BtnLink, EmailContact } from "@/components/telecom-etude/contact";
 import { Metadata } from "next";
+import { OrangeTitle } from "@/components/styles/texts";
 
 export const metadata: Metadata = {
     title: "Mentions légales",
@@ -13,7 +14,7 @@ export default async function Legal({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.legal;
     return (
         <Block>
-            <h1 className="font-bold text-center">{t.title}</h1>
+            <OrangeTitle title={t.title} />
             <section className="m-4">
                 <h2 className="font-semibold mb-4">{t.legal.title}</h2>
                 <div className="space-y-4">
