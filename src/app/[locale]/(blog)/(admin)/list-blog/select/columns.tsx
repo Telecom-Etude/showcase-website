@@ -111,7 +111,7 @@ export const columns: ColumnDef<ValidationBlogType>[] = [
         header: ({ column }) => <DataTableColumnHeader column={column} title="Titre" />,
         cell: ({ row }) => (
             <BtnLink href={`/list-blog/${row.getValue("id")}`}>
-                <p>{(usePathname().split("/")[1] as Locale) === "fr" ? row.original.titlefr : row.original.titleen}</p>
+                <p>{row.getValue("title")}</p>
                 <div className="flex space-x-2">
                     <span className="truncate"></span>
                 </div>

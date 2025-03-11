@@ -11,7 +11,7 @@ export default async function BlogPage({ params: { locale, postId } }: LocalePos
     if (!posts) {
         redirect(nav(locale, "/error/404"));
     }
-    const localePost = posts.find(blog => (locale === "fr" ? blog.slugfr : blog.slugen) === slug);
+    const localePost = posts.find(blog => blog.slug === slug);
     if (!localePost) {
         redirect(nav(locale, "/error/404"));
     } else {

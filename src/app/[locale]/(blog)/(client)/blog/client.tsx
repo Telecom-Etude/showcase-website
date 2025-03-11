@@ -17,16 +17,14 @@ import { useRouter } from "next/navigation";
 
 export interface PostPresentation {
     id: number;
-    titlefr: string;
-    titleen: string;
-    contentFR: string;
-    contentEN: string;
+    title: string;
+    content: string;
     emails: string[];
     authors: string[];
     date: Date;
     labels: string[];
-    slugfr: string;
-    slugen: string;
+    slug: string;
+    slugtr: string;
 }
 
 const allLabelsInValue = (postLabels: string[], selectedLabels: string[]) =>
@@ -69,11 +67,11 @@ function BlogsList({ posts, locale, t_none }: { t_none: string; posts: PostPrese
                     key={i}
                     className="w-full cursor-pointer"
                     onClick={() => {
-                        router.push(nav(locale, "/blog/" + (locale === "fr" ? post.slugfr : post.slugen)));
+                        router.push(nav(locale, "/blog/" + post.slug));
                     }}
                 >
                     <div className="flex items-center space-x-4">
-                        <h3>{locale === "fr" ? post.titlefr : post.titleen}</h3>
+                        <h3>{post.title}</h3>
                         {/* {isEditor && email && post.emails.includes(email) ? (
                             <VariantLink variant="ghost" href={nav(locale, `/edit-blog/${post.id}`)}>
                                 <FaPencil className="w-4 h-4" />

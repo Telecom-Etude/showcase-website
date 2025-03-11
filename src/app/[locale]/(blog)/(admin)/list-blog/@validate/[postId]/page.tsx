@@ -22,13 +22,13 @@ export default async function Page({ params: { locale, postId } }: LocalePostPar
         <div>
             <div className="space-y-4">
                 <div className="flex justify-between items-center space-x-4">
-                    <h1 className="truncate">{locale === "fr" ? blog.titlefr : blog.titleen}</h1>
+                    <h1 className="truncate">{blog.title}</h1>
                     <VariantLink variant="call2action" btnCn="min-w-0 aspect-square rounded-full" href={nav(locale, "/list-blog")}>
                         <IoClose className="w-4 h-4" />
                     </VariantLink>
                 </div>
                 <div className="custom-quill-styles">
-                    <RenderQuill content={JSON.parse(locale === "fr" ? blog.contentFR : blog.contentEN)} />
+                    <RenderQuill content={JSON.parse(blog.content)} />
                 </div>
             </div>
             {isAdmin && (

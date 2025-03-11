@@ -5,10 +5,8 @@ export const validationBlogSchema = z.object({
     validated: z.boolean(),
     emails: z.array(z.string()),
     locale: z.string(),
-    titlefr: z.string(),
-    titleen: z.string(),
-    contentFR: z.string(),
-    contentEN: z.string(),
+    title: z.string(),
+    content: z.string(),
     createdAt: z.date(),
     updatedAt: z.date(),
 });

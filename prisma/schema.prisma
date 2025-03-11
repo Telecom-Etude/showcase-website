@@ -36,14 +36,12 @@ model ContactForm {
 
 model Post {
     id        Int      @id @unique @default(autoincrement())
-    titlefr   String
-    titleen   String
+    title   String
     locale    String
-    slugfr    String   @unique
-    slugen    String   @unique
+    slug    String   @unique
+    slugtr    String   @unique
     authors   User[]
-    contentFR String
-    contentEN String
+    content String
     validated Boolean  @default(false)
     labels    Label[]
     createdAt DateTime @default(now())

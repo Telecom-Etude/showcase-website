@@ -9,11 +9,11 @@ export default function ClientBlog({ localePost, locale }: { locale: Locale; loc
     return (
         <>
             <header className="pb-6">
-                <h1>{locale === "fr" ? localePost.titlefr : localePost.titleen}</h1>
+                <h1>{localePost.title}</h1>
                 <p className="italic">{displayAuthors(locale, localePost)}</p>
             </header>
             <div className="custom-quill-styles">
-                <RenderQuill content={JSON.parse(locale === "fr" ? localePost.contentFR : localePost.contentEN)} />
+                <RenderQuill content={JSON.parse(localePost.content)} />
             </div>
         </>
     );

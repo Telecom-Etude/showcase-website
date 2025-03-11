@@ -8,10 +8,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     try {
         const post = await db.post.findFirst({
-            where: {
-                OR: [{ slugen: slug as string }, { slugfr: slug as string }],
-            },
-            select: { slugen: true, slugfr: true },
+            where: { slug: slug as string },
+            select: { slugtr: true },
         });
 
         if (!post) return res.status(404).json({ error: "Post not found" });

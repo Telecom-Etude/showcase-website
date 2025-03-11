@@ -20,7 +20,7 @@ const fetchSlug = async (slug: string) => {
     }
 };
 
-const useLocaledUrl = (locale: Locale, post: any) => {
+const useLocaledUrl = (locale: Locale, post: { slug: string } | null) => {
     const oldUrl = usePathname();
     const split = oldUrl.split("/");
     let index = 0;
@@ -33,11 +33,7 @@ const useLocaledUrl = (locale: Locale, post: any) => {
         return nav(locale, "/" + split.slice(index + 1).join("/"));
     } else {
         if (split[-2] === "blog") {
-            if (locale === "fr") {
-                split[-1] = post?.slugen || split[-1];
-            } else {
-                split[-1] = post?.slugfr || split[-1];
-            }
+            split[-1] = post?.slug || split[-1];
             return nav(locale, split.join("/"));
         } else {
             return nav(locale, split.join("/"));
@@ -57,7 +53,7 @@ export const LocaleSwitch = ({
     setOpened: (open: null | number) => void;
 }) => {
     const pathname = usePathname();
-    const [post, setPost] = useState<{ slugen: string; slugfr: string } | null>(null);
+    const [post, setPost] = useState<{ slug: string } | null>(null);
 
     // Vérifie si l'URL correspond à un post
     const pathParts = pathname.split("/");

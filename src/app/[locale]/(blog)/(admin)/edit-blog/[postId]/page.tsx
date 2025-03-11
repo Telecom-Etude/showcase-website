@@ -26,13 +26,13 @@ export default async function EditBlog({ params: { postId, locale } }: LocalePos
     const labels = (localeLabels || []).map(({ name }) => name);
     return (
         <Block className="w-full">
-            <h1>{locale === "fr" ? blog.titlefr : blog.titleen}</h1>
+            <h1>{blog.title}</h1>
             {blog.validated && <UnValidate locale={locale} id={id} />}
             <QuillEditor
                 locale={blogLocale}
                 id={id}
-                content={JSON.parse(locale === "fr" ? blog.contentFR : blog.contentEN)}
-                title={locale == "fr" ? blog.titlefr : blog.titleen}
+                content={JSON.parse(blog.content)}
+                title={blog.title}
                 dbLabels={labels}
                 blogLabels={blog.labels.map(label => label.name)}
             />
