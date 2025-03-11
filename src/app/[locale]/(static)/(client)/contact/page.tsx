@@ -8,7 +8,7 @@ import { Metadata } from "next";
 import { OrangeTitle } from "@/components/styles/texts";
 
 export const metadata: Metadata = {
-    title: "Contact"
+    title: "Contact",
 };
 
 export default async function Page({ params: { locale } }: LocaleParams) {

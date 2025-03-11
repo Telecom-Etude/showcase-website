@@ -9,14 +9,14 @@ import BlogPage from "./client";
 import { OrangeTitle } from "@/components/styles/texts";
 
 export const metadata: Metadata = {
-    title: "Blog"
+    title: "Blog",
 };
 
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
     return LOCALES.map(locale => ({
-        locale
+        locale,
     }));
 }
 

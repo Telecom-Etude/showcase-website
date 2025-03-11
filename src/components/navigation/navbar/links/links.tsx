@@ -20,7 +20,7 @@ import {
     NavigationMenuLink,
     NavigationMenuList,
     NavigationMenuTrigger,
-    navigationMenuTriggerStyle
+    navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { Button } from "@/components/ui/button";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa6";
@@ -54,7 +54,7 @@ const MultipleMobileLinks = ({
     isOpen,
     setOpen,
     onClick,
-    router
+    router,
 }: {
     router: AppRouterInstance;
     onClick: () => void;
@@ -174,7 +174,7 @@ export const Links = ({
     user,
     onClick,
     btnCn,
-    mobile
+    mobile,
 }: {
     mobile: boolean;
     locale: Locale;

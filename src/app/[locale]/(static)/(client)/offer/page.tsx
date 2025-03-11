@@ -17,7 +17,7 @@ import { OFFER_IMAGES } from "./images";
 import { OrangeTitle } from "@/components/styles/texts";
 
 export const metadata: Metadata = {
-    title: "Notre offre"
+    title: "Notre offre",
 };
 
 function MobileTimeline({ locale }: { locale: Locale }) {

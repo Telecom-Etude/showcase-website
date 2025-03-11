@@ -8,7 +8,7 @@ import { DEPARTMENTS, PersonProps } from "./members";
 import { OrangeTitle } from "@/components/styles/texts";
 
 export const metadata: Metadata = {
-    title: "Notre équipe"
+    title: "Notre équipe",
 };
 function Linkedin({ children, linkedin }: { children: ReactNode; linkedin?: string }) {
     if (linkedin) {

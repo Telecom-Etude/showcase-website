@@ -7,7 +7,7 @@ import { Metadata } from "next";
 import { OrangeTitle } from "@/components/styles/texts";
 
 export const metadata: Metadata = {
-    title: "Mentions légales"
+    title: "Mentions légales",
 };
 
 export default async function Legal({ params: { locale } }: LocaleParams) {
