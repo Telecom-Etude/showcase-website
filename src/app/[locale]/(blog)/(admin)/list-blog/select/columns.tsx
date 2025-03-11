@@ -16,6 +16,8 @@ import { BtnLink, EmailBtn } from "@/components/telecom-etude/contact";
 import { getUserName } from "@/lib/users";
 import { Checkbox } from "@/components/ui/checkbox";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Locale } from "@/locales/config";
 
 function Delete({ row }: { row: Row<ValidationBlogType> }) {
     const router = useRouter();
@@ -109,7 +111,7 @@ export const columns: ColumnDef<ValidationBlogType>[] = [
         header: ({ column }) => <DataTableColumnHeader column={column} title="Titre" />,
         cell: ({ row }) => (
             <BtnLink href={`/list-blog/${row.getValue("id")}`}>
-                <p>{row.getValue("title")}</p>
+                <p>{(usePathname().split("/")[1] as Locale) === "fr" ? row.original.titlefr : row.original.titleen}</p>
                 <div className="flex space-x-2">
                     <span className="truncate"></span>
                 </div>

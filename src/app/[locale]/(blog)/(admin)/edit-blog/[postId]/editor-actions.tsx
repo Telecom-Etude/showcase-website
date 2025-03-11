@@ -16,6 +16,8 @@ import { getBlog, renameBlog } from "@/db/blogs";
 import { updatePostLabels } from "@/db/labels";
 import { Locale } from "@/locales/config";
 import { getDictionary } from "@/locales/dictionaries";
+import { usePathname } from "next/navigation";
+import { isLocale } from "@/locales/config";
 
 function Rename({ title, id, router, t, locale }: { title: string; id: number; router: AppRouterInstance; t: any; locale: Locale }) {
     return (
@@ -114,7 +116,8 @@ interface ActionProps {
 }
 
 export function Actions({ setToBeChanged, content, value, title, id, dbLabels, blogLabels, locale }: ActionProps) {
-    const t = getDictionary(locale).navigation.admin.editblog;
+    const localepage = usePathname().split("/")[1] as Locale;
+    const t = getDictionary(localepage).navigation.admin.editblog;
     const [getLabels, setLabels] = useState<string[]>(blogLabels);
     const addRemoveLabel = (label: string) => {
         var newLabels = getLabels;

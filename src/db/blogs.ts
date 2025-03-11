@@ -97,8 +97,10 @@ export async function getValidatedBlogs(locale: Locale): Promise<PostPresentatio
         const blogs = dbBlogs
             .filter(blog => blog.validated && blog.locale == locale)
             .map(({ authors, labels, updatedAt, titlefr, titleen, slugfr, slugen, locale, ...blog }) => ({
-                title: locale === "fr" ? titlefr : titleen,
-                slug: locale === "fr" ? slugfr : slugen,
+                titlefr: titlefr,
+                titleen: titlefr,
+                slugfr: slugfr,
+                slugen: slugen,
                 authors: authors.map(author => author.name),
                 emails: authors.map(author => author.email),
                 date: updatedAt,

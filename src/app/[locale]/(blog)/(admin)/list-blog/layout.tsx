@@ -14,12 +14,15 @@ interface PageProps extends LocaleParams {
 
 export default async function Validation({ params: { locale }, validate }: PageProps) {
     const posts = await getAllBlog();
-    const allData: ValidationBlogType[] = posts.map(({ id, validated, authors, title, content, createdAt, updatedAt }) => ({
+    const allData: ValidationBlogType[] = posts.map(({ id, validated, authors, locale, titlefr, titleen, contentFR, contentEN, createdAt, updatedAt }) => ({
         id,
         validated,
         emails: authors.map(author => author.email),
-        title,
-        content,
+        locale,
+        titlefr,
+        titleen,
+        contentFR,
+        contentEN,
         createdAt,
         updatedAt,
     }));
@@ -33,7 +36,7 @@ export default async function Validation({ params: { locale }, validate }: PageP
                     <ResizablePanel defaultSize={100}>
                         <div className="p-10 h-full">
                             <DataTable
-                                search_column="title"
+                                search_column={locale === "fr" ? "titlefr" : "titleen"}
                                 data={isAdmin ? allData : allData.filter(post => post.emails.includes(session?.email!))}
                                 columns={columns}
                                 filters={[]}
