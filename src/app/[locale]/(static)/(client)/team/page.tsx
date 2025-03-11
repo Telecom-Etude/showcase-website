@@ -46,7 +46,7 @@ export default async function Team({ params: { locale } }: LocaleParams) {
     return (
         <div className="p-4 flex flex-col items-center">
             <header>
-                <OrangeTitle title= {t.title}>
+                <OrangeTitle title={t.title} />
             </header>
             {DEPARTMENTS.map(({ id, members }, i) => (
                 <section key={i} className="py-6">

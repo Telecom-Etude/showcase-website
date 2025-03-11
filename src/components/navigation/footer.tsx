@@ -4,7 +4,7 @@ import { nav } from "@/locales/routing";
 import Link from "next/link";
 import { IconType } from "react-icons";
 import { FaEnvelope, FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
-import { BtnLink, EmailBtn, EmailContact } from "../telecom-etude/contact";
+import { BtnLink, EmailContact } from "../telecom-etude/contact";
 import { FullLogo } from "../telecom-etude/logos";
 import { Button } from "../ui/button";
 
@@ -86,34 +86,12 @@ const SiteMap = ({ t, locale }: { locale: Locale; t: Dictionary["navigation"]["s
     );
 };
 
-export const EmailContact_footer = ({
-    rgpd = false,
-    dsi = false,
-    text,
-    underline = false
-}: {
-    rgpd?: boolean;
-    dsi?: boolean;
-    text?: string;
-    underline?: boolean;
-}) => {
-    return (
-        <>
-            <EmailBtn
-                underline={underline}
-                email={rgpd ? "secretaire.general@telecom-etude.fr" : dsi ? "info.telecom-paris.fr" : "contact@telecom-etude.fr"}
-                text={text}
-            />
-        </>
-    );
-};
-
 const Mentions = ({ bug }: { bug: string }) => (
     <div>
         <div className="p-2 flex flex-col items-center space-y-2">
             <FullLogo />
             <p>&copy;{new Date().getFullYear()} Telecom Etude</p>
-            <EmailContact_footer />
+            <EmailContact />
             <BtnLink href="https://maps.app.goo.gl/etZHknTudKMuTjRZ9" className="flex flex-col">
                 <div>
                     <p>19, place Marguerite Perey</p>

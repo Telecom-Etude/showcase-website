@@ -16,7 +16,7 @@ export default async function Page({ params: { locale } }: LocaleParams) {
 
     return (
         <Block className="py-10 space-y-10 flex flex-col items-center">
-            <img className="w-32" src="/icons/contact_icon.png" alt="Contactez-nous" />
+            <img className="w-32" src="/icons/contact.png" alt="Contactez-nous" />
             <OrangeTitle title={t.title} />
             <p className="pb-8 text-center sm:w-[80%] w-[90%]">
                 {t.before}
