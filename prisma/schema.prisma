@@ -42,7 +42,8 @@ model Post {
     slugfr    String   @unique
     slugen    String   @unique
     authors   User[]
-    content   String
+    contentFR String
+    contentEN String
     validated Boolean  @default(false)
     labels    Label[]
     createdAt DateTime @default(now())
