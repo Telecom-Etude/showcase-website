@@ -24,10 +24,11 @@ export async function createBlog(authorEmail: string, title: string, locale: Loc
                     },
                     locale,
                     titlefr: title,
-                    titleen: "",
+                    titleen: "Title not defined",
                     slugfr: generateSlug(title),
-                    slugen: "",
-                    content: "[]",
+                    slugen: generateSlug(title) + "_not_translated",
+                    contentFR: "[]",
+                    contentEN: "[]",
                 },
             });
             return blog.id;
@@ -38,11 +39,12 @@ export async function createBlog(authorEmail: string, title: string, locale: Loc
                         connect: [{ id: author.id }],
                     },
                     locale,
-                    titlefr: "",
+                    titlefr: "Titre non défini",
                     titleen: title,
-                    slugfr: "",
+                    slugfr: generateSlug(title) + "_non_traduit",
                     slugen: generateSlug(title),
-                    content: "[]",
+                    contentFR: "[]",
+                    contentEN: "[]",
                 },
             });
             return blog.id;
@@ -53,24 +55,35 @@ export async function createBlog(authorEmail: string, title: string, locale: Loc
     }
 }
 
-export async function updateLocaleBlogContent(id: number, content: Op[]) {
+export async function updateLocaleBlogContent(id: number, content: Op[], locale: Locale) {
     try {
-        await db.post.update({
-            where: { id: id },
-            data: { content: JSON.stringify(content) },
-        });
+        if (locale === "fr") {
+            await db.post.update({
+                where: { id: id },
+                data: { contentFR: JSON.stringify(content) },
+            });
+        } else {
+            await db.post.update({
+                where: { id: id },
+                data: { contentEN: JSON.stringify(content) },
+            });
+        }
     } catch (e) {
         console.error("[updateBlogContent] ", e);
     }
 }
 
-export async function getBlogContent(id: number): Promise<Op[] | undefined> {
+export async function getBlogContent(id: number, locale: Locale): Promise<Op[] | undefined> {
     try {
         const blog = await db.post.findUnique({
             where: { id: id },
-            select: { content: true },
+            select: { contentFR: true, contentEN: true },
         });
-        return JSON.parse(blog!.content);
+        if (locale === "fr") {
+            return JSON.parse(blog!.contentFR);
+        } else {
+            return JSON.parse(blog!.contentEN);
+        }
     } catch (e) {
         // console.error("[getLocaleBlogContent] ", e);
     }
@@ -90,6 +103,7 @@ export async function getValidatedBlogs(locale: Locale): Promise<PostPresentatio
                 emails: authors.map(author => author.email),
                 date: updatedAt,
                 labels: labels.filter(l => l.locale === locale).map(l => l.name),
+                content: locale === "fr" ? blog.contentFR : blog.contentEN,
                 ...blog,
             }));
         return blogs;

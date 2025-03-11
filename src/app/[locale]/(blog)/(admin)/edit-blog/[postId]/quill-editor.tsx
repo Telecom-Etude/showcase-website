@@ -61,12 +61,12 @@ export function QuillEditor({ id, content, title, locale, dbLabels, blogLabels }
                 setValue(JSON.stringify(quill.getContents().ops));
                 const newContent = quill.getContents().ops;
                 if (newContent != content) {
-                    updateLocaleBlogContent(id, newContent).finally(() => router.refresh());
+                    updateLocaleBlogContent(id, newContent, locale).finally(() => router.refresh());
                 }
             });
             setLoaded(true);
         }
-    }, [quill, content, id, router, loaded]);
+    }, [quill, content, id, router, loaded, locale]);
 
     return (
         <div className="w-full">
