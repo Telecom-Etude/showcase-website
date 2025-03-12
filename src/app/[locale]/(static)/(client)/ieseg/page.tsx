@@ -61,9 +61,9 @@ export default function HomePage({ params: { locale } }: { params: { locale: Loc
             </div>
             <div>
                 <section className={section}>
-                    <Paragraph title={t.personalisedApproach.title}>
-                        {t.personalisedApproach.before}
-                        <strong className="font-semibold">{t.personalisedApproach.strong}</strong>
+                    <Paragraph title={t.personalised.title}>
+                        {t.personalised.before}
+                        <strong className="font-semibold">{t.personalised.strong}</strong>
                     </Paragraph>
                     {/* <div className="w-1/2 flex flex-col items-center space-y-6">
                         <p className="text-center">Vous voulez voir des exemples de mission que nous avons réaliser en partenariat avec l&apos;IÉSEG ? </p>
