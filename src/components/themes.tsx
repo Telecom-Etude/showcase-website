@@ -26,8 +26,8 @@ export function ThemeSwitch({ onClick, setOpened }: { onClick: () => void; setOp
                 onClick();
             }}
         >
-            <IoSunny className="dark:hidden" />
-            <IoMoon className="dark:block hidden" />
+            <IoSunny className="dark:block hidden" />
+            <IoMoon className="dark:hidden" />
             <span className="sr-only">Toggle theme</span>
         </Button>
     );
