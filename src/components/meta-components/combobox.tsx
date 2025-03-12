@@ -60,7 +60,7 @@ export const Combobox = ({
     items,
     emptyMessage,
     currentKey,
-    selectKey
+    selectKey,
 }: {
     currentKey: string | null;
     selectKey: (_: string | null) => void;

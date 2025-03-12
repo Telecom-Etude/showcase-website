@@ -118,12 +118,10 @@ export const
                             " Our services include implementing new technologies, launching new products and optimizing your performance using multi-linear regression and data visualization tools. "
                       },
                       personalised: {
-                        title: "Personalized Approach",
-                        before:
-                            "Each project is unique. We adapt our services to your specific needs, whether to assess feasibility of a new product, to optimise your client service or to imporve your marketing strategy.",
-                        strong:
-                            " Our personalised approch garantees concrete results relying on mysterious visits, exit interviews and sectoral benchmarks tailored to your specific stakes"
-                      },
+                        title: "Personalised approach",
+                        before: "Every project is unique. We tailor our services to your specific needs, whether you want to assess the feasibility of a new product, optimise your customer service or improve your marketing strategy.",
+                        strong: " Our personalised approach guarantees concrete results, based on mystery visits, exit interviews and sector benchmarks tailored to your particular challenges.",
+                    },
                       gain: {
                         title: "Saving Time and Efficiency",
                         before:

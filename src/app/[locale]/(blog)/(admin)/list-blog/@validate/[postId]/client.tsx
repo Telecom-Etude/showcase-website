@@ -19,7 +19,7 @@ export const ValidateButton = ({ id, t, locale }: { locale: Locale; id: number; 
             .catch(() => {
                 toast({
                     ...t,
-                    variant: "destructive"
+                    variant: "destructive",
                 });
             });
     };

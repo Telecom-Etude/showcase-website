@@ -17,28 +17,28 @@ export function ErrorPage({ code, locale, message }: { code: string; locale: Loc
             pageInfo = {
                 http: errorsVocab.httpError + " 401",
                 t: errorsVocab.unauthorized,
-                href: "/api/auth/signin"
+                href: "/api/auth/signin",
             };
             break;
         case "403":
             pageInfo = {
                 http: errorsVocab.httpError + " 403",
                 t: errorsVocab.forbidden,
-                href: nav(locale, "/")
+                href: nav(locale, "/"),
             };
             break;
         case "404":
             pageInfo = {
                 http: errorsVocab.httpError + " 404",
                 t: errorsVocab.notfound,
-                href: nav(locale, "/")
+                href: nav(locale, "/"),
             };
             break;
         default:
             pageInfo = {
                 http: errorsVocab.httpError + " " + code,
                 t: errorsVocab.unknown,
-                href: nav(locale, "/")
+                href: nav(locale, "/"),
             };
             break;
     }

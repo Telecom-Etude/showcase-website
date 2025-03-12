@@ -8,7 +8,7 @@ export const nav = (locale: Locale, href: string) => `/${locale}${href}`;
 export function getHeaderLocale(headers: Headers) {
     try {
         const negoriator_headers = {
-            "accept-language": headers.get("accept-language") || undefined
+            "accept-language": headers.get("accept-language") || undefined,
         };
         let languages = new Negotiator({ headers: negoriator_headers }).languages();
         return match(languages, LOCALES, DEFAULT_LOCALE) as Locale;

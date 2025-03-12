@@ -17,7 +17,7 @@ export async function updatePostLabels(labels: string[], id: number, locale: Loc
     try {
         const currentLabels = await db.post.findUnique({
             where: { id },
-            select: { labels: true }
+            select: { labels: true },
         });
 
         if (currentLabels?.labels) {
@@ -25,9 +25,9 @@ export async function updatePostLabels(labels: string[], id: number, locale: Loc
                 where: { id },
                 data: {
                     labels: {
-                        disconnect: currentLabels.labels.map(label => ({ id: label.id }))
-                    }
-                }
+                        disconnect: currentLabels.labels.map(label => ({ id: label.id })),
+                    },
+                },
             });
         }
 
@@ -45,9 +45,9 @@ export async function updatePostLabels(labels: string[], id: number, locale: Loc
             where: { id },
             data: {
                 labels: {
-                    connect: dbLabels
-                }
-            }
+                    connect: dbLabels,
+                },
+            },
         });
     } catch (e) {
         console.error("[updatePostLabels] ", e);

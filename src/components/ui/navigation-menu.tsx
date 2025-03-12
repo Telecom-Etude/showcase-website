@@ -100,7 +100,7 @@ export {
     NavigationMenuTrigger,
     NavigationMenuLink,
     NavigationMenuIndicator,
-    NavigationMenuViewport
+    NavigationMenuViewport,
 };
 
 // ADDED

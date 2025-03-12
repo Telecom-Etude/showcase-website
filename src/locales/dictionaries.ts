@@ -11,7 +11,7 @@ type DeepReadonly<T> = {
 
 const dictionaries: DeepReadonly<{ [key in Locale]: Dictionary }> = {
     en: enDictionary,
-    fr: frDictionary
+    fr: frDictionary,
 } as const; // `as const` allows access to types in depth
 
 export const getDictionary = (locale: Locale) => dictionaries[locale];
