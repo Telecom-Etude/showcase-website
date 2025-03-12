@@ -15,7 +15,7 @@ const Network = ({ href, Icon, label }: { href: string; Icon: IconType; label: s
 );
 
 const LinkItem = ({ href, name }: { href: string; name: string }) => (
-    <Button variant="link" className="text-foreground px-1 py-[3px]" asChild>
+    <Button variant="link" className="text-foreground py-[3px] !px-0" asChild>
         <Link className="w-fit h-fit pl-0 py-0" href={href}>
             {name}
         </Link>
