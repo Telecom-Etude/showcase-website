@@ -9,9 +9,11 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const fetchSlug = async (slug: string) => {
+/*  Tentative de lier le bouton pour changer les langues à une api pour récuperer le slug du post traduit pour la redirection
+    Mais le code marche pas à cause du client side et de la nécessité de await
+const fetchSlug = async (slug: string | null) => {
     try {
-        const response = await fetch(`/api/getPostSlug?slug=${slug}`);
+        const response = await fetch(`/api/get-post-slug?slug=${slug}`);
         if (!response.ok) throw new Error("Erreur de récupération du slug");
         return await response.json();
     } catch (error) {
@@ -19,8 +21,9 @@ const fetchSlug = async (slug: string) => {
         return null;
     }
 };
+*/
 
-const useLocaledUrl = (locale: Locale, post: { slug: string } | null) => {
+const useLocaledUrl = (locale: Locale) => {
     const oldUrl = usePathname();
     const split = oldUrl.split("/");
     let index = 0;
@@ -29,15 +32,11 @@ const useLocaledUrl = (locale: Locale, post: { slug: string } | null) => {
     }
     if (index === split.length) {
         return nav(locale, "/");
-    } else if (isLocale(split[index])) {
-        return nav(locale, "/" + split.slice(index + 1).join("/"));
+    } else if (isLocale(split[index]) && split[2] === "blog" && split.length > 2) {
+        split.pop();
+        return nav(locale, "/" + split.splice(index + 1).join("/"));
     } else {
-        if (split[-2] === "blog") {
-            split[-1] = post?.slug || split[-1];
-            return nav(locale, split.join("/"));
-        } else {
-            return nav(locale, split.join("/"));
-        }
+        return nav(locale, split.join("/"));
     }
 };
 
@@ -52,21 +51,20 @@ export const LocaleSwitch = ({
     onClick: () => void;
     setOpened: (open: null | number) => void;
 }) => {
-    const pathname = usePathname();
-    const [post, setPost] = useState<{ slug: string } | null>(null);
+    /* Suite de la partie commentée mais marche pas
+const pathname = usePathname();
+const pathParts = pathname.split("/");
+const isBlogPost = pathParts.includes("blog");
+const postSlug = isBlogPost ? pathParts[pathParts.length - 1] : null;
+const [post, setPost] = useState<{ slug: string } | null>(null);
 
-    // Vérifie si l'URL correspond à un post
-    const pathParts = pathname.split("/");
-    const isBlogPost = pathParts.includes("blog");
-    const postSlug = isBlogPost ? pathParts[pathParts.length - 1] : null;
-
-    useEffect(() => {
-        if (postSlug) {
-            fetchSlug(postSlug).then(data => setPost(data));
-        }
-    }, [postSlug]);
-
-    const localedUrl = useLocaledUrl(locale === "fr" ? "en" : "fr", post);
+useEffect(() => {
+    if (postSlug) {
+        fetchSlug(postSlug).then(post => setPost(post));
+    }
+}, [postSlug]);
+*/
+    const localedUrl = useLocaledUrl(locale === "fr" ? "en" : "fr");
 
     return (
         <NavigationMenuItem className={mobile ? "" : "p-2 hover:bg-muted"}>

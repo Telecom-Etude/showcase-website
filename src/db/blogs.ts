@@ -7,7 +7,7 @@ import { Label, Post, User } from "@prisma/client";
 import { Op } from "quill/core";
 import { generateSlug } from "./slug";
 
-export async function createBlog(authorEmail: string, title: string, locale: Locale): Promise<number> {
+export async function createBlog(authorEmail: string, title: string, locale: Locale, titletr: string): Promise<number> {
     try {
         if (!authorEmail) {
             throw new Error("Author email is undefined");
@@ -24,7 +24,7 @@ export async function createBlog(authorEmail: string, title: string, locale: Loc
                 locale,
                 title: title,
                 slug: generateSlug(title),
-                slugtr: generateSlug(title) + "_not_translated",
+                slugtr: generateSlug(titletr),
                 content: "[]",
             },
         });
