@@ -61,7 +61,6 @@ function NumberCard({ nb, prefix, suffix, text }: { nb: number; prefix?: string;
     );
 }
 
-
 export const metadata: Metadata = {
     title: "Accueil",
 };
