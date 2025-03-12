@@ -10,7 +10,7 @@ const buttonVariantsStyles = {
     destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
     outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
     secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-    ghost: "hover:bg-accent hover:text-accent-foreground",
+    ghost: "hover:bg-accent hover:text-accent-foreground call",
     link: "text-primary underline-offset-4 hover:underline",
     call2action: "font-medium flex flex-col justify-center text-primary-foreground rounded-full call2action min-w-[150px]"
 };

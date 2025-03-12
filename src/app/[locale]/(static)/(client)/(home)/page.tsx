@@ -68,10 +68,9 @@ export const metadata: Metadata = {
 export default async function Page({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.home;
     return (
-        <>  
+        <>
             <Separator />
-                <section className="bg-fixed bg-contain h-[380px]" style={{ backgroundImage: `url(${fond_acc.src})` }}>
-                </section>
+            <section className="bg-fixed bg-contain h-[380px]" style={{ backgroundImage: `url(${fond_acc.src})` }}></section>
             <Separator />
             <Block>
                 <header className="py-0 space-y-10">
