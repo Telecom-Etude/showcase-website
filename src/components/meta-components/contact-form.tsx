@@ -46,17 +46,17 @@ export default function ContactForm({ locale, emails }: { locale: Locale; emails
 
     const formFields = {
         name: z.string().min(2, {
-            message: t.form.name.error
+            message: t.form.name.error,
         }),
         email: z.string().email({
-            message: t.form.email.error
+            message: t.form.email.error,
         }),
         tel: z.string().optional(),
         societe: z.string().optional(),
         subject: z.string(),
         message: z.string().min(5, {
-            message: t.form.message.error
-        })
+            message: t.form.message.error,
+        }),
     };
 
     const formSchema = z.object(formFields);
@@ -74,8 +74,8 @@ export default function ContactForm({ locale, emails }: { locale: Locale; emails
             tel: "",
             societe: "",
             subject: "",
-            message: ""
-        }
+            message: "",
+        },
     });
 
     const onSubmit = (values: FormType) => {

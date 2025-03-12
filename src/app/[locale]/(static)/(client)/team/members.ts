@@ -52,39 +52,39 @@ export const DEPARTMENTS: DepartmentProps[] = [
             {
                 id: "prez", // id is to find the translations
                 name: "Manon Strasser",
-                image: Manon
+                image: Manon,
             },
             {
                 id: "trez",
                 name: "Rémy Fayet",
-                image: Rémy
+                image: Rémy,
             },
             {
                 id: "dirco",
                 name: "Rahma Loukil",
-                image: Rahma
+                image: Rahma,
             },
             {
                 id: "vpi",
                 name: "Sacha Radovanovic",
-                image: Sacha
+                image: Sacha,
             },
             {
                 id: "vpe",
                 name: "Nathan Casanova",
-                image: Nathan
+                image: Nathan,
             },
             {
                 id: "secge",
                 name: "Leïla Iksil",
-                image: Leïla
+                image: Leïla,
             },
             {
                 id: "vicetrez",
                 name: "Tasnim Drissi",
-                image: Tasnim
-            }
-        ]
+                image: Tasnim,
+            },
+        ],
     },
     {
         id: "devco",
@@ -92,39 +92,39 @@ export const DEPARTMENTS: DepartmentProps[] = [
             {
                 id: "respodevco",
                 name: "Antoine Quint",
-                image: AntoineQ
+                image: AntoineQ,
             },
             {
                 id: "international",
                 name: "Ikrame Amallah",
-                image: Ikrame
+                image: Ikrame,
             },
             {
                 id: "alumni",
                 name: "Titouan Vasnier",
-                image: Titouan
+                image: Titouan,
             },
             {
                 id: "appel",
                 name: "Chahinez Abbas",
-                image: Chahinez
+                image: Chahinez,
             },
             {
                 id: "devco",
                 name: "Yacine Khalil",
-                image: Yacine
+                image: Yacine,
             },
             {
                 id: "devco",
                 name: "Thomas Lucereau",
-                image: Thomas
+                image: Thomas,
             },
             {
                 id: "devco",
                 name: "Fouad Khelifi",
-                image: Fouad
-            }
-        ]
+                image: Fouad,
+            },
+        ],
     },
     {
         id: "auditqua",
@@ -132,29 +132,29 @@ export const DEPARTMENTS: DepartmentProps[] = [
             {
                 id: "respoquality",
                 name: "Alexander Hare",
-                image: Alexander
+                image: Alexander,
             },
             {
                 id: "respoaudit",
                 name: "Luc Kreucher",
-                image: Luc
+                image: Luc,
             },
             {
                 id: "templates",
                 name: "Lyla Demange",
-                image: Lyla
+                image: Lyla,
             },
             {
                 id: "audit",
                 name: "Myriam Lebatteux",
-                image: Myriam
+                image: Myriam,
             },
             {
                 id: "processus",
                 name: "Jennifer Timani",
-                image: Jennifer
-            }
-        ]
+                image: Jennifer,
+            },
+        ],
     },
     {
         id: "info",
@@ -162,14 +162,14 @@ export const DEPARTMENTS: DepartmentProps[] = [
             {
                 id: "respoinfo",
                 name: "Tom Webber",
-                image: Tom
+                image: Tom,
             },
             {
                 id: "info",
                 name: "Nicolas Besson",
-                image: Nicolas
-            }
-        ]
+                image: Nicolas,
+            },
+        ],
     },
     {
         id: "com",
@@ -177,24 +177,24 @@ export const DEPARTMENTS: DepartmentProps[] = [
             {
                 id: "respocom",
                 name: "Sarah Dos Santos",
-                image: Sarah
+                image: Sarah,
             },
             {
                 id: "cominterne",
                 name: "Thibaud Chasteauneuf",
-                image: Thibaud
+                image: Thibaud,
             },
             {
                 id: "insta",
                 name: "Julien Waxweiler",
-                image: Julien
+                image: Julien,
             },
             {
                 id: "linkedin",
                 name: "Axel Guimbault",
-                image: Axel
-            }
-        ]
+                image: Axel,
+            },
+        ],
     },
     {
         id: "suivi",
@@ -202,19 +202,19 @@ export const DEPARTMENTS: DepartmentProps[] = [
             {
                 id: "resposuivi",
                 name: "Luka Judas",
-                image: Luka
+                image: Luka,
             },
             {
                 id: "selectionCDP",
                 name: "Edwin Feneux",
-                image: Edwin
+                image: Edwin,
             },
             {
                 id: "suivi",
                 name: "Victor Deru",
-                image: Victor
-            }
-        ]
+                image: Victor,
+            },
+        ],
     },
     {
         id: "event",
@@ -222,18 +222,18 @@ export const DEPARTMENTS: DepartmentProps[] = [
             {
                 id: "respoevent",
                 name: "Vincent Houlné",
-                image: VincentH
+                image: VincentH,
             },
             {
                 id: "pots",
                 name: "Antoine Heitzmann",
-                image: AntoineH
+                image: AntoineH,
             },
             {
                 id: "teambuildings",
                 name: "Lauren Calvosa",
-                image: Lauren
-            }
-        ]
-    }
+                image: Lauren,
+            },
+        ],
+    },
 ] as const;

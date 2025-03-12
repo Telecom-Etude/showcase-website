@@ -9,8 +9,8 @@ export async function sendEmail(dest_email: string[], subject: string, html: str
         service: "gmail",
         auth: {
             user: process.env.SMTP_EMAIL,
-            pass: process.env.SMTP_PASSWORD
-        }
+            pass: process.env.SMTP_PASSWORD,
+        },
     });
 
     let mailOptions = {
@@ -18,7 +18,7 @@ export async function sendEmail(dest_email: string[], subject: string, html: str
         to: dest_email,
         subject,
         html,
-        text
+        text,
     };
 
     await transporter.sendMail(mailOptions);
@@ -46,7 +46,7 @@ export async function sendForm({ name, email, tel, societe, subject, message }: 
     const formattedDate = `${date.toLocaleDateString("fr-FR", {
         day: "2-digit",
         month: "2-digit",
-        year: "2-digit"
+        year: "2-digit",
     })} ${date.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" })}`;
 
     const safeName = escapeHtml(name);

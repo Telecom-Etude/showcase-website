@@ -16,7 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
         title: {
             // IMPORTANT
             template: "%s | Telecom Etude",
-            default: "Telecom Etude"
+            default: "Telecom Etude",
         },
         ///// FIXED /////
 
@@ -32,15 +32,15 @@ export async function generateMetadata(): Promise<Metadata> {
             "Web",
             "Logiciel",
             "Chatbot",
-            "Cybersécurité"
+            "Cybersécurité",
         ],
         metadataBase: new URL(WEBSITE_URL), // settings for below
         alternates: {
             canonical: "/" + locale,
             languages: {
                 "fr-FR": "/fr",
-                "en-GB": "/en"
-            }
+                "en-GB": "/en",
+            },
             // ...
         },
         robots: {
@@ -49,7 +49,7 @@ export async function generateMetadata(): Promise<Metadata> {
             follow: true,
             "max-snippet": 320,
             "max-image-preview": "large",
-            "max-video-preview": -1
+            "max-video-preview": -1,
             // ...
         },
         openGraph: {
@@ -57,13 +57,13 @@ export async function generateMetadata(): Promise<Metadata> {
             description: DESCRIPTION,
             url: WEBSITE_URL,
             images: [{ url: WEBSITE_URL + "/logo.png", width: 555, height: 555, alt: "Telecom Etude Logo" }],
-            type: "website"
+            type: "website",
         },
         twitter: {
             card: "summary_large_image",
             title: "Telecom Etude",
             description: DESCRIPTION,
-            images: WEBSITE_URL + "/logo.png"
+            images: WEBSITE_URL + "/logo.png",
         },
         // NOT SO IMPORTANT
         generator: "Next.js",
@@ -76,8 +76,8 @@ export async function generateMetadata(): Promise<Metadata> {
         formatDetection: {
             email: true,
             address: false,
-            telephone: true
-        }
+            telephone: true,
+        },
 
         // TODO
         // referrer: 'origin-when-cross-origin',
