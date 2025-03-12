@@ -198,7 +198,7 @@ export const
                       jamaissanselles: {
                         title: "#JamaisSansElles Charter",
                         text:
-                            "The #JamaisSansElles charter, co-drafted by the "Jamais Sans Elles" association and the CNJE, defines the commitments of the signatory Junior-Enterprises, including Télécom Étude, in terms of parity and gender diversity. By signing this charter, Télécom Étude undertakes to guarantee the presence of women in all representations involving at least three people. The Junior Enterprise also commits to promoting gender equality within its structure, both in recruitment and in access to leadership positions. Lastly, Telecom Etude is stepping up its action against sexist and sexual violence, through prevention initiatives aimed at students and the application of the CNJE's recommendations at its events",
+                            "The #JamaisSansElles charter, co-drafted by the \"Jamais Sans Elles\" association and the CNJE, defines the commitments of the signatory Junior-Enterprises, including Télécom Étude, in terms of parity and gender diversity. By signing this charter, Télécom Étude undertakes to guarantee the presence of women in all representations involving at least three people. The Junior Enterprise also commits to promoting gender equality within its structure, both in recruitment and in access to leadership positions. Lastly, Telecom Etude is stepping up its action against sexist and sexual violence, through prevention initiatives aimed at students and the application of the CNJE's recommendations at its events",
                         alt: "JamaisSansElles logo"
                       },
                       rse: {
