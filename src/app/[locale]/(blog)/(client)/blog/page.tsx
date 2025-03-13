@@ -6,6 +6,7 @@ import { nav } from "@/locales/routing";
 import { Metadata } from "next";
 import { redirect } from "next/navigation";
 import BlogPage from "./client";
+import { OrangeTitle } from "@/components/styles/texts";
 
 export const metadata: Metadata = {
     title: "Blog",
@@ -30,7 +31,7 @@ export default async function Page({ params: { locale } }: LocaleParams) {
 
     return (
         <div className="flex flex-col items-center p-10 space-y-10">
-            <h1>{t.title}</h1>
+            <OrangeTitle title={t.title} />
             <BlogPage dbLabels={labels.map(({ name }) => name)} locale={locale} posts={posts} t_none={t.none} />
         </div>
     );

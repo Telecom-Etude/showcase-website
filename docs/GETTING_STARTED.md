@@ -60,11 +60,11 @@ This documentation may not be up to date. To make sure all required environment 
 
 ### Initialise the database
 
-You know need to initialise your database:
+You now need to initialise your database:
 
 ```bash
 npx prisma generate
-npm run prisma migrate dev
+npx prisma migrate dev
 ```
 
 ### Node Setup

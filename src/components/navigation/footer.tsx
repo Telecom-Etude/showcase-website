@@ -15,7 +15,7 @@ const Network = ({ href, Icon, label }: { href: string; Icon: IconType; label: s
 );
 
 const LinkItem = ({ href, name }: { href: string; name: string }) => (
-    <Button variant="link" className="text-foreground py-[3px]" asChild>
+    <Button variant="link" className="text-foreground py-[3px] !px-0" asChild>
         <Link className="w-fit h-fit pl-0 py-0" href={href}>
             {name}
         </Link>
@@ -33,7 +33,9 @@ const NetworkLinks = () => (
 
 const SiteMapBlock = ({ title, items, locale }: { locale: Locale; title: string; items: { name: string; href: string }[] }) => (
     <section className="flex flex-col items-center">
-        <h3 className="text-lg font-semibold w-fit text-center">{title}</h3>
+        <h3 className="font-semibold w-fit text-center font-semibold bg-gradient-to-r from-primary to-destructive w-fit m-auto text-transparent bg-clip-text">
+            {title}
+        </h3>
         {items.map(({ name, href }, k) => (
             <LinkItem name={name} href={nav(locale, href)} key={k} />
         ))}
@@ -91,8 +93,10 @@ const Mentions = ({ bug }: { bug: string }) => (
             <p>&copy;{new Date().getFullYear()} Telecom Etude</p>
             <EmailContact />
             <BtnLink href="https://maps.app.goo.gl/etZHknTudKMuTjRZ9" className="flex flex-col">
-                <p>19, place Marguerite Perey</p>
-                <p>91120 Palaiseau</p>
+                <div>
+                    <p>19, place Marguerite Perey</p>
+                    <p>91120 Palaiseau</p>
+                </div>
             </BtnLink>
             <EmailContact dsi text={bug} />
         </div>

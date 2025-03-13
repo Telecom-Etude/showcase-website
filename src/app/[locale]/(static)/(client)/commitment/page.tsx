@@ -7,6 +7,7 @@ import { LocaleParams } from "@/locales/config";
 import { getDictionary } from "@/locales/dictionaries";
 import { Metadata } from "next";
 import Link from "next/link";
+import { OrangeTitle } from "@/components/styles/texts";
 
 export const metadata: Metadata = {
     title: "Engagements",
@@ -17,7 +18,7 @@ export default function Page({ params: { locale } }: LocaleParams) {
     return (
         <Block className="space-y-10">
             <header className="flex flex-col items-center justify-center space-y-4">
-                <h1 className="font-semibold">{t.title}</h1>
+                <OrangeTitle title={t.title} />
                 <p className="text-center">{t.description}</p>
             </header>
             <section className="flex flex-col items-center justify-center space-y-4">

@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ReactNode } from "react";
 import { DEPARTMENTS, PersonProps } from "./members";
+import { OrangeTitle } from "@/components/styles/texts";
 
 export const metadata: Metadata = {
     title: "Notre équipe",
@@ -45,7 +46,7 @@ export default async function Team({ params: { locale } }: LocaleParams) {
     return (
         <div className="p-4 flex flex-col items-center">
             <header>
-                <h1 className="text-center font-bold">{t.title}</h1>
+                <OrangeTitle title={t.title} />
             </header>
             {DEPARTMENTS.map(({ id, members }, i) => (
                 <section key={i} className="py-6">

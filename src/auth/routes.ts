@@ -3,6 +3,17 @@ import { Rights } from "./auth";
 import { NextRequest } from "next/server";
 import { MetadataRoute } from "next";
 
+// 200: ✅ allowed
+// 401: 🔒 logged in but not allowed
+// 403: 🔒 route protected and user not logged in
+// 404: 🚫 page doesn't exist
+type AuthorisationCode = 200 | 401 | 403 | 404;
+
+interface RouteProps {
+    code?: AuthorisationCode;
+    auth?: (req: NextAuthRequest) => AuthorisationCode;
+}
+
 export interface NextAuthRequest extends NextRequest {
     auth: Session | null;
 }
@@ -10,35 +21,23 @@ export interface NextAuthRequest extends NextRequest {
 export const SIGNIN_PATH = "/auth/signin";
 export const SIGNOUT_PATH = "/auth/signout";
 
-const DEV_MODE = process.env.DEV_MODE;
-
 const checkAdminRights = (check: (rights: Rights) => boolean) => (req: NextAuthRequest) => {
     if (process.env.DEV_MODE) {
         return 200;
     }
     const rights = req.auth?.user.rights;
     if (rights && check(rights)) {
-        if (DEV_MODE) console.log("✅ allowed");
         return 200;
     } else if (rights) {
-        if (DEV_MODE) console.log("🚫 logged in but not allowed");
         return 403;
     } else {
-        if (DEV_MODE) console.log("🔒 protected and not logged in");
         return 401;
     }
 };
 
-interface RouteProps {
-    code?: 401 | 403 | 404;
-    auth?: (req: NextAuthRequest) => number;
-}
-
-type SiteMap = MetadataRoute.Sitemap[number];
-
 export interface SiteMapRouteProps extends RouteProps {
     priority?: number;
-    changeFrequency?: SiteMap["changeFrequency"];
+    changeFrequency?: MetadataRoute.Sitemap[number]["changeFrequency"];
     lastModified: string;
 }
 
@@ -67,7 +66,7 @@ export const ALL_ROUTES: { [key: string]: RouteProps } = {
     "/list-blog": { auth: checkAdminRights(r => r.blogAdmin || r.blogAuthor) },
 };
 
-function getCode(req: NextAuthRequest, routeProps: RouteProps) {
+function getCode(req: NextAuthRequest, routeProps: RouteProps): AuthorisationCode {
     if (routeProps.code) {
         return routeProps.code;
     } else if (routeProps.auth) {
@@ -84,13 +83,21 @@ const PREFIX_ROUTES: { [key: string]: RouteProps } = {
     "/error": {},
 };
 
-export function getAuthorisationCode(req: NextAuthRequest, localelessPath: string) {
-    if (localelessPath in ALL_ROUTES) {
-        return getCode(req, ALL_ROUTES[localelessPath as keyof typeof ALL_ROUTES]);
+/**
+ * Checks if the route is authorised for a given person.
+ *
+ * @export
+ * @param {NextAuthRequest} req - incoming request of the middleware
+ * @param {string} nonLocalPath - the pathname of the url, without the locale prefix (e.g., if the page is `/en/blog`, the nonLocalPath is `/blog`)
+ * @returns {AuthorisationCode} - the response code
+ */
+export function getAuthorisationCode(req: NextAuthRequest, nonLocalPath: string): AuthorisationCode {
+    if (nonLocalPath in ALL_ROUTES) {
+        return getCode(req, ALL_ROUTES[nonLocalPath as keyof typeof ALL_ROUTES]);
     }
     for (const [path, props] of Object.entries(PREFIX_ROUTES)) {
         const regex = new RegExp(`^${path}/\\d+$`);
-        if (regex.test(localelessPath)) {
+        if (regex.test(nonLocalPath)) {
             return getCode(req, props);
         }
     }
