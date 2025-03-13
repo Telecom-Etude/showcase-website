@@ -80,6 +80,7 @@ const SiteMap = ({ t, locale }: { locale: Locale; t: Dictionary["navigation"]["s
                     { name: t.contact_form, href: "/contact" },
                     { name: t.blog, href: "/blog" },
                     { name: t.legal_mentions, href: "/legal" },
+                    { name: t.bug, href: "/bug" },
                 ]}
             />
         </>
@@ -98,7 +99,11 @@ const Mentions = ({ bug }: { bug: string }) => (
                     <p>91120 Palaiseau</p>
                 </div>
             </BtnLink>
-            <EmailContact dsi text={bug} />
+            <BtnLink href="fr/bug" className="flex flex-col">
+                <div>
+                    <p>{bug}</p>
+                </div>
+            </BtnLink>
         </div>
     </div>
 );
@@ -108,7 +113,7 @@ export const Footer = ({ locale }: { locale: Locale }) => {
     return (
         <div className="bg-navigation border-t-2 border-accent flex flex-col lg:flex-row space-y-6 lg:space-y-0  items-center justify-around">
             <section className="p-4">
-                <Mentions bug={t.bug} />
+                <Mentions bug = {t.bug}/> 
                 <NetworkLinks />
             </section>
             <SiteMap t={t} locale={locale} />

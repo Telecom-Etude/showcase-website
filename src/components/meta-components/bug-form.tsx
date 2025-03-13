@@ -6,8 +6,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { VscLoading } from "react-icons/vsc";
 
-import { createForm } from "@/db/form";
-import { sendForm } from "@/mail/mailer";
+import { createForm } from "@/db/formbug";
+import { sendForm } from "@/mail/mailerbug";
 
 import { Locale } from "@/locales/config";
 import { getDictionary } from "@/locales/dictionaries";
@@ -23,8 +23,8 @@ import { AlertDialog, AlertDialogContent, AlertDialogDescription, AlertDialogFoo
 import Link from "next/link";
 import { nav } from "@/locales/routing";
 
-type Fields = "name" | "email" | "tel" | "societe" | "subject" | "message";
-const ListFields = ["name", "email", "tel", "societe", "subject", "message"];
+type Fields = "email" | "subject" | "message";
+const ListFields = ["email", "subject", "message"];
 
 interface FieldVocabItem {
     label: string;
@@ -32,12 +32,12 @@ interface FieldVocabItem {
     error?: string;
 }
 
-export default function ContactForm({ locale, emails }: { locale: Locale; emails: (string | undefined)[] }) {
+export default function BugForm({ locale, emails }: { locale: Locale; emails: (string | undefined)[] }) {
     const [finished, setFinished] = useState(false);
     const [success, setSuccess] = useState(false);
     const [sending, setSending] = useState(false);
 
-    const t = getDictionary(locale).pages.contact;
+    const t = getDictionary(locale).pages.bug;
     const checkedEmails: string[] = emails.filter(e => typeof e !== "undefined");
 
     /*if (checkedEmails.length == 0) {
@@ -45,14 +45,9 @@ export default function ContactForm({ locale, emails }: { locale: Locale; emails
     }*/
 
     const formFields = {
-        name: z.string().min(2, {
-            message: t.form.name.error,
-        }),
         email: z.string().email({
             message: t.form.email.error,
         }),
-        tel: z.string().optional(),
-        societe: z.string().optional(),
         subject: z.string(),
         message: z.string().min(5, {
             message: t.form.message.error,
@@ -69,10 +64,7 @@ export default function ContactForm({ locale, emails }: { locale: Locale; emails
     const form: UseFormReturn<FormType> = useForm<FormType>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            name: "",
             email: "",
-            tel: "",
-            societe: "",
             subject: "",
             message: "",
         },
@@ -101,7 +93,7 @@ export default function ContactForm({ locale, emails }: { locale: Locale; emails
     };
 
     const starRequired = (fieldName: Fields) => {
-        if (["name", "email", "subject", "message"].includes(fieldName)) return " *";
+        if ([ "subject", "message"].includes(fieldName)) return " *";
         else return ` (${t.optional})`;
     };
 
