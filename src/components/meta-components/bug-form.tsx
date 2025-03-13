@@ -40,9 +40,9 @@ export default function BugForm({ locale, emails }: { locale: Locale; emails: (s
     const t = getDictionary(locale).pages.bug;
     const checkedEmails: string[] = emails.filter(e => typeof e !== "undefined");
 
-    /*if (checkedEmails.length == 0) {
+    if (checkedEmails.length == 0) {
         throw new Error("Missing destination email");
-    }*/
+    }
 
     const formFields = {
         email: z.string().email({

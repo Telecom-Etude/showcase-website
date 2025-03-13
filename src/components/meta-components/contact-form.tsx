@@ -40,9 +40,9 @@ export default function ContactForm({ locale, emails }: { locale: Locale; emails
     const t = getDictionary(locale).pages.contact;
     const checkedEmails: string[] = emails.filter(e => typeof e !== "undefined");
 
-    /*if (checkedEmails.length == 0) {
+    if (checkedEmails.length == 0) {
         throw new Error("Missing destination email");
-    }*/
+    }
 
     const formFields = {
         name: z.string().min(2, {
