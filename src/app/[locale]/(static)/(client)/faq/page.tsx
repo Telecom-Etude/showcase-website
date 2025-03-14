@@ -1,4 +1,4 @@
-import { Paragraphs } from "@/components/styles/texts";
+import { OrangeTitle, Paragraphs } from "@/components/styles/texts";
 import { BtnLink, EmailContact } from "@/components/telecom-etude/contact";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { LocaleParams } from "@/locales/config";
@@ -11,14 +11,14 @@ interface FaqItem {
 }
 
 export const metadata: Metadata = {
-    title: "Foire Aux Questions"
+    title: "Foire Aux Questions",
 };
 
 export default function Page({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.faq;
     return (
         <div className="p-10 space-y-10">
-            <h1 className="text-center">{t.title}</h1>
+            <OrangeTitle title={t.title} />
             <p className="text-center max-w-[1000px] m-auto">
                 {t.text.before} <EmailContact underline /> {t.text.between}{" "}
                 <BtnLink underline href="/contact">

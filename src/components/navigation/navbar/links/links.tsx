@@ -20,7 +20,7 @@ import {
     NavigationMenuLink,
     NavigationMenuList,
     NavigationMenuTrigger,
-    navigationMenuTriggerStyle
+    navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { Button } from "@/components/ui/button";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa6";
@@ -40,7 +40,7 @@ const ContactButton = ({ link, onClick, setOpened }: { link: SingleLink; onClick
     >
         <NavigationMenuItem className="pt-0 pb-0 pl-0 pr-0">
             <Link href={link.href} legacyBehavior passHref>
-                <NavigationMenuLink className="w-full flex space-x-2 justify-center items-center px-4 h-full">
+                <NavigationMenuLink className="w-full flex space-x-2 justify-center items-center px-4 h-full ">
                     <p>{link.title}</p>
                     <FaArrowRight className="group-hover/buttoncontact:animate-bounce-x" />
                 </NavigationMenuLink>
@@ -54,7 +54,7 @@ const MultipleMobileLinks = ({
     isOpen,
     setOpen,
     onClick,
-    router
+    router,
 }: {
     router: AppRouterInstance;
     onClick: () => void;
@@ -174,7 +174,7 @@ export const Links = ({
     user,
     onClick,
     btnCn,
-    mobile
+    mobile,
 }: {
     mobile: boolean;
     locale: Locale;

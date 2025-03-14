@@ -12,7 +12,7 @@ export default async function FormSubmission() {
         ...submission,
         tel: submission.tel || undefined,
         societe: submission.societe || undefined,
-        subject: submission.subject || undefined
+        subject: submission.subject || undefined,
     }));
 
     return (

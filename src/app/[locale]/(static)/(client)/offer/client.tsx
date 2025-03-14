@@ -36,6 +36,7 @@ export function DesktopTimeline({ locale }: { locale: Locale }) {
                 ))}
                 <div className="w-0 h-0 border-l-8 border-l-transparent border-r-8 border-r-transparent border-t-[16px] border-t-primary" />
             </div>
+
             <div className="h-full flex flex-col  items-center space-y-4">
                 <div className="p-4 rounded-xl">
                     <Image src={OFFER_IMAGES[selected]} width={300} height={300} alt="" />

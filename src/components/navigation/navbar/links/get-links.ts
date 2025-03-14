@@ -42,7 +42,7 @@ export function getLinks(locale: Locale, user: ExtendedUser) {
               ? logoutLink
               : {
                     title: t.admin.account,
-                    links: authLinks
+                    links: authLinks,
                 };
 
     const links: ExtendedLink[] = [
@@ -54,19 +54,19 @@ export function getLinks(locale: Locale, user: ExtendedUser) {
                 { href: nav(locale, "/faq"), title: "FAQ" },
                 { href: nav(locale, "/commitment"), title: s.commitment },
                 { href: nav(locale, "/team"), title: s.team },
-                { href: nav(locale, "/plaquette.pdf"), title: s.plaquette }
-            ]
+                { href: nav(locale, "/plaquette.pdf"), title: s.plaquette },
+            ],
         },
         {
             title: s.partners,
             links: [
                 { href: nav(locale, "/partners"), title: s.company_partners },
-                { href: nav(locale, "/ieseg"), title: s.ieseg }
-            ]
+                { href: nav(locale, "/ieseg"), title: s.ieseg },
+            ],
         },
         { href: nav(locale, "/offer"), title: s.offer },
         { href: nav(locale, "/blog"), title: s.blog },
-        authLink
+        authLink,
     ] as const;
 
     return links;

@@ -28,6 +28,7 @@ import SaintGobain from "@/../public/images/companies/trusted/SaintGobain.png";
 import SNCF from "@/../public/images/companies/trusted/SNCF.png";
 import Telecom_Paris from "@/../public/images/companies/trusted/Telecom_Paris.png";
 import { Metadata } from "next";
+import { OrangeTitle } from "@/components/styles/texts";
 
 const trusted: { src: StaticImageData; alt: string }[] = [
     { alt: "Safran logo", src: Safran },
@@ -41,7 +42,7 @@ const trusted: { src: StaticImageData; alt: string }[] = [
     { alt: "SaintGobain logo", src: SaintGobain },
     { alt: "BNP_Paribas logo", src: BNP_Paribas },
     { alt: "Mitsubishi_Motors logo", src: Mitsubishi_Motors },
-    { alt: "BnF logo", src: BnF }
+    { alt: "BnF logo", src: BnF },
 ];
 
 function NumberCard({ nb, prefix, suffix, text }: { nb: number; prefix?: string; suffix?: string; text: string }) {
@@ -62,7 +63,7 @@ function NumberCard({ nb, prefix, suffix, text }: { nb: number; prefix?: string;
 }
 
 export const metadata: Metadata = {
-    title: "Accueil"
+    title: "Accueil",
 };
 
 /*"bg-fixed bg-contain h-[380px] bg-[url(/images/fond_accueil.jpg)]" */
@@ -78,9 +79,7 @@ export default async function Page({ params: { locale } }: LocaleParams) {
             <div className="bg-background">
                 <Block>
                     <header className="py-0 space-y-10">
-                        <h1 className="font-semibold text-center bg-gradient-to-r from-primary to-destructive w-fit m-auto text-transparent bg-clip-text">
-                            Telecom Etude
-                        </h1>
+                        <OrangeTitle title="Telecom Etude" />
                         <h2 className="text-center">{t.subtitle}</h2>
                         <p>{t.description}</p>
                         <div className="flex flex-col sm:flex-row space-y-10 sm:space-x-10 sm:space-y-0 justify-center">

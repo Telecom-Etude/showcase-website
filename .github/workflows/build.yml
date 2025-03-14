@@ -13,7 +13,7 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-            - name: Checkout Code
+            - name: Checkout code
               uses: actions/checkout@v4
 
             - name: Setup Node.js
@@ -22,11 +22,16 @@ jobs:
                   node-version: "22"
                   cache: "npm"
 
-            - name: Node install
+            - name: Install dependencies
               run: npm install
 
             - name: Generate Prisma
               run: npx prisma generate
+
+            - name: Migrate Prisma
+              run: npx prisma migrate dev
+              env:
+                  ADMIN_EMAIL: example@example.com
 
             - name: Next build
               run: npm run build

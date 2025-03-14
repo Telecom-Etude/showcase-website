@@ -5,7 +5,7 @@ export const userRolesSchema = z.object({
     blogAdmin: z.boolean(),
     userAdmin: z.boolean(),
     blogAuthor: z.boolean(),
-    formAdmin: z.boolean()
+    formAdmin: z.boolean(),
 });
 
 export type UserRolesType = z.infer<typeof userRolesSchema>;

@@ -24,7 +24,7 @@ export const BtnLink = ({
     href,
     underline = false,
     target,
-    className
+    className,
 }: {
     children: ReactNode;
     href: string;
