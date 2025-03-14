@@ -10,12 +10,6 @@ Please refer to the [Getting Started Guide](GETTING_STARTED.md) to know how to i
 
 Please refer to the [Contribution Guide](CONTRIBUTING.md) before contributing to this project.
 
-## External resources
-
-- [Planning and Specifications](https://docs.google.com/document/d/1CzvHDF7RaJH02KWRsCnQcQE092i8NNxbOPfbOsbXEHg/edit?usp=sharing)
-- [Figma Design](https://www.figma.com/design/3MOoUXn1fM81b36aXTMpKJ/Telecom-Etude-Centralized-Tool?node-id=0-1&t=yhJvmaIEMpC5kIlt-1)
-- [DB Designer](https://dbdesigner.page.link/URRwLbFdp8r9qiiF6)
-
 ## Used technologies
 
 ### Technical stack
