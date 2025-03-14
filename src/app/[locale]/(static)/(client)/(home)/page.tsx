@@ -3,7 +3,6 @@ import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
 import { useEffect } from "react";
 
-
 import { LocaleParams } from "@/locales/config";
 import { getDictionary } from "@/locales/dictionaries";
 import { nav } from "@/locales/routing";
