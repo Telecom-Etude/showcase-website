@@ -74,7 +74,7 @@ export default async function Page({ params: { locale } }: LocaleParams) {
         <>
             <Separator />
             <div className="h-[31vw]"></div>
-            <Image src={fond_acc} alt="image de Telecom" className="fixed -z-10"></Image>
+            <Image src={fond_acc} alt="image de Telecom" className="w-full fixed -z-10"></Image>
             <Separator />
             <div className="bg-background">
                 <Block>
@@ -142,10 +142,8 @@ export default async function Page({ params: { locale } }: LocaleParams) {
                     </Block>
                 </section>
                 <Separator />
-            </div>
-            <div>
                 <Block>
-                    <section className="py-10 space-y-10  bg-white dark:bg-transparent">
+                    <section className="py-10 space-y-10">
                         <h2 className="text-2xl font-bold text-center">{t.trust}</h2>
                         <div className="grid grid-cols-3 md:grid-cols-6 bg-white">
                             {trusted.map(({ alt, src }, i) => (
