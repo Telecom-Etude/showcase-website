@@ -80,25 +80,22 @@ export const enDictionary: Dictionary = {
             bug: "Report a bug",
             plaquette: "Brochure",
         },
-        button: {
-            open: "Expand menu",
-            close: "Close menu",
-        },
+        button: { open: "Expand menu", close: "Close menu" },
     },
     pages: {
         ieseg: {
             title: "Telecom Etude and IÉSEG Conseil Paris",
             subtitle: "A unique partnership for innovative and effective solutions",
             presentation: {
-                title: "Presentation IÉSEG Conseil Paris",
-                par: "IÉSEG CONSEIL Paris, Junior-Enterprise of the IÉSEG School of Management, is a Junior-Enterprise whose members are students specializing in Management, Marketing, Finance, Auditing and Information Systems. Created in 2007, IÉSEG CONSEIL Paris offers you the expertise and dynamism of its junior consultants to support you in your consulting projects in strategy, organization, marketing, finance and information systems.",
+                title: "Presentation of IÉSEG Conseil Paris",
+                par: "IÉSEG CONSEIL Paris, Junior-Enterprise of the IÉSEG School of Management, is a Junior-Enterprise whose members are students specializing in Management, Marketing, Finance, Auditing and Information Systems. Created in 2007, IÉSEG CONSEIL Paris offers the expertise and dynamism of its junior consultants to support you in your consulting projects in strategy, organization, marketing, finance and information systems.",
             },
             complementary: {
-                title: "Complementary expertise",
+                title: "Complementary Expertise",
                 before: "By combining the technical expertise of Telecom Etude and the commercial expertise of IÉSEG Conseil Paris, we offer a complete solution that covers all aspects of your projects, from engineering to market strategy",
                 strong: " Our approach enables us to support you from A to Z, integrating an assessment of technical feasibility with an in-depth analysis of market demand. ",
                 after: "We believe that every project has unique potential. Choose a two-pronged approach combining technical expertise and commercial perspective to explore your product's potential.",
-                alt: "Graph showing the complementary Telecom Etude IÉSEG Conseil Paris.",
+                alt: "Complementarity Graph Telecom Etude IÉSEG Conseil Paris.",
             },
             innovation: {
                 title: "Innovative Solutions",
@@ -110,7 +107,6 @@ export const enDictionary: Dictionary = {
                 before: "Every project is unique. We tailor our services to your specific needs, whether you want to assess the feasibility of a new product, optimise your customer service or improve your marketing strategy.",
                 strong: " Our personalised approach guarantees concrete results, based on mystery visits, exit interviews and sector benchmarks tailored to your particular challenges.",
             },
-
             gain: {
                 title: "Saving Time and Efficiency",
                 before: "Working hand in hand, we offer an integrated process that saves you time and efficiency. You benefit from our combined skills, without having to coordinate multiple service providers.",
@@ -145,7 +141,7 @@ export const enDictionary: Dictionary = {
                         text: "After the selection, you will meet the contributor in a second meeting to clarify all the details of your project in light of their expertise. It is especially through this exchange that we can build a precise and comprehensive specifications document.",
                     },
                     {
-                        title: "Signing of the Study Agreement",
+                        title: "Signing the Study Agreement",
                         text: "Finally, we formalize all the details of the mission in a study agreement that includes the complete specifications document, the methodology applied by the contributor, the schedule for the various stages of the mission, the expected deliverables, as well as the budget for the mission. Once this document is signed, the mission can officially begin!",
                     },
                     {
@@ -169,8 +165,8 @@ export const enDictionary: Dictionary = {
             description:
                 "Telecom Etude is an association that enables students to develop technical skills and knowledge of the professional world. We are committed both in our offer and in various other areas, with charters of commitment",
             jamaissanselles: {
-                title: "Charter #JamaisSansElles",
-                text: 'The #JamaisSansElles charter, co-drafted by the "Jamais Sans Elles" association and the CNJE, defines the commitments of the signatory Junior-Enterprises, including Télécom Étude, in terms of parity and gender diversity. By signing this charter, Télécom Étude undertakes to guarantee the presence of women in all representations involving at least three people. The Junior-Enterprise also undertakes to promote gender equality within its structure, both in the recruitment process and in access to positions of responsibility. Lastly, Télécom Étude is stepping up its action against sexist and sexual violence, through prevention initiatives aimed at students and the application of the CNJE\'s recommendations at its events',
+                title: "#JamaisSansElles Charter",
+                text: 'The #JamaisSansElles charter, co-drafted by the "Jamais Sans Elles" association and the CNJE, defines the commitments of the signatory Junior-Enterprises, including Télécom Étude, in terms of parity and gender diversity. By signing this charter, Télécom Étude undertakes to guarantee the presence of women in all representations involving at least three people. The Junior Enterprise also commits to promoting gender equality within its structure, both in recruitment and in access to leadership positions. Lastly, Telecom Etude is stepping up its action against sexist and sexual violence, through prevention initiatives aimed at students and the application of the CNJE\'s recommendations at its events',
                 alt: "JamaisSansElles logo",
             },
             rse: {
@@ -218,19 +214,17 @@ export const enDictionary: Dictionary = {
         },
         blog: {
             title: "Our news",
-            date: {
-                posted_by: "Posted by",
-                on: "on the",
+            date: { posted_by: "Posted by", on: "on the" },
+            labelSelector: {
+                title: "Filter by label",
+                selectorMessage: "Select up to 3 labels",
+                empty: "No labels found",
             },
-            labelSelector: { title: "Filter by label", selectorMessage: "Select up to 3 labels", empty: "No labels found" },
             none: "No blogs found, come back later.",
         },
         team: {
             title: "Our team",
-            alt: {
-                before: "Telecom Etude's",
-                after: "photo",
-            },
+            alt: { before: "Telecom Etude's", after: "photo" },
             poles: {
                 board: "The board",
                 devco: "Business development department",
@@ -315,10 +309,10 @@ export const enDictionary: Dictionary = {
                 },
                 {
                     question: "Who will carry out my project\u00A0?",
-                    answer: ["We carefully select a Télécom Paris student who has the particular skills needed to carry out the assignment. "],
+                    answer: ["We carefully select a student from Télécom Paris who has the particular skills needed to carry out the assignment. "],
                 },
                 {
-                    question: "Why choose us?",
+                    question: "Why us?",
                     answer: [
                         "You should choose us for our expertise in our field, our responsiveness to your contacts and our dedication to providing excellent service.",
                     ],
@@ -332,7 +326,7 @@ export const enDictionary: Dictionary = {
             ],
         },
         about: {
-            description: "the Junior-Enterprise of digital and data",
+            description: "The Junior-Enterprise of digital and data",
             moreInfo: "More information",
             ourMandate: "Our mandate",
             alt: {
@@ -342,10 +336,10 @@ export const enDictionary: Dictionary = {
                 cnje: "CNJE logo",
             },
             titles: {
-                ourje: "Notre JE",
+                ourje: "Our JE",
                 ourschool: "Our school: Télécom Paris",
                 quality: "A quality JE",
-                quality_policy: "Our quality privacy",
+                quality_policy: "Our quality policy",
                 satisfaction: "Our objective: Your satisfaction",
                 ieseg: "A joint presentation",
             },
@@ -430,7 +424,7 @@ export const enDictionary: Dictionary = {
                 owner: {
                     title: "Site Owner",
                     description: "Telecom Etude, residing at 19, Place Marguerite Perey, 91120, PALAISEAU",
-                    association: "Association of the 1901 law",
+                    association: "Association under the French law of 1901",
                     siret: "SIRET number",
                     urssaf: "URSSAF number",
                     vat: "Intra-community sales tax",
@@ -439,7 +433,7 @@ export const enDictionary: Dictionary = {
                 },
                 director: {
                     title: "Publication Director",
-                    description: "Manon Strasser, president of Telecom Etude",
+                    description: "Manon Strasser, Chief Executive Officer of Telecom Etude",
                 },
                 host: {
                     title: "Site Host",
