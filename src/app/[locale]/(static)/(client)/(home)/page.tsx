@@ -75,10 +75,9 @@ export default async function Page({ params: { locale } }: LocaleParams) {
     return (
         <>
             <Separator />
-            <div className="h-[31vw]"></div>
-            <Image src={fond_acc} alt="image de Telecom" className="w-full absolute -z-10"></Image>
+            <Image src={fond_acc} alt="image de Telecom" className="w-full sticky -z-10 top-0"></Image>
             <Separator />
-            <div className="bg-background static">
+            <div className="bg-background">
                 <Block>
                     <header className="py-0 space-y-10">
                         <OrangeTitle title="Telecom Etude" />
