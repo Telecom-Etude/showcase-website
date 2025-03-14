@@ -434,8 +434,9 @@ export const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSe
                                 <Badge
                                     key={option.value}
                                     className={cn(
-                                        "data-[disabled]:bg-muted-foreground data-[disabled]:text-muted data-[disabled]:hover:bg-muted-foreground",
-                                        "data-[fixed]:bg-muted-foreground data-[fixed]:text-muted data-[fixed]:hover:bg-muted-foreground",
+                                        "rounded-full px-2 py-1 text-sm font-medium",
+                                        "bg-muted text-secondary-foreground", // Use CSS variables for colors
+                                        "hover:bg-primary-accent", // Add hover effect
                                         badgeClassName
                                     )}
                                     data-fixed={option.fixed}
@@ -445,6 +446,7 @@ export const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSe
                                     <button
                                         className={cn(
                                             "ml-1 rounded-full outline-none ring-offset-background focus:ring-2 focus:ring-ring focus:ring-offset-2",
+                                            "text-secondary-foreground hover:text-secondary-accent", // Use CSS variables for button colors
                                             (disabled || option.fixed) && "hidden"
                                         )}
                                         onKeyDown={e => {

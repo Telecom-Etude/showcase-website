@@ -52,12 +52,15 @@ function LabelSelection({
             {/* Mobile View */}
             <div className="sm:hidden">
                 <MultipleSelector
-                    placeholder={vocab.selectorMessage}
-                    // emptyMessage={vocab.empty} // Removed as it is not a valid prop
+                    defaultOptions={selected.map(value => ({ value, label: value }))} // Convert `selected` to `Option[]`
+                    placeholder={vocab.title}
+                    emptyIndicator={vocab.empty} // Removed as it is not a valid prop
                     value={selected.map(value => ({ value, label: value }))} // Convert `selected` to `Option[]`
                     onChange={addRemoveValue} // Use the updated function
                     options={items.map(value => ({ value, label: value }))} // Convert `items` to `Option[]`
                     // limit={limit} // Removed as it is not a valid prop
+                    maxSelected={items.length}
+                    hidePlaceholderWhenSelected
                 />
             </div>
 
@@ -76,12 +79,15 @@ function LabelSelection({
             {/* Desktop View */}
             <div className="hidden sm:block">
                 <MultipleSelector
-                    placeholder={vocab.selectorMessage}
-                    // emptyMessage={vocab.empty} // Removed as it is not a valid prop
+                    defaultOptions={selected.map(value => ({ value, label: value }))} // Convert `selected` to `Option[]`
+                    placeholder={vocab.title}
+                    emptyIndicator={vocab.empty} // Removed as it is not a valid prop
                     value={selected.map(value => ({ value, label: value }))} // Convert `selected` to `Option[]`
                     onChange={addRemoveValue} // Use the updated function
                     options={items.map(value => ({ value, label: value }))} // Convert `items` to `Option[]`
                     // limit={limit}
+                    maxSelected={items.length}
+                    hidePlaceholderWhenSelected
                 />
             </div>
         </div>
@@ -129,9 +135,9 @@ export default function BlogPage({ posts, locale, dbLabels, ...props }: { locale
     const addRemoveValue = (label: string) => {
         if (selectedLabels.includes(label)) {
             setValue(selectedLabels.filter(l => l !== label));
-        } else if (selectedLabels.length < 3) {
+        } /*else if (selectedLabels.length < 3) {
             setValue([...selectedLabels, label]);
-        }
+        }*/
     };
 
     return (
