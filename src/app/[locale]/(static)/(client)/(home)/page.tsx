@@ -1,6 +1,8 @@
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
+import { useEffect } from "react";
+
 
 import { LocaleParams } from "@/locales/config";
 import { getDictionary } from "@/locales/dictionaries";
@@ -70,13 +72,14 @@ export const metadata: Metadata = {
 
 export default async function Page({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.home;
+
     return (
         <>
             <Separator />
             <div className="h-[31vw]"></div>
-            <Image src={fond_acc} alt="image de Telecom" className="w-full fixed -z-10"></Image>
+            <Image src={fond_acc} alt="image de Telecom" className="w-full absolute -z-10"></Image>
             <Separator />
-            <div className="bg-background">
+            <div className="bg-background static">
                 <Block>
                     <header className="py-0 space-y-10">
                         <OrangeTitle title="Telecom Etude" />
