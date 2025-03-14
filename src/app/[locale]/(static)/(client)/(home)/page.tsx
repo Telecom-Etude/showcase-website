@@ -76,7 +76,7 @@ export default async function Page({ params: { locale } }: LocaleParams) {
         <>
             <Separator />
             <div className="h-[31vw]"></div>
-            <Image src={fond_acc} alt="image de Telecom" className="w-full absolute -z-10"></Image>
+            <Image src={fond_acc} alt="image de Telecom" className="w-full absolute -z-10 top-0"></Image>
             <Separator />
             <div className="bg-background static">
                 <Block>
