@@ -34,7 +34,7 @@ export default async function Validation({ params: { locale }, validate }: PageP
                     <ResizablePanel defaultSize={100}>
                         <div className="p-10 h-full">
                             <DataTable
-                                search_column={"title"}
+                                search_column="title"
                                 data={isAdmin ? allData : allData.filter(post => post.emails.includes(session?.email!))}
                                 columns={columns}
                                 filters={[]}
