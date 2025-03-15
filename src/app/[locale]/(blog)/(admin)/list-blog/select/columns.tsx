@@ -16,8 +16,6 @@ import { BtnLink, EmailBtn } from "@/components/telecom-etude/contact";
 import { getUserName } from "@/lib/users";
 import { Checkbox } from "@/components/ui/checkbox";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { Locale } from "@/locales/config";
 
 function Delete({ row }: { row: Row<ValidationBlogType> }) {
     const router = useRouter();
