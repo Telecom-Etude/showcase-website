@@ -22,8 +22,11 @@ export function getAuthors(authors: string[]) {
         console.error("Error while fetching user data.");
         return "";
     } else if (!beforeLast) {
+        authors.push(last);
         return last;
     } else {
+        authors.push(beforeLast);
+        authors.push(last);
         return authors.reduce((acc, author) => `${acc}${author}, `, "") + `${beforeLast} & ${last}`;
     }
 }
