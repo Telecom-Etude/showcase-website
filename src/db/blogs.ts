@@ -111,7 +111,7 @@ export async function renameBlog(id: number, title: string, locale: Locale) {
     try {
         await db.post.update({
             where: { id: id },
-            data: { title: title },
+            data: { title },
         });
     } catch (e) {
         console.error("[renameLocaleBlog] ", e);
