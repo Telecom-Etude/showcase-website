@@ -15,11 +15,21 @@ import { useState } from "react";
 import { getBlog, renameBlog } from "@/db/blogs";
 import { updatePostLabels } from "@/db/labels";
 import { Locale } from "@/locales/config";
-import { getDictionary } from "@/locales/dictionaries";
-import { usePathname } from "next/navigation";
-import { isLocale } from "@/locales/config";
+import { Dictionary, getDictionary } from "@/locales/dictionaries";
 
-function Rename({ title, id, router, t, locale }: { title: string; id: number; router: AppRouterInstance; t: any; locale: Locale }) {
+function Rename({
+    title,
+    id,
+    router,
+    t,
+    locale,
+}: {
+    title: string;
+    id: number;
+    router: AppRouterInstance;
+    t: Dictionary["navigation"]["admin"]["editblog"];
+    locale: Locale;
+}) {
     return (
         <Dialog>
             <DialogTrigger asChild>
@@ -57,7 +67,17 @@ function Rename({ title, id, router, t, locale }: { title: string; id: number; r
     );
 }
 
-function AddLabel({ getLabels, addRemoveLabel, dbLabels, t }: { getLabels: string[]; addRemoveLabel: (x: string) => void; dbLabels: string[]; t: any }) {
+function AddLabel({
+    getLabels,
+    addRemoveLabel,
+    dbLabels,
+    t,
+}: {
+    getLabels: string[];
+    addRemoveLabel: (x: string) => void;
+    dbLabels: string[];
+    t: Dictionary["navigation"]["admin"]["editblog"];
+}) {
     return (
         <ManyComboBox
             selected={getLabels}
@@ -65,7 +85,7 @@ function AddLabel({ getLabels, addRemoveLabel, dbLabels, t }: { getLabels: strin
             items={dbLabels}
             vocab={{
                 title: t.labels.modifylabels,
-                selectorMessage: t.labels.selectlabels,
+                selectorMessage: t.labels.selectormessage,
                 empty: t.labels.empty,
             }}
             limit={6}
@@ -73,7 +93,7 @@ function AddLabel({ getLabels, addRemoveLabel, dbLabels, t }: { getLabels: strin
     );
 }
 
-function OpenSave({ saving, t }: { saving: boolean; t: any }) {
+function OpenSave({ saving, t }: { saving: boolean; t: Dictionary["navigation"]["admin"]["editblog"] }) {
     return (
         <Dialog>
             <DialogTrigger asChild>
@@ -116,8 +136,7 @@ interface ActionProps {
 }
 
 export function Actions({ setToBeChanged, content, value, title, id, dbLabels, blogLabels, locale }: ActionProps) {
-    const localepage = usePathname().split("/")[1] as Locale;
-    const t = getDictionary(localepage).navigation.admin.editblog;
+    const t = getDictionary(locale).navigation.admin.editblog;
     const [getLabels, setLabels] = useState<string[]>(blogLabels);
     const addRemoveLabel = (label: string) => {
         var newLabels = getLabels;
