@@ -105,7 +105,7 @@ p {
 .call2action {
     background: linear-gradient(45deg, hsl(24 98% 60%), hsl(357 73% 40%));
     background-size: 200% 200%;
-    animation: call2action-animation 3s ease infinite;
+    animation: call2action-animation 15s ease infinite;
 }
 
 .call2action:hover {
