@@ -68,5 +68,22 @@
         "tailwindcss": "^3.4.10",
         "ts-node": "^10.9.2",
         "typescript": "^5.7.2"
-    }
+    },
+    "description": "",
+    "main": "index.js",
+    "directories": {
+        "doc": "docs"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Augustin-Boyer/showcase-website.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "type": "commonjs",
+    "bugs": {
+        "url": "https://github.com/Augustin-Boyer/showcase-website/issues"
+    },
+    "homepage": "https://github.com/Augustin-Boyer/showcase-website#readme"
 }
