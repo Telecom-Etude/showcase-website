@@ -24,7 +24,7 @@ export interface PostPresentation {
     date: Date;
     labels: string[];
     slug: string;
-    slugtr: string;
+    slugtr: string | null;
 }
 
 const allLabelsInValue = (postLabels: string[], selectedLabels: string[]) =>
