@@ -25,9 +25,10 @@ interface PartnerProps {
     logo: StaticImport;
     t: { text: string; type: string };
     url: string;
+    linkWord: string;
 }
 
-function Partner({ title, logo, t, url }: PartnerProps) {
+function Partner({ title, logo, t, url, linkWord }: PartnerProps) {
     return (
         <section className="p-4">
             <div className="p-[2px] rounded-lg bg-gradient-to-tl from-primary to-destructive">
@@ -39,7 +40,7 @@ function Partner({ title, logo, t, url }: PartnerProps) {
                         <div className="flex flex-col items-center">
                             <p>{t.type}</p>
                             <BtnLink href={url} target="blank" className="flex items-center space-x-1">
-                                <p>Link</p>
+                                <p>{linkWord}</p>
                                 <MdOpenInNew />
                             </BtnLink>
                             <Separator className="my-6" />
@@ -65,9 +66,9 @@ export default function Page({ params: { locale } }: LocaleParams) {
                 <p className="text-lg max-w-[500px] text-center">{t.text}</p>
             </header>
             <div className="grid grid-cols-1 md:grid-cols-3">
-                <Partner title="KPMG" url="https://www.kpmg.com" logo={KPMG} t={t.kpmg} />
-                <Partner title="BearingPoint" url="https://www.bearingpoint.com" logo={BearingPoint} t={t.bearingPoint} />
-                <Partner title="Bain" url="https://www.bain.com" logo={Bain} t={t.bain} />
+                <Partner title="KPMG" linkWord={t.linkWord} url="https://www.kpmg.com" logo={KPMG} t={t.kpmg} />
+                <Partner title="BearingPoint" linkWord={t.linkWord} url="https://www.bearingpoint.com" logo={BearingPoint} t={t.bearingPoint} />
+                <Partner title="Bain" linkWord={t.linkWord} url="https://www.bain.com" logo={Bain} t={t.bain} />
             </div>
         </Block>
     );
