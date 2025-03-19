@@ -2,7 +2,7 @@ import { Block } from "@/components/styles/blocks";
 import Image from "next/image";
 
 import JamaisSansElles from "@/../public/images/jamaissanselles.jpg";
-import Rse from "@/../public/images/rse.jpg";
+import Rse from "@/../public/images/rse.png";
 import { LocaleParams } from "@/locales/config";
 import { getDictionary } from "@/locales/dictionaries";
 import { Metadata } from "next";
