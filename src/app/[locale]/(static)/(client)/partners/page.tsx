@@ -44,7 +44,9 @@ function Partner({ title, logo, t, url, linkWord }: PartnerProps) {
                                 <MdOpenInNew />
                             </BtnLink>
                             <Separator className="my-6" />
-                            <Image src={logo} alt={title + " logo"} width={400} />
+                            <a href={url} target="_blank" rel="noopener noreferrer">
+                                <Image src={logo} alt={title + " logo"} width={400} />
+                            </a>
                         </div>
                         <Separator className="my-6" />
                         <p>{t.text}</p>
