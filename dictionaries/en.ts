@@ -273,6 +273,7 @@ export const enDictionary: Dictionary = {
         partners: {
             title: "Our partner companies",
             text: "Telecom Etude has partner companies. These partnerships with companies allow us to benefit from practical training, to lend our premises for their events, and to establish solid professional relationships. As students, this is a unique opportunity to acquire skills while discovering the business world. It strengthens our future opportunities and develops our network",
+            linkWord: "Link",
             bain: {
                 type: "Consulting firm",
                 text: "Bain & Company is the international consulting firm that helps ambitious managers transform their companies into pioneers of tomorrow's world. This prestigious partnership enables us to put Telecom Paris students in touch with Bain & Company consultants and recruiters through special events.",
