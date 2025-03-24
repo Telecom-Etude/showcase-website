@@ -16,14 +16,17 @@ export function getUserName(email: string) {
 }
 
 export function getAuthors(authors: string[]) {
-    const last = authors.pop();
-    const beforeLast = authors.pop();
-    if (!last) {
+    const last = authors[authors.length - 1];
+    const beforeLast = authors[authors.length - 2];
+    if (authors.length === 0 || !authors[authors.length - 1]) {
         console.error("Error while fetching user data.");
         return "";
-    } else if (!beforeLast) {
+    } else if (authors.length === 1 || !authors[authors.length - 2]) {
+        const last = authors[authors.length - 1];
         return last;
     } else {
+        const last = authors[authors.length - 1];
+        const beforeLast = authors[authors.length - 2];
         return authors.reduce((acc, author) => `${acc}${author}, `, "") + `${beforeLast} & ${last}`;
     }
 }

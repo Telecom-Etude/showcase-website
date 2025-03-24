@@ -7,7 +7,7 @@ import { Label, Post, User } from "@prisma/client";
 import { Op } from "quill/core";
 import { generateSlug } from "./slug";
 
-export async function createBlog(authorEmail: string, title: string, locale: Locale): Promise<number> {
+export async function createBlog(authorEmail: string, title: string, locale: Locale, titletr: string): Promise<number> {
     try {
         if (!authorEmail) {
             throw new Error("Author email is undefined");
@@ -22,8 +22,9 @@ export async function createBlog(authorEmail: string, title: string, locale: Loc
                     connect: [{ id: author.id }],
                 },
                 locale,
-                title,
+                title: title,
                 slug: generateSlug(title),
+                slugtr: generateSlug(titletr),
                 content: "[]",
             },
         });
@@ -34,7 +35,7 @@ export async function createBlog(authorEmail: string, title: string, locale: Loc
     }
 }
 
-export async function updateLocaleBlogContent(id: number, content: Op[]) {
+export async function updateLocaleBlogContent(id: number, content: Op[], locale: Locale) {
     try {
         await db.post.update({
             where: { id: id },
@@ -45,7 +46,7 @@ export async function updateLocaleBlogContent(id: number, content: Op[]) {
     }
 }
 
-export async function getBlogContent(id: number): Promise<Op[] | undefined> {
+export async function getBlogContent(id: number, locale: Locale): Promise<Op[] | undefined> {
     try {
         const blog = await db.post.findUnique({
             where: { id: id },
@@ -64,7 +65,7 @@ export async function getValidatedBlogs(locale: Locale): Promise<PostPresentatio
         })!;
         const blogs = dbBlogs
             .filter(blog => blog.validated && blog.locale == locale)
-            .map(({ authors, labels, updatedAt, ...blog }) => ({
+            .map(({ authors, labels, updatedAt, locale, ...blog }) => ({
                 authors: authors.map(author => author.name),
                 emails: authors.map(author => author.email),
                 date: updatedAt,
@@ -106,7 +107,7 @@ export async function deleteBlog(id: number) {
     }
 }
 
-export async function renameBlog(id: number, title: string) {
+export async function renameBlog(id: number, title: string, locale: Locale) {
     try {
         await db.post.update({
             where: { id: id },

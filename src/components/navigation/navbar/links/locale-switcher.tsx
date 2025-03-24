@@ -18,7 +18,7 @@ const useLocaledUrl = (locale: Locale) => {
     if (index === split.length) {
         return nav(locale, "/");
     } else if (isLocale(split[index])) {
-        return nav(locale, "/" + split.slice(index + 1).join("/"));
+        return nav(locale, "/" + split.splice(index + 1).join("/"));
     } else {
         return nav(locale, split.join("/"));
     }
@@ -35,7 +35,7 @@ export const LocaleSwitch = ({
     onClick: () => void;
     setOpened: (open: null | number) => void;
 }) => {
-    const localedUrl = useLocaledUrl(locale == "fr" ? "en" : "fr");
+    const localedUrl = useLocaledUrl(locale === "fr" ? "en" : "fr");
 
     return (
         <NavigationMenuItem className={mobile ? "" : "p-2 hover:bg-muted"}>
