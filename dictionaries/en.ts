@@ -24,7 +24,7 @@ export const enDictionary: Dictionary = {
             },
         },
         errors: {
-            title : "Error",
+            title: "Error",
             unauthorized: {
                 title: "Access Unauthorized",
                 description: "You must be logged in to access this page.",
@@ -85,7 +85,7 @@ export const enDictionary: Dictionary = {
     },
     pages: {
         ieseg: {
-            tabTitle : "Joint offer | Telecom Etude & IÉSEG Conseil Paris",
+            tabTitle: "Joint offer | Telecom Etude & IÉSEG Conseil Paris",
             title: "Telecom Etude and IÉSEG Conseil Paris",
             subtitle: "A unique partnership for innovative and effective solutions",
             presentation: {

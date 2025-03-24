@@ -23,7 +23,7 @@ export const frDictionary = {
             },
         },
         errors: {
-            title : "Erreurs",
+            title: "Erreurs",
             unauthorized: {
                 title: "Accès non autorisé",
                 description: "Vous devez être connecté pour accéder à cette page",
@@ -87,7 +87,7 @@ export const frDictionary = {
     },
     pages: {
         ieseg: {
-            tabTitle : "Offre commune | Telecom Etude & IÉSEG Conseil Paris",
+            tabTitle: "Offre commune | Telecom Etude & IÉSEG Conseil Paris",
             title: "Telecom Etude et IÉSEG Conseil Paris",
             subtitle: "Un partenariat unique pour des solutions innovantes et efficaces",
             presentation: {
@@ -175,7 +175,7 @@ export const frDictionary = {
             none: "Aucun blog n'a encore été publié, merci de revenir ultérieurement.",
         },
         home: {
-            title : "Accueil",
+            title: "Accueil",
             trust: "Ils nous ont fait confiance",
             description:
                 "Telecom Etude, fondée en 1979, est la Junior-Entreprise de Télécom Paris, une école d'ingénieur de premier plan dans les technologies de l'information et du numérique. Connectez-vous avec notre équipe réactive et professionnelle de 33 administrateurs pour des solutions sur mesure à vos projets. Explorez l'expertise de Telecom Etude et engagez-vous avec plus de 1000 ingénieurs étudiants de Télécom Paris.",
@@ -319,7 +319,7 @@ export const frDictionary = {
             },
         },
         about: {
-            title : "À propos",
+            title: "À propos",
             description: "la Junior-Entreprise du numérique et de la data",
             moreInfo: "Plus d'informations",
             ourMandate: "Notre mandat",
