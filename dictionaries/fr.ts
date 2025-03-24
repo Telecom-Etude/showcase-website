@@ -1,3 +1,5 @@
+import { Tablet } from "lucide-react";
+
 export const frDictionary = {
     navigation: {
         cookies: {
@@ -21,6 +23,7 @@ export const frDictionary = {
             },
         },
         errors: {
+            title : "Erreurs",
             unauthorized: {
                 title: "Accès non autorisé",
                 description: "Vous devez être connecté pour accéder à cette page",
@@ -84,6 +87,7 @@ export const frDictionary = {
     },
     pages: {
         ieseg: {
+            tabTitle : "Offre commune | Telecom Etude & IÉSEG Conseil Paris",
             title: "Telecom Etude et IÉSEG Conseil Paris",
             subtitle: "Un partenariat unique pour des solutions innovantes et efficaces",
             presentation: {
@@ -161,6 +165,7 @@ export const frDictionary = {
             },
         },
         blog: {
+            tabTitle: "Blog",
             title: "Nos actualités",
             date: {
                 posted_by: "Posté par",
@@ -170,6 +175,7 @@ export const frDictionary = {
             none: "Aucun blog n'a encore été publié, merci de revenir ultérieurement.",
         },
         home: {
+            title : "Accueil",
             trust: "Ils nous ont fait confiance",
             description:
                 "Telecom Etude, fondée en 1979, est la Junior-Entreprise de Télécom Paris, une école d'ingénieur de premier plan dans les technologies de l'information et du numérique. Connectez-vous avec notre équipe réactive et professionnelle de 33 administrateurs pour des solutions sur mesure à vos projets. Explorez l'expertise de Telecom Etude et engagez-vous avec plus de 1000 ingénieurs étudiants de Télécom Paris.",
@@ -254,6 +260,7 @@ export const frDictionary = {
             },
         },
         faq: {
+            tabTitle: "FAQ",
             title: "Foire aux questions",
             text: {
                 before: "Voici les réponses aux questions que vous pourriez vous poser. N'hésitez pas à nous contacter à",
@@ -312,6 +319,7 @@ export const frDictionary = {
             },
         },
         about: {
+            title : "À propos",
             description: "la Junior-Entreprise du numérique et de la data",
             moreInfo: "Plus d'informations",
             ourMandate: "Notre mandat",
@@ -375,6 +383,7 @@ export const frDictionary = {
         },
         contact: {
             sending: "Formulaire en cours d'envoi. Merci de patienter",
+            tabTitle: "Contact",
             title: "Contactez-nous !",
             optional: "facultatif",
             before: "Vous avez un projet en tête\u00A0? Vous avez besoin de plus d'informations sur notre offre\u00A0? N'hésitez pas à nous contacter en utilisant le formulaire ci-dessous ou en nous envoyant un email à ",

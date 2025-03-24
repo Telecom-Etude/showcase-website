@@ -8,7 +8,7 @@ import { redirect } from "next/navigation";
 import BlogPage from "./client";
 import { OrangeTitle } from "@/components/styles/texts";
 
-export const metadata: Metadata = {
+export var metadata: Metadata = {
     title: "Blog",
 };
 
@@ -24,6 +24,7 @@ export default async function Page({ params: { locale } }: LocaleParams) {
     const posts = await getValidatedBlogs(locale);
     const labels = await getLocaleLabels(locale);
     const t = getDictionary(locale).pages.blog;
+    metadata.title = t.tabTitle;
 
     if (typeof labels === "undefined" || typeof posts === "undefined") {
         redirect(nav(locale, "/error/404"));

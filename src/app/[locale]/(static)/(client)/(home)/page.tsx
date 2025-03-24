@@ -63,7 +63,7 @@ function NumberCard({ nb, prefix, suffix, text }: { nb: number; prefix?: string;
     );
 }
 
-export const metadata: Metadata = {
+export var metadata: Metadata = {
     title: "Accueil",
 };
 
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
 
 export default async function Page({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.home;
-
+    metadata.title = t.title;
     return (
         <>
             <Separator />

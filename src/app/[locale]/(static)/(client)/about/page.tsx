@@ -20,7 +20,7 @@ import { Separator } from "@/components/ui/separator";
 import { nav } from "@/locales/routing";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
+export var metadata: Metadata = {
     title: "À propos",
 };
 
@@ -64,6 +64,7 @@ function TopRight({ title, pars, left }: { title: string | ReactNode; pars: Reac
 
 export default function Page({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.about;
+    metadata.title = t.title;
     return (
         <Block full>
             <h1 className="p-10">
