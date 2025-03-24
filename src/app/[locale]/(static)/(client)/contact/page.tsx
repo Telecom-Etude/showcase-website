@@ -7,13 +7,13 @@ import { EmailContact } from "@/components/telecom-etude/contact";
 import { Metadata } from "next";
 import { OrangeTitle } from "@/components/styles/texts";
 
-export const metadata: Metadata = {
+export var metadata: Metadata = {
     title: "Contact",
 };
 
 export default async function Page({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.contact;
-
+    metadata.title = t.tabTitle;
     return (
         <Block className="py-10 space-y-10 flex flex-col items-center">
             <img className="w-32" src="/icons/contact.png" alt="Contactez-nous" />

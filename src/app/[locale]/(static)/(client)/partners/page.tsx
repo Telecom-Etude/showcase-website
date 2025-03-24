@@ -16,7 +16,7 @@ import KPMG from "@/../public/images/companies/partners/kpmg.svg";
 import { Metadata } from "next";
 import { OrangeTitle } from "@/components/styles/texts";
 
-export const metadata: Metadata = {
+export var metadata: Metadata = {
     title: "Nos partenaires",
 };
 
@@ -61,6 +61,7 @@ export const dynamicParams = false;
 
 export default function Page({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.partners;
+    metadata.title = t.title;
     return (
         <Block>
             <header className="w-full flex flex-col items-center justify-center space-y-8 pb-8">

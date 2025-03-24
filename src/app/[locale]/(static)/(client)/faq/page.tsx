@@ -10,12 +10,13 @@ interface FaqItem {
     answer: readonly string[];
 }
 
-export const metadata: Metadata = {
+export var metadata: Metadata = {
     title: "Foire Aux Questions",
 };
 
 export default function Page({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.faq;
+    metadata.title = t.tabTitle;
     return (
         <div className="p-10 space-y-10">
             <OrangeTitle title={t.title} />

@@ -7,7 +7,7 @@ import { ReactNode } from "react";
 import { DEPARTMENTS, PersonProps } from "./members";
 import { OrangeTitle } from "@/components/styles/texts";
 
-export const metadata: Metadata = {
+export var metadata: Metadata = {
     title: "Notre équipe",
 };
 function Linkedin({ children, linkedin }: { children: ReactNode; linkedin?: string }) {
@@ -43,6 +43,7 @@ export const dynamicParams = false;
 
 export default async function Team({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.team;
+    metadata.title = t.title;
     return (
         <div className="p-4 flex flex-col items-center">
             <header>

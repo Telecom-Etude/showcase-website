@@ -9,12 +9,13 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { OrangeTitle } from "@/components/styles/texts";
 
-export const metadata: Metadata = {
+export var metadata: Metadata = {
     title: "Engagements",
 };
 
 export default function Page({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.commitments;
+    metadata.title = t.title;
     return (
         <Block className="space-y-10">
             <header className="flex flex-col items-center justify-center space-y-4">
