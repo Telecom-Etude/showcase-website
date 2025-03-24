@@ -56,7 +56,7 @@ async function updateSlugTr() {
 
         await prisma.post.create({
             data: {
-                title: post.title + "_not_translated",
+                title: post.title + newLocale === "fr" ? "_not_translated" : "_pas_traduit",
                 locale: newLocale,
                 slug: post.slugtr === null ? "undefined" : post.slugtr,
                 slugtr: post.slug,
