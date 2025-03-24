@@ -52,8 +52,8 @@ function Delete({ row }: { row: Row<ValidationBlogType> }) {
 export const columns: ColumnDef<ValidationBlogType>[] = [
     {
         accessorKey: "id",
-        header: ({ column }) => <></>,
-        cell: ({ row }) => <></>,
+        header: ({}) => <></>,
+        cell: ({}) => <></>,
         enableSorting: false,
         enableHiding: false,
     },

@@ -169,19 +169,7 @@ const DesktopLinks = ({ links, contactLink, locale }: { links: ExtendedLink[]; c
     );
 };
 
-export const Links = ({
-    locale,
-    user,
-    onClick,
-    btnCn,
-    mobile,
-}: {
-    mobile: boolean;
-    locale: Locale;
-    user?: ExtendedUser;
-    onClick?: () => void;
-    btnCn?: string;
-}) => {
+export const Links = ({ locale, user, onClick, mobile }: { mobile: boolean; locale: Locale; user?: ExtendedUser; onClick?: () => void }) => {
     const t = getDictionary(locale).navigation.sitemap;
     if (mobile) {
         return (

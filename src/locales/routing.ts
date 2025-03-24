@@ -10,10 +10,10 @@ export function getHeaderLocale(headers: Headers) {
         const negoriator_headers = {
             "accept-language": headers.get("accept-language") || undefined,
         };
-        let languages = new Negotiator({ headers: negoriator_headers }).languages();
+        const languages = new Negotiator({ headers: negoriator_headers }).languages();
         return match(languages, LOCALES, DEFAULT_LOCALE) as Locale;
     } catch (e) {
-        // console.error("Error occurred while fetching locale: ", e);
+        console.error("Error occurred while fetching locale: ", e);
         return DEFAULT_LOCALE;
     }
 }

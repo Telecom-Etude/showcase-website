@@ -1,8 +1,7 @@
-import { ElementType, ReactNode } from "react";
+import { ElementType } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { cn } from "@/lib/utils";
-import { title } from "process";
 
 interface ParagraphsProps {
     paragraphs: readonly string[];
@@ -11,11 +10,7 @@ interface ParagraphsProps {
     md?: boolean;
 }
 
-export const MarkDown = ({ text, className, ...props }: { text: string; className?: string }) => (
-    <ReactMarkdown className={className} remarkPlugins={[remarkGfm]}>
-        {text}
-    </ReactMarkdown>
-);
+export const MarkDown = ({ text }: { text: string }) => <ReactMarkdown remarkPlugins={[remarkGfm]}>{text}</ReactMarkdown>;
 
 export const OrangeTitle = ({ title }: { title: string }) => (
     <h1 className="font-semibold text-center bg-gradient-to-r from-primary to-destructive w-fit m-auto text-transparent bg-clip-text">{title}</h1>

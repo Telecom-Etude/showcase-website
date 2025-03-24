@@ -5,30 +5,12 @@ import { FullLogo } from "../../telecom-etude/logos";
 import Link from "next/link";
 import { MobileNavBar } from "./mobile";
 import { Links } from "./links/links";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Locale } from "@/locales/config";
 import { ExtendedUser } from "@/auth/auth";
 import { useRouter } from "next/navigation";
 
 export const NavBar = ({ locale, user }: { locale: Locale; user?: ExtendedUser }) => {
-    const [isScrolled, setIsScrolled] = useState(false);
-
-    const handleScroll = () => {
-        const offset = window.scrollY;
-        if (offset > 0) {
-            setIsScrolled(true);
-        } else {
-            setIsScrolled(false);
-        }
-    };
-
-    useEffect(() => {
-        window.addEventListener("scroll", handleScroll);
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
-    }, []);
-
     const router = useRouter();
 
     return (

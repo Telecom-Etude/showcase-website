@@ -63,11 +63,9 @@ function NumberCard({ nb, prefix, suffix, text }: { nb: number; prefix?: string;
     );
 }
 
-export var metadata: Metadata = {
+export const metadata: Metadata = {
     title: "Accueil",
 };
-
-/*"bg-fixed bg-contain h-[380px] bg-[url(/images/fond_accueil.jpg)]" */
 
 export default async function Page({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.home;

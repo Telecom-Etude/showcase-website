@@ -18,7 +18,7 @@ export function getLinks(locale: Locale, user: ExtendedUser) {
     const t = getDictionary(locale).navigation;
     const s = t.sitemap;
 
-    var authLinks: SingleLink[] = [];
+    const authLinks: SingleLink[] = [];
     if (user?.rights?.blogAdmin) {
         authLinks.push({ href: nav(locale, "/list-blog"), title: t.admin.validate });
     }
@@ -39,11 +39,11 @@ export function getLinks(locale: Locale, user: ExtendedUser) {
         typeof user === "undefined"
             ? { title: s.login, href: nav(locale, "/auth/signin") }
             : authLinks.length <= 1
-              ? logoutLink
-              : {
-                    title: t.admin.account,
-                    links: authLinks,
-                };
+            ? logoutLink
+            : {
+                  title: t.admin.account,
+                  links: authLinks,
+              };
 
     const links: ExtendedLink[] = [
         {

@@ -3,26 +3,24 @@
 import { Rights } from "@/auth/auth";
 import { db } from "@/lib/db";
 
-////////////// CREAT ///////////////////
+////////////// CREATE ///////////////////
 
 ////////////// READ ///////////////////
 
 export async function getRights(email: string | null | undefined): Promise<Rights | null> {
-    var rights = null;
     if (!email) {
-        return rights;
+        return null;
     }
     try {
         const user = await db.user.findUnique({ where: { email } });
-        rights = {
+        return {
             formAdmin: user?.formAdmin || false,
             blogAdmin: user?.blogAdmin || false,
             userAdmin: user?.userAdmin || false,
             blogAuthor: user?.blogAuthor || false,
         };
-        return rights;
     } catch (e) {
-        // console.error(`[getRights] Error:\n\n${e}\n`);
+        console.error(`[getRights] Error:\n\n${e}\n`);
         return null;
     }
 }
