@@ -39,7 +39,7 @@ model Post {
     title     String
     locale    String
     slug      String   @unique
-    slugtr    String?
+    slugtr    String?  @unique
     authors   User[]
     content   String
     validated Boolean  @default(false)
