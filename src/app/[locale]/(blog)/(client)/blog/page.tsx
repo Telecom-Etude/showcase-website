@@ -8,7 +8,7 @@ import { redirect } from "next/navigation";
 import BlogPage from "./client";
 import { OrangeTitle } from "@/components/styles/texts";
 
-export var metadata: Metadata = {
+export const metadata: Metadata = {
     title: "Blog",
 };
 
@@ -22,18 +22,19 @@ export async function generateStaticParams() {
 
 export default async function Page({ params: { locale } }: LocaleParams) {
     const posts = await getValidatedBlogs(locale);
+    const reversedPosts = posts?.reverse();
     const labels = await getLocaleLabels(locale);
     const t = getDictionary(locale).pages.blog;
     metadata.title = t.tabTitle;
 
-    if (typeof labels === "undefined" || typeof posts === "undefined") {
+    if (typeof labels === "undefined" || typeof reversedPosts === "undefined") {
         redirect(nav(locale, "/error/404"));
     }
 
     return (
         <div className="flex flex-col items-center p-10 space-y-10">
             <OrangeTitle title={t.title} />
-            <BlogPage dbLabels={labels.map(({ name }) => name)} locale={locale} posts={posts} t_none={t.none} />
+            <BlogPage dbLabels={labels.map(({ name }) => name)} locale={locale} posts={reversedPosts} t_none={t.none} />
         </div>
     );
 }
