@@ -50,6 +50,8 @@ async function main() {
         { locale: "en", name: "Cryptocurrency" },
         { locale: "fr", name: "Startup" },
         { locale: "en", name: "Startup" },
+        { locale: "fr", name: "Computer Vision" },
+        { locale: "en", name: "Computer Vision" },
     ];
 
     for (const label of labels) {
