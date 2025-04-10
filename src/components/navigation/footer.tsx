@@ -106,12 +106,12 @@ const Mentions = ({ bug }: { bug: string }) => (
 export const Footer = ({ locale }: { locale: Locale }) => {
     const t = getDictionary(locale).navigation.sitemap;
     return (
-        <div className="bg-navigation border-t-2 border-accent flex flex-col lg:flex-row space-y-6 lg:space-y-0  items-center justify-around">
+        <footer className="bg-navigation border-t-2 border-accent flex flex-col lg:flex-row space-y-6 lg:space-y-0  items-center justify-around">
             <section className="p-4">
                 <Mentions bug={t.bug} />
                 <NetworkLinks />
             </section>
             <SiteMap t={t} locale={locale} />
-        </div>
+        </footer>
     );
 };
