@@ -202,6 +202,7 @@ export const enDictionary: Dictionary = {
                 years: "Years of experience",
                 pupils: "Qualified engineering students",
                 admins: "Administrators at your service",
+                l30: "One of the best 30 Junior-Entreprises in France",
             },
             domains: {
                 subtitle: "We find an answer to any of your needs",
