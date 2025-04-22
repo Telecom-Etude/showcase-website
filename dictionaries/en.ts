@@ -187,7 +187,7 @@ export const enDictionary: Dictionary = {
             description:
                 "Telecom Etude, founded in 1979, is the Junior-Enterprise of Télécom Paris, a leading engineering school in information and digital technologies. Connect with our responsive and professional team of 33 administrators for tailor-made solutions to your projects. Explore Telecom Etude's expertise and engage with over 1,000 student engineers from Telecom Paris",
             questions: "More questions",
-            subtitle: "The Junior Enterprise for digital, new technologies and data",
+            subtitle: "The Junior Enterprise for digital technologies and data science",
             alt: "Photo of Telecom Etude's mandate",
             whoarewe: "Who are we?",
             contact: "Contact us",

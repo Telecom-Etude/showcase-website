@@ -71,7 +71,7 @@ function Description({ locale, className }: { locale: Locale; className?: string
     const t = getDictionary(locale).pages.home;
     return (
         <>
-            <p className={cn("text-center", className)}>{t.description}</p>
+            <p className={cn("text-center text-white", className)}>{t.description}</p>
             <div className={cn("flex flex-col sm:flex-row space-y-10 sm:space-x-10 sm:space-y-0 justify-center", className)}>
                 <VariantLink variant="outline" href={nav(locale, "/about")} btnCn="rounded-lg group" className="items-center flex space-x-4">
                     <p>{t.whoarewe}</p>
@@ -94,9 +94,9 @@ export default async function Page({ params: { locale } }: LocaleParams) {
             <Separator />
             <Image src={fond_acc} alt="image de Telecom" className="w-full h-[50vw]  sm:absolute sticky -z-10 top-10" />
             <header>
-                <div className="backdrop-blur-sm bg-zinc-900/50 p-6 w-full space-y-4 flex flex-col items-center justify-center sm:min-h-[50vw] rounded ">
+                <div className="backdrop-blur-[1px] bg-zinc-900/60 p-6 w-full space-y-4 flex flex-col items-center justify-center sm:min-h-[50vw] rounded ">
                     <OrangeTitle className="m-0" title="Telecom Etude" />
-                    <h2 className="text-center">{t.subtitle}</h2>
+                    <h2 className="text-center text-white font-bold">{t.subtitle}</h2>
                     <div className="lg:block hidden pt-10 space-y-10">
                         <Description locale={locale} />
                     </div>
