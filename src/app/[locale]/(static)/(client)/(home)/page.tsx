@@ -92,9 +92,9 @@ export default async function Page({ params: { locale } }: LocaleParams) {
     return (
         <>
             <Separator />
-            <Image src={fond_acc} alt="image de Telecom" className="w-full h-[50vw]  sm:absolute sticky -z-10 top-10" />
+            <Image src={fond_acc} alt="image de Telecom" className="w-full h-[40vw]  sm:absolute sticky -z-10 top-10" />
             <header>
-                <div className="backdrop-blur-[1px] bg-zinc-900/60 p-6 w-full space-y-4 flex flex-col items-center justify-center sm:min-h-[50vw] rounded ">
+                <div className="backdrop-blur-[1px] bg-zinc-900/60 p-6 w-full space-y-4 flex flex-col items-center justify-center sm:min-h-[40vw] rounded ">
                     <OrangeTitle className="m-0" title="Telecom Etude" />
                     <h2 className="text-center text-white font-bold">{t.subtitle}</h2>
                     <div className="lg:block hidden pt-10 space-y-10">
