@@ -1,7 +1,8 @@
-import { LOCALES } from "@/locales/config";
+import { LocaleParams, LOCALES } from "@/locales/config";
+import { notFound } from "next/navigation";
 import { ReactNode } from "react";
 
-export const dynamicParams = false;
+export const dynamicParams = true;
 
 export async function generateStaticParams() {
     return LOCALES.map(locale => ({
@@ -9,6 +10,14 @@ export async function generateStaticParams() {
     }));
 }
 
-export default function Layout({ children }: { children: ReactNode }) {
+interface LayoutProps extends LocaleParams {
+    children: ReactNode;
+}
+
+export default function Layout({ children, params: { locale } }: LayoutProps) {
+    if (!LOCALES.includes(locale)) {
+        notFound();
+    }
+
     return children;
 }

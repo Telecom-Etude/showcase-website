@@ -2,8 +2,8 @@ import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
 
-import { LocaleParams } from "@/locales/config";
-import { getDictionary } from "@/locales/dictionaries";
+import { Locale, LocaleParams } from "@/locales/config";
+import { Dictionary, getDictionary } from "@/locales/dictionaries";
 import { nav } from "@/locales/routing";
 import { DomainBlock } from "./domains";
 
@@ -29,6 +29,7 @@ import SNCF from "@/../public/images/companies/trusted/SNCF.png";
 import Telecom_Paris from "@/../public/images/companies/trusted/Telecom_Paris.png";
 import { Metadata } from "next";
 import { OrangeTitle } from "@/components/styles/texts";
+import { cn } from "@/lib/utils";
 
 const trusted: { src: StaticImageData; alt: string }[] = [
     { alt: "Safran logo", src: Safran },
@@ -66,31 +67,43 @@ export const metadata: Metadata = {
     title: "Accueil",
 };
 
+function Description({ locale, className }: { locale: Locale; className?: string }) {
+    const t = getDictionary(locale).pages.home;
+    return (
+        <>
+            <p className={cn("text-center", className)}>{t.description}</p>
+            <div className={cn("flex flex-col sm:flex-row space-y-10 sm:space-x-10 sm:space-y-0 justify-center", className)}>
+                <VariantLink variant="outline" href={nav(locale, "/about")} btnCn="rounded-lg group" className="items-center flex space-x-4">
+                    <p>{t.whoarewe}</p>
+                    <FaArrowRight className="group-hover:animate-bounce-x" />
+                </VariantLink>
+                <VariantLink variant="call2action" href={nav(locale, "/contact")} btnCn="rounded-lg group" className="items-center flex space-x-4">
+                    <p>{t.contact}</p>
+                    <FaArrowRight className="group-hover:animate-bounce-x" />
+                </VariantLink>
+            </div>
+        </>
+    );
+}
+
 export default async function Page({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.home;
     metadata.title = t.title;
     return (
         <>
             <Separator />
-            <Image src={fond_acc} alt="image de Telecom" className="w-full sm:absolute sticky -z-10 top-10" />
-            <header className="">
-                <div className="backdrop-blur-sm bg-zinc-900/20 p-6 w-fit m-auto sm:my-10 rounded ">
-                    <OrangeTitle title="Telecom Etude" />
+            <Image src={fond_acc} alt="image de Telecom" className="w-full h-[50vw]  sm:absolute sticky -z-10 top-10" />
+            <header>
+                <div className="backdrop-blur-sm bg-zinc-900/50 p-6 w-full space-y-4 flex flex-col items-center justify-center sm:min-h-[50vw] rounded ">
+                    <OrangeTitle className="m-0" title="Telecom Etude" />
                     <h2 className="text-center">{t.subtitle}</h2>
+                    <div className="lg:block hidden pt-10 space-y-10">
+                        <Description locale={locale} />
+                    </div>
                 </div>
-                <div className="bg-background">
+                <div className="bg-background lg:hidden">
                     <Block className="space-y-6">
-                        <p>{t.description}</p>
-                        <div className="flex flex-col sm:flex-row space-y-10 sm:space-x-10 sm:space-y-0 justify-center">
-                            <VariantLink variant="outline" href={nav(locale, "/about")} btnCn="rounded-lg group" className="items-center flex space-x-4">
-                                <p>{t.whoarewe}</p>
-                                <FaArrowRight className="group-hover:animate-bounce-x" />
-                            </VariantLink>
-                            <VariantLink variant="call2action" href={nav(locale, "/contact")} btnCn="rounded-lg group" className="items-center flex space-x-4">
-                                <p>{t.contact}</p>
-                                <FaArrowRight className="group-hover:animate-bounce-x" />
-                            </VariantLink>
-                        </div>
+                        <Description locale={locale} />
                     </Block>
                 </div>
             </header>
