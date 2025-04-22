@@ -17,7 +17,7 @@ export const MarkDown = ({ text, className, ...props }: { text: string; classNam
     </ReactMarkdown>
 );
 
-export const OrangeTitle = ({ title, className }: { title: string; className: string }) => (
+export const OrangeTitle = ({ title, className }: { title: string; className?: string }) => (
     <h1 className={cn("font-semibold text-center bg-gradient-to-r from-primary to-destructive w-fit m-auto text-transparent bg-clip-text", className)}>
         {title}
     </h1>

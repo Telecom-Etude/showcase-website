@@ -33,21 +33,20 @@ function rewrite(url: string, req: NextAuthRequest, code: number) {
 }
 
 export default auth(async (req: NextAuthRequest) => {
-    const { hasLocale, locale, localelessPath } = getLocaleRoutesProps(req);
-    const code = getAuthorisationCode(req, localelessPath);
-    console.log("Middleware: ", localelessPath, "| code = ", code);
+    const { hasLocale, locale, pathnameWithoutLocale } = getLocaleRoutesProps(req);
+    const code = getAuthorisationCode(req, pathnameWithoutLocale);
     if (code == 404) return;
     if (code != 200) return rewrite(`/${locale}/error/${code}`, req, code);
-    if (localelessPath.startsWith("/auth")) {
+    if (pathnameWithoutLocale.startsWith("/auth")) {
         const authed = req.auth?.user.email;
-        if (localelessPath === SIGNIN_PATH && authed) {
+        if (pathnameWithoutLocale === SIGNIN_PATH && authed) {
             return redirect(`/${locale}`, req);
         }
-        if (localelessPath === SIGNOUT_PATH && !authed) {
+        if (pathnameWithoutLocale === SIGNOUT_PATH && !authed) {
             return redirect(`/${locale}`, req);
         }
     } else {
-        if (!hasLocale) return redirect(`/${locale}${localelessPath}${req.nextUrl.search}`, req);
+        if (!hasLocale) return redirect(`/${locale}${pathnameWithoutLocale}${req.nextUrl.search}`, req);
     }
     const headers = new Headers(req.headers);
     headers.set("x-current-path", req.nextUrl.pathname);

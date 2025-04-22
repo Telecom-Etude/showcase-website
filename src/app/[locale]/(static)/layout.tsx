@@ -2,7 +2,7 @@ import { LocaleParams, LOCALES } from "@/locales/config";
 import { notFound } from "next/navigation";
 import { ReactNode } from "react";
 
-export const dynamicParams = true;
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
     return LOCALES.map(locale => ({

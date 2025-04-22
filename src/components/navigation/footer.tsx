@@ -33,9 +33,7 @@ const NetworkLinks = () => (
 
 const SiteMapBlock = ({ title, items, locale }: { locale: Locale; title: string; items: { name: string; href: string }[] }) => (
     <section className="flex flex-col items-center">
-        <h3 className="font-semibold w-fit text-center font-semibold bg-gradient-to-r from-primary to-destructive w-fit m-auto text-transparent bg-clip-text">
-            {title}
-        </h3>
+        <h3 className="text-center font-semibold bg-gradient-to-r from-primary to-destructive w-fit m-auto text-transparent bg-clip-text">{title}</h3>
         {items.map(({ name, href }, k) => (
             <LinkItem name={name} href={nav(locale, href)} key={k} />
         ))}

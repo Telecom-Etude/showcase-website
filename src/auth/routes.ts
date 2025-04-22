@@ -88,16 +88,16 @@ const PREFIX_ROUTES: { [key: string]: RouteProps } = {
  *
  * @export
  * @param {NextAuthRequest} req - incoming request of the middleware
- * @param {string} nonLocalPath - the pathname of the url, without the locale prefix (e.g., if the page is `/en/blog`, the nonLocalPath is `/blog`)
+ * @param {string} pathnameWithoutLocale - the pathname of the url, without the locale prefix (e.g., if the page is `/en/blog`, the pathnameWithoutLocale is `/blog`)
  * @returns {AuthorisationCode} - the response code
  */
-export function getAuthorisationCode(req: NextAuthRequest, nonLocalPath: string): AuthorisationCode {
-    if (nonLocalPath in ALL_ROUTES) {
-        return getCode(req, ALL_ROUTES[nonLocalPath as keyof typeof ALL_ROUTES]);
+export function getAuthorisationCode(req: NextAuthRequest, pathnameWithoutLocale: string): AuthorisationCode {
+    if (pathnameWithoutLocale in ALL_ROUTES) {
+        return getCode(req, ALL_ROUTES[pathnameWithoutLocale as keyof typeof ALL_ROUTES]);
     }
     for (const [path, props] of Object.entries(PREFIX_ROUTES)) {
         const regex = new RegExp(`^${path}/\\d+$`);
-        if (regex.test(nonLocalPath)) {
+        if (regex.test(pathnameWithoutLocale)) {
             return getCode(req, props);
         }
     }
