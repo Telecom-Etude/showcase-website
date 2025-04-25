@@ -144,7 +144,7 @@ const DesktopLinks = ({ links, contactLink, locale }: { links: ExtendedLink[]; c
                     <NavigationMenuContent>
                         <ul className="grid grid-cols-2 w-[700px] p-2">
                             {link.links.map(({ title, href, newTab }, i) => (
-                                <DeployableListItem key={i} title={title} href={href} target={newTab ? "_blank" : ""}>
+                                <DeployableListItem key={i} title={title} href={href} target={newTab ? "_blank" : undefined}>
                                     {/* {title} */}
                                 </DeployableListItem>
                             ))}

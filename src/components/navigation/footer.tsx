@@ -16,7 +16,7 @@ const Network = ({ href, Icon, label }: { href: string; Icon: IconType; label: s
 
 const LinkItem = ({ href, name, newTab }: { href: string; name: string; newTab?: boolean }) => (
     <Button variant="link" className="text-foreground py-[3px] !px-0" asChild>
-        <Link className="w-fit h-fit pl-0 py-0" href={href} target={newTab ? "_blank" : ""}>
+        <Link className="w-fit h-fit pl-0 py-0" href={href} target={newTab ? "_blank" : undefined}>
             {name}
         </Link>
     </Button>

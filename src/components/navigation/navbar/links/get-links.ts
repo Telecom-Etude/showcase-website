@@ -65,7 +65,7 @@ export function getLinks(locale: Locale, user: ExtendedUser) {
                 { href: nav(locale, "/ieseg"), title: s.ieseg },
             ],
         },
-        { href: nav(locale, "/offer"), title: s.offer, newTab: true },
+        { href: nav(locale, "/offer"), title: s.offer },
         { href: nav(locale, "/blog"), title: s.blog },
         authLink,
     ] as const;
