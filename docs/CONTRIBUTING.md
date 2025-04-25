@@ -56,6 +56,7 @@ If you find a bug or have a question:
 - Formatting: Ensure code is formatted using the project's Prettier configuration.
     - If you use _vscode_, some extensions will be recommended when you install the project: please install them.
     - Otherwise, personally make sure your code is formatted and is correct relatively to the [.prettierrc] and [.eslintrc.json] files.
+    - To format your code, run `npm run fmt`
 
 ### Commit Messages
 
