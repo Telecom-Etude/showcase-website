@@ -45,7 +45,7 @@ export function CookieConsent({ locale }: { locale: Locale }) {
         _paq.push(["setDomains", ["*.telecom-etude.fr"]]);
         _paq.push(["trackPageView"]);
         _paq.push(["enableLinkTracking"]);
-        (function() {
+        (function () {
             var u = "//analytics.rezel.net/";
             _paq.push(["setTrackerUrl", u + "matomo.php"]);
             _paq.push(["setSiteId", "1"]);
