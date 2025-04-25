@@ -1,5 +1,3 @@
-import { Tablet } from "lucide-react";
-
 export const frDictionary = {
     navigation: {
         cookies: {

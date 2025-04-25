@@ -53,7 +53,7 @@ interface VariantLinkProps {
 }
 
 export const VariantLink = ({ target, className, btnCn, variant, href, children }: VariantLinkProps) => (
-    <Button variant={variant} className={btnCn}>
+    <Button variant={variant} className={btnCn} asChild>
         <Link href={href} target={target} passHref>
             <span className={className}>{children}</span>
         </Link>
