@@ -14,7 +14,7 @@ const Network = ({ href, Icon, label }: { href: string; Icon: IconType; label: s
     </Link>
 );
 
-const LinkItem = ({ href, name, newTab }: { href: string; name: string; newTab: boolean | undefined }) => (
+const LinkItem = ({ href, name, newTab }: { href: string; name: string; newTab?: boolean }) => (
     <Button variant="link" className="text-foreground py-[3px] !px-0" asChild>
         <Link className="w-fit h-fit pl-0 py-0" href={href} target={newTab ? "_blank" : ""}>
             {name}
@@ -31,7 +31,7 @@ const NetworkLinks = () => (
     </div>
 );
 
-const SiteMapBlock = ({ title, items, locale }: { locale: Locale; title: string; items: { name: string; href: string; newTab: boolean | undefined }[] }) => (
+const SiteMapBlock = ({ title, items, locale }: { locale: Locale; title: string; items: { name: string; href: string; newTab?: boolean }[] }) => (
     <section className="flex flex-col items-center">
         <h3 className="text-center font-semibold bg-gradient-to-r from-primary to-destructive w-fit m-auto text-transparent bg-clip-text">{title}</h3>
         {items.map(({ name, href, newTab }, k) => (
