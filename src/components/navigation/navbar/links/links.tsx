@@ -143,8 +143,8 @@ const DesktopLinks = ({ links, contactLink, locale }: { links: ExtendedLink[]; c
                     <NavigationMenuTrigger className="rounded-none bg-navigation">{link.title}</NavigationMenuTrigger>
                     <NavigationMenuContent>
                         <ul className="grid grid-cols-2 w-[700px] p-2">
-                            {link.links.map(({ title, href }, i) => (
-                                <DeployableListItem key={i} title={title} href={href}>
+                            {link.links.map(({ title, href, newTab }, i) => (
+                                <DeployableListItem key={i} title={title} href={href} target={newTab ? "_blank" : ""}>
                                     {/* {title} */}
                                 </DeployableListItem>
                             ))}

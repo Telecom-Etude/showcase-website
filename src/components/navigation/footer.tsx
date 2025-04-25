@@ -14,9 +14,9 @@ const Network = ({ href, Icon, label }: { href: string; Icon: IconType; label: s
     </Link>
 );
 
-const LinkItem = ({ href, name }: { href: string; name: string }) => (
+const LinkItem = ({ href, name, newTab }: { href: string; name: string; newTab: boolean | undefined }) => (
     <Button variant="link" className="text-foreground py-[3px] !px-0" asChild>
-        <Link className="w-fit h-fit pl-0 py-0" href={href}>
+        <Link className="w-fit h-fit pl-0 py-0" href={href} target={newTab ? "_blank" : ""}>
             {name}
         </Link>
     </Button>
@@ -31,11 +31,11 @@ const NetworkLinks = () => (
     </div>
 );
 
-const SiteMapBlock = ({ title, items, locale }: { locale: Locale; title: string; items: { name: string; href: string }[] }) => (
+const SiteMapBlock = ({ title, items, locale }: { locale: Locale; title: string; items: { name: string; href: string; newTab: boolean | undefined }[] }) => (
     <section className="flex flex-col items-center">
         <h3 className="text-center font-semibold bg-gradient-to-r from-primary to-destructive w-fit m-auto text-transparent bg-clip-text">{title}</h3>
-        {items.map(({ name, href }, k) => (
-            <LinkItem name={name} href={nav(locale, href)} key={k} />
+        {items.map(({ name, href, newTab }, k) => (
+            <LinkItem name={name} href={nav(locale, href)} newTab={newTab} key={k} />
         ))}
     </section>
 );
@@ -52,7 +52,7 @@ const SiteMap = ({ t, locale }: { locale: Locale; t: Dictionary["navigation"]["s
                     { name: t.whoarewe, href: "/about" },
                     { name: t.commitment, href: "/commitment" },
                     { name: t.team, href: "/team" },
-                    { name: t.plaquette, href: "/plaquette.pdf" },
+                    { name: t.plaquette, href: "/plaquette.pdf", newTab: true },
                 ]}
             />
             <SiteMapBlock
