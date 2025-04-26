@@ -90,7 +90,7 @@ export const frDictionary = {
             subtitle: "Un partenariat unique pour des solutions innovantes et efficaces",
             presentation: {
                 title: "Présentation IÉSEG Conseil Paris",
-                par: " IÉSEG CONSEIL Paris, Junior-Entreprise de l'IÉSEG School of Management, est une Junior-Entreprise dont les membres sont des étudiants spécialisés en Management, Marketing, Finance, Audit et Systèmes d'information. Créée en 2007, IÉSEG CONSEIL Paris met à votre disposition l'expertise et le dynamisme de ses consultants juniors pour vous accompagner dans vos projets de conseil en stratégie, organisation, marketing, finance et systèmes d'information.",
+                par: " IÉSEG CONSEIL Paris, Junior-Entreprise de l'IÉSEG School of Management, est une Junior-Entreprise dont les membres sont des étudiants spécialisés en Management, Marketing, Finance, Audit et Systèmes d'information. Créée en 2007, IÉSEG CONSEIL Paris met à votre disposition l'expertise et le dynamisme de ses juniors-entrepreneurs pour vous accompagner dans vos projets de conseil en stratégie, organisation, marketing, finance et systèmes d'information.",
             },
             complementary: {
                 title: "Expertise Complémentaire",
