@@ -7,6 +7,7 @@ export interface SingleLink {
     href: string;
     title: string;
     call2action?: boolean;
+    newTab?: boolean;
 }
 export interface MultipleLink {
     title: string;
@@ -54,7 +55,7 @@ export function getLinks(locale: Locale, user: ExtendedUser) {
                 { href: nav(locale, "/faq"), title: "FAQ" },
                 { href: nav(locale, "/commitment"), title: s.commitment },
                 { href: nav(locale, "/team"), title: s.team },
-                { href: nav(locale, "/plaquette.pdf"), title: s.plaquette },
+                { href: nav(locale, "/plaquette.pdf"), title: s.plaquette, newTab: true },
             ],
         },
         {
