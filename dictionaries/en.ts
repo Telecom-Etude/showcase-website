@@ -426,6 +426,39 @@ export const enDictionary: Dictionary = {
                 message: "Please contact us instead by sending a mail to",
             },
         },
+        bug: {
+            sending: "Form is being submitted. Please wait",
+            title: "Report a bug",
+            optional: "optional",
+            before: "Do you have seen a problem on our website? Do you have some suggestions? Don't hesitate to contact us by using this form. We encourage you to be as precise as you can when you describe the problem and thank you for your help.",
+            terms: "By submitting this form, you agree that your data will be used to contact you in connection with your request and the commercial relationship that may result from it.",
+            form: {
+                email: {
+                    label: "Email",
+                    placeholder: "Your email",
+                    error: "Please enter a valid email address",
+                },
+                subject: {
+                    label: "Subject",
+                    placeholder: "A title for your message",
+                },
+                message: {
+                    label: "Message",
+                    placeholder: "Your message",
+                    error: "Please enter a message",
+                },
+                send: "Send",
+            },
+            success: {
+                title: "Message sent!",
+                message: "Thank you for contacting us. We will get back to you as soon as possible.",
+                back: "Go back to home page",
+            },
+            error: {
+                title: "Unexpected error...",
+                message: "Please contact us instead by sending a mail to",
+            },
+        },
         legal: {
             title: "Legal Notice",
             legal: {
