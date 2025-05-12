@@ -106,8 +106,8 @@ export const frDictionary = {
             },
             personalised: {
                 title: "Approche Personnalisée",
-                before: "Chaque projet est unique. Nous adaptons nos services à vos besoins spécifiques, que ce soit pour évaluer la faisabilité d&apos; un nouveau produit, optimiser votre service client ou améliorer votre stratégie marketing.",
-                strong: " Notre approche personnalisée garantit des résultats concrets en s&apos;appuyant sur des visites mystères, des exit interviews et des benchmarks sectoriels adaptés à vos enjeux particuliers.",
+                before: "Chaque projet est unique. Nous adaptons nos services à vos besoins spécifiques, que ce soit pour évaluer la faisabilité d'un nouveau produit, optimiser votre service client ou améliorer votre stratégie marketing.",
+                strong: " Notre approche personnalisée garantit des résultats concrets en s'appuyant sur des visites mystères, des exit interviews et des benchmarks sectoriels adaptés à vos enjeux particuliers.",
             },
             gain: {
                 title: "Gain de Temps et d'Efficacité",
