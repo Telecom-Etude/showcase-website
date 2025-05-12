@@ -429,6 +429,40 @@ export const frDictionary = {
                 message: "Merci de nous envoyer un mail directement à",
             },
         },
+        bug: {
+            sending: "Formulaire en cours d'envoi. Merci de patienter",
+            title: "Signalez-nous un bug",
+            optional: "facultatif",
+            before: "Vous avez rencontré un problème sur notre site\u00A0? Vous avez une suggestion à nous faire\u00A0? N'hésitez pas à nous contacter en utilisant le formulaire ci-dessous. Nous vous encourageons à être aussi préci que possible dans la description du problème et vous remercions pour votre aide.",
+            after: ". Nous reviendrons vers vous dès que possible.",
+            terms: "En soumettant ce formulaire, vous acceptez que vos données soient utilisées pour vous recontacter dans le cadre de votre demande et de la relation commerciale qui peut en découler. ",
+            form: {
+                email: {
+                    label: "Email",
+                    placeholder: "Votre email",
+                    error: "Adresse mail invalide",
+                },
+                subject: {
+                    label: "Objet",
+                    placeholder: "Un titre pour votre message",
+                },
+                message: {
+                    label: "Message",
+                    placeholder: "Votre message à l'équipe",
+                    error: "Merci d'écrire un message",
+                },
+                send: "Envoyer",
+            },
+            success: {
+                title: "Message envoyé !",
+                message: "Merci pour votre message. Nous vous recontacterons dès que possible si vous nous avez laissé une addresse",
+                back: "Revenir à l'accueil",
+            },
+            error: {
+                title: "Erreur lors de l'envoi",
+                message: "Merci de nous envoyer un mail directement à",
+            },
+        },
         legal: {
             title: "Mentions légales",
             legal: {
