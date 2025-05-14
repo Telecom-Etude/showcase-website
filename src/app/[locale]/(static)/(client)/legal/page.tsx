@@ -6,12 +6,13 @@ import { BtnLink, EmailContact } from "@/components/telecom-etude/contact";
 import { Metadata } from "next";
 import { OrangeTitle } from "@/components/styles/texts";
 
-export const metadata: Metadata = {
+export var metadata: Metadata = {
     title: "Mentions légales",
 };
 
 export default async function Legal({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.legal;
+    metadata.title = t.title;
     return (
         <Block>
             <OrangeTitle title={t.title} />

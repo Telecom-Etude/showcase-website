@@ -16,7 +16,7 @@ import { DesktopTimeline } from "./client";
 import { OFFER_IMAGES } from "./images";
 import { OrangeTitle } from "@/components/styles/texts";
 
-export const metadata: Metadata = {
+export var metadata: Metadata = {
     title: "Notre offre",
 };
 
@@ -42,6 +42,7 @@ function MobileTimeline({ locale }: { locale: Locale }) {
 
 export default function Page({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.offer;
+    metadata.title = t.title;
     return (
         <>
             <Block>

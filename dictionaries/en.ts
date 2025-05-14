@@ -24,6 +24,7 @@ export const enDictionary: Dictionary = {
             },
         },
         errors: {
+            title: "Error",
             unauthorized: {
                 title: "Access Unauthorized",
                 description: "You must be logged in to access this page.",
@@ -84,6 +85,7 @@ export const enDictionary: Dictionary = {
     },
     pages: {
         ieseg: {
+            tabTitle: "Joint offer | Telecom Etude & IÉSEG Conseil Paris",
             title: "Telecom Etude and IÉSEG Conseil Paris",
             subtitle: "A unique partnership for innovative and effective solutions",
             presentation: {
@@ -115,7 +117,7 @@ export const enDictionary: Dictionary = {
             contact: "Contact us!",
         },
         offer: {
-            title: "Our Offer",
+            title: "Our offer",
             timeline: {
                 title: "Process of a Study",
                 text: "We have a structured and rigorous approach to ensure quality, expertise, and responsiveness throughout the mission. Here are the main steps in conducting a study at JE:",
@@ -180,11 +182,12 @@ export const enDictionary: Dictionary = {
             },
         },
         home: {
+            title: "Home",
             trust: "They put their trust in us",
             description:
                 "Telecom Etude, founded in 1979, is the Junior-Enterprise of Télécom Paris, a leading engineering school in information and digital technologies. Connect with our responsive and professional team of 33 administrators for tailor-made solutions to your projects. Explore Telecom Etude's expertise and engage with over 1,000 student engineers from Telecom Paris",
             questions: "More questions",
-            subtitle: "The Junior Enterprise for digital, new technologies and data",
+            subtitle: "The Junior Enterprise for digital technologies and data science",
             alt: "Photo of Telecom Etude's mandate",
             whoarewe: "Who are we?",
             contact: "Contact us",
@@ -199,6 +202,7 @@ export const enDictionary: Dictionary = {
                 years: "Years of experience",
                 pupils: "Qualified engineering students",
                 admins: "Administrators at your service",
+                l30: "One of the best 30 Junior-Entreprises in France",
             },
             domains: {
                 subtitle: "We find an answer to any of your needs",
@@ -213,6 +217,7 @@ export const enDictionary: Dictionary = {
             },
         },
         blog: {
+            tabTitle: "Blog",
             title: "Our news",
             date: { posted_by: "Posted by", on: "on the" },
             labelSelector: {
@@ -273,6 +278,7 @@ export const enDictionary: Dictionary = {
         partners: {
             title: "Our partner companies",
             text: "Telecom Etude has partner companies. These partnerships with companies allow us to benefit from practical training, to lend our premises for their events, and to establish solid professional relationships. As students, this is a unique opportunity to acquire skills while discovering the business world. It strengthens our future opportunities and develops our network",
+            linkWord: "Link",
             bain: {
                 type: "Consulting firm",
                 text: "Bain & Company is the international consulting firm that helps ambitious managers transform their companies into pioneers of tomorrow's world. This prestigious partnership enables us to put Telecom Paris students in touch with Bain & Company consultants and recruiters through special events.",
@@ -287,6 +293,7 @@ export const enDictionary: Dictionary = {
             },
         },
         faq: {
+            tabTitle: "FAQ",
             title: "Frequently Asked Questions",
             text: {
                 before: "Here are answers to questions you might have. Don't hesitate to contact us at ",
@@ -326,6 +333,7 @@ export const enDictionary: Dictionary = {
             ],
         },
         about: {
+            title: "About us",
             description: "The Junior-Enterprise of digital and data",
             moreInfo: "More information",
             ourMandate: "Our mandate",
@@ -370,6 +378,7 @@ export const enDictionary: Dictionary = {
         },
         contact: {
             sending: "Form is being submitted. Please wait",
+            tabTitle: "Contact",
             title: "Contact us!",
             optional: "optional",
             before: "You have a project in mind? You need more information about our services? Don't hesitate to contact us using the form below or by sending us an email at ",

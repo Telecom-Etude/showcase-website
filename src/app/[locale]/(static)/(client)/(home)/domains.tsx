@@ -14,7 +14,7 @@ import { ReactNode } from "react";
 export function DomainBlock({ locale }: { locale: Locale }) {
     const t = getDictionary(locale).pages.home.domains;
     return (
-        <>
+        <section className="py-10 space-y-10 bg-background">
             <h2 className="text-center">{t.title}</h2>
             <h3 className="text-center">{t.subtitle}</h3>
             <p className="text-center">{t.description}</p>
@@ -26,7 +26,7 @@ export function DomainBlock({ locale }: { locale: Locale }) {
                 <DomainCard title={t.market} image={Market} locale={locale} />
                 <DomainCard title={t.se} image={Se} locale={locale} />
             </div>
-        </>
+        </section>
     );
 }
 

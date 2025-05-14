@@ -1,10 +1,9 @@
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
-import { useEffect } from "react";
 
-import { LocaleParams } from "@/locales/config";
-import { getDictionary } from "@/locales/dictionaries";
+import { Locale, LocaleParams } from "@/locales/config";
+import { Dictionary, getDictionary } from "@/locales/dictionaries";
 import { nav } from "@/locales/routing";
 import { DomainBlock } from "./domains";
 
@@ -30,6 +29,8 @@ import SNCF from "@/../public/images/companies/trusted/SNCF.png";
 import Telecom_Paris from "@/../public/images/companies/trusted/Telecom_Paris.png";
 import { Metadata } from "next";
 import { OrangeTitle } from "@/components/styles/texts";
+import { cn } from "@/lib/utils";
+import { DeepReadonly } from "next/dist/shared/lib/deep-readonly";
 
 const trusted: { src: StaticImageData; alt: string }[] = [
     { alt: "Safran logo", src: Safran },
@@ -67,97 +68,125 @@ export const metadata: Metadata = {
     title: "Accueil",
 };
 
-/*"bg-fixed bg-contain h-[380px] bg-[url(/images/fond_accueil.jpg)]" */
+function CNJE({ t, locale }: { t: DeepReadonly<Dictionary["pages"]["home"]>; locale: Locale }) {
+    return (
+        <section className="bg-navigation">
+            <Block className="flex flex-col sm:flex-row space-y-10 px-10 py-10 sm:space-x-10">
+                <div className="flex justify-center">
+                    <div className="w-[300px]">
+                        <BirdLogo />
+                    </div>
+                </div>
+                <div className="flex flex-col justify-center items-center space-y-10">
+                    <q className="italic text-justify">
+                        {t.cnje[0]}
+                        <br />
+                        <br />
+                        {t.cnje[1]}
+                    </q>
+                    <Link href="https://junior-entreprises.com/" className="underline w-fit ml-auto">
+                        Confédération Nationale des Junior-Entreprises
+                    </Link>
+                    <div>
+                        <VariantLink variant="call2action" href={nav(locale, "/faq")} btnCn="rounded-lg w-fit group" className="items-center flex space-x-4">
+                            <p>{t.questions}</p>
+                            <FaArrowRight className="group-hover:animate-bounce-x" />
+                        </VariantLink>
+                    </div>
+                </div>
+            </Block>
+        </section>
+    );
+}
+
+function Description({ locale, className, t }: { t: DeepReadonly<Dictionary["pages"]["home"]>; locale: Locale; className?: string }) {
+    return (
+        <>
+            <p className={cn("text-center text-white", className)}>{t.description}</p>
+            <div className={cn("flex flex-col sm:flex-row space-y-10 sm:space-x-10 sm:space-y-0 justify-center", className)}>
+                <VariantLink variant="outline" href={nav(locale, "/about")} btnCn="rounded-lg group" className="items-center flex space-x-4">
+                    <p>{t.whoarewe}</p>
+                    <FaArrowRight className="group-hover:animate-bounce-x" />
+                </VariantLink>
+                <VariantLink variant="call2action" href={nav(locale, "/contact")} btnCn="rounded-lg group" className="items-center flex space-x-4">
+                    <p>{t.contact}</p>
+                    <FaArrowRight className="group-hover:animate-bounce-x" />
+                </VariantLink>
+            </div>
+        </>
+    );
+}
+
+function Trusted({ t }: { t: DeepReadonly<Dictionary["pages"]["home"]> }) {
+    return (
+        <Block className="bg-background">
+            <section className="py-10 space-y-10 ">
+                <h2 className="text-2xl font-bold text-center">{t.trust}</h2>
+                <div className="grid grid-cols-3 md:grid-cols-6 bg-white">
+                    {trusted.map(({ alt, src }, i) => (
+                        <div key={i} className="w-full h-full items-center justify-center flex">
+                            <div className="w-[70%] p-4">
+                                <Image placeholder="blur" src={src} alt={alt} />
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </section>
+        </Block>
+    );
+}
+
+function Numbers({ t }: { t: DeepReadonly<Dictionary["pages"]["home"]> }) {
+    return (
+        <section className="p-10 space-y-10 bg-navigation">
+            <h2 className="text-center">{t.numbers.title}</h2>
+            <div className="grid lg:grid-cols-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 place-items-center border-y-2 border-primary justify-around">
+                <NumberCard nb={97} suffix="%" text={t.numbers.clients} />
+                <NumberCard nb={45} text={t.numbers.years} />
+                <NumberCard nb={800} prefix="+" text={t.numbers.pupils} />
+                <NumberCard nb={40} text={t.numbers.projects} />
+                <NumberCard nb={30} text={t.numbers.admins} />
+                <NumberCard nb={30} prefix="L" text={t.numbers.l30} />
+            </div>
+        </section>
+    );
+}
+
+function Header({ t, locale }: { locale: Locale; t: DeepReadonly<Dictionary["pages"]["home"]> }) {
+    return (
+        <header>
+            <div className="backdrop-blur-[1px] bg-zinc-900/60 p-6 w-full space-y-4 flex flex-col items-center justify-center sm:min-h-[40vw] rounded ">
+                <OrangeTitle className="m-0" title="Telecom Etude" />
+                <h2 className="text-center text-white font-bold">{t.subtitle}</h2>
+                <div className="lg:block hidden pt-10 space-y-10">
+                    <Description t={t} locale={locale} />
+                </div>
+            </div>
+            <div className="bg-background lg:hidden">
+                <Block className="space-y-6">
+                    <Description t={t} locale={locale} />
+                </Block>
+            </div>
+        </header>
+    );
+}
 
 export default async function Page({ params: { locale } }: LocaleParams) {
     const t = getDictionary(locale).pages.home;
-
+    metadata.title = t.title;
     return (
         <>
             <Separator />
-            <Image src={fond_acc} alt="image de Telecom" className="w-full sticky -z-10 top-0"></Image>
+            <Image src={fond_acc} alt="image de Telecom" className="w-full h-[40vw]  sm:absolute sticky -z-10 top-10" style={{ aspectRatio: "auto" }} />
+            <Header t={t} locale={locale} />
             <Separator />
-            <div className="bg-background">
-                <Block>
-                    <header className="py-0 space-y-10">
-                        <OrangeTitle title="Telecom Etude" />
-                        <h2 className="text-center">{t.subtitle}</h2>
-                        <p>{t.description}</p>
-                        <div className="flex flex-col sm:flex-row space-y-10 sm:space-x-10 sm:space-y-0 justify-center">
-                            <VariantLink variant="outline" href={nav(locale, "/about")} btnCn="rounded-lg group" className="items-center flex space-x-4">
-                                <p>{t.whoarewe}</p>
-                                <FaArrowRight className="group-hover:animate-bounce-x" />
-                            </VariantLink>
-                            <VariantLink variant="call2action" href={nav(locale, "/contact")} btnCn="rounded-lg group" className="items-center flex space-x-4">
-                                <p>{t.contact}</p>
-                                <FaArrowRight className="group-hover:animate-bounce-x" />
-                            </VariantLink>
-                        </div>
-                    </header>
-                </Block>
-                <Separator />
-                <section className="p-10 space-y-10 bg-navigation">
-                    <h2 className="text-center">{t.numbers.title}</h2>
-                    <div className="flex lg:flex-row flex-col items-center w-full border-y-2 border-primary justify-around">
-                        <NumberCard nb={97} suffix="%" text={t.numbers.clients} />
-                        <NumberCard nb={80} text={t.numbers.projects} />
-                        <NumberCard nb={45} text={t.numbers.years} />
-                        <NumberCard nb={800} prefix="+" text={t.numbers.pupils} />
-                        <NumberCard nb={33} text={t.numbers.admins} />
-                    </div>
-                </section>
-                <Separator />
-                <section className="py-10 space-y-10">
-                    <DomainBlock locale={locale} />
-                </section>
-                <Separator />
-                <section className="bg-navigation">
-                    <Block className="flex flex-col sm:flex-row space-y-10 px-10 py-10 sm:space-x-10">
-                        <div className="flex justify-center">
-                            <div className="w-[300px]">
-                                <BirdLogo />
-                            </div>
-                        </div>
-                        <div className="flex flex-col justify-center items-center space-y-10">
-                            <q className="italic text-justify">
-                                {t.cnje[0]}
-                                <br />
-                                <br />
-                                {t.cnje[1]}
-                            </q>
-                            <Link href="https://junior-entreprises.com/" className="underline w-fit ml-auto">
-                                Confédération Nationale des Junior-Entreprises
-                            </Link>
-                            <div>
-                                <VariantLink
-                                    variant="call2action"
-                                    href={nav(locale, "/faq")}
-                                    btnCn="rounded-lg w-fit group"
-                                    className="items-center flex space-x-4"
-                                >
-                                    <p>{t.questions}</p>
-                                    <FaArrowRight className="group-hover:animate-bounce-x" />
-                                </VariantLink>
-                            </div>
-                        </div>
-                    </Block>
-                </section>
-                <Separator />
-                <Block>
-                    <section className="py-10 space-y-10">
-                        <h2 className="text-2xl font-bold text-center">{t.trust}</h2>
-                        <div className="grid grid-cols-3 md:grid-cols-6 bg-white">
-                            {trusted.map(({ alt, src }, i) => (
-                                <div key={i} className="w-full h-full items-center justify-center flex">
-                                    <div className="w-[70%] p-4">
-                                        <Image placeholder="blur" src={src} alt={alt} />
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </section>
-                </Block>
-            </div>
+            <Numbers t={t} />
+            <Separator />
+            <DomainBlock locale={locale} />
+            <Separator />
+            <CNJE locale={locale} t={t} />
+            <Separator />
+            <Trusted t={t} />
         </>
     );
 }

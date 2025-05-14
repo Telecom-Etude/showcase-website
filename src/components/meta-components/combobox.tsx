@@ -88,8 +88,7 @@ export const Combobox = ({
                                     key={i}
                                     value={item.key}
                                     onSelect={newKey => {
-                                        selectKey(currentKey === newKey ? null : currentKey);
-                                        setOpen(false);
+                                        selectKey(currentKey === newKey ? null : newKey);
                                     }}
                                 >
                                     <Check className={cn("mr-2 h-4 w-4", currentKey === item.key ? "opacity-100" : "opacity-0")} />

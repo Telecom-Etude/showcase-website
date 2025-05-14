@@ -4,11 +4,31 @@
 
 ### Requirements
 
-- [Node.js and npm](https://nodejs.org/en/download)
+You only need [Bun](https://bun.sh/). To install it, simply run
+
+- On Linux
+
+```sh
+curl -fsSL https://bun.sh/install | sh
+```
+
+- On Windows (in powershell)
+
+```pwsh
+irm bun.sh/install.ps1 | iex
+```
+
+> Why Bun?
+>
+> It is simpler to use and has an lower toll on your computer, as well as being much faster than the other javascript runtimes that exist. A very important reason is also that it is reverse compatible with [`Node.js`]. See https://bun.sh/ for more information. Finally, this website doesn't use any runtime-specific features (I/O, filesystem, etc.) so changing runtime requires no code migrations.
 
 ### Setting up the database
 
 The database is set up using [Prisma and sqlite](https://www.prisma.io/docs/orm/overview/databases/sqlite). The data is thus stored in a local file. A few configurations are needed though, as explained below.
+
+> Why sqlite?
+>
+> sqlite may be bit slower and has less features than PostgreSQL for example, but it was chosen for its simplicity and ease of use: this website is designed to be maintained and to last over the years, and sqlite doesn't require an external server which can be hard, at first, to set up.
 
 ### Environment variables
 
@@ -63,8 +83,8 @@ This documentation may not be up to date. To make sure all required environment 
 You now need to initialise your database:
 
 ```bash
-npx prisma generate
-npx prisma migrate dev
+bunx prisma generate
+bunx prisma migrate dev
 ```
 
 ### Node Setup
@@ -72,8 +92,8 @@ npx prisma migrate dev
 Then you can install and run the project:
 
 ```bash
-npm install
-npm run dev
+bun i
+bun run dev
 ```
 
 ## The code base

@@ -2,7 +2,8 @@ import { auth, ExtendedUser } from "@/auth/auth";
 import { CookieConsent } from "@/components/analytics";
 import { Footer } from "@/components/navigation/footer";
 import { NavBar } from "@/components/navigation/navbar/navbar";
-import { Locale } from "@/locales/config";
+import { Locale, LOCALES } from "@/locales/config";
+import { notFound } from "next/navigation";
 import { ReactNode } from "react";
 
 export default async function LocaleLayout({
@@ -13,6 +14,11 @@ export default async function LocaleLayout({
     params: { locale: Locale };
 }>) {
     const user: ExtendedUser = (await auth())?.user;
+
+    if (!LOCALES.includes(locale)) {
+        notFound();
+    }
+
     return (
         <>
             <NavBar locale={locale} user={user} />

@@ -21,6 +21,7 @@ export const frDictionary = {
             },
         },
         errors: {
+            title: "Erreurs",
             unauthorized: {
                 title: "Accès non autorisé",
                 description: "Vous devez être connecté pour accéder à cette page",
@@ -84,11 +85,12 @@ export const frDictionary = {
     },
     pages: {
         ieseg: {
+            tabTitle: "Offre commune | Telecom Etude & IÉSEG Conseil Paris",
             title: "Telecom Etude et IÉSEG Conseil Paris",
             subtitle: "Un partenariat unique pour des solutions innovantes et efficaces",
             presentation: {
                 title: "Présentation IÉSEG Conseil Paris",
-                par: " IÉSEG CONSEIL Paris, Junior-Entreprise de l'IÉSEG School of Management, est une Junior-Entreprise dont les membres sont des étudiants spécialisés en Management, Marketing, Finance, Audit et Systèmes d'information. Créée en 2007, IÉSEG CONSEIL Paris met à votre disposition l'expertise et le dynamisme de ses consultants juniors pour vous accompagner dans vos projets de conseil en stratégie, organisation, marketing, finance et systèmes d'information.",
+                par: " IÉSEG CONSEIL Paris, Junior-Entreprise de l'IÉSEG School of Management, est une Junior-Entreprise dont les membres sont des étudiants spécialisés en Management, Marketing, Finance, Audit et Systèmes d'information. Créée en 2007, IÉSEG CONSEIL Paris met à votre disposition l'expertise et le dynamisme de ses juniors-entrepreneurs pour vous accompagner dans vos projets de conseil en stratégie, organisation, marketing, finance et systèmes d'information.",
             },
             complementary: {
                 title: "Expertise Complémentaire",
@@ -104,8 +106,8 @@ export const frDictionary = {
             },
             personalised: {
                 title: "Approche Personnalisée",
-                before: "Chaque projet est unique. Nous adaptons nos services à vos besoins spécifiques, que ce soit pour évaluer la faisabilité d&apos; un nouveau produit, optimiser votre service client ou améliorer votre stratégie marketing.",
-                strong: " Notre approche personnalisée garantit des résultats concrets en s&apos;appuyant sur des visites mystères, des exit interviews et des benchmarks sectoriels adaptés à vos enjeux particuliers.",
+                before: "Chaque projet est unique. Nous adaptons nos services à vos besoins spécifiques, que ce soit pour évaluer la faisabilité d'un nouveau produit, optimiser votre service client ou améliorer votre stratégie marketing.",
+                strong: " Notre approche personnalisée garantit des résultats concrets en s'appuyant sur des visites mystères, des exit interviews et des benchmarks sectoriels adaptés à vos enjeux particuliers.",
             },
             gain: {
                 title: "Gain de Temps et d'Efficacité",
@@ -161,6 +163,7 @@ export const frDictionary = {
             },
         },
         blog: {
+            tabTitle: "Blog",
             title: "Nos actualités",
             date: {
                 posted_by: "Posté par",
@@ -170,6 +173,7 @@ export const frDictionary = {
             none: "Aucun blog n'a encore été publié, merci de revenir ultérieurement.",
         },
         home: {
+            title: "Accueil",
             trust: "Ils nous ont fait confiance",
             description:
                 "Telecom Etude, fondée en 1979, est la Junior-Entreprise de Télécom Paris, une école d'ingénieur de premier plan dans les technologies de l'information et du numérique. Connectez-vous avec notre équipe réactive et professionnelle de 33 administrateurs pour des solutions sur mesure à vos projets. Explorez l'expertise de Telecom Etude et engagez-vous avec plus de 1000 ingénieurs étudiants de Télécom Paris.",
@@ -189,6 +193,7 @@ export const frDictionary = {
                 years: "Années d'expérience",
                 pupils: "Élèves ingénieurs qualifés",
                 admins: "Administrateurs à votre écoute",
+                l30: "Parmis les 30 meilleures Junior-Entreprises de France",
             },
             domains: {
                 subtitle: "Nous trouvons une réponse à chacun de vos besoins",
@@ -254,6 +259,7 @@ export const frDictionary = {
             },
         },
         faq: {
+            tabTitle: "FAQ",
             title: "Foire aux questions",
             text: {
                 before: "Voici les réponses aux questions que vous pourriez vous poser. N'hésitez pas à nous contacter à",
@@ -297,6 +303,7 @@ export const frDictionary = {
         partners: {
             title: "Nos entreprises partenaires",
             text: "Telecom Etude possède des entreprises partenaires. Ces partenariats avec des entreprises nous permettent de bénéficier de formations pratiques, de prêter nos locaux pour leurs événements, et d'établir des relations professionnelles solides. En tant qu'étudiants, c'est une occasion unique d'acquérir des compétences tout en découvrant le monde de l'entreprise. Cela renforce nos opportunités futures et développe notre réseau.",
+            linkWord: "Lien",
             kpmg: {
                 type: "Audit et conseil",
                 text: "Notre partenariat avec KPMG s'inscrit dans une volonté de bénéficier aux deux parties. Telecom Etude participe au rayonnement de KPMG auprès des étudiants, en contrepartie KPMG organise en collaboration avec Telecom Etude des évènements à destination des étudiants dans les locaux de Telecom durant l'année afin de faire découvrir les métiers du conseil, ainsi qu'une visite des locaux de KPMG en fin d'année accompagné d'un échange en petits groupes.",
@@ -311,6 +318,7 @@ export const frDictionary = {
             },
         },
         about: {
+            title: "À propos",
             description: "la Junior-Entreprise du numérique et de la data",
             moreInfo: "Plus d'informations",
             ourMandate: "Notre mandat",
@@ -374,6 +382,7 @@ export const frDictionary = {
         },
         contact: {
             sending: "Formulaire en cours d'envoi. Merci de patienter",
+            tabTitle: "Contact",
             title: "Contactez-nous !",
             optional: "facultatif",
             before: "Vous avez un projet en tête\u00A0? Vous avez besoin de plus d'informations sur notre offre\u00A0? N'hésitez pas à nous contacter en utilisant le formulaire ci-dessous ou en nous envoyant un email à ",

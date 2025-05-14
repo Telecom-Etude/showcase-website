@@ -5,6 +5,7 @@ import { AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle } 
 import { Button, VariantLink } from "@/components/ui/button";
 import { Locale } from "@/locales/config";
 import { getDictionary } from "@/locales/dictionaries";
+import Link from "next/link";
 
 declare global {
     interface Window {
@@ -66,10 +67,10 @@ export function CookieConsent({ locale }: { locale: Locale }) {
                     <AlertDialogTitle>{t.title}</AlertDialogTitle>
                 </AlertDialogHeader>
                 <p>
-                    {t.description}
-                    <VariantLink href="/legal" variant="link">
+                    {t.description}{" "}
+                    <Link href="/legal" className="hover:underline">
                         {t.link}
-                    </VariantLink>{" "}
+                    </Link>
                 </p>
                 <div className="mt-4 flex justify-end gap-2">
                     <Button variant="secondary" onClick={rejectCookies}>
