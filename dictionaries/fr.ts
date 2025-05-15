@@ -193,7 +193,7 @@ export const frDictionary = {
                 years: "Années d'expérience",
                 pupils: "Élèves ingénieurs qualifés",
                 admins: "Administrateurs à votre écoute",
-                l30: "Parmis les 30 meilleures Junior-Entreprises de France",
+                l30: "Parmis les 30 meilleures JE de France",
             },
             domains: {
                 subtitle: "Nous trouvons une réponse à chacun de vos besoins",

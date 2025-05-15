@@ -3,7 +3,7 @@
 import { headers } from "next/headers";
 import { Locale } from "./locales/config";
 
-export async function localeIsEn() {
+async function localeIsEn() {
     const header = await headers();
     return header.get("x-current-path")?.startsWith("/en");
 }
