@@ -1,15 +1,18 @@
 'use client';
 
-import Link from 'next/link';
-import { Button } from '../../ui/button';
-import { FullLogo } from '../../telecom-etude/logos';
-import { useState } from 'react';
 import { Menu } from 'lucide-react';
-import { Links } from './links/links';
-import { Locale } from '@/locales/config';
-import { ExtendedUser } from '@/auth/auth';
-import { getDictionary } from '@/locales/dictionaries';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+
+import { ExtendedUser } from '@/auth/auth';
+import { Locale } from '@/locales/config';
+import { getDictionary } from '@/locales/dictionaries';
+
+import { FullLogo } from '../../telecom-etude/logos';
+import { Button } from '../../ui/button';
+
+import { Links } from './links/links';
 
 export const MobileNavBar = ({ locale, user }: { locale: Locale; user?: ExtendedUser }) => {
     const [deployed, setDeployed] = useState(false);
@@ -52,7 +55,6 @@ export const MobileNavBar = ({ locale, user }: { locale: Locale; user?: Extended
                     mobile={true}
                     locale={locale}
                     user={user}
-                    btnCn="rounded-none w-full"
                 />
             )}
         </div>

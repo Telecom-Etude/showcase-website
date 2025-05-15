@@ -8,7 +8,7 @@ import { db } from '@/lib/db';
 ////////////// READ ///////////////////
 
 export async function getRights(email: string | null | undefined): Promise<Rights | null> {
-    var rights = null;
+    let rights = null;
     if (!email) {
         return rights;
     }
@@ -42,7 +42,7 @@ export async function makeBlogAdmin(email: string, value: boolean) {
 
 export async function makeUserAdmin(email: string, value: boolean) {
     try {
-        const x = await db.user.update({
+        await db.user.update({
             where: { email },
             data: { userAdmin: value },
         });

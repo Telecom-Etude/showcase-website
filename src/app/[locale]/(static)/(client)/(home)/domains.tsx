@@ -1,15 +1,16 @@
 import Image, { StaticImageData } from 'next/image';
+import { ReactNode } from 'react';
+
+import Cyber from '@/../public/images/domains/icons/cyber.png';
+import Data from '@/../public/images/domains/icons/data.png';
+import Dev from '@/../public/images/domains/icons/dev.png';
+import Ima from '@/../public/images/domains/icons/image.png';
+import Market from '@/../public/images/domains/icons/market.png';
+import Se from '@/../public/images/domains/icons/se.png';
+
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Locale } from '@/locales/config';
 import { getDictionary } from '@/locales/dictionaries';
-
-import Data from '@/../public/images/domains/icons/data.png';
-import Cyber from '@/../public/images/domains/icons/cyber.png';
-import Ima from '@/../public/images/domains/icons/image.png';
-import Se from '@/../public/images/domains/icons/se.png';
-import Market from '@/../public/images/domains/icons/market.png';
-import Dev from '@/../public/images/domains/icons/dev.png';
-import { ReactNode } from 'react';
 
 export function DomainBlock({ locale }: { locale: Locale }) {
     const t = getDictionary(locale).pages.home.domains;
@@ -19,12 +20,12 @@ export function DomainBlock({ locale }: { locale: Locale }) {
             <h3 className="text-center">{t.subtitle}</h3>
             <p className="text-center">{t.description}</p>
             <div className="grid grid-cols-1 md:grid-cols-2 place-items-center lg:grid-cols-3 space-x-0 max-w-[2000px] m-auto">
-                <DomainCard title={t.data} image={Data} locale={locale} />
-                <DomainCard title={t.web} image={Dev} locale={locale} />
-                <DomainCard title={t.cyber} image={Cyber} locale={locale} />
-                <DomainCard title={t.image} image={Ima} locale={locale} />
-                <DomainCard title={t.market} image={Market} locale={locale} />
-                <DomainCard title={t.se} image={Se} locale={locale} />
+                <DomainCard title={t.data} image={Data} />
+                <DomainCard title={t.web} image={Dev} />
+                <DomainCard title={t.cyber} image={Cyber} />
+                <DomainCard title={t.image} image={Ima} />
+                <DomainCard title={t.market} image={Market} />
+                <DomainCard title={t.se} image={Se} />
             </div>
         </section>
     );
@@ -43,15 +44,7 @@ function ThemedCard({ children }: { children: ReactNode }) {
     );
 }
 
-function DomainCard({
-    title,
-    image,
-    locale,
-}: {
-    title: string;
-    image: StaticImageData;
-    locale: Locale;
-}) {
+function DomainCard({ title, image }: { title: string; image: StaticImageData }) {
     return (
         // <Link href={nav(locale, `/offer/${id}`)} className="p-4 w-full h-full">
         <div className="p-4 w-full h-full">

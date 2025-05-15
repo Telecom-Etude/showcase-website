@@ -1,10 +1,15 @@
 'use client';
 
+import { ColumnDef, Row } from '@tanstack/react-table';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import React from 'react';
 import { FaTrash } from 'react-icons/fa';
 
-import { useRouter } from 'next/navigation';
-
+import { DataTableColumnHeader } from '@/components/meta-components/table/data-table-column-header';
+import { BtnLink, EmailBtn } from '@/components/telecom-etude/contact';
+import { Button } from '@/components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox';
 import {
     Dialog,
     DialogContent,
@@ -15,16 +20,10 @@ import {
     DialogClose,
     DialogTrigger,
 } from '@/components/ui/dialog';
-import { Button } from '@/components/ui/button';
-import { DataTableColumnHeader } from '@/components/meta-components/table/data-table-column-header';
-import { ColumnDef, Row } from '@tanstack/react-table';
+import { deleteBlog } from '@/db/blogs';
+import { getUserName } from '@/lib/users';
 
 import { ValidationBlogType } from './schema';
-import { deleteBlog } from '@/db/blogs';
-import { BtnLink, EmailBtn } from '@/components/telecom-etude/contact';
-import { getUserName } from '@/lib/users';
-import { Checkbox } from '@/components/ui/checkbox';
-import Link from 'next/link';
 
 function Delete({ row }: { row: Row<ValidationBlogType> }) {
     const router = useRouter();
@@ -63,8 +62,8 @@ function Delete({ row }: { row: Row<ValidationBlogType> }) {
 export const columns: ColumnDef<ValidationBlogType>[] = [
     {
         accessorKey: 'id',
-        header: ({ column }) => <></>,
-        cell: ({ row }) => <></>,
+        header: () => <></>,
+        cell: () => <></>,
         enableSorting: false,
         enableHiding: false,
     },

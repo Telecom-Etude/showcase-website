@@ -1,6 +1,7 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { ReactNode } from 'react';
 import {
     ControllerRenderProps,
     DefaultValues,
@@ -20,9 +21,9 @@ import {
     FormLabel,
     FormMessage,
 } from '@/components/ui/form';
-import { ReactElement, ReactNode } from 'react';
-import { Textarea } from '../ui/textarea';
+
 import { Input } from '../ui/input';
+import { Textarea } from '../ui/textarea';
 
 interface ValueProps {
     label?: string;
@@ -38,7 +39,7 @@ interface FormPageProps<T> {
     onSubmit: (_: T) => void;
     submitButton?: ReactNode;
     defaultValues?: DefaultValues<T>;
-    formSchema: z.ZodObject<{ [key in Path<T>]: z.ZodType<any> }>;
+    formSchema: z.ZodObject<{ [key in Path<T>]: z.ZodType<void> }>;
 }
 
 interface FormElementProps<T extends FieldValues> {
@@ -54,9 +55,9 @@ const FormElement = <T extends FieldValues>({ field, value }: FormElementProps<T
                 placeholder={value.placeholder}
                 {...field}
                 onInput={(e) => {
-                    let target = e.target as HTMLElement;
+                    const target = e.target as HTMLElement;
                     target.style.height = 'inherit';
-                    let fontSize = parseFloat(
+                    const fontSize = parseFloat(
                         window.getComputedStyle(target, null).getPropertyValue('font-size')
                     );
                     target.style.height = `${target.scrollHeight + fontSize}px`;

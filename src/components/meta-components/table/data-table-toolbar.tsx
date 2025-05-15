@@ -1,14 +1,15 @@
 'use client';
 
-import { FaCircleXmark } from 'react-icons/fa6';
 import { Table } from '@tanstack/react-table';
+import { ComponentType } from 'react';
+import { FaCircleXmark } from 'react-icons/fa6';
 
+import { DataTableViewOptions } from '@/components/meta-components/table/data-table-view-options';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { DataTableViewOptions } from '@/components/meta-components/table/data-table-view-options';
 
 import { DataTableFacetedFilter } from './data-table-faceted-filter';
-import { ComponentType } from 'react';
+
 
 interface FilterOption {
     label: string;

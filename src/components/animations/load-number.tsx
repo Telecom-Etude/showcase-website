@@ -11,7 +11,7 @@ export const LoadNumber = ({ value, duration = 4000 }: { value: number; duration
 
     useEffect(() => {
         const totalDuration = duration;
-        var frameId: number;
+        let frameId: number;
 
         const updateCount = () => {
             const currentTime = Date.now();

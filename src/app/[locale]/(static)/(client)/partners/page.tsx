@@ -1,22 +1,21 @@
+import { Metadata } from 'next';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import Image from 'next/image';
 import { MdOpenInNew } from 'react-icons/md';
 
-import { LocaleParams } from '@/locales/config';
-import { getDictionary } from '@/locales/dictionaries';
-
-import { Block } from '@/components/styles/blocks';
-import { BtnLink } from '@/components/telecom-etude/contact';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Separator } from '@/components/ui/separator';
-
 import Bain from '@/../public/images/companies/partners/bain.svg';
 import BearingPoint from '@/../public/images/companies/partners/bearingpoint.svg';
 import KPMG from '@/../public/images/companies/partners/kpmg.svg';
-import { Metadata } from 'next';
-import { OrangeTitle } from '@/components/styles/texts';
 
-export var metadata: Metadata = {
+import { Block } from '@/components/styles/blocks';
+import { OrangeTitle } from '@/components/styles/texts';
+import { BtnLink } from '@/components/telecom-etude/contact';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Separator } from '@/components/ui/separator';
+import { LocaleParams } from '@/locales/config';
+import { getDictionary } from '@/locales/dictionaries';
+
+export const metadata: Metadata = {
     title: 'Nos partenaires',
 };
 

@@ -1,3 +1,5 @@
+import { Metadata } from 'next';
+
 import { OrangeTitle, Paragraphs } from '@/components/styles/texts';
 import { BtnLink, EmailContact } from '@/components/telecom-etude/contact';
 import {
@@ -8,14 +10,13 @@ import {
 } from '@/components/ui/accordion';
 import { LocaleParams } from '@/locales/config';
 import { getDictionary } from '@/locales/dictionaries';
-import { Metadata } from 'next';
 
 interface FaqItem {
     question: string;
     answer: readonly string[];
 }
 
-export var metadata: Metadata = {
+export const metadata: Metadata = {
     title: 'Foire Aux Questions',
 };
 

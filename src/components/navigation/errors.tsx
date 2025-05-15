@@ -1,19 +1,13 @@
-import React from 'react';
 import Link from 'next/link';
+import React from 'react';
+
 import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Locale } from '@/locales/config';
 import { getDictionary } from '@/locales/dictionaries';
 import { nav } from '@/locales/routing';
-import { BirdBackground } from '../telecom-etude/bird-backgroud';
 
-import { Locale } from '@/locales/config';
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from '@/components/ui/card';
+import { BirdBackground } from '../telecom-etude/bird-backgroud';
 import { EmailContact } from '../telecom-etude/contact';
 
 export function ErrorPage({
@@ -26,7 +20,7 @@ export function ErrorPage({
     message?: string;
 }) {
     const errorsVocab = getDictionary(locale).navigation.errors;
-    var pageInfo;
+    let pageInfo;
     switch (code) {
         case '401':
             pageInfo = {

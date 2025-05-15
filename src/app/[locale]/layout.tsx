@@ -1,10 +1,11 @@
+import { notFound } from 'next/navigation';
+import { ReactNode } from 'react';
+
 import { auth, ExtendedUser } from '@/auth/auth';
 import { CookieConsent } from '@/components/analytics';
 import { Footer } from '@/components/navigation/footer';
 import { NavBar } from '@/components/navigation/navbar/navbar';
 import { LocaleParams, LOCALES } from '@/locales/config';
-import { notFound } from 'next/navigation';
-import { ReactNode } from 'react';
 
 export default async function LocaleLayout({
     children,

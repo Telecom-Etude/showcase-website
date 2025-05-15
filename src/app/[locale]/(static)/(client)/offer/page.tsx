@@ -1,12 +1,9 @@
-import { Locale, LocaleParams } from '@/locales/config';
-import { getDictionary } from '@/locales/dictionaries';
-import { nav } from '@/locales/routing';
-
 import { Metadata } from 'next';
 import Image from 'next/image';
 import { FaArrowRight } from 'react-icons/fa6';
 
 import { Block } from '@/components/styles/blocks';
+import { OrangeTitle } from '@/components/styles/texts';
 import {
     Accordion,
     AccordionContent,
@@ -15,13 +12,16 @@ import {
 } from '@/components/ui/accordion';
 import { VariantLink } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
+import { Locale, LocaleParams } from '@/locales/config';
+import { getDictionary } from '@/locales/dictionaries';
+import { nav } from '@/locales/routing';
 
 import { DomainBlock } from '../(home)/domains';
+
 import { DesktopTimeline } from './client';
 import { OFFER_IMAGES } from './images';
-import { OrangeTitle } from '@/components/styles/texts';
 
-export var metadata: Metadata = {
+export const metadata: Metadata = {
     title: 'Notre offre',
 };
 

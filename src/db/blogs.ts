@@ -1,10 +1,12 @@
 'use server';
 
+import { Label, Post, User } from '@prisma/client';
+import { Op } from 'quill/core';
+
 import { PostPresentation } from '@/app/[locale]/(blog)/(client)/blog/client';
 import { db } from '@/lib/db';
 import { Locale } from '@/locales/config';
-import { Label, Post, User } from '@prisma/client';
-import { Op } from 'quill/core';
+
 import { generateSlug } from './slug';
 
 export async function createBlog(

@@ -11,8 +11,9 @@
  */
 
 import { NextResponse } from 'next/server';
-import { NextAuthRequest, SIGNIN_PATH, SIGNOUT_PATH, getAuthorisationCode } from '@/auth/routes';
+
 import { auth } from '@/auth/auth';
+import { NextAuthRequest, SIGNIN_PATH, SIGNOUT_PATH, getAuthorisationCode } from '@/auth/routes';
 import { getLocaleRoutesProps } from '@/locales/routing';
 
 /**

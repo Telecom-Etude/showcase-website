@@ -1,15 +1,16 @@
-import { Block } from '@/components/styles/blocks';
+import { Metadata } from 'next';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import JamaisSansElles from '@/../public/images/jamaissanselles.jpg';
 import Rse from '@/../public/images/rse.png';
+
+import { Block } from '@/components/styles/blocks';
+import { OrangeTitle } from '@/components/styles/texts';
 import { LocaleParams } from '@/locales/config';
 import { getDictionary } from '@/locales/dictionaries';
-import { Metadata } from 'next';
-import Link from 'next/link';
-import { OrangeTitle } from '@/components/styles/texts';
 
-export var metadata: Metadata = {
+export const metadata: Metadata = {
     title: 'Engagements',
 };
 

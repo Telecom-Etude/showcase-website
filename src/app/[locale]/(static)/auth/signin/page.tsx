@@ -1,13 +1,15 @@
 'use server';
 
+import Image from 'next/image';
+
+import Google from '@/../public/icons/google.svg';
+
 import { signIn } from '@/auth/auth';
 import { EmailContact } from '@/components/telecom-etude/contact';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { LocaleParams } from '@/locales/config';
 import { getDictionary } from '@/locales/dictionaries';
-import Google from '@/../public/icons/google.svg';
-import Image from 'next/image';
 
 export default async function SignIn({ params }: LocaleParams) {
     const { locale } = await params;

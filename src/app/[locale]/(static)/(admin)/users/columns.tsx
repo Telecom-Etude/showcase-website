@@ -1,10 +1,14 @@
 'use client';
 
+import { ColumnDef, Row } from '@tanstack/react-table';
+import { useRouter } from 'next/navigation';
 import React from 'react';
 import { FaTrash } from 'react-icons/fa';
 
-import { useRouter } from 'next/navigation';
 
+import { DataTableColumnHeader } from '@/components/meta-components/table/data-table-column-header';
+import { Button } from '@/components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox';
 import {
     Dialog,
     DialogContent,
@@ -15,7 +19,7 @@ import {
     DialogClose,
     DialogTrigger,
 } from '@/components/ui/dialog';
-import { Button } from '@/components/ui/button';
+import { toast } from '@/components/ui/use-toast';
 import {
     deleteUser,
     makeBlogAdmin,
@@ -23,13 +27,10 @@ import {
     makeFormAdmin,
     makeUserAdmin,
 } from '@/db/users';
-import { DataTableColumnHeader } from '@/components/meta-components/table/data-table-column-header';
-import { ColumnDef, Row } from '@tanstack/react-table';
-import { Checkbox } from '@/components/ui/checkbox';
+import { getUserName } from '@/lib/users';
 
 import { UserRolesType } from './schema';
-import { getUserName } from '@/lib/users';
-import { toast } from '@/components/ui/use-toast';
+
 
 function ActionCheckBox({
     row,

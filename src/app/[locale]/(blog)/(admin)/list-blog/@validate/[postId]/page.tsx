@@ -1,13 +1,19 @@
-import { VariantLink } from '@/components/ui/button';
-import { LocalePostParams } from '@/locales/config';
-import { nav } from '@/locales/routing';
 import { IoClose } from 'react-icons/io5';
-import { ValidateButton } from './client';
-import { RenderQuill } from '@/components/quill/render';
-import { getDictionary } from '@/locales/dictionaries';
-import { getBlog } from '@/db/blogs';
-import { WrongId } from '../wrong-id';
+
 import { auth } from '@/auth/auth';
+import { RenderQuill } from '@/components/quill/render';
+import { VariantLink } from '@/components/ui/button';
+import { getBlog } from '@/db/blogs';
+import { LocalePostParams } from '@/locales/config';
+import { getDictionary } from '@/locales/dictionaries';
+import { nav } from '@/locales/routing';
+
+import { WrongId } from '../wrong-id';
+
+import { ValidateButton } from './client';
+
+
+
 
 export default async function Page({ params }: LocalePostParams) {
     const { locale, postId } = await params;

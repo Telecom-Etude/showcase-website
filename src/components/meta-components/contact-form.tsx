@@ -1,30 +1,11 @@
 'use client';
 
-import { z } from 'zod';
-import { ControllerRenderProps, UseFormReturn, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import Link from 'next/link';
 import { useState } from 'react';
+import { ControllerRenderProps, UseFormReturn, useForm } from 'react-hook-form';
 import { VscLoading } from 'react-icons/vsc';
-
-import { createForm } from '@/db/form';
-import { sendForm } from '@/mail/mailer';
-
-import { Locale } from '@/locales/config';
-import { getDictionary } from '@/locales/dictionaries';
-
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { Textarea } from '@/components/ui/textarea';
-import { useToast } from '@/components/ui/use-toast';
-import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
-} from '@/components/ui/form';
-import { useRouter } from 'next/navigation';
+import { z } from 'zod';
 
 import {
     AlertDialog,
@@ -34,8 +15,22 @@ import {
     AlertDialogHeader,
     AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
-import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import {
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { createForm } from '@/db/form';
+import { Locale } from '@/locales/config';
+import { getDictionary } from '@/locales/dictionaries';
 import { nav } from '@/locales/routing';
+import { sendForm } from '@/mail/mailer';
 
 type Fields = 'name' | 'email' | 'tel' | 'societe' | 'subject' | 'message';
 const ListFields = ['name', 'email', 'tel', 'societe', 'subject', 'message'];
@@ -147,9 +142,9 @@ export default function ContactForm({
                                                     placeholder={value.placeholder}
                                                     {...field}
                                                     onInput={(e) => {
-                                                        let target = e.target as HTMLElement;
+                                                        const target = e.target as HTMLElement;
                                                         target.style.height = 'inherit';
-                                                        let fontSize = parseFloat(
+                                                        const fontSize = parseFloat(
                                                             window
                                                                 .getComputedStyle(target, null)
                                                                 .getPropertyValue('font-size')

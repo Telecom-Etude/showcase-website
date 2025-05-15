@@ -1,5 +1,5 @@
-import { FaChevronLeft, FaChevronRight, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import { Table } from '@tanstack/react-table';
+import { FaChevronLeft, FaChevronRight, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
 import { Button } from '@/components/ui/button';
 import {

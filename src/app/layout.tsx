@@ -1,9 +1,10 @@
 import './globals.css';
-import { cn } from '@/lib/utils';
-import { ReactNode } from 'react';
 import localFont from 'next/font/local';
-import { getLocale } from '@/headers';
+import { ReactNode } from 'react';
+
 import { ThemeProvider } from '@/components/themes';
+import { getLocale } from '@/headers';
+import { cn } from '@/lib/utils';
 
 export { generateMetadata } from './metadata';
 

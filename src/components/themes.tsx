@@ -1,12 +1,11 @@
 'use client';
 
-import * as React from 'react';
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
-
 import { useTheme } from 'next-themes';
+import * as React from 'react';
+import { IoSunny, IoMoon } from 'react-icons/io5';
 
 import { Button } from '@/components/ui/button';
-import { IoSunny, IoMoon } from 'react-icons/io5';
 
 export function ThemeSwitch({
     onClick,

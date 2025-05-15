@@ -6,7 +6,7 @@ import { Op } from 'quill/core';
 export const RenderQuill = ({ content }: { content: Op[] }) => {
     function quillGetHTML(inputDelta: Op[]) {
         if (typeof window !== 'undefined' && document) {
-            var tempCont = document.createElement('div');
+            const tempCont = document.createElement('div');
             new Quill(tempCont).setContents(inputDelta);
             return tempCont.getElementsByClassName('ql-editor')[0].innerHTML;
         }

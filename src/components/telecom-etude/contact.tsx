@@ -1,7 +1,9 @@
 import Link from 'next/link';
-import { Button } from '../ui/button';
 import { HTMLAttributeAnchorTarget, ReactNode } from 'react';
+
 import { cn } from '@/lib/utils';
+
+import { Button } from '../ui/button';
 
 export const EmailBtn = ({
     underline = false,

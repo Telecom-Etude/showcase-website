@@ -1,9 +1,11 @@
-import { Locale } from '@/locales/config';
-import { Dictionary, getDictionary } from '@/locales/dictionaries';
-import { nav } from '@/locales/routing';
 import Link from 'next/link';
 import { IconType } from 'react-icons';
 import { FaEnvelope, FaFacebook, FaInstagram, FaLinkedin } from 'react-icons/fa';
+
+import { Locale } from '@/locales/config';
+import { Dictionary, getDictionary } from '@/locales/dictionaries';
+import { nav } from '@/locales/routing';
+
 import { BtnLink, EmailContact } from '../telecom-etude/contact';
 import { FullLogo } from '../telecom-etude/logos';
 import { Button } from '../ui/button';

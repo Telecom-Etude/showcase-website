@@ -1,6 +1,7 @@
+import { NextResponse } from 'next/server';
+
 import { auth } from '@/auth/auth';
 import { createBlog } from '@/db/blogs';
-import { NextResponse } from 'next/server';
 
 export async function POST(request: Request) {
     try {

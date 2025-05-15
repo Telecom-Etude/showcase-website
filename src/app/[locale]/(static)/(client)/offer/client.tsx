@@ -1,14 +1,14 @@
 'use client';
 
+import Image from 'next/image';
 import { Fragment, useState } from 'react';
 
-import { Locale } from '@/locales/config';
 
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { Locale } from '@/locales/config';
 import { getDictionary } from '@/locales/dictionaries';
 
-import Image from 'next/image';
 import { OFFER_IMAGES } from './images';
 
 export function DesktopTimeline({ locale }: { locale: Locale }) {

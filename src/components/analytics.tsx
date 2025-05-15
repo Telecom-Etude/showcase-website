@@ -1,21 +1,21 @@
 'use client';
 
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
+
 import {
     AlertDialog,
     AlertDialogContent,
     AlertDialogHeader,
     AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
-import { Button, VariantLink } from '@/components/ui/button';
+import { Button } from '@/components/ui/button';
 import { Locale } from '@/locales/config';
 import { getDictionary } from '@/locales/dictionaries';
-import Link from 'next/link';
 
 declare global {
     interface Window {
-        dataLayer: Record<string, any>[];
-        _paq: Record<string, any>[];
+        _paq: (string | string[])[][];
     }
 }
 
@@ -43,7 +43,7 @@ export function CookieConsent({ locale }: { locale: Locale }) {
     };
 
     const loadAnalytics = () => {
-        var _paq = (window._paq = window._paq || []);
+        const _paq = (window._paq = window._paq || []);
         /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
         _paq.push(['setDocumentTitle', document.domain + '/' + document.title]);
         _paq.push(['setCookieDomain', '*.telecom-etude.fr']);
@@ -51,10 +51,10 @@ export function CookieConsent({ locale }: { locale: Locale }) {
         _paq.push(['trackPageView']);
         _paq.push(['enableLinkTracking']);
         (function () {
-            var u = '//analytics.rezel.net/';
+            const u = '//analytics.rezel.net/';
             _paq.push(['setTrackerUrl', u + 'matomo.php']);
             _paq.push(['setSiteId', '1']);
-            var d = document,
+            const d = document,
                 g = d.createElement('script'),
                 s = d.getElementsByTagName('script')[0];
             g.async = true;

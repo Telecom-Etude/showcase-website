@@ -1,6 +1,7 @@
-import { LocaleParams, LOCALES } from '@/locales/config';
 import { notFound } from 'next/navigation';
 import { ReactNode } from 'react';
+
+import { LocaleParams, LOCALES } from '@/locales/config';
 
 export const dynamicParams = false;
 

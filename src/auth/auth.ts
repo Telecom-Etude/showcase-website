@@ -5,11 +5,12 @@ import NextAuth, {
     User,
 } from 'next-auth';
 import type { JWT } from 'next-auth/jwt';
+
 import authConfig from '@/auth/auth.config';
-import { db } from '@/lib/db';
 import { getRights } from '@/db/users';
+import { db } from '@/lib/db';
+
 import { SIGNIN_PATH, SIGNOUT_PATH } from './routes';
-import { measureMemory } from 'vm';
 
 export interface Rights {
     formAdmin: boolean;
@@ -51,7 +52,7 @@ const config = {
             if (!email) {
                 return false;
             }
-            var data;
+            let data;
             if (name) {
                 data = { email: email!, name: name! };
             } else {

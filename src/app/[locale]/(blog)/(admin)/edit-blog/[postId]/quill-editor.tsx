@@ -1,14 +1,15 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+import Quill, { QuillOptions } from 'quill';
+import { Op } from 'quill/core';
 import { useEffect, useRef, useState } from 'react';
 import 'quill/dist/quill.snow.css';
-import Quill, { QuillOptions } from 'quill';
+
 import { updateLocaleBlogContent } from '@/db/blogs';
-import { useRouter } from 'next/navigation';
-import { Op } from 'quill/core';
-import { Actions } from './editor-actions';
 import { Locale } from '@/locales/config';
-import dynamic from 'next/dynamic';
+
+import { Actions } from './editor-actions';
 
 export interface QuillEditorProps {
     dbLabels: string[];
@@ -30,7 +31,6 @@ export function QuillEditor({
     const [quill, setQuill] = useState<Quill | null>(null);
     const [loaded, setLoaded] = useState(false); // to do only one request to the server per render
     const [value, setValue] = useState(JSON.stringify(content));
-    const [toBeChanged, setToBeChanged] = useState(false);
 
     const editorRef = useRef(null);
     const router = useRouter();
@@ -83,7 +83,16 @@ export function QuillEditor({
     return (
         <div className="w-full">
             <Actions
-                {...{ locale, setToBeChanged, content, value, id, title, dbLabels, blogLabels }}
+                {...{
+                    locale,
+                    setToBeChanged: () => {},
+                    content,
+                    value,
+                    id,
+                    title,
+                    dbLabels,
+                    blogLabels,
+                }}
             />
             <div ref={editorRef} />
         </div>

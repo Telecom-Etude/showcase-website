@@ -1,12 +1,15 @@
+import { redirect } from 'next/navigation';
+
 import { auth } from '@/auth/auth';
-import { QuillEditor } from './quill-editor';
 import { Block } from '@/components/styles/blocks';
+import { getBlog } from '@/db/blogs';
 import { getLocaleLabels } from '@/db/labels';
 import { Locale, LocalePostParams } from '@/locales/config';
-import { redirect } from 'next/navigation';
-import { getBlog } from '@/db/blogs';
-import { UnValidate } from './unvalidate';
 import { nav } from '@/locales/routing';
+
+import { QuillEditor } from './quill-editor';
+import { UnValidate } from './unvalidate';
+
 
 export default async function EditBlog({ params }: LocalePostParams) {
     const { postId, locale } = await params;

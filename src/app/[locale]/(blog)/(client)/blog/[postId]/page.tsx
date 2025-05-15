@@ -1,9 +1,11 @@
-import { LocaleParams, LocalePostParams } from '@/locales/config';
-import ClientBlog from './client';
 import { redirect } from 'next/navigation';
+
 import { Block } from '@/components/styles/blocks';
 import { getValidatedBlogs } from '@/db/blogs';
+import { LocalePostParams } from '@/locales/config';
 import { nav } from '@/locales/routing';
+
+import ClientBlog from './client';
 
 export default async function BlogPage({ params }: LocalePostParams) {
     const { locale, postId } = await params;

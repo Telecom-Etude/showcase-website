@@ -1,13 +1,10 @@
-import { auth } from '@/auth/auth';
+import { DataTable } from '@/components/meta-components/table/data-table';
+import { db } from '@/lib/db';
+
+import { columns } from './columns';
 import { ContactFormType } from './schema';
 
-import { db } from '@/lib/db';
-import { columns } from './columns';
-import { DataTable } from '@/components/meta-components/table/data-table';
-
 export default async function FormSubmission() {
-    const session = await auth();
-    const email = session?.user?.email;
     const submissions: ContactFormType[] = (await db.contactForm.findMany()).map((submission) => ({
         ...submission,
         tel: submission.tel || undefined,

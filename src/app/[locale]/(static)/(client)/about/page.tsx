@@ -1,4 +1,5 @@
 import { ArrowRight } from 'lucide-react';
+import { Metadata } from 'next';
 import Image, { StaticImageData } from 'next/image';
 import { ReactNode } from 'react';
 
@@ -9,18 +10,16 @@ import TP from '@/../public/images/about/tp.jpeg';
 import ICP from '@/../public/images/ieseg/logo.webp';
 import QualityPolicy from '@/../public/images/quality_policy.png';
 
-import { cn } from '@/lib/utils';
-import { LocaleParams } from '@/locales/config';
-import { getDictionary } from '@/locales/dictionaries';
-
 import { Block } from '@/components/styles/blocks';
 import { Paragraphs } from '@/components/styles/texts';
 import { VariantLink } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
+import { cn } from '@/lib/utils';
+import { LocaleParams } from '@/locales/config';
+import { getDictionary } from '@/locales/dictionaries';
 import { nav } from '@/locales/routing';
-import { Metadata } from 'next';
 
-export var metadata: Metadata = {
+export const metadata: Metadata = {
     title: 'À propos',
 };
 

@@ -19,7 +19,7 @@ export function getLinks(locale: Locale, user: ExtendedUser) {
     const t = getDictionary(locale).navigation;
     const s = t.sitemap;
 
-    var authLinks: SingleLink[] = [];
+    const authLinks: SingleLink[] = [];
     if (user?.rights?.blogAdmin) {
         authLinks.push({ href: nav(locale, '/list-blog'), title: t.admin.validate });
     }

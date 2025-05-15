@@ -5,7 +5,7 @@ import nodemailer from 'nodemailer';
 export async function sendEmail(dest_email: string[], subject: string, html: string, text: string) {
     if (process.env.DEV_MODE) console.log('Send email');
 
-    let transporter = nodemailer.createTransport({
+    const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
             user: process.env.SMTP_EMAIL,
@@ -13,7 +13,7 @@ export async function sendEmail(dest_email: string[], subject: string, html: str
         },
     });
 
-    let mailOptions = {
+    const mailOptions = {
         from: process.env.SMTP_EMAIL,
         to: dest_email,
         subject,
@@ -64,7 +64,7 @@ export async function sendForm(
     const safeMessage = escapeHtml(message);
     const safeSubject = escapeHtml(subject) || safeSociete || safeName;
 
-    const html = `        
+    const html = `
     <!DOCTYPE html>
     <html lang="en">
         <head>
@@ -78,22 +78,22 @@ export async function sendForm(
                     table{
                         width: 100%;
                     }
-        
-                    tr { 
+
+                    tr {
                         width: 100%;
                     }
-        
+
                         th, td {
                             padding: 8px;
-                            
+
                             text-align: left;
                             border-bottom: 1px solid #ddd;
                         }
-        
+
                         th {
                             background-color: #f2f2f2;
                         }
-        
+
                     </style>
             </head>
             <body>
@@ -120,7 +120,7 @@ export async function sendForm(
                             <td>Date</td>
                             <td>${formattedDate}</td>
                         </tr>
-        
+
                     </table>
                 </div>
                 <H2>Message</H2>
@@ -133,7 +133,7 @@ export async function sendForm(
 Nom:\t${safeName}
 Société:\t${safeSociete}
 Mail:\t${safeEmail}
-Tel:\t${safeTel}    
+Tel:\t${safeTel}
 Date:\t${formattedDate}
 
 Message

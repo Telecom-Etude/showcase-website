@@ -1,15 +1,16 @@
-import { LocaleParams } from '@/locales/config';
-import { getDictionary } from '@/locales/dictionaries';
+import { Metadata } from 'next';
+import Image from 'next/image';
+
+import ContactIcon from '@/../public/icons/contact.png';
 
 import ContactForm from '@/components/meta-components/contact-form';
 import { Block } from '@/components/styles/blocks';
-import { EmailContact } from '@/components/telecom-etude/contact';
-import { Metadata } from 'next';
 import { OrangeTitle } from '@/components/styles/texts';
-import Image from 'next/image';
-import ContactIcon from '@/../public/icons/contact.png';
+import { EmailContact } from '@/components/telecom-etude/contact';
+import { LocaleParams } from '@/locales/config';
+import { getDictionary } from '@/locales/dictionaries';
 
-export var metadata: Metadata = {
+export const metadata: Metadata = {
     title: 'Contact',
 };
 

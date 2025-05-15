@@ -1,20 +1,11 @@
+import { Metadata } from 'next';
+import { DeepReadonly } from 'next/dist/shared/lib/deep-readonly';
 import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
 import { FaArrowRight } from 'react-icons/fa';
 
-import { Locale, LocaleParams } from '@/locales/config';
-import { Dictionary, getDictionary } from '@/locales/dictionaries';
-import { nav } from '@/locales/routing';
-import { DomainBlock } from './domains';
 
-import { LoadNumber } from '@/components/animations/load-number';
-import { Block } from '@/components/styles/blocks';
-import { BirdLogo } from '@/components/telecom-etude/logos';
-import { VariantLink } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Separator } from '@/components/ui/separator';
 
-import fond_acc from '@/../public/images/fond_accueil.jpg';
 import Alma from '@/../public/images/companies/trusted/Alma.jpeg';
 import Bearing_Point from '@/../public/images/companies/trusted/Bearing_Point.jpg';
 import BnF from '@/../public/images/companies/trusted/BnF.png';
@@ -27,10 +18,22 @@ import Safran from '@/../public/images/companies/trusted/Safran.png';
 import SaintGobain from '@/../public/images/companies/trusted/SaintGobain.png';
 import SNCF from '@/../public/images/companies/trusted/SNCF.png';
 import Telecom_Paris from '@/../public/images/companies/trusted/Telecom_Paris.png';
-import { Metadata } from 'next';
+import fond_acc from '@/../public/images/fond_accueil.jpg';
+
+import { LoadNumber } from '@/components/animations/load-number';
+import { Block } from '@/components/styles/blocks';
 import { OrangeTitle } from '@/components/styles/texts';
+import { BirdLogo } from '@/components/telecom-etude/logos';
+import { VariantLink } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Separator } from '@/components/ui/separator';
 import { cn } from '@/lib/utils';
-import { DeepReadonly } from 'next/dist/shared/lib/deep-readonly';
+import { Locale, LocaleParams } from '@/locales/config';
+import { Dictionary, getDictionary } from '@/locales/dictionaries';
+import { nav } from '@/locales/routing';
+
+import { DomainBlock } from './domains';
+
 
 const trusted: { src: StaticImageData; alt: string }[] = [
     { alt: 'Safran logo', src: Safran },

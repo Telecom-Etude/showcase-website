@@ -1,13 +1,15 @@
-import { LocaleParams } from '@/locales/config';
-import { Dictionary, getDictionary } from '@/locales/dictionaries';
 import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ReactNode } from 'react';
-import { DEPARTMENTS, PersonProps } from './members';
-import { OrangeTitle } from '@/components/styles/texts';
 
-export var metadata: Metadata = {
+import { OrangeTitle } from '@/components/styles/texts';
+import { LocaleParams } from '@/locales/config';
+import { Dictionary, getDictionary } from '@/locales/dictionaries';
+
+import { DEPARTMENTS, PersonProps } from './members';
+
+export const metadata: Metadata = {
     title: 'Notre équipe',
 };
 function Linkedin({ children, linkedin }: { children: ReactNode; linkedin?: string }) {

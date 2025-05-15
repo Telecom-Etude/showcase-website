@@ -1,12 +1,12 @@
 'use client';
 
-import { RenderQuill } from '@/components/quill/render';
+import { useRouter } from 'next/navigation';
+
 import { Button } from '@/components/ui/button';
 import { toast } from '@/components/ui/use-toast';
 import { validateBlog } from '@/db/blogs';
 import { Locale } from '@/locales/config';
 import { nav } from '@/locales/routing';
-import { useRouter } from 'next/navigation';
 
 export const ValidateButton = ({
     id,

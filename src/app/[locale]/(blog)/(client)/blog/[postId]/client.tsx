@@ -1,9 +1,10 @@
 'use client';
 
+import { RenderQuill } from '@/components/quill/render';
 import { displayAuthors } from '@/lib/users';
 import { Locale } from '@/locales/config';
+
 import { PostPresentation } from '../client';
-import { RenderQuill } from '@/components/quill/render';
 
 export default function ClientBlog({
     localePost,

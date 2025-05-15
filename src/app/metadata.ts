@@ -1,5 +1,6 @@
-import { getLocale } from '@/headers';
 import { Metadata } from 'next';
+
+import { getLocale } from '@/headers';
 
 const WEBSITE_URL = process.env.WEBSITE_URL;
 const DESCRIPTION =

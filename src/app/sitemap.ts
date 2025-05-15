@@ -1,6 +1,7 @@
-import { SiteMapRouteProps, SITEMAP_ROUTES } from '@/auth/routes';
-import { DEFAULT_LOCALE, Locale, LOCALES } from '@/locales/config';
 import { MetadataRoute } from 'next';
+
+import { SiteMapRouteProps, SITEMAP_ROUTES } from '@/auth/routes';
+import { DEFAULT_LOCALE, LOCALES } from '@/locales/config';
 
 function getSitemapItem([url, { lastModified, changeFrequency, priority }]: [
     string,

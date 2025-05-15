@@ -1,9 +1,10 @@
+import { Metadata } from 'next';
+
 import { ErrorPage } from '@/components/navigation/errors';
 import { LocaleParams } from '@/locales/config';
-import { Metadata } from 'next';
 import { getDictionary } from '@/locales/dictionaries';
 
-export var metadata: Metadata = {
+export const metadata: Metadata = {
     title: 'Erreur',
 };
 type Params = LocaleParams & {

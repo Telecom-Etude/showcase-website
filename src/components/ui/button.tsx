@@ -1,9 +1,9 @@
 import { Slot } from '@radix-ui/react-slot';
 import { cva, type VariantProps } from 'class-variance-authority';
+import Link from 'next/link';
 import * as React from 'react';
 
 import { cn } from '@/lib/utils';
-import Link from 'next/link';
 
 const buttonVariantsStyles = {
     default: 'call2action text-primary-foreground hover:bg-primary/90',

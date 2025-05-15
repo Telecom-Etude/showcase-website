@@ -1,10 +1,12 @@
-import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
-import NewPostForm from './client';
+import Link from 'next/link';
+
 import { auth } from '@/auth/auth';
 import { Button } from '@/components/ui/button';
-import Link from 'next/link';
+import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { LocaleParams } from '@/locales/config';
 import { nav } from '@/locales/routing';
+
+import NewPostForm from './client';
 
 export default async function NewBlog({ params }: LocaleParams) {
     const { locale } = await params;

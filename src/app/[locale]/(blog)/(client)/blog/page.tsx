@@ -1,12 +1,15 @@
+import { Metadata } from 'next';
+import { redirect } from 'next/navigation';
+
+import { OrangeTitle } from '@/components/styles/texts';
 import { getValidatedBlogs } from '@/db/blogs';
 import { getLocaleLabels } from '@/db/labels';
 import { LocaleParams, LOCALES } from '@/locales/config';
 import { getDictionary } from '@/locales/dictionaries';
 import { nav } from '@/locales/routing';
-import { Metadata } from 'next';
-import { redirect } from 'next/navigation';
+
 import BlogPage from './client';
-import { OrangeTitle } from '@/components/styles/texts';
+
 
 export const metadata: Metadata = {
     title: 'Blog',

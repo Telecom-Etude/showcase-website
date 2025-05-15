@@ -1,17 +1,15 @@
 'use client';
 
-import React, { Fragment, useState } from 'react';
+import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import React, { Fragment, useState } from 'react';
 import { FaArrowRight } from 'react-icons/fa';
+import { FaChevronDown, FaChevronUp } from 'react-icons/fa6';
 
-import { getDictionary } from '@/locales/dictionaries';
-import { Locale } from '@/locales/config';
-import { nav } from '@/locales/routing';
 import { ExtendedUser } from '@/auth/auth';
-import { LocaleSwitch } from './locale-switcher';
-import { getLinks, SingleLink, ExtendedLink, MultipleLink } from './get-links';
-import { cn } from '@/lib/utils';
-
+import { ThemeSwitch } from '@/components/themes';
+import { Button } from '@/components/ui/button';
 import {
     DeployableListItem,
     NavigationMenu,
@@ -22,11 +20,13 @@ import {
     NavigationMenuTrigger,
     navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu';
-import { Button } from '@/components/ui/button';
-import { FaChevronDown, FaChevronUp } from 'react-icons/fa6';
-import { useRouter } from 'next/navigation';
-import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
-import { ThemeSwitch } from '@/components/themes';
+import { cn } from '@/lib/utils';
+import { Locale } from '@/locales/config';
+import { getDictionary } from '@/locales/dictionaries';
+import { nav } from '@/locales/routing';
+
+import { getLinks, SingleLink, ExtendedLink, MultipleLink } from './get-links';
+import { LocaleSwitch } from './locale-switcher';
 
 const ContactButton = ({
     link,
@@ -223,14 +223,12 @@ export const Links = ({
     locale,
     user,
     onClick,
-    btnCn,
     mobile,
 }: {
     mobile: boolean;
     locale: Locale;
     user?: ExtendedUser;
     onClick?: () => void;
-    btnCn?: string;
 }) => {
     const t = getDictionary(locale).navigation.sitemap;
     if (mobile) {

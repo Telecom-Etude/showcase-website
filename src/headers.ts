@@ -1,6 +1,7 @@
 'use server';
 
 import { headers } from 'next/headers';
+
 import { Locale } from './locales/config';
 
 async function localeIsEn() {

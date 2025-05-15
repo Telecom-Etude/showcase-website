@@ -1,14 +1,14 @@
 'use client';
 
 import { ColumnDef, Row } from '@tanstack/react-table';
-
-import { Checkbox } from '@/components/ui/checkbox';
-
-import { ContactFormType } from './schema';
 import { useRouter } from 'next/navigation';
 import React from 'react';
-import { makeDone } from '@/db/form';
+
 import { DataTableColumnHeader } from '@/components/meta-components/table/data-table-column-header';
+import { Checkbox } from '@/components/ui/checkbox';
+import { makeDone } from '@/db/form';
+
+import { ContactFormType } from './schema';
 
 const DoneCheck = (row: Row<ContactFormType>) => {
     const router = useRouter();

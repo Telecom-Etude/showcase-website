@@ -1,19 +1,17 @@
 'use client';
 
 import { X } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { FaPencil } from 'react-icons/fa6';
 
-import { getDictionary } from '@/locales/dictionaries';
-import { Locale } from '@/locales/config';
-import { nav } from '@/locales/routing';
-
+import { Block } from '@/components/styles/blocks';
 import { Button } from '@/components/ui/button';
 import { MultipleSelector } from '@/components/ui/multiple-selector'; // Ensure this path is correct
-import { displayAuthors } from '@/lib/users';
 import { Separator } from '@/components/ui/separator';
-import { Block } from '@/components/styles/blocks';
-import { useRouter } from 'next/navigation';
+import { displayAuthors } from '@/lib/users';
+import { Locale } from '@/locales/config';
+import { Dictionary, getDictionary } from '@/locales/dictionaries';
+import { nav } from '@/locales/routing';
 
 export interface PostPresentation {
     id: number;
@@ -34,13 +32,11 @@ function LabelSelection({
     addRemove,
     items,
     vocab,
-    limit,
 }: {
     selected: string[];
     addRemove: (v: string) => void;
     items: string[];
-    vocab: any;
-    limit: number;
+    vocab: Dictionary['pages']['blog']['labelSelector'];
 }) {
     const addRemoveValue = (options: { value: string; label: string }[]) => {
         const selectedValues = options.map((option) => option.value); // Extract the `value` from each `Option`
@@ -171,7 +167,6 @@ export default function BlogPage({
     return (
         <>
             <LabelSelection
-                limit={3}
                 selected={selectedLabels}
                 addRemove={addRemoveValue}
                 items={dbLabels}

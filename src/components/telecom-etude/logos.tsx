@@ -1,4 +1,5 @@
 import Image from 'next/image';
+
 import fullLogo from '@/../public/icons/logo-bird-text.svg';
 import birdLogo from '@/../public/icons/logo-bird.svg';
 

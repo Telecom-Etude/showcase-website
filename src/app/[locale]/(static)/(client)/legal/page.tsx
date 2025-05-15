@@ -1,12 +1,12 @@
+import { Metadata } from 'next';
+
+import { Block } from '@/components/styles/blocks';
+import { OrangeTitle } from '@/components/styles/texts';
+import { BtnLink, EmailContact } from '@/components/telecom-etude/contact';
 import { LocaleParams } from '@/locales/config';
 import { getDictionary } from '@/locales/dictionaries';
 
-import { Block } from '@/components/styles/blocks';
-import { BtnLink, EmailContact } from '@/components/telecom-etude/contact';
-import { Metadata } from 'next';
-import { OrangeTitle } from '@/components/styles/texts';
-
-export var metadata: Metadata = {
+export const metadata: Metadata = {
     title: 'Mentions légales',
 };
 

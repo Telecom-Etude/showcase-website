@@ -1,12 +1,13 @@
 'use client';
 
+import { GB, FR } from 'country-flag-icons/react/3x2';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+
 import { Button } from '@/components/ui/button';
 import { NavigationMenuItem, NavigationMenuLink } from '@/components/ui/navigation-menu';
 import { isLocale, Locale } from '@/locales/config';
 import { nav } from '@/locales/routing';
-import { GB, FR } from 'country-flag-icons/react/3x2';
-import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
 
 const useLocaledUrl = (locale: Locale) => {
     const oldUrl = usePathname();

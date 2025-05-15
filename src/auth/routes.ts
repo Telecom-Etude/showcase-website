@@ -1,7 +1,8 @@
-import { Session } from 'next-auth';
-import { Rights } from './auth';
-import { NextRequest } from 'next/server';
 import { MetadataRoute } from 'next';
+import { NextRequest } from 'next/server';
+import { Session } from 'next-auth';
+
+import { Rights } from './auth';
 
 // 200: ✅ allowed
 // 401: 🔒 logged in but not allowed

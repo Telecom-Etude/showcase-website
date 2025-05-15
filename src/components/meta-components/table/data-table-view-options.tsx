@@ -1,8 +1,8 @@
 'use client';
 
 import { DropdownMenuTrigger } from '@radix-ui/react-dropdown-menu';
-import { FaEye } from 'react-icons/fa';
 import { Table } from '@tanstack/react-table';
+import { FaEye } from 'react-icons/fa';
 
 import { Button } from '@/components/ui/button';
 import {
