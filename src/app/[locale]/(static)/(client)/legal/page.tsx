@@ -46,7 +46,10 @@ export default async function Legal({ params: { locale } }: LocaleParams) {
                             {t.legal.host.contact} <EmailContact />
                         </p>
                         <p>
-                            {t.legal.host.website} <BtnLink href="https://www.rezel.net">rezel.net</BtnLink>
+                            {t.legal.host.website}{" "}
+                            <BtnLink href="https://www.rezel.net" isNewTab isForeign>
+                                rezel.net
+                            </BtnLink>
                         </p>
                     </div>
                 </div>

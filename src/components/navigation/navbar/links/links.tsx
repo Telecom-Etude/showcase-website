@@ -118,7 +118,7 @@ const MobileLinks = ({ links, contactLink, locale, onClick }: { onClick: () => v
         </NavigationMenuItem>
     ));
     navLinks.push(<ThemeSwitch onClick={onClick} setOpened={setOpened} />);
-    navLinks.push(<LocaleSwitch locale={locale} mobile={true} onClick={onClick} setOpened={setOpened} />);
+    navLinks.push(<LocaleSwitch locale={locale} mobile onClick={onClick} setOpened={setOpened} />);
     navLinks.push(<ContactButton link={contactLink} onClick={onClick} setOpened={setOpened} />);
 
     return (
@@ -143,8 +143,8 @@ const DesktopLinks = ({ links, contactLink, locale }: { links: ExtendedLink[]; c
                     <NavigationMenuTrigger className="rounded-none bg-navigation">{link.title}</NavigationMenuTrigger>
                     <NavigationMenuContent>
                         <ul className="grid grid-cols-2 w-[700px] p-2">
-                            {link.links.map(({ title, href }, i) => (
-                                <DeployableListItem key={i} title={title} href={href}>
+                            {link.links.map(({ title, href, newTab }, i) => (
+                                <DeployableListItem key={i} title={title} href={href} target={newTab ? "_blank" : undefined}>
                                     {/* {title} */}
                                 </DeployableListItem>
                             ))}
