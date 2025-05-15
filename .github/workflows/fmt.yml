@@ -1,4 +1,4 @@
-name: Next.js CI
+name: Code Formatting CI
 
 on:
     push:
