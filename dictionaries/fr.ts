@@ -90,7 +90,7 @@ export const frDictionary = {
             subtitle: "Un partenariat unique pour des solutions innovantes et efficaces",
             presentation: {
                 title: "Présentation IÉSEG Conseil Paris",
-                par: " IÉSEG CONSEIL Paris, Junior-Entreprise de l'IÉSEG School of Management, est une Junior-Entreprise dont les membres sont des étudiants spécialisés en Management, Marketing, Finance, Audit et Systèmes d'information. Créée en 2007, IÉSEG CONSEIL Paris met à votre disposition l'expertise et le dynamisme de ses consultants juniors pour vous accompagner dans vos projets de conseil en stratégie, organisation, marketing, finance et systèmes d'information.",
+                par: " IÉSEG CONSEIL Paris, Junior-Entreprise de l'IÉSEG School of Management, est une Junior-Entreprise dont les membres sont des étudiants spécialisés en Management, Marketing, Finance, Audit et Systèmes d'information. Créée en 2007, IÉSEG CONSEIL Paris met à votre disposition l'expertise et le dynamisme de ses juniors-entrepreneurs pour vous accompagner dans vos projets de conseil en stratégie, organisation, marketing, finance et systèmes d'information.",
             },
             complementary: {
                 title: "Expertise Complémentaire",
@@ -106,8 +106,8 @@ export const frDictionary = {
             },
             personalised: {
                 title: "Approche Personnalisée",
-                before: "Chaque projet est unique. Nous adaptons nos services à vos besoins spécifiques, que ce soit pour évaluer la faisabilité d&apos; un nouveau produit, optimiser votre service client ou améliorer votre stratégie marketing.",
-                strong: " Notre approche personnalisée garantit des résultats concrets en s&apos;appuyant sur des visites mystères, des exit interviews et des benchmarks sectoriels adaptés à vos enjeux particuliers.",
+                before: "Chaque projet est unique. Nous adaptons nos services à vos besoins spécifiques, que ce soit pour évaluer la faisabilité d'un nouveau produit, optimiser votre service client ou améliorer votre stratégie marketing.",
+                strong: " Notre approche personnalisée garantit des résultats concrets en s'appuyant sur des visites mystères, des exit interviews et des benchmarks sectoriels adaptés à vos enjeux particuliers.",
             },
             gain: {
                 title: "Gain de Temps et d'Efficacité",

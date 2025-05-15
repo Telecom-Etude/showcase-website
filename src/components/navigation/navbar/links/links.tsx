@@ -118,7 +118,7 @@ const MobileLinks = ({ links, contactLink, locale, onClick }: { onClick: () => v
         </NavigationMenuItem>
     ));
     navLinks.push(<ThemeSwitch onClick={onClick} setOpened={setOpened} />);
-    navLinks.push(<LocaleSwitch locale={locale} mobile={true} onClick={onClick} setOpened={setOpened} />);
+    navLinks.push(<LocaleSwitch locale={locale} mobile onClick={onClick} setOpened={setOpened} />);
     navLinks.push(<ContactButton link={contactLink} onClick={onClick} setOpened={setOpened} />);
 
     return (
