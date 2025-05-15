@@ -20,17 +20,17 @@ export function getLinks(locale: Locale, user: ExtendedUser) {
 
     var authLinks: SingleLink[] = [];
     if (user?.rights?.blogAdmin) {
-        authLinks.push({ href: nav(locale, "/list-blog"), title: t.admin.validate });
+        authLinks.push({ href: nav(locale, "/list-blog"), title: t.admin.manageaccount.validate });
     }
     if (user?.rights?.blogAuthor) {
-        authLinks.push({ href: nav(locale, "/new-blog"), title: t.admin.newblog });
-        authLinks.push({ href: nav(locale, "/list-blog"), title: t.admin.edit });
+        authLinks.push({ href: nav(locale, "/new-blog"), title: t.admin.manageaccount.newblog });
+        authLinks.push({ href: nav(locale, "/list-blog"), title: t.admin.manageaccount.edit });
     }
     if (user?.rights?.formAdmin) {
-        authLinks.push({ href: nav(locale, "/form-submission"), title: t.admin.form });
+        authLinks.push({ href: nav(locale, "/form-submission"), title: t.admin.manageaccount.form });
     }
     if (user?.rights?.userAdmin) {
-        authLinks.push({ href: nav(locale, "/users"), title: t.admin.users });
+        authLinks.push({ href: nav(locale, "/users"), title: t.admin.manageaccount.users });
     }
     const logoutLink = { href: nav(locale, "/auth/signout"), title: s.logout };
     authLinks.push(logoutLink);
@@ -41,7 +41,7 @@ export function getLinks(locale: Locale, user: ExtendedUser) {
             : authLinks.length <= 1
               ? logoutLink
               : {
-                    title: t.admin.account,
+                    title: t.admin.manageaccount.account,
                     links: authLinks,
                 };
 

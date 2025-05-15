@@ -1,3 +1,5 @@
+import { empty } from "@prisma/client/runtime/library";
+
 export const frDictionary = {
     navigation: {
         cookies: {
@@ -49,12 +51,41 @@ export const frDictionary = {
             httpError: "Erreur HTTP",
         },
         admin: {
-            validate: "Valider des posts",
-            newblog: "Nouveau blog",
-            edit: "Modifier des posts",
-            form: "Soumissions au form",
-            users: "Gestion des utilisateurs",
-            account: "Mon compte",
+            manageaccount: {
+                validate: "Valider des posts",
+                newblog: "Nouveau blog",
+                edit: "Modifier des posts",
+                form: "Soumissions au form",
+                users: "Gestion des utilisateurs",
+                account: "Mon compte",
+            },
+            createblog: {
+                title: "Création d'un post",
+                formentry: "Titre",
+                new: "Créer",
+                edit: "Editer un post existant",
+            },
+            editblog: {
+                rename: {
+                    title: "Titre",
+                    rename: "Renommer",
+                    modifytitle: "Modification du titre du post",
+                },
+                labels: {
+                    modifylabels: "Modifier les labels",
+                    selectormessage: "Selectionner au plus 6 labels",
+                    empty: "Aucun filtre ne correspond à cette recherche",
+                },
+                save: {
+                    saving: "Sauvegarde en cours",
+                    saved: "Sauvegardé",
+                    automaticsave: "Sauvegarde automatique des posts",
+                    savedescription:
+                        'Une sauvegarde automatique s\'effectue en permanence pour éviter les pertes de données. Comme elles peuvent prendre du temps, vous pouvez faire une sauvegarde manuelle avant de quitter la page avec le bouton "Sauvegarder". Spammer ce bouton ne sert à rien, juste peut entraîner des crash.',
+                    savewarning: 'ATTENTION: ne quittez pas la page tant que le status n\'est pas marqué en "Sauvegardé" au risque de perdre votre contenu...',
+                    save: "Sauvegarder",
+                },
+            },
         },
         sitemap: {
             title: "Plan du site",

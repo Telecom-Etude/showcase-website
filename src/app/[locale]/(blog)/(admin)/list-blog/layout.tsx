@@ -14,10 +14,11 @@ interface PageProps extends LocaleParams {
 
 export default async function Validation({ params: { locale }, validate }: PageProps) {
     const posts = await getAllBlog();
-    const allData: ValidationBlogType[] = posts.map(({ id, validated, authors, title, content, createdAt, updatedAt }) => ({
+    const allData: ValidationBlogType[] = posts.map(({ id, validated, authors, locale, title, content, createdAt, updatedAt }) => ({
         id,
         validated,
         emails: authors.map(author => author.email),
+        locale,
         title,
         content,
         createdAt,

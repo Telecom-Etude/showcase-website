@@ -24,6 +24,7 @@ export interface PostPresentation {
     date: Date;
     labels: string[];
     slug: string;
+    slugtr: string | null;
 }
 
 const allLabelsInValue = (postLabels: string[], selectedLabels: string[]) =>
@@ -113,7 +114,6 @@ function BlogsList({ posts, locale, t_none }: { t_none: string; posts: PostPrese
                         <h3>{post.title}</h3>
                     </div>
                     <p className="italic text-gray text-sm">{post.displayedAuthors}</p>
-                    <p>{post.authors}</p>
                     <div className="flex space-x-2 pt-2">
                         {Object.values(post.labels).map((label, i) => (
                             <p key={i} className="bg-muted rounded-full p-1 px-2">

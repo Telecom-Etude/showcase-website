@@ -52,12 +52,41 @@ export const enDictionary: Dictionary = {
             httpError: "HTTP Error",
         },
         admin: {
-            validate: "Validate blogs",
-            newblog: "New blog",
-            edit: "Edit blogs",
-            form: "Form submissions",
-            users: "Users management",
-            account: "My account",
+            manageaccount: {
+                validate: "Validate blogs",
+                newblog: "New blog",
+                edit: "Edit blogs",
+                form: "Form submissions",
+                users: "Users management",
+                account: "My account",
+            },
+            createblog: {
+                title: "Create a new post",
+                formentry: "Title",
+                new: "Create",
+                edit: "Edit an existing post",
+            },
+            editblog: {
+                rename: {
+                    title: "Title",
+                    rename: "Rename",
+                    modifytitle: "Modification of the post title",
+                },
+                labels: {
+                    modifylabels: "Modify the labels",
+                    selectormessage: "Select 6 labels at most",
+                    empty: "No filter correspond to this search",
+                },
+                save: {
+                    saving: "Saving in progress",
+                    saved: "Saved",
+                    automaticsave: "Automatic save of posts",
+                    savedescription:
+                        "An automatic backup is constantly being made to prevent data loss. As they can take time, you can make a manual backup before leaving the page with the 'Save' button. Spamming this button is useless, just can lead to crashes.",
+                    savewarning: "WARNING: do not leave the page until the status is marked 'Saved' or you may lose your content...",
+                    save: "Save",
+                },
+            },
         },
         sitemap: {
             title: "Site plan",

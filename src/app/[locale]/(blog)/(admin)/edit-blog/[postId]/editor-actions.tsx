@@ -15,37 +15,50 @@ import { useState } from "react";
 import { getBlog, renameBlog } from "@/db/blogs";
 import { updatePostLabels } from "@/db/labels";
 import { Locale } from "@/locales/config";
+import { Dictionary, getDictionary } from "@/locales/dictionaries";
 
-function Rename({ title, id, router }: { title: string; id: number; router: AppRouterInstance }) {
+function Rename({
+    title,
+    id,
+    router,
+    t,
+    locale,
+}: {
+    title: string;
+    id: number;
+    router: AppRouterInstance;
+    t: Dictionary["navigation"]["admin"]["editblog"];
+    locale: Locale;
+}) {
     return (
         <Dialog>
             <DialogTrigger asChild>
                 <Button variant="outline">
                     <span className="flex items-center space-x-2">
-                        <p>Renommer</p>
+                        <p>{t.rename.rename}</p>
                         <FaPencil />
                     </span>
                 </Button>
             </DialogTrigger>
             <DialogContent>
                 <DialogHeader>
-                    <DialogTitle>Modification du titre du post</DialogTitle>
+                    <DialogTitle>{t.rename.modifytitle}</DialogTitle>
                     <form
                         className="flex flex-col items-center w-full space-y-10"
                         onSubmit={e => {
                             const formData = new FormData(e.target as HTMLFormElement);
                             const title = formData.get("title") as string;
-                            renameBlog(id, title).finally(() => {
+                            renameBlog(id, title, locale).finally(() => {
                                 router.refresh();
                             });
                         }}
                     >
                         <Label htmlFor="title" className="w-full">
-                            Titre
+                            {t.rename.title}
                         </Label>
                         <Input defaultValue={title} className="w-full" type="text" name="title" id="title" />
                         <Button variant="call2action" type="submit">
-                            Renommer
+                            {t.rename.rename}
                         </Button>
                     </form>
                 </DialogHeader>
@@ -54,23 +67,33 @@ function Rename({ title, id, router }: { title: string; id: number; router: AppR
     );
 }
 
-function AddLabel({ getLabels, addRemoveLabel, dbLabels }: { getLabels: string[]; addRemoveLabel: (x: string) => void; dbLabels: string[] }) {
+function AddLabel({
+    getLabels,
+    addRemoveLabel,
+    dbLabels,
+    t,
+}: {
+    getLabels: string[];
+    addRemoveLabel: (x: string) => void;
+    dbLabels: string[];
+    t: Dictionary["navigation"]["admin"]["editblog"];
+}) {
     return (
         <ManyComboBox
             selected={getLabels}
             addRemove={addRemoveLabel}
             items={dbLabels}
             vocab={{
-                title: "Modifier les labels",
-                selectorMessage: "Selectionner au plus 6 labels",
-                empty: "Aucun filtre ne correspond à cette recherche",
+                title: t.labels.modifylabels,
+                selectorMessage: t.labels.selectormessage,
+                empty: t.labels.empty,
             }}
             limit={6}
         />
     );
 }
 
-function OpenSave({ saving }: { saving: boolean }) {
+function OpenSave({ saving, t }: { saving: boolean; t: Dictionary["navigation"]["admin"]["editblog"] }) {
     return (
         <Dialog>
             <DialogTrigger asChild>
@@ -78,12 +101,12 @@ function OpenSave({ saving }: { saving: boolean }) {
                     <span className="flex items-center space-x-2">
                         {saving ? (
                             <>
-                                <p>Sauvegarde en cours</p>
+                                <p>{t.save.saving}</p>
                                 <AiOutlineLoading3Quarters className="animate-spin" />
                             </>
                         ) : (
                             <>
-                                <p>Sauvegardé</p>
+                                <p>{t.save.saved}</p>
                                 <FaCheck />
                             </>
                         )}
@@ -92,16 +115,9 @@ function OpenSave({ saving }: { saving: boolean }) {
             </DialogTrigger>
             <DialogContent>
                 <DialogHeader className="space-y-6">
-                    <DialogTitle>Sauvegarde automatique des posts</DialogTitle>
-                    <DialogDescription className="flex items-center flex-col">
-                        Une sauvegarde automatique s&apos;effectue en permanence pour éviter les pertes de données. Comme elles peuvent prendre du temps, vous
-                        pouvez faire une sauvegarde manuelle avant de quitter la page avec le bouton &ldquo;Sauvegarder&rdquo;. Spammer ce bouton ne sert à
-                        rien, juste peut entraîner des crash.
-                    </DialogDescription>
-                    <DialogFooter className="text-destructive">
-                        ATTENTION: ne quittez pas la page tant que le status n&apos;est pas marqué en &ldquo;Sauvegardé&rdquo; au risque de perdre votre
-                        contenu...
-                    </DialogFooter>
+                    <DialogTitle>{t.save.automaticsave}</DialogTitle>
+                    <DialogDescription className="flex items-center flex-col">{t.save.savedescription}</DialogDescription>
+                    <DialogFooter className="text-destructive">{t.save.savewarning}</DialogFooter>
                 </DialogHeader>
             </DialogContent>
         </Dialog>
@@ -120,6 +136,7 @@ interface ActionProps {
 }
 
 export function Actions({ setToBeChanged, content, value, title, id, dbLabels, blogLabels, locale }: ActionProps) {
+    const t = getDictionary(locale).navigation.admin.editblog;
     const [getLabels, setLabels] = useState<string[]>(blogLabels);
     const addRemoveLabel = (label: string) => {
         var newLabels = getLabels;
@@ -150,15 +167,15 @@ export function Actions({ setToBeChanged, content, value, title, id, dbLabels, b
                         }}
                     >
                         <span className="flex items-center space-x-2">
-                            <p>Sauvergarder</p>
+                            <p>{t.save.save}</p>
                             <FaSave />
                         </span>
                     </Button>
-                    <Rename id={id} title={title} router={router} />
-                    <AddLabel addRemoveLabel={addRemoveLabel} dbLabels={dbLabels} getLabels={getLabels} />
+                    <Rename id={id} title={title} router={router} t={t} locale={locale} />
+                    <AddLabel addRemoveLabel={addRemoveLabel} dbLabels={dbLabels} getLabels={getLabels} t={t} />
                 </div>
                 <div>
-                    <OpenSave saving={JSON.stringify(content) !== value} />
+                    <OpenSave saving={JSON.stringify(content) !== value} t={t} />
                 </div>
             </div>
             {/* <div className="pb-4">

@@ -10,6 +10,7 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 import { Input } from "@/components/ui/input";
 import { nav } from "@/locales/routing";
 import { DEFAULT_LOCALE, LOCALES, Locale } from "@/locales/config";
+import { getDictionary } from "@/locales/dictionaries";
 
 export const newPostSchema = z.object({
     title: z.string().min(2, {
@@ -18,7 +19,7 @@ export const newPostSchema = z.object({
     locale: z.enum(LOCALES),
 });
 
-export default function NewPostForm({ email }: { email: string }) {
+export default function NewPostForm({ email, locale }: { email: string; locale: Locale }) {
     const form = useForm<z.infer<typeof newPostSchema>>({
         resolver: zodResolver(newPostSchema),
         defaultValues: {
@@ -26,10 +27,12 @@ export default function NewPostForm({ email }: { email: string }) {
         },
     });
 
+    const t = getDictionary(locale).navigation.admin.createblog;
+
     const router = useRouter();
 
     const onSubmit = async (values: z.infer<typeof newPostSchema>) => {
-        const apiData = JSON.stringify({ authorEmail: email, title: values.title, locale: "fr" });
+        const apiData = JSON.stringify({ authorEmail: email, title: values.title, locale: values.locale });
         const response = await fetch("/api/create-blog", {
             method: "POST",
             headers: {
@@ -39,11 +42,11 @@ export default function NewPostForm({ email }: { email: string }) {
         });
         if (!response.ok) {
             console.error("Error creating blog: ", response.status, response.body);
-            router.push(nav("fr", "/errors/500"));
+            router.push(nav(locale, "/errors/500"));
         } else {
             const id = (await response.json()).blogId;
             if (process.env.DEV_MODE) console.log("Created POST with ID = ", id);
-            router.push(nav("fr", `/edit-blog/${id}`));
+            router.push(nav(locale, `/edit-blog/${id}`));
         }
     };
 
@@ -57,13 +60,13 @@ export default function NewPostForm({ email }: { email: string }) {
                         render={({ field }) => (
                             <FormItem className="flex flex-col justify-center items-center space-y-4 h-full w-full">
                                 <FormControl>
-                                    <Input className="rounded-md rounded-r-none border-none" placeholder="Titre" {...field} />
+                                    <Input className="rounded-md rounded-r-none border-none" placeholder={t.formentry} {...field} />
                                 </FormControl>
                                 <FormMessage className="bg-transparent" />
                             </FormItem>
                         )}
                     />
-                    {/* <FormField
+                    <FormField
                         control={form.control}
                         name="locale"
                         render={({ field }) => (
@@ -73,10 +76,8 @@ export default function NewPostForm({ email }: { email: string }) {
                                         {...field}
                                         defaultValue={DEFAULT_LOCALE}
                                         className="p-2 rounded-md rounded-l-none"
-                                        value={selectedLocale}
                                         onChange={e => {
                                             form.setValue("locale", e.target.value as Locale);
-                                            setSelectedLocale(e.target.value as Locale);
                                         }}
                                     >
                                         {LOCALES.map(l => (
@@ -89,10 +90,10 @@ export default function NewPostForm({ email }: { email: string }) {
                                 <FormMessage />
                             </FormItem>
                         )}
-                    /> */}
+                    />
                 </div>
                 <Button className="w-full" variant="call2action" type="submit">
-                    Créer
+                    {t.new}
                 </Button>
             </form>
         </Form>
