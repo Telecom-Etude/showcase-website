@@ -11,7 +11,13 @@ import { FullLogo } from '../telecom-etude/logos';
 import { Button } from '../ui/button';
 
 const Network = ({ href, Icon, label }: { href: string; Icon: IconType; label: string }) => (
-    <Link href={href} className="p-2 group" aria-label={label}>
+    <Link
+        href={href}
+        className="p-2 group"
+        aria-label={label}
+        target="_blank"
+        rel="noopener noreferrer nofollow"
+    >
         <Icon className="group-hover:text-primary transition-colors duration-200" />
     </Link>
 );
@@ -63,7 +69,6 @@ const SiteMapBlock = ({
 const SiteMap = ({ t, locale }: { locale: Locale; t: Dictionary['navigation']['sitemap'] }) => {
     return (
         <>
-            {' '}
             <SiteMapBlock
                 locale={locale}
                 title={t.about}
@@ -110,7 +115,12 @@ const Mentions = ({ bug }: { bug: string }) => (
             <FullLogo />
             <p>&copy;{new Date().getFullYear()} Telecom Etude</p>
             <EmailContact />
-            <BtnLink href="https://maps.app.goo.gl/etZHknTudKMuTjRZ9" className="flex flex-col">
+            <BtnLink
+                href="https://maps.app.goo.gl/etZHknTudKMuTjRZ9"
+                className="flex flex-col"
+                isNewTab
+                isForeign
+            >
                 <div>
                     <p>19, place Marguerite Perey</p>
                     <p>91120 Palaiseau</p>

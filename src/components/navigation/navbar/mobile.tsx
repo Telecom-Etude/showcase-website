@@ -57,6 +57,9 @@ export const MobileNavBar = ({ locale, user }: { locale: Locale; user?: Extended
                     user={user}
                 />
             )}
+            {deployed && (
+                <Links onClick={() => setDeployed((x) => !x)} mobile locale={locale} user={user} />
+            )}
         </div>
     );
 };

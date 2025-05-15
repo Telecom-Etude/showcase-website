@@ -48,7 +48,9 @@ export default async function Legal({ params }: LocaleParams) {
                         </p>
                         <p>
                             {t.legal.host.website}{' '}
-                            <BtnLink href="https://www.rezel.net">rezel.net</BtnLink>
+                            <BtnLink href="https://www.rezel.net" isNewTab isForeign>
+                                rezel.net
+                            </BtnLink>
                         </p>
                     </div>
                 </div>
