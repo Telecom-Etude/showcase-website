@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const validationBlogSchema = z.object({
+const validationBlogSchema = z.object({
     id: z.number(),
     validated: z.boolean(),
     emails: z.array(z.string()),

@@ -11,7 +11,7 @@ interface ParagraphsProps {
     md?: boolean;
 }
 
-export const MarkDown = ({ text, className }: { text: string; className?: string }) => (
+const MarkDown = ({ text, className }: { text: string; className?: string }) => (
     <ReactMarkdown className={className} remarkPlugins={[remarkGfm]}>
         {text}
     </ReactMarkdown>

@@ -3,7 +3,7 @@
 import { db } from '@/lib/db';
 import { Locale } from '@/locales/config';
 
-export type DbLabels = { id: number; name: string }[];
+type DbLabels = { id: number; name: string }[];
 
 export async function getLocaleLabels(locale: Locale): Promise<DbLabels | undefined> {
     try {

@@ -11,7 +11,7 @@ import { Locale } from '@/locales/config';
 
 import { Actions } from './editor-actions';
 
-export interface QuillEditorProps {
+interface QuillEditorProps {
     dbLabels: string[];
     locale: Locale;
     id: number;

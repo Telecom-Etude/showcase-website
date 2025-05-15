@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const contactFormSchema = z.object({
+const contactFormSchema = z.object({
     id: z.number().optional(),
     name: z.string(),
     email: z.string(),

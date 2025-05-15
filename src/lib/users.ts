@@ -15,7 +15,7 @@ export function getUserName(email: string) {
     }
 }
 
-export function getAuthors(authors: string[]) {
+function getAuthors(authors: string[]) {
     const last = authors.pop();
     const beforeLast = authors.pop();
     if (!last) {

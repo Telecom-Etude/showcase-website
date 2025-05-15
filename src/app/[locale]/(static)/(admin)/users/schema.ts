@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const userRolesSchema = z.object({
+const userRolesSchema = z.object({
     email: z.string(),
     blogAdmin: z.boolean(),
     userAdmin: z.boolean(),

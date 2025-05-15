@@ -7,7 +7,7 @@ import { DEFAULT_LOCALE, LOCALES, Locale } from './config';
 
 export const nav = (locale: Locale, href: string) => `/${locale}${href}`;
 
-export function getHeaderLocale(headers: Headers) {
+function getHeaderLocale(headers: Headers) {
     try {
         const negotiator_headers = {
             'accept-language': headers.get('accept-language') || undefined,

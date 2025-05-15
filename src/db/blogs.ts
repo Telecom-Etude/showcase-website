@@ -51,18 +51,6 @@ export async function updateLocaleBlogContent(id: number, content: Op[]) {
     }
 }
 
-export async function getBlogContent(id: number): Promise<Op[] | undefined> {
-    try {
-        const blog = await db.post.findUnique({
-            where: { id: id },
-            select: { content: true },
-        });
-        return JSON.parse(blog!.content);
-    } catch (e) {
-        // console.error("[getLocaleBlogContent] ", e);
-    }
-}
-
 export async function getValidatedBlogs(locale: Locale): Promise<PostPresentation[] | undefined> {
     try {
         const dbBlogs = await db.post.findMany({
@@ -83,7 +71,7 @@ export async function getValidatedBlogs(locale: Locale): Promise<PostPresentatio
     }
 }
 
-export type UserPost = {
+type UserPost = {
     authors: User[];
     labels: Label[];
 } & Post;

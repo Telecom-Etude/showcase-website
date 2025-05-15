@@ -41,7 +41,7 @@ export interface PersonProps {
     id: keyof Dictionary['pages']['team']['members'];
 }
 
-export interface DepartmentProps {
+interface DepartmentProps {
     id: keyof Dictionary['pages']['team']['poles'];
     members: PersonProps[];
 }

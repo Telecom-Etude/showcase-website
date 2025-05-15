@@ -2,7 +2,7 @@
 
 import nodemailer from 'nodemailer';
 
-export async function sendEmail(dest_email: string[], subject: string, html: string, text: string) {
+async function sendEmail(dest_email: string[], subject: string, html: string, text: string) {
     if (process.env.DEV_MODE) console.log('Send email');
 
     const transporter = nodemailer.createTransport({

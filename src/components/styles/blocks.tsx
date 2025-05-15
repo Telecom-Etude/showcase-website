@@ -16,5 +16,3 @@ export const Block = ({
             <div className={cn('p-4 sm:p-10 max-w-[1200px] w-full', className)}>{children}</div>
         </div>
     );
-
-export const blockCn = 'p-4 sm:p-10 max-w-[1200px]';
