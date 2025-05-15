@@ -19,21 +19,24 @@ export const EmailContact = ({ rgpd = false, dsi = false, text, underline = fals
     );
 };
 
+/** isForeign is used to secure a foreign link with rel="noopener noreferrer nofollow" */
 export const BtnLink = ({
     children,
     href,
     underline = false,
-    target,
     className,
+    isNewTab,
+    isForeign,
 }: {
     children: ReactNode;
     href: string;
     underline?: boolean;
-    target?: HTMLAttributeAnchorTarget;
     className?: string;
+    isNewTab?: boolean;
+    isForeign?: boolean;
 }) => (
     <Button variant="link" className={cn("py-0 px-0 text-inherit underline-offset-1 w-fit h-fit justify-start", underline && "underline")} asChild>
-        <Link href={href} target={target} className={cn("font-bold ", className)}>
+        <Link href={href} target={isNewTab ? "_blank" : undefined} className={cn("font-bold ", className)} rel={isForeign ? "noopener noreferrer nofollow" : undefined}>
             {children}
         </Link>
     </Button>
