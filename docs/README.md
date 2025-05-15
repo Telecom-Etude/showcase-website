@@ -1,5 +1,12 @@
 # Telecom Etude's Showcase Website
 
+![Build](https://github.com/telecom-etude/showcase-website/actions/workflows/build.yml/badge.svg)
+![Format](https://github.com/telecom-etude/showcase-website/actions/workflows/fmt.yml/badge.svg)
+![License](https://img.shields.io/github/license/telecom-etude/showcase-website)
+![Issues](https://img.shields.io/github/issues/telecom-etude/showcase-website)
+![Pull Requests](https://img.shields.io/github/issues-pr/telecom-etude/showcase-website)
+![Website](https://img.shields.io/website?url=https%3A%2F%2Ftelecom-etude.fr)
+
 This is the code for the website available [here](https://telecom-etude.fr).
 
 ## Getting Started
