@@ -39,12 +39,12 @@ function Partner({ title, logo, t, url, linkWord }: PartnerProps) {
                     <CardContent>
                         <div className="flex flex-col items-center">
                             <p>{t.type}</p>
-                            <BtnLink href={url} target="blank" className="flex items-center space-x-1">
+                            <BtnLink href={url} isNewTab isForeign className="flex items-center space-x-1">
                                 <p>{linkWord}</p>
                                 <MdOpenInNew />
                             </BtnLink>
                             <Separator className="my-6" />
-                            <a href={url} target="_blank" rel="noopener noreferrer">
+                            <a href={url} target="_blank" rel="noopener noreferrer nofollow">
                                 <Image src={logo} alt={title + " logo"} width={400} />
                             </a>
                         </div>
