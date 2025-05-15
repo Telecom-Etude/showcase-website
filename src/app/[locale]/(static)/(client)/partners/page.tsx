@@ -59,7 +59,8 @@ function Partner({ title, logo, t, url, linkWord }: PartnerProps) {
 
 export const dynamicParams = false;
 
-export default function Page({ params: { locale } }: LocaleParams) {
+export default async function Page({ params }: LocaleParams) {
+    const { locale } = await params;
     const t = getDictionary(locale).pages.partners;
     metadata.title = t.title;
     return (

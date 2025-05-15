@@ -7,10 +7,11 @@ export var metadata: Metadata = {
     title: "Erreur",
 };
 type Params = LocaleParams & {
-    params: { code: string };
+    params: Promise<{ code: string }>;
 };
 
-export default function Page({ params: { locale, code } }: Params) {
+export default async function Page({ params }: Params) {
+    const { locale, code } = await params;
     metadata.title = getDictionary(locale).navigation.errors.title;
     return <ErrorPage code={code} locale={locale} />;
 }

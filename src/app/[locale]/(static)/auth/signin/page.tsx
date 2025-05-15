@@ -9,7 +9,8 @@ import { getDictionary } from "@/locales/dictionaries";
 import Google from "@/../public/icons/google.svg";
 import Image from "next/image";
 
-export default async function SignIn({ params: { locale } }: LocaleParams) {
+export default async function SignIn({ params }: LocaleParams) {
+    const { locale } = await params;
     const t = getDictionary(locale).navigation.auth.signin;
     return (
         <div className="flex items-center w-full h-full flex-1 justify-center p-10">

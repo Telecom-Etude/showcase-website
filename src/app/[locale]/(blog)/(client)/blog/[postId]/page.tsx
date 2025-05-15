@@ -5,7 +5,8 @@ import { Block } from "@/components/styles/blocks";
 import { getValidatedBlogs } from "@/db/blogs";
 import { nav } from "@/locales/routing";
 
-export default async function BlogPage({ params: { locale, postId } }: LocalePostParams) {
+export default async function BlogPage({ params }: LocalePostParams) {
+    const { locale, postId } = await params;
     const slug = postId;
     const posts = await getValidatedBlogs(locale);
     if (!posts) {

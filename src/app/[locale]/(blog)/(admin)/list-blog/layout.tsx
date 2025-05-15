@@ -12,7 +12,8 @@ interface PageProps extends LocaleParams {
     validate: ReactNode;
 }
 
-export default async function Validation({ params: { locale }, validate }: PageProps) {
+export default async function Validation({ params, validate }: PageProps) {
+    const { locale } = await params;
     const posts = await getAllBlog();
     const allData: ValidationBlogType[] = posts.map(({ id, validated, authors, title, content, createdAt, updatedAt }) => ({
         id,

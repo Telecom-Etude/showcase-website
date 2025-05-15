@@ -49,11 +49,11 @@ export type Locale = (typeof LOCALES)[number];
  * ```
  */
 export interface LocaleParams {
-    readonly params: { locale: Locale };
+    readonly params: Promise<{ locale: Locale }>;
 }
 
 export type LocalePostParams = LocaleParams & {
-    readonly params: { postId: string };
+    readonly params: Promise<{ postId: string }>;
 };
 
 export const isLocale = (locale: string) => locale == "en" || locale == "fr";

@@ -10,7 +10,8 @@ export var metadata: Metadata = {
     title: "Mentions légales",
 };
 
-export default async function Legal({ params: { locale } }: LocaleParams) {
+export default async function Legal({ params }: LocaleParams) {
+    const { locale } = await params;
     const t = getDictionary(locale).pages.legal;
     metadata.title = t.title;
     return (

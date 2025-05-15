@@ -171,7 +171,8 @@ function Header({ t, locale }: { locale: Locale; t: DeepReadonly<Dictionary["pag
     );
 }
 
-export default async function Page({ params: { locale } }: LocaleParams) {
+export default async function Page({ params }: LocaleParams) {
+    const { locale } = await params;
     const t = getDictionary(locale).pages.home;
     metadata.title = t.title;
     return (

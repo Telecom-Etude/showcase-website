@@ -9,7 +9,8 @@ import { getBlog } from "@/db/blogs";
 import { WrongId } from "../wrong-id";
 import { auth } from "@/auth/auth";
 
-export default async function Page({ params: { locale, postId } }: LocalePostParams) {
+export default async function Page({ params }: LocalePostParams) {
+    const { locale, postId } = await params;
     const id = parseInt(postId);
     const blog = await getBlog(id);
     const isAdmin = (await auth())?.user.rights?.blogAdmin;

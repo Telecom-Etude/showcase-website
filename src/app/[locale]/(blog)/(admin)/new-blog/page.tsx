@@ -6,7 +6,8 @@ import Link from "next/link";
 import { LocaleParams } from "@/locales/config";
 import { nav } from "@/locales/routing";
 
-export default async function NewBlog({ params: { locale } }: LocaleParams) {
+export default async function NewBlog({ params }: LocaleParams) {
+    const { locale } = await params;
     const session = await auth();
     const email = session?.user?.email as string;
     return (

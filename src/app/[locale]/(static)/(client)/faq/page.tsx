@@ -14,7 +14,8 @@ export var metadata: Metadata = {
     title: "Foire Aux Questions",
 };
 
-export default function Page({ params: { locale } }: LocaleParams) {
+export default async function Page({ params }: LocaleParams) {
+    const { locale } = await params;
     const t = getDictionary(locale).pages.faq;
     metadata.title = t.tabTitle;
     return (

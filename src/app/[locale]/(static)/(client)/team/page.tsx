@@ -41,7 +41,8 @@ function Department({ department, t }: { t: Dictionary["pages"]["team"]["members
 
 export const dynamicParams = false;
 
-export default async function Team({ params: { locale } }: LocaleParams) {
+export default async function Team({ params }: LocaleParams) {
+    const { locale } = await params;
     const t = getDictionary(locale).pages.team;
     metadata.title = t.title;
     return (

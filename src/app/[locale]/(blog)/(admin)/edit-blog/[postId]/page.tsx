@@ -8,7 +8,8 @@ import { getBlog } from "@/db/blogs";
 import { UnValidate } from "./unvalidate";
 import { nav } from "@/locales/routing";
 
-export default async function EditBlog({ params: { postId, locale } }: LocalePostParams) {
+export default async function EditBlog({ params }: LocalePostParams) {
+    const { postId, locale } = await params;
     const id = parseInt(postId);
     const blog = await getBlog(id);
     const email = (await auth())?.user.email;

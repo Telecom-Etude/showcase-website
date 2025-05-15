@@ -20,7 +20,8 @@ export async function generateStaticParams() {
     }));
 }
 
-export default async function Page({ params: { locale } }: LocaleParams) {
+export default async function Page({ params }: LocaleParams) {
+    const { locale } = await params;
     const posts = await getValidatedBlogs(locale);
     const reversedPosts = posts?.reverse();
     const labels = await getLocaleLabels(locale);

@@ -14,7 +14,8 @@ interface LayoutProps extends LocaleParams {
     children: ReactNode;
 }
 
-export default function Layout({ children, params: { locale } }: LayoutProps) {
+export default async function Layout({ children, params }: LayoutProps) {
+    const { locale } = await params;
     if (!LOCALES.includes(locale)) {
         notFound();
     }

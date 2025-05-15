@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 
 import { cn } from "@/lib/utils";
-import { Locale } from "@/locales/config";
+import { Locale, LocaleParams } from "@/locales/config";
 
 import ContactForm from "@/components/meta-components/contact-form";
 
@@ -30,7 +30,8 @@ function Paragraph({ title, children }: { title: string; children: ReactNode }) 
 
 const section = "flex flex-col items-center justify-center mb-12 space-x-0 space-y-10 p-10";
 
-export default function HomePage({ params: { locale } }: { params: { locale: Locale } }) {
+export default async function HomePage({ params }: LocaleParams) {
+    const { locale } = await params;
     const t = getDictionary(locale).pages.ieseg;
     metadata.title = t.tabTitle;
     return (
