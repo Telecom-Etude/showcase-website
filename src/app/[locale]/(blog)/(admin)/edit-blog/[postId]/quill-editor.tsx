@@ -62,7 +62,7 @@ export function QuillEditor({
             try {
                 const q = new Quill(editorRef.current, options);
                 setQuill(q);
-            } catch (_) {}
+            } catch {}
         }
     }, [quill]);
 

@@ -10,7 +10,7 @@
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
-        "fmt": "prettier . --write"
+        "fmt": "prettier . -cw"
     },
     "dependencies": {
         "@eslint/eslintrc": "^3.3.1",

@@ -1,11 +1,11 @@
 import { z } from 'zod';
 
-const userRolesSchema = z.object({
-    email: z.string(),
-    blogAdmin: z.boolean(),
-    userAdmin: z.boolean(),
-    blogAuthor: z.boolean(),
-    formAdmin: z.boolean(),
-});
-
-export type UserRolesType = z.infer<typeof userRolesSchema>;
+export type UserRolesType = z.infer<
+    z.ZodObject<{
+        email: z.ZodString;
+        blogAdmin: z.ZodBoolean;
+        userAdmin: z.ZodBoolean;
+        blogAuthor: z.ZodBoolean;
+        formAdmin: z.ZodBoolean;
+    }>
+>;

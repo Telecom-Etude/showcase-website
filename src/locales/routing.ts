@@ -14,7 +14,7 @@ function getHeaderLocale(headers: Headers) {
         };
         const languages = new Negotiator({ headers: negotiator_headers }).languages();
         return match(languages, LOCALES, DEFAULT_LOCALE) as Locale;
-    } catch (e) {
+    } catch {
         // console.error("Error occurred while fetching locale: ", e);
         return DEFAULT_LOCALE;
     }

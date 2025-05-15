@@ -3,7 +3,7 @@
 import { Rights } from '@/auth/auth';
 import { db } from '@/lib/db';
 
-////////////// CREAT ///////////////////
+////////////// CREATE //////////////////
 
 ////////////// READ ///////////////////
 
@@ -21,7 +21,7 @@ export async function getRights(email: string | null | undefined): Promise<Right
             blogAuthor: user?.blogAuthor || false,
         };
         return rights;
-    } catch (e) {
+    } catch {
         // console.error(`[getRights] Error:\n\n${e}\n`);
         return null;
     }
