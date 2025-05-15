@@ -1,21 +1,29 @@
-"use client";
+'use client';
 
-import React from "react";
-import { FaTrash } from "react-icons/fa";
+import { ColumnDef, Row } from '@tanstack/react-table';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import React from 'react';
+import { FaTrash } from 'react-icons/fa';
 
-import { useRouter } from "next/navigation";
+import { DataTableColumnHeader } from '@/components/meta-components/table/data-table-column-header';
+import { BtnLink, EmailBtn } from '@/components/telecom-etude/contact';
+import { Button } from '@/components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox';
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogFooter,
+    DialogClose,
+    DialogTrigger,
+} from '@/components/ui/dialog';
+import { deleteBlog } from '@/db/blogs';
+import { getUserName } from '@/lib/users';
 
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogFooter, DialogClose, DialogTrigger } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { DataTableColumnHeader } from "@/components/meta-components/table/data-table-column-header";
-import { ColumnDef, Row } from "@tanstack/react-table";
-
-import { ValidationBlogType } from "./schema";
-import { deleteBlog } from "@/db/blogs";
-import { BtnLink, EmailBtn } from "@/components/telecom-etude/contact";
-import { getUserName } from "@/lib/users";
-import { Checkbox } from "@/components/ui/checkbox";
-import Link from "next/link";
+import { ValidationBlogType } from './schema';
 
 function Delete({ row }: { row: Row<ValidationBlogType> }) {
     const router = useRouter();
@@ -29,13 +37,15 @@ function Delete({ row }: { row: Row<ValidationBlogType> }) {
             <DialogContent>
                 <DialogHeader>
                     <DialogTitle>Êtes-vous sur de vouloir supprimer ce post ?</DialogTitle>
-                    <DialogDescription>Cette action est irréversible. Toutes les données seront écrasées.</DialogDescription>
+                    <DialogDescription>
+                        Cette action est irréversible. Toutes les données seront écrasées.
+                    </DialogDescription>
                     <DialogFooter>
                         <DialogClose>Annuler</DialogClose>
                         <Button
                             variant="call2action"
                             onClick={() => {
-                                deleteBlog(row.getValue("id")).then(() => {
+                                deleteBlog(row.getValue('id')).then(() => {
                                     router.refresh();
                                 });
                             }}
@@ -51,18 +61,18 @@ function Delete({ row }: { row: Row<ValidationBlogType> }) {
 
 export const columns: ColumnDef<ValidationBlogType>[] = [
     {
-        accessorKey: "id",
-        header: ({ column }) => <></>,
-        cell: ({ row }) => <></>,
+        accessorKey: 'id',
+        header: () => <></>,
+        cell: () => <></>,
         enableSorting: false,
         enableHiding: false,
     },
     {
-        accessorKey: "emails",
+        accessorKey: 'emails',
         header: ({ column }) => <DataTableColumnHeader column={column} title="Auteur" />,
         cell: ({ row }) => (
             <div className="flex flex-col">
-                {(row.getValue("emails") as string[]).map((email: string, i) => (
+                {(row.getValue('emails') as string[]).map((email: string, i) => (
                     <EmailBtn email={email} text={getUserName(email)} key={i} />
                 ))}
             </div>
@@ -71,45 +81,51 @@ export const columns: ColumnDef<ValidationBlogType>[] = [
     },
 
     {
-        accessorKey: "createdAt",
+        accessorKey: 'createdAt',
         header: ({ column }) => <DataTableColumnHeader column={column} title="Créé le" />,
-        cell: ({ row }) => <p>{(row.getValue("createdAt") as Date).toLocaleDateString()}</p>,
+        cell: ({ row }) => <p>{(row.getValue('createdAt') as Date).toLocaleDateString()}</p>,
     },
     {
-        accessorKey: "updatedAt",
+        accessorKey: 'updatedAt',
         header: ({ column }) => <DataTableColumnHeader column={column} title="Modifié le" />,
-        cell: ({ row }) => <p>{(row.getValue("updatedAt") as Date).toLocaleDateString()}</p>,
+        cell: ({ row }) => <p>{(row.getValue('updatedAt') as Date).toLocaleDateString()}</p>,
     },
     {
-        accessorKey: "validated",
+        accessorKey: 'validated',
         header: ({ column }) => <DataTableColumnHeader column={column} title="Valider" />,
         cell: ({ row }) => {
-            const value: boolean = row.getValue("validated");
-            return <Checkbox className="cursor-not-allowed m-auto" checked={value} contentEditable={false} />;
+            const value: boolean = row.getValue('validated');
+            return (
+                <Checkbox
+                    className="cursor-not-allowed m-auto"
+                    checked={value}
+                    contentEditable={false}
+                />
+            );
         },
     },
     {
-        accessorKey: "delete",
+        accessorKey: 'delete',
         header: ({ column }) => <DataTableColumnHeader column={column} title="Supprimer" />,
         cell: ({ row }) => <Delete row={row} />,
         enableSorting: false,
     },
     {
-        accessorKey: "edit",
+        accessorKey: 'edit',
         header: ({ column }) => <DataTableColumnHeader column={column} title="Editer" />,
         cell: ({ row }) => (
             <Button variant="link" className="m-auto" asChild>
-                <Link href={`/edit-blog/${row.getValue("id")}`}>Editer</Link>
+                <Link href={`/edit-blog/${row.getValue('id')}`}>Editer</Link>
             </Button>
         ),
         enableSorting: false,
     },
     {
-        accessorKey: "title",
+        accessorKey: 'title',
         header: ({ column }) => <DataTableColumnHeader column={column} title="Titre" />,
         cell: ({ row }) => (
-            <BtnLink href={`/list-blog/${row.getValue("id")}`}>
-                <p>{row.getValue("title")}</p>
+            <BtnLink href={`/list-blog/${row.getValue('id')}`}>
+                <p>{row.getValue('title')}</p>
                 <div className="flex space-x-2">
                     <span className="truncate"></span>
                 </div>

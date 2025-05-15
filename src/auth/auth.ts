@@ -1,10 +1,16 @@
-import NextAuth, { type NextAuthConfig, type User as AuthUser, type Session, User } from "next-auth";
-import type { JWT } from "next-auth/jwt";
-import authConfig from "@/auth/auth.config";
-import { db } from "@/lib/db";
-import { getRights } from "@/db/users";
-import { SIGNIN_PATH, SIGNOUT_PATH } from "./routes";
-import { measureMemory } from "vm";
+import NextAuth, {
+    type NextAuthConfig,
+    type User as AuthUser,
+    type Session,
+    User,
+} from 'next-auth';
+import type { JWT } from 'next-auth/jwt';
+
+import authConfig from '@/auth/auth.config';
+import { getRights } from '@/db/users';
+import { db } from '@/lib/db';
+
+import { SIGNIN_PATH, SIGNOUT_PATH } from './routes';
 
 export interface Rights {
     formAdmin: boolean;
@@ -46,7 +52,7 @@ const config = {
             if (!email) {
                 return false;
             }
-            var data;
+            let data;
             if (name) {
                 data = { email: email!, name: name! };
             } else {
@@ -64,7 +70,7 @@ const config = {
             }
         },
     },
-    session: { strategy: "jwt" },
+    session: { strategy: 'jwt' },
     ...authConfig,
 } satisfies NextAuthConfig;
 

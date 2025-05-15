@@ -1,30 +1,39 @@
-"use client";
+'use client';
 
-import { z } from "zod";
-import { ControllerRenderProps, UseFormReturn, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
-import { VscLoading } from "react-icons/vsc";
+import { zodResolver } from '@hookform/resolvers/zod';
+import Link from 'next/link';
+import { useState } from 'react';
+import { ControllerRenderProps, UseFormReturn, useForm } from 'react-hook-form';
+import { VscLoading } from 'react-icons/vsc';
+import { z } from 'zod';
 
-import { createForm } from "@/db/form";
-import { sendForm } from "@/mail/mailer";
+import {
+    AlertDialog,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+} from '@/components/ui/alert-dialog';
+import { Button } from '@/components/ui/button';
+import {
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { createForm } from '@/db/form';
+import { Locale } from '@/locales/config';
+import { getDictionary } from '@/locales/dictionaries';
+import { nav } from '@/locales/routing';
+import { sendForm } from '@/mail/mailer';
 
-import { Locale } from "@/locales/config";
-import { getDictionary } from "@/locales/dictionaries";
-
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/components/ui/use-toast";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { useRouter } from "next/navigation";
-
-import { AlertDialog, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
-import Link from "next/link";
-import { nav } from "@/locales/routing";
-
-type Fields = "name" | "email" | "tel" | "societe" | "subject" | "message";
-const ListFields = ["name", "email", "tel", "societe", "subject", "message"];
+type Fields = 'name' | 'email' | 'tel' | 'societe' | 'subject' | 'message';
+const ListFields = ['name', 'email', 'tel', 'societe', 'subject', 'message'];
 
 interface FieldVocabItem {
     label: string;
@@ -32,16 +41,22 @@ interface FieldVocabItem {
     error?: string;
 }
 
-export default function ContactForm({ locale, emails }: { locale: Locale; emails: (string | undefined)[] }) {
+export default function ContactForm({
+    locale,
+    emails,
+}: {
+    locale: Locale;
+    emails: (string | undefined)[];
+}) {
     const [finished, setFinished] = useState(false);
     const [success, setSuccess] = useState(false);
     const [sending, setSending] = useState(false);
 
     const t = getDictionary(locale).pages.contact;
-    const checkedEmails: string[] = emails.filter(e => typeof e !== "undefined");
+    const checkedEmails: string[] = emails.filter((e) => typeof e !== 'undefined');
 
     if (checkedEmails.length == 0) {
-        throw new Error("Missing destination email");
+        throw new Error('Missing destination email');
     }
 
     const formFields = {
@@ -69,12 +84,12 @@ export default function ContactForm({ locale, emails }: { locale: Locale; emails
     const form: UseFormReturn<FormType> = useForm<FormType>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            name: "",
-            email: "",
-            tel: "",
-            societe: "",
-            subject: "",
-            message: "",
+            name: '',
+            email: '',
+            tel: '',
+            societe: '',
+            subject: '',
+            message: '',
         },
     });
 
@@ -101,7 +116,7 @@ export default function ContactForm({ locale, emails }: { locale: Locale; emails
     };
 
     const starRequired = (fieldName: Fields) => {
-        if (["name", "email", "subject", "message"].includes(fieldName)) return " *";
+        if (['name', 'email', 'subject', 'message'].includes(fieldName)) return ' *';
         else return ` (${t.optional})`;
     };
 
@@ -117,22 +132,32 @@ export default function ContactForm({ locale, emails }: { locale: Locale; emails
                                 name={name}
                                 render={({ field }: { field: ControllerRenderProps<FormType> }) => (
                                     <FormItem>
-                                        <FormLabel className="font-semibold">{value.label + starRequired(name)}</FormLabel>
+                                        <FormLabel className="font-semibold">
+                                            {value.label + starRequired(name)}
+                                        </FormLabel>
                                         <FormControl>
-                                            {name === "message" ? (
+                                            {name === 'message' ? (
                                                 <Textarea
                                                     className="border-[1px] rounded-none  border-primary p-4"
                                                     placeholder={value.placeholder}
                                                     {...field}
-                                                    onInput={e => {
-                                                        let target = e.target as HTMLElement;
-                                                        target.style.height = "inherit";
-                                                        let fontSize = parseFloat(window.getComputedStyle(target, null).getPropertyValue("font-size"));
+                                                    onInput={(e) => {
+                                                        const target = e.target as HTMLElement;
+                                                        target.style.height = 'inherit';
+                                                        const fontSize = parseFloat(
+                                                            window
+                                                                .getComputedStyle(target, null)
+                                                                .getPropertyValue('font-size')
+                                                        );
                                                         target.style.height = `${target.scrollHeight + fontSize}px`;
                                                     }}
                                                 />
                                             ) : (
-                                                <Input className="border-[1px] rounded-none border-primary p-4" placeholder={value.placeholder} {...field} />
+                                                <Input
+                                                    className="border-[1px] rounded-none border-primary p-4"
+                                                    placeholder={value.placeholder}
+                                                    {...field}
+                                                />
                                             )}
                                         </FormControl>
                                         <FormMessage />
@@ -152,13 +177,17 @@ export default function ContactForm({ locale, emails }: { locale: Locale; emails
             <AlertDialog open={finished}>
                 <AlertDialogContent>
                     <AlertDialogHeader>
-                        <AlertDialogTitle>{t[success ? "success" : "error"].title}</AlertDialogTitle>
-                        <AlertDialogDescription>{t[success ? "success" : "error"].message}</AlertDialogDescription>
+                        <AlertDialogTitle>
+                            {t[success ? 'success' : 'error'].title}
+                        </AlertDialogTitle>
+                        <AlertDialogDescription>
+                            {t[success ? 'success' : 'error'].message}
+                        </AlertDialogDescription>
                     </AlertDialogHeader>
                     {success ? (
                         <AlertDialogFooter>
                             <Button asChild variant="call2action">
-                                <Link href={nav(locale, "/")}>{t.success.back}</Link>
+                                <Link href={nav(locale, '/')}>{t.success.back}</Link>
                             </Button>
                         </AlertDialogFooter>
                     ) : null}

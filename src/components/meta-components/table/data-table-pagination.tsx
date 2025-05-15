@@ -1,8 +1,14 @@
-import { FaChevronLeft, FaChevronRight, FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import { Table } from "@tanstack/react-table";
+import { Table } from '@tanstack/react-table';
+import { FaChevronLeft, FaChevronRight, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
-import { Button } from "@/components/ui/button";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Button } from '@/components/ui/button';
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from '@/components/ui/select';
 
 interface DataTablePaginationProps<TData> {
     table: Table<TData>;
@@ -28,7 +34,7 @@ export function DataTablePagination<TData>({ table }: DataTablePaginationProps<T
                             <SelectValue placeholder={table.getState().pagination.pageSize} />
                         </SelectTrigger>
                         <SelectContent side="top">
-                            {[10, 20, 30, 40, 50].map(pageSize => (
+                            {[10, 20, 30, 40, 50].map((pageSize) => (
                                 <SelectItem key={pageSize} value={`${pageSize}`}>
                                     {pageSize}
                                 </SelectItem>
@@ -37,7 +43,8 @@ export function DataTablePagination<TData>({ table }: DataTablePaginationProps<T
                     </Select>
                 </div>
                 <div className="items-center hidden sm:flex justify-center text-sm font-medium">
-                    Page {table.getState().pagination.pageIndex + 1}/{Math.max(table.getPageCount(), 1)}
+                    Page {table.getState().pagination.pageIndex + 1}/
+                    {Math.max(table.getPageCount(), 1)}
                 </div>
                 <div className="flex items-center space-x-2">
                     <Button
@@ -49,11 +56,21 @@ export function DataTablePagination<TData>({ table }: DataTablePaginationProps<T
                         <span className="sr-only">Première page</span>
                         <FaArrowLeft className="h-4 w-4" />
                     </Button>
-                    <Button variant="outline" className="h-8 w-8 p-0" onClick={() => table.previousPage()} disabled={!table.getCanPreviousPage()}>
+                    <Button
+                        variant="outline"
+                        className="h-8 w-8 p-0"
+                        onClick={() => table.previousPage()}
+                        disabled={!table.getCanPreviousPage()}
+                    >
                         <span className="sr-only">Page précédente</span>
                         <FaChevronLeft className="h-4 w-4" />
                     </Button>
-                    <Button variant="outline" className="h-8 w-8 p-0" onClick={() => table.nextPage()} disabled={!table.getCanNextPage()}>
+                    <Button
+                        variant="outline"
+                        className="h-8 w-8 p-0"
+                        onClick={() => table.nextPage()}
+                        disabled={!table.getCanNextPage()}
+                    >
                         <span className="sr-only">Page suivante</span>
                         <FaChevronRight className="h-4 w-4" />
                     </Button>

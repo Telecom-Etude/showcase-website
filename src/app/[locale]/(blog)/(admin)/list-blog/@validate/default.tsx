@@ -1,4 +1,4 @@
-import { WrongId } from "./wrong-id";
+import { WrongId } from './wrong-id';
 
 export default function Page() {
     return <WrongId />;

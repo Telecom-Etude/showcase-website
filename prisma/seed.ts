@@ -1,5 +1,5 @@
-import { PrismaClient } from "@prisma/client";
-require("dotenv").config({ path: ".env.local" });
+import { PrismaClient } from '@prisma/client';
+require('dotenv').config({ path: '.env.local' });
 
 const prisma = new PrismaClient();
 
@@ -18,40 +18,40 @@ async function main() {
         },
     });
     const labels = [
-        { locale: "fr", name: "Événements" },
-        { locale: "en", name: "Events" },
-        { locale: "fr", name: "Missions" },
-        { locale: "en", name: "Missions" },
-        { locale: "fr", name: "Données" },
-        { locale: "en", name: "Data" },
-        { locale: "fr", name: "Cybersécurité" },
-        { locale: "en", name: "Cybersecurity" },
-        { locale: "fr", name: "IA" },
-        { locale: "en", name: "IA" },
-        { locale: "fr", name: "Chatbot" },
-        { locale: "en", name: "Chatbot" },
-        { locale: "fr", name: "SE" },
-        { locale: "en", name: "SE" },
-        { locale: "fr", name: "Web" },
-        { locale: "en", name: "Web" },
-        { locale: "fr", name: "Mobile" },
-        { locale: "en", name: "Mobile" },
-        { locale: "fr", name: "Cloud" },
-        { locale: "en", name: "Cloud" },
-        { locale: "fr", name: "DevOps" },
-        { locale: "en", name: "DevOps" },
-        { locale: "fr", name: "Développement" },
-        { locale: "en", name: "Development" },
-        { locale: "fr", name: "IoT" },
-        { locale: "en", name: "IoT" },
-        { locale: "fr", name: "Blockchain" },
-        { locale: "en", name: "Blockchain" },
-        { locale: "fr", name: "Cryptomonnaie" },
-        { locale: "en", name: "Cryptocurrency" },
-        { locale: "fr", name: "Startup" },
-        { locale: "en", name: "Startup" },
-        { locale: "fr", name: "Computer Vision" },
-        { locale: "en", name: "Computer Vision" },
+        { locale: 'fr', name: 'Événements' },
+        { locale: 'en', name: 'Events' },
+        { locale: 'fr', name: 'Missions' },
+        { locale: 'en', name: 'Missions' },
+        { locale: 'fr', name: 'Données' },
+        { locale: 'en', name: 'Data' },
+        { locale: 'fr', name: 'Cybersécurité' },
+        { locale: 'en', name: 'Cybersecurity' },
+        { locale: 'fr', name: 'IA' },
+        { locale: 'en', name: 'IA' },
+        { locale: 'fr', name: 'Chatbot' },
+        { locale: 'en', name: 'Chatbot' },
+        { locale: 'fr', name: 'SE' },
+        { locale: 'en', name: 'SE' },
+        { locale: 'fr', name: 'Web' },
+        { locale: 'en', name: 'Web' },
+        { locale: 'fr', name: 'Mobile' },
+        { locale: 'en', name: 'Mobile' },
+        { locale: 'fr', name: 'Cloud' },
+        { locale: 'en', name: 'Cloud' },
+        { locale: 'fr', name: 'DevOps' },
+        { locale: 'en', name: 'DevOps' },
+        { locale: 'fr', name: 'Développement' },
+        { locale: 'en', name: 'Development' },
+        { locale: 'fr', name: 'IoT' },
+        { locale: 'en', name: 'IoT' },
+        { locale: 'fr', name: 'Blockchain' },
+        { locale: 'en', name: 'Blockchain' },
+        { locale: 'fr', name: 'Cryptomonnaie' },
+        { locale: 'en', name: 'Cryptocurrency' },
+        { locale: 'fr', name: 'Startup' },
+        { locale: 'en', name: 'Startup' },
+        { locale: 'fr', name: 'Computer Vision' },
+        { locale: 'en', name: 'Computer Vision' },
     ];
 
     for (const label of labels) {
@@ -75,7 +75,7 @@ main()
     .then(async () => {
         await prisma.$disconnect();
     })
-    .catch(async e => {
+    .catch(async (e) => {
         console.error(e);
         await prisma.$disconnect();
         process.exit(1);

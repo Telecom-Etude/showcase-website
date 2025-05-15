@@ -1,19 +1,21 @@
-import { LocaleParams } from "@/locales/config";
-import { getDictionary } from "@/locales/dictionaries";
+import { Metadata } from 'next';
+import Image from 'next/image';
 
-import ContactForm from "@/components/meta-components/contact-form";
-import { Block } from "@/components/styles/blocks";
-import { EmailContact } from "@/components/telecom-etude/contact";
-import { Metadata } from "next";
-import { OrangeTitle } from "@/components/styles/texts";
-import Image from "next/image";
-import ContactIcon from "@/../public/icons/contact.png";
+import ContactIcon from '@/../public/icons/contact.png';
 
-export var metadata: Metadata = {
-    title: "Contact",
+import ContactForm from '@/components/meta-components/contact-form';
+import { Block } from '@/components/styles/blocks';
+import { OrangeTitle } from '@/components/styles/texts';
+import { EmailContact } from '@/components/telecom-etude/contact';
+import { LocaleParams } from '@/locales/config';
+import { getDictionary } from '@/locales/dictionaries';
+
+export const metadata: Metadata = {
+    title: 'Contact',
 };
 
-export default async function Page({ params: { locale } }: LocaleParams) {
+export default async function Page({ params }: LocaleParams) {
+    const { locale } = await params;
     const t = getDictionary(locale).pages.contact;
     metadata.title = t.tabTitle;
     return (
