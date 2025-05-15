@@ -1,20 +1,35 @@
-"use client";
+'use client';
 
-import React from "react";
-import { FaTrash } from "react-icons/fa";
+import React from 'react';
+import { FaTrash } from 'react-icons/fa';
 
-import { useRouter } from "next/navigation";
+import { useRouter } from 'next/navigation';
 
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogFooter, DialogClose, DialogTrigger } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { deleteUser, makeBlogAdmin, makeBlogAuthor, makeFormAdmin, makeUserAdmin } from "@/db/users";
-import { DataTableColumnHeader } from "@/components/meta-components/table/data-table-column-header";
-import { ColumnDef, Row } from "@tanstack/react-table";
-import { Checkbox } from "@/components/ui/checkbox";
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogFooter,
+    DialogClose,
+    DialogTrigger,
+} from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
+import {
+    deleteUser,
+    makeBlogAdmin,
+    makeBlogAuthor,
+    makeFormAdmin,
+    makeUserAdmin,
+} from '@/db/users';
+import { DataTableColumnHeader } from '@/components/meta-components/table/data-table-column-header';
+import { ColumnDef, Row } from '@tanstack/react-table';
+import { Checkbox } from '@/components/ui/checkbox';
 
-import { UserRolesType } from "./schema";
-import { getUserName } from "@/lib/users";
-import { toast } from "@/components/ui/use-toast";
+import { UserRolesType } from './schema';
+import { getUserName } from '@/lib/users';
+import { toast } from '@/components/ui/use-toast';
 
 function ActionCheckBox({
     row,
@@ -39,8 +54,8 @@ function ActionCheckBox({
                         .catch(() => {
                             toast({
                                 title: "Une erreure inconnue s'est produite",
-                                description: "Contactez la DSI",
-                                variant: "destructive",
+                                description: 'Contactez la DSI',
+                                variant: 'destructive',
                             });
                         });
                 }}
@@ -63,7 +78,9 @@ function Delete({ row }: { row: Row<UserRolesType> }) {
             <DialogContent>
                 <DialogHeader>
                     <DialogTitle>Êtes-vous sur de vouloir supprimer ce compte ?</DialogTitle>
-                    <DialogDescription>Cette action est irréversible. Toutes les données seront écrasées.</DialogDescription>
+                    <DialogDescription>
+                        Cette action est irréversible. Toutes les données seront écrasées.
+                    </DialogDescription>
                     <DialogFooter>
                         <DialogClose>Annuler</DialogClose>
                         <Button
@@ -85,36 +102,44 @@ function Delete({ row }: { row: Row<UserRolesType> }) {
 
 export const columns: ColumnDef<UserRolesType>[] = [
     {
-        accessorKey: "email",
+        accessorKey: 'email',
         header: ({ column }) => <DataTableColumnHeader column={column} title="Email" />,
         cell: ({ row }) => (
             <div className="flex space-x-2">
-                <span className="max-w-[500px] truncate font-medium">{getUserName(row.original.email)}</span>
+                <span className="max-w-[500px] truncate font-medium">
+                    {getUserName(row.original.email)}
+                </span>
             </div>
         ),
     },
     {
-        accessorKey: "blogAdmin",
-        header: ({ column }) => <DataTableColumnHeader column={column} title="Administrateur Blog" />,
-        cell: ({ row }) => <ActionCheckBox row={row} column={"blogAdmin"} func={makeBlogAdmin} />,
+        accessorKey: 'blogAdmin',
+        header: ({ column }) => (
+            <DataTableColumnHeader column={column} title="Administrateur Blog" />
+        ),
+        cell: ({ row }) => <ActionCheckBox row={row} column={'blogAdmin'} func={makeBlogAdmin} />,
     },
     {
-        accessorKey: "userAdmin",
-        header: ({ column }) => <DataTableColumnHeader column={column} title="Administrateur Utilisateurs" />,
-        cell: ({ row }) => <ActionCheckBox row={row} column={"userAdmin"} func={makeUserAdmin} />,
+        accessorKey: 'userAdmin',
+        header: ({ column }) => (
+            <DataTableColumnHeader column={column} title="Administrateur Utilisateurs" />
+        ),
+        cell: ({ row }) => <ActionCheckBox row={row} column={'userAdmin'} func={makeUserAdmin} />,
     },
     {
-        accessorKey: "formAdmin",
-        header: ({ column }) => <DataTableColumnHeader column={column} title="Administrateur Forms" />,
-        cell: ({ row }) => <ActionCheckBox row={row} column={"formAdmin"} func={makeFormAdmin} />,
+        accessorKey: 'formAdmin',
+        header: ({ column }) => (
+            <DataTableColumnHeader column={column} title="Administrateur Forms" />
+        ),
+        cell: ({ row }) => <ActionCheckBox row={row} column={'formAdmin'} func={makeFormAdmin} />,
     },
     {
-        accessorKey: "blogAuthor",
+        accessorKey: 'blogAuthor',
         header: ({ column }) => <DataTableColumnHeader column={column} title="Auteur Blog" />,
-        cell: ({ row }) => <ActionCheckBox row={row} column={"blogAuthor"} func={makeBlogAuthor} />,
+        cell: ({ row }) => <ActionCheckBox row={row} column={'blogAuthor'} func={makeBlogAuthor} />,
     },
     {
-        accessorKey: "delete",
+        accessorKey: 'delete',
         header: () => <span>Supprimer</span>,
         cell: ({ row }) => <Delete row={row} />,
     },

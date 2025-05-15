@@ -1,13 +1,13 @@
-import { VariantLink } from "@/components/ui/button";
-import { LocalePostParams } from "@/locales/config";
-import { nav } from "@/locales/routing";
-import { IoClose } from "react-icons/io5";
-import { ValidateButton } from "./client";
-import { RenderQuill } from "@/components/quill/render";
-import { getDictionary } from "@/locales/dictionaries";
-import { getBlog } from "@/db/blogs";
-import { WrongId } from "../wrong-id";
-import { auth } from "@/auth/auth";
+import { VariantLink } from '@/components/ui/button';
+import { LocalePostParams } from '@/locales/config';
+import { nav } from '@/locales/routing';
+import { IoClose } from 'react-icons/io5';
+import { ValidateButton } from './client';
+import { RenderQuill } from '@/components/quill/render';
+import { getDictionary } from '@/locales/dictionaries';
+import { getBlog } from '@/db/blogs';
+import { WrongId } from '../wrong-id';
+import { auth } from '@/auth/auth';
 
 export default async function Page({ params }: LocalePostParams) {
     const { locale, postId } = await params;
@@ -24,7 +24,11 @@ export default async function Page({ params }: LocalePostParams) {
             <div className="space-y-4">
                 <div className="flex justify-between items-center space-x-4">
                     <h1 className="truncate">{blog.title}</h1>
-                    <VariantLink variant="call2action" btnCn="min-w-0 aspect-square rounded-full" href={nav(locale, "/list-blog")}>
+                    <VariantLink
+                        variant="call2action"
+                        btnCn="min-w-0 aspect-square rounded-full"
+                        href={nav(locale, '/list-blog')}
+                    >
                         <IoClose className="w-4 h-4" />
                     </VariantLink>
                 </div>
@@ -34,7 +38,11 @@ export default async function Page({ params }: LocalePostParams) {
             </div>
             {isAdmin && (
                 <div className="w-full flex justify-center p-4">
-                    <ValidateButton locale={locale} id={id} t={getDictionary(locale).navigation.errors.unknown} />
+                    <ValidateButton
+                        locale={locale}
+                        id={id}
+                        t={getDictionary(locale).navigation.errors.unknown}
+                    />
                 </div>
             )}
         </div>

@@ -1,7 +1,7 @@
-"use server";
+'use server';
 
-import { db } from "@/lib/db";
-import { Locale } from "@/locales/config";
+import { db } from '@/lib/db';
+import { Locale } from '@/locales/config';
 
 export type DbLabels = { id: number; name: string }[];
 
@@ -9,7 +9,7 @@ export async function getLocaleLabels(locale: Locale): Promise<DbLabels | undefi
     try {
         return await db.label.findMany({ where: { locale } });
     } catch (e) {
-        console.error("[getLocaleLabels] ", e);
+        console.error('[getLocaleLabels] ', e);
     }
 }
 
@@ -25,14 +25,14 @@ export async function updatePostLabels(labels: string[], id: number, locale: Loc
                 where: { id },
                 data: {
                     labels: {
-                        disconnect: currentLabels.labels.map(label => ({ id: label.id })),
+                        disconnect: currentLabels.labels.map((label) => ({ id: label.id })),
                     },
                 },
             });
         }
 
         const dbLabels = await Promise.all(
-            labels.map(async name => {
+            labels.map(async (name) => {
                 let label = await db.label.findUnique({ where: { locale_name: { name, locale } } });
                 if (!label) {
                     label = await db.label.create({ data: { name, locale } });
@@ -50,6 +50,6 @@ export async function updatePostLabels(labels: string[], id: number, locale: Loc
             },
         });
     } catch (e) {
-        console.error("[updatePostLabels] ", e);
+        console.error('[updatePostLabels] ', e);
     }
 }

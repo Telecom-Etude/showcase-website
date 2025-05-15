@@ -1,7 +1,7 @@
-import { ExtendedUser } from "@/auth/auth";
-import { Locale } from "@/locales/config";
-import { getDictionary } from "@/locales/dictionaries";
-import { nav } from "@/locales/routing";
+import { ExtendedUser } from '@/auth/auth';
+import { Locale } from '@/locales/config';
+import { getDictionary } from '@/locales/dictionaries';
+import { nav } from '@/locales/routing';
 
 export interface SingleLink {
     href: string;
@@ -21,24 +21,24 @@ export function getLinks(locale: Locale, user: ExtendedUser) {
 
     var authLinks: SingleLink[] = [];
     if (user?.rights?.blogAdmin) {
-        authLinks.push({ href: nav(locale, "/list-blog"), title: t.admin.validate });
+        authLinks.push({ href: nav(locale, '/list-blog'), title: t.admin.validate });
     }
     if (user?.rights?.blogAuthor) {
-        authLinks.push({ href: nav(locale, "/new-blog"), title: t.admin.newblog });
-        authLinks.push({ href: nav(locale, "/list-blog"), title: t.admin.edit });
+        authLinks.push({ href: nav(locale, '/new-blog'), title: t.admin.newblog });
+        authLinks.push({ href: nav(locale, '/list-blog'), title: t.admin.edit });
     }
     if (user?.rights?.formAdmin) {
-        authLinks.push({ href: nav(locale, "/form-submission"), title: t.admin.form });
+        authLinks.push({ href: nav(locale, '/form-submission'), title: t.admin.form });
     }
     if (user?.rights?.userAdmin) {
-        authLinks.push({ href: nav(locale, "/users"), title: t.admin.users });
+        authLinks.push({ href: nav(locale, '/users'), title: t.admin.users });
     }
-    const logoutLink = { href: nav(locale, "/auth/signout"), title: s.logout };
+    const logoutLink = { href: nav(locale, '/auth/signout'), title: s.logout };
     authLinks.push(logoutLink);
 
     const authLink: ExtendedLink =
-        typeof user === "undefined"
-            ? { title: s.login, href: nav(locale, "/auth/signin") }
+        typeof user === 'undefined'
+            ? { title: s.login, href: nav(locale, '/auth/signin') }
             : authLinks.length <= 1
               ? logoutLink
               : {
@@ -50,23 +50,23 @@ export function getLinks(locale: Locale, user: ExtendedUser) {
         {
             title: s.about,
             links: [
-                { href: nav(locale, "/"), title: s.home },
-                { href: nav(locale, "/about"), title: s.whoarewe },
-                { href: nav(locale, "/faq"), title: "FAQ" },
-                { href: nav(locale, "/commitment"), title: s.commitment },
-                { href: nav(locale, "/team"), title: s.team },
-                { href: nav(locale, "/plaquette.pdf"), title: s.plaquette, newTab: true },
+                { href: nav(locale, '/'), title: s.home },
+                { href: nav(locale, '/about'), title: s.whoarewe },
+                { href: nav(locale, '/faq'), title: 'FAQ' },
+                { href: nav(locale, '/commitment'), title: s.commitment },
+                { href: nav(locale, '/team'), title: s.team },
+                { href: nav(locale, '/plaquette.pdf'), title: s.plaquette, newTab: true },
             ],
         },
         {
             title: s.partners,
             links: [
-                { href: nav(locale, "/partners"), title: s.company_partners },
-                { href: nav(locale, "/ieseg"), title: s.ieseg },
+                { href: nav(locale, '/partners'), title: s.company_partners },
+                { href: nav(locale, '/ieseg'), title: s.ieseg },
             ],
         },
-        { href: nav(locale, "/offer"), title: s.offer },
-        { href: nav(locale, "/blog"), title: s.blog },
+        { href: nav(locale, '/offer'), title: s.offer },
+        { href: nav(locale, '/blog'), title: s.blog },
         authLink,
     ] as const;
 

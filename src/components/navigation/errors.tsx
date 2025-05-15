@@ -1,44 +1,59 @@
-import React from "react";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { getDictionary } from "@/locales/dictionaries";
-import { nav } from "@/locales/routing";
-import { BirdBackground } from "../telecom-etude/bird-backgroud";
+import React from 'react';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { getDictionary } from '@/locales/dictionaries';
+import { nav } from '@/locales/routing';
+import { BirdBackground } from '../telecom-etude/bird-backgroud';
 
-import { Locale } from "@/locales/config";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { EmailContact } from "../telecom-etude/contact";
+import { Locale } from '@/locales/config';
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardFooter,
+    CardHeader,
+    CardTitle,
+} from '@/components/ui/card';
+import { EmailContact } from '../telecom-etude/contact';
 
-export function ErrorPage({ code, locale, message }: { code: string; locale: Locale; message?: string }) {
+export function ErrorPage({
+    code,
+    locale,
+    message,
+}: {
+    code: string;
+    locale: Locale;
+    message?: string;
+}) {
     const errorsVocab = getDictionary(locale).navigation.errors;
     var pageInfo;
     switch (code) {
-        case "401":
+        case '401':
             pageInfo = {
-                http: errorsVocab.httpError + " 401",
+                http: errorsVocab.httpError + ' 401',
                 t: errorsVocab.unauthorized,
-                href: "/api/auth/signin",
+                href: '/api/auth/signin',
             };
             break;
-        case "403":
+        case '403':
             pageInfo = {
-                http: errorsVocab.httpError + " 403",
+                http: errorsVocab.httpError + ' 403',
                 t: errorsVocab.forbidden,
-                href: nav(locale, "/"),
+                href: nav(locale, '/'),
             };
             break;
-        case "404":
+        case '404':
             pageInfo = {
-                http: errorsVocab.httpError + " 404",
+                http: errorsVocab.httpError + ' 404',
                 t: errorsVocab.notfound,
-                href: nav(locale, "/"),
+                href: nav(locale, '/'),
             };
             break;
         default:
             pageInfo = {
-                http: errorsVocab.httpError + " " + code,
+                http: errorsVocab.httpError + ' ' + code,
                 t: errorsVocab.unknown,
-                href: nav(locale, "/"),
+                href: nav(locale, '/'),
             };
             break;
     }

@@ -1,13 +1,13 @@
-"use server";
+'use server';
 
-import { signIn } from "@/auth/auth";
-import { EmailContact } from "@/components/telecom-etude/contact";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { LocaleParams } from "@/locales/config";
-import { getDictionary } from "@/locales/dictionaries";
-import Google from "@/../public/icons/google.svg";
-import Image from "next/image";
+import { signIn } from '@/auth/auth';
+import { EmailContact } from '@/components/telecom-etude/contact';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { LocaleParams } from '@/locales/config';
+import { getDictionary } from '@/locales/dictionaries';
+import Google from '@/../public/icons/google.svg';
+import Image from 'next/image';
 
 export default async function SignIn({ params }: LocaleParams) {
     const { locale } = await params;
@@ -22,11 +22,15 @@ export default async function SignIn({ params }: LocaleParams) {
                     <CardContent className="p-6">
                         <form
                             action={async () => {
-                                "use server";
-                                await signIn("google");
+                                'use server';
+                                await signIn('google');
                             }}
                         >
-                            <Button type="submit" variant="link" className="text-black bg-white space-x-2 border-0 rounded-[6px] w-full">
+                            <Button
+                                type="submit"
+                                variant="link"
+                                className="text-black bg-white space-x-2 border-0 rounded-[6px] w-full"
+                            >
                                 <Image src={Google} alt="Google Logo" />
                                 <p>{t.buttonText}</p>
                             </Button>

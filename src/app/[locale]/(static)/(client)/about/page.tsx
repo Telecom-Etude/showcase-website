@@ -1,27 +1,27 @@
-import { ArrowRight } from "lucide-react";
-import Image, { StaticImageData } from "next/image";
-import { ReactNode } from "react";
+import { ArrowRight } from 'lucide-react';
+import Image, { StaticImageData } from 'next/image';
+import { ReactNode } from 'react';
 
-import AFNOR from "@/../public/images/about/afnor.png";
-import CNJE from "@/../public/images/about/cnje_text.png";
-import GroupPhoto from "@/../public/images/about/group_photo.jpg";
-import TP from "@/../public/images/about/tp.jpeg";
-import ICP from "@/../public/images/ieseg/logo.webp";
-import QualityPolicy from "@/../public/images/quality_policy.png";
+import AFNOR from '@/../public/images/about/afnor.png';
+import CNJE from '@/../public/images/about/cnje_text.png';
+import GroupPhoto from '@/../public/images/about/group_photo.jpg';
+import TP from '@/../public/images/about/tp.jpeg';
+import ICP from '@/../public/images/ieseg/logo.webp';
+import QualityPolicy from '@/../public/images/quality_policy.png';
 
-import { cn } from "@/lib/utils";
-import { LocaleParams } from "@/locales/config";
-import { getDictionary } from "@/locales/dictionaries";
+import { cn } from '@/lib/utils';
+import { LocaleParams } from '@/locales/config';
+import { getDictionary } from '@/locales/dictionaries';
 
-import { Block } from "@/components/styles/blocks";
-import { Paragraphs } from "@/components/styles/texts";
-import { VariantLink } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
-import { nav } from "@/locales/routing";
-import { Metadata } from "next";
+import { Block } from '@/components/styles/blocks';
+import { Paragraphs } from '@/components/styles/texts';
+import { VariantLink } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
+import { nav } from '@/locales/routing';
+import { Metadata } from 'next';
 
 export var metadata: Metadata = {
-    title: "À propos",
+    title: 'À propos',
 };
 
 function Text({ title, children }: { title: string | ReactNode; children: ReactNode }) {
@@ -33,11 +33,36 @@ function Text({ title, children }: { title: string | ReactNode; children: ReactN
     );
 }
 
-function SideImage({ src, alt, className, ...props }: { src: StaticImageData; alt: string; className?: string }) {
-    return <Image placeholder="blur" src={src} alt={alt} className={cn("w-auto m-auto max-h-[300px] rounded-2xl", className)} {...props} />;
+function SideImage({
+    src,
+    alt,
+    className,
+    ...props
+}: {
+    src: StaticImageData;
+    alt: string;
+    className?: string;
+}) {
+    return (
+        <Image
+            placeholder="blur"
+            src={src}
+            alt={alt}
+            className={cn('w-auto m-auto max-h-[300px] rounded-2xl', className)}
+            {...props}
+        />
+    );
 }
 
-function TopLeft({ title, pars, right }: { title: string | ReactNode; pars: ReactNode; right: ReactNode }) {
+function TopLeft({
+    title,
+    pars,
+    right,
+}: {
+    title: string | ReactNode;
+    pars: ReactNode;
+    right: ReactNode;
+}) {
     return (
         <section className="flex flex-col justify-center items-center xl:flex-row p-10 xl:space-x-10 xl:space-y-0 space-y-10 max-w-[800px] xl:max-w-[2000px] m-auto">
             <div className="xl:w-1/2">
@@ -48,7 +73,15 @@ function TopLeft({ title, pars, right }: { title: string | ReactNode; pars: Reac
     );
 }
 
-function TopRight({ title, pars, left }: { title: string | ReactNode; pars: ReactNode; left: ReactNode }) {
+function TopRight({
+    title,
+    pars,
+    left,
+}: {
+    title: string | ReactNode;
+    pars: ReactNode;
+    left: ReactNode;
+}) {
     return (
         <section className="flex flex-col justify-center items-center xl:flex-row p-10 xl:space-x-10 xl:space-y-0 space-y-10 max-w-[800px] xl:max-w-[2000px] m-auto">
             <div className="xl:hidden">
@@ -69,7 +102,9 @@ export default async function Page({ params }: LocaleParams) {
     return (
         <Block full>
             <h1 className="p-10">
-                <strong className="text-transparent bg-clip-text bg-gradient-to-r from-destructive to-primary">Telecom Etude</strong>
+                <strong className="text-transparent bg-clip-text bg-gradient-to-r from-destructive to-primary">
+                    Telecom Etude
+                </strong>
                 <p>{t.description}</p>
             </h1>
             <TopLeft
@@ -78,7 +113,11 @@ export default async function Page({ params }: LocaleParams) {
                 pars={
                     <>
                         <Paragraphs paragraphs={t.ourje} />
-                        <VariantLink variant="call2action" href="/team" className="flex items-center space-x-2 text-xl p-2">
+                        <VariantLink
+                            variant="call2action"
+                            href="/team"
+                            className="flex items-center space-x-2 text-xl p-2"
+                        >
                             <p>{t.ourMandate}</p>
                             <ArrowRight />
                         </VariantLink>
@@ -117,13 +156,25 @@ export default async function Page({ params }: LocaleParams) {
             </section>
             <Separator />
 
-            <TopRight left={<SideImage src={CNJE} alt={t.alt.cnje} />} title={t.titles.satisfaction} pars={<Paragraphs paragraphs={[t.satisfaction]} />} />
+            <TopRight
+                left={<SideImage src={CNJE} alt={t.alt.cnje} />}
+                title={t.titles.satisfaction}
+                pars={<Paragraphs paragraphs={[t.satisfaction]} />}
+            />
             <Separator />
             <TopLeft
                 right={
                     <div className="flex flex-col space-y-10 items-center justify-between">
-                        <SideImage src={ICP} alt="Logo IESEG Conseil Paris" className="bg-[#151f2a]" />
-                        <VariantLink variant="call2action" href={nav(locale, "/ieseg")} className="flex items-center space-x-2 text-xl p-2">
+                        <SideImage
+                            src={ICP}
+                            alt="Logo IESEG Conseil Paris"
+                            className="bg-[#151f2a]"
+                        />
+                        <VariantLink
+                            variant="call2action"
+                            href={nav(locale, '/ieseg')}
+                            className="flex items-center space-x-2 text-xl p-2"
+                        >
                             <p>{t.moreInfo}</p>
                             <ArrowRight />
                         </VariantLink>

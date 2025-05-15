@@ -1,10 +1,15 @@
-import NextAuth, { type NextAuthConfig, type User as AuthUser, type Session, User } from "next-auth";
-import type { JWT } from "next-auth/jwt";
-import authConfig from "@/auth/auth.config";
-import { db } from "@/lib/db";
-import { getRights } from "@/db/users";
-import { SIGNIN_PATH, SIGNOUT_PATH } from "./routes";
-import { measureMemory } from "vm";
+import NextAuth, {
+    type NextAuthConfig,
+    type User as AuthUser,
+    type Session,
+    User,
+} from 'next-auth';
+import type { JWT } from 'next-auth/jwt';
+import authConfig from '@/auth/auth.config';
+import { db } from '@/lib/db';
+import { getRights } from '@/db/users';
+import { SIGNIN_PATH, SIGNOUT_PATH } from './routes';
+import { measureMemory } from 'vm';
 
 export interface Rights {
     formAdmin: boolean;
@@ -64,7 +69,7 @@ const config = {
             }
         },
     },
-    session: { strategy: "jwt" },
+    session: { strategy: 'jwt' },
     ...authConfig,
 } satisfies NextAuthConfig;
 

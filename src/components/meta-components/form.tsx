@@ -1,19 +1,33 @@
-"use client";
+'use client';
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { ControllerRenderProps, DefaultValues, FieldValues, Path, UseFormReturn, useForm } from "react-hook-form";
-import * as z from "zod";
+import { zodResolver } from '@hookform/resolvers/zod';
+import {
+    ControllerRenderProps,
+    DefaultValues,
+    FieldValues,
+    Path,
+    UseFormReturn,
+    useForm,
+} from 'react-hook-form';
+import * as z from 'zod';
 
-import { Button } from "@/components/ui/button";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { ReactElement, ReactNode } from "react";
-import { Textarea } from "../ui/textarea";
-import { Input } from "../ui/input";
+import { Button } from '@/components/ui/button';
+import {
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from '@/components/ui/form';
+import { ReactElement, ReactNode } from 'react';
+import { Textarea } from '../ui/textarea';
+import { Input } from '../ui/input';
 
 interface ValueProps {
     label?: string;
     labelClassName?: string;
-    type: "input" | "textarea";
+    type: 'input' | 'textarea';
     placeholder?: string;
 }
 
@@ -33,28 +47,42 @@ interface FormElementProps<T extends FieldValues> {
 }
 
 const FormElement = <T extends FieldValues>({ field, value }: FormElementProps<T>) => {
-    if (value.type === "textarea") {
+    if (value.type === 'textarea') {
         return (
             <Textarea
                 className="border-[1px] rounded-none  border-primary p-6"
                 placeholder={value.placeholder}
                 {...field}
-                onInput={e => {
+                onInput={(e) => {
                     let target = e.target as HTMLElement;
-                    target.style.height = "inherit";
-                    let fontSize = parseFloat(window.getComputedStyle(target, null).getPropertyValue("font-size"));
+                    target.style.height = 'inherit';
+                    let fontSize = parseFloat(
+                        window.getComputedStyle(target, null).getPropertyValue('font-size')
+                    );
                     target.style.height = `${target.scrollHeight + fontSize}px`;
                 }}
             />
         );
-    } else if (value.type === "input") {
-        return <Input className="border-[1px] rounded-none border-primary p-6" placeholder={value.placeholder} {...field} />;
+    } else if (value.type === 'input') {
+        return (
+            <Input
+                className="border-[1px] rounded-none border-primary p-6"
+                placeholder={value.placeholder}
+                {...field}
+            />
+        );
     } else {
         return null;
     }
 };
 
-export default function FormPage<T extends FieldValues>({ fields, onSubmit, submitButton, defaultValues, formSchema }: FormPageProps<T>) {
+export default function FormPage<T extends FieldValues>({
+    fields,
+    onSubmit,
+    submitButton,
+    defaultValues,
+    formSchema,
+}: FormPageProps<T>) {
     const form: UseFormReturn<T> = useForm<T>({
         resolver: zodResolver(formSchema),
         defaultValues: defaultValues as DefaultValues<T>,
@@ -70,7 +98,13 @@ export default function FormPage<T extends FieldValues>({ fields, onSubmit, subm
                         name={key as Path<T>}
                         render={({ field }) => (
                             <FormItem>
-                                <>{value.label && <FormLabel className={value.labelClassName}>{value.label}</FormLabel>}</>
+                                <>
+                                    {value.label && (
+                                        <FormLabel className={value.labelClassName}>
+                                            {value.label}
+                                        </FormLabel>
+                                    )}
+                                </>
                                 <FormControl>
                                     <FormElement field={field} value={value} />
                                 </FormControl>

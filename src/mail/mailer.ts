@@ -1,12 +1,12 @@
-"use server";
+'use server';
 
-import nodemailer from "nodemailer";
+import nodemailer from 'nodemailer';
 
 export async function sendEmail(dest_email: string[], subject: string, html: string, text: string) {
-    if (process.env.DEV_MODE) console.log("Send email");
+    if (process.env.DEV_MODE) console.log('Send email');
 
     let transporter = nodemailer.createTransport({
-        service: "gmail",
+        service: 'gmail',
         auth: {
             user: process.env.SMTP_EMAIL,
             pass: process.env.SMTP_PASSWORD,
@@ -23,7 +23,7 @@ export async function sendEmail(dest_email: string[], subject: string, html: str
 
     await transporter.sendMail(mailOptions);
 
-    if (process.env.DEV_MODE) console.log("Email sent");
+    if (process.env.DEV_MODE) console.log('Email sent');
 }
 
 interface FormProps {
@@ -36,18 +36,26 @@ interface FormProps {
 }
 
 function escapeHtml(unsafe: string | undefined): string | undefined {
-    return unsafe?.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+    return unsafe
+        ?.replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
 }
 
-export async function sendForm({ name, email, tel, societe, subject, message }: FormProps, emails: string[]) {
-    if (process.env.DEV_MODE) console.log("sending form");
+export async function sendForm(
+    { name, email, tel, societe, subject, message }: FormProps,
+    emails: string[]
+) {
+    if (process.env.DEV_MODE) console.log('sending form');
 
     const date = new Date();
-    const formattedDate = `${date.toLocaleDateString("fr-FR", {
-        day: "2-digit",
-        month: "2-digit",
-        year: "2-digit",
-    })} ${date.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" })}`;
+    const formattedDate = `${date.toLocaleDateString('fr-FR', {
+        day: '2-digit',
+        month: '2-digit',
+        year: '2-digit',
+    })} ${date.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}`;
 
     const safeName = escapeHtml(name);
     const safeEmail = escapeHtml(email);
@@ -137,5 +145,5 @@ ${message}
 
     await sendEmail(emails, email_subject, html, text);
 
-    if (process.env.DEV_MODE) console.log("form sent");
+    if (process.env.DEV_MODE) console.log('form sent');
 }

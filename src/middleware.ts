@@ -10,10 +10,10 @@
  * @donotmove
  */
 
-import { NextResponse } from "next/server";
-import { NextAuthRequest, SIGNIN_PATH, SIGNOUT_PATH, getAuthorisationCode } from "@/auth/routes";
-import { auth } from "@/auth/auth";
-import { getLocaleRoutesProps } from "@/locales/routing";
+import { NextResponse } from 'next/server';
+import { NextAuthRequest, SIGNIN_PATH, SIGNOUT_PATH, getAuthorisationCode } from '@/auth/routes';
+import { auth } from '@/auth/auth';
+import { getLocaleRoutesProps } from '@/locales/routing';
 
 /**
  * A redirection will change the URL of the page and render the page at the new URL.
@@ -37,7 +37,7 @@ export default auth(async (req: NextAuthRequest) => {
     const code = getAuthorisationCode(req, pathnameWithoutLocale);
     if (code == 404) return;
     if (code != 200) return rewrite(`/${locale}/error/${code}`, req, code);
-    if (pathnameWithoutLocale.startsWith("/auth")) {
+    if (pathnameWithoutLocale.startsWith('/auth')) {
         const authed = req.auth?.user.email;
         if (pathnameWithoutLocale === SIGNIN_PATH && authed) {
             return redirect(`/${locale}`, req);
@@ -46,10 +46,11 @@ export default auth(async (req: NextAuthRequest) => {
             return redirect(`/${locale}`, req);
         }
     } else {
-        if (!hasLocale) return redirect(`/${locale}${pathnameWithoutLocale}${req.nextUrl.search}`, req);
+        if (!hasLocale)
+            return redirect(`/${locale}${pathnameWithoutLocale}${req.nextUrl.search}`, req);
     }
     const headers = new Headers(req.headers);
-    headers.set("x-current-path", req.nextUrl.pathname);
+    headers.set('x-current-path', req.nextUrl.pathname);
     return NextResponse.next({ headers });
 });
 
@@ -57,5 +58,7 @@ export default auth(async (req: NextAuthRequest) => {
  * @property {string[]} matcher - An array of URL patterns to match against. The middleware will solely be applied to URLs that match this patterns.
  */
 export const config = {
-    matcher: ["/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|logo.*g|fr/plaquette.pdf|en/plaquette.pdf).*)"],
+    matcher: [
+        '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|logo.*g|fr/plaquette.pdf|en/plaquette.pdf).*)',
+    ],
 };

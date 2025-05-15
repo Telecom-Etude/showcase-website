@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
@@ -21,14 +21,14 @@ function generateSlug(title: string): string {
     return title
         .toLowerCase()
         .trim()
-        .replace(/[\s]+/g, "-")
-        .replace(/[^\w\-]+/g, "")
-        .replace(/--+/g, "-")
-        .replace(/^-+|-+$/g, "");
+        .replace(/[\s]+/g, '-')
+        .replace(/[^\w\-]+/g, '')
+        .replace(/--+/g, '-')
+        .replace(/^-+|-+$/g, '');
 }
 
 backfillSlugs()
-    .catch(e => {
+    .catch((e) => {
         console.error(e);
         process.exit(1);
     })

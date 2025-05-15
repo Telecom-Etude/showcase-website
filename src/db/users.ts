@@ -1,7 +1,7 @@
-"use server";
+'use server';
 
-import { Rights } from "@/auth/auth";
-import { db } from "@/lib/db";
+import { Rights } from '@/auth/auth';
+import { db } from '@/lib/db';
 
 ////////////// CREAT ///////////////////
 

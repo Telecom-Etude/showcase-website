@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import { Button } from "../../ui/button";
-import { FullLogo } from "../../telecom-etude/logos";
-import Link from "next/link";
-import { MobileNavBar } from "./mobile";
-import { Links } from "./links/links";
-import { useState, useEffect } from "react";
-import { Locale } from "@/locales/config";
-import { ExtendedUser } from "@/auth/auth";
-import { useRouter } from "next/navigation";
+import { Button } from '../../ui/button';
+import { FullLogo } from '../../telecom-etude/logos';
+import Link from 'next/link';
+import { MobileNavBar } from './mobile';
+import { Links } from './links/links';
+import { useState, useEffect } from 'react';
+import { Locale } from '@/locales/config';
+import { ExtendedUser } from '@/auth/auth';
+import { useRouter } from 'next/navigation';
 
 export const NavBar = ({ locale, user }: { locale: Locale; user?: ExtendedUser }) => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -23,9 +23,9 @@ export const NavBar = ({ locale, user }: { locale: Locale; user?: ExtendedUser }
     };
 
     useEffect(() => {
-        window.addEventListener("scroll", handleScroll);
+        window.addEventListener('scroll', handleScroll);
         return () => {
-            window.removeEventListener("scroll", handleScroll);
+            window.removeEventListener('scroll', handleScroll);
         };
     }, []);
 
@@ -39,9 +39,9 @@ export const NavBar = ({ locale, user }: { locale: Locale; user?: ExtendedUser }
                         <Link
                             href="/"
                             className="flex justify-start px-0 py-0"
-                            onContextMenu={e => {
+                            onContextMenu={(e) => {
                                 e.preventDefault();
-                                router.push("https://github.com/telecom-etude/logos");
+                                router.push('https://github.com/telecom-etude/logos');
                             }}
                         >
                             <FullLogo />

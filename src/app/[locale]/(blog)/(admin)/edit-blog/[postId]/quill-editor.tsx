@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import { useEffect, useRef, useState } from "react";
-import "quill/dist/quill.snow.css";
-import Quill, { QuillOptions } from "quill";
-import { updateLocaleBlogContent } from "@/db/blogs";
-import { useRouter } from "next/navigation";
-import { Op } from "quill/core";
-import { Actions } from "./editor-actions";
-import { Locale } from "@/locales/config";
-import dynamic from "next/dynamic";
+import { useEffect, useRef, useState } from 'react';
+import 'quill/dist/quill.snow.css';
+import Quill, { QuillOptions } from 'quill';
+import { updateLocaleBlogContent } from '@/db/blogs';
+import { useRouter } from 'next/navigation';
+import { Op } from 'quill/core';
+import { Actions } from './editor-actions';
+import { Locale } from '@/locales/config';
+import dynamic from 'next/dynamic';
 
 export interface QuillEditorProps {
     dbLabels: string[];
@@ -19,7 +19,14 @@ export interface QuillEditorProps {
     blogLabels: string[];
 }
 
-export function QuillEditor({ id, content, title, locale, dbLabels, blogLabels }: QuillEditorProps) {
+export function QuillEditor({
+    id,
+    content,
+    title,
+    locale,
+    dbLabels,
+    blogLabels,
+}: QuillEditorProps) {
     const [quill, setQuill] = useState<Quill | null>(null);
     const [loaded, setLoaded] = useState(false); // to do only one request to the server per render
     const [value, setValue] = useState(JSON.stringify(content));
@@ -29,22 +36,27 @@ export function QuillEditor({ id, content, title, locale, dbLabels, blogLabels }
     const router = useRouter();
 
     useEffect(() => {
-        if (typeof window !== "undefined" && typeof document !== "undefined" && quill === null && editorRef.current) {
+        if (
+            typeof window !== 'undefined' &&
+            typeof document !== 'undefined' &&
+            quill === null &&
+            editorRef.current
+        ) {
             const toolbar = [
                 [{ header: [2, 3, 4, false] }],
-                ["bold", "italic", "underline", "strike"], // toggled buttons
-                ["blockquote", "code-block"],
-                [{ list: "ordered" }, { list: "bullet" }],
-                [{ script: "sub" }, { script: "super" }], // superscript/subscript
-                [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
+                ['bold', 'italic', 'underline', 'strike'], // toggled buttons
+                ['blockquote', 'code-block'],
+                [{ list: 'ordered' }, { list: 'bullet' }],
+                [{ script: 'sub' }, { script: 'super' }], // superscript/subscript
+                [{ indent: '-1' }, { indent: '+1' }], // outdent/indent
                 [{ color: [] }, { background: [] }], // dropdown with defaults from theme
                 [{ align: [] }],
-                ["link", "image", "video"],
-                ["clean"], // remove formatting button
+                ['link', 'image', 'video'],
+                ['clean'], // remove formatting button
             ];
             const options: QuillOptions = {
-                theme: "snow",
-                placeholder: "Écrivez votre article ici...",
+                theme: 'snow',
+                placeholder: 'Écrivez votre article ici...',
                 modules: { toolbar },
             };
             try {
@@ -57,7 +69,7 @@ export function QuillEditor({ id, content, title, locale, dbLabels, blogLabels }
     useEffect(() => {
         if (quill !== null && !loaded) {
             quill.setContents(content);
-            quill.on("text-change", () => {
+            quill.on('text-change', () => {
                 setValue(JSON.stringify(quill.getContents().ops));
                 const newContent = quill.getContents().ops;
                 if (newContent != content) {
@@ -70,7 +82,9 @@ export function QuillEditor({ id, content, title, locale, dbLabels, blogLabels }
 
     return (
         <div className="w-full">
-            <Actions {...{ locale, setToBeChanged, content, value, id, title, dbLabels, blogLabels }} />
+            <Actions
+                {...{ locale, setToBeChanged, content, value, id, title, dbLabels, blogLabels }}
+            />
             <div ref={editorRef} />
         </div>
     );

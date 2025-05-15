@@ -1,13 +1,13 @@
-import { LocaleParams } from "@/locales/config";
-import { getDictionary } from "@/locales/dictionaries";
+import { LocaleParams } from '@/locales/config';
+import { getDictionary } from '@/locales/dictionaries';
 
-import { Block } from "@/components/styles/blocks";
-import { BtnLink, EmailContact } from "@/components/telecom-etude/contact";
-import { Metadata } from "next";
-import { OrangeTitle } from "@/components/styles/texts";
+import { Block } from '@/components/styles/blocks';
+import { BtnLink, EmailContact } from '@/components/telecom-etude/contact';
+import { Metadata } from 'next';
+import { OrangeTitle } from '@/components/styles/texts';
 
 export var metadata: Metadata = {
-    title: "Mentions légales",
+    title: 'Mentions légales',
 };
 
 export default async function Legal({ params }: LocaleParams) {
@@ -30,10 +30,10 @@ export default async function Legal({ params }: LocaleParams) {
                             </p>
                         </div>
                         <div className="flex flex-col italic text-sm p-2 border-l-2">
-                            <p>{t.legal.owner.siret + ": "} 332 711 522 00026</p>
-                            <p>{t.legal.owner.urssaf + ": "} 757 090058076001011 8</p>
-                            <p>{t.legal.owner.vat + ": "} FR 1933 2711 522 00018</p>
-                            <p>{t.legal.owner.ape + ": "} 6202A</p>
+                            <p>{t.legal.owner.siret + ': '} 332 711 522 00026</p>
+                            <p>{t.legal.owner.urssaf + ': '} 757 090058076001011 8</p>
+                            <p>{t.legal.owner.vat + ': '} FR 1933 2711 522 00018</p>
+                            <p>{t.legal.owner.ape + ': '} 6202A</p>
                         </div>
                     </div>
                     <div>
@@ -47,7 +47,8 @@ export default async function Legal({ params }: LocaleParams) {
                             {t.legal.host.contact} <EmailContact />
                         </p>
                         <p>
-                            {t.legal.host.website} <BtnLink href="https://www.rezel.net">rezel.net</BtnLink>
+                            {t.legal.host.website}{' '}
+                            <BtnLink href="https://www.rezel.net">rezel.net</BtnLink>
                         </p>
                     </div>
                 </div>

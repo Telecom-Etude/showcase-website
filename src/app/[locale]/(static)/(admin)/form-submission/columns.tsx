@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import { ColumnDef, Row } from "@tanstack/react-table";
+import { ColumnDef, Row } from '@tanstack/react-table';
 
-import { Checkbox } from "@/components/ui/checkbox";
+import { Checkbox } from '@/components/ui/checkbox';
 
-import { ContactFormType } from "./schema";
-import { useRouter } from "next/navigation";
-import React from "react";
-import { makeDone } from "@/db/form";
-import { DataTableColumnHeader } from "@/components/meta-components/table/data-table-column-header";
+import { ContactFormType } from './schema';
+import { useRouter } from 'next/navigation';
+import React from 'react';
+import { makeDone } from '@/db/form';
+import { DataTableColumnHeader } from '@/components/meta-components/table/data-table-column-header';
 
 const DoneCheck = (row: Row<ContactFormType>) => {
     const router = useRouter();
@@ -28,74 +28,84 @@ const DoneCheck = (row: Row<ContactFormType>) => {
 const Message = ({ row }: { row: Row<ContactFormType> }) => {
     return (
         <div className="flex space-x-2">
-            <span className="max-w-[500px] truncate font-medium">{row.getValue("message")}</span>
+            <span className="max-w-[500px] truncate font-medium">{row.getValue('message')}</span>
         </div>
     );
 };
 
 export const columns: ColumnDef<ContactFormType>[] = [
     {
-        accessorKey: "name",
+        accessorKey: 'name',
         header: ({ column }) => <DataTableColumnHeader column={column} title="Name" />,
         cell: ({ row }) => {
             return (
                 <div className="flex space-x-2">
-                    <span className="max-w-[500px] truncate font-medium">{row.getValue("name")}</span>
+                    <span className="max-w-[500px] truncate font-medium">
+                        {row.getValue('name')}
+                    </span>
                 </div>
             );
         },
     },
     {
-        accessorKey: "email",
+        accessorKey: 'email',
         header: ({ column }) => <DataTableColumnHeader column={column} title="Email" />,
         cell: ({ row }) => {
             return (
                 <div className="flex space-x-2">
-                    <span className="max-w-[500px] truncate font-medium">{row.getValue("email")}</span>
+                    <span className="max-w-[500px] truncate font-medium">
+                        {row.getValue('email')}
+                    </span>
                 </div>
             );
         },
     },
     {
-        accessorKey: "done",
+        accessorKey: 'done',
         header: ({ column }) => <DataTableColumnHeader column={column} title="Fait" />,
         cell: ({ row }) => DoneCheck(row),
     },
     {
-        accessorKey: "societe",
+        accessorKey: 'societe',
         header: ({ column }) => <DataTableColumnHeader column={column} title="Société" />,
         cell: ({ row }) => {
             return (
                 <div className="flex space-x-2">
-                    <span className="max-w-[500px] truncate font-medium">{row.getValue("societe")}</span>
+                    <span className="max-w-[500px] truncate font-medium">
+                        {row.getValue('societe')}
+                    </span>
                 </div>
             );
         },
     },
     {
-        accessorKey: "tel",
+        accessorKey: 'tel',
         header: ({ column }) => <DataTableColumnHeader column={column} title="Téléphone" />,
         cell: ({ row }) => {
             return (
                 <div className="flex space-x-2">
-                    <span className="max-w-[500px] truncate font-medium">{row.getValue("tel")}</span>
+                    <span className="max-w-[500px] truncate font-medium">
+                        {row.getValue('tel')}
+                    </span>
                 </div>
             );
         },
     },
     {
-        accessorKey: "subject",
+        accessorKey: 'subject',
         header: ({ column }) => <DataTableColumnHeader column={column} title="Sujet" />,
         cell: ({ row }) => {
             return (
                 <div className="flex space-x-2">
-                    <span className="max-w-[500px] truncate font-medium">{row.getValue("subject")}</span>
+                    <span className="max-w-[500px] truncate font-medium">
+                        {row.getValue('subject')}
+                    </span>
                 </div>
             );
         },
     },
     {
-        accessorKey: "message",
+        accessorKey: 'message',
         header: ({ column }) => <DataTableColumnHeader column={column} title="Message" />,
         cell: ({ row }) => <Message row={row} />,
     },

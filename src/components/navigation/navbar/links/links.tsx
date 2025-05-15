@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import React, { Fragment, useState } from "react";
-import Link from "next/link";
-import { FaArrowRight } from "react-icons/fa";
+import React, { Fragment, useState } from 'react';
+import Link from 'next/link';
+import { FaArrowRight } from 'react-icons/fa';
 
-import { getDictionary } from "@/locales/dictionaries";
-import { Locale } from "@/locales/config";
-import { nav } from "@/locales/routing";
-import { ExtendedUser } from "@/auth/auth";
-import { LocaleSwitch } from "./locale-switcher";
-import { getLinks, SingleLink, ExtendedLink, MultipleLink } from "./get-links";
-import { cn } from "@/lib/utils";
+import { getDictionary } from '@/locales/dictionaries';
+import { Locale } from '@/locales/config';
+import { nav } from '@/locales/routing';
+import { ExtendedUser } from '@/auth/auth';
+import { LocaleSwitch } from './locale-switcher';
+import { getLinks, SingleLink, ExtendedLink, MultipleLink } from './get-links';
+import { cn } from '@/lib/utils';
 
 import {
     DeployableListItem,
@@ -21,14 +21,22 @@ import {
     NavigationMenuList,
     NavigationMenuTrigger,
     navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
-import { Button } from "@/components/ui/button";
-import { FaChevronDown, FaChevronUp } from "react-icons/fa6";
-import { useRouter } from "next/navigation";
-import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
-import { ThemeSwitch } from "@/components/themes";
+} from '@/components/ui/navigation-menu';
+import { Button } from '@/components/ui/button';
+import { FaChevronDown, FaChevronUp } from 'react-icons/fa6';
+import { useRouter } from 'next/navigation';
+import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
+import { ThemeSwitch } from '@/components/themes';
 
-const ContactButton = ({ link, onClick, setOpened }: { link: SingleLink; onClick: () => void; setOpened: (open: null | number) => void }) => (
+const ContactButton = ({
+    link,
+    onClick,
+    setOpened,
+}: {
+    link: SingleLink;
+    onClick: () => void;
+    setOpened: (open: null | number) => void;
+}) => (
     <Button
         asChild
         variant="call2action"
@@ -63,7 +71,11 @@ const MultipleMobileLinks = ({
     link: MultipleLink;
 }) => (
     <>
-        <Button variant="ghost" onClick={() => setOpen()} className={cn("w-full flex items-center space-x-2", isOpen && "bg-muted")}>
+        <Button
+            variant="ghost"
+            onClick={() => setOpen()}
+            className={cn('w-full flex items-center space-x-2', isOpen && 'bg-muted')}
+        >
             <p>{link.title}</p>
             {isOpen ? <FaChevronUp className="w-2 h-2" /> : <FaChevronDown className="w-2 h-2" />}
         </Button>
@@ -88,13 +100,23 @@ const MultipleMobileLinks = ({
     </>
 );
 
-const MobileLinks = ({ links, contactLink, locale, onClick }: { onClick: () => void; links: ExtendedLink[]; contactLink: SingleLink; locale: Locale }) => {
+const MobileLinks = ({
+    links,
+    contactLink,
+    locale,
+    onClick,
+}: {
+    onClick: () => void;
+    links: ExtendedLink[];
+    contactLink: SingleLink;
+    locale: Locale;
+}) => {
     const [opened, setOpened] = useState<null | number>(null);
     const router = useRouter();
 
     const navLinks = links.map((link: ExtendedLink, i: number) => (
         <NavigationMenuItem key={i} className="w-full">
-            {"href" in link ? (
+            {'href' in link ? (
                 <Button
                     className="w-full"
                     variant="ghost"
@@ -112,13 +134,15 @@ const MobileLinks = ({ links, contactLink, locale, onClick }: { onClick: () => v
                     onClick={onClick}
                     link={link}
                     isOpen={opened === i}
-                    setOpen={() => setOpened(last => (last === i ? null : i))}
+                    setOpen={() => setOpened((last) => (last === i ? null : i))}
                 />
             )}
         </NavigationMenuItem>
     ));
     navLinks.push(<ThemeSwitch onClick={onClick} setOpened={setOpened} />);
-    navLinks.push(<LocaleSwitch locale={locale} mobile={true} onClick={onClick} setOpened={setOpened} />);
+    navLinks.push(
+        <LocaleSwitch locale={locale} mobile={true} onClick={onClick} setOpened={setOpened} />
+    );
     navLinks.push(<ContactButton link={contactLink} onClick={onClick} setOpened={setOpened} />);
 
     return (
@@ -131,20 +155,44 @@ const MobileLinks = ({ links, contactLink, locale, onClick }: { onClick: () => v
         </NavigationMenu>
     );
 };
-const DesktopLinks = ({ links, contactLink, locale }: { links: ExtendedLink[]; contactLink: SingleLink; locale: Locale }) => {
+const DesktopLinks = ({
+    links,
+    contactLink,
+    locale,
+}: {
+    links: ExtendedLink[];
+    contactLink: SingleLink;
+    locale: Locale;
+}) => {
     const navLinks = links.map((link: ExtendedLink, i: number) => (
         <NavigationMenuItem key={i}>
-            {"href" in link ? (
-                <Link href={link.href} legacyBehavior passHref className="rounded-none bg-navigation">
-                    <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "rounded-none bg-navigation")}>{link.title}</NavigationMenuLink>
+            {'href' in link ? (
+                <Link
+                    href={link.href}
+                    legacyBehavior
+                    passHref
+                    className="rounded-none bg-navigation"
+                >
+                    <NavigationMenuLink
+                        className={cn(navigationMenuTriggerStyle(), 'rounded-none bg-navigation')}
+                    >
+                        {link.title}
+                    </NavigationMenuLink>
                 </Link>
             ) : (
                 <>
-                    <NavigationMenuTrigger className="rounded-none bg-navigation">{link.title}</NavigationMenuTrigger>
+                    <NavigationMenuTrigger className="rounded-none bg-navigation">
+                        {link.title}
+                    </NavigationMenuTrigger>
                     <NavigationMenuContent>
                         <ul className="grid grid-cols-2 w-[700px] p-2">
                             {link.links.map(({ title, href, newTab }, i) => (
-                                <DeployableListItem key={i} title={title} href={href} target={newTab ? "_blank" : undefined}>
+                                <DeployableListItem
+                                    key={i}
+                                    title={title}
+                                    href={href}
+                                    target={newTab ? '_blank' : undefined}
+                                >
                                     {/* {title} */}
                                 </DeployableListItem>
                             ))}
@@ -155,7 +203,9 @@ const DesktopLinks = ({ links, contactLink, locale }: { links: ExtendedLink[]; c
         </NavigationMenuItem>
     ));
     navLinks.push(<ThemeSwitch onClick={() => {}} setOpened={() => {}} />);
-    navLinks.push(<LocaleSwitch locale={locale} mobile={false} onClick={() => {}} setOpened={() => {}} />);
+    navLinks.push(
+        <LocaleSwitch locale={locale} mobile={false} onClick={() => {}} setOpened={() => {}} />
+    );
     navLinks.push(<ContactButton link={contactLink} onClick={() => {}} setOpened={() => {}} />);
 
     return (
@@ -189,10 +239,16 @@ export const Links = ({
                 onClick={onClick!}
                 links={getLinks(locale, user)}
                 locale={locale}
-                contactLink={{ href: nav(locale, "/contact"), title: t.contact_form }}
+                contactLink={{ href: nav(locale, '/contact'), title: t.contact_form }}
             />
         );
     } else {
-        return <DesktopLinks links={getLinks(locale, user)} locale={locale} contactLink={{ href: nav(locale, "/contact"), title: t.contact_form }} />;
+        return (
+            <DesktopLinks
+                links={getLinks(locale, user)}
+                locale={locale}
+                contactLink={{ href: nav(locale, '/contact'), title: t.contact_form }}
+            />
+        );
     }
 };

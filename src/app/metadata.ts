@@ -1,5 +1,5 @@
-import { getLocale } from "@/headers";
-import { Metadata } from "next";
+import { getLocale } from '@/headers';
+import { Metadata } from 'next';
 
 const WEBSITE_URL = process.env.WEBSITE_URL;
 const DESCRIPTION =
@@ -15,31 +15,31 @@ export async function generateMetadata(): Promise<Metadata> {
         ///// VAR /////
         title: {
             // IMPORTANT
-            template: "%s | Telecom Etude",
-            default: "Telecom Etude",
+            template: '%s | Telecom Etude',
+            default: 'Telecom Etude',
         },
         ///// FIXED /////
 
         // IMPORTANT
         description: DESCRIPTION,
         keywords: [
-            "Numérique",
-            "Data",
-            "Intelligence Articielle",
-            "Technology",
-            "Machine Learning",
-            "Développement",
-            "Web",
-            "Logiciel",
-            "Chatbot",
-            "Cybersécurité",
+            'Numérique',
+            'Data',
+            'Intelligence Articielle',
+            'Technology',
+            'Machine Learning',
+            'Développement',
+            'Web',
+            'Logiciel',
+            'Chatbot',
+            'Cybersécurité',
         ],
         metadataBase: new URL(WEBSITE_URL), // settings for below
         alternates: {
-            canonical: "/" + locale,
+            canonical: '/' + locale,
             languages: {
-                "fr-FR": "/fr",
-                "en-GB": "/en",
+                'fr-FR': '/fr',
+                'en-GB': '/en',
             },
             // ...
         },
@@ -47,31 +47,38 @@ export async function generateMetadata(): Promise<Metadata> {
             // IMPORTANT
             index: true,
             follow: true,
-            "max-snippet": 320,
-            "max-image-preview": "large",
-            "max-video-preview": -1,
+            'max-snippet': 320,
+            'max-image-preview': 'large',
+            'max-video-preview': -1,
             // ...
         },
         openGraph: {
-            title: "Telecom Etude",
+            title: 'Telecom Etude',
             description: DESCRIPTION,
             url: WEBSITE_URL,
-            images: [{ url: WEBSITE_URL + "/logo.png", width: 555, height: 555, alt: "Telecom Etude Logo" }],
-            type: "website",
+            images: [
+                {
+                    url: WEBSITE_URL + '/logo.png',
+                    width: 555,
+                    height: 555,
+                    alt: 'Telecom Etude Logo',
+                },
+            ],
+            type: 'website',
         },
         twitter: {
-            card: "summary_large_image",
-            title: "Telecom Etude",
+            card: 'summary_large_image',
+            title: 'Telecom Etude',
             description: DESCRIPTION,
-            images: WEBSITE_URL + "/logo.png",
+            images: WEBSITE_URL + '/logo.png',
         },
         // NOT SO IMPORTANT
-        generator: "Next.js",
-        applicationName: "Telecom Etude Website",
-        authors: [{ name: "Tom Webber", url: "https://www.github.com/t-webber" }],
-        creator: "Tom Webber",
-        publisher: "Rezel",
-        category: "technology,data,numerique,informatique,computer,science,junior,telecom",
+        generator: 'Next.js',
+        applicationName: 'Telecom Etude Website',
+        authors: [{ name: 'Tom Webber', url: 'https://www.github.com/t-webber' }],
+        creator: 'Tom Webber',
+        publisher: 'Rezel',
+        category: 'technology,data,numerique,informatique,computer,science,junior,telecom',
         // UNKOWN IMPORTANCE
         formatDetection: {
             email: true,

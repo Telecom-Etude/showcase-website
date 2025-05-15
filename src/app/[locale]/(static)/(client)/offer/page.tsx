@@ -1,23 +1,28 @@
-import { Locale, LocaleParams } from "@/locales/config";
-import { getDictionary } from "@/locales/dictionaries";
-import { nav } from "@/locales/routing";
+import { Locale, LocaleParams } from '@/locales/config';
+import { getDictionary } from '@/locales/dictionaries';
+import { nav } from '@/locales/routing';
 
-import { Metadata } from "next";
-import Image from "next/image";
-import { FaArrowRight } from "react-icons/fa6";
+import { Metadata } from 'next';
+import Image from 'next/image';
+import { FaArrowRight } from 'react-icons/fa6';
 
-import { Block } from "@/components/styles/blocks";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { VariantLink } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
+import { Block } from '@/components/styles/blocks';
+import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+} from '@/components/ui/accordion';
+import { VariantLink } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
 
-import { DomainBlock } from "../(home)/domains";
-import { DesktopTimeline } from "./client";
-import { OFFER_IMAGES } from "./images";
-import { OrangeTitle } from "@/components/styles/texts";
+import { DomainBlock } from '../(home)/domains';
+import { DesktopTimeline } from './client';
+import { OFFER_IMAGES } from './images';
+import { OrangeTitle } from '@/components/styles/texts';
 
 export var metadata: Metadata = {
-    title: "Notre offre",
+    title: 'Notre offre',
 };
 
 function MobileTimeline({ locale }: { locale: Locale }) {
@@ -27,7 +32,9 @@ function MobileTimeline({ locale }: { locale: Locale }) {
             {t.steps.map(({ title, text }, i) => (
                 <AccordionItem value={title} key={i}>
                     <AccordionTrigger className="flex justify-start space-x-2">
-                        <div className="bg-primary aspect-square rounded-full p-1 w-8 h-8">{i + 1}</div>
+                        <div className="bg-primary aspect-square rounded-full p-1 w-8 h-8">
+                            {i + 1}
+                        </div>
                         <p>{title}</p>
                     </AccordionTrigger>
                     <AccordionContent className="flex flex-col items-center justify-center space-y-4">
@@ -79,7 +86,7 @@ export default async function Page({ params }: LocaleParams) {
                         btnCn="w-fit group"
                         className="flex space-x-2 items-center"
                         variant="call2action"
-                        href={nav(locale, "/plaquette.pdf")}
+                        href={nav(locale, '/plaquette.pdf')}
                     >
                         <p>{t.plaquette.button}</p>
                         <FaArrowRight className="group-hover:animate-bounce-x" />

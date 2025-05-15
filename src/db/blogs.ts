@@ -1,20 +1,24 @@
-"use server";
+'use server';
 
-import { PostPresentation } from "@/app/[locale]/(blog)/(client)/blog/client";
-import { db } from "@/lib/db";
-import { Locale } from "@/locales/config";
-import { Label, Post, User } from "@prisma/client";
-import { Op } from "quill/core";
-import { generateSlug } from "./slug";
+import { PostPresentation } from '@/app/[locale]/(blog)/(client)/blog/client';
+import { db } from '@/lib/db';
+import { Locale } from '@/locales/config';
+import { Label, Post, User } from '@prisma/client';
+import { Op } from 'quill/core';
+import { generateSlug } from './slug';
 
-export async function createBlog(authorEmail: string, title: string, locale: Locale): Promise<number> {
+export async function createBlog(
+    authorEmail: string,
+    title: string,
+    locale: Locale
+): Promise<number> {
     try {
         if (!authorEmail) {
-            throw new Error("Author email is undefined");
+            throw new Error('Author email is undefined');
         }
         const author = await db.user.findUnique({ where: { email: authorEmail } });
         if (!author) {
-            throw new Error("User not found");
+            throw new Error('User not found');
         }
         const blog = await db.post.create({
             data: {
@@ -24,12 +28,12 @@ export async function createBlog(authorEmail: string, title: string, locale: Loc
                 locale,
                 title,
                 slug: generateSlug(title),
-                content: "[]",
+                content: '[]',
             },
         });
         return blog.id;
     } catch (e) {
-        console.error("[createBlog] ", e);
+        console.error('[createBlog] ', e);
         throw new Error();
     }
 }
@@ -41,7 +45,7 @@ export async function updateLocaleBlogContent(id: number, content: Op[]) {
             data: { content: JSON.stringify(content) },
         });
     } catch (e) {
-        console.error("[updateBlogContent] ", e);
+        console.error('[updateBlogContent] ', e);
     }
 }
 
@@ -63,17 +67,17 @@ export async function getValidatedBlogs(locale: Locale): Promise<PostPresentatio
             include: { authors: true, labels: true },
         })!;
         const blogs = dbBlogs
-            .filter(blog => blog.validated && blog.locale == locale)
+            .filter((blog) => blog.validated && blog.locale == locale)
             .map(({ authors, labels, updatedAt, ...blog }) => ({
-                authors: authors.map(author => author.name),
-                emails: authors.map(author => author.email),
+                authors: authors.map((author) => author.name),
+                emails: authors.map((author) => author.email),
                 date: updatedAt,
-                labels: labels.filter(l => l.locale === locale).map(l => l.name),
+                labels: labels.filter((l) => l.locale === locale).map((l) => l.name),
                 ...blog,
             }));
         return blogs;
     } catch (e) {
-        console.error("[getBlogs] ", e);
+        console.error('[getBlogs] ', e);
     }
 }
 
@@ -86,15 +90,20 @@ export async function getAllBlog(): Promise<UserPost[]> {
     try {
         return (await db.post.findMany({ include: { authors: true, labels: true } })) || [];
     } catch (e) {
-        console.error("[getBlog] ", e);
+        console.error('[getBlog] ', e);
         return [];
     }
 }
 export async function getBlog(id: number): Promise<UserPost | undefined> {
     try {
-        return (await db.post.findUnique({ where: { id: id }, include: { authors: true, labels: true } })) || undefined;
+        return (
+            (await db.post.findUnique({
+                where: { id: id },
+                include: { authors: true, labels: true },
+            })) || undefined
+        );
     } catch (e) {
-        console.error("[getBlog] ", e);
+        console.error('[getBlog] ', e);
     }
 }
 
@@ -102,7 +111,7 @@ export async function deleteBlog(id: number) {
     try {
         await db.post.delete({ where: { id: id } });
     } catch (e) {
-        console.error("[deleteBlog] ", e);
+        console.error('[deleteBlog] ', e);
     }
 }
 
@@ -113,7 +122,7 @@ export async function renameBlog(id: number, title: string) {
             data: { title },
         });
     } catch (e) {
-        console.error("[renameLocaleBlog] ", e);
+        console.error('[renameLocaleBlog] ', e);
     }
 }
 
@@ -121,7 +130,7 @@ export async function validateBlog(id: number) {
     try {
         await db.post.update({ where: { id }, data: { validated: true } });
     } catch (e) {
-        console.error("[validateBlog] ", e);
+        console.error('[validateBlog] ', e);
     }
 }
 
@@ -129,6 +138,6 @@ export async function unvalidateBlog(id: number) {
     try {
         await db.post.update({ where: { id }, data: { validated: false } });
     } catch (e) {
-        console.error("[unvalidateBlog] ", e);
+        console.error('[unvalidateBlog] ', e);
     }
 }

@@ -1,20 +1,28 @@
-"use client";
+'use client';
 
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import { FaCheck, FaSave } from "react-icons/fa";
-import { FaPencil } from "react-icons/fa6";
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { useRouter } from "next/navigation";
-import type { Op } from "quill/core";
-import type { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
-import { ManyComboBox } from "@/components/meta-components/combobox";
-import { useState } from "react";
-import { getBlog, renameBlog } from "@/db/blogs";
-import { updatePostLabels } from "@/db/labels";
-import { Locale } from "@/locales/config";
+import { AiOutlineLoading3Quarters } from 'react-icons/ai';
+import { FaCheck, FaSave } from 'react-icons/fa';
+import { FaPencil } from 'react-icons/fa6';
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { useRouter } from 'next/navigation';
+import type { Op } from 'quill/core';
+import type { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
+import { ManyComboBox } from '@/components/meta-components/combobox';
+import { useState } from 'react';
+import { getBlog, renameBlog } from '@/db/blogs';
+import { updatePostLabels } from '@/db/labels';
+import { Locale } from '@/locales/config';
 
 function Rename({ title, id, router }: { title: string; id: number; router: AppRouterInstance }) {
     return (
@@ -32,9 +40,9 @@ function Rename({ title, id, router }: { title: string; id: number; router: AppR
                     <DialogTitle>Modification du titre du post</DialogTitle>
                     <form
                         className="flex flex-col items-center w-full space-y-10"
-                        onSubmit={e => {
+                        onSubmit={(e) => {
                             const formData = new FormData(e.target as HTMLFormElement);
-                            const title = formData.get("title") as string;
+                            const title = formData.get('title') as string;
                             renameBlog(id, title).finally(() => {
                                 router.refresh();
                             });
@@ -43,7 +51,13 @@ function Rename({ title, id, router }: { title: string; id: number; router: AppR
                         <Label htmlFor="title" className="w-full">
                             Titre
                         </Label>
-                        <Input defaultValue={title} className="w-full" type="text" name="title" id="title" />
+                        <Input
+                            defaultValue={title}
+                            className="w-full"
+                            type="text"
+                            name="title"
+                            id="title"
+                        />
                         <Button variant="call2action" type="submit">
                             Renommer
                         </Button>
@@ -54,16 +68,24 @@ function Rename({ title, id, router }: { title: string; id: number; router: AppR
     );
 }
 
-function AddLabel({ getLabels, addRemoveLabel, dbLabels }: { getLabels: string[]; addRemoveLabel: (x: string) => void; dbLabels: string[] }) {
+function AddLabel({
+    getLabels,
+    addRemoveLabel,
+    dbLabels,
+}: {
+    getLabels: string[];
+    addRemoveLabel: (x: string) => void;
+    dbLabels: string[];
+}) {
     return (
         <ManyComboBox
             selected={getLabels}
             addRemove={addRemoveLabel}
             items={dbLabels}
             vocab={{
-                title: "Modifier les labels",
-                selectorMessage: "Selectionner au plus 6 labels",
-                empty: "Aucun filtre ne correspond à cette recherche",
+                title: 'Modifier les labels',
+                selectorMessage: 'Selectionner au plus 6 labels',
+                empty: 'Aucun filtre ne correspond à cette recherche',
             }}
             limit={6}
         />
@@ -94,13 +116,15 @@ function OpenSave({ saving }: { saving: boolean }) {
                 <DialogHeader className="space-y-6">
                     <DialogTitle>Sauvegarde automatique des posts</DialogTitle>
                     <DialogDescription className="flex items-center flex-col">
-                        Une sauvegarde automatique s&apos;effectue en permanence pour éviter les pertes de données. Comme elles peuvent prendre du temps, vous
-                        pouvez faire une sauvegarde manuelle avant de quitter la page avec le bouton &ldquo;Sauvegarder&rdquo;. Spammer ce bouton ne sert à
-                        rien, juste peut entraîner des crash.
+                        Une sauvegarde automatique s&apos;effectue en permanence pour éviter les
+                        pertes de données. Comme elles peuvent prendre du temps, vous pouvez faire
+                        une sauvegarde manuelle avant de quitter la page avec le bouton
+                        &ldquo;Sauvegarder&rdquo;. Spammer ce bouton ne sert à rien, juste peut
+                        entraîner des crash.
                     </DialogDescription>
                     <DialogFooter className="text-destructive">
-                        ATTENTION: ne quittez pas la page tant que le status n&apos;est pas marqué en &ldquo;Sauvegardé&rdquo; au risque de perdre votre
-                        contenu...
+                        ATTENTION: ne quittez pas la page tant que le status n&apos;est pas marqué
+                        en &ldquo;Sauvegardé&rdquo; au risque de perdre votre contenu...
                     </DialogFooter>
                 </DialogHeader>
             </DialogContent>
@@ -119,20 +143,29 @@ interface ActionProps {
     readonly locale: Locale;
 }
 
-export function Actions({ setToBeChanged, content, value, title, id, dbLabels, blogLabels, locale }: ActionProps) {
+export function Actions({
+    setToBeChanged,
+    content,
+    value,
+    title,
+    id,
+    dbLabels,
+    blogLabels,
+    locale,
+}: ActionProps) {
     const [getLabels, setLabels] = useState<string[]>(blogLabels);
     const addRemoveLabel = (label: string) => {
         var newLabels = getLabels;
         if (getLabels.includes(label)) {
-            newLabels = getLabels.filter(l => l !== label);
+            newLabels = getLabels.filter((l) => l !== label);
         } else if (getLabels.length < 6) {
             newLabels.push(label);
         }
         setLabels(newLabels);
 
         updatePostLabels(newLabels, id, locale).finally(() => {
-            getBlog(id).then(post => {
-                if (process.env.DEV_MODE) console.log("DBLABELS ", JSON.stringify(post?.labels));
+            getBlog(id).then((post) => {
+                if (process.env.DEV_MODE) console.log('DBLABELS ', JSON.stringify(post?.labels));
             });
         });
     };
@@ -155,7 +188,11 @@ export function Actions({ setToBeChanged, content, value, title, id, dbLabels, b
                         </span>
                     </Button>
                     <Rename id={id} title={title} router={router} />
-                    <AddLabel addRemoveLabel={addRemoveLabel} dbLabels={dbLabels} getLabels={getLabels} />
+                    <AddLabel
+                        addRemoveLabel={addRemoveLabel}
+                        dbLabels={dbLabels}
+                        getLabels={getLabels}
+                    />
                 </div>
                 <div>
                     <OpenSave saving={JSON.stringify(content) !== value} />

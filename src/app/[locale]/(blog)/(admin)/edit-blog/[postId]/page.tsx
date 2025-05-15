@@ -1,12 +1,12 @@
-import { auth } from "@/auth/auth";
-import { QuillEditor } from "./quill-editor";
-import { Block } from "@/components/styles/blocks";
-import { getLocaleLabels } from "@/db/labels";
-import { Locale, LocalePostParams } from "@/locales/config";
-import { redirect } from "next/navigation";
-import { getBlog } from "@/db/blogs";
-import { UnValidate } from "./unvalidate";
-import { nav } from "@/locales/routing";
+import { auth } from '@/auth/auth';
+import { QuillEditor } from './quill-editor';
+import { Block } from '@/components/styles/blocks';
+import { getLocaleLabels } from '@/db/labels';
+import { Locale, LocalePostParams } from '@/locales/config';
+import { redirect } from 'next/navigation';
+import { getBlog } from '@/db/blogs';
+import { UnValidate } from './unvalidate';
+import { nav } from '@/locales/routing';
 
 export default async function EditBlog({ params }: LocalePostParams) {
     const { postId, locale } = await params;
@@ -14,13 +14,13 @@ export default async function EditBlog({ params }: LocalePostParams) {
     const blog = await getBlog(id);
     const email = (await auth())?.user.email;
     if (!email) {
-        redirect(nav(locale, "/error/401"));
+        redirect(nav(locale, '/error/401'));
     }
     if (Number.isNaN(id) || !blog) {
-        redirect(nav(locale, "/error/404"));
+        redirect(nav(locale, '/error/404'));
     }
-    if (!blog.authors.map(a => a.email).includes(email)) {
-        redirect(nav(locale, "/error/403"));
+    if (!blog.authors.map((a) => a.email).includes(email)) {
+        redirect(nav(locale, '/error/403'));
     }
     const blogLocale: Locale = blog.locale as Locale;
     const localeLabels = await getLocaleLabels(blogLocale);
@@ -35,7 +35,7 @@ export default async function EditBlog({ params }: LocalePostParams) {
                 content={JSON.parse(blog.content)}
                 title={blog.title}
                 dbLabels={labels}
-                blogLabels={blog.labels.map(label => label.name)}
+                blogLabels={blog.labels.map((label) => label.name)}
             />
         </Block>
     );
