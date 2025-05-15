@@ -12,9 +12,6 @@ import { WrongId } from '../wrong-id';
 
 import { ValidateButton } from './client';
 
-
-
-
 export default async function Page({ params }: LocalePostParams) {
     const { locale, postId } = await params;
     const id = parseInt(postId);

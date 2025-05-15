@@ -10,7 +10,6 @@ import { nav } from '@/locales/routing';
 
 import BlogPage from './client';
 
-
 export const metadata: Metadata = {
     title: 'Blog',
 };

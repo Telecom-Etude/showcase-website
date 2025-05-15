@@ -10,7 +10,6 @@ import { Input } from '@/components/ui/input';
 
 import { DataTableFacetedFilter } from './data-table-faceted-filter';
 
-
 interface FilterOption {
     label: string;
     value: string;

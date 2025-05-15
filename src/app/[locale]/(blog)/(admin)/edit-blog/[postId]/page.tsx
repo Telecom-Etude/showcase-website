@@ -10,7 +10,6 @@ import { nav } from '@/locales/routing';
 import { QuillEditor } from './quill-editor';
 import { UnValidate } from './unvalidate';
 
-
 export default async function EditBlog({ params }: LocalePostParams) {
     const { postId, locale } = await params;
     const id = parseInt(postId);

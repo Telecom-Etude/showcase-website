@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation';
 import React from 'react';
 import { FaTrash } from 'react-icons/fa';
 
-
 import { DataTableColumnHeader } from '@/components/meta-components/table/data-table-column-header';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -30,7 +29,6 @@ import {
 import { getUserName } from '@/lib/users';
 
 import { UserRolesType } from './schema';
-
 
 function ActionCheckBox({
     row,

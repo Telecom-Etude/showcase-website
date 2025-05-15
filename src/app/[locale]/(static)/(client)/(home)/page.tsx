@@ -4,8 +4,6 @@ import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
 import { FaArrowRight } from 'react-icons/fa';
 
-
-
 import Alma from '@/../public/images/companies/trusted/Alma.jpeg';
 import Bearing_Point from '@/../public/images/companies/trusted/Bearing_Point.jpg';
 import BnF from '@/../public/images/companies/trusted/BnF.png';
@@ -33,7 +31,6 @@ import { Dictionary, getDictionary } from '@/locales/dictionaries';
 import { nav } from '@/locales/routing';
 
 import { DomainBlock } from './domains';
-
 
 const trusted: { src: StaticImageData; alt: string }[] = [
     { alt: 'Safran logo', src: Safran },
