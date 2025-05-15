@@ -145,7 +145,7 @@ function Numbers({ t }: { t: DeepReadonly<Dictionary["pages"]["home"]> }) {
                 <NumberCard nb={45} text={t.numbers.years} />
                 <NumberCard nb={800} prefix="+" text={t.numbers.pupils} />
                 <NumberCard nb={40} text={t.numbers.projects} />
-                <NumberCard nb={30} text={t.numbers.admins} />
+                <NumberCard nb={24} text={t.numbers.admins} />
                 <NumberCard nb={30} prefix="L" text={t.numbers.l30} />
             </div>
         </section>

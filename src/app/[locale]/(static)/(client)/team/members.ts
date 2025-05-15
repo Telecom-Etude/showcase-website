@@ -1,35 +1,27 @@
-import Manon from "@/../public/images/members/Manon.jpg";
-import Rémy from "@/../public/images/members/Rémy.jpg";
-import Tasnim from "@/../public/images/members/Tasnim.jpg";
-import Kevin from "@/../public/images/members/Kevin.jpg";
-import Leïla from "@/../public/images/members/Leïla.jpg";
-import Rahma from "@/../public/images/members/Rahma.jpg";
-import Sacha from "@/../public/images/members/Sacha.jpg";
-import AntoineQ from "@/../public/images/members/AntoineQ.jpg";
-import Ikrame from "@/../public/images/members/Ikrame.jpg";
-import Titouan from "@/../public/images/members/Titouan.jpg";
-import Chahinez from "@/../public/images/members/Chahinez.jpg";
-import Yacine from "@/../public/images/members/Yacine.jpg";
-import Thomas from "@/../public/images/members/Thomas.jpg";
-import Fouad from "@/../public/images/members/Fouad.jpg";
-import Alexander from "@/../public/images/members/Alexander.jpg";
-import Luc from "@/../public/images/members/Luc.jpg";
-import Lyla from "@/../public/images/members/Lyla.jpg";
-import Myriam from "@/../public/images/members/Myriam.jpg";
-import Jennifer from "@/../public/images/members/Jennifer.jpg";
-import Tom from "@/../public/images/members/Tom.jpg";
-import Nicolas from "@/../public/images/members/Nicolas.jpg";
-import Sarah from "@/../public/images/members/Sarah.jpg";
-import Thibaud from "@/../public/images/members/Thibaud.jpg";
-import Julien from "@/../public/images/members/Julien.jpg";
-import Axel from "@/../public/images/members/Axel.jpg";
-import Luka from "@/../public/images/members/Luka.jpg";
-import Nathan from "@/../public/images/members/Nathan.jpg";
-import Edwin from "@/../public/images/members/Edwin.jpg";
-import Victor from "@/../public/images/members/Victor.jpg";
-import VincentH from "@/../public/images/members/VincentH.jpg";
-import AntoineH from "@/../public/images/members/AntoineH.jpg";
-import Lauren from "@/../public/images/members/Lauren.jpg";
+import Adrien from "@/../public/images/members/adrien.webp";
+import BaptisteD from "@/../public/images/members/baptiste_d.webp";
+import Quentin from "@/../public/images/members/quentin.webp";
+import Léonie from "@/../public/images/members/leonie.webp";
+import BaptisteL from "@/../public/images/members/baptiste_l.webp";
+import Milan from "@/../public/images/members/milan.webp";
+import GwendalD from "@/../public/images/members/gwendal_d.webp";
+import Florian from "@/../public/images/members/florian.webp";
+import Yael from "@/../public/images/members/yael.webp";
+import Wassim from "@/../public/images/members/wassim.webp";
+import GuillaumeRa from "@/../public/images/members/guillaume_raquin.webp";
+import Gaspard from "@/../public/images/members/gaspard.webp";
+import Elisa from "@/../public/images/members/elisa.webp";
+import Philibert from "@/../public/images/members/philibert.webp";
+import Augustin from "@/../public/images/members/augustin.webp";
+import GuillaumeRo from "@/../public/images/members/guillaume_rogron.webp";
+import Pierre from "@/../public/images/members/pierre.webp";
+import Eya from "@/../public/images/members/eya.webp";
+import MarcJ from "@/../public/images/members/marc_j.webp";
+import Livio from "@/../public/images/members/livio.webp";
+import Allan from "@/../public/images/members/allan.webp";
+import MarcH from "@/../public/images/members/marc_h.webp";
+import GwendalG from "@/../public/images/members/gwendal_g.webp";
+import Francois from "@/../public/images/members/francois.webp";
 
 import { Dictionary } from "@/locales/dictionaries";
 import { StaticImageData } from "next/image";
@@ -51,38 +43,38 @@ export const DEPARTMENTS: DepartmentProps[] = [
         members: [
             {
                 id: "prez", // id is to find the translations
-                name: "Manon Strasser",
-                image: Manon,
+                name: "Adrien Bertrand",
+                image: Adrien,
             },
             {
                 id: "trez",
-                name: "Rémy Fayet",
-                image: Rémy,
+                name: "Baptiste Drouillet",
+                image: BaptisteD,
             },
             {
                 id: "dirco",
-                name: "Rahma Loukil",
-                image: Rahma,
+                name: "Milan Simeon",
+                image: Milan,
             },
             {
                 id: "vpi",
-                name: "Sacha Radovanovic",
-                image: Sacha,
+                name: "Gwendal Deleage",
+                image: GwendalD,
             },
             {
-                id: "vpe",
-                name: "Nathan Casanova",
-                image: Nathan,
+                id: "vpo",
+                name: "Léonie Moreau",
+                image: Léonie,
             },
             {
                 id: "secge",
-                name: "Leïla Iksil",
-                image: Leïla,
+                name: "Baptiste Lefebvre",
+                image: BaptisteL,
             },
             {
                 id: "vicetrez",
-                name: "Tasnim Drissi",
-                image: Tasnim,
+                name: "Quentin Negrel",
+                image: Quentin,
             },
         ],
     },
@@ -91,38 +83,23 @@ export const DEPARTMENTS: DepartmentProps[] = [
         members: [
             {
                 id: "respodevco",
-                name: "Antoine Quint",
-                image: AntoineQ,
-            },
-            {
-                id: "international",
-                name: "Ikrame Amallah",
-                image: Ikrame,
+                name: "Florian Roos",
+                image: Florian,
             },
             {
                 id: "alumni",
-                name: "Titouan Vasnier",
-                image: Titouan,
+                name: "Yael Mutenfu",
+                image: Yael,
+            },
+            {
+                id: "alumni",
+                name: "Wassim Smati",
+                image: Wassim,
             },
             {
                 id: "appel",
-                name: "Chahinez Abbas",
-                image: Chahinez,
-            },
-            {
-                id: "devco",
-                name: "Yacine Khalil",
-                image: Yacine,
-            },
-            {
-                id: "devco",
-                name: "Thomas Lucereau",
-                image: Thomas,
-            },
-            {
-                id: "devco",
-                name: "Fouad Khelifi",
-                image: Fouad,
+                name: "Guillaume Raquin",
+                image: GuillaumeRa,
             },
         ],
     },
@@ -131,43 +108,38 @@ export const DEPARTMENTS: DepartmentProps[] = [
         members: [
             {
                 id: "respoquality",
-                name: "Alexander Hare",
-                image: Alexander,
+                name: "Augustin Boyer",
+                image: Augustin,
             },
             {
                 id: "respoaudit",
-                name: "Luc Kreucher",
-                image: Luc,
+                name: "Guillaume Rogron",
+                image: GuillaumeRo,
             },
             {
                 id: "templates",
-                name: "Lyla Demange",
-                image: Lyla,
+                name: "Pierre Neillo",
+                image: Pierre,
             },
             {
-                id: "audit",
-                name: "Myriam Lebatteux",
-                image: Myriam,
+                id: "risque",
+                name: "Eya Mami",
+                image: Eya,
             },
             {
-                id: "processus",
-                name: "Jennifer Timani",
-                image: Jennifer,
+                id: "marque",
+                name: "Marc Justo",
+                image: MarcJ,
             },
         ],
     },
     {
-        id: "info",
+        id: "comcom",
         members: [
             {
-                id: "respoinfo",
-                name: "Tom Webber",
-                image: Tom,
-            },
-            {
-                id: "info",
-                name: "Nicolas Besson",
-                image: Nicolas,
+                id: "coco",
+                name: "Gaspard Vibert",
+                image: Gaspard,
             },
         ],
     },
@@ -176,43 +148,28 @@ export const DEPARTMENTS: DepartmentProps[] = [
         members: [
             {
                 id: "respocom",
-                name: "Sarah Dos Santos",
-                image: Sarah,
+                name: "Elisa Augier",
+                image: Elisa,
             },
             {
                 id: "cominterne",
-                name: "Thibaud Chasteauneuf",
-                image: Thibaud,
-            },
-            {
-                id: "insta",
-                name: "Julien Waxweiler",
-                image: Julien,
-            },
-            {
-                id: "linkedin",
-                name: "Axel Guimbault",
-                image: Axel,
+                name: "Philibert Pierson de B.",
+                image: Philibert,
             },
         ],
     },
     {
-        id: "suivi",
+        id: "info",
         members: [
             {
-                id: "resposuivi",
-                name: "Luka Judas",
-                image: Luka,
+                id: "respoinfo",
+                name: "Livio Personne",
+                image: Livio,
             },
             {
-                id: "selectionCDP",
-                name: "Edwin Feneux",
-                image: Edwin,
-            },
-            {
-                id: "suivi",
-                name: "Victor Deru",
-                image: Victor,
+                id: "info",
+                name: "Allan Villars",
+                image: Allan,
             },
         ],
     },
@@ -221,18 +178,18 @@ export const DEPARTMENTS: DepartmentProps[] = [
         members: [
             {
                 id: "respoevent",
-                name: "Vincent Houlné",
-                image: VincentH,
+                name: "Marc Hebert",
+                image: MarcH,
             },
             {
-                id: "pots",
-                name: "Antoine Heitzmann",
-                image: AntoineH,
+                id: "fete",
+                name: "François De Coatpond",
+                image: Francois,
             },
             {
                 id: "teambuildings",
-                name: "Lauren Calvosa",
-                image: Lauren,
+                name: "Gwendal Grison",
+                image: GwendalG,
             },
         ],
     },
