@@ -178,12 +178,12 @@ export const DEPARTMENTS: DepartmentProps[] = [
         members: [
             {
                 id: "respoevent",
-                name: "Marc Hebert",
+                name: "Marc Hébert",
                 image: MarcH,
             },
             {
                 id: "fete",
-                name: "François De Coatpond",
+                name: "François De Coatpont",
                 image: Francois,
             },
             {
