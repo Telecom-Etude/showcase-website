@@ -22,24 +22,25 @@ import Allan from "@/../public/images/members/allan.webp";
 import MarcH from "@/../public/images/members/marc_h.webp";
 import GwendalG from "@/../public/images/members/gwendal_g.webp";
 import Francois from "@/../public/images/members/francois.webp";
+import { StaticImageData } from 'next/image';
+import { Dictionary } from '@/locales/dictionaries';
 
-import { Dictionary } from "@/locales/dictionaries";
-import { StaticImageData } from "next/image";
+
 export interface PersonProps {
     name: string;
     linkedin?: string;
     image: StaticImageData;
-    id: keyof Dictionary["pages"]["team"]["members"];
+    id: keyof Dictionary['pages']['team']['members'];
 }
 
-export interface DepartmentProps {
-    id: keyof Dictionary["pages"]["team"]["poles"];
+interface DepartmentProps {
+    id: keyof Dictionary['pages']['team']['poles'];
     members: PersonProps[];
 }
 
 export const DEPARTMENTS: DepartmentProps[] = [
     {
-        id: "board",
+        id: 'board',
         members: [
             {
                 id: "prez", // id is to find the translations
@@ -144,7 +145,7 @@ export const DEPARTMENTS: DepartmentProps[] = [
         ],
     },
     {
-        id: "com",
+        id: 'com',
         members: [
             {
                 id: "respocom",
@@ -174,7 +175,7 @@ export const DEPARTMENTS: DepartmentProps[] = [
         ],
     },
     {
-        id: "event",
+        id: 'event',
         members: [
             {
                 id: "respoevent",

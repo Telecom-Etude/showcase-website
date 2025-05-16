@@ -1,5 +1,5 @@
-export const LOCALES = ["en", "fr"] as const;
-export const DEFAULT_LOCALE = "fr";
+export const LOCALES = ['en', 'fr'] as const;
+export const DEFAULT_LOCALE = 'fr';
 
 /**
  * `Locale` is a TypeScript type representing the different locales supported by the application.
@@ -49,11 +49,11 @@ export type Locale = (typeof LOCALES)[number];
  * ```
  */
 export interface LocaleParams {
-    readonly params: { locale: Locale };
+    readonly params: Promise<{ locale: Locale }>;
 }
 
 export type LocalePostParams = LocaleParams & {
-    readonly params: { postId: string };
+    readonly params: Promise<{ postId: string }>;
 };
 
-export const isLocale = (locale: string) => locale == "en" || locale == "fr";
+export const isLocale = (locale: string) => locale == 'en' || locale == 'fr';

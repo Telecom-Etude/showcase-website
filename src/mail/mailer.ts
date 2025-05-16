@@ -1,19 +1,19 @@
-"use server";
+'use server';
 
-import nodemailer from "nodemailer";
+import nodemailer from 'nodemailer';
 
-export async function sendEmail(dest_email: string[], subject: string, html: string, text: string) {
-    if (process.env.DEV_MODE) console.log("Send email");
+async function sendEmail(dest_email: string[], subject: string, html: string, text: string) {
+    if (process.env.DEV_MODE) console.log('Send email');
 
-    let transporter = nodemailer.createTransport({
-        service: "gmail",
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
         auth: {
             user: process.env.SMTP_EMAIL,
             pass: process.env.SMTP_PASSWORD,
         },
     });
 
-    let mailOptions = {
+    const mailOptions = {
         from: process.env.SMTP_EMAIL,
         to: dest_email,
         subject,
@@ -23,7 +23,7 @@ export async function sendEmail(dest_email: string[], subject: string, html: str
 
     await transporter.sendMail(mailOptions);
 
-    if (process.env.DEV_MODE) console.log("Email sent");
+    if (process.env.DEV_MODE) console.log('Email sent');
 }
 
 interface FormProps {
@@ -36,18 +36,26 @@ interface FormProps {
 }
 
 function escapeHtml(unsafe: string | undefined): string | undefined {
-    return unsafe?.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+    return unsafe
+        ?.replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
 }
 
-export async function sendForm({ name, email, tel, societe, subject, message }: FormProps, emails: string[]) {
-    if (process.env.DEV_MODE) console.log("sending form");
+export async function sendForm(
+    { name, email, tel, societe, subject, message }: FormProps,
+    emails: string[]
+) {
+    if (process.env.DEV_MODE) console.log('sending form');
 
     const date = new Date();
-    const formattedDate = `${date.toLocaleDateString("fr-FR", {
-        day: "2-digit",
-        month: "2-digit",
-        year: "2-digit",
-    })} ${date.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" })}`;
+    const formattedDate = `${date.toLocaleDateString('fr-FR', {
+        day: '2-digit',
+        month: '2-digit',
+        year: '2-digit',
+    })} ${date.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}`;
 
     const safeName = escapeHtml(name);
     const safeEmail = escapeHtml(email);
@@ -56,7 +64,7 @@ export async function sendForm({ name, email, tel, societe, subject, message }: 
     const safeMessage = escapeHtml(message);
     const safeSubject = escapeHtml(subject) || safeSociete || safeName;
 
-    const html = `        
+    const html = `
     <!DOCTYPE html>
     <html lang="en">
         <head>
@@ -70,22 +78,22 @@ export async function sendForm({ name, email, tel, societe, subject, message }: 
                     table{
                         width: 100%;
                     }
-        
-                    tr { 
+
+                    tr {
                         width: 100%;
                     }
-        
+
                         th, td {
                             padding: 8px;
-                            
+
                             text-align: left;
                             border-bottom: 1px solid #ddd;
                         }
-        
+
                         th {
                             background-color: #f2f2f2;
                         }
-        
+
                     </style>
             </head>
             <body>
@@ -112,7 +120,7 @@ export async function sendForm({ name, email, tel, societe, subject, message }: 
                             <td>Date</td>
                             <td>${formattedDate}</td>
                         </tr>
-        
+
                     </table>
                 </div>
                 <H2>Message</H2>
@@ -125,7 +133,7 @@ export async function sendForm({ name, email, tel, societe, subject, message }: 
 Nom:\t${safeName}
 Société:\t${safeSociete}
 Mail:\t${safeEmail}
-Tel:\t${safeTel}    
+Tel:\t${safeTel}
 Date:\t${formattedDate}
 
 Message
@@ -137,5 +145,5 @@ ${message}
 
     await sendEmail(emails, email_subject, html, text);
 
-    if (process.env.DEV_MODE) console.log("form sent");
+    if (process.env.DEV_MODE) console.log('form sent');
 }

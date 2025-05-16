@@ -1,15 +1,22 @@
-import { SiteMapRouteProps, SITEMAP_ROUTES } from "@/auth/routes";
-import { DEFAULT_LOCALE, Locale, LOCALES } from "@/locales/config";
-import { MetadataRoute } from "next";
+import { MetadataRoute } from 'next';
 
-function getSitemapItem([url, { lastModified, changeFrequency, priority }]: [string, SiteMapRouteProps]) {
+import { SiteMapRouteProps, SITEMAP_ROUTES } from '@/auth/routes';
+import { DEFAULT_LOCALE, LOCALES } from '@/locales/config';
+
+function getSitemapItem([url, { lastModified, changeFrequency, priority }]: [
+    string,
+    SiteMapRouteProps,
+]) {
     return {
-        url: process.env.WEBSITE_URL + "/" + DEFAULT_LOCALE + url,
+        url: process.env.WEBSITE_URL + '/' + DEFAULT_LOCALE + url,
         lastModified: new Date(Date.parse(lastModified)),
-        changeFrequency: changeFrequency || "yearly",
+        changeFrequency: changeFrequency || 'yearly',
         priority: priority || 0,
         alternates: {
-            languages: LOCALES.reduce((o, locale) => ({ ...o, [locale]: process.env.WEBSITE_URL + "/" + locale + url }), {}),
+            languages: LOCALES.reduce(
+                (o, locale) => ({ ...o, [locale]: process.env.WEBSITE_URL + '/' + locale + url }),
+                {}
+            ),
         },
     };
 }

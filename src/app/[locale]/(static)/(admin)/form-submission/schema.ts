@@ -1,15 +1,15 @@
-import { z } from "zod";
+import { z } from 'zod';
 
-export const contactFormSchema = z.object({
-    id: z.number().optional(),
-    name: z.string(),
-    email: z.string(),
-    tel: z.bigint().optional(),
-    societe: z.string().optional(),
-    subject: z.string().optional(),
-    message: z.string(),
-    date: z.date(),
-    done: z.boolean(),
-});
-
-export type ContactFormType = z.infer<typeof contactFormSchema>;
+export type ContactFormType = z.infer<
+    z.ZodObject<{
+        id: z.ZodNumber;
+        name: z.ZodString;
+        email: z.ZodString;
+        tel?: z.ZodBigInt;
+        societe?: z.ZodString;
+        subject?: z.ZodString;
+        message: z.ZodString;
+        date: z.ZodDate;
+        done: z.ZodBoolean;
+    }>
+>;

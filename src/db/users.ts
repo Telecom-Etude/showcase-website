@@ -1,14 +1,14 @@
-"use server";
+'use server';
 
-import { Rights } from "@/auth/auth";
-import { db } from "@/lib/db";
+import { Rights } from '@/auth/auth';
+import { db } from '@/lib/db';
 
-////////////// CREAT ///////////////////
+////////////// CREATE //////////////////
 
 ////////////// READ ///////////////////
 
 export async function getRights(email: string | null | undefined): Promise<Rights | null> {
-    var rights = null;
+    let rights = null;
     if (!email) {
         return rights;
     }
@@ -21,7 +21,7 @@ export async function getRights(email: string | null | undefined): Promise<Right
             blogAuthor: user?.blogAuthor || false,
         };
         return rights;
-    } catch (e) {
+    } catch {
         // console.error(`[getRights] Error:\n\n${e}\n`);
         return null;
     }
@@ -42,7 +42,7 @@ export async function makeBlogAdmin(email: string, value: boolean) {
 
 export async function makeUserAdmin(email: string, value: boolean) {
     try {
-        const x = await db.user.update({
+        await db.user.update({
             where: { email },
             data: { userAdmin: value },
         });

@@ -1,19 +1,21 @@
-import { Block } from "@/components/styles/blocks";
-import Image from "next/image";
+import { Metadata } from 'next';
+import Image from 'next/image';
+import Link from 'next/link';
 
-import JamaisSansElles from "@/../public/images/jamaissanselles.jpg";
-import Rse from "@/../public/images/rse.png";
-import { LocaleParams } from "@/locales/config";
-import { getDictionary } from "@/locales/dictionaries";
-import { Metadata } from "next";
-import Link from "next/link";
-import { OrangeTitle } from "@/components/styles/texts";
+import JamaisSansElles from '@/../public/images/jamaissanselles.jpg';
+import Rse from '@/../public/images/rse.png';
 
-export var metadata: Metadata = {
-    title: "Engagements",
+import { Block } from '@/components/styles/blocks';
+import { OrangeTitle } from '@/components/styles/texts';
+import { LocaleParams } from '@/locales/config';
+import { getDictionary } from '@/locales/dictionaries';
+
+export const metadata: Metadata = {
+    title: 'Engagements',
 };
 
-export default function Page({ params: { locale } }: LocaleParams) {
+export default async function Page({ params }: LocaleParams) {
+    const { locale } = await params;
     const t = getDictionary(locale).pages.commitments;
     metadata.title = t.title;
     return (
@@ -27,7 +29,12 @@ export default function Page({ params: { locale } }: LocaleParams) {
                 <div className="grid grid-cols-1 lg:grid-cols-2 place-items-center space-y-4 lg:flex-row lg:space-y-0 lg:space-x-4">
                     <p className="text-justify">{t.jamaissanselles.text} </p>
                     <Link href="https://www.jamaissanselles.fr/">
-                        <Image placeholder="blur" alt={t.jamaissanselles.alt} src={JamaisSansElles} width={300} />
+                        <Image
+                            placeholder="blur"
+                            alt={t.jamaissanselles.alt}
+                            src={JamaisSansElles}
+                            width={300}
+                        />
                     </Link>
                 </div>
             </section>
