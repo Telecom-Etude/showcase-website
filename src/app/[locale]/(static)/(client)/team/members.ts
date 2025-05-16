@@ -79,31 +79,6 @@ export const DEPARTMENTS: DepartmentProps[] = [
         ],
     },
     {
-        id: "devco",
-        members: [
-            {
-                id: "respodevco",
-                name: "Florian Roos",
-                image: Florian,
-            },
-            {
-                id: "alumni",
-                name: "Yael Mutenfu",
-                image: Yael,
-            },
-            {
-                id: "alumni",
-                name: "Wassim Smati",
-                image: Wassim,
-            },
-            {
-                id: "appel",
-                name: "Guillaume Raquin",
-                image: GuillaumeRa,
-            },
-        ],
-    },
-    {
         id: "auditqua",
         members: [
             {
@@ -130,6 +105,31 @@ export const DEPARTMENTS: DepartmentProps[] = [
                 id: "marque",
                 name: "Marc Justo",
                 image: MarcJ,
+            },
+        ],
+    },
+    {
+        id: "devco",
+        members: [
+            {
+                id: "respodevco",
+                name: "Florian Roos",
+                image: Florian,
+            },
+            {
+                id: "alumni",
+                name: "Yaël Mutenfu",
+                image: Yael,
+            },
+            {
+                id: "alumni",
+                name: "Wassim Smati",
+                image: Wassim,
+            },
+            {
+                id: "appel",
+                name: "Guillaume Raquin",
+                image: GuillaumeRa,
             },
         ],
     },
