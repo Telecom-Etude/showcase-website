@@ -1,4 +1,4 @@
-name: Code Formatting CI
+name: Knip Analysis
 
 on:
     push:
@@ -9,14 +9,18 @@ on:
             - '*'
 
 jobs:
-    prettier:
+    knip:
         runs-on: ubuntu-latest
 
         steps:
             - name: Checkout code
               uses: actions/checkout@v4
 
-            - name: Prettify code
-              uses: creyD/prettier_action@v4.3
-              with:
-                  prettier_options: --c .
+            - name: Setup Bun
+              uses: oven-sh/setup-bun@v2
+
+            - name: Install dependencies
+              run: bun i
+
+            - name: Run Knip
+              run: bunx knip

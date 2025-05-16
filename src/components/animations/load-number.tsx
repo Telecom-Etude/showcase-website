@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import NumberFlow, { continuous } from "@number-flow/react";
-import React, { useState, useEffect } from "react";
+import NumberFlow, { continuous } from '@number-flow/react';
+import React, { useState, useEffect } from 'react';
 
 const easeOut = (t: number) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t));
 
@@ -11,7 +11,7 @@ export const LoadNumber = ({ value, duration = 4000 }: { value: number; duration
 
     useEffect(() => {
         const totalDuration = duration;
-        var frameId: number;
+        let frameId: number;
 
         const updateCount = () => {
             const currentTime = Date.now();

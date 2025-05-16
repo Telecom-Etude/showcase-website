@@ -1,15 +1,14 @@
-"use client";
+'use client';
 
-import { Fragment, useState } from "react";
+import Image from 'next/image';
+import { Fragment, useState } from 'react';
 
-import { Locale } from "@/locales/config";
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import { Locale } from '@/locales/config';
+import { getDictionary } from '@/locales/dictionaries';
 
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { getDictionary } from "@/locales/dictionaries";
-
-import Image from "next/image";
-import { OFFER_IMAGES } from "./images";
+import { OFFER_IMAGES } from './images';
 
 export function DesktopTimeline({ locale }: { locale: Locale }) {
     const [selected, setSelected] = useState<number>(0);
@@ -23,8 +22,10 @@ export function DesktopTimeline({ locale }: { locale: Locale }) {
                         <Button
                             variant="ghost"
                             className={cn(
-                                "border-[2px] w-full border-primary border-opacity-50",
-                                selected === i ? "bg-primary dark:bg-[radial-gradient(var(--destructive),var(--primary))] hover:bg-x" : ""
+                                'border-[2px] w-full border-primary border-opacity-50',
+                                selected === i
+                                    ? 'bg-primary dark:bg-[radial-gradient(var(--destructive),var(--primary))] hover:bg-x'
+                                    : ''
                             )}
                             key={i}
                             onClick={() => setSelected(i)}

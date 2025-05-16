@@ -1,5 +1,6 @@
-import { ReactNode } from "react";
-import { BirdLogo } from "./logos";
+import { ReactNode } from 'react';
+
+import { BirdLogo } from './logos';
 
 export const BirdBackground = ({ children }: { children: ReactNode }) => {
     return (

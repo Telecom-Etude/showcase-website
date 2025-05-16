@@ -10,19 +10,19 @@
  * @donotmove
  */
 
-import NextAuth, { type DefaultSession } from "next-auth";
-import type { Rights } from "@/auth/auth";
-import type { JWT } from "next-auth/jwt";
+import { type DefaultSession } from 'next-auth';
 
-declare module "next-auth" {
+import type { Rights } from '@/auth/auth';
+
+declare module 'next-auth' {
     interface Session {
-        user: DefaultSession["user"] & {
+        user: DefaultSession['user'] & {
             rights: Rights | null;
         };
     }
 }
 
-declare module "next-auth/jwt" {
+declare module 'next-auth/jwt' {
     interface JWT {
         rights: Rights | null;
     }

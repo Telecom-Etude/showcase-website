@@ -1,8 +1,10 @@
-import React from "react";
-import { columns } from "./columns";
-import { UserRolesType } from "./schema";
-import { PrismaClient } from "@prisma/client";
-import { DataTable } from "@/components/meta-components/table/data-table";
+import { PrismaClient } from '@prisma/client';
+import React from 'react';
+
+import { DataTable } from '@/components/meta-components/table/data-table';
+
+import { columns } from './columns';
+import { UserRolesType } from './schema';
 
 export default async function Users() {
     const prisma = new PrismaClient();

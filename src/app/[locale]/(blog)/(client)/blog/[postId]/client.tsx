@@ -1,11 +1,18 @@
-"use client";
+'use client';
 
-import { displayAuthors } from "@/lib/users";
-import { Locale } from "@/locales/config";
-import { PostPresentation } from "../client";
-import { RenderQuill } from "@/components/quill/render";
+import { RenderQuill } from '@/components/quill/render';
+import { displayAuthors } from '@/lib/users';
+import { Locale } from '@/locales/config';
 
-export default function ClientBlog({ localePost, locale }: { locale: Locale; localePost: PostPresentation }) {
+import { PostPresentation } from '../client';
+
+export default function ClientBlog({
+    localePost,
+    locale,
+}: {
+    locale: Locale;
+    localePost: PostPresentation;
+}) {
     return (
         <>
             <header className="pb-6">

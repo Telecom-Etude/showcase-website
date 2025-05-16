@@ -1,6 +1,7 @@
-import { enDictionary } from "../../dictionaries/en";
-import { frDictionary } from "../../dictionaries/fr";
-import { Locale } from "./config";
+import { enDictionary } from '../../dictionaries/en';
+import { frDictionary } from '../../dictionaries/fr';
+
+import { Locale } from './config';
 
 export type Dictionary = typeof frDictionary;
 

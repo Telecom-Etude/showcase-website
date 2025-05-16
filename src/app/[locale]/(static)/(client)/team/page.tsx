@@ -1,14 +1,16 @@
-import { LocaleParams } from "@/locales/config";
-import { Dictionary, getDictionary } from "@/locales/dictionaries";
-import { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
-import { ReactNode } from "react";
-import { DEPARTMENTS, PersonProps } from "./members";
-import { OrangeTitle } from "@/components/styles/texts";
+import { Metadata } from 'next';
+import Image from 'next/image';
+import Link from 'next/link';
+import { ReactNode } from 'react';
 
-export var metadata: Metadata = {
-    title: "Notre équipe",
+import { OrangeTitle } from '@/components/styles/texts';
+import { LocaleParams } from '@/locales/config';
+import { Dictionary, getDictionary } from '@/locales/dictionaries';
+
+import { DEPARTMENTS, PersonProps } from './members';
+
+export const metadata: Metadata = {
+    title: 'Notre équipe',
 };
 function Linkedin({ children, linkedin }: { children: ReactNode; linkedin?: string }) {
     if (linkedin) {
@@ -18,14 +20,26 @@ function Linkedin({ children, linkedin }: { children: ReactNode; linkedin?: stri
     }
 }
 
-function Department({ department, t }: { t: Dictionary["pages"]["team"]["members"]; department: PersonProps[] }) {
+function Department({
+    department,
+    t,
+}: {
+    t: Dictionary['pages']['team']['members'];
+    department: PersonProps[];
+}) {
     return (
         <div className="grid grid-cols-1 place-items-center md:grid-cols-2 xl:grid-cols-3 4xl:grid-cols-6 gap-6 w-fit">
             {department.map(({ linkedin, name, id, image }, i) => (
                 <Linkedin key={i} linkedin={linkedin}>
                     <div className="relative m-2 w-[300px] h-[300px]  ">
                         <div className=" absolute">
-                            <Image src={image} alt={name} width={300} height={300} className="rounded-lg" />
+                            <Image
+                                src={image}
+                                alt={name}
+                                width={300}
+                                height={300}
+                                className="rounded-lg"
+                            />
                         </div>
                         <div className="bg-black bg-opacity-20 absolute w-[300px] h-[300px] rounded-lg"></div>
                         <div className="text-white font-semibold absolute bottom-0 p-2">
@@ -41,7 +55,8 @@ function Department({ department, t }: { t: Dictionary["pages"]["team"]["members
 
 export const dynamicParams = false;
 
-export default async function Team({ params: { locale } }: LocaleParams) {
+export default async function Team({ params }: LocaleParams) {
+    const { locale } = await params;
     const t = getDictionary(locale).pages.team;
     metadata.title = t.title;
     return (

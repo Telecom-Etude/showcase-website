@@ -1,13 +1,13 @@
-import { z } from "zod";
+import { z } from 'zod';
 
-export const validationBlogSchema = z.object({
-    id: z.number(),
-    validated: z.boolean(),
-    emails: z.array(z.string()),
-    title: z.string(),
-    content: z.string(),
-    createdAt: z.date(),
-    updatedAt: z.date(),
-});
-
-export type ValidationBlogType = z.infer<typeof validationBlogSchema>;
+export type ValidationBlogType = z.infer<
+    z.ZodObject<{
+        id: z.ZodNumber;
+        validated: z.ZodBoolean;
+        emails: z.ZodArray<z.ZodString>;
+        title: z.ZodString;
+        content: z.ZodString;
+        createdAt: z.ZodDate;
+        updatedAt: z.ZodDate;
+    }>
+>;

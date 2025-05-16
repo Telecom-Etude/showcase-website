@@ -1,25 +1,28 @@
-import { auth } from "@/auth/auth";
-import { QuillEditor } from "./quill-editor";
-import { Block } from "@/components/styles/blocks";
-import { getLocaleLabels } from "@/db/labels";
-import { Locale, LocalePostParams } from "@/locales/config";
-import { redirect } from "next/navigation";
-import { getBlog } from "@/db/blogs";
-import { UnValidate } from "./unvalidate";
-import { nav } from "@/locales/routing";
+import { redirect } from 'next/navigation';
 
-export default async function EditBlog({ params: { postId, locale } }: LocalePostParams) {
+import { auth } from '@/auth/auth';
+import { Block } from '@/components/styles/blocks';
+import { getBlog } from '@/db/blogs';
+import { getLocaleLabels } from '@/db/labels';
+import { Locale, LocalePostParams } from '@/locales/config';
+import { nav } from '@/locales/routing';
+
+import { QuillEditor } from './quill-editor';
+import { UnValidate } from './unvalidate';
+
+export default async function EditBlog({ params }: LocalePostParams) {
+    const { postId, locale } = await params;
     const id = parseInt(postId);
     const blog = await getBlog(id);
     const email = (await auth())?.user.email;
     if (!email) {
-        redirect(nav(locale, "/error/401"));
+        redirect(nav(locale, '/error/401'));
     }
     if (Number.isNaN(id) || !blog) {
-        redirect(nav(locale, "/error/404"));
+        redirect(nav(locale, '/error/404'));
     }
-    if (!blog.authors.map(a => a.email).includes(email)) {
-        redirect(nav(locale, "/error/403"));
+    if (!blog.authors.map((a) => a.email).includes(email)) {
+        redirect(nav(locale, '/error/403'));
     }
     const blogLocale: Locale = blog.locale as Locale;
     const localeLabels = await getLocaleLabels(blogLocale);
@@ -34,7 +37,7 @@ export default async function EditBlog({ params: { postId, locale } }: LocalePos
                 content={JSON.parse(blog.content)}
                 title={blog.title}
                 dbLabels={labels}
-                blogLabels={blog.labels.map(label => label.name)}
+                blogLabels={blog.labels.map((label) => label.name)}
             />
         </Block>
     );
