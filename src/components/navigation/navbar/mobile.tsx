@@ -50,14 +50,6 @@ export const MobileNavBar = ({ locale, user }: { locale: Locale; user?: Extended
                 </Button>
             </div>
             {deployed && (
-                <Links
-                    onClick={() => setDeployed((x) => !x)}
-                    mobile={true}
-                    locale={locale}
-                    user={user}
-                />
-            )}
-            {deployed && (
                 <Links onClick={() => setDeployed((x) => !x)} mobile locale={locale} user={user} />
             )}
         </div>
