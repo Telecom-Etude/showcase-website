@@ -8,6 +8,7 @@ const config: KnipConfig = {
         '.github/workflows/*.yml',
     ],
     ignoreDependencies: ['eslint-config-next'],
+    ignoreBinaries: ['tsx'],
 };
 
 export default config;
