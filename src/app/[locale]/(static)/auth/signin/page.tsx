@@ -4,12 +4,13 @@ import Image from 'next/image';
 
 import Google from '@/../public/icons/google.svg';
 
-import { signIn } from '@/auth/auth';
 import { EmailContact } from '@/components/telecom-etude/contact';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { LocaleParams } from '@/locales/config';
 import { getDictionary } from '@/locales/dictionaries';
+
+import { googleSignin } from './signin';
 
 export default async function SignIn({ params }: LocaleParams) {
     const { locale } = await params;
@@ -22,12 +23,7 @@ export default async function SignIn({ params }: LocaleParams) {
                         <CardTitle className="w-full text-center pb-2">{t.title}</CardTitle>
                     </CardHeader>
                     <CardContent className="p-6">
-                        <form
-                            action={async () => {
-                                'use server';
-                                await signIn('google');
-                            }}
-                        >
+                        <form action={googleSignin}>
                             <Button
                                 type="submit"
                                 variant="link"
