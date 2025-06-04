@@ -5,7 +5,7 @@ import { ReactNode } from 'react';
 
 import AFNOR from '@/../public/images/about/afnor.png';
 import CNJE from '@/../public/images/about/cnje_text.png';
-import GroupPhoto from '@/../public/images/about/group_photo.jpg';
+import GroupBomers from '@/../public/images/about/group_bombers.webp';
 import TP from '@/../public/images/about/tp.jpeg';
 import ICP from '@/../public/images/ieseg/logo.webp';
 import QualityPolicy from '@/../public/images/quality_policy.png';
@@ -107,7 +107,7 @@ export default async function Page({ params }: LocaleParams) {
                 <p>{t.description}</p>
             </h1>
             <TopLeft
-                right={<SideImage src={GroupPhoto} alt={t.alt.mandat} />}
+                right={<SideImage src={GroupBomers} alt={t.alt.mandat} />}
                 title={t.titles.ourje}
                 pars={
                     <>
