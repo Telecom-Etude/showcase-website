@@ -443,7 +443,7 @@ export const enDictionary: Dictionary = {
                 },
                 director: {
                     title: 'Publication Director',
-                    description: 'Manon Strasser, Chief Executive Officer of Telecom Etude',
+                    description: 'Adrien Bertrand, Chief Executive Officer of Telecom Etude',
                 },
                 host: {
                     title: 'Site Host',

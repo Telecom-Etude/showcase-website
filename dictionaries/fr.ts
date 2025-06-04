@@ -445,8 +445,8 @@ export const frDictionary = {
                     contact: 'Contact: ',
                 },
                 director: {
-                    title: 'Directrice de la publication',
-                    description: 'Manon Strasser, présidente de Telecom Etude',
+                    title: 'Directeur de la publication',
+                    description: 'Adrien Bertrand, président de Telecom Etude',
                 },
                 host: {
                     title: 'Hébergeur du site',
