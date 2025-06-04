@@ -16,6 +16,7 @@ import Safran from '@/../public/images/companies/trusted/Safran.png';
 import SaintGobain from '@/../public/images/companies/trusted/SaintGobain.png';
 import SNCF from '@/../public/images/companies/trusted/SNCF.png';
 import Telecom_Paris from '@/../public/images/companies/trusted/Telecom_Paris.png';
+import GroupBomers from '@/../public/images/group_bombers_bg.webp';
 import fond_acc from '@/../public/images/fond_accueil.jpg';
 
 import { LoadNumber } from '@/components/animations/load-number';
@@ -196,7 +197,7 @@ function Numbers({ t }: { t: DeepReadonly<Dictionary['pages']['home']> }) {
 function Header({ t, locale }: { locale: Locale; t: DeepReadonly<Dictionary['pages']['home']> }) {
     return (
         <header>
-            <div className="backdrop-blur-[1px] bg-zinc-900/60 p-6 w-full space-y-4 flex flex-col items-center justify-center sm:min-h-[40vw] rounded ">
+            <div className="backdrop-blur-[1px] bg-zinc-900/60 p-6 w-full space-y-4 flex flex-col items-center justify-center sm:min-h-[45vw] sm:absolute sm:top-10 rounded ">
                 <OrangeTitle className="m-0" title="Telecom Etude" />
                 <h2 className="text-center text-white font-bold">{t.subtitle}</h2>
                 <div className="lg:block hidden pt-10 space-y-10">
@@ -222,7 +223,7 @@ export default async function Page({ params }: LocaleParams) {
             <Image
                 src={fond_acc}
                 alt="image de Telecom"
-                className="w-full h-[40vw]  sm:absolute sticky -z-10 top-10"
+                className="w-full h-[40vw] sticky -z-10 top-10"
                 style={{ aspectRatio: 'auto' }}
             />
             <Header t={t} locale={locale} />
