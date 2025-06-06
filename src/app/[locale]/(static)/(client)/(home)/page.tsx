@@ -16,7 +16,6 @@ import Safran from '@/../public/images/companies/trusted/Safran.png';
 import SaintGobain from '@/../public/images/companies/trusted/SaintGobain.png';
 import SNCF from '@/../public/images/companies/trusted/SNCF.png';
 import Telecom_Paris from '@/../public/images/companies/trusted/Telecom_Paris.png';
-import GroupBomers from '@/../public/images/group_bombers_bg.webp';
 import fond_acc from '@/../public/images/fond_accueil.jpg';
 
 import { LoadNumber } from '@/components/animations/load-number';
