@@ -99,12 +99,12 @@ export const DEPARTMENTS: DepartmentProps[] = [
                 image: Pierre,
             },
             {
-                id: 'risque',
+                id: 'marque',
                 name: 'Eya Mami',
                 image: Eya,
             },
             {
-                id: 'marque',
+                id: 'risque',
                 name: 'Marc Justo',
                 image: MarcJ,
             },
