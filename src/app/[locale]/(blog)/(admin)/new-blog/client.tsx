@@ -65,7 +65,7 @@ export default function NewPostForm({ email }: { email: string }) {
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}>
-                <div className="flex space-x-1 w-full">
+                <div className="flex pb-6 space-x-1 w-full">
                     <FormField
                         control={form.control}
                         name="title"
