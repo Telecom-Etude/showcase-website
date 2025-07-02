@@ -10,9 +10,10 @@ import { Locale } from '@/locales/config';
 import { generateSlug } from './slug';
 import { getUserIdFromEmail } from './users';
 
-enum BlogCreationStatus {
+export enum BlogCreationStatus {
     Ok,
     SameTitle,
+    Unauthorised,
     UnknownProblem,
 }
 
