@@ -12,7 +12,7 @@ export function blogCreationStatusMessage(status: BlogCreationStatus): string | 
         case BlogCreationStatus.SameTitle:
             return 'Un blog avec le même nom existe déjà...';
         // Unauthorised is risen when the API is called manually.
-        // Else, it is not mean't to happen, as the caller should always have the rights on the post.
+        // Else, it is never meant to happen, as the caller should always have the rights on the post.
         case BlogCreationStatus.Unauthorised:
             return "Vous n'avez pas les droits pour créer un blog. Merci de contacter le pôle info!";
         case BlogCreationStatus.UnknownProblem:
