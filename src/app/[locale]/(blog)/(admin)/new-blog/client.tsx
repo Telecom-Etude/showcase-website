@@ -22,8 +22,8 @@ export const newPostSchema = z.object({
 });
 
 enum SubmissionStatus {
-    None,
-    Creating,
+    None = 'None',
+    Creating = 'Creating',
 }
 
 type ClientBlogCreationStatus = BlogCreationStatus | SubmissionStatus;

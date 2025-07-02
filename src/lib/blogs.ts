@@ -1,8 +1,8 @@
 export enum BlogCreationStatus {
-    Ok,
-    SameTitle,
-    Unauthorised,
-    UnknownProblem,
+    Ok = 'Ok',
+    SameTitle = 'SameTitle',
+    Unauthorised = 'Unauthorised',
+    UnknownProblem = 'UnknownProblem',
 }
 
 export function blogCreationStatusMessage(status: BlogCreationStatus): string | undefined {
