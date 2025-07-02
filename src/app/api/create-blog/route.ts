@@ -28,6 +28,6 @@ async function getBlogCreationResponse(
  */
 export async function POST(request: Request) {
     const { authorEmail, title, locale } = await request.json();
-    const response = getBlogCreationResponse(authorEmail, title, locale);
+    const response = await getBlogCreationResponse(authorEmail, title, locale);
     return NextResponse.json(response);
 }
