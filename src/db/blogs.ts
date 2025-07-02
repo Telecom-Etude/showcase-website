@@ -1,7 +1,7 @@
 'use server';
 
 import { Label, Post, User } from '@prisma/client';
-import { Op } from 'quill/core';
+import type { Op } from 'quill/core';
 
 import { PostPresentation } from '@/app/[locale]/(blog)/(client)/blog/client';
 import { BlogCreationStatus } from '@/lib/blogs';
