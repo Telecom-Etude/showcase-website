@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "prisma": {
-        "seed": "tsx prisma/seed.ts"
+        "seed": "bun x tsx prisma/seed.ts"
     },
     "scripts": {
         "dev": "next dev",
