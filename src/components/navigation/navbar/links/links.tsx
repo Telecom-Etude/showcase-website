@@ -47,12 +47,13 @@ const ContactButton = ({
         }}
     >
         <NavigationMenuItem className="pt-0 pb-0 pl-0 pr-0">
-            <Link href={link.href} legacyBehavior passHref>
-                <NavigationMenuLink className="w-full flex space-x-2 justify-center items-center px-4 h-full ">
-                    <p>{link.title}</p>
-                    <FaArrowRight className="group-hover/buttoncontact:animate-bounce-x" />
-                </NavigationMenuLink>
-            </Link>
+            <NavigationMenuLink
+                href={link.href}
+                className="w-full flex space-x-2 justify-center items-center px-4 h-full "
+            >
+                <p>{link.title}</p>
+                <FaArrowRight className="group-hover/buttoncontact:animate-bounce-x" />
+            </NavigationMenuLink>
         </NavigationMenuItem>
     </Button>
 );
@@ -165,18 +166,12 @@ const DesktopLinks = ({
     const navLinks = links.map((link: ExtendedLink, i: number) => (
         <NavigationMenuItem key={i}>
             {'href' in link ? (
-                <Link
+                <NavigationMenuLink
                     href={link.href}
-                    legacyBehavior
-                    passHref
-                    className="rounded-none bg-navigation"
+                    className={cn(navigationMenuTriggerStyle(), 'rounded-none bg-navigation')}
                 >
-                    <NavigationMenuLink
-                        className={cn(navigationMenuTriggerStyle(), 'rounded-none bg-navigation')}
-                    >
-                        {link.title}
-                    </NavigationMenuLink>
-                </Link>
+                    {link.title}
+                </NavigationMenuLink>
             ) : (
                 <>
                     <NavigationMenuTrigger className="rounded-none bg-navigation">
