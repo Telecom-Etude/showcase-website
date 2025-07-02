@@ -65,7 +65,7 @@ export default function NewPostForm({ email }: { email: string }) {
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}>
-                <div className="flex space-x-1 mb-6 w-full">
+                <div className="flex space-x-1 w-full">
                     <FormField
                         control={form.control}
                         name="title"
@@ -110,20 +110,25 @@ export default function NewPostForm({ email }: { email: string }) {
                         )}
                     /> */}
                 </div>
-                {creationStatus}
                 {creationStatus === SubmissionStatus.Creating ||
                 creationStatus === BlogCreationStatus.Ok ? (
-                    <LoadingFullStops />
+                    <div className="h-[30pt] flex items-center justify-center">
+                        <LoadingFullStops />
+                    </div>
                 ) : (
-                    <Button className="w-full" variant="call2action" type="submit">
+                    <Button className="w-full h-[30pt]" variant="call2action" type="submit">
                         Créer
                     </Button>
                 )}
                 {creationStatus !== SubmissionStatus.Creating &&
-                    creationStatus !== SubmissionStatus.None &&
-                    creationStatus != BlogCreationStatus.Ok && (
-                        <p>{blogCreationStatusMessage(creationStatus)}</p>
-                    )}
+                creationStatus !== SubmissionStatus.None &&
+                creationStatus != BlogCreationStatus.Ok ? (
+                    <p className="text-destructive w-full text-center pt-6">
+                        {blogCreationStatusMessage(creationStatus)}
+                    </p>
+                ) : (
+                    <p className="w-full text-center pt-6">ou</p>
+                )}
             </form>
         </Form>
     );
