@@ -2,12 +2,15 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
 
+import { LoadingFullStops } from '@/components/animations/loading';
 import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { BlogCreationStatus, blogCreationStatusMessage } from '@/lib/blogs';
 import { DEFAULT_LOCALE, LOCALES } from '@/locales/config';
 import { nav } from '@/locales/routing';
 
@@ -18,6 +21,13 @@ export const newPostSchema = z.object({
     locale: z.enum(LOCALES),
 });
 
+enum SubmissionStatus {
+    None,
+    Creating,
+}
+
+type ClientBlogCreationStatus = BlogCreationStatus | SubmissionStatus;
+
 export default function NewPostForm({ email }: { email: string }) {
     const form = useForm<z.infer<typeof newPostSchema>>({
         resolver: zodResolver(newPostSchema),
@@ -27,8 +37,12 @@ export default function NewPostForm({ email }: { email: string }) {
     });
 
     const router = useRouter();
+    const [creationStatus, setCreationStatus] = useState<ClientBlogCreationStatus>(
+        SubmissionStatus.None
+    );
 
     const onSubmit = async (values: z.infer<typeof newPostSchema>) => {
+        setCreationStatus(SubmissionStatus.Creating);
         const apiData = JSON.stringify({ authorEmail: email, title: values.title, locale: 'fr' });
         const response = await fetch('/api/create-blog', {
             method: 'POST',
@@ -39,11 +53,17 @@ export default function NewPostForm({ email }: { email: string }) {
         });
         if (!response.ok) {
             console.error('Error creating blog: ', response.status, response.body);
-            router.push(nav('fr', '/errors/500'));
+            router.push(nav('fr', '/error/500'));
         } else {
-            const id = (await response.json()).blogId;
-            if (process.env.DEV_MODE) console.log('Created POST with ID = ', id);
-            router.push(nav('fr', `/edit-blog/${id}`));
+            const json: { id?: number; status: BlogCreationStatus } = await response.json();
+            setCreationStatus(json.status);
+            if (json.status === BlogCreationStatus.Ok) {
+                const id = json.id;
+                if (process.env.DEV_MODE) {
+                    console.log('Created POST with ID = ', id);
+                }
+                router.push(nav('fr', `/edit-blog/${id}`));
+            }
         }
     };
 
@@ -95,9 +115,17 @@ export default function NewPostForm({ email }: { email: string }) {
                         )}
                     /> */}
                 </div>
-                <Button className="w-full" variant="call2action" type="submit">
-                    Créer
-                </Button>
+                {creationStatus === SubmissionStatus.Creating ? (
+                    <LoadingFullStops />
+                ) : (
+                    <Button className="w-full" variant="call2action" type="submit">
+                        Créer
+                    </Button>
+                )}
+                {creationStatus !== SubmissionStatus.Creating &&
+                    creationStatus !== SubmissionStatus.None && (
+                        <p>{blogCreationStatusMessage(creationStatus)}</p>
+                    )}
             </form>
         </Form>
     );
