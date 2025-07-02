@@ -110,7 +110,9 @@ export default function NewPostForm({ email }: { email: string }) {
                         )}
                     /> */}
                 </div>
-                {creationStatus === SubmissionStatus.Creating ? (
+                {creationStatus}
+                {creationStatus === SubmissionStatus.Creating ||
+                creationStatus === BlogCreationStatus.Ok ? (
                     <LoadingFullStops />
                 ) : (
                     <Button className="w-full" variant="call2action" type="submit">
@@ -118,7 +120,8 @@ export default function NewPostForm({ email }: { email: string }) {
                     </Button>
                 )}
                 {creationStatus !== SubmissionStatus.Creating &&
-                    creationStatus !== SubmissionStatus.None && (
+                    creationStatus !== SubmissionStatus.None &&
+                    creationStatus != BlogCreationStatus.Ok && (
                         <p>{blogCreationStatusMessage(creationStatus)}</p>
                     )}
             </form>
