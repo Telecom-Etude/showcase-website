@@ -8,24 +8,37 @@ import { db } from '@/lib/db';
 import { Locale } from '@/locales/config';
 
 import { generateSlug } from './slug';
+import { getUserIdFromEmail } from './users';
+
+enum BlogCreationStatus {
+    Ok,
+    SameTitle,
+    UnknownProblem,
+}
 
 export async function createBlog(
     authorEmail: string,
     title: string,
     locale: Locale
-): Promise<number> {
+): Promise<{ status: BlogCreationStatus; id?: number }> {
     try {
-        if (!authorEmail) {
-            throw new Error('Author email is undefined');
-        }
-        const author = await db.user.findUnique({ where: { email: authorEmail } });
-        if (!author) {
+        const alreadyCreated = await db.post.findUnique({
+            where: {
+                title,
+            },
+        });
+
+        if (alreadyCreated !== null) return { status: BlogCreationStatus.SameTitle };
+
+        const authorId = await getUserIdFromEmail(authorEmail);
+        if (!authorId) {
             throw new Error('User not found');
         }
+
         const blog = await db.post.create({
             data: {
                 authors: {
-                    connect: [{ id: author.id }],
+                    connect: [{ id: authorId }],
                 },
                 locale,
                 title,
@@ -33,10 +46,11 @@ export async function createBlog(
                 content: '[]',
             },
         });
-        return blog.id;
+
+        return { status: BlogCreationStatus.Ok, id: blog.id };
     } catch (e) {
         console.error('[createBlog] ', e);
-        throw new Error();
+        return { status: BlogCreationStatus.UnknownProblem };
     }
 }
 
