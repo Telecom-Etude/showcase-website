@@ -12,7 +12,7 @@ async function getBlogCreationResponse(
     locale: Locale
 ): Promise<{ status: BlogCreationStatus; id?: number }> {
     const session = await auth();
-    if (session?.user.email === authorEmail) {
+    if (session?.user.email !== authorEmail) {
         return {
             status: BlogCreationStatus.Unauthorised,
         };
