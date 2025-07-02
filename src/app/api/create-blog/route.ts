@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server';
 
 import { auth } from '@/auth/auth';
-import { BlogCreationStatus, createBlog } from '@/db/blogs';
+import { createBlog } from '@/db/blogs';
+import { BlogCreationStatus } from '@/lib/blogs';
 import { Locale } from '@/locales/config';
 
 /* Function to handle POST requests, but with static types.*/

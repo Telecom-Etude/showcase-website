@@ -4,18 +4,12 @@ import { Label, Post, User } from '@prisma/client';
 import { Op } from 'quill/core';
 
 import { PostPresentation } from '@/app/[locale]/(blog)/(client)/blog/client';
+import { BlogCreationStatus } from '@/lib/blogs';
 import { db } from '@/lib/db';
 import { Locale } from '@/locales/config';
 
 import { generateSlug } from './slug';
 import { getUserIdFromEmail } from './users';
-
-export enum BlogCreationStatus {
-    Ok,
-    SameTitle,
-    Unauthorised,
-    UnknownProblem,
-}
 
 export async function createBlog(
     authorEmail: string,

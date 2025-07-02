@@ -1,7 +1,6 @@
 'use client';
 
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { Fragment, useState } from 'react';
 import { FaArrowRight } from 'react-icons/fa';

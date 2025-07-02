@@ -1,7 +1,6 @@
 'use client';
 
 import { GB, FR } from 'country-flag-icons/react/3x2';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import { Button } from '@/components/ui/button';
