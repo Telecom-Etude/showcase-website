@@ -51,19 +51,14 @@ export default function NewPostForm({ email }: { email: string }) {
             },
             body: apiData,
         });
-        if (!response.ok) {
-            console.error('Error creating blog: ', response.status, response.body);
-            router.push(nav('fr', '/error/500'));
-        } else {
-            const json: { id?: number; status: BlogCreationStatus } = await response.json();
-            setCreationStatus(json.status);
-            if (json.status === BlogCreationStatus.Ok) {
-                const id = json.id;
-                if (process.env.DEV_MODE) {
-                    console.log('Created POST with ID = ', id);
-                }
-                router.push(nav('fr', `/edit-blog/${id}`));
+        const json: { id?: number; status: BlogCreationStatus } = await response.json();
+        setCreationStatus(json.status);
+        if (json.status === BlogCreationStatus.Ok) {
+            const id = json.id;
+            if (process.env.DEV_MODE) {
+                console.log('Created POST with ID = ', id);
             }
+            router.push(nav('fr', `/edit-blog/${id}`));
         }
     };
 
