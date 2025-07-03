@@ -11,8 +11,9 @@ import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { BlogCreationStatus, blogCreationStatusMessage } from '@/lib/blogs';
-import { DEFAULT_LOCALE, LOCALES } from '@/locales/config';
+import { DEFAULT_LOCALE, Locale, LOCALES } from '@/locales/config';
 import { nav } from '@/locales/routing';
+import Link from 'next/link';
 
 export const newPostSchema = z.object({
     title: z.string().min(2, {
@@ -28,7 +29,7 @@ enum SubmissionStatus {
 
 type ClientBlogCreationStatus = BlogCreationStatus | SubmissionStatus;
 
-export default function NewPostForm({ email }: { email: string }) {
+export default function NewPostForm({ email, locale }: { email: string; locale: Locale }) {
     const form = useForm<z.infer<typeof newPostSchema>>({
         resolver: zodResolver(newPostSchema),
         defaultValues: {
@@ -64,8 +65,11 @@ export default function NewPostForm({ email }: { email: string }) {
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)}>
-                <div className="flex pb-6 space-x-1 w-full">
+            <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="flex flex-col justify-center items-center space-y-6"
+            >
+                <div className="flex space-x-1 w-full">
                     <FormField
                         control={form.control}
                         name="title"
@@ -123,11 +127,26 @@ export default function NewPostForm({ email }: { email: string }) {
                 {creationStatus !== SubmissionStatus.Creating &&
                 creationStatus !== SubmissionStatus.None &&
                 creationStatus != BlogCreationStatus.Ok ? (
-                    <p className="text-destructive w-full text-center pt-6">
+                    <p className="text-destructive w-full text-center">
                         {blogCreationStatusMessage(creationStatus)}
                     </p>
                 ) : (
-                    <p className="w-full text-center pt-6">ou</p>
+                    <p className="w-full text-center">ou</p>
+                )}
+                {creationStatus === SubmissionStatus.Creating ||
+                creationStatus === BlogCreationStatus.Ok ? (
+                    <div className="h-[30pt] w-full flex justify-center">
+                        <LoadingFullStops />
+                    </div>
+                ) : (
+                    <Button
+                        className="h-[30pt] w-full flex justify-center"
+                        type="button"
+                        variant="link"
+                        asChild
+                    >
+                        <Link href={nav(locale, '/list-blog')}>Éditer un post existant</Link>
+                    </Button>
                 )}
             </form>
         </Form>
