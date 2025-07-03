@@ -1,6 +1,7 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -13,7 +14,6 @@ import { Input } from '@/components/ui/input';
 import { BlogCreationStatus, blogCreationStatusMessage } from '@/lib/blogs';
 import { DEFAULT_LOCALE, Locale, LOCALES } from '@/locales/config';
 import { nav } from '@/locales/routing';
-import Link from 'next/link';
 
 export const newPostSchema = z.object({
     title: z.string().min(2, {
