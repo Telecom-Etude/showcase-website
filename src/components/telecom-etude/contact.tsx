@@ -22,11 +22,13 @@ export const EmailBtn = ({
 export const EmailContact = ({
     rgpd = false,
     dsi = false,
+    rezel = false,
     text,
     underline = false,
 }: {
     rgpd?: boolean;
     dsi?: boolean;
+    rezel?: boolean;
     text?: string;
     underline?: boolean;
 }) => {
@@ -38,7 +40,9 @@ export const EmailContact = ({
                     ? 'secretaire.general@telecom-etude.fr'
                     : dsi
                       ? 'info.telecom-paris.fr'
-                      : 'contact@telecom-etude.fr'
+                      : rezel
+                        ? 'contact@rezel.net'
+                        : 'contact@telecom-etude.fr'
             }
             text={text}
         />

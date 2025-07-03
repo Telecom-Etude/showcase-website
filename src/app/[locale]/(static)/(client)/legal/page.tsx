@@ -44,7 +44,7 @@ export default async function Legal({ params }: LocaleParams) {
                         <h3 className="font-semibold">{t.legal.host.title}</h3>
                         <p>{t.legal.host.description}</p>
                         <p>
-                            {t.legal.host.contact} <EmailContact />
+                            {t.legal.host.contact} <EmailContact rezel />
                         </p>
                         <p>
                             {t.legal.host.website}{' '}
