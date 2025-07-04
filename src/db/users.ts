@@ -7,6 +7,15 @@ import { db } from '@/lib/db';
 
 ////////////// READ ///////////////////
 
+export async function getUserIdFromEmail(email: string): Promise<number | undefined> {
+    try {
+        const user = await db.user.findUnique({ where: { email } });
+        return user?.id;
+    } catch (e) {
+        console.error('[getUserIdFromEmail] ', e);
+    }
+}
+
 export async function getRights(email: string | null | undefined): Promise<Rights | null> {
     let rights = null;
     if (!email) {

@@ -1,14 +1,18 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
 
+import { LoadingFullStops } from '@/components/animations/loading';
 import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { DEFAULT_LOCALE, LOCALES } from '@/locales/config';
+import { BlogCreationStatus, blogCreationStatusMessage } from '@/lib/blogs';
+import { DEFAULT_LOCALE, Locale, LOCALES } from '@/locales/config';
 import { nav } from '@/locales/routing';
 
 export const newPostSchema = z.object({
@@ -18,7 +22,14 @@ export const newPostSchema = z.object({
     locale: z.enum(LOCALES),
 });
 
-export default function NewPostForm({ email }: { email: string }) {
+enum SubmissionStatus {
+    None = 'None',
+    Creating = 'Creating',
+}
+
+type ClientBlogCreationStatus = BlogCreationStatus | SubmissionStatus;
+
+export default function NewPostForm({ email, locale }: { email: string; locale: Locale }) {
     const form = useForm<z.infer<typeof newPostSchema>>({
         resolver: zodResolver(newPostSchema),
         defaultValues: {
@@ -27,8 +38,12 @@ export default function NewPostForm({ email }: { email: string }) {
     });
 
     const router = useRouter();
+    const [creationStatus, setCreationStatus] = useState<ClientBlogCreationStatus>(
+        SubmissionStatus.None
+    );
 
     const onSubmit = async (values: z.infer<typeof newPostSchema>) => {
+        setCreationStatus(SubmissionStatus.Creating);
         const apiData = JSON.stringify({ authorEmail: email, title: values.title, locale: 'fr' });
         const response = await fetch('/api/create-blog', {
             method: 'POST',
@@ -37,20 +52,24 @@ export default function NewPostForm({ email }: { email: string }) {
             },
             body: apiData,
         });
-        if (!response.ok) {
-            console.error('Error creating blog: ', response.status, response.body);
-            router.push(nav('fr', '/errors/500'));
-        } else {
-            const id = (await response.json()).blogId;
-            if (process.env.DEV_MODE) console.log('Created POST with ID = ', id);
+        const json: { id?: number; status: BlogCreationStatus } = await response.json();
+        setCreationStatus(json.status);
+        if (json.status === BlogCreationStatus.Ok) {
+            const id = json.id;
+            if (process.env.DEV_MODE) {
+                console.log('Created POST with ID = ', id);
+            }
             router.push(nav('fr', `/edit-blog/${id}`));
         }
     };
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)}>
-                <div className="flex space-x-1 mb-6 w-full">
+            <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="flex flex-col justify-center items-center space-y-6"
+            >
+                <div className="flex space-x-1 w-full">
                     <FormField
                         control={form.control}
                         name="title"
@@ -95,9 +114,40 @@ export default function NewPostForm({ email }: { email: string }) {
                         )}
                     /> */}
                 </div>
-                <Button className="w-full" variant="call2action" type="submit">
-                    Créer
-                </Button>
+                {creationStatus === SubmissionStatus.Creating ||
+                creationStatus === BlogCreationStatus.Ok ? (
+                    <div className="h-[30pt] flex items-center justify-center">
+                        <LoadingFullStops />
+                    </div>
+                ) : (
+                    <Button className="w-full h-[30pt]" variant="call2action" type="submit">
+                        Créer
+                    </Button>
+                )}
+                {creationStatus !== SubmissionStatus.Creating &&
+                creationStatus !== SubmissionStatus.None &&
+                creationStatus != BlogCreationStatus.Ok ? (
+                    <p className="text-destructive w-full text-center">
+                        {blogCreationStatusMessage(creationStatus)}
+                    </p>
+                ) : (
+                    <p className="w-full text-center">ou</p>
+                )}
+                {creationStatus === SubmissionStatus.Creating ||
+                creationStatus === BlogCreationStatus.Ok ? (
+                    <div className="h-[30pt] w-full flex justify-center">
+                        <LoadingFullStops />
+                    </div>
+                ) : (
+                    <Button
+                        className="h-[30pt] w-full flex justify-center"
+                        type="button"
+                        variant="link"
+                        asChild
+                    >
+                        <Link href={nav(locale, '/list-blog')}>Éditer un post existant</Link>
+                    </Button>
+                )}
             </form>
         </Form>
     );

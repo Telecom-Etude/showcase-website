@@ -1,7 +1,6 @@
 'use client';
 
 import { GB, FR } from 'country-flag-icons/react/3x2';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import { Button } from '@/components/ui/button';
@@ -39,7 +38,7 @@ export const LocaleSwitch = ({
     const localedUrl = useLocaledUrl(locale == 'fr' ? 'en' : 'fr');
 
     return (
-        <NavigationMenuItem className={mobile ? '' : 'p-2 hover:bg-muted'}>
+        <NavigationMenuItem className={mobile ? '' : 'hover:bg-muted'}>
             <Button
                 className="w-full"
                 variant="ghost"
@@ -49,26 +48,19 @@ export const LocaleSwitch = ({
                 }}
                 asChild
             >
-                <Link
-                    href={localedUrl}
-                    legacyBehavior
-                    passHref
-                    className="border-2 border-red-500 "
-                >
-                    <NavigationMenuLink>
-                        <div
-                            className={
-                                mobile ? ' hover:bg-muted w-screen flex  justify-center py-2' : ''
-                            }
-                        >
-                            {locale === 'en' ? (
-                                <FR title="Français" className="h-6 w-6" />
-                            ) : (
-                                <GB title="English" className="h-6 w-6" />
-                            )}
-                        </div>
-                    </NavigationMenuLink>
-                </Link>
+                <NavigationMenuLink href={localedUrl}>
+                    <div
+                        className={
+                            mobile ? ' hover:bg-muted w-screen flex  justify-center py-2' : ''
+                        }
+                    >
+                        {locale === 'en' ? (
+                            <FR title="Français" className="h-6 w-6" />
+                        ) : (
+                            <GB title="English" className="h-6 w-6" />
+                        )}
+                    </div>
+                </NavigationMenuLink>
             </Button>
         </NavigationMenuItem>
     );

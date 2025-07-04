@@ -21,11 +21,12 @@ Please refer to the [Contribution Guide](CONTRIBUTING.md) before contributing to
 
 ### Technical stack
 
-- Fullstack [Next.js](https://nextjs.org/) (v14), with the App router.
+- Fullstack [Next.js](https://nextjs.org/) (v15), with the App router.
 - [TypeScript](https://www.typescriptlang.org/), for type safety.
-- [Tailwind CSS](https://tailwindcss.com/), for styling.
+- [Tailwind CSS](https://tailwindcss.com/) (v13), for styling.
 - [Auth.js](https://authjs.dev/) (v5 of [NextAuth.js](https://next-auth.js.org/)), for authentication, with the Google Provider.
 - [Prisma](https://www.prisma.io/), for object modeling.
+- [SQLite](https://sqlite.org/), for the database
 
 ### Recommended tutorials
 

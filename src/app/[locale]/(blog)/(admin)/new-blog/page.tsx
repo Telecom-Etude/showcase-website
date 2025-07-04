@@ -1,10 +1,6 @@
-import Link from 'next/link';
-
 import { auth } from '@/auth/auth';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { LocaleParams } from '@/locales/config';
-import { nav } from '@/locales/routing';
 
 import NewPostForm from './client';
 
@@ -21,13 +17,8 @@ export default async function NewBlog({ params }: LocaleParams) {
                     </CardTitle>
                 </CardHeader>
                 <CardContent>
-                    <NewPostForm email={email} />
+                    <NewPostForm email={email} locale={locale} />
                 </CardContent>
-                <CardFooter className="flex justify-center">
-                    <Button variant="link" asChild>
-                        <Link href={nav(locale, '/list-blog')}>Éditer un post existant</Link>
-                    </Button>
-                </CardFooter>
             </Card>
         </div>
     );
