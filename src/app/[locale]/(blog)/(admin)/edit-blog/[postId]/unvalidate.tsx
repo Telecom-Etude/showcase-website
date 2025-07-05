@@ -21,7 +21,7 @@ export function UnValidate({ locale, id }: { locale: Locale; id: number }) {
                 <AlertDialogHeader>
                     <AlertDialogTitle>Post déjà approuvé et validé</AlertDialogTitle>
                     <AlertDialogDescription>
-                        Pour modifier ce blog, il doit être invalider. Le blog devra être revalidé
+                        Pour modifier ce blog, il doit être invalidé. Le blog devra être revalidé
                         par un administrateur avant de réapparaitre dans la section blog du site.
                     </AlertDialogDescription>
                 </AlertDialogHeader>
