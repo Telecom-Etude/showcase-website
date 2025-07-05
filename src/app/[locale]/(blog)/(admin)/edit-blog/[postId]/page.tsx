@@ -14,14 +14,15 @@ export default async function EditBlog({ params }: LocalePostParams) {
     const { postId, locale } = await params;
     const id = parseInt(postId);
     const blog = await getBlog(id);
-    const email = (await auth())?.user.email;
+    const sessions = (await auth())?.user;
+    const email = sessions?.email;
     if (!email) {
         redirect(nav(locale, '/error/401'));
     }
     if (Number.isNaN(id) || !blog) {
         redirect(nav(locale, '/error/404'));
     }
-    if (!blog.authors.map((a) => a.email).includes(email)) {
+    if (!blog.authors.map((a) => a.email).includes(email) && !sessions.rights?.blogAdmin) {
         redirect(nav(locale, '/error/403'));
     }
     const blogLocale: Locale = blog.locale as Locale;
