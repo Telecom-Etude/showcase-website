@@ -182,7 +182,7 @@ export const frDictionary = {
             title: 'Accueil',
             trust: 'Ils nous ont fait confiance',
             description:
-                "Telecom Etude, fondée en 1979, est la Junior-Entreprise de Télécom Paris, une école d'ingénieur de premier plan dans les technologies de l'information et du numérique. Connectez-vous avec notre équipe réactive et professionnelle de 24 administrateurs pour des solutions sur mesure à vos projets. Explorez l'expertise de Telecom Etude et engagez-vous avec plus de 1000 ingénieurs étudiants de Télécom Paris.",
+                "Telecom Etude, fondée en 1979, est la Junior-Entreprise de Télécom Paris, une école d'ingénieur de premier plan dans les technologies de l'information et du numérique. Connectez-vous avec notre équipe réactive et professionnelle de 24 administrateurs pour des solutions sur mesure à vos projets. Explorez l'expertise de Telecom Etude et engagez-vous avec plus de 1000 étudiants ingénieurs de Télécom Paris.",
             questions: 'Plus de questions',
             subtitle: 'La Junior Entreprise du numérique, des nouvelles technologies et de la data',
             alt: 'Photo du mandat de Telecom Etude',
