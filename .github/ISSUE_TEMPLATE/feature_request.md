@@ -1,7 +1,7 @@
 ---
 name: Feature Request
 about: Suggest an enhancement or new feature for the website
-title: '[Feature] <title>'
+title: '[<scope>] <title>'
 labels: enhancement
 assignees: ''
 ---
