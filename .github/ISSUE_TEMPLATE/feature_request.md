@@ -1,9 +1,10 @@
 ---
 name: Feature Request
 about: Suggest an enhancement or new feature for the website
-title: '[Feature] <title>'
+title: "[Feature] <title>"
 labels: enhancement
 assignees: ''
+
 ---
 
 **Is your feature request related to a problem? Please describe.**
