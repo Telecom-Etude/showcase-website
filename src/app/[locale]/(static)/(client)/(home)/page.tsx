@@ -128,7 +128,9 @@ function Description({
 }) {
     return (
         <>
-            <p className={cn('text-center text-white', className)}>{t.description}</p>
+            <p className={cn('text-center text-foreground lg:text-white', className)}>
+                {t.description}
+            </p>
             <div
                 className={cn(
                     'flex flex-col sm:flex-row space-y-10 sm:space-x-10 sm:space-y-0 justify-center',
