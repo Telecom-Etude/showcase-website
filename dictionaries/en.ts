@@ -187,6 +187,7 @@ export const enDictionary: Dictionary = {
         home: {
             title: 'Home',
             trust: 'They put their trust in us',
+            opinions : [{text : 'opinion1', author : 'author1'},{text : 'opinion2', author : 'author2'},{text : 'opinion3', author : 'author3'},{text : 'opinion4', author : 'author4'},{text : 'opinion5', author : 'author5'}],
             description:
                 "Telecom Etude, founded in 1979, is the Junior-Enterprise of Télécom Paris, a leading engineering school in information and digital technologies. Connect with our responsive and professional team of 24 administrators for tailor-made solutions to your projects. Explore Telecom Etude's expertise and engage with over 1,000 student engineers from Telecom Paris",
             questions: 'More questions',
