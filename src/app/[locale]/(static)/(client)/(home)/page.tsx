@@ -24,18 +24,13 @@ import { OrangeTitle } from '@/components/styles/texts';
 import { BirdLogo } from '@/components/telecom-etude/logos';
 import { VariantLink } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import MyCarousel from '@/components/animations/MyCarousel';
 import { Separator } from '@/components/ui/separator';
 import { cn } from '@/lib/utils';
 import { Locale, LocaleParams } from '@/locales/config';
 import { Dictionary, getDictionary } from '@/locales/dictionaries';
 import { nav } from '@/locales/routing';
-import {
-    Carousel,
-    CarouselContent,
-    CarouselItem,
-    CarouselNext,
-    CarouselPrevious,
-  } from '@/components/ui/carousel';
+
 
 import { DomainBlock } from './domains';
 
@@ -170,26 +165,9 @@ function Trusted({ t }: { t: DeepReadonly<Dictionary['pages']['home']> }) {
         <Block className="bg-background">
             <section className="py-10 space-y-10 ">   
                 <h2 className="text-2xl font-bold text-center">{t.trust}</h2>
-                <Carousel opts={{ align: "start", loop: true }} className="h-[300px] rounded-lg -ml-4">
-                    <CarouselContent>
-                        {t.opinions.map((avis, i) => (
-                            <CarouselItem key={i} className="basis-full sm:basis-1/2 md:basis-1/3 pl-4">
-                                <div className="bg-white h-[300px] rounded-lg flex flex-col px-5 py-4 text-black">
-                                    <div className="flex-1 flex text-center break-words">
-                                        {avis.text}
-                                    </div>
-                                    <div className="mt-4 text-right text-sm text-gray-500 italic">
-                                        {avis.author}
-                                    </div>
-                                </div>
-                            </CarouselItem>
-                        ))}         
-                    </CarouselContent>
-                    <CarouselPrevious />
-                    <CarouselNext />
-                </Carousel>
-            </section>
-            <section className="py-10 space-y-10 ">
+                <div className="relative group">
+                <MyCarousel opinions={t.opinions} />
+                </div>
                 <div className="grid grid-cols-3 md:grid-cols-6 bg-white">
                     {trusted.map(({ alt, src }, i) => (
                         <div key={i} className="w-full h-full items-center justify-center flex">
