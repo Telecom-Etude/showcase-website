@@ -11,7 +11,9 @@ import {
     CarouselPrevious,
 } from '@/components/ui/carousel';
 
-export default function MyCarousel({ opinions }) {
+type Opinion = { text: string; author: string };
+
+export default function MyCarousel({ opinions }: { opinions: readonly Opinion[] }) {
     const autoplay = useRef(Autoplay({ delay: 5000 }));
 
     return (
