@@ -1,4 +1,5 @@
 import { Dictionary } from '@/locales/dictionaries';
+import { text } from 'stream/consumers';
 
 export const enDictionary: Dictionary = {
     navigation: {
