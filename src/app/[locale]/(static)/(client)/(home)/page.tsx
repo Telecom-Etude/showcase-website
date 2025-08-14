@@ -19,6 +19,7 @@ import Telecom_Paris from '@/../public/images/companies/trusted/Telecom_Paris.pn
 import fond_acc from '@/../public/images/fond_accueil.jpg';
 
 import { LoadNumber } from '@/components/animations/load-number';
+import MyCarousel from '@/components/animations/MyCarousel';
 import { Block } from '@/components/styles/blocks';
 import { OrangeTitle } from '@/components/styles/texts';
 import { BirdLogo } from '@/components/telecom-etude/logos';
@@ -165,6 +166,11 @@ function Trusted({ t }: { t: DeepReadonly<Dictionary['pages']['home']> }) {
         <Block className="bg-background">
             <section className="py-10 space-y-10 ">
                 <h2 className="text-2xl font-bold text-center">{t.trust}</h2>
+                {t.opinions.length > 0 && (
+                    <div className="relative group">
+                        <MyCarousel opinions={t.opinions} />
+                    </div>
+                )}
                 <div className="grid grid-cols-3 md:grid-cols-6 bg-white">
                     {trusted.map(({ alt, src }, i) => (
                         <div key={i} className="w-full h-full items-center justify-center flex">
