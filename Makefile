@@ -24,7 +24,7 @@ export SERVICE_FILE_CONTENT
 help:
 	@echo "This is a production only tool. Please use bun directly in development."
 	@echo ""
-	@echo "Run 'sudo make init' once, and then every time you want to update the website, run 'sudo make update'."
+	@echo "Run 'make init' once, and then every time you want to update the website, run 'make update'."
 	@echo ""
 	@echo "Rules:"
 	@echo " - init:    creates the service"
