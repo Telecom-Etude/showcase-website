@@ -5,6 +5,7 @@ import Allan from '@/../public/images/members/allan.webp';
 import Augustin from '@/../public/images/members/augustin.webp';
 import BaptisteD from '@/../public/images/members/baptiste_d.webp';
 import BaptisteL from '@/../public/images/members/baptiste_l.webp';
+import David from '@/../public/images/members/david.webp';
 import Elisa from '@/../public/images/members/elisa.webp';
 import Eya from '@/../public/images/members/eya.webp';
 import Florian from '@/../public/images/members/florian.webp';
@@ -160,6 +161,8 @@ export const DEPARTMENTS: DepartmentProps[] = [
             },
         ],
     },
+    { id: 'infocom', members: [{ id: 'comweb', name: 'David Muy', image: David }] },
+
     {
         id: 'info',
         members: [

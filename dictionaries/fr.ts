@@ -229,6 +229,7 @@ export const frDictionary = {
                 info: 'Pôle informatique',
                 com: 'Pôle communication',
                 comcom: 'Pôle communication et développement commercial',
+                infocom: 'Pôle communication et informatique',
             },
             members: {
                 prez: 'Président',
@@ -256,7 +257,8 @@ export const frDictionary = {
                 cominterne: 'Chargé Communication Interne',
                 coco: 'Chargé Communication Commerciale',
                 //
-                info: 'Membre pôle informatique',
+                info: 'Membre Pôle Informatique',
+                comweb: 'Chargé Communication Web',
             },
         },
         faq: {

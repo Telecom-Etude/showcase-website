@@ -1,5 +1,4 @@
 import { Dictionary } from '@/locales/dictionaries';
-import { text } from 'stream/consumers';
 
 export const enDictionary: Dictionary = {
     navigation: {
@@ -244,6 +243,7 @@ export const enDictionary: Dictionary = {
                 info: 'IT department',
                 com: 'Communication department',
                 comcom: 'Communication and Business development department',
+                infocom: 'Communication and IT department',
             },
             members: {
                 prez: 'Chief executive officer',
@@ -272,6 +272,7 @@ export const enDictionary: Dictionary = {
                 coco: 'In charge of commercial communication',
                 //
                 info: 'IT member',
+                comweb: 'In charge of web communication',
             },
         },
         partners: {
