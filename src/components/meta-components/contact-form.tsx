@@ -32,6 +32,8 @@ import { getDictionary } from '@/locales/dictionaries';
 import { nav } from '@/locales/routing';
 import { sendForm } from '@/mail/mailer';
 
+import { EmailContact } from '../telecom-etude/contact';
+
 type Fields = 'name' | 'email' | 'tel' | 'societe' | 'subject' | 'message';
 const ListFields = ['name', 'email', 'tel', 'societe', 'subject', 'message'];
 
@@ -181,7 +183,14 @@ export default function ContactForm({
                             {t[success ? 'success' : 'error'].title}
                         </AlertDialogTitle>
                         <AlertDialogDescription>
-                            {t[success ? 'success' : 'error'].message}
+                            {success ? (
+                                <>{t.success.message}</>
+                            ) : (
+                                <div className="flex-col items-center">
+                                    <p>{t.error.message}</p>
+                                    <EmailContact />
+                                </div>
+                            )}
                         </AlertDialogDescription>
                     </AlertDialogHeader>
                     {success ? (

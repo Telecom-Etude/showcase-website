@@ -426,7 +426,7 @@ export const enDictionary: Dictionary = {
             },
             error: {
                 title: 'Unexpected error...',
-                message: 'Please contact us instead by sending a mail to',
+                message: 'Please contact us instead by sending an email to',
             },
         },
         legal: {
